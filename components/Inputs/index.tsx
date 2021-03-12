@@ -48,7 +48,7 @@ const TextInput = () => {
             <form className={classes.root} noValidate>
                 <TextField
                     className={classes.textField}
-                    size="small"
+                    size="medium"
                     variant="outlined"
                     placeholder="cerca una slot, un casino..."
                     onChange={handleChange}

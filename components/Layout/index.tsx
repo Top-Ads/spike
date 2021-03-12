@@ -27,5 +27,5 @@ const Layout = ({ children, title}: Props) => (
 
 export default Layout
 const MainContainer = styled. div`
-  margin: 0 10%;
+  margin: 0 ${(props) => props.theme.sideSpace};
 `

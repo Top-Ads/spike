@@ -18,5 +18,6 @@ export interface StyledTheme {
     
     header: {
         borderRadius: string 
-    }
+    },
+    sideSpace: string;
 }
