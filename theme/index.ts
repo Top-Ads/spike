@@ -36,6 +36,7 @@ export const styledTheme: StyledTheme = {
     header: {
         borderRadius: '0px 0px 20px 20px'
     },
+    
     sideSpace: '10%'
 }
 

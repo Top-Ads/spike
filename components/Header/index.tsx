@@ -40,8 +40,7 @@ const Header = () => {
                 />
               </div>
               <div className="legal-text">
-                <p>Il gioco è vietato ai minori e può causare
-                 dipendenza patologica</p>
+                <p>Il gioco e vietato ai minori e puo causare dipendenza patologica - probabilita di vincita</p>
               </div>
             </LegalContainer>
 
@@ -96,8 +95,9 @@ const MainContainer = styled.div`
   display: inherit;
   flex-wrap: inherit;
   flex-direction: row;
-  height: auto;
   align-items: center;
+  height: auto;
+  width: 100%;
   
   @media ${device.laptop} { 
     height: 60px;
