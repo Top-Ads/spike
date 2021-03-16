@@ -16,11 +16,11 @@ const Divider: FunctionComponent<PageProps> = (data) => {
 }
 
 const HrContainer = styled.hr<PageProps>`
-    border: 1px solid ${(props) => props.color ? props.color : '#ff1313'};
-    background-color: ${(props) => props.color ? props.color : '#ff1313'};
+    border: 1px solid ${({color}) => color ? color : '#ff1313'};
+    background-color: ${({color}) => color ? color : '#ff1313'};
     width: 100%;
     opacity: 0.6;
-    margin-bottom: ${(props) => props.marginBottom ? props.marginBottom : '0px'};
+    margin-bottom: ${({marginBottom}) => marginBottom ? marginBottom : '0px'};
 }
 `
 
