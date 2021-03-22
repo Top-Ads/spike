@@ -21,19 +21,17 @@ const Header = () => {
         <HeaderContainer>
 
           <MainContainer>
-            <TitleContainer>
-              <div className="image-container">
-                  <Image
-                    alt="Casino Legal Information"
-                    src="/svg/logo.svg"
-                    layout="fill"
-                    priority={true}         
-                  />
-                </div>
-            </TitleContainer>
+            <LogoContainer>
+              <Image
+                alt="Casino Legal Information"
+                src="/svg/logo-spike.svg"
+                layout="fill"
+                priority={true}
+              />
+            </LogoContainer>
             
-            <PolicyContainer>
-              <div className="image-container">
+            <LegalContainer>
+              <div className="legal-image">
                 <Image
                   alt="Casino Legal Information"
                   src="/svg/it-legal-logos.svg"
@@ -41,11 +39,11 @@ const Header = () => {
                   priority={true}
                 />
               </div>
-              <div className="policy-text">
+              <div className="legal-text">
                 <p>Il gioco è vietato ai minori e può causare
                  dipendenza patologica</p>
               </div>
-            </PolicyContainer>
+            </LegalContainer>
 
             <SearchContainer>
               <TextInput/>
@@ -60,7 +58,7 @@ const Header = () => {
           
           {showNav ? 
             <Fragment>
-              <Divider/>
+              <Divider color={'#fff'} marginBottom="5px"/>
 
               <NavContainer>
                 <Link href={'/'}>
@@ -90,7 +88,7 @@ const HeaderContainer = styled.div`
   background-image: linear-gradient(180deg, ${(props) => props.theme.colors.primary}, ${(props) => props.theme.colors.gradient});
   border-radius: ${(props) => props.theme.header.borderRadius};
   box-shadow: 0px 0px 10px 10px rgb(0 0 0 / 40%);
-  padding: 10px 50px;
+  padding: 10px ${(props) => props.theme.sideSpace};
   color: ${(props) => props.theme.text.color};
 `
 
@@ -100,42 +98,41 @@ const MainContainer = styled.div`
   flex-direction: row;
   height: auto;
   align-items: center;
-
+  
   @media ${device.laptop} { 
     height: 60px;
   }
 `
 
-const TitleContainer = styled.div`    
+const LogoContainer = styled.div`    
   display: inherit;
   flex-grow: 1;
-  font-size: 50px;
+  position: relative;
+  width: 200px;
+  height: 60px;
   margin-right: 20px;
-
-  .image-container {
-    position: relative; 
-    width: 200px;
-    height: 60px;
-  }
 `
 
-const PolicyContainer = styled.div`
+const LegalContainer = styled.div`
   display: inherit;
   align-items: inherit;
   flex-grow: 2;
   flex-wrap: inherit;
+  height: 60px;
 
-  .image-container {
+  .legal-image {
     position: relative; 
     width: 170px;
-    height: 60px;
+    height: inherit;
     margin-right: 10px;
   }
 
-  .policy-text {
+  .legal-text {
     display: inherit;
+    align-items: center;
     font-size: 10px;
     width: 220px;
+    height: inherit;
   }
 `
 
@@ -143,11 +140,15 @@ const SearchContainer = styled.div`
   margin-right: 20px;
   display: inherit;
   flex-grow: 0;
+  height: 60px;
 
 `
 
 const MenuContainer = styled.div` 
   cursor: pointer; 
+  height: 60px;
+  align-items: center;
+  display: inherit;
 `
 
 const NavContainer = styled.nav`    
@@ -160,7 +161,7 @@ const NavContainer = styled.nav`
   a { 
     color: #fff;
     margin: 0px 10px;
-    padding: 7px 15px;
+    padding: 6px 15px;
     border-radius: 10px;
     font-size: 17px;
   }

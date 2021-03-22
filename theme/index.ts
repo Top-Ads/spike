@@ -6,7 +6,7 @@ export const GlobalStyle = createGlobalStyle`
         height: 100%;
         width: 100%;
         font-family : 'Raleway', sans-serif;
-        background-color: "#fff";
+        background-color: #f2f2f2;
         margin: 0 auto;
     }
 
@@ -17,10 +17,10 @@ export const GlobalStyle = createGlobalStyle`
 export const styledTheme: StyledTheme = {
 
     colors: {
-        primary: "#eb372b",
+        primary: "#ff1313",
         secondary: "",
         tertiary: "",
-        gradient: "#ed5e58"
+        gradient: "#ff5656"
     },
 
     text: {
@@ -35,6 +35,7 @@ export const styledTheme: StyledTheme = {
 
     header: {
         borderRadius: '0px 0px 20px 20px'
-    }
+    },
+    sideSpace: '10%'
 }
 
