@@ -4,13 +4,14 @@ import Image from 'next/image'
 import Divider from '../Divider'
 import TextInput from '../Inputs/Textfield'
 import MenuIcon from '@material-ui/icons/Menu'
+import CloseIcon from '@material-ui/icons/Close'
 import Link from 'next/link'
 
 const Header = () => { 
   
-  const [showNav, setShowNav] = useState<boolean>(true)
+  const [showNav, setShowNav] = useState<boolean>(false)
 
-  const openMenu = () => setShowNav(!showNav)
+  const handleMenu = () => setShowNav(!showNav)
   
   return (
     <Fragment>
@@ -47,9 +48,9 @@ const Header = () => {
             </SearchContainer>
             
             <MenuContainer>
-              <MenuIcon 
-              style={{ color: '#fff', fontSize: '40px'}}
-              onClick={openMenu}/>
+              {showNav ? 
+                   <CloseIcon className='icons' onClick={handleMenu}/> :
+                   <MenuIcon className='icons' onClick={handleMenu}/> }
             </MenuContainer>
           
           </MainContainer>
@@ -142,6 +143,11 @@ const MenuContainer = styled.div`
   height: 60px;
   align-items: center;
   display: inherit;
+  
+  .icons {
+    color: #fff;
+    font-size: 40px;
+  }
 `
 
 const NavContainer = styled.nav`    
