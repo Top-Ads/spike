@@ -81,7 +81,7 @@ const GridSlots: FunctionComponent<PageProps> = (props) => {
                     {index}
                   </div> 
                   : '' }
-                { data && data[index-1] ? data[index-1]  : `EMPTYCARD` }
+                { data && data[index-1] ? data[index-1]  : `EMPTY CARD` }
                 <div style={{display: 'none'}}>{index++}</div>
             </Paper>
         </Grid>
@@ -104,5 +104,6 @@ const GridSlots: FunctionComponent<PageProps> = (props) => {
 
 const LabelContainer = styled.div<LabelContainerType>`
   text-align: ${({align}) => align ? align : 'unset'};
+  font-weight: bold;
 `
 export default GridSlots

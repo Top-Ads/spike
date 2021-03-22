@@ -39,10 +39,15 @@ const MainContainer = styled.div`
 const ButtonContainer = styled.div`
     padding: 10px 20px;
     background-color: #ffcc03;
+    border: 1px solid #fff;
     border-radius: 4px;
     color: #000;
-    font-weight: bold;
     cursor: pointer;
+
+    &: active {
+      color: #fff;
+      background-color: ${({theme}) => theme.colors.primary};
+    }
 `
 
 export default EmailSubcription

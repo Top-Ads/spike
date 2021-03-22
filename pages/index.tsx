@@ -83,7 +83,7 @@ const IndexPage: FunctionComponent = () => (
       </GridsContainer>
 
       <GridsContainer>
-          <p style={{fontWeight: "normal"}}>
+          <p>
             Se ti interessa sapere dove conviene maggiormente giocare alle slot machine online puoi dare
             un'occhiata a questa comparazione dei migliori Bonus disponibili al momento:
           </p>
@@ -107,7 +107,7 @@ const IndexPage: FunctionComponent = () => (
 const WelcomeContainer = styled.div`
   display: flex;
   flex-direction: column;
-  color: ${({theme}) => theme.colors.primary}; 
+  color: ${({theme}) => theme.colors.primary};
 `
 
 const IntroContainer = styled.div`
@@ -143,14 +143,20 @@ const ButtonContainer = styled.div`
   font-weight: normal;
   cursor: pointer;
   margin: 20px 0px;
+  border: 1px solid ${({theme}) => theme.colors.primary};
+
+  &: active {
+    color: ${({theme}) => theme.colors.primary};
+    background-color: #fff;
+    border: 1px solid ${({theme}) => theme.colors.primary};
+  }
 `
 
 const GridsContainer = styled.div`
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  color: ${({theme}) => theme.colors.primary}; 
-  font-weight: bold;
+  color: ${({theme}) => theme.colors.primary};
 `
 
 export default IndexPage

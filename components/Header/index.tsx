@@ -127,6 +127,7 @@ const LegalContainer = styled.div`
     align-items: center;
     font-size: 10px;
     width: 220px;
+    font-family: Montserrat-light;
   }
 `
 

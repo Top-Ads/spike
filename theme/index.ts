@@ -2,10 +2,21 @@ import { createGlobalStyle } from "styled-components"
 import { StyledTheme } from "../interfaces"
 
 export const GlobalStyle = createGlobalStyle`
+
+    @font-face {
+        font-family: 'Montserrat';
+        src: local('Montserrat'), url(./fonts/Montserrat/Montserrat-Regular.ttf) format('ttf');
+    }
+
+    @font-face {
+        font-family: 'Montserrat-light';
+        src: local('Montserrat'), url(./fonts/Montserrat/Montserrat-ExtraLight.ttf) format('ttf');
+    }
+
     body {
         height: 100%;
         width: 100%;
-        font-family : 'Raleway', sans-serif;
+        font-family : Montserrat, sans-serif;
         background-color: #f2f2f2;
         margin: 0 auto;
     }
@@ -13,6 +24,8 @@ export const GlobalStyle = createGlobalStyle`
     a { text-decoration : none; }
 
     * { box-sizing: borderRadius-box; }
+
+    h1, strong { font-weight: bold; }
 `
 export const styledTheme: StyledTheme = {
 
