@@ -1,4 +1,6 @@
 import React, { Fragment, FunctionComponent } from "react"
+import { ThemeProvider } from "styled-components"
+import { GlobalStyle, styledTheme } from "../theme"
 
 interface IProps {
     Component: FunctionComponent
@@ -18,7 +20,10 @@ export default function App( {Component, pageProps}: IProps) {
 
     return (
         <ContextProvider>
-          <Component {...pageProps} />
+                <ThemeProvider theme={styledTheme}>
+                    <GlobalStyle />
+                    <Component {...pageProps} />
+                </ThemeProvider>
         </ContextProvider>
     )
 }
