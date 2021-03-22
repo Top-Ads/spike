@@ -1,5 +1,5 @@
 import { createStyles, InputAdornment, makeStyles, TextField, Theme } from '@material-ui/core'
-import React, { Fragment } from 'react'
+import React, { Fragment, FunctionComponent } from 'react'
 import SearchIcon from '@material-ui/icons/Search'
 
 const useStyles = makeStyles((theme: Theme) =>
@@ -12,28 +12,43 @@ const useStyles = makeStyles((theme: Theme) =>
     },
     textField: {
         width: '25ch',
-        backgroundColor: "white",
+        backgroundColor: "inherit",
         borderRadius: '10px',
 
         '& .MuiInputBase-root': {
-            color: "#ec564f",
-            fontSize: "14px",
-            fontStyle: "italic",
-            fontWeight: "bold"
+            backgroundColor: '#fff',
+            color: '#ec564f',
+            fontSize: '14px',
+            fontWeight: 'bold'
         },
         '& .MuiOutlinedInput-notchedOutline': {
             border: 0
         },
         '& input::placeholder': {
-          fontSize: "11px"
+          fontSize: '11px'
+        },
+        '& .MuiInputBase-input-focus': {
+            color: '#000'
+        },
+        '& .MuiFormHelperText-root': {
+          color: '#fff',
+          fontSize: '0.60rem',
+          textAlign: 'right'
         }
       }
   }),
 );
 
-const TextInput = () => { 
-    const classes = useStyles();
-    
+type PageProps = {
+  sm?: boolean,
+  searchIcon?: boolean,
+  placeholder?: string
+}
+
+const TextInput: FunctionComponent<PageProps> = ({sm, searchIcon, placeholder}) => {
+
+    const classes = useStyles()
+        
     const search = () => {
       console.log("SEARCH");
     }
@@ -46,14 +61,14 @@ const TextInput = () => {
     return (
         <Fragment>
             <form className={classes.root} noValidate>
-                <TextField
+                <TextField 
                     className={classes.textField}
-                    size="medium"
+                    size={sm ? "small" : "medium"}
                     variant="outlined"
-                    placeholder="cerca una slot, un casino..."
+                    placeholder={placeholder ? placeholder : '' }
                     onChange={handleChange}
                     autoFocus={true}
-                    InputProps={{
+                    InputProps={searchIcon ? {
                         endAdornment: (
                           <InputAdornment position="end">
                             <SearchIcon 
@@ -61,7 +76,7 @@ const TextInput = () => {
                               onClick={search}/>
                           </InputAdornment>
                         )
-                    }}
+                    } : undefined }
                 />
             </form>
         </Fragment>

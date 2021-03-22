@@ -5,48 +5,58 @@ import Grid, { GridSize } from '@material-ui/core/Grid'
 import Divider from '../Divider'
 import styled from 'styled-components'
 
-const useStyles = makeStyles((theme: Theme) =>
+const useStyles = makeStyles<Theme, PageProps>((theme: Theme) =>
   createStyles({
     root: {
       flexGrow: 1,
-      width: '400px',
-      margin: '10px'
+      width: ({width}) => width ? width : '400px;',
+      margin: '10px 10px;'
     },
     paper: {
-      padding: theme.spacing(1),
-      textAlign: 'center',
-      color: theme.palette.text.secondary,
-      height: 'min-content',
+      padding: '12px',
+      textAlign: ({textAlign}) => textAlign ? 'left' : 'center',
+      fontWeight: 'bold',
+      color: "#fff",
+      height:  ({height}) => height ? height : 'min-content;',
       position: 'relative',
-
+      borderRadius: ({disableBorderRadius}) => disableBorderRadius ? '0px;' : '4px;',
+      boxShadow: ({disableBoxShadow}) => disableBoxShadow ? 'none;' : 'auto;',
+      backgroundColor: '#ff1313',
       '& .slot-index': {
         top: '-10px',
-        right: '1px',
+        right: '0px',
         position: 'absolute',
         fontSize: '22px',
         border: '2px solid #ff1313',
         color: '#ff1313',
         backgroundColor: '#fff',
         borderRadius: '69px',
-        width: '32px',
-        height: '32px',
+        width: '30px',
+        height: '30px',
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'center'
       }
-    },
+    }
   }),
 );
 
 type PageProps = {
-    label?: string, 
+    data?: string[],
+    label?: string,
+    width?: string,
+    height?: string, 
     row: number,
     column: number,
     xs: GridSize,
     sm: GridSize,
     md: GridSize,
     labelAlign?: string,
-    showIndex?: boolean
+    showIndex?: boolean,
+    disableBorderRadius?: boolean,
+    disableBoxShadow?: boolean,
+    textAlign?: string,
+    padding?: boolean
 }
 
 type LabelContainerType = {
@@ -55,31 +65,28 @@ type LabelContainerType = {
 
 const GridSlots: FunctionComponent<PageProps> = (props) => {
 
-  const {label, row, column, xs, sm, md, labelAlign, showIndex} = props;
+  const {data, label, row, column, xs, sm, md, labelAlign, showIndex} = props;
 
-  const classes = useStyles()
+  const classes = useStyles(props)
 
-  const FormRow = () => {
-    
-    return (
-      <React.Fragment>
-        {[...Array(row)].map((value: any, index: number) =>
-          <Grid item xs={xs} sm={sm} md={md}>
-             
-              <Paper className={classes.paper}>
+  let index: number = 1
+  
+  const FormRow = () => 
+    <React.Fragment>
+      {[...Array(row)].map( () =>
+        <Grid item xs={xs} sm={sm} md={md} key={index}>
+            <Paper className={classes.paper}>
                 {showIndex ? 
                   <div className="slot-index">
-                    {(index+1)}
+                    {index}
                   </div> 
                   : '' }
-               
-                SLOT CARD
-              </Paper>
-          </Grid>
-        )}
-      </React.Fragment>
-    );
-  }
+                { data && data[index-1] ? data[index-1]  : `EMPTYCARD` }
+                <div style={{display: 'none'}}>{index++}</div>
+            </Paper>
+        </Grid>
+      )}
+    </React.Fragment>
 
   return (
     <div className={classes.root}>
@@ -89,14 +96,13 @@ const GridSlots: FunctionComponent<PageProps> = (props) => {
         </LabelContainer>
 
         <Grid container item spacing={2}>
-          {[...Array(column)].map(() =><FormRow /> )}
+          {[...Array(column)].map((value:any, index: number) => <FormRow key={index}/> )}
         </Grid>
-
     </div>
   );
 }
 
 const LabelContainer = styled.div<LabelContainerType>`
-  text-align: ${props => props.align ? props.align : 'unset'};
+  text-align: ${({align}) => align ? align : 'unset'};
 `
 export default GridSlots

@@ -3,85 +3,103 @@ import Image from 'next/image'
 import styled from 'styled-components'
 import GridSlots from '../components/GridSlots'
 import Layout from '../components/Layout'
+import FreqentlyAsked from '../components/FrequentlyAsked'
+import FreeSlots from '../components/FreeSlots/indext'
 
 
 const IndexPage: FunctionComponent = () => (
   
   <Layout title="Home">
 
-    <WelcomeContainer>
+    <div className="spaceAround">
 
-      <HeaderContainer>
-        <IntroContainer>
-          <h1>BENVENUTO SU SPIKE SLOT!</h1>
+      <WelcomeContainer>
 
-          <span><strong>Benvenuto</strong> sono Spike e sul mio sito puoi:</span>
-          <ul>
-            <li>Trovare i migliori casino online</li>
-            <li>Ricivere offerte bonus esclusive</li>
-            <li>Giocare gratis alle slot machine famose.</li>
-          </ul>
+        <HeaderContainer>
+          <IntroContainer>
+            <h1>BENVENUTO SU SPIKE SLOT!</h1>
 
-          <ButtonContainer>Via alla lista completa delle slot</ButtonContainer>
-        </IntroContainer>
+            <span><strong>Benvenuto</strong>  sono Spike e sul mio sito puoi:</span>
+            <ul>
+              <li>Trovare i migliori casino online</li>
+              <li>Ricivere offerte bonus esclusive</li>
+              <li>Giocare gratis alle slot machine famose.</li>
+            </ul>
 
-        <ImageContainer>
-          <Image
-            alt="Spike poster"
-            src="/png/spike-poster.png"
-            layout="fill"
-            priority={true}
-            className="spike-poster"
-          />
-        </ImageContainer>
-      </HeaderContainer>
- 
-      <p>
-          Ti diamo il bienvenuto su <strong>SPIKE SLOT</strong> dove potrai trovare consigli per tutte le Slot Machine esistenti.
-          Cerca  la tua slot preferita e leggi consigli per giocare, provala in modalita SLOT GRATIS direttamente qui 
-          senza registrazione, senza scarica app e senza limiti di tempo. Puoi  ottere infomazioni guardanto le Video
-          Guide ai Bonus. <br/>
-          Anchora decisio ? Guarda i videao di spike per fart an idea. Offramio le migliori comparazioni di siti di Casino
-          e siti Scommesse.
-      </p>
+            <ButtonContainer>Via alla lista completa delle slot</ButtonContainer>
+          </IntroContainer>
 
-    </WelcomeContainer>
+          <ImageContainer>
+            <Image
+              alt="Spike poster"
+              src="/png/spike-poster.png"
+              layout="fill"
+              priority={true}
+            />
+          </ImageContainer>
+        </HeaderContainer>
+  
+        <p>
+            Ti diamo il benvenuto su <strong>SPIKE SLOT</strong> dove potrai trovare consigli per tutte le Slot Machine esistenti.
+            Cerca la tua slot preferita e leggi i consigli per giocare, provala in modalità SLOT GRATIS direttamente qui senza registrazione,
+            senza scaricare app e senza limiti di tempo. Puoi ottenere informazioni guardando le Video Guide ai Bonus.  <br/>
+            Ancora indeciso? Guarda i video di SPIKE per farti un' idea. Offriamo le migliori comparazioni di siti di Casinò e siti Scommesse.
+        </p>
 
-    <GridsContainer>
-      <GridSlots label="La migliori novomatic." 
-        row={3} 
-        column={4} 
-        xs={6} sm={4} md={4}/>
-      <GridSlots label="La slot online del momento." row={3} column={4} xs={6} sm={4} md={4}/>
-    </GridsContainer>
+      </WelcomeContainer>
 
-    <GridsContainer>
-      <GridSlots label="La slot da bar pui framuso." 
-        row={3} 
-        column={4} 
-        xs={6} sm={4} md={4}/>
-      <GridSlots label="La slot VLT pui divertanti." row={3} column={4} xs={6} sm={4} md={4}/>
-    </GridsContainer>
+      <GridsContainer>
+        <GridSlots 
+          label="Le migliori Novomatic selezionate per te" 
+          row={3} 
+          column={4} 
+          xs={6} sm={4} md={4}/>
+        <GridSlots 
+          label="Le slot online del momento." 
+          row={3}
+          column={4}
+          xs={6} sm={4} md={4}/>
+      </GridsContainer>
 
-    <GridsContainer>
-      <GridSlots label="I top Bonus dei casino inline in italia."
-        labelAlign={"center"}
-        row={3} 
-        column={1} 
-        xs={12} sm={4} md={4}
-        showIndex={true}/>
-    </GridsContainer>
+      <GridsContainer>
+        <GridSlots
+          label="Le slot da bar più famose." 
+          row={3} 
+          column={4} 
+          xs={6} sm={4} md={4}/>
+        <GridSlots         
+          label="Le slot VLT più divertenti."
+          row={3} column={4} xs={6} sm={4} md={4}/>
+      </GridsContainer>
 
-    <GridsContainer>
-      <p style={{fontWeight: "normal"}}>
-        Se ti interessa sapere dove conviene maggiormente giocare alle slot machine puoi dare un ochiatta a questa 
-        comparazione dei migliori bonus disponibili al momento:
-      </p>
-      <GridSlots 
-        row={1} 
-        column={6} 
-        xs={12} sm={12} md={12}/>
-    </GridsContainer>
+      <GridsContainer>
+        <GridSlots 
+          label="I top bonus dei casinò online in Italia."
+          labelAlign={"center"}
+          row={3} 
+          column={1} 
+          xs={12} sm={4} md={4}
+          showIndex={true}/>
+      </GridsContainer>
+
+      <GridsContainer>
+          <p style={{fontWeight: "normal"}}>
+            Se ti interessa sapere dove conviene maggiormente giocare alle slot machine online puoi dare
+            un'occhiata a questa comparazione dei migliori Bonus disponibili al momento:
+          </p>
+          <GridSlots 
+            row={1} 
+            column={6} 
+            xs={12} sm={12} md={12}/>
+        </GridsContainer>
+
+    </div> 
+    
+    <FreqentlyAsked/>
+
+    <div className="spaceAround">
+      <FreeSlots/>
+    </div>
 
   </Layout>
 )
@@ -89,8 +107,7 @@ const IndexPage: FunctionComponent = () => (
 const WelcomeContainer = styled.div`
   display: flex;
   flex-direction: column;
-  color: ${(props) => props.theme.colors.primary};
-  margin-top: 50px;
+  color: ${({theme}) => theme.colors.primary}; 
 `
 
 const IntroContainer = styled.div`
@@ -107,15 +124,11 @@ const HeaderContainer = styled.div`
 
 const ImageContainer = styled.div`
   width: 400px;
-  height: 250px;
+  height: 270px;
   position: relative;
-  border: 1px solid ${(props) => props.theme.colors.primary};
-  background-color: ${(props) => props.theme.colors.primary};
+  border: 1px solid ${({theme}) => theme.colors.primary}; 
+  background-image: linear-gradient(${({theme}) => theme.colors.primary} , ${({theme}) => theme.colors.gradient} );
   border-radius: 10px;
-
-  .spike-poster {
-    height: 250px;
-  }
 `
 
 const ButtonContainer = styled.div`
@@ -124,19 +137,19 @@ const ButtonContainer = styled.div`
   display: inherit;
   justify-content: center;
   align-items: center;
-  background-color: ${(props) => props.theme.colors.primary};
+  background-color: ${({theme}) => theme.colors.primary}; 
   color: white;
   border-radius: 5px;
   font-weight: normal;
   cursor: pointer;
-  margin: 10px 0px;
+  margin: 20px 0px;
 `
 
 const GridsContainer = styled.div`
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  color: ${(props) => props.theme.colors.primary};
+  color: ${({theme}) => theme.colors.primary}; 
   font-weight: bold;
 `
 

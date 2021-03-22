@@ -2,25 +2,23 @@ import React, { Fragment, useState } from 'react'
 import styled from 'styled-components'
 import Image from 'next/image'
 import Divider from '../Divider'
-import TextInput from '../Inputs'
+import TextInput from '../Inputs/Textfield'
 import MenuIcon from '@material-ui/icons/Menu'
 import Link from 'next/link'
-import { device } from '../../utils/device'
 
 const Header = () => { 
   
   const [showNav, setShowNav] = useState<boolean>(true)
 
-  const openMenu = () => {
-    setShowNav(!showNav)
-  }
-
+  const openMenu = () => setShowNav(!showNav)
+  
   return (
     <Fragment>
       <header>
         <HeaderContainer>
 
           <MainContainer>
+
             <LogoContainer>
               <Image
                 alt="Casino Legal Information"
@@ -40,13 +38,12 @@ const Header = () => {
                 />
               </div>
               <div className="legal-text">
-                <p>Il gioco è vietato ai minori e può causare
-                 dipendenza patologica</p>
+                <p>Il gioco e vietato ai minori e puo causare dipendenza patologica - probabilita di vincita</p>
               </div>
             </LegalContainer>
 
             <SearchContainer>
-              <TextInput/>
+              <TextInput searchIcon={true} placeholder="cerca una slot, un casino..."/>
             </SearchContainer>
             
             <MenuContainer>
@@ -54,6 +51,7 @@ const Header = () => {
               style={{ color: '#fff', fontSize: '40px'}}
               onClick={openMenu}/>
             </MenuContainer>
+          
           </MainContainer>
           
           {showNav ? 
@@ -85,23 +83,20 @@ const HeaderContainer = styled.div`
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
-  background-image: linear-gradient(180deg, ${(props) => props.theme.colors.primary}, ${(props) => props.theme.colors.gradient});
-  border-radius: ${(props) => props.theme.header.borderRadius};
+  background-image: linear-gradient(${({theme}) => theme.colors.primary}, ${({theme}) => theme.colors.gradient});
+  border-radius: ${({theme}) => theme.header.borderRadius};
   box-shadow: 0px 0px 10px 10px rgb(0 0 0 / 40%);
-  padding: 10px ${(props) => props.theme.sideSpace};
-  color: ${(props) => props.theme.text.color};
+  padding 20px ${({theme}) => theme.spaceBetween} 10px ${({theme}) => theme.spaceBetween};
+  color: ${({theme}) => theme.text.color};
 `
 
 const MainContainer = styled.div`    
   display: inherit;
   flex-wrap: inherit;
   flex-direction: row;
-  height: auto;
   align-items: center;
-  
-  @media ${device.laptop} { 
-    height: 60px;
-  }
+  height: auto;
+  width: 100%;
 `
 
 const LogoContainer = styled.div`    
@@ -118,12 +113,11 @@ const LegalContainer = styled.div`
   align-items: inherit;
   flex-grow: 2;
   flex-wrap: inherit;
-  height: 60px;
 
   .legal-image {
     position: relative; 
     width: 170px;
-    height: inherit;
+    height: 60px;
     margin-right: 10px;
   }
 
@@ -132,7 +126,6 @@ const LegalContainer = styled.div`
     align-items: center;
     font-size: 10px;
     width: 220px;
-    height: inherit;
   }
 `
 
@@ -167,7 +160,7 @@ const NavContainer = styled.nav`
   }
 
   a:hover {
-    color: ${(props) => props.theme.colors.primary};
+    color: ${({theme}) => theme.colors.primary};
     background-color: #fff;
   }
 `

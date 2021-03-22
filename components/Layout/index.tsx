@@ -5,7 +5,7 @@ import styled from 'styled-components'
 
 type Props = {
   children?: ReactNode
-  title?: string
+  title?: string,
 }
 
 const Layout = ({ children, title}: Props) => (
@@ -26,6 +26,9 @@ const Layout = ({ children, title}: Props) => (
 )
 
 export default Layout
-const MainContainer = styled. div`
-  margin: 0 ${(props) => props.theme.sideSpace};
+
+const MainContainer = styled.div`
+  .spaceAround {
+    padding: 20px 10%;
+  }
 `
