@@ -51,7 +51,7 @@ const IndexPage: FunctionComponent = () => (
 
       <GridsContainer>
         <GridSlots 
-          label="Le migliori Novomatic selezionate per te" 
+          label="Le migliori Novomatic selezionate per te." 
           row={3} 
           column={4} 
           xs={6} sm={4} md={4}/>
