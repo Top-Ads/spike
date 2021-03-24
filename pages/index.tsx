@@ -5,6 +5,7 @@ import GridSlots from '../components/GridSlots'
 import Layout from '../components/Layout'
 import FreqentlyAsked from '../components/FrequentlyAsked'
 import FreeSlots from '../components/FreeSlots/indext'
+import { device } from '../utils/device'
 
 
 const IndexPage: FunctionComponent = () => (
@@ -113,6 +114,11 @@ const WelcomeContainer = styled.div`
 const IntroContainer = styled.div`
   display: inherit;
   flex-direction: column;
+
+  @media ${device.mobileL} {
+    h1 { font-size: 23px; }
+    align-items: center;
+  } 
 `
 
 const HeaderContainer = styled.div`

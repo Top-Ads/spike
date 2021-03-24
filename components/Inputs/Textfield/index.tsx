@@ -8,7 +8,6 @@ const useStyles = makeStyles((theme: Theme) =>
       display: 'flex',
       flexWrap: 'wrap',
       justifyContent: 'flex-end',
-      height: '40px'
     },
     textField: {
         width: '25ch',

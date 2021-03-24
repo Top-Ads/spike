@@ -6,6 +6,8 @@ import TextInput from '../Inputs/Textfield'
 import MenuIcon from '@material-ui/icons/Menu'
 import CloseIcon from '@material-ui/icons/Close'
 import Link from 'next/link'
+import { device } from '../../utils/device'
+import SearchIcon from '@material-ui/icons/Search'
 
 const Header = () => { 
   
@@ -44,9 +46,16 @@ const Header = () => {
             </LegalContainer>
 
             <SearchContainer>
+              <div className="text-input">
               <TextInput searchIcon={true} placeholder="cerca una slot, un casino..."/>
+              </div>
+
+              <div className="search-icon">
+                <SearchIcon style={{ color: '#ec564', fontSize: '40px', cursor: 'pointer'}}/> 
+              </div>
             </SearchContainer>
             
+
             <MenuContainer>
               {showNav ? 
                    <CloseIcon className='icons' onClick={handleMenu}/> :
@@ -57,7 +66,7 @@ const Header = () => {
           
           {showNav ? 
             <Fragment>
-              <Divider color={'#fff'} marginBottom="5px"/>
+              <Divider color={'#fff'} marginBottom="10px"/>
 
               <NavContainer>
                 <Link href={'/'}>
@@ -69,8 +78,8 @@ const Header = () => {
                 <Link href={'/slots'}>
                     <a>Giochi Slot Machine Gratis</a>
                 </Link>
+
               </NavContainer> 
-              
             </Fragment>
             : ''}
 
@@ -87,8 +96,9 @@ const HeaderContainer = styled.div`
   background-image: linear-gradient(${({theme}) => theme.colors.primary}, ${({theme}) => theme.colors.gradient});
   border-radius: ${({theme}) => theme.header.borderRadius};
   box-shadow: 0px 0px 10px 10px rgb(0 0 0 / 40%);
-  padding 20px ${({theme}) => theme.spaceBetween} 10px ${({theme}) => theme.spaceBetween};
   color: ${({theme}) => theme.text.color};
+  padding: 10px 10%;
+
 `
 
 const MainContainer = styled.div`    
@@ -104,9 +114,12 @@ const LogoContainer = styled.div`
   display: inherit;
   flex-grow: 1;
   position: relative;
-  width: 200px;
   height: 60px;
-  margin-right: 20px;
+  width: 100px; 
+  
+  @media ${device.mobileL} {
+    height: 40px;
+  }
 `
 
 const LegalContainer = styled.div`
@@ -114,6 +127,7 @@ const LegalContainer = styled.div`
   align-items: inherit;
   flex-grow: 2;
   flex-wrap: inherit;
+  justify-content: center;
 
   .legal-image {
     position: relative; 
@@ -129,26 +143,40 @@ const LegalContainer = styled.div`
     width: 220px;
     font-family: Montserrat-light;
   }
+
+  @media ${device.mobileL} {
+    display: none;
+  } 
 `
 
 const SearchContainer = styled.div` 
-  margin-right: 20px;
   display: inherit;
   flex-grow: 0;
-  height: 60px;
+  margin: auto 10px;
 
+  .search-icon {
+    display: none;
+  }
+
+  @media ${device.mobileL} {
+    .text-input {
+      display: none;
+    }
+    .search-icon {
+      display: flex;
+    }
+  } 
 `
 
 const MenuContainer = styled.div` 
   cursor: pointer; 
-  height: 60px;
   align-items: center;
   display: inherit;
   
   .icons {
     color: #fff;
     font-size: 40px;
-  }
+  }  
 `
 
 const NavContainer = styled.nav`    
@@ -161,7 +189,7 @@ const NavContainer = styled.nav`
   a { 
     color: #fff;
     margin: 0px 10px;
-    padding: 6px 15px;
+    padding: 8px 15px;
     border-radius: 10px;
     font-size: 17px;
   }
