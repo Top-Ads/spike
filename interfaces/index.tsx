@@ -20,3 +20,19 @@ export interface StyledTheme {
         borderRadius: string 
     }
 }
+
+export interface Game {
+    id: string,
+    categories: [],
+    name: string,
+    previewUrl: string,
+    thumbnail: string
+}
+   
+export interface Bonus {
+    id: string,
+    name: string,
+    freeSpins: number,
+    code: string,
+    url: string
+}
