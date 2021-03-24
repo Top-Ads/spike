@@ -6,11 +6,13 @@ export const GlobalStyle = createGlobalStyle`
     @font-face {
         font-family: 'Montserrat';
         src: local('Montserrat'), url(./fonts/Montserrat/Montserrat-Regular.ttf) format('ttf');
+        font-display: swap;
     }
 
     @font-face {
         font-family: 'Montserrat-light';
         src: local('Montserrat'), url(./fonts/Montserrat/Montserrat-ExtraLight.ttf) format('ttf');
+        font-display: swap;
     }
 
     body {

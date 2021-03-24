@@ -5,7 +5,7 @@ import Grid, { GridSize } from '@material-ui/core/Grid'
 import Divider from '../Divider'
 import styled from 'styled-components'
 
-const useStyles = makeStyles<Theme, PageProps>((theme: Theme) =>
+const useStyles = makeStyles<Theme, PageProps>(() =>
   createStyles({
     root: {
       flexGrow: 1,
@@ -96,7 +96,7 @@ const GridSlots: FunctionComponent<PageProps> = (props) => {
         </LabelContainer>
 
         <Grid container item spacing={2}>
-          {[...Array(column)].map((value:any, index: number) => <FormRow key={index}/> )}
+          {[...Array(column)].map((_value:any, index: number) => <FormRow key={index}/> )}
         </Grid>
     </div>
   );

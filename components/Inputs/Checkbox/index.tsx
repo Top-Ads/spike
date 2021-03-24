@@ -1,14 +1,14 @@
-import React from 'react';
-import Checkbox from '@material-ui/core/Checkbox';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
-import { FunctionComponent } from 'react';
-import { createStyles, makeStyles, Theme } from '@material-ui/core';
+import React from 'react'
+import Checkbox from '@material-ui/core/Checkbox'
+import FormControlLabel from '@material-ui/core/FormControlLabel'
+import { FunctionComponent } from 'react'
+import { createStyles, makeStyles, Theme } from '@material-ui/core'
 
 type PageProps = {
   label?: string
 }
 
-const useStyles = makeStyles<Theme>((theme: Theme) =>
+const useStyles = makeStyles<Theme>(() =>
   createStyles({
     root: {
       '& .MuiTypography-body1': {

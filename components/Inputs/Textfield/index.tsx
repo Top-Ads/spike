@@ -1,8 +1,8 @@
-import { createStyles, InputAdornment, makeStyles, TextField, Theme } from '@material-ui/core'
+import { createStyles, InputAdornment, makeStyles, TextField } from '@material-ui/core'
 import React, { Fragment, FunctionComponent } from 'react'
 import SearchIcon from '@material-ui/icons/Search'
 
-const useStyles = makeStyles((theme: Theme) =>
+const useStyles = makeStyles(() =>
   createStyles({
     root: {
       display: 'flex',
@@ -66,7 +66,6 @@ const TextInput: FunctionComponent<PageProps> = ({sm, searchIcon, placeholder}) 
                     variant="outlined"
                     placeholder={placeholder ? placeholder : '' }
                     onChange={handleChange}
-                    autoFocus={true}
                     InputProps={searchIcon ? {
                         endAdornment: (
                           <InputAdornment position="end">

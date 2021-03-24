@@ -1,5 +1,5 @@
 import React, { Fragment } from 'react'
-import styled, { ThemeConsumer } from 'styled-components'
+import styled from 'styled-components'
 import GridSlots from '../GridSlots'
 
 const FreeSlots = () => { 
