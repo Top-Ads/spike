@@ -54,8 +54,7 @@ const Header = () => {
                 <SearchIcon style={{ color: '#ec564', fontSize: '40px', cursor: 'pointer'}}/> 
               </div>
             </SearchContainer>
-            
-
+           
             <MenuContainer>
               {showNav ? 
                    <CloseIcon className='icons' onClick={handleMenu}/> :
@@ -78,7 +77,6 @@ const Header = () => {
                 <Link href={'/slots'}>
                     <a>Giochi Slot Machine Gratis</a>
                 </Link>
-
               </NavContainer> 
             </Fragment>
             : ''}
@@ -192,6 +190,7 @@ const NavContainer = styled.nav`
     padding: 8px 15px;
     border-radius: 10px;
     font-size: 17px;
+    font-weight: bold;
   }
 
   a:hover {
