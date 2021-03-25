@@ -115,7 +115,7 @@ const LogoContainer = styled.div`
   height: 60px;
   width: 100px; 
   
-  @media ${device.mobileL} {
+  @media ${device.tablet} {
     height: 40px;
   }
 `
@@ -142,7 +142,7 @@ const LegalContainer = styled.div`
     font-family: Montserrat-light;
   }
 
-  @media ${device.mobileL} {
+  @media ${device.tablet} {
     display: none;
   } 
 `
@@ -156,7 +156,7 @@ const SearchContainer = styled.div`
     display: none;
   }
 
-  @media ${device.mobileL} {
+  @media ${device.tablet} {
     .text-input {
       display: none;
     }
