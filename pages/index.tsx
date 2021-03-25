@@ -6,9 +6,13 @@ import Layout from '../components/Layout'
 import FreqentlyAsked from '../components/FrequentlyAsked'
 import FreeSlots from '../components/FreeSlots/indext'
 import { device } from '../utils/device'
+import { Game } from '../interfaces'
 
+type PageProps = {
+  data: Game[]
+}
 
-const IndexPage: FunctionComponent = () => (
+const IndexPage: FunctionComponent<PageProps> = ({data}) => (
   
   <Layout title="Home">
 
@@ -34,8 +38,10 @@ const IndexPage: FunctionComponent = () => (
             <Image
               alt="Spike poster"
               src="/png/spike-poster.png"
-              layout="fill"
+              layout="responsive"
               priority={true}
+              width={624}
+              height={484}
             />
           </ImageContainer>
         </HeaderContainer>
@@ -51,11 +57,13 @@ const IndexPage: FunctionComponent = () => (
 
       <GridsContainer>
         <GridSlots 
+          data={data}
           label="Le migliori Novomatic selezionate per te." 
           row={3} 
           column={4} 
           xs={6} sm={4} md={4}/>
-        <GridSlots 
+        <GridSlots
+          data={data} 
           label="Le slot online del momento." 
           row={3}
           column={4}
@@ -129,12 +137,7 @@ const HeaderContainer = styled.div`
 `
 
 const ImageContainer = styled.div`
-  width: 400px;
-  height: 270px;
-  position: relative;
-  border: 1px solid ${({theme}) => theme.colors.primary}; 
-  background-image: linear-gradient(${({theme}) => theme.colors.primary} , ${({theme}) => theme.colors.gradient} );
-  border-radius: 10px;
+  width: 550px;
 `
 
 const ButtonContainer = styled.div`
@@ -164,5 +167,22 @@ const GridsContainer = styled.div`
   flex-wrap: wrap;
   color: ${({theme}) => theme.colors.primary};
 `
+
+export async function getStaticProps() {
+  const res = await fetch(`https://www.mocky.io/v2/5da99f9f31000036004e0a4e`)
+  const data = await res.json()
+
+  if (!data) {
+    return {
+      notFound: true,
+    }
+  }
+
+  return {
+    props: {
+      data
+    }
+  }
+}
 
 export default IndexPage

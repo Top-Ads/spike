@@ -42,7 +42,7 @@ const useStyles = makeStyles<Theme, PageProps>(() =>
 );
 
 type PageProps = {
-    data?: string[],
+    data?: any[],
     label?: string,
     width?: string,
     height?: string, 
@@ -81,7 +81,7 @@ const GridSlots: FunctionComponent<PageProps> = (props) => {
                     {index}
                   </div> 
                   : '' }
-                { data && data[index-1] ? data[index-1]  : `EMPTY CARD` }
+                { data && data[index-1].question ? data[index-1].question : `EMPTY CARD` } 
                 <div style={{display: 'none'}}>{index++}</div>
             </Paper>
         </Grid>

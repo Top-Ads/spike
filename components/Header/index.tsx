@@ -35,9 +35,11 @@ const Header = () => {
               <div className="legal-image">
                 <Image
                   alt="Casino Legal Information"
-                  src="/svg/it-legal-logos.svg"
-                  layout="fill"
+                  src="/png/it-legal-logos.png"
+                  layout="responsive"
                   priority={true}
+                  width={295}
+                  height={56}
                 />
               </div>
               <div className="legal-text">
@@ -128,10 +130,8 @@ const LegalContainer = styled.div`
   justify-content: center;
 
   .legal-image {
-    position: relative; 
     width: 170px;
-    height: 60px;
-    margin-right: 10px;
+    margin-right: 15px;
   }
 
   .legal-text {

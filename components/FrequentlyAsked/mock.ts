@@ -1,7 +1,8 @@
 export const mockQuestions = [
-    'Dove posso giocare alle slot machine gratis?',
-    'Come funzionano i requisiti di scommessa?',
-    'Cos’è un bonus free spins?',
-    'Dove posso giocare alle slot machine gratis?',
-    'Come funzionano i requisiti di scommessa?',
-    'Cos’è un bonus free spins?'];
+    { question: "Dove posso giocare alle slot machine gratis?" },
+    { question: "Come funzionano i requisiti di scommessa?" },
+    { question: "Cos’è un bonus free spins?" },
+    { question: "Come funzionano i requisiti di scommessa?" },
+    { question: "Dove posso giocare alle slot machine gratis?"},
+    { question: "Cos’è un bonus free spins?" }
+];
