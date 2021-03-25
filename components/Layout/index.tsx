@@ -33,7 +33,7 @@ const MainContainer = styled.div`
   .spaceAround {
     padding: 10px 10%;
 
-    @media ${device.mobileL} {
+    @media ${device.tablet} {
       padding: 10px 5%;
     }
   } 

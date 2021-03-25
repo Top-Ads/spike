@@ -115,7 +115,7 @@ const IntroContainer = styled.div`
   display: inherit;
   flex-direction: column;
 
-  @media ${device.mobileL} {
+  @media ${device.tablet} {
     h1 { font-size: 23px; }
     align-items: center;
   } 
