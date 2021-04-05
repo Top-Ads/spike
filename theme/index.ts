@@ -23,7 +23,7 @@ export const GlobalStyle = createGlobalStyle`
         margin: 0 auto;
     }
 
-    a { text-decoration : none; }
+    a { text-decoration : none; text-align: center;}
 
     * { box-sizing: borderRadius-box; }
 

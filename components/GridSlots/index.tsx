@@ -13,7 +13,7 @@ const useStyles = makeStyles<Theme, PageProps>(() =>
       margin: '10px 10px;'
     },
     paper: {
-      padding: '12px',
+      padding: ({padding}) => padding ? '12px' : '0px;',
       textAlign: ({textAlign}) => textAlign ? 'left' : 'center',
       fontWeight: 'bold',
       color: "#fff",
@@ -42,16 +42,14 @@ const useStyles = makeStyles<Theme, PageProps>(() =>
 );
 
 type PageProps = {
-    data?: any[],
+    data: any,
     label?: string,
     width?: string,
     height?: string, 
-    row: number,
-    column: number,
     xs: GridSize,
     sm: GridSize,
     md: GridSize,
-    labelAlign?: string,
+    AlignItem?: string,
     showIndex?: boolean,
     disableBorderRadius?: boolean,
     disableBoxShadow?: boolean,
@@ -65,38 +63,31 @@ type LabelContainerType = {
 
 const GridSlots: FunctionComponent<PageProps> = (props) => {
 
-  const {data, label, row, column, xs, sm, md, labelAlign, showIndex} = props;
+  const {data, label, xs, sm, md, AlignItem, showIndex} = props;
 
   const classes = useStyles(props)
 
-  let index: number = 1
-  
-  const FormRow = () => 
-    <React.Fragment>
-      {[...Array(row)].map( () =>
-        <Grid item xs={xs} sm={sm} md={md} key={index}>
-            <Paper className={classes.paper}>
-                {showIndex ? 
-                  <div className="slot-index">
-                    {index}
-                  </div> 
-                  : '' }
-                { data && data[index-1].question ? data[index-1].question : `EMPTY CARD` } 
-                <div style={{display: 'none'}}>{index++}</div>
-            </Paper>
-        </Grid>
-      )}
-    </React.Fragment>
-
   return (
     <div className={classes.root}>
-        <LabelContainer align={labelAlign}>
+        <LabelContainer align={AlignItem}>
             {label}
             {label ? <Divider marginBottom="25px"/> : ''}
         </LabelContainer>
 
         <Grid container item spacing={2}>
-          {[...Array(column)].map((_value:any, index: number) => <FormRow key={index}/> )}
+          {data.map((value: [], index: number) => 
+             <Grid item xs={xs} sm={sm} md={md} key={index}>
+                <Paper className={classes.paper}>
+                    {showIndex ? 
+                      <div className="slot-index">
+                        {index+1}
+                      </div> 
+                    : '' }
+
+                    {value}
+                </Paper>
+            </Grid>
+          )}
         </Grid>
     </div>
   );

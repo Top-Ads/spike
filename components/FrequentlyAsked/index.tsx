@@ -1,38 +1,33 @@
 import React, { Fragment } from 'react'
 import styled from 'styled-components'
+import QuestionCard from '../Cards/QuestionCard'
 import EmailSubcription from '../EmailSubscription'
 import GridSlots from '../GridSlots'
 import { mockQuestions } from './mock'
 
-const FreqentlyAsked = () => { 
-    
-    return (
-        <Fragment>
-            <MainContainer>
+const FreqentlyAsked = () => 
+    <Fragment>
+        <MainContainer>
 
-                <QuestionsContainer>
-                    <HeaderContainer>DOMANDE FREQUENTI</HeaderContainer>
-                    <GridSlots 
-                        data={mockQuestions}
-                        width={'auto'}
-                        height={'40px'}
-                        row={2}
-                        column={3} 
-                        xs={12} sm={6} md={6}
-                        disableBorderRadius={true}
-                        disableBoxShadow={true}
-                        textAlign={"false"}
-                        padding={true}/>
-                </QuestionsContainer>
+            <QuestionsContainer>
+                <HeaderContainer>DOMANDE FREQUENTI</HeaderContainer>
+                <GridSlots 
+                    data={ mockQuestions.map( (question) => <QuestionCard data={question}/> )}
+                    width={'auto'}
+                    height={'40px'}
+                    xs={12} sm={6} md={6}
+                    disableBorderRadius={true}
+                    disableBoxShadow={true}
+                    textAlign={"false"}
+                    padding={true}/>
+            </QuestionsContainer>
 
-                <SubcriptionContainer>
-                    <EmailSubcription/>
-                </SubcriptionContainer>
+            <SubcriptionContainer>
+                <EmailSubcription/>
+            </SubcriptionContainer>
 
-            </MainContainer>
-        </Fragment>
-    ) 
-}
+        </MainContainer>
+    </Fragment>
 
 const MainContainer = styled.div`
     display: flex;
