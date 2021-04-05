@@ -16,8 +16,6 @@ const FreqentlyAsked = () => {
                         data={mockQuestions}
                         width={'auto'}
                         height={'40px'}
-                        row={2}
-                        column={3} 
                         xs={12} sm={6} md={6}
                         disableBorderRadius={true}
                         disableBoxShadow={true}

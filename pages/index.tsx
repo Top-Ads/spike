@@ -7,14 +7,17 @@ import FreqentlyAsked from '../components/FrequentlyAsked'
 import FreeSlots from '../components/FreeSlots/indext'
 import { device } from '../utils/device'
 import { Game } from '../interfaces'
+import GameCard from '../components/Cards/GameCard'
+import BonusCard from '../components/Cards/BonusCard'
 
 type PageProps = {
-  data: Game[]
+  data: Game []
 }
 
-const IndexPage: FunctionComponent<PageProps> = ({data}) => (
-  
-  <Layout title="Home">
+const IndexPage: FunctionComponent<PageProps> = () => {
+
+  return (
+    <Layout title="Home">
 
     <div className="spaceAround">
 
@@ -57,36 +60,31 @@ const IndexPage: FunctionComponent<PageProps> = ({data}) => (
 
       <GridsContainer>
         <GridSlots 
-          data={data}
+          data={ [...Array(12)].map( () => <GameCard/> )}
           label="Le migliori Novomatic selezionate per te." 
-          row={3} 
-          column={4} 
           xs={6} sm={4} md={4}/>
         <GridSlots
-          data={data} 
+          data={ [...Array(12)].map( () => <GameCard/> )}
           label="Le slot online del momento." 
-          row={3}
-          column={4}
           xs={6} sm={4} md={4}/>
       </GridsContainer>
 
       <GridsContainer>
         <GridSlots
+          data={ [...Array(12)].map( () => <GameCard/> )}
           label="Le slot da bar più famose." 
-          row={3} 
-          column={4} 
           xs={6} sm={4} md={4}/>
-        <GridSlots         
+        <GridSlots 
+          data={ [...Array(12)].map( () => <GameCard/> )}
           label="Le slot VLT più divertenti."
-          row={3} column={4} xs={6} sm={4} md={4}/>
+          xs={6} sm={4} md={4}/>
       </GridsContainer>
 
       <GridsContainer>
         <GridSlots 
+          data={ [...Array(3)].map( () => <BonusCard/> )}
           label="I top bonus dei casinò online in Italia."
-          labelAlign={"center"}
-          row={3} 
-          column={1} 
+          AlignItem={"center"}
           xs={12} sm={4} md={4}
           showIndex={true}/>
       </GridsContainer>
@@ -97,8 +95,7 @@ const IndexPage: FunctionComponent<PageProps> = ({data}) => (
             un'occhiata a questa comparazione dei migliori Bonus disponibili al momento:
           </p>
           <GridSlots 
-            row={1} 
-            column={6} 
+            data={ [...Array(3)].map( () =>  <BonusCard/> )}
             xs={12} sm={12} md={12}/>
         </GridsContainer>
 
@@ -111,7 +108,11 @@ const IndexPage: FunctionComponent<PageProps> = ({data}) => (
     </div>
 
   </Layout>
-)
+
+  )
+ 
+}
+  
 
 const WelcomeContainer = styled.div`
   display: flex;

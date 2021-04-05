@@ -27,7 +27,7 @@ const MainContainer = styled.div`
     background-color: ${({theme}) => theme.colors.primary};
     border: 2px solid #fff;
     border-radius: 10px;
-    width: 270px;
+    max-width: 270px;
     display: flex;
     flex-direction: column;
     align-items: center;

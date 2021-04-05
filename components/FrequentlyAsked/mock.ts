@@ -1,8 +1,8 @@
-export const mockQuestions = [
-    { question: "Dove posso giocare alle slot machine gratis?" },
-    { question: "Come funzionano i requisiti di scommessa?" },
-    { question: "Cos’è un bonus free spins?" },
-    { question: "Come funzionano i requisiti di scommessa?" },
-    { question: "Dove posso giocare alle slot machine gratis?"},
-    { question: "Cos’è un bonus free spins?" }
+export const mockQuestions: string [] = [
+    "Dove posso giocare alle slot machine gratis?",
+    "Come funzionano i requisiti di scommessa?",
+    "Cos’è un bonus free spins?",
+    "Come funzionano i requisiti di scommessa?",
+    "Dove posso giocare alle slot machine gratis?",
+    "Cos’è un bonus free spins?" 
 ];

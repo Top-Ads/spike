@@ -1,5 +1,6 @@
 import React, { Fragment } from 'react'
 import styled from 'styled-components'
+import GameCard from '../Cards/GameCard'
 import GridSlots from '../GridSlots'
 
 const FreeSlots = () => { 
@@ -29,9 +30,8 @@ const FreeSlots = () => {
             </SummaryContainer>
 
             <GridsContainer>
-              <GridSlots 
-                row={5} 
-                column={1}
+              <GridSlots
+                data={ [...Array(5)].map( () => <GameCard/> )}
                 width={"150px"} 
                 xs={12} sm={12} md={12}/>
             </GridsContainer>
