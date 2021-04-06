@@ -1,6 +1,6 @@
 import React, { Fragment } from 'react'
 import styled from 'styled-components'
-import GameCard from '../Cards/GameCard'
+import FreeCard from '../Cards/FreeCard'
 import GridSlots from '../GridSlots'
 
 const FreeSlots = () => { 
@@ -31,7 +31,8 @@ const FreeSlots = () => {
 
             <GridsContainer>
               <GridSlots
-                data={ [...Array(5)].map( () => <GameCard/> )}
+            data={ [...Array(5)].map( () => <FreeCard/> )}
+            padding={true} 
                 width={"150px"} 
                 xs={12} sm={12} md={12}/>
             </GridsContainer>

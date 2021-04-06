@@ -4,4 +4,7 @@ module.exports = {
       stagging: process.env.STAG,
       production: process.env.PROD
     },
+    images: {
+      domains: ['images.ctfassets.net'],
+    },
   };

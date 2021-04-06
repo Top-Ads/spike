@@ -22,17 +22,15 @@ export interface StyledTheme {
 }
 
 export interface Game {
-    id: string,
     categories: [],
-    name: string,
-    previewUrl: string,
-    thumbnail: string
+    gameName: string,
+    gamePreviewUrl: string,
+    gameThumbnail: string
 }
    
 export interface Bonus {
-    id: string,
-    name: string,
-    freeSpins: number,
-    code: string,
-    url: string
+    bonusName: string,
+    bonusFreeSpins: number,
+    bonusCode: string,
+    bonusUrl: string
 }

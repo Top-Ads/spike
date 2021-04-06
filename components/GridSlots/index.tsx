@@ -13,7 +13,7 @@ const useStyles = makeStyles<Theme, PageProps>(() =>
       margin: '10px 10px;'
     },
     paper: {
-      padding: '12px',
+      padding: ({padding}) => padding ? '12px' : '0px;',
       textAlign: ({textAlign}) => textAlign ? 'left' : 'center',
       fontWeight: 'bold',
       color: "#fff",
