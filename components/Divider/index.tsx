@@ -19,6 +19,7 @@ const HrContainer = styled.hr<PageProps>`
     border: 1px solid ${({color}) => color ? color : '#ff1313'};
     background-color: ${({color}) => color ? color : '#ff1313'};
     width: 100%;
+    height: 0px;
     opacity: 0.6;
     margin-bottom: ${({marginBottom}) => marginBottom ? marginBottom : '0px'};
 }

@@ -9,6 +9,10 @@ import Link from 'next/link'
 import { device } from '../../utils/device'
 import SearchIcon from '@material-ui/icons/Search'
 
+type NavProps = {
+  expand: boolean
+};
+
 const Header = () => { 
   
   const [showNav, setShowNav] = useState<boolean>(false)
@@ -65,23 +69,22 @@ const Header = () => {
           
           </MainContainer>
           
-          {showNav ? 
-            <Fragment>
-              <Divider color={'#fff'} marginBottom="10px"/>
+          <Fragment>
+            <NavContainer expand={showNav}>
+            <Divider color={'#fff'} marginBottom="10px"/>
 
-              <NavContainer>
-                <Link href={'/'}>
-                    <a>Home</a>
-                </Link>
-                <Link href={'/video'}>
-                    <a>Video</a>
-                </Link>
-                <Link href={'/slots'}>
-                    <a>Giochi Slot Machine Gratis</a>
-                </Link>
-              </NavContainer> 
-            </Fragment>
-            : ''}
+              <Link href={'/'}>
+                  <a>Home</a>
+              </Link>
+              <Link href={'/video'}>
+                  <a>Video</a>
+              </Link>
+              <Link href={'/slots'}>
+                  <a>Giochi Slot Machine Gratis</a>
+              </Link>
+
+            </NavContainer> 
+          </Fragment>
 
         </HeaderContainer>
       </header>
@@ -98,7 +101,6 @@ const HeaderContainer = styled.div`
   box-shadow: 0px 0px 10px 10px rgb(0 0 0 / 40%);
   color: ${({theme}) => theme.text.color};
   padding: 10px 10%;
-
 `
 
 const MainContainer = styled.div`    
@@ -177,12 +179,18 @@ const MenuContainer = styled.div`
   }  
 `
 
-const NavContainer = styled.nav`    
+const NavContainer = styled.nav<NavProps>`    
   display: inherit;
   flex-wrap: inherit;
   flex-direction: row;
   flex-grow: 0;
   justify-content: center;
+ 
+  height: auto;
+  max-height: ${({expand}) => expand ? "120px" : "0px"};
+  
+  overflow: hidden;
+  transition: max-height 0.2s linear;
 
   a { 
     color: #fff;
