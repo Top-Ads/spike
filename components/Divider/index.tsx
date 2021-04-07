@@ -21,7 +21,7 @@ const HrContainer = styled.hr<PageProps>`
     width: 100%;
     height: 0px;
     opacity: 0.6;
-    margin-bottom: ${({marginBottom}) => marginBottom ? marginBottom : '0px'};
+    margin-bottom: ${({marginBottom}) => marginBottom ? marginBottom : 'revert'};
 }
 `
 

@@ -4,6 +4,7 @@ import Image from 'next/image'
 import styled from 'styled-components'
 import { Game } from '../../../interfaces'
 import Button from '../../Button'
+import LikeIcon from '../../LikeIcon'
 
 type PageProps = {
    data: Game
@@ -14,18 +15,16 @@ const GameCard: FunctionComponent<PageProps> = ({data}) => {
     const router = useRouter()
 
     const [showBanner, setShowBanner] = useState<boolean>(false)
-    const [showLike, setShowLike] = useState<boolean>(false)
+    const [likeClick, setLikeClick] = useState<boolean>(false)
 
     const playSlot = () => {
         router.push(data.gamePreviewUrl)
     }
-    
-    const handleLikeIcon = (event: React.MouseEvent<HTMLElement>) => {
-        event.stopPropagation()
-
-        setShowLike(!showLike)
+ 
+    const handleLikeClick = () => {
+        setLikeClick(!likeClick)
     }
-    
+
     return (
         <Fragment>
             <SlotContainer 
@@ -34,15 +33,9 @@ const GameCard: FunctionComponent<PageProps> = ({data}) => {
                 onMouseEnter={ () => setShowBanner(true)}
                 onMouseLeave={ () => setShowBanner(false)}>
                 
-                { showBanner || showLike ?
-                <IconContainer onClick={handleLikeIcon}>
-                    <Image
-                        alt=""
-                        src={showLike ? "/svg/like.svg" : "/svg/unlike.svg"}
-                        layout="responsive"
-                        priority={true}
-                        width={30}
-                        height={30}/>
+                { showBanner ?
+                <IconContainer>  
+                    <LikeIcon setActive={handleLikeClick} fillColor="#ff1313" strokeColor="#ff1313" active={likeClick}/>
                 </IconContainer> : '' } 
                
                 <ThumbnailContainer>
@@ -104,7 +97,7 @@ const IconContainer = styled.div`
     position: absolute;
     right: 4px;
     top: 4px;
-    z-index: 2;
+    z-index:2;
 `
 
 const ThumbnailContainer = styled.div` 

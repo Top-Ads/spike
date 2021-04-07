@@ -71,7 +71,7 @@ const Header = () => {
           
           <Fragment>
             <NavContainer expand={showNav}>
-            <Divider color={'#fff'} marginBottom="10px"/>
+            <Divider color={'#fff'}/>
 
               <Link href={'/'}>
                   <a>Home</a>
