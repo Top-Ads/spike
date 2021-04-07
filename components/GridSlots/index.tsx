@@ -19,7 +19,7 @@ const useStyles = makeStyles<Theme, PageProps>(() =>
       color: "#fff",
       height:  ({height}) => height ? height : 'min-content;',
       position: 'relative',
-      borderRadius: ({disableBorderRadius}) => disableBorderRadius ? '0px;' : '4px;',
+      borderRadius: ({disableBorderRadius}) => disableBorderRadius ? '0px;' : '10px;',
       boxShadow: ({disableBoxShadow}) => disableBoxShadow ? 'none;' : 'auto;',
       backgroundColor: '#ff1313',
       '& .slot-index': {

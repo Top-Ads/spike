@@ -89,6 +89,7 @@ const Banner = styled.div`
     height: 100%;
     color: white;
     background-color: rgba(0,0,0,0.5);
+    border-radius: 10px 10px 0px 0px;
     position: absolute;
     top: 0;
 
@@ -108,5 +109,6 @@ const IconContainer = styled.div`
 
 const ThumbnailContainer = styled.div` 
   z-index: 1;
+  img { border-radius: 10px 10px 0px 0px; }
 `
 export default GameCard
