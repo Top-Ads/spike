@@ -14,9 +14,16 @@ const GameCard: FunctionComponent<PageProps> = ({data}) => {
     const router = useRouter()
 
     const [showBanner, setShowBanner] = useState<boolean>(false)
+    const [showLike, setShowLike] = useState<boolean>(false)
 
     const playSlot = () => {
         router.push(data.gamePreviewUrl)
+    }
+    
+    const handleLikeIcon = (event: React.MouseEvent<HTMLElement>) => {
+        event.stopPropagation()
+
+        setShowLike(!showLike)
     }
     
     return (
@@ -27,13 +34,26 @@ const GameCard: FunctionComponent<PageProps> = ({data}) => {
                 onMouseEnter={ () => setShowBanner(true)}
                 onMouseLeave={ () => setShowBanner(false)}>
                 
-                <Image
-                    alt=""
-                    src={'http://' + data.gameThumbnail} 
-                    layout="responsive"
-                    priority={true}
-                    width={624}
-                    height={484}/>
+                { showBanner || showLike ?
+                <IconContainer onClick={handleLikeIcon}>
+                    <Image
+                        alt=""
+                        src={showLike ? "/svg/like.svg" : "/svg/unlike.svg"}
+                        layout="responsive"
+                        priority={true}
+                        width={30}
+                        height={30}/>
+                </IconContainer> : '' } 
+               
+                <ThumbnailContainer>
+                    <Image
+                        alt=""
+                        src={'http://' + data.gameThumbnail} 
+                        layout="responsive"
+                        priority={true}
+                        width={624}
+                        height={484}/>
+                </ThumbnailContainer>
                 
                 { showBanner ? <Banner>< Button label="PLAY !"/> </Banner> : '' } 
 
@@ -60,6 +80,7 @@ const TitleContainer = styled.div`
     font-size: 12px;
     font-weight: bolder;
 `
+
 const Banner = styled.div`
     display: flex;
     align-items: center;
@@ -77,4 +98,15 @@ const Banner = styled.div`
     }
 `
 
+const IconContainer = styled.div` 
+    width: 20px;
+    position: absolute;
+    right: 4px;
+    top: 4px;
+    z-index: 2;
+`
+
+const ThumbnailContainer = styled.div` 
+  z-index: 1;
+`
 export default GameCard

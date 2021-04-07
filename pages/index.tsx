@@ -100,7 +100,7 @@ const IndexPage: FunctionComponent<PageProps> = ({data}) => {
               un'occhiata a questa comparazione dei migliori Bonus disponibili al momento:
             </p>
             <GridSlots 
-              data={ [...Array(3)].map( () =>  <BonusCard/> )}
+              data={ [...Array(6)].map( () =>  <BonusCard/> )}
               padding={true} 
               xs={12} sm={12} md={12}/>
           </GridsContainer>
