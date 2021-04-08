@@ -10,7 +10,7 @@ const useStyles = makeStyles(() =>
       justifyContent: 'flex-end',
     },
     textField: {
-        width: '25ch',
+        width: '30ch',
         backgroundColor: "inherit",
         borderRadius: '10px',
 
