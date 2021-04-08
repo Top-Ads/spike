@@ -9,7 +9,6 @@ import { device } from '../utils/device'
 import { Game } from '../interfaces'
 import GameCard from '../components/Cards/GameCard'
 import BonusCard from '../components/Cards/BonusCard'
-import Button from '../components/Button'
 
 type PageProps = {
   data: Game []
@@ -35,10 +34,9 @@ const IndexPage: FunctionComponent<PageProps> = ({data}) => {
                 <li>Giocare gratis alle slot machine famose.</li>
               </ul>
 
-              <Button 
-                label="Via alla lista completa delle slot" 
-                color="#fff" 
-                bgColor="#ff1313"/>
+              <ButtonContainer>
+                    <span>Via alla lista completa delle slot</span>
+              </ButtonContainer>
               
             </IntroContainer>
 
@@ -132,6 +130,17 @@ const IntroContainer = styled.div`
     h1 { font-size: 23px; }
     align-items: center;
   } 
+`
+
+const ButtonContainer = styled.div`
+    background-color: #ff1313;
+    border: 2px solid ${({theme}) => theme.colors.primary};
+    color: #fff;
+    border-radius: 5px;
+    font-weight: normal;
+    cursor: pointer;
+    padding: 10px;
+    width: fit-content;
 `
 
 const HeaderContainer = styled.div`

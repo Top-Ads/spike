@@ -3,7 +3,6 @@ import { useRouter } from 'next/router'
 import Image from 'next/image'
 import styled from 'styled-components'
 import { Game } from '../../../interfaces'
-import Button from '../../Button'
 import LikeIcon from '../../LikeIcon'
 
 type PageProps = {
@@ -15,14 +14,14 @@ const GameCard: FunctionComponent<PageProps> = ({data}) => {
     const router = useRouter()
 
     const [showBanner, setShowBanner] = useState<boolean>(false)
-    const [likeClick, setLikeClick] = useState<boolean>(false)
+    const [likeOnClick, setLikeOnClick] = useState<boolean>(false)
 
     const playSlot = () => {
         router.push(data.gamePreviewUrl)
     }
  
     const handleLikeClick = () => {
-        setLikeClick(!likeClick)
+        setLikeOnClick(!likeOnClick)
     }
 
     return (
@@ -33,9 +32,9 @@ const GameCard: FunctionComponent<PageProps> = ({data}) => {
                 onMouseEnter={ () => setShowBanner(true)}
                 onMouseLeave={ () => setShowBanner(false)}>
                 
-                { showBanner ?
+                { showBanner || likeOnClick ?
                 <IconContainer>  
-                    <LikeIcon setActive={handleLikeClick} fillColor="#ff1313" strokeColor="#ff1313" active={likeClick}/>
+                    <LikeIcon setActive={handleLikeClick} fillColor="#ff1313" strokeColor="#ff1313" active={likeOnClick}/>
                 </IconContainer> : '' } 
                
                 <ThumbnailContainer>
@@ -48,7 +47,12 @@ const GameCard: FunctionComponent<PageProps> = ({data}) => {
                         height={484}/>
                 </ThumbnailContainer>
                 
-                { showBanner ? <Banner>< Button label="PLAY !"/> </Banner> : '' } 
+                { showBanner ? 
+                    <Banner>
+                        <ButtonContainer> 
+                            <span>PLAY !</span>
+                        </ButtonContainer>
+                    </Banner> : '' } 
 
             </SlotContainer>
 
@@ -70,7 +74,7 @@ const TitleContainer = styled.div`
     justify-content: center;
     align-items: center;
     height: 35px;   
-    font-size: 12px;
+    font-size: 11px;
     font-weight: bolder;
 `
 
@@ -104,4 +108,16 @@ const ThumbnailContainer = styled.div`
   z-index: 1;
   img { border-radius: 10px 10px 0px 0px; }
 `
+
+const ButtonContainer = styled.div`
+    background-color: #fff;
+    border: 2px solid ${({theme}) => theme.colors.primary};
+    color: ${({theme}) => theme.colors.primary};
+    border-radius: 5px;
+    font-weight: normal;
+    cursor: pointer;
+    padding: 10px;
+    width: fit-content;
+`
+
 export default GameCard
