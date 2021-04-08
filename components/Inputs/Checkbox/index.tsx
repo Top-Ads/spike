@@ -13,7 +13,8 @@ const useStyles = makeStyles<Theme>(() =>
     root: {
       '& .MuiTypography-body1': {
         fontSize: '10px',
-        fontFamily: 'Montserrat-light'
+        fontFamily: 'Montserrat-light',
+        color: '#fff'
 
       },
       '& .MuiIconButton-root': {

@@ -142,6 +142,7 @@ const LegalContainer = styled.div`
     font-size: 10px;
     width: 220px;
     font-family: Montserrat-light;
+     p { color: #fff; }
   }
 
   @media ${device.tablet} {

@@ -74,7 +74,7 @@ const TitleContainer = styled.div`
     justify-content: center;
     align-items: center;
     height: 35px;   
-    font-size: 11px;
+    font-size: 12px;
     font-weight: bolder;
 `
 
@@ -114,7 +114,6 @@ const ButtonContainer = styled.div`
     border: 2px solid ${({theme}) => theme.colors.primary};
     color: ${({theme}) => theme.colors.primary};
     border-radius: 5px;
-    font-weight: normal;
     cursor: pointer;
     padding: 10px;
     width: fit-content;

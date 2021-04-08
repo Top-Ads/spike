@@ -27,13 +27,14 @@ const IndexPage: FunctionComponent<PageProps> = ({data}) => {
             <IntroContainer>
               <h1>BENVENUTO SU SPIKE SLOT!</h1>
 
-              <span><strong>Benvenuto</strong>  sono Spike e sul mio sito puoi:</span>
-              <ul>
-                <li>Trovare i migliori casino online</li>
-                <li>Ricivere offerte bonus esclusive</li>
-                <li>Giocare gratis alle slot machine famose.</li>
-              </ul>
-
+              <p>
+                <span><strong>Benvenuto</strong>  sono Spike e sul mio sito puoi:</span>
+                <ul>
+                  <li>Trovare i migliori casino online</li>
+                  <li>Ricivere offerte bonus esclusive</li>
+                  <li>Giocare gratis alle slot machine famose.</li>
+                </ul>
+              </p>
               <ButtonContainer>
                     <span>Via alla lista completa delle slot</span>
               </ButtonContainer>

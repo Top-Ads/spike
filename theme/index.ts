@@ -18,16 +18,20 @@ export const GlobalStyle = createGlobalStyle`
     body {
         height: 100%;
         width: 100%;
-        font-family : Montserrat, sans-serif;
+        font-family : Montserrat;
         background-color: #f2f2f2;
         margin: 0 auto;
     }
 
-    a { text-decoration : none; text-align: center;}
+    a { text-decoration : none; text-align: center; }
 
     * { box-sizing: borderRadius-box; }
 
     h1, strong { font-weight: bold; }
+
+    strong { color: #ff1313 }
+
+    p { color: #000 }
 `
 export const styledTheme: StyledTheme = {
 
