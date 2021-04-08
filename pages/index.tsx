@@ -27,14 +27,15 @@ const IndexPage: FunctionComponent<PageProps> = ({data}) => {
             <IntroContainer>
               <h1>BENVENUTO SU SPIKE SLOT!</h1>
 
-              <p>
-                <span><strong>Benvenuto</strong>  sono Spike e sul mio sito puoi:</span>
+              <div>
+                <p><span><strong>Benvenuto</strong>  sono Spike e sul mio sito puoi:</span></p>
                 <ul>
                   <li>Trovare i migliori casino online</li>
                   <li>Ricivere offerte bonus esclusive</li>
                   <li>Giocare gratis alle slot machine famose.</li>
                 </ul>
-              </p>
+              </div>
+
               <ButtonContainer>
                     <span>Via alla lista completa delle slot</span>
               </ButtonContainer>
@@ -126,6 +127,8 @@ const WelcomeContainer = styled.div`
 const IntroContainer = styled.div`
   display: inherit;
   flex-direction: column;
+
+  ul { color: #000; }
 
   @media ${device.tablet} {
     h1 { font-size: 23px; }

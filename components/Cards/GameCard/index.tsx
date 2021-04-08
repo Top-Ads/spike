@@ -30,7 +30,8 @@ const GameCard: FunctionComponent<PageProps> = ({data}) => {
                 key={data.gameName}
                 onClick={playSlot}
                 onMouseEnter={ () => setShowBanner(true)}
-                onMouseLeave={ () => setShowBanner(false)}>
+                onMouseLeave={ () => setShowBanner(false)}
+                onTouchStart={ () => setShowBanner(!showBanner)}>
                 
                 { showBanner || likeOnClick ?
                 <IconContainer>  
@@ -50,7 +51,10 @@ const GameCard: FunctionComponent<PageProps> = ({data}) => {
                 { showBanner ? 
                     <Banner>
                         <ButtonContainer> 
-                            <span>PLAY !</span>
+                            <span>PLAY FREE !</span>
+                        </ButtonContainer>
+                        <ButtonContainer> 
+                            <span>PLAY MONEY !</span>
                         </ButtonContainer>
                     </Banner> : '' } 
 
@@ -63,10 +67,12 @@ const GameCard: FunctionComponent<PageProps> = ({data}) => {
     ) 
 }
 
-const SlotContainer = styled.li`
+const SlotContainer = styled.div`
     position: relative;
     list-style-type: none;
     cursor: pointer;
+    border-radius: 10px 10px 0px 0px;
+    overflow: hidden;
 `
 
 const TitleContainer = styled.div` 
@@ -80,15 +86,13 @@ const TitleContainer = styled.div`
 
 const Banner = styled.div`
     display: flex;
-    align-items: center;
-    justify-content: center;
+    align-items: flex-end;
     width: 100%;
     height: 100%;
     color: white;
-    background-color: rgba(0,0,0,0.5);
-    border-radius: 10px 10px 0px 0px;
     position: absolute;
     top: 0;
+    background-color: rgba(0,0,0,0.5);
 
     span {
         opacity:1;
@@ -110,13 +114,24 @@ const ThumbnailContainer = styled.div`
 `
 
 const ButtonContainer = styled.div`
-    background-color: #fff;
-    border: 2px solid ${({theme}) => theme.colors.primary};
-    color: ${({theme}) => theme.colors.primary};
+    background-color: ${({theme}) => theme.colors.primary};
+    border: 2px solid #fff;
+    color: #fff;
     border-radius: 5px;
     cursor: pointer;
-    padding: 10px;
-    width: fit-content;
+    width: 50%;
+    height: 25px;
+    margin: 5px;
+    font-size: 10px;
+    align-items: center;
+    display: inherit;
+    justify-content: center;
+
+    &: hover, &: active {
+        background-color: #fff;
+        border: 2px solid ${({theme}) => theme.colors.primary};
+        color: ${({theme}) => theme.colors.primary};
+    }
 `
 
 export default GameCard

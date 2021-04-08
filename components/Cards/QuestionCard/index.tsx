@@ -8,7 +8,7 @@ const QuestionCard: FunctionComponent<PageProps> = ({data}) => {
     
     return (
         <Fragment>
-                {data}
+            {data}
         </Fragment>
     ) 
 }
