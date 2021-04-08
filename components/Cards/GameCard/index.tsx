@@ -74,7 +74,7 @@ const TitleContainer = styled.div`
     justify-content: center;
     align-items: center;
     height: 35px;   
-    font-size: 12px;
+    font-size: 13px;
     font-weight: bolder;
 `
 
