@@ -17,7 +17,12 @@ const GameCard: FunctionComponent<PageProps> = ({data}) => {
     const [likeOnClick, setLikeOnClick] = useState<boolean>(false)
 
     const playSlot = () => {
-        router.push(data.gamePreviewUrl)
+
+        router.push({
+            pathname: '/slot/[url]',
+            query: { gamePreviewUrl: data.gamePreviewUrl, gameName: data.gameName}
+        }, '/slot')
+
     }
  
     const handleLikeClick = () => {
