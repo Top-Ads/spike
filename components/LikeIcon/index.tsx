@@ -12,15 +12,15 @@ const LikeIcon: FunctionComponent<PageProps> = ({strokeColor, fillColor, active,
     
     const [fill, setFill] = useState<string>(active? fillColor : "transparent")
 
-    const handleClick = (event: React.MouseEvent<HTMLElement>) => {
+    const handleClick = (event: React.SyntheticEvent<HTMLElement>) => {
         event.stopPropagation()
         setActive()
         setFill(active ? "transparent" : fillColor)
     }
-
+    
     return (
         <Fragment>
-            <LikeContainer onClick={handleClick}>
+            <LikeContainer onClick={handleClick} onTouchStart={handleClick}>
                 <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
                     viewBox="0 0 391.837 391.837" xmlSpace="preserve">
                     <g>

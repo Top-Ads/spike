@@ -31,7 +31,7 @@ export const GlobalStyle = createGlobalStyle`
 
     strong { color: #ff1313 }
 
-    p { color: #000 }
+    p { color: #000; text-align: justify; }
 `
 export const styledTheme: StyledTheme = {
 

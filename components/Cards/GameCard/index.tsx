@@ -56,10 +56,10 @@ const GameCard: FunctionComponent<PageProps> = ({data}) => {
                 { showBanner ? 
                     <Banner>
                         <ButtonContainer> 
-                            <span>PLAY FREE !</span>
+                            <span>PLAY FREE</span>
                         </ButtonContainer>
                         <ButtonContainer> 
-                            <span>PLAY MONEY !</span>
+                            <span>REAL MONEY</span>
                         </ButtonContainer>
                     </Banner> : '' } 
 
@@ -106,7 +106,7 @@ const Banner = styled.div`
 `
 
 const IconContainer = styled.div` 
-    width: 20px;
+    width: 30px;
     position: absolute;
     right: 4px;
     top: 4px;
