@@ -2,11 +2,11 @@ import React, { Fragment, FunctionComponent, useState } from 'react'
 import { useRouter } from 'next/router'
 import Image from 'next/image'
 import styled from 'styled-components'
-import { Game } from '../../../interfaces'
+import { Slot } from '../../../interfaces'
 import LikeIcon from '../../LikeIcon'
 
 type PageProps = {
-   data: Game
+   data: Slot
 };
 
 const GameCard: FunctionComponent<PageProps> = ({data}) => { 

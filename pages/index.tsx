@@ -6,15 +6,16 @@ import Layout from '../components/Layout'
 import FreqentlyAsked from '../components/FrequentlyAsked'
 import FreeSlots from '../components/FreeSlots/indext'
 import { device } from '../utils/device'
-import { Game } from '../interfaces'
+import { Slot } from '../interfaces'
 import GameCard from '../components/Cards/GameCard'
 import BonusCard from '../components/Cards/BonusCard'
+import { getSlotsCard } from './api/slots'
 
 type PageProps = {
-  data: Game []
+  slotsCard: Slot []
 }
 
-const IndexPage: FunctionComponent<PageProps> = ({data}) => {
+const IndexPage: FunctionComponent<PageProps> = ({slotsCard}) => {
 
   return (
     <Layout title="Home">
@@ -64,22 +65,22 @@ const IndexPage: FunctionComponent<PageProps> = ({data}) => {
 
         <GridsContainer>
           <GridSlots 
-            data={ data.slice(0, 12).map( (game) => <GameCard data={game}/> )}
+            data={ slotsCard.slice(0, 12).map( (game) => <GameCard data={game}/> )}
             label="Le migliori Novomatic selezionate per te."
             xs={6} sm={4} md={4}/>
           <GridSlots
-            data={ data.slice(12, 24).map( (game) => <GameCard data={game}/> )}
+            data={ slotsCard.slice(12, 24).map( (game) => <GameCard data={game}/> )}
             label="Le slot online del momento."
             xs={6} sm={4} md={4}/>
         </GridsContainer>
 
         <GridsContainer>
           <GridSlots
-            data={ data.slice(24, 36).map( (game) => <GameCard data={game}/> )}
+            data={ slotsCard.slice(24, 36).map( (game) => <GameCard data={game}/> )}
             label="Le slot da bar più famose."
             xs={6} sm={4} md={4}/>
           <GridSlots 
-            data={ data.slice(36, 48).map( (game) => <GameCard data={game}/> )}
+            data={ slotsCard.slice(36, 48).map( (game) => <GameCard data={game}/> )}
             label="Le slot VLT più divertenti."
             xs={6} sm={4} md={4}/>
         </GridsContainer>
@@ -171,10 +172,10 @@ const GridsContainer = styled.div`
 `
 
 export async function getStaticProps() {
-  const res = await fetch(`https://www.mocky.io/v2/5da99f9f31000036004e0a4e`)
-  const data = await res.json()
+ 
+  const slotsCard = await getSlotsCard()
 
-  if (!data) {
+  if (!slotsCard) {
     return {
       notFound: true,
     }
@@ -182,7 +183,7 @@ export async function getStaticProps() {
 
   return {
     props: {
-      data
+      slotsCard
     }
   }
 }
