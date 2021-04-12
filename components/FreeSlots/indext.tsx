@@ -31,7 +31,7 @@ const FreeSlots = () => {
 
             <GridsContainer>
               <GridSlots
-            data={ [...Array(5)].map( () => <FreeCard/> )}
+            data={ [...Array(5)].map( (_value, index) => <FreeCard key={index} /> )}
             padding={true} 
                 width={"150px"} 
                 xs={12} sm={12} md={12}/>

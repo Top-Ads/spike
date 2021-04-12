@@ -30,7 +30,7 @@ const Layout = ({ children, title}: Props) => (
 export default Layout
 
 const MainContainer = styled.div`
-  .spaceAround {
+  .space-around {
     padding: 10px 10%;
 
     @media ${device.tablet} {

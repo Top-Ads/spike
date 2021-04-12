@@ -5,6 +5,6 @@ module.exports = {
       production: process.env.PROD
     },
     images: {
-      domains: ['images.ctfassets.net'],
+      domains: ['images.ctfassets.net', 'img.slotjava.it'],
     },
   };

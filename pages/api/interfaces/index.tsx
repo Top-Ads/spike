@@ -21,7 +21,7 @@ export interface StyledTheme {
     }
 }
 
-export interface Game {
+export interface Slot {
     categories: [],
     gameName: string,
     gamePreviewUrl: string,
@@ -29,8 +29,16 @@ export interface Game {
 }
    
 export interface Bonus {
-    bonusName: string,
-    bonusFreeSpins: number,
-    bonusCode: string,
-    bonusUrl: string
+    description: string,
+    backgroundColor: string,
+    borderColor: string,
+    link: string,
+    name: string,
+    noDeposit: string,
+    withDeposit: string,
+    rating: number,
+    tips: string,
+    slug: string,
+    status: string,
+    freeSpins: number
 }

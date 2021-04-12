@@ -53,12 +53,11 @@ const Header = () => {
 
             <SearchContainer>
               <div className="text-input">
-              <TextInput searchIcon={true} placeholder="cerca una slot, un casino..."/>
+                <TextInput searchIcon={true} placeholder="cerca una slot, un casino..."/>
               </div>
 
-              <div className="search-icon">
-                <SearchIcon style={{ color: '#ec564', fontSize: '40px', cursor: 'pointer'}}/> 
-              </div>
+              <SearchIcon className="search-icon" style={{ color: '#ec564', fontSize: '40px', cursor: 'pointer'}}/> 
+
             </SearchContainer>
            
             <MenuContainer>

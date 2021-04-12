@@ -1,5 +1,5 @@
 import { createGlobalStyle } from "styled-components"
-import { StyledTheme } from "../interfaces"
+import { StyledTheme } from "../pages/api/interfaces"
 
 export const GlobalStyle = createGlobalStyle`
 

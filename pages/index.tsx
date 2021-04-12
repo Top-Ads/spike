@@ -6,21 +6,24 @@ import Layout from '../components/Layout'
 import FreqentlyAsked from '../components/FrequentlyAsked'
 import FreeSlots from '../components/FreeSlots/indext'
 import { device } from '../utils/device'
-import { Slot } from '../interfaces'
-import GameCard from '../components/Cards/GameCard'
-import BonusCard from '../components/Cards/BonusCard'
+import { Bonus, Slot } from './api/interfaces'
+import SlotCard from '../components/Cards/SlotCard'
+import TopBonusCard from '../components/Cards/TopBonusCard'
 import { getSlotsCard } from './api/slots'
+import AquaClient from './api/graphql/aquaClient'
+import { ALL_BONUS } from './api/graphql/queries/bonus'
 
 type PageProps = {
-  slotsCard: Slot []
+  slotsData: Slot [],
+  bonusData: Bonus []
 }
 
-const IndexPage: FunctionComponent<PageProps> = ({slotsCard}) => {
+const IndexPage: FunctionComponent<PageProps> = ({slotsData, bonusData}) => {
 
   return (
     <Layout title="Home">
 
-      <div className="spaceAround">
+      <div className="space-around">
 
         <WelcomeContainer>
 
@@ -65,34 +68,34 @@ const IndexPage: FunctionComponent<PageProps> = ({slotsCard}) => {
 
         <GridsContainer>
           <GridSlots 
-            data={ slotsCard.slice(0, 12).map( (game) => <GameCard data={game}/> )}
+            data={ slotsData.slice(0, 12).map( (slot) => <SlotCard key={slot.gameName} data={slot}/> )}
             label="Le migliori Novomatic selezionate per te."
             xs={6} sm={4} md={4}/>
           <GridSlots
-            data={ slotsCard.slice(12, 24).map( (game) => <GameCard data={game}/> )}
+            data={ slotsData.slice(12, 24).map( (slot) => <SlotCard key={slot.gameName} data={slot}/> )}
             label="Le slot online del momento."
             xs={6} sm={4} md={4}/>
         </GridsContainer>
 
         <GridsContainer>
           <GridSlots
-            data={ slotsCard.slice(24, 36).map( (game) => <GameCard data={game}/> )}
+            data={ slotsData.slice(24, 36).map( (slot) => <SlotCard key={slot.gameName} data={slot}/> )}
             label="Le slot da bar più famose."
             xs={6} sm={4} md={4}/>
           <GridSlots 
-            data={ slotsCard.slice(36, 48).map( (game) => <GameCard data={game}/> )}
+            data={ slotsData.slice(36, 48).map( (slot) => <SlotCard key={slot.gameName} data={slot}/> )}
             label="Le slot VLT più divertenti."
             xs={6} sm={4} md={4}/>
         </GridsContainer>
 
         <GridsContainer>
           <GridSlots 
-            data={ [...Array(3)].map( () => <BonusCard/> )}
+            data={ bonusData.slice(0, 3).map( (bonus) => <TopBonusCard key={bonus.name} data={bonus}/> )}
             label="I top bonus dei casinò online in Italia."
-            padding={true} 
             AlignItem={"center"}
             xs={12} sm={4} md={4}
-            showIndex={true}/>
+            showIndex={true}
+            height="100%"/>
         </GridsContainer>
 
         <GridsContainer>
@@ -100,8 +103,8 @@ const IndexPage: FunctionComponent<PageProps> = ({slotsCard}) => {
               Se ti interessa sapere dove conviene maggiormente giocare alle slot machine online puoi dare
               un'occhiata a questa comparazione dei migliori Bonus disponibili al momento:
             </p>
-            <GridSlots 
-              data={ [...Array(6)].map( () =>  <BonusCard/> )}
+            <GridSlots
+              data={ [...Array(6)].map( () =>  <></> )}
               padding={true} 
               xs={12} sm={12} md={12}/>
           </GridsContainer>
@@ -110,7 +113,7 @@ const IndexPage: FunctionComponent<PageProps> = ({slotsCard}) => {
       
       <FreqentlyAsked/>
 
-      <div className="spaceAround">
+      <div className="space-around">
         <FreeSlots/>
       </div>
 
@@ -173,17 +176,16 @@ const GridsContainer = styled.div`
 
 export async function getStaticProps() {
  
-  const slotsCard = await getSlotsCard()
+  const aquaClient = new AquaClient()
 
-  if (!slotsCard) {
-    return {
-      notFound: true,
-    }
-  }
+  const slotsRequest = await getSlotsCard()
+
+  const bonusRequest = await aquaClient.query({ query: ALL_BONUS, variables: { code: 'it' } })
 
   return {
     props: {
-      slotsCard
+      slotsData: slotsRequest,
+      bonusData: bonusRequest.data.data.bonuses
     }
   }
 }

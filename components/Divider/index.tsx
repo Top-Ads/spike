@@ -2,15 +2,15 @@ import React, { Fragment, FunctionComponent } from 'react'
 import styled from 'styled-components'
 
 type PageProps = {
-    color?: string;
-    marginBottom?: string
+    color?: string,
+    width?: string
 };
 
 const Divider: FunctionComponent<PageProps> = (data) => { 
     
     return (
         <Fragment>
-            <HrContainer color={data.color} marginBottom={data.marginBottom}/>
+            <HrContainer width={data.width} color={data.color} />
         </Fragment>
     ) 
 }
@@ -18,10 +18,9 @@ const Divider: FunctionComponent<PageProps> = (data) => {
 const HrContainer = styled.hr<PageProps>`
     border: 1px solid ${({color}) => color ? color : '#ff1313'};
     background-color: ${({color}) => color ? color : '#ff1313'};
-    width: 100%;
+    width:  ${({width}) => width ? width : '100%'};
     height: 0px;
     opacity: 0.6;
-    margin-bottom: ${({marginBottom}) => marginBottom ? marginBottom : 'revert'};
 }
 `
 

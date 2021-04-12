@@ -2,7 +2,7 @@ import React, { Fragment, FunctionComponent, useState } from 'react'
 import { useRouter } from 'next/router'
 import Image from 'next/image'
 import styled from 'styled-components'
-import { Slot } from '../../../interfaces'
+import { Slot } from '../../../pages/api/interfaces'
 import LikeIcon from '../../LikeIcon'
 
 type PageProps = {
@@ -32,7 +32,6 @@ const GameCard: FunctionComponent<PageProps> = ({data}) => {
     return (
         <Fragment>
             <SlotContainer 
-                key={data.gameName}
                 onClick={playSlot}
                 onMouseEnter={ () => setShowBanner(true)}
                 onMouseLeave={ () => setShowBanner(false)}
@@ -128,14 +127,13 @@ const ButtonContainer = styled.div`
     height: 25px;
     margin: 5px;
     font-size: 10px;
+    font-weight: bold;
     align-items: center;
     display: inherit;
     justify-content: center;
 
     &: hover, &: active {
-        background-color: #fff;
-        border: 2px solid ${({theme}) => theme.colors.primary};
-        color: ${({theme}) => theme.colors.primary};
+        color: #000;
     }
 `
 

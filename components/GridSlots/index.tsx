@@ -22,7 +22,8 @@ const useStyles = makeStyles<Theme, PageProps>(() =>
       borderRadius: ({disableBorderRadius}) => disableBorderRadius ? '0px;' : '10px;',
       boxShadow: ({disableBoxShadow}) => disableBoxShadow ? 'none;' : 'auto;',
       backgroundColor: '#ff1313',
-      '& .slot-index': {
+
+      '& .card-index': {
         top: '-10px',
         right: '0px',
         position: 'absolute',
@@ -54,7 +55,7 @@ type PageProps = {
     disableBorderRadius?: boolean,
     disableBoxShadow?: boolean,
     textAlign?: string,
-    padding?: boolean
+    padding?: boolean,
 }
 
 type LabelContainerType = {
@@ -71,7 +72,7 @@ const GridSlots: FunctionComponent<PageProps> = (props) => {
     <div className={classes.root}>
         <LabelContainer align={AlignItem}>
             {label}
-            {label ? <Divider marginBottom="25px"/> : ''}
+            { label ? <Divider/> : '' }
         </LabelContainer>
 
         <Grid container item spacing={2}>
@@ -79,7 +80,7 @@ const GridSlots: FunctionComponent<PageProps> = (props) => {
              <Grid item xs={xs} sm={sm} md={md} key={index}>
                 <Paper className={classes.paper}>
                     {showIndex ? 
-                      <div className="slot-index">
+                      <div className="card-index">
                         {index+1}
                       </div> 
                     : '' }
@@ -96,5 +97,6 @@ const GridSlots: FunctionComponent<PageProps> = (props) => {
 const LabelContainer = styled.div<LabelContainerType>`
   text-align: ${({align}) => align ? align : 'unset'};
   font-weight: bold;
+  margin-bottom: 20px;
 `
 export default GridSlots
