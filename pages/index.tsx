@@ -98,8 +98,7 @@ const IndexPage: FunctionComponent<PageProps> = ({slotsData, topBonusData, allBo
             label="I top bonus dei casinò online in Italia."
             AlignItem={"center"}
             xs={12} sm={4} md={4}
-            showIndex={true}
-            height="100%"/>
+            showIndex={true}/>
         </GridsContainer>
 
         <GridsContainer>

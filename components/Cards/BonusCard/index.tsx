@@ -4,6 +4,7 @@ import styled from 'styled-components'
 import { Bonus } from '../../../pages/api/interfaces'
 import Image from 'next/image'
 import Divider from '../../Divider'
+import { device } from '../../../utils/device'
 
 type PageProps = {
    data: Bonus 
@@ -84,8 +85,11 @@ const BonusContainer = styled.div<BonusContainerType>`
 `
 
 const MainContainer = styled.div `
-    height: 70%;
-    
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-height: 200px;
+      
     .space-around {
         padding: 10px 5px;
         display: flex;

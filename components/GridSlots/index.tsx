@@ -9,20 +9,19 @@ const useStyles = makeStyles<Theme, PageProps>(() =>
   createStyles({
     root: {
       flexGrow: 1,
-      width: ({width}) => width ? width : '400px;',
-      margin: '10px 10px;'
+      width: ({width}) => width ? width : '400px',
+      margin: '10px 10px'
     },
     paper: {
-      padding: ({padding}) => padding ? '12px' : '0px;',
+      padding: '0px',
       textAlign: ({textAlign}) => textAlign ? 'left' : 'center',
       fontWeight: 'bold',
       color: "#fff",
-      height:  ({height}) => height ? height : 'min-content;',
-      position: 'relative',
-      borderRadius: ({disableBorderRadius}) => disableBorderRadius ? '0px;' : '10px;',
-      boxShadow: ({disableBoxShadow}) => disableBoxShadow ? 'none;' : 'auto;',
+      height: 'auto',
+      borderRadius: ({disableBorderRadius}) => disableBorderRadius ? '0px' : '10px',
+      boxShadow: ({disableBoxShadow}) => disableBoxShadow ? 'none' : 'auto',
       backgroundColor: '#ff1313',
-
+      position: 'relative',
       '& .card-index': {
         top: '-10px',
         right: '0px',
@@ -46,7 +45,6 @@ type PageProps = {
     data: any,
     label?: string,
     width?: string,
-    height?: string, 
     xs: GridSize,
     sm: GridSize,
     md: GridSize,
@@ -54,8 +52,7 @@ type PageProps = {
     showIndex?: boolean,
     disableBorderRadius?: boolean,
     disableBoxShadow?: boolean,
-    textAlign?: string,
-    padding?: boolean
+    textAlign?: string
   }
 
 type LabelContainerType = {

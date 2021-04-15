@@ -1,33 +1,40 @@
-import React, { Fragment } from 'react'
+import React, { Fragment, useState } from 'react'
 import styled from 'styled-components'
 import QuestionCard from '../Cards/QuestionCard'
 import EmailSubcription from '../EmailSubscription'
 import GridSlots from '../GridSlots'
-import { mockQuestions } from './mock'
+import { frequentlyAsked } from './mock'
 
-const FreqentlyAsked = () => 
-    <Fragment>
-        <MainContainer>
+const FreqentlyAsked = () => { 
 
-            <QuestionsContainer>
-                <HeaderContainer>DOMANDE FREQUENTI</HeaderContainer>
-                <GridSlots 
-                    data={ mockQuestions.map( (question) => <QuestionCard data={question}/> )}
-                    width={'auto'}
-                    height={'40px'}
-                    xs={12} sm={6} md={6}
-                    disableBorderRadius={true}
-                    disableBoxShadow={true}
-                    textAlign={"false"}
-                    padding={true}/>
-            </QuestionsContainer>
+    const [collapse, setCollapse] = useState<boolean>(true)
 
-            <SubcriptionContainer>
-                <EmailSubcription/>
-            </SubcriptionContainer>
+    return (
+        <Fragment>
+            <MainContainer>
 
-        </MainContainer>
-    </Fragment>
+                <QuestionsContainer>
+                    <HeaderContainer>DOMANDE FREQUENTI</HeaderContainer>
+                    <GridSlots 
+                        data={ frequentlyAsked.map( (data: any) => 
+                            <QuestionCard 
+                                collapse={collapse} 
+                                triggerCollpase={(collapse: boolean) => setCollapse(collapse)}
+                                data={data}/> )}
+                        width={'auto'}
+                        xs={12} sm={6} md={6}
+                        disableBorderRadius={true}
+                        disableBoxShadow={true}/>
+                </QuestionsContainer>
+
+                <SubcriptionContainer>
+                    <EmailSubcription/>
+                </SubcriptionContainer>
+
+            </MainContainer>
+        </Fragment>
+    )
+}
 
 const MainContainer = styled.div`
     display: flex;
@@ -35,6 +42,7 @@ const MainContainer = styled.div`
     flex-wrap: wrap;
     padding: 0 10%;
     background-image: linear-gradient(180deg, ${({theme}) => theme.colors.primary} 0%, ${({theme}) => theme.colors.gradient} 50%);
+
 `
 
 const HeaderContainer = styled.h2`
@@ -50,7 +58,7 @@ const QuestionsContainer = styled.div`
 const SubcriptionContainer = styled.div`
     flex-grow: 1;
     justify-content: center;
-    align-items: center;
+    align-items: baseline;
     display: flex;
 `
 
