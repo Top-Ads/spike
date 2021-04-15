@@ -84,8 +84,11 @@ const BonusContainer = styled.div<BonusContainerType>`
 `
 
 const MainContainer = styled.div `
-    height: 70%;
-    
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-height: 200px;
+      
     .space-around {
         padding: 10px 5px;
         display: flex;

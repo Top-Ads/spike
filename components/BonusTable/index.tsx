@@ -19,7 +19,7 @@ type PageProps = {
 }
 
 type BonusContainerType = {
-  bgColor?: string,
+  bgColor?: string
 }
 
 const StyledTableCell = withStyles((theme: Theme) =>
