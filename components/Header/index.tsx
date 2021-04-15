@@ -95,7 +95,7 @@ const HeaderContainer = styled.div`
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
-  background-image: linear-gradient(${({theme}) => theme.colors.primary}, ${({theme}) => theme.colors.gradient});
+  background-image: linear-gradient(180deg, ${({theme}) => theme.colors.primary} 0%, ${({theme}) => theme.colors.gradient} 50%);
   border-radius: 0px 0px 20px 20px;
   box-shadow: 0px 0px 10px 10px rgb(0 0 0 / 40%);
   color: ${({theme}) => theme.text.color.primary};

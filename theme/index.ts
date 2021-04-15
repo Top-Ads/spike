@@ -3,17 +3,11 @@ import { StyledTheme } from "../pages/api/interfaces"
 
 export const GlobalStyle = createGlobalStyle`
 
-    @font-face {
+    /* @font-face {
         font-family: '';
         src: local('Montserrat'), url(./fonts/) format('ttf');
         font-display: swap;
-    }
-
-    @font-face {
-        font-family: '';
-        src: local('Montserrat'), url(./fonts/) format('ttf');
-        font-display: swap;
-    }
+    } */
 
     body {
         height: 100%;

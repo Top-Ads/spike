@@ -49,10 +49,11 @@ const ButtonContainer = styled.div`
     color: ${({theme}) => theme.text.color.secondary};;
     cursor: pointer;
 
-    &: active {
-      color: ${({theme}) => theme.text.color.primary};;
-      background-color: ${({theme}) => theme.colors.primary};
-    }
+    &: hover {
+      box-shadow: 0px 0px 5px 5px rgba(33,37,41,0.4);
+      -webkit-box-shadow: 0px 0px 5px 5px rgba(33,37,41,0.4);
+      -moz-box-shadow: 0px 0px 5px 5px rgba(33,37,41,0.4);
+  }
 `
 
 export default EmailSubcription

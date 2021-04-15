@@ -132,8 +132,10 @@ const ButtonContainer = styled.div`
     display: inherit;
     justify-content: center;
 
-    &: hover, &: active {
-        color: ${({theme}) => theme.text.color.secondary};;
+    &: hover {
+        box-shadow: 0px 0px 5px 5px rgba(255,255,255,0.4);
+        -webkit-box-shadow: 0px 0px 5px 5px rgba(255,255,255,0.4);
+        -moz-box-shadow: 0px 0px 5px 5px rgba(255,255,255,0.4);
     }
 `
 

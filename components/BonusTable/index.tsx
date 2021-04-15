@@ -57,7 +57,6 @@ const useStyles = makeStyles({
 
 const BonusTable: FunctionComponent<PageProps> = ({data}) => {
   
-  console.log(data)
   const classes = useStyles()
   
   const router = useRouter()
@@ -138,7 +137,6 @@ const BonusImgContainer = styled.div`
 
 const ButtonContainer = styled.div<BonusContainerType>`
     background-color: ${({bgColor}) => bgColor ? bgColor : 'inherit'};
-    border: 1px solid #fff;
     color: ${({theme}) => theme.text.color.primary};
     border-radius: 5px;
     font-weight: bold;
@@ -147,8 +145,10 @@ const ButtonContainer = styled.div<BonusContainerType>`
     width: max-content;
 
     &: hover {
-        color:${({theme}) => theme.text.color.secondary};
-    }
+      box-shadow: 0px 0px 5px 5px rgba(33,37,41,0.4);
+      -webkit-box-shadow: 0px 0px 5px 5px rgba(33,37,41,0.4);
+      -moz-box-shadow: 0px 0px 5px 5px rgba(33,37,41,0.4);
+  }
 `
 
 const LicenceContainer = styled.div`
