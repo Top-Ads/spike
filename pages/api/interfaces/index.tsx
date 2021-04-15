@@ -1,23 +1,16 @@
 export interface StyledTheme {
     colors: {
-        primary: string
-        secondary: string,
-        tertiary: string,
+        primary: string,
         gradient: string
     }
 
     text: {
         primaryFont: string,
         secondaryFont: string,
-        color: string
-    }
-
-    brand: {
-        icon: string
-    }
-    
-    header: {
-        borderRadius: string 
+        color: {
+            primary: string,
+            secondary: string
+        }
     }
 }
 
@@ -40,5 +33,10 @@ export interface Bonus {
     tips: string,
     slug: string,
     status: string,
-    freeSpins: number
+    freeSpins: number,
+    circular_image: {
+        url: string,
+        previewUrl: string,
+        name: string
+    }
 }

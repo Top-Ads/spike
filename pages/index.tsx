@@ -8,17 +8,19 @@ import FreeSlots from '../components/FreeSlots/indext'
 import { device } from '../utils/device'
 import { Bonus, Slot } from './api/interfaces'
 import SlotCard from '../components/Cards/SlotCard'
-import TopBonusCard from '../components/Cards/TopBonusCard'
+import BonusCard from '../components/Cards/BonusCard'
 import { getSlotsCard } from './api/slots'
 import AquaClient from './api/graphql/aquaClient'
-import { ALL_BONUS } from './api/graphql/queries/bonus'
+import { BONUSES } from './api/graphql/queries/bonus'
+import BonusTable from '../components/BonusTable'
 
 type PageProps = {
   slotsData: Slot [],
-  bonusData: Bonus []
+  topBonusData: Bonus [],
+  allBonusData: Bonus []
 }
 
-const IndexPage: FunctionComponent<PageProps> = ({slotsData, bonusData}) => {
+const IndexPage: FunctionComponent<PageProps> = ({slotsData, topBonusData, allBonusData}) => {
 
   return (
     <Layout title="Home">
@@ -28,6 +30,7 @@ const IndexPage: FunctionComponent<PageProps> = ({slotsData, bonusData}) => {
         <WelcomeContainer>
 
           <HeaderContainer>
+
             <IntroContainer>
               <h1>BENVENUTO SU SPIKE SLOT!</h1>
 
@@ -55,6 +58,7 @@ const IndexPage: FunctionComponent<PageProps> = ({slotsData, bonusData}) => {
                 width={624}
                 height={484}/>
             </ImageContainer>
+          
           </HeaderContainer>
     
           <p>
@@ -90,7 +94,7 @@ const IndexPage: FunctionComponent<PageProps> = ({slotsData, bonusData}) => {
 
         <GridsContainer>
           <GridSlots 
-            data={ bonusData.slice(0, 3).map( (bonus) => <TopBonusCard key={bonus.name} data={bonus}/> )}
+            data={ topBonusData.map( (bonus) => <BonusCard key={bonus.name} data={bonus}/> )}
             label="I top bonus dei casinò online in Italia."
             AlignItem={"center"}
             xs={12} sm={4} md={4}
@@ -99,15 +103,23 @@ const IndexPage: FunctionComponent<PageProps> = ({slotsData, bonusData}) => {
         </GridsContainer>
 
         <GridsContainer>
-            <p>
-              Se ti interessa sapere dove conviene maggiormente giocare alle slot machine online puoi dare
-              un'occhiata a questa comparazione dei migliori Bonus disponibili al momento:
-            </p>
-            <GridSlots
-              data={ [...Array(6)].map( () =>  <></> )}
-              padding={true} 
-              xs={12} sm={12} md={12}/>
-          </GridsContainer>
+            <p>Se ti interessa sapere dove conviene maggiormente giocare alle slot machine online puoi dare
+              un'occhiata a questa comparazione dei migliori Bonus disponibili al momento:</p>
+
+            <div className="bonus-table">
+              <BonusTable data={allBonusData}/>
+            </div>
+
+            <div className="bonus-list">
+              <GridSlots
+                data={ allBonusData.map( (bonus) => <BonusCard key={bonus.name} data={bonus}/> )}
+                AlignItem={"center"}
+                xs={12} sm={12} md={12}
+                showIndex={false}
+                height="100%"/>
+            </div>
+
+        </GridsContainer>
 
       </div> 
       
@@ -132,7 +144,7 @@ const IntroContainer = styled.div`
   display: inherit;
   flex-direction: column;
 
-  ul { color: #000; }
+  ul { color: ${({theme}) => theme.text.color.secondary};; }
 
   @media ${device.tablet} {
     h1 { font-size: 23px; }
@@ -172,6 +184,26 @@ const GridsContainer = styled.div`
   flex-direction: row;
   flex-wrap: wrap;
   color: ${({theme}) => theme.colors.primary};
+
+  .bonus-list {
+    display: none;
+  }
+
+  .bonus-table {
+    display: contents;
+  }
+
+  @media ${device.mobileL} {
+    .bonus-list {
+      display: contents;
+    }
+
+    .bonus-table {
+      display: none;
+    }
+  }
+
+ 
 `
 
 export async function getStaticProps() {
@@ -180,12 +212,18 @@ export async function getStaticProps() {
 
   const slotsRequest = await getSlotsCard()
 
-  const bonusRequest = await aquaClient.query({ query: ALL_BONUS, variables: { code: 'it' } })
+  const topBonusRequest = await aquaClient.query({ 
+    query: BONUSES, 
+    variables: { code: 'it', limit: 3, start: 0 } })
 
+  const allBonusRequest = await aquaClient.query({ 
+    query: BONUSES, 
+    variables: { code: 'it', limit: 15, start: 3 } })
   return {
     props: {
       slotsData: slotsRequest,
-      bonusData: bonusRequest.data.data.bonuses
+      topBonusData: topBonusRequest.data.data.bonuses,
+      allBonusData: allBonusRequest.data.data.bonuses
     }
   }
 }

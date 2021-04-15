@@ -38,19 +38,19 @@ const MainContainer = styled.div`
     margin: 20px 0px;
     padding: 10px;
 
-    p { color: #fff}
+    p { color: ${({theme}) => theme.text.color.primary};}
 `
 
 const ButtonContainer = styled.div`
     padding: 10px 20px;
     background-color: #ffcc03;
-    border: 1px solid #fff;
+    border: 1px solid ${({theme}) => theme.text.color.primary};;
     border-radius: 4px;
-    color: #000;
+    color: ${({theme}) => theme.text.color.secondary};;
     cursor: pointer;
 
     &: active {
-      color: #fff;
+      color: ${({theme}) => theme.text.color.primary};;
       background-color: ${({theme}) => theme.colors.primary};
     }
 `

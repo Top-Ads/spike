@@ -1,21 +1,19 @@
 import React, { Fragment, FunctionComponent } from 'react'
 import { useRouter } from 'next/router'
 import styled from 'styled-components'
-import { Bonus } from '../../../pages/api/interfaces';
-import StarOutlineIcon from '@material-ui/icons/StarOutline'
-import StarIcon from '@material-ui/icons/Star'
+import { Bonus } from '../../../pages/api/interfaces'
 import Image from 'next/image'
-import Divider from '../../Divider';
+import Divider from '../../Divider'
 
 type PageProps = {
    data: Bonus 
 };
 
 type BonusContainerType = {
-    bgColor?: string,
-    borderColor?: string
+    bgColor?: string
 }
-const TopBonusCard: FunctionComponent<PageProps> = ({data}) => { 
+
+const BonusCard: FunctionComponent<PageProps> = ({data}) => { 
     
     const router = useRouter()
 
@@ -27,37 +25,41 @@ const TopBonusCard: FunctionComponent<PageProps> = ({data}) => {
 
     return (
         <Fragment>
-            <BonusContainer borderColor={data.borderColor}>
-                
-                <RatingContainer>
-                    { [...Array(5)].map( (_value, index) =>
-                    data.rating > index ? 
-                    <StarIcon key={index} className="star-icon"/> : <StarOutlineIcon key={index} className="star-icon"/>)}
-                </RatingContainer>
-
-                <NameContainer bgColor={data.backgroundColor}> <h2>{data.name}</h2> </NameContainer>
-
-                <MainContainer>  
+            <BonusContainer>
+            
+                <NameContainer bgColor={data.backgroundColor}>
+                    <BonusImgContainer>
+                        <Image
+                            alt={data.name}
+                            src={data.circular_image.url}
+                            layout="responsive"
+                            priority={true}
+                            width={100}
+                            height={'auto'}/>
+                    </BonusImgContainer>
+                </NameContainer>
+        
+                <MainContainer>
                     <div className="space-around"> 
                         <LabelContainer>BONUS DI BENVENUTO</LabelContainer>
-                        <div>{data.description}</div>
+                        <BonusInfo>{data.description}</BonusInfo>
                     </div>
 
                     <div className="space-around">
                         <LabelContainer>BONUS SENZA DEPOSITO</LabelContainer>
-                        <div>{data.withDeposit}</div>
+                        <BonusInfo className="bonus-info">{data.withDeposit}</BonusInfo>
                     </div>
                 </MainContainer>
 
-                <Divider color="#fff" width="90%"/> 
+                <Divider color="#fff" width="90%"/>
 
-                <ButtonContainer bgColor={data.backgroundColor} borderColor={data.borderColor} onClick={linkToBonus}>
+                <ButtonContainer bgColor={data.backgroundColor} onClick={linkToBonus}>
                             ACEDI AL BONUS
                 </ButtonContainer>
 
                 <PaymentProviders>
                     {paymentProviders. map( (provider, index) => 
-                        <ThumbnailContainer key={index}>
+                        <PaymentImgContainer key={index}>
                             <Image
                                 alt={provider}
                                 src={'https://img.slotjava.it/wp-content/plugins/strove-casino/static/images/payment-providers/svg/' + provider + '.svg'} 
@@ -65,7 +67,7 @@ const TopBonusCard: FunctionComponent<PageProps> = ({data}) => {
                                 priority={true}
                                 width={30}
                                 height={30}/>
-                      </ThumbnailContainer>
+                      </PaymentImgContainer>
                     )}
                 </PaymentProviders>       
             
@@ -103,36 +105,26 @@ const LabelContainer = styled.div `
 const NameContainer = styled.div<BonusContainerType> `
     width: 100%;
     background-color: ${({bgColor}) => bgColor ? bgColor : 'inherit'};
-    color: white;
+    color: ${({theme}) => theme.text.color.primary};
     border-radius: 10px 10px 0px 0px;
-`
-
-const RatingContainer = styled.div `
-    position: absolute;
-    top: 7px;
-    left: 7px;
-
-    .star-icon {
-        font-size: 17px;
-        color: ${({theme}) => theme.colors.primary};
-    }
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 `
 
 const ButtonContainer = styled.div<BonusContainerType>`
     background-color: ${({bgColor}) => bgColor ? bgColor : 'inherit'};
-    border-color: ${({borderColor}) => borderColor ? borderColor : 'unset'};
-    border-width: ${({borderColor}) => borderColor ? '2px' : '0px'};
-    border-style: ${({borderColor}) => borderColor ? 'solid' : 'unset'};
-    color: #fff;
+    border: 1px solid #fff;
+    color: ${({theme}) => theme.text.color.primary};
     border-radius: 5px;
     font-weight: bold;
     cursor: pointer;
     padding: 10px;
-    width: fit-content;
+    width: max-content;
     margin: 10px 0px;
 
     &: hover {
-        color: #000;
+        color:${({theme}) => theme.text.color.secondary};
     }
 `
 
@@ -143,10 +135,19 @@ const PaymentProviders = styled.div `
     width: 100%;
 `
 
-const ThumbnailContainer = styled.div `
+const PaymentImgContainer = styled.div `
     height: 30px;
     width: 30px;
     margin: 0 5px;
 `
 
-export default TopBonusCard
+const BonusImgContainer = styled.div`
+    width: 80px;
+    margin: 10px 0px;
+`
+
+const BonusInfo = styled.div`
+    color: ${({theme}) => theme.text.color.secondary};;
+`
+
+export default BonusCard

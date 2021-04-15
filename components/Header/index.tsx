@@ -96,9 +96,9 @@ const HeaderContainer = styled.div`
   flex-direction: column;
   flex-wrap: wrap;
   background-image: linear-gradient(${({theme}) => theme.colors.primary}, ${({theme}) => theme.colors.gradient});
-  border-radius: ${({theme}) => theme.header.borderRadius};
+  border-radius: 0px 0px 20px 20px;
   box-shadow: 0px 0px 10px 10px rgb(0 0 0 / 40%);
-  color: ${({theme}) => theme.text.color};
+  color: ${({theme}) => theme.text.color.primary};
   padding: 10px 10%;
 `
 
@@ -140,8 +140,7 @@ const LegalContainer = styled.div`
     align-items: center;
     font-size: 10px;
     width: 220px;
-    font-family: Montserrat-light;
-     p { color: #fff; }
+     p { color: ${({theme}) => theme.text.color.primary}; }
   }
 
   @media ${device.tablet} {
@@ -174,7 +173,7 @@ const MenuContainer = styled.div`
   display: inherit;
   
   .icons {
-    color: #fff;
+    color: ${({theme}) => theme.text.color.primary};;
     font-size: 40px;
   }  
 `
@@ -193,7 +192,7 @@ const NavContainer = styled.nav<NavProps>`
   transition: max-height 0.2s linear;
 
   a { 
-    color: #fff;
+    color: ${({theme}) => theme.text.color.primary};
     margin: 0px 10px;
     padding: 8px 15px;
     border-radius: 10px;

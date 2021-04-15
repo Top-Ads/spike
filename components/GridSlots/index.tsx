@@ -55,8 +55,8 @@ type PageProps = {
     disableBorderRadius?: boolean,
     disableBoxShadow?: boolean,
     textAlign?: string,
-    padding?: boolean,
-}
+    padding?: boolean
+  }
 
 type LabelContainerType = {
   align?: string

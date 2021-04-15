@@ -4,21 +4,21 @@ import { StyledTheme } from "../pages/api/interfaces"
 export const GlobalStyle = createGlobalStyle`
 
     @font-face {
-        font-family: 'Montserrat';
-        src: local('Montserrat'), url(./fonts/Montserrat/Montserrat-Regular.ttf) format('ttf');
+        font-family: '';
+        src: local('Montserrat'), url(./fonts/) format('ttf');
         font-display: swap;
     }
 
     @font-face {
-        font-family: 'Montserrat-light';
-        src: local('Montserrat'), url(./fonts/Montserrat/Montserrat-ExtraLight.ttf) format('ttf');
+        font-family: '';
+        src: local('Montserrat'), url(./fonts/) format('ttf');
         font-display: swap;
     }
 
     body {
         height: 100%;
         width: 100%;
-        font-family : Montserrat;
+        font-family : Roboto;
         background-color: #f2f2f2;
         margin: 0 auto;
     }
@@ -31,29 +31,22 @@ export const GlobalStyle = createGlobalStyle`
 
     strong { color: #ff1313 }
 
-    p { color: #000; text-align: justify; }
+    p { color: #212530; text-align: justify; }
 `
 export const styledTheme: StyledTheme = {
 
     colors: {
         primary: "#ff1313",
-        secondary: "",
-        tertiary: "",
         gradient: "#ff5656"
     },
 
     text: {
-        primaryFont: 'Raleway',
-        secondaryFont: 'Kanit',
-        color: '#fff'
-    },
-
-    brand: {
-        icon: ''
-    },
-
-    header: {
-        borderRadius: '0px 0px 20px 20px'
+        primaryFont: 'Roboto',
+        secondaryFont: 'Raleway',
+        color: {
+            primary: '#fff',
+            secondary: '#212529'
+        }
     }
 }
 

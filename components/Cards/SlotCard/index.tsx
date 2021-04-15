@@ -93,7 +93,7 @@ const Banner = styled.div`
     align-items: flex-end;
     width: 100%;
     height: 100%;
-    color: white;
+    color: ${({theme}) => theme.text.color.primary};;
     position: absolute;
     top: 0;
     background-color: rgba(0,0,0,0.5);
@@ -120,7 +120,7 @@ const ThumbnailContainer = styled.div`
 const ButtonContainer = styled.div`
     background-color: ${({theme}) => theme.colors.primary};
     border: 2px solid #fff;
-    color: #fff;
+    color: ${({theme}) => theme.text.color.primary};;
     border-radius: 5px;
     cursor: pointer;
     width: 50%;
@@ -133,7 +133,7 @@ const ButtonContainer = styled.div`
     justify-content: center;
 
     &: hover, &: active {
-        color: #000;
+        color: ${({theme}) => theme.text.color.secondary};;
     }
 `
 
