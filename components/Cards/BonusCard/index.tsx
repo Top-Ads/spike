@@ -40,14 +40,14 @@ const BonusCard: FunctionComponent<PageProps> = ({data}) => {
                 </NameContainer>
         
                 <MainContainer>
-                    <div className="space-around"> 
+                    <div className="bonus"> 
                         <LabelContainer>BONUS DI BENVENUTO</LabelContainer>
-                        <BonusInfo>{data.description}</BonusInfo>
+                        <InfoContainer>{data.description}</InfoContainer>
                     </div>
 
-                    <div className="space-around">
+                    <div className="bonus">
                         <LabelContainer>BONUS SENZA DEPOSITO</LabelContainer>
-                        <BonusInfo className="bonus-info">{data.withDeposit}</BonusInfo>
+                        <InfoContainer className="bonus-info">{data.withDeposit}</InfoContainer>
                     </div>
                 </MainContainer>
 
@@ -89,7 +89,7 @@ const MainContainer = styled.div `
     justify-content: center;
     min-height: 200px;
       
-    .space-around {
+    .bonus {
         padding: 10px 5px;
         display: flex;
         flex-direction: column;
@@ -117,7 +117,6 @@ const NameContainer = styled.div<BonusContainerType> `
 
 const ButtonContainer = styled.div<BonusContainerType>`
     background-color: ${({bgColor}) => bgColor ? bgColor : 'inherit'};
-    border: 1px solid #fff;
     color: ${({theme}) => theme.text.color.primary};
     border-radius: 5px;
     font-weight: bold;
@@ -151,7 +150,7 @@ const BonusImgContainer = styled.div`
     margin: 10px 0px;
 `
 
-const BonusInfo = styled.div`
+const InfoContainer = styled.div`
     color: ${({theme}) => theme.text.color.secondary};;
 `
 

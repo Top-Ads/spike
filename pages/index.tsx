@@ -1,4 +1,5 @@
 import React, { FunctionComponent } from 'react'
+import { useRouter } from 'next/router'
 import Image from 'next/image'
 import styled from 'styled-components'
 import GridSlots from '../components/GridSlots'
@@ -22,6 +23,8 @@ type PageProps = {
 
 const IndexPage: FunctionComponent<PageProps> = ({slotsData, topBonusData, allBonusData}) => {
 
+  const router = useRouter()
+
   return (
     <Layout title="Home">
 
@@ -43,8 +46,8 @@ const IndexPage: FunctionComponent<PageProps> = ({slotsData, topBonusData, allBo
                 </ul>
               </div>
 
-              <ButtonContainer>
-                    <span>Via alla lista completa delle slot</span>
+              <ButtonContainer onClick={ () => router.push('/slots')}>
+                    <span>lista completa delle slot</span>
               </ButtonContainer>
               
             </IntroContainer>
@@ -144,8 +147,8 @@ const IntroContainer = styled.div`
 
   ul { color: ${({theme}) => theme.text.color.secondary};; }
 
-  @media ${device.tablet} {
-    h1 { font-size: 23px; }
+  @media ${device.mobileL} {
+    h1 { text-align: center; }
     align-items: center;
   } 
 `
@@ -157,9 +160,11 @@ const ButtonContainer = styled.div`
     border-radius: 5px;
     font-weight: normal;
     cursor: pointer;
-    padding: 10px;
+    padding: 20px;
     width: fit-content;
-    
+    text-transform: uppercase;
+    margin: auto 0;
+
     &: hover {
       box-shadow: 0px 0px 5px 5px rgba(33,37,41,0.4);
       -webkit-box-shadow: 0px 0px 5px 5px rgba(33,37,41,0.4);
@@ -175,12 +180,13 @@ const HeaderContainer = styled.div`
 `
 
 const ImageContainer = styled.div`
-  width: 550px;
-  margin: 10px 0px;
+  width: 470px;
+  margin: 20px auto;
 
   @media ${device.laptop} {
-    width: 340px;
+    max-width: 335px;
   }
+
 `
 
 const GridsContainer = styled.div`
@@ -206,8 +212,6 @@ const GridsContainer = styled.div`
       display: none;
     }
   }
-
- 
 `
 
 export async function getStaticProps() {

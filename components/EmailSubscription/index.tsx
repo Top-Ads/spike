@@ -2,6 +2,7 @@ import React, { Fragment } from 'react'
 import styled from 'styled-components'
 import TextInput from '../Inputs/Textfield'
 import CheckboxInput from '../Inputs/Checkbox'
+import { device } from '../../utils/device'
 
 const EmailSubcription = () => { 
     
@@ -32,13 +33,18 @@ const MainContainer = styled.div`
     border: 2px solid #fff;
     border-radius: 10px;
     max-width: 270px;
+
+    @media ${device.mobileS} {
+      max-width: 235px;
+    }
+
     display: flex;
     flex-direction: column;
     align-items: center;
     margin: 20px 0px;
     padding: 10px;
 
-    p { color: ${({theme}) => theme.text.color.primary};}
+    p { color: ${({theme}) => theme.text.color.primary}; }
 `
 
 const ButtonContainer = styled.div`

@@ -61,6 +61,7 @@ const QuestionContainer = styled.div`
     align-items: center;
     justify-content: center;
     height: 60px;
+    padding: 10px;
 `
 
 const AnswerContainer = styled.div<AnswerContainerType>`
@@ -68,10 +69,12 @@ const AnswerContainer = styled.div<AnswerContainerType>`
     overflow: hidden;
     transition: max-height 0.2s linear;
     text-align: left;
-
+    
     p {
         margin: 12px;
         color: inherit;
+        font-style: italic;
+        font-weight: lighter;
     }
 `
 

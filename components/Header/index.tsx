@@ -19,6 +19,8 @@ const Header = () => {
 
   const handleMenu = () => setShowNav(!showNav)
   
+  const [overlay, setOverlay] = useState<boolean>(false)
+
   return (
     <Fragment>
       <header>
@@ -51,9 +53,15 @@ const Header = () => {
               </div>
             </LegalContainer>
 
+            { overlay ? <OverlayContainer/> : '' }
+            
             <SearchContainer>
               <div className="text-input">
-                <TextInput searchIcon={true} placeholder="cerca una slot, un casino..."/>
+                <TextInput 
+                  searchIcon={true}
+                  placeholder="cerca una slot, un casino..."
+                  handleOnFocus={() => setOverlay(true)}
+                  handleOnBlur={() => setOverlay(false)}/>
               </div>
 
               <SearchIcon className="search-icon" style={{ color: '#ec564', fontSize: '40px', cursor: 'pointer'}}/> 
@@ -68,22 +76,21 @@ const Header = () => {
           
           </MainContainer>
           
-          <Fragment>
-            <NavContainer expand={showNav}>
-            <Divider color={'#fff'}/>
+          <NavContainer expand={showNav}>
+              <Divider color={'#fff'}/>
 
               <Link href={'/'}>
-                  <a>Home</a>
-              </Link>
-              <Link href={'/video'}>
-                  <a>Video</a>
-              </Link>
-              <Link href={'/slots'}>
-                  <a>Giochi Slot Machine Gratis</a>
+                  <a><ButtonContainer>Home</ButtonContainer></a>
               </Link>
 
+              <Link href={'/video'}>
+                  <a><ButtonContainer>Video</ButtonContainer></a>
+              </Link>
+
+              <Link href={'/slots'}>
+                  <a><ButtonContainer>Giochi Slot Machine Gratis</ButtonContainer></a>
+              </Link>
             </NavContainer> 
-          </Fragment>
 
         </HeaderContainer>
       </header>
@@ -109,6 +116,7 @@ const MainContainer = styled.div`
   align-items: center;
   height: auto;
   width: 100%;
+  margin: 5px 0px;
 `
 
 const LogoContainer = styled.div`    
@@ -139,7 +147,7 @@ const LegalContainer = styled.div`
     display: inherit;
     align-items: center;
     font-size: 10px;
-    width: 220px;
+    width: 160px;
      p { color: ${({theme}) => theme.text.color.primary}; }
   }
 
@@ -148,10 +156,20 @@ const LegalContainer = styled.div`
   } 
 `
 
+const OverlayContainer = styled.div`    
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0,0,0,.25);
+  z-index: 99;
+`
+
 const SearchContainer = styled.div` 
   display: inherit;
   flex-grow: 0;
-  margin: auto 10px;
+  z-index: 100;
 
   .search-icon {
     display: none;
@@ -171,6 +189,7 @@ const MenuContainer = styled.div`
   cursor: pointer; 
   align-items: center;
   display: inherit;
+  margin-left: 10px;
   
   .icons {
     color: ${({theme}) => theme.text.color.primary};;
@@ -183,27 +202,23 @@ const NavContainer = styled.nav<NavProps>`
   flex-wrap: inherit;
   flex-direction: row;
   flex-grow: 0;
-  justify-content: center;
- 
+  justify-content: flex-start;
   height: auto;
   max-height: ${({expand}) => expand ? "120px" : "0px"};
-  
-  overflow: hidden;
-  transition: max-height 0.2s linear;
+  transition: max-height 0.2s linear; 
+  overflow: ${({expand}) => expand ? "visible" : "hidden"};;
+`
 
-  a { 
+const ButtonContainer = styled.div`
     color: ${({theme}) => theme.text.color.primary};
     margin: 0px 10px;
-    padding: 8px 15px;
-    border-radius: 10px;
-    font-size: 17px;
+    padding: 10px 15px;
     font-weight: bold;
-  }
 
-  a:hover {
-    color: ${({theme}) => theme.colors.primary};
-    background-color: #fff;
-  }
+    &:hover {
+      color: ${({theme}) => theme.colors.primary};
+      background-color: #fff;
+    }
 `
 
 export default Header

@@ -126,7 +126,7 @@ const ButtonContainer = styled.div`
     width: 50%;
     height: 25px;
     margin: 5px;
-    font-size: 10px;
+    font-size: 9px;
     font-weight: bold;
     align-items: center;
     display: inherit;

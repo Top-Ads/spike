@@ -25,7 +25,7 @@ type BonusContainerType = {
 const StyledTableCell = withStyles((theme: Theme) =>
   createStyles({
     root: {
-      fontFamily: 'Roboto',
+      fontFamily: 'inherit',
       fontWeight: 'bold'
     },
     head: {
@@ -51,7 +51,7 @@ const StyledTableRow = withStyles((theme: Theme) =>
 
 const useStyles = makeStyles({
   table: {
-    minWidth: 700,
+    minWidth: 690,
   },
 })
 
@@ -82,7 +82,7 @@ const BonusTable: FunctionComponent<PageProps> = ({data}) => {
           {data.map((row, index) => (
               <StyledTableRow key={index}>
 
-                <StyledTableCell scope="row">{index+1}</StyledTableCell>
+                <StyledTableCell scope="row"><IndexContainer>{index+1}</IndexContainer></StyledTableCell>
 
                 <StyledTableCell component="th" >
                   <BonusImgContainer>
@@ -131,6 +131,18 @@ const BonusTable: FunctionComponent<PageProps> = ({data}) => {
   )
 }
 
+const IndexContainer = styled.div`
+  border: 2px solid #ff1313;
+  color: white;
+  background-color: #ff1313;
+  border-radius: 69px;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`
+
 const BonusImgContainer = styled.div`
     width: 60px;
 `
@@ -148,7 +160,7 @@ const ButtonContainer = styled.div<BonusContainerType>`
       box-shadow: 0px 0px 5px 5px rgba(33,37,41,0.4);
       -webkit-box-shadow: 0px 0px 5px 5px rgba(33,37,41,0.4);
       -moz-box-shadow: 0px 0px 5px 5px rgba(33,37,41,0.4);
-  }
+    }
 `
 
 const LicenceContainer = styled.div`

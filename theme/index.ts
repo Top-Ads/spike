@@ -3,16 +3,16 @@ import { StyledTheme } from "../pages/api/interfaces"
 
 export const GlobalStyle = createGlobalStyle`
 
-    /* @font-face {
+    @font-face {
         font-family: '';
-        src: local('Montserrat'), url(./fonts/) format('ttf');
+        src: local('Montserrat'), url(./fonts/Montserrat-Black) format('ttf');
         font-display: swap;
-    } */
+    }
 
     body {
         height: 100%;
         width: 100%;
-        font-family : Roboto;
+        font-family: Montserrat, sans-serif;
         background-color: #f2f2f2;
         margin: 0 auto;
     }
@@ -25,7 +25,7 @@ export const GlobalStyle = createGlobalStyle`
 
     strong { color: #ff1313 }
 
-    p { color: #212530; text-align: justify; }
+    p { color: #212530; }
 `
 export const styledTheme: StyledTheme = {
 
@@ -40,7 +40,7 @@ export const styledTheme: StyledTheme = {
         color: {
             primary: '#fff',
             secondary: '#212529'
-        }
+        }    
     }
 }
 

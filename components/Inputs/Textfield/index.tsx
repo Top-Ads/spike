@@ -4,21 +4,16 @@ import SearchIcon from '@material-ui/icons/Search'
 
 const useStyles = makeStyles(() =>
   createStyles({
-    root: {
-      display: 'flex',
-      flexWrap: 'wrap',
-      justifyContent: 'flex-end',
-    },
     textField: {
         width: '30ch',
         backgroundColor: "inherit",
-        borderRadius: '10px',
 
         '& .MuiInputBase-root': {
             backgroundColor: '#fff',
             color: '#ec564f',
             fontSize: '14px',
-            fontWeight: 'bold'
+            fontWeight: 'bold',
+            borderRadius: '20px'
         },
         '& .MuiOutlinedInput-notchedOutline': {
             border: 0
@@ -41,10 +36,14 @@ const useStyles = makeStyles(() =>
 type PageProps = {
   sm?: boolean,
   searchIcon?: boolean,
-  placeholder?: string
+  placeholder?: string,
+  handleOnFocus?: Function,
+  handleOnBlur?: Function
 }
 
-const TextInput: FunctionComponent<PageProps> = ({sm, searchIcon, placeholder}) => {
+const TextInput: FunctionComponent<PageProps> = (props) => {
+
+    const {sm, searchIcon, placeholder, handleOnFocus, handleOnBlur} = props;
 
     const classes = useStyles()
         
@@ -59,13 +58,15 @@ const TextInput: FunctionComponent<PageProps> = ({sm, searchIcon, placeholder}) 
 
     return (
         <Fragment>
-            <form className={classes.root} noValidate>
+            <form noValidate>
                 <TextField 
                     className={classes.textField}
                     size={sm ? "small" : "medium"}
                     variant="outlined"
                     placeholder={placeholder ? placeholder : '' }
                     onChange={handleChange}
+                    onFocus={() => handleOnFocus ? handleOnFocus() : ''}
+                    onBlur={() => handleOnBlur ? handleOnBlur() : ''}
                     InputProps={searchIcon ? {
                         endAdornment: (
                           <InputAdornment position="end">

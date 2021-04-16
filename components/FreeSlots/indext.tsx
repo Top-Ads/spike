@@ -31,7 +31,9 @@ const FreeSlots = () => {
 
             <GridsContainer>
               <GridSlots
-            data={ [...Array(5)].map( (_value, index) => <FreeCard key={index} /> )}
+                label="I migliori casinò con giri gratis."
+                AlignItem="center"
+                data={ [...Array(5)].map( (_value, index) => <FreeCard key={index} /> )}
                 width={"150px"}
                 xs={12} sm={12} md={12}/>
             </GridsContainer>
