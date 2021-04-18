@@ -75,7 +75,7 @@ const SlotContainer = styled.div`
     position: relative;
     list-style-type: none;
     cursor: pointer;
-    border-radius: 10px 10px 0px 0px;
+    border-radius: 8px 8px 0px 0px;
     overflow: hidden;
 `
 
@@ -109,12 +109,12 @@ const IconContainer = styled.div`
     position: absolute;
     right: 4px;
     top: 4px;
-    z-index:2;
+    z-index: 2;
 `
 
 const ThumbnailContainer = styled.div` 
   z-index: 1;
-  img { border-radius: 10px 10px 0px 0px; }
+  img { border-radius: 8px 8px 0px 0px; }
 `
 
 const ButtonContainer = styled.div`
@@ -132,7 +132,7 @@ const ButtonContainer = styled.div`
     display: inherit;
     justify-content: center;
 
-    &: hover {
+    &:hover {
         box-shadow: 0px 0px 5px 5px rgba(255,255,255,0.4);
         -webkit-box-shadow: 0px 0px 5px 5px rgba(255,255,255,0.4);
         -moz-box-shadow: 0px 0px 5px 5px rgba(255,255,255,0.4);

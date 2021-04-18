@@ -38,10 +38,10 @@ const IndexPage: FunctionComponent<PageProps> = ({slotsData, topBonusData, allBo
               <h1>BENVENUTO SU SPIKE SLOT!</h1>
 
               <div>
-                <p><span><strong>Benvenuto</strong>  sono Spike e sul mio sito puoi:</span></p>
+                <p><span><strong>Benvenuto</strong>sono Spike e sul mio sito puoi:</span></p>
                 <ul>
-                  <li>Trovare i migliori casino online</li>
-                  <li>Ricivere offerte bonus esclusive</li>
+                  <li>Trovare i migliori casino online.</li>
+                  <li>Ricivere offerte bonus esclusive.</li>
                   <li>Giocare gratis alle slot machine famose.</li>
                 </ul>
               </div>
@@ -165,7 +165,7 @@ const ButtonContainer = styled.div`
     text-transform: uppercase;
     margin: auto 0;
 
-    &: hover {
+    &:hover {
       box-shadow: 0px 0px 5px 5px rgba(33,37,41,0.4);
       -webkit-box-shadow: 0px 0px 5px 5px rgba(33,37,41,0.4);
       -moz-box-shadow: 0px 0px 5px 5px rgba(33,37,41,0.4);

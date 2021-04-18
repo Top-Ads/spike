@@ -10,10 +10,11 @@ type PageProps = {
 
 const LikeIcon: FunctionComponent<PageProps> = ({strokeColor, fillColor, active, setActive}) => { 
     
-    const [fill, setFill] = useState<string>(active? fillColor : "transparent")
+    const [fill, setFill] = useState<string>(active ? fillColor : "transparent")
 
     const handleClick = (event: React.SyntheticEvent<HTMLElement>) => {
         event.stopPropagation()
+
         setActive()
         setFill(active ? "transparent" : fillColor)
     }
@@ -35,7 +36,7 @@ const LikeIcon: FunctionComponent<PageProps> = ({strokeColor, fillColor, active,
 }
 
 const LikeContainer = styled.div`
-  &: hover {
+  &:hover {
       svg > g > path { 
           fill: #ff1313
       }

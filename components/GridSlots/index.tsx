@@ -4,6 +4,7 @@ import Paper from '@material-ui/core/Paper'
 import Grid, { GridSize } from '@material-ui/core/Grid'
 import Divider from '../Divider'
 import styled from 'styled-components'
+import RankingCard from '../Cards/RankingCard'
 
 const useStyles = makeStyles<Theme, PageProps>(() =>
   createStyles({
@@ -18,25 +19,10 @@ const useStyles = makeStyles<Theme, PageProps>(() =>
       fontWeight: 'bold',
       color: "#fff",
       height: 'auto',
-      borderRadius: ({disableBorderRadius}) => disableBorderRadius ? '0px' : '10px',
+      borderRadius: ({disableBorderRadius}) => disableBorderRadius ? '0px' : '8px',
       boxShadow: ({disableBoxShadow}) => disableBoxShadow ? 'none' : 'auto',
       backgroundColor: '#ff1313',
-      position: 'relative',
-      '& .card-index': {
-        top: '-10px',
-        right: '0px',
-        position: 'absolute',
-        fontSize: '22px',
-        border: '2px solid #ff1313',
-        color: '#fff',
-        backgroundColor: '#ff1313',
-        borderRadius: '69px',
-        width: '30px',
-        height: '30px',
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center'
-      }
+      position: 'relative'
     }
   }),
 );
@@ -77,11 +63,9 @@ const GridSlots: FunctionComponent<PageProps> = (props) => {
              <Grid item xs={xs} sm={sm} md={md} key={index}>
                 <Paper className={classes.paper}>
                     {showIndex ? 
-                      <div className="card-index">
-                        {index+1}
-                      </div> 
-                    : '' }
-
+                      <div style={{position: 'absolute', top: '-10px', right: '0px'}}>
+                        <RankingCard index={index+1} />
+                      </div> : '' }
                     {value}
                 </Paper>
             </Grid>

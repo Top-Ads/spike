@@ -13,6 +13,7 @@ import Paper from '@material-ui/core/Paper'
 import { Bonus } from '../../pages/api/interfaces'
 import styled from 'styled-components'
 import RatingStars from '../RatingStars'
+import RankingCard from '../Cards/RankingCard'
 
 type PageProps = {
     data: Bonus[]
@@ -82,7 +83,9 @@ const BonusTable: FunctionComponent<PageProps> = ({data}) => {
           {data.map((row, index) => (
               <StyledTableRow key={index}>
 
-                <StyledTableCell scope="row"><IndexContainer>{index+1}</IndexContainer></StyledTableCell>
+                <StyledTableCell scope="row">
+                  <RankingCard index={index+1} />
+                </StyledTableCell>
 
                 <StyledTableCell component="th" >
                   <BonusImgContainer>
@@ -131,18 +134,6 @@ const BonusTable: FunctionComponent<PageProps> = ({data}) => {
   )
 }
 
-const IndexContainer = styled.div`
-  border: 2px solid #ff1313;
-  color: white;
-  background-color: #ff1313;
-  border-radius: 69px;
-  width: 30px;
-  height: 30px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-`
-
 const BonusImgContainer = styled.div`
     width: 60px;
 `
@@ -156,7 +147,7 @@ const ButtonContainer = styled.div<BonusContainerType>`
     padding: 10px;
     width: max-content;
 
-    &: hover {
+    &:hover {
       box-shadow: 0px 0px 5px 5px rgba(33,37,41,0.4);
       -webkit-box-shadow: 0px 0px 5px 5px rgba(33,37,41,0.4);
       -moz-box-shadow: 0px 0px 5px 5px rgba(33,37,41,0.4);

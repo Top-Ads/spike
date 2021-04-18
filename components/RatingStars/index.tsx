@@ -4,7 +4,7 @@ import StarOutlineIcon from '@material-ui/icons/StarOutline'
 import StarIcon from '@material-ui/icons/Star'
 
 type PageProps = {
-   size?: number
+   size?: number,
    rating: number
 };
 
@@ -21,6 +21,7 @@ const RatingStars: FunctionComponent<PageProps> = ({size, rating}) => {
 
 const RatingContainer = styled.div`
     width: max-content;
+
     .star-icon {
         font-size: 17px;
         color: ${({theme}) => theme.colors.primary};
