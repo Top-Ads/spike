@@ -4,7 +4,7 @@ import { StyledTheme } from "../pages/api/interfaces"
 export const GlobalStyle = createGlobalStyle`
 
     @font-face {
-        font-family: '';
+        font-family: 'Montserrat';
         src: local('Montserrat'), url(./fonts/Montserrat-Black) format('ttf');
         font-display: swap;
     }
@@ -35,11 +35,10 @@ export const styledTheme: StyledTheme = {
     },
 
     text: {
-        primaryFont: 'Roboto',
-        secondaryFont: 'Raleway',
+        primaryFont: 'Montserrat, sans-serif',
         color: {
             primary: '#fff',
-            secondary: '#212529'
+            secondary: '#212530'
         }    
     }
 }

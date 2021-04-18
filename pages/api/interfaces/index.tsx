@@ -6,7 +6,6 @@ export interface StyledTheme {
 
     text: {
         primaryFont: string,
-        secondaryFont: string,
         color: {
             primary: string,
             secondary: string

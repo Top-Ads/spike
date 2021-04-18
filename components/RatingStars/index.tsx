@@ -1,5 +1,5 @@
 import React, { FunctionComponent } from 'react'
-import styled from 'styled-components';
+import styled from 'styled-components'
 import StarOutlineIcon from '@material-ui/icons/StarOutline'
 import StarIcon from '@material-ui/icons/Star'
 

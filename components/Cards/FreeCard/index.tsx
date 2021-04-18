@@ -1,7 +1,6 @@
 import React, { Fragment, FunctionComponent } from 'react'
 
 type PageProps = {
-   
 };
 
 const FreeCard: FunctionComponent<PageProps> = () => { 

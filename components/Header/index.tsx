@@ -8,6 +8,7 @@ import CloseIcon from '@material-ui/icons/Close'
 import Link from 'next/link'
 import { device } from '../../utils/device'
 import SearchIcon from '@material-ui/icons/Search'
+import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder'
 
 type NavProps = {
   expand: boolean
@@ -19,6 +20,8 @@ const Header = () => {
 
   const handleMenu = () => setShowNav(!showNav)
   
+  const handleFavorites = () => null
+
   const [overlay, setOverlay] = useState<boolean>(false)
 
   return (
@@ -69,9 +72,9 @@ const Header = () => {
             </SearchContainer>
            
             <MenuContainer>
+              <FavoriteBorderIcon className='icons' onClick={handleFavorites}/>
               {showNav ? 
-                   <CloseIcon className='icons' onClick={handleMenu}/> :
-                   <MenuIcon className='icons' onClick={handleMenu}/> }
+                <CloseIcon className='icons' onClick={handleMenu}/> : <MenuIcon className='icons' onClick={handleMenu}/> }
             </MenuContainer>
           
           </MainContainer>
@@ -123,9 +126,9 @@ const LogoContainer = styled.div`
   display: inherit;
   flex-grow: 1;
   position: relative;
-  height: 60px;
   width: 100px; 
-  
+  height: 60px;
+
   @media ${device.tablet} {
     height: 40px;
   }
@@ -133,6 +136,11 @@ const LogoContainer = styled.div`
 
 const LegalContainer = styled.div`
   display: inherit;
+
+  @media ${device.tablet} {
+    display: none;
+  }
+
   align-items: inherit;
   flex-grow: 2;
   flex-wrap: inherit;
@@ -150,10 +158,6 @@ const LegalContainer = styled.div`
     width: 160px;
      p { color: ${({theme}) => theme.text.color.primary}; }
   }
-
-  @media ${device.tablet} {
-    display: none;
-  } 
 `
 
 const OverlayContainer = styled.div`    
@@ -189,11 +193,16 @@ const MenuContainer = styled.div`
   cursor: pointer; 
   align-items: center;
   display: inherit;
-  margin-left: 10px;
   
   .icons {
     color: ${({theme}) => theme.text.color.primary};;
     font-size: 40px;
+
+    @media ${device.mobileL} {
+      font-size: 35px;
+    }
+
+    margin-left: 5px;
   }  
 `
 

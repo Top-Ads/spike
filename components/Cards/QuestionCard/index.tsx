@@ -1,5 +1,5 @@
 import React, { Fragment, FunctionComponent, useEffect, useState } from 'react'
-import styled from 'styled-components';
+import styled from 'styled-components'
 
 type PageProps = {
    data: any,
@@ -43,7 +43,6 @@ const QuestionCard: FunctionComponent<PageProps> = ({data, triggerCollpase, coll
                 <AnswerContainer show={show}><p>{data.answer}</p></AnswerContainer>
 
             </MainContainer>
-
         </Fragment>
     ) 
 }
@@ -57,7 +56,7 @@ const MainContainer = styled.div`
 `
 
 const QuestionContainer = styled.div`
-    display: flex;
+    display: inherit;
     align-items: center;
     justify-content: center;
     height: 60px;

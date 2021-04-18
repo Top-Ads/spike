@@ -14,7 +14,7 @@ const GameCard: FunctionComponent<PageProps> = ({data}) => {
     const router = useRouter()
 
     const [showBanner, setShowBanner] = useState<boolean>(false)
-    const [likeOnClick, setLikeOnClick] = useState<boolean>(false)
+    const [activeLike, setActiveLike] = useState<boolean>(false)
 
     const playSlot = () => {
 
@@ -25,21 +25,21 @@ const GameCard: FunctionComponent<PageProps> = ({data}) => {
 
     }
  
-    const handleLikeClick = () => {
-        setLikeOnClick(!likeOnClick)
+    const handleActiveLike = () => {
+        setActiveLike(!activeLike)
     }
 
     return (
         <Fragment>
-            <SlotContainer 
+            <MainContainer 
                 onClick={playSlot}
                 onMouseEnter={ () => setShowBanner(true)}
                 onMouseLeave={ () => setShowBanner(false)}
                 onTouchStart={ () => setShowBanner(!showBanner)}>
                 
-                { showBanner || likeOnClick ?
+                { showBanner || activeLike ?
                 <IconContainer>  
-                    <LikeIcon setActive={handleLikeClick} fillColor="#ff1313" strokeColor="#ff1313" active={likeOnClick}/>
+                    <LikeIcon setActive={handleActiveLike} active={activeLike}/>
                 </IconContainer> : '' } 
                
                 <ThumbnailContainer>
@@ -62,7 +62,7 @@ const GameCard: FunctionComponent<PageProps> = ({data}) => {
                         </ButtonContainer>
                     </Banner> : '' } 
 
-            </SlotContainer>
+            </MainContainer>
 
             <TitleContainer>
                     {data.gameName}
@@ -71,7 +71,7 @@ const GameCard: FunctionComponent<PageProps> = ({data}) => {
     ) 
 }
 
-const SlotContainer = styled.div`
+const MainContainer = styled.div`
     position: relative;
     list-style-type: none;
     cursor: pointer;
@@ -93,7 +93,7 @@ const Banner = styled.div`
     align-items: flex-end;
     width: 100%;
     height: 100%;
-    color: ${({theme}) => theme.text.color.primary};;
+    color: ${({theme}) => theme.text.color.primary};
     position: absolute;
     top: 0;
     background-color: rgba(0,0,0,0.5);
