@@ -1,12 +1,13 @@
-import { createStyles, InputAdornment, makeStyles, TextField } from '@material-ui/core'
+import { createStyles, InputAdornment, makeStyles, TextField, Theme } from '@material-ui/core'
 import React, { Fragment, FunctionComponent } from 'react'
 import SearchIcon from '@material-ui/icons/Search'
 
-const useStyles = makeStyles(() =>
+const useStyles = makeStyles<Theme, PageProps>(() =>
   createStyles({
     textField: {
-        width: '30ch',
+        width: ({width}) => width ? width : '30ch',
         backgroundColor: "inherit",
+        zIndex: 999,
 
         '& .MuiInputBase-root': {
             backgroundColor: '#fff',
@@ -19,7 +20,7 @@ const useStyles = makeStyles(() =>
             border: 0
         },
         '& input::placeholder': {
-          fontSize: '11px'
+            fontSize: '11px'
         },
         '& .MuiInputBase-input-focus': {
             color: '#000'
@@ -38,17 +39,19 @@ type PageProps = {
   searchIcon?: boolean,
   placeholder?: string,
   handleOnFocus?: Function,
-  handleOnBlur?: Function
+  handleOnBlur?: Function,
+  width?: string,
+  autoFocus?: boolean
 }
 
 const TextInput: FunctionComponent<PageProps> = (props) => {
 
-    const {sm, searchIcon, placeholder, handleOnFocus, handleOnBlur} = props;
+    const {sm, searchIcon, placeholder, handleOnFocus, handleOnBlur, autoFocus} = props;
 
-    const classes = useStyles()
+    const classes = useStyles(props)
         
     const search = () => {
-      console.log("SEARCH");
+      console.log("SEARCH ICON CLICKED");
     }
 
     const handleChange =  (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -60,6 +63,7 @@ const TextInput: FunctionComponent<PageProps> = (props) => {
         <Fragment>
             <form noValidate>
                 <TextField 
+                    autoFocus={autoFocus ? autoFocus : false}
                     className={classes.textField}
                     size={sm ? "small" : "medium"}
                     variant="outlined"

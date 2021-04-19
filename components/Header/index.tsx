@@ -17,68 +17,85 @@ type NavProps = {
 const Header = () => { 
   
   const [showNav, setShowNav] = useState<boolean>(false)
+  const [showSearchMobile, setShowSearchMobile] = useState<boolean>(false)
+  const [overlay, setOverlay] = useState<boolean>(false)
 
   const handleMenu = () => setShowNav(!showNav)
   
   const handleFavorites = () => null
-
-  const [overlay, setOverlay] = useState<boolean>(false)
 
   return (
     <Fragment>
       <header>
         <HeaderContainer>
 
-          <MainContainer>
+          { showSearchMobile ? 
 
-            <LogoContainer>
-              <Image
-                alt="Casino Legal Information"
-                src="/svg/logo-spike.svg"
-                layout="fill"
-                priority={true}
-              />
-            </LogoContainer>
-            
-            <LegalContainer>
-              <div className="legal-image">
-                <Image
-                  alt="Casino Legal Information"
-                  src="/png/it-legal-logos.png"
-                  layout="responsive"
-                  priority={true}
-                  width={295}
-                  height={56}
-                />
-              </div>
-              <div className="legal-text">
-                <p>Il gioco e vietato ai minori e puo causare dipendenza patologica - probabilita di vincita</p>
-              </div>
-            </LegalContainer>
+              <Fragment>
+                <OverlayContainer/> 
+                <TextInput
+                      autoFocus={true}
+                      width="100%" 
+                      searchIcon={true}
+                      placeholder="cerca una slot, un casino..."
+                      handleOnBlur={() => setShowSearchMobile(false)}/>
+              </Fragment> :
 
-            { overlay ? <OverlayContainer/> : '' }
-            
-            <SearchContainer>
-              <div className="text-input">
-                <TextInput 
-                  searchIcon={true}
-                  placeholder="cerca una slot, un casino..."
-                  handleOnFocus={() => setOverlay(true)}
-                  handleOnBlur={() => setOverlay(false)}/>
-              </div>
+              <MainContainer>
 
-              <SearchIcon className="search-icon" style={{ color: '#ec564', fontSize: '40px', cursor: 'pointer'}}/> 
+                <LogoContainer>
+                  <Image
+                    alt="Casino Legal Information"
+                    src="/svg/logo-spike.svg"
+                    layout="fill"
+                    priority={true}
+                  />
+                </LogoContainer>
+                
+                <LegalContainer>
+                  <div className="legal-image">
+                    <Image
+                      alt="Casino Legal Information"
+                      src="/png/it-legal-logos.png"
+                      layout="responsive"
+                      priority={true}
+                      width={295}
+                      height={56}
+                    />
+                  </div>
+                  <div className="legal-text">
+                    <p>Il gioco e vietato ai minori e puo causare dipendenza patologica - probabilita di vincita</p>
+                  </div>
+                </LegalContainer>
 
-            </SearchContainer>
-           
-            <MenuContainer>
-              <FavoriteBorderIcon className='icons' onClick={handleFavorites}/>
-              {showNav ? 
-                <CloseIcon className='icons' onClick={handleMenu}/> : <MenuIcon className='icons' onClick={handleMenu}/> }
-            </MenuContainer>
+                { overlay ? <OverlayContainer/> : '' }
+                
+                <SearchContainer>
+                  <div className="text-input">
+                    <TextInput 
+                      searchIcon={true}
+                      placeholder="cerca una slot, un casino..."
+                      handleOnFocus={() => setOverlay(true)}
+                      handleOnBlur={() => setOverlay(false)}/>
+                  </div>
+
+                  <SearchIcon 
+                    className="search-icon" 
+                    style={{ color: '#ec564', fontSize: '40px', cursor: 'pointer'}}
+                    onClick={() => setShowSearchMobile(true)}/> 
+
+                </SearchContainer>
+              
+                <MenuContainer>
+                  <FavoriteBorderIcon className='icons' onClick={handleFavorites}/>
+                  {showNav ? 
+                    <CloseIcon className='icons' onClick={handleMenu}/> : <MenuIcon className='icons' onClick={handleMenu}/> }
+                </MenuContainer>
+
+              </MainContainer>
           
-          </MainContainer>
-          
+          }       
+
           <NavContainer expand={showNav}>
               <Divider color={'#fff'}/>
 
@@ -93,7 +110,7 @@ const Header = () => {
               <Link href={'/slots'}>
                   <a><ButtonContainer>Giochi Slot Machine Gratis</ButtonContainer></a>
               </Link>
-            </NavContainer> 
+           </NavContainer> 
 
         </HeaderContainer>
       </header>
@@ -173,7 +190,6 @@ const OverlayContainer = styled.div`
 const SearchContainer = styled.div` 
   display: inherit;
   flex-grow: 0;
-  z-index: 100;
 
   .search-icon {
     display: none;
