@@ -17,7 +17,7 @@ type NavProps = {
 const Header = () => { 
   
   const [showNav, setShowNav] = useState<boolean>(false)
-  const [showSearchMobile, setShowSearchMobile] = useState<boolean>(false)
+  const [showTextInput, setShowTextInput] = useState<boolean>(false)
   const [overlay, setOverlay] = useState<boolean>(false)
 
   const handleMenu = () => setShowNav(!showNav)
@@ -27,21 +27,18 @@ const Header = () => {
   return (
     <Fragment>
       <header>
-        <HeaderContainer>
+        <MainContainer>
 
-          { showSearchMobile ? 
-
+          { showTextInput ? 
               <Fragment>
-                <OverlayContainer/> 
+                { showTextInput ? <OverlayContainer onClick={() => setShowTextInput(!showTextInput)}/> : '' }
                 <TextInput
                       autoFocus={true}
-                      width="100%" 
                       searchIcon={true}
-                      placeholder="cerca una slot, un casino..."
-                      handleOnBlur={() => setShowSearchMobile(false)}/>
+                      placeholder="cerca una slot, un casino..."/>
               </Fragment> :
 
-              <MainContainer>
+              <TopContainer>
 
                 <LogoContainer>
                   <Image
@@ -68,21 +65,21 @@ const Header = () => {
                   </div>
                 </LegalContainer>
 
-                { overlay ? <OverlayContainer/> : '' }
+                { overlay ? <OverlayContainer onClick={() => setOverlay(!overlay)}/> : '' }
                 
                 <SearchContainer>
                   <div className="text-input">
                     <TextInput 
+                      width="30ch" 
                       searchIcon={true}
                       placeholder="cerca una slot, un casino..."
-                      handleOnFocus={() => setOverlay(true)}
-                      handleOnBlur={() => setOverlay(false)}/>
+                      handleOnFocus={() => setOverlay(true)}/>
                   </div>
 
                   <SearchIcon 
                     className="search-icon" 
                     style={{ color: '#ec564', fontSize: '40px', cursor: 'pointer'}}
-                    onClick={() => setShowSearchMobile(true)}/> 
+                    onClick={() => setShowTextInput(true) }/> 
 
                 </SearchContainer>
               
@@ -92,8 +89,7 @@ const Header = () => {
                     <CloseIcon className='icons' onClick={handleMenu}/> : <MenuIcon className='icons' onClick={handleMenu}/> }
                 </MenuContainer>
 
-              </MainContainer>
-          
+              </TopContainer>
           }       
 
           <NavContainer expand={showNav}>
@@ -112,13 +108,13 @@ const Header = () => {
               </Link>
            </NavContainer> 
 
-        </HeaderContainer>
+        </MainContainer>
       </header>
     </Fragment>
   )
 }
 
-const HeaderContainer = styled.div`    
+const MainContainer = styled.div`    
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
@@ -129,7 +125,7 @@ const HeaderContainer = styled.div`
   padding: 10px 10%;
 `
 
-const MainContainer = styled.div`    
+const TopContainer = styled.div`    
   display: inherit;
   flex-wrap: inherit;
   flex-direction: row;

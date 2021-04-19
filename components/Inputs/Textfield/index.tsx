@@ -5,7 +5,7 @@ import SearchIcon from '@material-ui/icons/Search'
 const useStyles = makeStyles<Theme, PageProps>(() =>
   createStyles({
     textField: {
-        width: ({width}) => width ? width : '30ch',
+        width: ({width}) => width ? width : '100%',
         backgroundColor: "inherit",
         zIndex: 999,
 
