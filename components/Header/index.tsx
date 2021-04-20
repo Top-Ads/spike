@@ -70,28 +70,27 @@ const Header = () => {
                 </LegalContainer>
 
                 { overlay ? <OverlayContainer onClick={() => setOverlay(!overlay)}/> : '' }
-                
-                <SearchContainer>
-                  <div className="text-input">
-                    <TextInput 
-                      width="30ch" 
-                      searchIcon={true}
-                      placeholder="cerca una slot, un casino..."
-                      handleOnFocus={() => setOverlay(true)}/>
-                  </div>
+                <ActionContainer>
 
-                  <SearchIcon 
-                    className="search-icon" 
-                    style={{ color: '#ec564', fontSize: '40px', cursor: 'pointer'}}
-                    onClick={() => setShowTextInput(true) }/> 
+                  <SearchContainer>
+                    <div className="text-input">
+                      <TextInput 
+                        width="30ch" 
+                        searchIcon={true}
+                        placeholder="cerca una slot, un casino..."
+                        handleOnFocus={() => setOverlay(true)}/>
+                    </div>
 
+                    <SearchIcon 
+                      className="search-icon" 
+                      style={{ color: '#ec564', fontSize: '40px', cursor: 'pointer'}}
+                      onClick={() => setShowTextInput(true) }/> 
                 </SearchContainer>
               
-                <MenuContainer>
                   <FavoriteBorderIcon className='icons' onClick={handleFavorites}/>
                   {showNav ? 
                     <CloseIcon className='icons' onClick={handleMenu}/> : <MenuIcon className='icons' onClick={handleMenu}/> }
-                </MenuContainer>
+                </ActionContainer>
 
               </TopContainer>
           }       
@@ -148,13 +147,17 @@ const LogoContainer = styled.div`
     display: inherit;
     flex-direction: column;
     width: 150px;
+
+    @media ${device.mobileS} {
+      width: 130px;
+    }
   }
 `
 
 const LegalContainer = styled.div`
   display: inherit;
 
-  @media ${device.tablet} {
+  @media ${device.laptop} {
     display: none;
   }
 
@@ -204,7 +207,7 @@ const SearchContainer = styled.div`
   } 
 `
 
-const MenuContainer = styled.div` 
+const ActionContainer = styled.div` 
   cursor: pointer; 
   align-items: center;
   display: inherit;
