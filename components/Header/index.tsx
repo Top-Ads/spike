@@ -41,12 +41,16 @@ const Header = () => {
               <TopContainer>
 
                 <LogoContainer>
+                <div className="logo-image">
                   <Image
                     alt="Casino Legal Information"
                     src="/svg/logo-spike.svg"
-                    layout="fill"
+                    layout="responsive"
                     priority={true}
+                    width={150}
+                    height={60}
                   />
+                  </div>
                 </LogoContainer>
                 
                 <LegalContainer>
@@ -139,11 +143,11 @@ const LogoContainer = styled.div`
   display: inherit;
   flex-grow: 1;
   position: relative;
-  width: 100px; 
-  height: 60px;
 
-  @media ${device.tablet} {
-    height: 40px;
+  .logo-image {
+    display: inherit;
+    flex-direction: column;
+    width: 150px;
   }
 `
 
@@ -185,7 +189,6 @@ const OverlayContainer = styled.div`
 
 const SearchContainer = styled.div` 
   display: inherit;
-  flex-grow: 0;
 
   .search-icon {
     display: none;

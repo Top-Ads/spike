@@ -146,7 +146,7 @@ const PaymentImgContainer = styled.div `
 `
 
 const BonusImgContainer = styled.div`
-    width: 80px;
+    width: 100px;
     margin: 10px 0px;
 `
 
