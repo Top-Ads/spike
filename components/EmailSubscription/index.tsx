@@ -51,14 +51,12 @@ const ButtonContainer = styled.div`
     padding: 10px 20px;
     background-color: #ffcc03;
     border: 1px solid ${({theme}) => theme.text.color.primary};;
-    border-radius: 4px;
+    border-radius: 5px;
     color: ${({theme}) => theme.text.color.secondary};;
     cursor: pointer;
 
     &:hover {
       box-shadow: 0px 0px 5px 5px rgba(33,37,41,0.4);
-      -webkit-box-shadow: 0px 0px 5px 5px rgba(33,37,41,0.4);
-      -moz-box-shadow: 0px 0px 5px 5px rgba(33,37,41,0.4);
   }
 `
 

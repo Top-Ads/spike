@@ -134,8 +134,6 @@ const ButtonContainer = styled.div`
 
     &:hover {
         box-shadow: 0px 0px 5px 5px rgba(255,255,255,0.4);
-        -webkit-box-shadow: 0px 0px 5px 5px rgba(255,255,255,0.4);
-        -moz-box-shadow: 0px 0px 5px 5px rgba(255,255,255,0.4);
     }
 `
 
