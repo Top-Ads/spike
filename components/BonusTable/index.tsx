@@ -141,14 +141,14 @@ const BonusImgContainer = styled.div`
 const ButtonContainer = styled.div<BonusContainerType>`
     background-color: ${({bgColor}) => bgColor ? bgColor : 'inherit'};
     color: ${({theme}) => theme.text.color.primary};
-    border-radius: 5px;
+    border-radius: ${({theme}) => theme.button.borderRadius};
     font-weight: bold;
     cursor: pointer;
     padding: 10px;
     width: max-content;
 
     &:hover {
-      box-shadow: 0px 0px 5px 5px rgba(33,37,41,0.4);
+      box-shadow: ${({theme}) => theme.button.boxShadowX};
     }
 `
 

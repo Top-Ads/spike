@@ -29,7 +29,7 @@ const EmailSubcription = () => {
 }
 
 const MainContainer = styled.div`
-    background-color: ${({theme}) => theme.colors.primary};
+    background-color: ${({theme}) => theme.colors.backGround};
     border: 2px solid #fff;
     border-radius: 10px;
     max-width: 270px;
@@ -50,9 +50,9 @@ const MainContainer = styled.div`
 const ButtonContainer = styled.div`
     padding: 10px 20px;
     background-color: #ffcc03;
-    border: 1px solid ${({theme}) => theme.text.color.primary};;
-    border-radius: 5px;
-    color: ${({theme}) => theme.text.color.secondary};;
+    border: 1px solid ${({theme}) => theme.text.color.primary};
+    border-radius: ${({theme}) => theme.button.borderRadius};
+    color: ${({theme}) => theme.text.color.secondary};
     cursor: pointer;
 
     &:hover {

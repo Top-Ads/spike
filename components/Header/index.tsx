@@ -122,9 +122,9 @@ const MainContainer = styled.div`
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
-  background-image: linear-gradient(180deg, ${({theme}) => theme.colors.primary} 0%, ${({theme}) => theme.colors.gradient} 50%);
+  background-image: linear-gradient(180deg, ${({theme}) => theme.colors.backGround} 0%, ${({theme}) => theme.colors.gradient} 50%);
   border-radius: 0px 0px 20px 20px;
-  box-shadow: 0px 0px 10px 10px rgb(0 0 0 / 40%);
+  box-shadow: ${({theme}) => theme.button.boxShadowX};
   color: ${({theme}) => theme.text.color.primary};
   padding: 10px 10%;
 `
@@ -210,7 +210,7 @@ const MenuContainer = styled.div`
   display: inherit;
   
   .icons {
-    color: ${({theme}) => theme.text.color.primary};;
+    color: ${({theme}) => theme.text.color.primary};
     font-size: 40px;
 
     @media ${device.mobileL} {
@@ -230,7 +230,7 @@ const NavContainer = styled.nav<NavProps>`
   height: auto;
   max-height: ${({expand}) => expand ? "120px" : "0px"};
   transition: max-height 0.2s linear; 
-  overflow: ${({expand}) => expand ? "visible" : "hidden"};;
+  overflow: ${({expand}) => expand ? "visible" : "hidden"};
 `
 
 const ButtonContainer = styled.div`
@@ -240,7 +240,7 @@ const ButtonContainer = styled.div`
     font-weight: bold;
 
     &:hover {
-      color: ${({theme}) => theme.colors.primary};
+      color: ${({theme}) => theme.colors.backGround};
       background-color: #fff;
     }
 `

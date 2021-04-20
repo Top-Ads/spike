@@ -51,13 +51,13 @@ const MainContainer = styled.div`
 const SummaryContainer = styled.div`
   flex-grow: 2;
   width: 300px;
-  color: ${({theme}) => theme.colors.primary}; 
+  color: ${({theme}) => theme.colors.backGround}; 
   padding: 10px;
 `
 const GridsContainer = styled.div`
   display: inherit;
   flex-grow: 1;
-  color: ${({theme}) => theme.colors.primary}; 
+  color: ${({theme}) => theme.colors.backGround}; 
 `
 
 export default FreeSlots

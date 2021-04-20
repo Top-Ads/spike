@@ -118,10 +118,10 @@ const ThumbnailContainer = styled.div`
 `
 
 const ButtonContainer = styled.div`
-    background-color: ${({theme}) => theme.colors.primary};
+    background-color: ${({theme}) => theme.colors.backGround};
     border: 2px solid #fff;
-    color: ${({theme}) => theme.text.color.primary};;
-    border-radius: 5px;
+    color: ${({theme}) => theme.text.color.primary};
+    border-radius: ${({theme}) => theme.button.borderRadius};
     cursor: pointer;
     width: 50%;
     height: 25px;
@@ -133,7 +133,7 @@ const ButtonContainer = styled.div`
     justify-content: center;
 
     &:hover {
-        box-shadow: 0px 0px 5px 5px rgba(255,255,255,0.4);
+        box-shadow: ${({theme}) => theme.button.boxShadowY};
     }
 `
 

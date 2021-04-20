@@ -1,6 +1,6 @@
 export interface StyledTheme {
     colors: {
-        primary: string,
+        backGround: string,
         gradient: string
     }
 
@@ -10,6 +10,12 @@ export interface StyledTheme {
             primary: string,
             secondary: string
         }
+    }
+
+    button: {
+        boxShadowX: string,
+        boxShadowY: string,
+        borderRadius: string
     }
 }
 

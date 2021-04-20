@@ -38,7 +38,7 @@ const IndexPage: FunctionComponent<PageProps> = ({slotsData, topBonusData, allBo
               <h1>BENVENUTO SU SPIKE SLOT!</h1>
 
               <div>
-                <p><span><strong>Benvenuto</strong>sono Spike e sul mio sito puoi:</span></p>
+                <p><span><strong>Benvenuto</strong> sono Spike e sul mio sito puoi:</span></p>
                 <ul>
                   <li>Trovare i migliori casino online.</li>
                   <li>Ricivere offerte bonus esclusive.</li>
@@ -138,14 +138,14 @@ const IndexPage: FunctionComponent<PageProps> = ({slotsData, topBonusData, allBo
 const WelcomeContainer = styled.div`
   display: flex;
   flex-direction: column;
-  color: ${({theme}) => theme.colors.primary};
+  color: ${({theme}) => theme.colors.backGround};
 `
 
 const IntroContainer = styled.div`
   display: inherit;
   flex-direction: column;
 
-  ul { color: ${({theme}) => theme.text.color.secondary};; }
+  ul { color: ${({theme}) => theme.text.color.secondary}; }
 
   @media ${device.mobileL} {
     h1 { text-align: center; }
@@ -155,9 +155,9 @@ const IntroContainer = styled.div`
 
 const ButtonContainer = styled.div`
     background-color: #ff1313;
-    border: 2px solid ${({theme}) => theme.colors.primary};
+    border: 2px solid ${({theme}) => theme.colors.backGround};
     color: #fff;
-    border-radius: 5px;
+    border-radius: ${({theme}) => theme.button.borderRadius};
     font-weight: normal;
     cursor: pointer;
     padding: 20px;
@@ -166,7 +166,7 @@ const ButtonContainer = styled.div`
     margin: auto 0;
 
     &:hover {
-      box-shadow: 0px 0px 5px 5px rgba(33,37,41,0.4);
+      box-shadow: ${({theme}) => theme.button.boxShadowX};
   }
 `
 
@@ -191,7 +191,7 @@ const GridsContainer = styled.div`
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  color: ${({theme}) => theme.colors.primary};
+  color: ${({theme}) => theme.colors.backGround};
 
   .bonus-list {
     display: none;

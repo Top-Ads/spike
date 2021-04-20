@@ -24,7 +24,7 @@ const RatingContainer = styled.div`
 
     .star-icon {
         font-size: 17px;
-        color: ${({theme}) => theme.colors.primary};
+        color: ${({theme}) => theme.colors.backGround};
     }
 `
 

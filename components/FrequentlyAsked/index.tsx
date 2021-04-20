@@ -41,7 +41,7 @@ const MainContainer = styled.div`
     flex-direction: row;
     flex-wrap: wrap;
     padding: 0 10%;
-    background-image: linear-gradient(180deg, ${({theme}) => theme.colors.primary} 0%, ${({theme}) => theme.colors.gradient} 50%);
+    background-image: linear-gradient(180deg, ${({theme}) => theme.colors.backGround} 0%, ${({theme}) => theme.colors.gradient} 50%);
 
 `
 

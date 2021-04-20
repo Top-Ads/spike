@@ -118,7 +118,7 @@ const NameContainer = styled.div<BonusContainerType> `
 const ButtonContainer = styled.div<BonusContainerType>`
     background-color: ${({bgColor}) => bgColor ? bgColor : 'inherit'};
     color: ${({theme}) => theme.text.color.primary};
-    border-radius: 5px;
+    border-radius: ${({theme}) => theme.button.borderRadius};
     font-weight: bold;
     cursor: pointer;
     padding: 10px;
@@ -126,7 +126,7 @@ const ButtonContainer = styled.div<BonusContainerType>`
     margin: 10px 0px;
 
     &:hover {
-        box-shadow: 0px 0px 5px 5px rgba(33,37,41,0.4);
+        box-shadow: ${({theme}) => theme.button.boxShadowX};
     }
 `
 
@@ -149,7 +149,7 @@ const BonusImgContainer = styled.div`
 `
 
 const InfoContainer = styled.div`
-    color: ${({theme}) => theme.text.color.secondary};;
+    color: ${({theme}) => theme.text.color.secondary};
 `
 
 export default BonusCard
