@@ -9,6 +9,7 @@ import Link from 'next/link'
 import { device } from '../../utils/device'
 import SearchIcon from '@material-ui/icons/Search'
 import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder'
+import NotificationsNoneIcon from '@material-ui/icons/NotificationsNone'
 
 type NavProps = {
   expand: boolean
@@ -23,6 +24,8 @@ const Header = () => {
   const handleMenu = () => setShowNav(!showNav)
   
   const handleFavorites = () => null
+
+  const handleNotifications = () => null
 
   return (
     <Fragment>
@@ -54,8 +57,8 @@ const Header = () => {
                 </LogoContainer>
                 
                 { overlay ? <OverlayContainer onClick={() => setOverlay(!overlay)}/> : '' }
-                <ActionContainer>
 
+                <ActionContainer>
                   <SearchContainer>
                     <div className="text-input">
                       <TextInput 
@@ -66,11 +69,12 @@ const Header = () => {
                     </div>
 
                     <SearchIcon 
-                      className="search-icon" 
-                      style={{ color: '#ec564', fontSize: '40px', cursor: 'pointer'}}
+                      className="search-icon icons" 
                       onClick={() => setShowTextInput(true) }/> 
-                </SearchContainer>
+                  </SearchContainer>
               
+                  <NotificationsNoneIcon className='icons' onClick={handleNotifications}/>
+
                   <FavoriteBorderIcon className='icons' onClick={handleFavorites}/>
                   {showNav ? 
                     <CloseIcon className='icons' onClick={handleMenu}/> : <MenuIcon className='icons' onClick={handleMenu}/> }
@@ -132,8 +136,8 @@ const LogoContainer = styled.div`
     flex-direction: column;
     width: 150px;
 
-    @media ${device.mobileS} {
-      width: 130px;
+    @media ${device.mobileL} {
+      width: 110px;
     }
   }
 `
@@ -172,13 +176,16 @@ const ActionContainer = styled.div`
   
   .icons {
     color: ${({theme}) => theme.text.color.primary};
+    margin-left: 5px;
     font-size: 40px;
 
-    @media ${device.mobileL} {
+    @media ${device.mobileM} {
       font-size: 35px;
     }
 
-    margin-left: 5px;
+    @media ${device.mobileS} {
+      font-size: 30px;
+    }
   }  
 `
 
