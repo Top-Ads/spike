@@ -4,6 +4,7 @@ import Header from '../Header'
 import styled from 'styled-components'
 import { device } from '../../utils/device'
 import ScrollButton from '../ScrollButton'
+import LegalDisclaimer from '../LegalDisclaimer'
 
 type Props = {
   children?: ReactNode
@@ -32,7 +33,9 @@ const Layout = ({ children, title}: Props) => {
       </MainContainer>
 
       <ScrollButton eleRef={eleRef}/>
-      
+    
+      <LegalDisclaimer/>
+
     </Fragment>
   )
 }
@@ -42,9 +45,14 @@ export default Layout
 const MainContainer = styled.div`
   .space-around {
     padding: 10px 10%;
+    margin-bottom: 40px;
 
     @media ${device.tablet} {
       padding: 10px 5%;
+    }
+
+    @media ${device.mobileL} {
+      margin-bottom: 110px;
     }
   } 
 `

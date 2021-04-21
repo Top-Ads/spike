@@ -35,7 +35,7 @@ const ScrollButton: FunctionComponent<PageProps> = ({eleRef}) => {
 
 const MainContainer = styled.div<ScrollType>`
     position: fixed;
-    bottom: ${({show}) => show ? '20px' : '-60px'};
+    bottom: ${({show}) => show ? '50px' : '-60px'};
     right: 20px;
     background: ${({theme}) => theme.colors.gradient};
     width: 50px;
@@ -45,7 +45,7 @@ const MainContainer = styled.div<ScrollType>`
     border-radius: 100px;
     cursor: pointer;
     z-index: 80;
-    transition: bottom .1s ease-in-out,opacity .1s ease-in-out;
+    transition: bottom .2s ease-in-out,opacity .2s ease-in-out;
 
     &::after {
         content: "";

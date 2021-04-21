@@ -7,7 +7,7 @@ const useStyles = makeStyles<Theme, PageProps>(() =>
     textField: {
         width: ({width}) => width ? width : '100%',
         backgroundColor: "inherit",
-        zIndex: 999,
+        zIndex: 100,
 
         '& .MuiInputBase-root': {
             backgroundColor: '#fff',

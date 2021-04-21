@@ -53,22 +53,6 @@ const Header = () => {
                   </div>
                 </LogoContainer>
                 
-                <LegalContainer>
-                  <div className="legal-image">
-                    <Image
-                      alt="Casino Legal Information"
-                      src="/png/it-legal-logos.png"
-                      layout="responsive"
-                      priority={true}
-                      width={295}
-                      height={56}
-                    />
-                  </div>
-                  <div className="legal-text">
-                    <p>Il gioco e vietato ai minori e puo causare dipendenza patologica - probabilita di vincita</p>
-                  </div>
-                </LegalContainer>
-
                 { overlay ? <OverlayContainer onClick={() => setOverlay(!overlay)}/> : '' }
                 <ActionContainer>
 
@@ -151,32 +135,6 @@ const LogoContainer = styled.div`
     @media ${device.mobileS} {
       width: 130px;
     }
-  }
-`
-
-const LegalContainer = styled.div`
-  display: inherit;
-
-  @media ${device.laptop} {
-    display: none;
-  }
-
-  align-items: inherit;
-  flex-grow: 2;
-  flex-wrap: inherit;
-  justify-content: center;
-
-  .legal-image {
-    width: 170px;
-    margin-right: 15px;
-  }
-
-  .legal-text {
-    display: inherit;
-    align-items: center;
-    font-size: 10px;
-    width: 160px;
-     p { color: ${({theme}) => theme.text.color.primary}; }
   }
 `
 
