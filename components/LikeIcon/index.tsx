@@ -27,7 +27,7 @@ const LikeIcon: FunctionComponent<PageProps> = ({color, active, setActive}) => {
     
     return (
         <Fragment>
-            <LikeContainer 
+            <Like 
                 onClick={handleClick} 
                 onTouchStart={handleClick}
                 onMouseEnter={() => setFill(true)}
@@ -37,12 +37,12 @@ const LikeIcon: FunctionComponent<PageProps> = ({color, active, setActive}) => {
                { active || fill ?
                <FavoriteIcon className="icon"/> : <FavoriteBorderIcon className="icon"/>}
 
-            </LikeContainer>
+            </Like>
         </Fragment>
     ) 
 }
 
-const LikeContainer = styled.div<LikeIconType>`
+const Like = styled.div<LikeIconType>`
     .icon {
         font-size: 30px;
         fill: #fff

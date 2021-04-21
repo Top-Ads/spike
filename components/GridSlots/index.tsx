@@ -1,7 +1,7 @@
 import React, { FunctionComponent } from 'react'
 import { makeStyles, createStyles, Theme } from '@material-ui/core/styles'
 import Paper from '@material-ui/core/Paper'
-import Grid, { GridSize } from '@material-ui/core/Grid'
+import Grid, { GridSize, GridSpacing } from '@material-ui/core/Grid'
 import Divider from '../Divider'
 import styled from 'styled-components'
 import RankingCard from '../Cards/RankingCard'
@@ -21,7 +21,7 @@ const useStyles = makeStyles<Theme, PageProps>(() =>
       height: 'auto',
       borderRadius: ({disableBorderRadius}) => disableBorderRadius ? '0px' : '8px',
       boxShadow: ({disableBoxShadow}) => disableBoxShadow ? 'none' : 'auto',
-      backgroundColor: '#ff1313',
+      backgroundColor: ({bgColor}) => bgColor ? bgColor : '#ff1313',
       position: 'relative'
     }
   }),
@@ -38,27 +38,29 @@ type PageProps = {
     showIndex?: boolean,
     disableBorderRadius?: boolean,
     disableBoxShadow?: boolean,
-    textAlign?: string
+    textAlign?: string,
+    bgColor?: string,
+    spacing?: GridSpacing
   }
 
-type LabelContainerType = {
+type LabelType = {
   align?: string
 }
 
 const GridSlots: FunctionComponent<PageProps> = (props) => {
 
-  const {data, label, xs, sm, md, AlignItem, showIndex} = props;
+  const {data, label, xs, sm, md, AlignItem, showIndex, spacing} = props;
 
   const classes = useStyles(props)
 
   return (
     <div className={classes.root}>
-        <LabelContainer align={AlignItem}>
+        <Label align={AlignItem}>
             {label}
             { label ? <Divider/> : '' }
-        </LabelContainer>
+        </Label>
 
-        <Grid container item spacing={2}>
+        <Grid container item spacing={spacing === undefined ? 2 : spacing}>
           {data.map((value: [], index: number) => 
              <Grid item xs={xs} sm={sm} md={md} key={index}>
                 <Paper className={classes.paper}>
@@ -75,7 +77,7 @@ const GridSlots: FunctionComponent<PageProps> = (props) => {
   );
 }
 
-const LabelContainer = styled.div<LabelContainerType>`
+const Label = styled.div<LabelType>`
   text-align: ${({align}) => align ? align : 'unset'};
   font-weight: bold;
   margin-bottom: 20px;

@@ -2,26 +2,27 @@ import React, { FunctionComponent } from 'react'
 import { useRouter } from 'next/router'
 import Image from 'next/image'
 import styled from 'styled-components'
+import { device } from '../utils/device'
 import GridSlots from '../components/GridSlots'
 import Layout from '../components/Layout'
 import FreqentlyAsked from '../components/FrequentlyAsked'
 import FreeSlots from '../components/FreeSlots/indext'
-import { device } from '../utils/device'
-import { Bonus, Slot } from './api/interfaces'
 import SlotCard from '../components/Cards/SlotCard'
 import BonusCard from '../components/Cards/BonusCard'
-import { getSlotsCard } from './api/slots'
-import AquaClient from './api/graphql/aquaClient'
-import { BONUSES } from './api/graphql/queries/bonus'
 import BonusTable from '../components/BonusTable'
+import AquaClient from './api/graphql/aquaClient'
+import { Bonus, Slot } from './api/interfaces'
+import { BONUSES } from './api/graphql/queries/bonuses'
+import { SLOTS } from './api/graphql/queries/slots'
 
 type PageProps = {
   slotsData: Slot [],
+  freeBonusData: Bonus [],
   topBonusData: Bonus [],
   allBonusData: Bonus []
 }
 
-const IndexPage: FunctionComponent<PageProps> = ({slotsData, topBonusData, allBonusData}) => {
+const IndexPage: FunctionComponent<PageProps> = ({slotsData, freeBonusData, topBonusData, allBonusData}) => {
 
   const router = useRouter()
 
@@ -30,11 +31,11 @@ const IndexPage: FunctionComponent<PageProps> = ({slotsData, topBonusData, allBo
 
       <div className="space-around">
 
-        <WelcomeContainer>
+        <Welcome>
 
-          <HeaderContainer>
+          <Header>
 
-            <IntroContainer>
+            <Intro>
               <h1>BENVENUTO SU SPIKE SLOT!</h1>
 
               <div>
@@ -46,13 +47,13 @@ const IndexPage: FunctionComponent<PageProps> = ({slotsData, topBonusData, allBo
                 </ul>
               </div>
 
-              <ButtonContainer onClick={ () => router.push('/slots')}>
+              <Button onClick={ () => router.push('/slots')}>
                     <span>lista completa delle slot</span>
-              </ButtonContainer>
+              </Button>
               
-            </IntroContainer>
+            </Intro>
 
-            <ImageContainer>
+            <Thumbnail>
               <Image
                 alt="Spike poster"
                 src="/png/spike-poster.png"
@@ -60,9 +61,9 @@ const IndexPage: FunctionComponent<PageProps> = ({slotsData, topBonusData, allBo
                 priority={true}
                 width={624}
                 height={484}/>
-            </ImageContainer>
+            </Thumbnail>
           
-          </HeaderContainer>
+          </Header>
     
           <p>
               Ti diamo il benvenuto su <strong>SPIKE SLOT</strong> dove potrai trovare consigli per tutte le Slot Machine esistenti.
@@ -71,40 +72,40 @@ const IndexPage: FunctionComponent<PageProps> = ({slotsData, topBonusData, allBo
               Ancora indeciso? Guarda i video di SPIKE per farti un' idea. Offriamo le migliori comparazioni di siti di Casinò e siti Scommesse.
           </p>
 
-        </WelcomeContainer>
+        </Welcome>
 
-        <GridsContainer>
+        <Grids>
           <GridSlots 
-            data={ slotsData.slice(0, 12).map( (slot) => <SlotCard key={slot.gameName} data={slot}/> )}
+            data={ slotsData.slice(0, 12).map( (slot) => <SlotCard key={slot.name} data={slot}/> )}
             label="Le migliori Novomatic selezionate per te."
             xs={6} sm={4} md={4}/>
           <GridSlots
-            data={ slotsData.slice(12, 24).map( (slot) => <SlotCard key={slot.gameName} data={slot}/> )}
+            data={ slotsData.slice(12, 24).map( (slot) => <SlotCard key={slot.name} data={slot}/> )}
             label="Le slot online del momento."
             xs={6} sm={4} md={4}/>
-        </GridsContainer>
+        </Grids>
 
-        <GridsContainer>
+        <Grids>
           <GridSlots
-            data={ slotsData.slice(24, 36).map( (slot) => <SlotCard key={slot.gameName} data={slot}/> )}
+            data={ slotsData.slice(24, 36).map( (slot) => <SlotCard key={slot.id} data={slot}/> )}
             label="Le slot da bar più famose."
             xs={6} sm={4} md={4}/>
           <GridSlots 
-            data={ slotsData.slice(36, 48).map( (slot) => <SlotCard key={slot.gameName} data={slot}/> )}
+            data={ slotsData.slice(36, 48).map( (slot) => <SlotCard key={slot.id} data={slot}/> )}
             label="Le slot VLT più divertenti."
             xs={6} sm={4} md={4}/>
-        </GridsContainer>
+        </Grids>
 
-        <GridsContainer>
+        <Grids>
           <GridSlots 
-            data={ topBonusData.map( (bonus) => <BonusCard key={bonus.name} data={bonus}/> )}
+            data={ topBonusData.map( (bonus) => <BonusCard key={bonus.id} data={bonus}/> )}
             label="I top bonus dei casinò online in Italia."
             AlignItem={"center"}
             xs={12} sm={4} md={4}
             showIndex={true}/>
-        </GridsContainer>
+        </Grids>
 
-        <GridsContainer>
+        <Grids>
             <p>Se ti interessa sapere dove conviene maggiormente giocare alle slot machine online puoi dare
               un'occhiata a questa comparazione dei migliori Bonus disponibili al momento:</p>
 
@@ -114,20 +115,20 @@ const IndexPage: FunctionComponent<PageProps> = ({slotsData, topBonusData, allBo
 
             <div className="bonus-list">
               <GridSlots
-                data={ allBonusData.map( (bonus) => <BonusCard key={bonus.name} data={bonus}/> )}
+                data={ allBonusData.map( (bonus) => <BonusCard key={bonus.id} data={bonus}/> )}
                 AlignItem={"center"}
                 xs={12} sm={12} md={12}
                 showIndex={false}/>
             </div>
 
-        </GridsContainer>
+        </Grids>
 
       </div> 
       
       <FreqentlyAsked/>
 
       <div className="space-around">
-        <FreeSlots/>
+        <FreeSlots data={freeBonusData}/>
       </div>
 
     </Layout>
@@ -135,13 +136,13 @@ const IndexPage: FunctionComponent<PageProps> = ({slotsData, topBonusData, allBo
 }
   
 
-const WelcomeContainer = styled.div`
+const Welcome = styled.div`
   display: flex;
   flex-direction: column;
   color: ${({theme}) => theme.colors.backGround};
 `
 
-const IntroContainer = styled.div`
+const Intro = styled.div`
   display: inherit;
   flex-direction: column;
 
@@ -153,7 +154,7 @@ const IntroContainer = styled.div`
   } 
 `
 
-const ButtonContainer = styled.div`
+const Button = styled.div`
     background-color: #ff1313;
     border: 2px solid ${({theme}) => theme.colors.backGround};
     color: #fff;
@@ -170,14 +171,14 @@ const ButtonContainer = styled.div`
   }
 `
 
-const HeaderContainer = styled.div`
+const Header = styled.div`
   display: inherit;
   flex-direction: row;
   justify-content: space-between;
   flex-wrap: wrap;
 `
 
-const ImageContainer = styled.div`
+const Thumbnail = styled.div`
   width: 470px;
   margin: 20px auto;
 
@@ -187,7 +188,7 @@ const ImageContainer = styled.div`
 
 `
 
-const GridsContainer = styled.div`
+const Grids = styled.div`
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
@@ -216,8 +217,14 @@ export async function getStaticProps() {
  
   const aquaClient = new AquaClient()
 
-  const slotsRequest = await getSlotsCard()
+  const slotsRequest =  await aquaClient.query({ 
+    query: SLOTS, 
+    variables: { code: 'it', limit: 48, start: 0 } })
 
+  const freeBonusRequest =  await aquaClient.query({ 
+    query: BONUSES, 
+    variables: { code: 'it', limit: 5, start: 0 } })
+    
   const topBonusRequest = await aquaClient.query({ 
     query: BONUSES, 
     variables: { code: 'it', limit: 3, start: 0 } })
@@ -225,9 +232,11 @@ export async function getStaticProps() {
   const allBonusRequest = await aquaClient.query({ 
     query: BONUSES, 
     variables: { code: 'it', limit: 15, start: 3 } })
+
   return {
     props: {
-      slotsData: slotsRequest,
+      slotsData: slotsRequest.data.data.slots,
+      freeBonusData: freeBonusRequest.data.data.bonuses,
       topBonusData: topBonusRequest.data.data.bonuses,
       allBonusData: allBonusRequest.data.data.bonuses
     }

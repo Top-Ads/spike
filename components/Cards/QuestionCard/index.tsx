@@ -7,7 +7,7 @@ type PageProps = {
    collapse: boolean
 };
 
-type AnswerContainerType = { 
+type AnswerType = { 
     show: boolean
 }
 const QuestionCard: FunctionComponent<PageProps> = ({data, triggerCollpase, collapse}) => { 
@@ -36,18 +36,18 @@ const QuestionCard: FunctionComponent<PageProps> = ({data, triggerCollpase, coll
 
     return (
         <Fragment>
-            <MainContainer onClick={handleClick}>
+            <Main onClick={handleClick}>
 
-                <QuestionContainer>{data.question}</QuestionContainer>
+                <Question>{data.question}</Question>
 
-                <AnswerContainer show={show}><p>{data.answer}</p></AnswerContainer>
+                <Answer show={show}><p>{data.answer}</p></Answer>
 
-            </MainContainer>
+            </Main>
         </Fragment>
     ) 
 }
 
-const MainContainer = styled.div`
+const Main = styled.div`
     display: flex;
     flex-direction: column;
     width: 100%;
@@ -55,7 +55,7 @@ const MainContainer = styled.div`
     justify-content: center;
 `
 
-const QuestionContainer = styled.div`
+const Question = styled.div`
     display: inherit;
     align-items: center;
     justify-content: center;
@@ -63,7 +63,7 @@ const QuestionContainer = styled.div`
     padding: 10px;
 `
 
-const AnswerContainer = styled.div<AnswerContainerType>`
+const Answer = styled.div<AnswerType>`
     max-height: ${({show}) => show ? '310px' : '0px'};
     overflow: hidden;
     transition: max-height 0.2s linear;

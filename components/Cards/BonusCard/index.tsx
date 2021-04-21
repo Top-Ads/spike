@@ -9,7 +9,7 @@ type PageProps = {
    data: Bonus 
 };
 
-type BonusContainerType = {
+type BonusType = {
     bgColor?: string
 }
 
@@ -25,10 +25,10 @@ const BonusCard: FunctionComponent<PageProps> = ({data}) => {
 
     return (
         <Fragment>
-            <BonusContainer>
+            <Main>
             
-                <NameContainer bgColor={data.backgroundColor}>
-                    <BonusImgContainer>
+                <Name bgColor={data.backgroundColor}>
+                    <Thumbnail>
                         <Image
                             alt={data.name}
                             src={data.circular_image.url}
@@ -36,30 +36,28 @@ const BonusCard: FunctionComponent<PageProps> = ({data}) => {
                             priority={true}
                             width={100}
                             height={'auto'}/>
-                    </BonusImgContainer>
-                </NameContainer>
+                    </Thumbnail>
+                </Name>
         
-                <MainContainer>
+                <BonusInfo>
                     <div className="bonus"> 
-                        <LabelContainer>BONUS DI BENVENUTO</LabelContainer>
-                        <InfoContainer>{data.description}</InfoContainer>
+                        <Label>BONUS DI BENVENUTO</Label>
+                        <Info>{data.description}</Info>
                     </div>
 
                     <div className="bonus">
-                        <LabelContainer>BONUS SENZA DEPOSITO</LabelContainer>
-                        <InfoContainer className="bonus-info">{data.withDeposit}</InfoContainer>
+                        <Label>BONUS SENZA DEPOSITO</Label>
+                        <Info className="bonus-info">{data.withDeposit}</Info>
                     </div>
-                </MainContainer>
+                </BonusInfo>
 
                 <Divider color="#fff" width="90%"/>
 
-                <ButtonContainer bgColor={data.backgroundColor} onClick={linkToBonus}>
-                            ACEDI AL BONUS
-                </ButtonContainer>
+                <Button bgColor={data.backgroundColor} onClick={linkToBonus}>ACEDI AL BONUS</Button>
 
                 <PaymentProviders>
                     {paymentProviders. map( (provider, index) => 
-                        <PaymentImgContainer key={index}>
+                        <Provider key={index}>
                             <Image
                                 alt={provider}
                                 src={'https://img.slotjava.it/wp-content/plugins/strove-casino/static/images/payment-providers/svg/' + provider + '.svg'} 
@@ -67,23 +65,23 @@ const BonusCard: FunctionComponent<PageProps> = ({data}) => {
                                 priority={true}
                                 width={30}
                                 height={30}/>
-                      </PaymentImgContainer>
+                      </Provider>
                     )}
                 </PaymentProviders>       
             
-            </BonusContainer>
+            </Main>
         </Fragment>
     ) 
 }
 
-const BonusContainer = styled.div<BonusContainerType>`
+const Main = styled.div<BonusType>`
     display: flex;
     flex-direction: column;
     align-items: center;
     height: 100%;
 `
 
-const MainContainer = styled.div `
+const BonusInfo = styled.div `
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -97,7 +95,7 @@ const MainContainer = styled.div `
     }
 `
 
-const LabelContainer = styled.div `
+const Label = styled.div `
     height: 20px;
     width: fit-content;
     border-bottom: 1px dashed;
@@ -105,7 +103,7 @@ const LabelContainer = styled.div `
     font-size: 12px;
 `
 
-const NameContainer = styled.div<BonusContainerType> `
+const Name = styled.div<BonusType> `
     width: 100%;
     background-color: ${({bgColor}) => bgColor ? bgColor : 'inherit'};
     color: ${({theme}) => theme.text.color.primary};
@@ -115,7 +113,7 @@ const NameContainer = styled.div<BonusContainerType> `
     align-items: center;
 `
 
-const ButtonContainer = styled.div<BonusContainerType>`
+const Button = styled.div<BonusType>`
     background-color: ${({bgColor}) => bgColor ? bgColor : 'inherit'};
     color: ${({theme}) => theme.text.color.primary};
     border-radius: ${({theme}) => theme.button.borderRadius};
@@ -137,18 +135,17 @@ const PaymentProviders = styled.div `
     width: 100%;
 `
 
-const PaymentImgContainer = styled.div `
+const Provider = styled.div `
     height: 30px;
     width: 30px;
     margin: 0 5px;
 `
 
-const BonusImgContainer = styled.div`
+const Thumbnail = styled.div`
     width: 100px;
-    margin: 10px 0px;
 `
 
-const InfoContainer = styled.div`
+const Info = styled.div`
     color: ${({theme}) => theme.text.color.secondary};
 `
 

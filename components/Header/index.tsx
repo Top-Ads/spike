@@ -30,20 +30,20 @@ const Header = () => {
   return (
     <Fragment>
       <header>
-        <MainContainer>
+        <Main>
 
           { showTextInput ? 
               <Fragment>
-                { showTextInput ? <OverlayContainer onClick={() => setShowTextInput(!showTextInput)}/> : '' }
+                { showTextInput ? <Overlay onClick={() => setShowTextInput(!showTextInput)}/> : '' }
                 <TextInput
                       autoFocus={true}
                       searchIcon={true}
                       placeholder="cerca una slot, un casino..."/>
               </Fragment> :
 
-              <TopContainer>
+              <Top>
 
-                <LogoContainer>
+                <Logo>
                 <div className="logo-image">
                   <Image
                     alt="Casino Legal Information"
@@ -54,12 +54,12 @@ const Header = () => {
                     height={60}
                   />
                   </div>
-                </LogoContainer>
+                </Logo>
                 
-                { overlay ? <OverlayContainer onClick={() => setOverlay(!overlay)}/> : '' }
+                { overlay ? <Overlay onClick={() => setOverlay(!overlay)}/> : '' }
 
-                <ActionContainer>
-                  <SearchContainer>
+                <Action>
+                  <Search>
                     <div className="text-input">
                       <TextInput 
                         width="30ch" 
@@ -71,41 +71,41 @@ const Header = () => {
                     <SearchIcon 
                       className="search-icon icons" 
                       onClick={() => setShowTextInput(true) }/> 
-                  </SearchContainer>
+                  </Search>
               
                   <NotificationsNoneIcon className='icons' onClick={handleNotifications}/>
 
                   <FavoriteBorderIcon className='icons' onClick={handleFavorites}/>
                   {showNav ? 
                     <CloseIcon className='icons' onClick={handleMenu}/> : <MenuIcon className='icons' onClick={handleMenu}/> }
-                </ActionContainer>
+                </Action>
 
-              </TopContainer>
+              </Top>
           }       
 
-          <NavContainer expand={showNav}>
+          <Nav expand={showNav}>
               <Divider color={'#fff'}/>
 
               <Link href={'/'}>
-                  <a><ButtonContainer>Home</ButtonContainer></a>
+                  <a><Button>Home</Button></a>
               </Link>
 
               <Link href={'/video'}>
-                  <a><ButtonContainer>Video</ButtonContainer></a>
+                  <a><Button>Video</Button></a>
               </Link>
 
               <Link href={'/slots'}>
-                  <a><ButtonContainer>Giochi Slot Machine Gratis</ButtonContainer></a>
+                  <a><Button>Giochi Slot Machine Gratis</Button></a>
               </Link>
-           </NavContainer> 
+           </Nav> 
 
-        </MainContainer>
+        </Main>
       </header>
     </Fragment>
   )
 }
 
-const MainContainer = styled.div`    
+const Main = styled.div`    
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
@@ -116,7 +116,7 @@ const MainContainer = styled.div`
   padding: 10px 10%;
 `
 
-const TopContainer = styled.div`    
+const Top = styled.div`    
   display: inherit;
   flex-wrap: inherit;
   flex-direction: row;
@@ -126,7 +126,7 @@ const TopContainer = styled.div`
   margin: 5px 0px;
 `
 
-const LogoContainer = styled.div`    
+const Logo = styled.div`    
   display: inherit;
   flex-grow: 1;
   position: relative;
@@ -142,7 +142,7 @@ const LogoContainer = styled.div`
   }
 `
 
-const OverlayContainer = styled.div`    
+const Overlay = styled.div`    
   position: fixed;
   top: 0;
   left: 0;
@@ -152,7 +152,7 @@ const OverlayContainer = styled.div`
   z-index: 99;
 `
 
-const SearchContainer = styled.div` 
+const Search = styled.div` 
   display: inherit;
 
   .search-icon {
@@ -169,7 +169,7 @@ const SearchContainer = styled.div`
   } 
 `
 
-const ActionContainer = styled.div` 
+const Action = styled.div` 
   cursor: pointer; 
   align-items: center;
   display: inherit;
@@ -189,7 +189,7 @@ const ActionContainer = styled.div`
   }  
 `
 
-const NavContainer = styled.nav<NavProps>`    
+const Nav = styled.nav<NavProps>`    
   display: inherit;
   flex-wrap: inherit;
   flex-direction: row;
@@ -201,7 +201,7 @@ const NavContainer = styled.nav<NavProps>`
   overflow: ${({expand}) => expand ? "visible" : "hidden"};
 `
 
-const ButtonContainer = styled.div`
+const Button = styled.div`
     color: ${({theme}) => theme.text.color.primary};
     margin: 0px 10px;
     padding: 10px 15px;

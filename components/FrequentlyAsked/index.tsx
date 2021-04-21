@@ -11,10 +11,10 @@ const FreqentlyAsked = () => {
 
     return (
         <Fragment>
-            <MainContainer>
+            <Main>
 
-                <QuestionsContainer>
-                    <HeaderContainer>DOMANDE FREQUENTI</HeaderContainer>
+                <Questions>
+                    <Header>DOMANDE FREQUENTI</Header>
                     <GridSlots 
                         data={ frequentlyAsked.map( (data: any) => 
                             <QuestionCard 
@@ -25,18 +25,18 @@ const FreqentlyAsked = () => {
                         xs={12} sm={6} md={6}
                         disableBorderRadius={true}
                         disableBoxShadow={true}/>
-                </QuestionsContainer>
+                </Questions>
 
-                <SubcriptionContainer>
+                <Subcription>
                     <EmailSubcription/>
-                </SubcriptionContainer>
+                </Subcription>
 
-            </MainContainer>
+            </Main>
         </Fragment>
     )
 }
 
-const MainContainer = styled.div`
+const Main = styled.div`
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
@@ -45,17 +45,17 @@ const MainContainer = styled.div`
 
 `
 
-const HeaderContainer = styled.h2`
+const Header = styled.h2`
     text-align: center;
     color: #fff;
 `
 
-const QuestionsContainer = styled.div`
+const Questions = styled.div`
     flex-grow: 2;
     width: 400px;
 `
 
-const SubcriptionContainer = styled.div`
+const Subcription = styled.div`
     flex-grow: 1;
     justify-content: center;
     align-items: baseline;

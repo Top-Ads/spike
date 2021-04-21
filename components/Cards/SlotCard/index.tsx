@@ -4,6 +4,7 @@ import Image from 'next/image'
 import styled from 'styled-components'
 import { Slot } from '../../../pages/api/interfaces'
 import LikeIcon from '../../LikeIcon'
+import { device } from '../../../utils/device'
 
 type PageProps = {
    data: Slot
@@ -20,7 +21,7 @@ const GameCard: FunctionComponent<PageProps> = ({data}) => {
 
         router.push({
             pathname: '/slot/[url]',
-            query: { gamePreviewUrl: data.gamePreviewUrl, gameName: data.gameName}
+            query: { playLink: data.playLink, name: data.name}
         }, '/slot')
 
     }
@@ -31,47 +32,47 @@ const GameCard: FunctionComponent<PageProps> = ({data}) => {
 
     return (
         <Fragment>
-            <MainContainer 
+            <Main 
                 onClick={playSlot}
                 onMouseEnter={ () => setShowBanner(true)}
                 onMouseLeave={ () => setShowBanner(false)}
                 onTouchStart={ () => setShowBanner(!showBanner)}>
                 
                 { showBanner || activeLike ?
-                <IconContainer>  
+                <Icon>  
                     <LikeIcon setActive={handleActiveLike} active={activeLike}/>
-                </IconContainer> : '' } 
+                </Icon> : '' } 
                
-                <ThumbnailContainer>
+                <Thumbnail>
                     <Image
                         alt=""
-                        src={'http://' + data.gameThumbnail} 
+                        src={data.image && data.image.url ? data.image.url : '/svg/no_img_available.svg'} 
                         layout="responsive"
                         priority={true}
-                        width={624}
-                        height={484}/>
-                </ThumbnailContainer>
+                        width={241}
+                        height={151}/>
+                </Thumbnail>
                 
                 { showBanner ? 
                     <Banner>
-                        <ButtonContainer> 
+                        <Button> 
                             <span>PLAY FREE</span>
-                        </ButtonContainer>
-                        <ButtonContainer> 
+                        </Button>
+                        <Button> 
                             <span>REAL MONEY</span>
-                        </ButtonContainer>
+                        </Button>
                     </Banner> : '' } 
 
-            </MainContainer>
+            </Main>
 
-            <TitleContainer>
-                    {data.gameName}
-            </TitleContainer>       
+            <Title>
+                    {data.name}
+            </Title>       
         </Fragment>
     ) 
 }
 
-const MainContainer = styled.div`
+const Main = styled.div`
     position: relative;
     list-style-type: none;
     cursor: pointer;
@@ -79,13 +80,13 @@ const MainContainer = styled.div`
     overflow: hidden;
 `
 
-const TitleContainer = styled.div` 
+const Title = styled.div` 
     display: flex;
     justify-content: center;
     align-items: center;
     height: 35px;   
-    font-size: 13px;
     font-weight: bolder;
+    font-size: 11px;
 `
 
 const Banner = styled.div`
@@ -104,7 +105,7 @@ const Banner = styled.div`
     }
 `
 
-const IconContainer = styled.div` 
+const Icon = styled.div` 
     width: 30px;
     position: absolute;
     right: 4px;
@@ -112,12 +113,12 @@ const IconContainer = styled.div`
     z-index: 2;
 `
 
-const ThumbnailContainer = styled.div` 
+const Thumbnail = styled.div` 
   z-index: 1;
   img { border-radius: 8px 8px 0px 0px; }
 `
 
-const ButtonContainer = styled.div`
+const Button = styled.div`
     background-color: ${({theme}) => theme.colors.backGround};
     border: 2px solid #fff;
     color: ${({theme}) => theme.text.color.primary};

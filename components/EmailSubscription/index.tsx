@@ -8,7 +8,7 @@ const EmailSubcription = () => {
     
     return (
         <Fragment>
-          <MainContainer>
+          <Main>
             <p>Ricevi aggiornamenti ed anticipazioni sui nuovi video e su bonus e promozio.</p>
 
             <TextInput placeholder="Email" sm={true}/>
@@ -22,13 +22,13 @@ const EmailSubcription = () => {
 
             <br/>
 
-            <ButtonContainer>ISCRIVTI</ButtonContainer>
-          </MainContainer>
+            <Button>ISCRIVTI</Button>
+          </Main>
         </Fragment>
     ) 
 }
 
-const MainContainer = styled.div`
+const Main = styled.div`
     background-color: ${({theme}) => theme.colors.backGround};
     border: 2px solid #fff;
     border-radius: 10px;
@@ -47,7 +47,7 @@ const MainContainer = styled.div`
     p { color: ${({theme}) => theme.text.color.primary}; }
 `
 
-const ButtonContainer = styled.div`
+const Button = styled.div`
     padding: 10px 20px;
     background-color: #ffcc03;
     border: 1px solid ${({theme}) => theme.text.color.primary};

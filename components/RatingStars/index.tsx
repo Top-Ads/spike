@@ -11,15 +11,15 @@ type PageProps = {
 const RatingStars: FunctionComponent<PageProps> = ({size, rating}) => { 
     
     return (
-            <RatingContainer>
+            <Rating>
                 { [...Array(size ? size : 5)].map( (_value, index) =>
                 rating > index ? 
                 <StarIcon key={index} className="star-icon"/> : <StarOutlineIcon key={index} className="star-icon"/>)}
-            </RatingContainer> 
+            </Rating> 
     ) 
 }
 
-const RatingContainer = styled.div`
+const Rating = styled.div`
     width: max-content;
 
     .star-icon {
