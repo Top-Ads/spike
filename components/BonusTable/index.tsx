@@ -19,7 +19,7 @@ type PageProps = {
     data: Bonus[]
 }
 
-type BonusContainerType = {
+type BonusType = {
   bgColor?: string
 }
 
@@ -88,7 +88,7 @@ const BonusTable: FunctionComponent<PageProps> = ({data}) => {
                 </StyledTableCell>
 
                 <StyledTableCell component="th" >
-                  <BonusImgContainer>
+                  <Thumbnail>
                       <Image
                           alt={row.name}
                           src={row.circular_image.url}
@@ -96,7 +96,7 @@ const BonusTable: FunctionComponent<PageProps> = ({data}) => {
                           priority={true}
                           width={100}
                           height={'auto'}/>
-                  </BonusImgContainer>
+                  </Thumbnail>
                 </StyledTableCell>
 
                 <StyledTableCell align="left">
@@ -111,7 +111,7 @@ const BonusTable: FunctionComponent<PageProps> = ({data}) => {
                 <StyledTableCell align="left">{row.description}</StyledTableCell>
                 
                 <StyledTableCell align="left">
-                  <LicenceContainer>
+                  <Licence>
                           <Image
                               alt="licence ADM"
                               src={'https://img.slotjava.it/wp-content/plugins/strove-casino/static/images/casino-license/adm.svg'}
@@ -119,26 +119,26 @@ const BonusTable: FunctionComponent<PageProps> = ({data}) => {
                               priority={true}
                               width={23}
                               height={'auto'}/>
-                  </LicenceContainer>
+                  </Licence>
 
-                  <ButtonContainer bgColor={row.backgroundColor} onClick={() => linkToBonus(row.link)}>
+                  <Button bgColor={row.backgroundColor} onClick={() => linkToBonus(row.link)}>
                     <span>SITO WEB</span>
-                  </ButtonContainer>
+                  </Button>
                 </StyledTableCell>
 
             </StyledTableRow>
           ))}
-      </TableBody>
+        </TableBody>
       </Table>
     </TableContainer>
   )
 }
 
-const BonusImgContainer = styled.div`
+const Thumbnail = styled.div`
     width: 60px;
 `
 
-const ButtonContainer = styled.div<BonusContainerType>`
+const Button = styled.div<BonusType>`
     background-color: ${({bgColor}) => bgColor ? bgColor : 'inherit'};
     color: ${({theme}) => theme.text.color.primary};
     border-radius: ${({theme}) => theme.button.borderRadius};
@@ -152,7 +152,7 @@ const ButtonContainer = styled.div<BonusContainerType>`
     }
 `
 
-const LicenceContainer = styled.div`
+const Licence = styled.div`
   width: 23px;
   position: absolute;
   bottom: 1px;

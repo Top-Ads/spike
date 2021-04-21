@@ -1,15 +1,21 @@
 import React, { Fragment } from 'react'
+import { FunctionComponent } from 'react'
 import styled from 'styled-components'
+import { Bonus } from '../../pages/api/interfaces'
 import FreeCard from '../Cards/FreeCard'
 import GridSlots from '../GridSlots'
 
-const FreeSlots = () => { 
+type PageProps = {
+  data: Bonus []
+}
+
+const FreeSlots: FunctionComponent<PageProps> = ({data}) => { 
     
     return (
         <Fragment>
-          <MainContainer>
+          <Main>
 
-            <SummaryContainer>
+            <Summary>
               <div><strong>GIOCA ALLE SLOT ONLINE – GRATIS</strong></div>
 
               <div><p>Se ti piacciono le slot machine online ma vuoi giocare senza rischiare nulla,
@@ -27,34 +33,37 @@ const FreeSlots = () => {
               <div><p>Noi siamo specializzati soprattutto in slot machine, poiché esse rappresentano il gioco da 
               casinò online più popolare del momento. Tuttavia, sul nostro sito sono disponibili anche altre
               tipologie di gioco, che ben conoscerai e che potrai apprezzare.</p></div>
-            </SummaryContainer>
+            </Summary>
 
-            <GridsContainer>
+            <Grids>
               <GridSlots
                 label="I migliori casinò con giri gratis."
                 AlignItem="center"
-                data={ [...Array(5)].map( (_value, index) => <FreeCard key={index} /> )}
-                width={"150px"}
+                data={ data.map( (bonus, index) => <FreeCard key={index} data={bonus}/> )}
+                width={"200px"}
+                disableBoxShadow={true}
+                bgColor="#f2f2f2"
+                spacing={0}
                 xs={12} sm={12} md={12}/>
-            </GridsContainer>
+            </Grids>
 
-          </MainContainer>
+          </Main>
         </Fragment>
     ) 
 }
 
-const MainContainer = styled.div`
+const Main = styled.div`
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
 `
-const SummaryContainer = styled.div`
+const Summary = styled.div`
   flex-grow: 2;
   width: 300px;
   color: ${({theme}) => theme.colors.backGround}; 
   padding: 10px;
 `
-const GridsContainer = styled.div`
+const Grids = styled.div`
   display: inherit;
   flex-grow: 1;
   color: ${({theme}) => theme.colors.backGround}; 

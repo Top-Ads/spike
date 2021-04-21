@@ -28,15 +28,15 @@ const ScrollButton: FunctionComponent<PageProps> = ({eleRef}) => {
 
     return (
         <Fragment>
-            <MainContainer show={show} onClick={ () => SmoothScrolling.scrollTo(eleRef.current)}/>
+            <Main show={show} onClick={ () => SmoothScrolling.scrollTo(eleRef.current)}/>
         </Fragment>
     ) 
 }
 
-const MainContainer = styled.div<ScrollType>`
+const Main = styled.div<ScrollType>`
     position: fixed;
     bottom: ${({show}) => show ? '50px' : '-60px'};
-    right: 20px;
+    right: 10px;
     background: ${({theme}) => theme.colors.gradient};
     width: 50px;
     height: 50px;

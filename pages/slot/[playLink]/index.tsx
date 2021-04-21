@@ -8,24 +8,24 @@ const Slot = () => {
     const router = useRouter()
 
     const [url, setUrl] = useState<string>('')
-    const [gameName, setGameName] = useState<string>('')
+    const [name, setName] = useState<string>('')
 
     useEffect(() => {
-        setUrl(String(router.query.gamePreviewUrl))
-        setGameName(String(router.query.gameName))
+        setUrl(String(router.query.playLink))
+        setName(String(router.query.name))
     }, [router.query])
 
     return (
         <Layout title="Slot"> 
-            <SlotContainer>
-                <h2>{gameName}</h2>
+            <Main>
+                <h2>{name}</h2>
                 <IframeContainers src={url}></IframeContainers>
-            </SlotContainer>
+            </Main>
         </Layout>       
     )
 }
  
-const SlotContainer = styled.div`
+const Main = styled.div`
    display: flex;
    flex-direction: column;
    align-items: center;

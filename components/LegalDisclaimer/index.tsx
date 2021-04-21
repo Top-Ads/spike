@@ -5,7 +5,7 @@ import { device } from '../../utils/device'
 
 const LegalDisclaimer: FunctionComponent = () =>   
     <Fragment>
-        <MainContainer>
+        <Main>
             <div className="legal-image">
                 <Image
                     alt="Casino Legal Information"
@@ -19,10 +19,10 @@ const LegalDisclaimer: FunctionComponent = () =>
             <div className="legal-text">
             <p>Il gioco e vietato ai minori e puo causare dipendenza patologica - probabilita di vincita</p>
             </div>
-        </MainContainer>
+        </Main>
     </Fragment>
 
-const MainContainer = styled.div`
+const Main = styled.div`
     position: fixed;
     bottom: 0px;
     width: 100%;

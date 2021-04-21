@@ -28,9 +28,9 @@ const Layout = ({ children, title}: Props) => {
 
       <Header/>
 
-      <MainContainer>
+      <Main>
         {children}
-      </MainContainer>
+      </Main>
 
       <ScrollButton eleRef={eleRef}/>
     
@@ -42,7 +42,7 @@ const Layout = ({ children, title}: Props) => {
 
 export default Layout
 
-const MainContainer = styled.div`
+const Main = styled.div`
   .space-around {
     padding: 10px 10%;
     margin-bottom: 40px;

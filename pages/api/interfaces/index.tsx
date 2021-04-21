@@ -20,13 +20,21 @@ export interface StyledTheme {
 }
 
 export interface Slot {
-    categories: [],
-    gameName: string,
-    gamePreviewUrl: string,
-    gameThumbnail: string
+    id: string,
+    playLink: string,
+    linkYoutube: string,
+    name: string,
+    rating: number,
+    tips: string,
+    slug: string,
+    type: string,
+    image: {
+        url: string,
+    }
 }
    
 export interface Bonus {
+    id: string,
     description: string,
     backgroundColor: string,
     borderColor: string,
