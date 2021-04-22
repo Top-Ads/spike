@@ -43,16 +43,17 @@ const Layout = ({ children, title}: Props) => {
 export default Layout
 
 const Main = styled.div`
+  padding-bottom: 70px;
+
+  @media ${device.tablet} {
+    padding: 70px 0px;
+  }
+
   .space-around {
     padding: 10px 10%;
-    margin-bottom: 40px;
 
     @media ${device.tablet} {
       padding: 10px 5%;
-    }
-
-    @media ${device.mobileL} {
-      margin-bottom: 110px;
     }
   } 
 `

@@ -41,7 +41,7 @@ const Header = () => {
                       placeholder="cerca una slot, un casino..."/>
               </Fragment> :
 
-              <Top>
+              <TopHeader>
 
                 <Logo>
                 <div className="logo-image">
@@ -80,7 +80,7 @@ const Header = () => {
                     <CloseIcon className='icons' onClick={handleMenu}/> : <MenuIcon className='icons' onClick={handleMenu}/> }
                 </Action>
 
-              </Top>
+              </TopHeader>
           }       
 
           <Nav expand={showNav}>
@@ -114,9 +114,16 @@ const Main = styled.div`
   box-shadow: ${({theme}) => theme.button.boxShadowX};
   color: ${({theme}) => theme.text.color.primary};
   padding: 10px 10%;
+
+  @media ${device.tablet} {
+    position: fixed;
+    top: 0px;
+    width: fill-available;
+    z-index: 999;
+  }
 `
 
-const Top = styled.div`    
+const TopHeader = styled.div`    
   display: inherit;
   flex-wrap: inherit;
   flex-direction: row;
@@ -159,7 +166,7 @@ const Search = styled.div`
     display: none;
   }
 
-  @media ${device.tablet} {
+  @media ${device.mobileL} {
     .text-input {
       display: none;
     }
