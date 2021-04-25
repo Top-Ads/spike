@@ -11,7 +11,7 @@ import SlotCard from '../components/Cards/SlotCard'
 import BonusCard from '../components/Cards/BonusCard'
 import BonusTable from '../components/BonusTable'
 import AquaClient from './api/graphql/aquaClient'
-import { Bonus, Slot } from './api/interfaces'
+import { Bonus, Slot } from '../interfaces'
 import { BONUSES } from './api/graphql/queries/bonuses'
 import { SLOTS } from './api/graphql/queries/slots'
 
@@ -76,29 +76,29 @@ const IndexPage: FunctionComponent<PageProps> = ({slotsData, freeBonusData, topB
 
         <Grids>
           <GridSlots 
-            data={ slotsData.slice(0, 12).map( (slot) => <SlotCard key={slot.name} data={slot}/> )}
+            content={ slotsData.slice(0, 12).map( (slot) => <SlotCard key={slot.name} data={slot}/> )}
             label="Le migliori Novomatic selezionate per te."
             xs={6} sm={4} md={4}/>
           <GridSlots
-            data={ slotsData.slice(12, 24).map( (slot) => <SlotCard key={slot.name} data={slot}/> )}
+            content={ slotsData.slice(12, 24).map( (slot) => <SlotCard key={slot.name} data={slot}/> )}
             label="Le slot online del momento."
             xs={6} sm={4} md={4}/>
         </Grids>
 
         <Grids>
           <GridSlots
-            data={ slotsData.slice(24, 36).map( (slot) => <SlotCard key={slot.id} data={slot}/> )}
+            content={ slotsData.slice(24, 36).map( (slot) => <SlotCard key={slot.id} data={slot}/> )}
             label="Le slot da bar più famose."
             xs={6} sm={4} md={4}/>
           <GridSlots 
-            data={ slotsData.slice(36, 48).map( (slot) => <SlotCard key={slot.id} data={slot}/> )}
+            content={ slotsData.slice(36, 48).map( (slot) => <SlotCard key={slot.id} data={slot}/> )}
             label="Le slot VLT più divertenti."
             xs={6} sm={4} md={4}/>
         </Grids>
 
         <Grids>
           <GridSlots 
-            data={ topBonusData.map( (bonus) => <BonusCard key={bonus.id} data={bonus}/> )}
+            content={ topBonusData.map( (bonus) => <BonusCard key={bonus.id} data={bonus}/> )}
             label="I top bonus dei casinò online in Italia."
             AlignItem={"center"}
             xs={12} sm={4} md={4}
@@ -115,12 +115,11 @@ const IndexPage: FunctionComponent<PageProps> = ({slotsData, freeBonusData, topB
 
             <div className="bonus-list">
               <GridSlots
-                data={ allBonusData.map( (bonus) => <BonusCard key={bonus.id} data={bonus}/> )}
+                content={ allBonusData.map( (bonus) => <BonusCard key={bonus.id} data={bonus}/> )}
                 AlignItem={"center"}
                 xs={12} sm={12} md={12}
                 showIndex={false}/>
             </div>
-
         </Grids>
 
       </div> 
@@ -135,7 +134,6 @@ const IndexPage: FunctionComponent<PageProps> = ({slotsData, freeBonusData, topB
   )
 }
   
-
 const Welcome = styled.div`
   display: flex;
   flex-direction: column;
@@ -185,7 +183,6 @@ const Thumbnail = styled.div`
   @media ${device.laptop} {
     max-width: 335px;
   }
-
 `
 
 const Grids = styled.div`
@@ -194,22 +191,12 @@ const Grids = styled.div`
   flex-wrap: wrap;
   color: ${({theme}) => theme.colors.backGround};
 
-  .bonus-list {
-    display: none;
-  }
-
-  .bonus-table {
-    display: contents;
-  }
+  .bonus-list { display: none; }
+  .bonus-table { display: contents; }
 
   @media ${device.mobileL} {
-    .bonus-list {
-      display: contents;
-    }
-
-    .bonus-table {
-      display: none;
-    }
+    .bonus-list { display: contents; }
+    .bonus-table { display: none; }
   }
 `
 

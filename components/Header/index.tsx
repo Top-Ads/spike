@@ -1,4 +1,4 @@
-import React, { Fragment, useState } from 'react'
+import React, { Fragment, useContext, useEffect, useState } from 'react'
 import styled from 'styled-components'
 import Image from 'next/image'
 import Divider from '../Divider'
@@ -10,6 +10,12 @@ import { device } from '../../utils/device'
 import SearchIcon from '@material-ui/icons/Search'
 import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder'
 import NotificationsNoneIcon from '@material-ui/icons/NotificationsNone'
+import DialogSlider from '../DialogSlider'
+import { Category } from '../../utils/constants'
+import FavoriteCard from '../Cards/FavoriteCard'
+import { Slot } from '../../interfaces'
+import NotificationCard from '../Cards/NotificationCard'
+import { DislikedSlotContext } from '../../contexts'
 
 type NavProps = {
   expand: boolean
@@ -20,12 +26,48 @@ const Header = () => {
   const [showNav, setShowNav] = useState<boolean>(false)
   const [showTextInput, setShowTextInput] = useState<boolean>(false)
   const [overlay, setOverlay] = useState<boolean>(false)
+  const [openDialog, setOpenDialog] = useState<boolean>(false)
+  const [category, setCategory] = useState<string>('')
+  const [item, setItem] = useState<any[]>([])
+
+  const  {setSlotDislikedId}  = useContext(DislikedSlotContext)
 
   const handleMenu = () => setShowNav(!showNav)
   
-  const handleFavorites = () => null
+  const handleDialogSlider = (category: string) => {
+    setCategory(category)
+    setOpenDialog(!openDialog)
+  }
 
-  const handleNotifications = () => null
+  const deleteItem = (id: string) => {
+
+    setSlotDislikedId(id)
+
+    const newItems: any[] = item.filter( (card: Slot) => {
+          return card.id !== id
+    })
+
+    if (newItems) {
+      setItem(newItems)
+      localStorage.setItem(Category.FAVORITES, JSON.stringify(newItems))
+    }
+  }
+
+  useEffect(() => {
+    if (openDialog) {
+
+      if (category === Category.FAVORITES) {
+        const currentItem = localStorage.getItem(category)
+        if (currentItem) {
+          setItem(JSON.parse(currentItem))
+        }
+      }
+      
+      if (category === Category.NOTIFICATIONS) {
+         setItem([1])
+      }
+    }
+  }, [openDialog, category])
 
   return (
     <Fragment>
@@ -44,7 +86,6 @@ const Header = () => {
               <TopHeader>
 
                 <Logo>
-                <div className="logo-image">
                   <Image
                     alt="Casino Legal Information"
                     src="/svg/logo-spike.svg"
@@ -53,12 +94,11 @@ const Header = () => {
                     width={150}
                     height={60}
                   />
-                  </div>
                 </Logo>
                 
                 { overlay ? <Overlay onClick={() => setOverlay(!overlay)}/> : '' }
 
-                <Action>
+                <Actions>
                   <Search>
                     <div className="text-input">
                       <TextInput 
@@ -68,17 +108,17 @@ const Header = () => {
                         handleOnFocus={() => setOverlay(true)}/>
                     </div>
 
-                    <SearchIcon 
+                    <SearchIcon
                       className="search-icon icons" 
                       onClick={() => setShowTextInput(true) }/> 
                   </Search>
               
-                  <NotificationsNoneIcon className='icons' onClick={handleNotifications}/>
+                  <NotificationsNoneIcon className='icons' onClick={ () => handleDialogSlider(Category.NOTIFICATIONS)} />
 
-                  <FavoriteBorderIcon className='icons' onClick={handleFavorites}/>
+                  <FavoriteBorderIcon className='icons' onClick={ () => handleDialogSlider(Category.FAVORITES)} />
                   {showNav ? 
                     <CloseIcon className='icons' onClick={handleMenu}/> : <MenuIcon className='icons' onClick={handleMenu}/> }
-                </Action>
+                </Actions>
 
               </TopHeader>
           }       
@@ -98,6 +138,15 @@ const Header = () => {
                   <a><Button>Giochi Slot Machine Gratis</Button></a>
               </Link>
            </Nav> 
+
+          <DialogSlider
+            category={category} 
+            open={openDialog} 
+            setOpen={setOpenDialog}
+            content={item.map( (element: Slot, index: number) => 
+              category === Category.FAVORITES ? 
+              <FavoriteCard key={index} data={element} deleteItem={deleteItem} /> : <NotificationCard key={index} data={element}/> )}
+            />
 
         </Main>
       </header>
@@ -127,7 +176,6 @@ const TopHeader = styled.div`
   display: inherit;
   flex-wrap: inherit;
   flex-direction: row;
-  align-items: center;
   height: auto;
   width: 100%;
   margin: 5px 0px;
@@ -135,17 +183,12 @@ const TopHeader = styled.div`
 
 const Logo = styled.div`    
   display: inherit;
-  flex-grow: 1;
   position: relative;
+  flex-direction: column;
+  width: 150px;
 
-  .logo-image {
-    display: inherit;
-    flex-direction: column;
-    width: 150px;
-
-    @media ${device.mobileL} {
-      width: 110px;
-    }
+  @media ${device.mobileL} {
+    width: 100px;
   }
 `
 
@@ -162,25 +205,22 @@ const Overlay = styled.div`
 const Search = styled.div` 
   display: inherit;
 
-  .search-icon {
-    display: none;
-  }
+  .search-icon { display: none; }
 
   @media ${device.mobileL} {
-    .text-input {
-      display: none;
-    }
-    .search-icon {
-      display: flex;
-    }
+    .text-input { display: none; }
+    .search-icon { display: flex; }
   } 
 `
 
-const Action = styled.div` 
+const Actions = styled.div` 
   cursor: pointer; 
   align-items: center;
   display: inherit;
-  
+  flex-grow: 2;
+
+  justify-content: flex-end;
+
   .icons {
     color: ${({theme}) => theme.text.color.primary};
     margin-left: 5px;

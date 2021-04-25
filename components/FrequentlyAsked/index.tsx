@@ -16,7 +16,7 @@ const FreqentlyAsked = () => {
                 <Questions>
                     <Header>DOMANDE FREQUENTI</Header>
                     <GridSlots 
-                        data={ frequentlyAsked.map( (data: any) => 
+                        content={ frequentlyAsked.map( (data: any) => 
                             <QuestionCard 
                                 collapse={collapse} 
                                 triggerCollpase={(collapse: boolean) => setCollapse(collapse)}

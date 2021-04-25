@@ -28,7 +28,7 @@ const useStyles = makeStyles<Theme, PageProps>(() =>
 );
 
 type PageProps = {
-    data: any,
+    content: JSX.Element[],
     label?: string,
     width?: string,
     xs: GridSize,
@@ -49,7 +49,7 @@ type LabelType = {
 
 const GridSlots: FunctionComponent<PageProps> = (props) => {
 
-  const {data, label, xs, sm, md, AlignItem, showIndex, spacing} = props;
+  const {content, label, xs, sm, md, AlignItem, showIndex, spacing} = props;
 
   const classes = useStyles(props)
 
@@ -61,14 +61,14 @@ const GridSlots: FunctionComponent<PageProps> = (props) => {
         </Label>
 
         <Grid container item spacing={spacing === undefined ? 2 : spacing}>
-          {data.map((value: [], index: number) => 
+          {content.map((child: JSX.Element, index: number) => 
              <Grid item xs={xs} sm={sm} md={md} key={index}>
                 <Paper className={classes.paper}>
                     {showIndex ? 
                       <div style={{position: 'absolute', top: '-10px', right: '0px'}}>
                         <RankingCard index={index+1} />
                       </div> : '' }
-                    {value}
+                    {child}
                 </Paper>
             </Grid>
           )}

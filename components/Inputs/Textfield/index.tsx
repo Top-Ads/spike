@@ -56,7 +56,7 @@ const TextInput: FunctionComponent<PageProps> = (props) => {
 
     const handleChange =  (event: React.ChangeEvent<HTMLInputElement>) => {
       event.preventDefault()
-      console.log(event.target.value)
+      console.log('Onchange textfield ', event.target.value)
     }
 
     return (

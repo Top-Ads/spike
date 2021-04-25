@@ -1,33 +1,78 @@
-import React, { Fragment, FunctionComponent, useState } from 'react'
+import React, { Fragment, FunctionComponent, useContext, useEffect, useState } from 'react'
 import { useRouter } from 'next/router'
 import Image from 'next/image'
 import styled from 'styled-components'
-import { Slot } from '../../../pages/api/interfaces'
+import { Slot } from '../../../interfaces'
 import LikeIcon from '../../LikeIcon'
+import { Category } from '../../../utils/constants'
+import { DislikedSlotContext } from '../../../contexts'
 
 type PageProps = {
    data: Slot
 };
 
-const GameCard: FunctionComponent<PageProps> = ({data}) => { 
+const SlotCard: FunctionComponent<PageProps> = ({data}) => { 
 
     const router = useRouter()
 
+    const [triggerOnClick, setTriggerOnClick] = useState<boolean>(false)
     const [showBanner, setShowBanner] = useState<boolean>(false)
-    const [activeLike, setActiveLike] = useState<boolean>(false)
+    const [isFavorite, setIsFavorite] = useState<boolean>(false)
 
+    const  {slotDislikedId}  = useContext(DislikedSlotContext)
+
+    
     const playSlot = () => {
-
         router.push({
             pathname: '/slot/[url]',
             query: { playLink: data.playLink, name: data.name}
         }, '/slot')
-
     }
  
     const handleActiveLike = () => {
-        setActiveLike(!activeLike)
+        setTriggerOnClick(true)
+        setIsFavorite(!isFavorite)
     }
+
+    useEffect( () => {
+        const currentItem: string | null = localStorage.getItem(Category.FAVORITES)
+
+        if (currentItem && JSON.parse(currentItem).some( (slot: Slot) => slot.id === data.id )) {
+            setIsFavorite(true)
+        }
+
+    }, [])
+
+    useEffect( () => {
+        const currentItem: string | null = localStorage.getItem(Category.FAVORITES)
+
+        if (currentItem && triggerOnClick) {
+            if (isFavorite) {
+                const currFavorites: Slot[] = JSON.parse(currentItem)
+
+                currFavorites?.push(data)
+
+                localStorage.setItem(Category.FAVORITES, JSON.stringify(currFavorites))
+           
+            } else {
+                const newItems: any[] = JSON.parse(currentItem).filter( (card: Slot) => {
+                    return card.id !== data.id
+                })
+
+                localStorage.setItem(Category.FAVORITES, JSON.stringify(newItems))
+            }
+            setTriggerOnClick(false)
+        }  
+
+    }, [isFavorite, triggerOnClick])
+
+    
+    useEffect( () => {
+        if (slotDislikedId === data.id) {
+            setIsFavorite(false)
+        }
+            
+    }, [slotDislikedId])
 
     return (
         <Fragment>
@@ -37,19 +82,19 @@ const GameCard: FunctionComponent<PageProps> = ({data}) => {
                 onMouseLeave={ () => setShowBanner(false)}
                 onTouchStart={ () => setShowBanner(!showBanner)}>
                 
-                { showBanner || activeLike ?
+                { showBanner || isFavorite ?
                 <Icon>  
-                    <LikeIcon setActive={handleActiveLike} active={activeLike}/>
+                    <LikeIcon setActive={handleActiveLike} active={isFavorite}/>
                 </Icon> : '' } 
                
                 <Thumbnail>
                     <Image
-                        alt=""
+                        alt="image not available"
                         src={data.image && data.image.url ? data.image.url : '/svg/no_img_available.svg'} 
                         layout="responsive"
                         priority={true}
                         width={241}
-                        height={151}/>
+                        height={161}/>
                 </Thumbnail>
                 
                 { showBanner ? 
@@ -60,7 +105,8 @@ const GameCard: FunctionComponent<PageProps> = ({data}) => {
                         <Button> 
                             <span>REAL MONEY</span>
                         </Button>
-                    </Banner> : '' } 
+                    </Banner>
+                : '' } 
 
             </Main>
 
@@ -137,4 +183,4 @@ const Button = styled.div`
     }
 `
 
-export default GameCard
+export default SlotCard

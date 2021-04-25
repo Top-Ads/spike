@@ -1,7 +1,7 @@
 import React, { Fragment } from 'react'
 import { FunctionComponent } from 'react'
 import styled from 'styled-components'
-import { Bonus } from '../../pages/api/interfaces'
+import { Bonus } from '../../interfaces'
 import FreeCard from '../Cards/FreeCard'
 import GridSlots from '../GridSlots'
 
@@ -39,7 +39,7 @@ const FreeSlots: FunctionComponent<PageProps> = ({data}) => {
               <GridSlots
                 label="I migliori casinò con giri gratis."
                 AlignItem="center"
-                data={ data.map( (bonus, index) => <FreeCard key={index} data={bonus}/> )}
+                content={ data.map( (bonus, index) => <FreeCard key={index} data={bonus}/> )}
                 width={"200px"}
                 disableBoxShadow={true}
                 bgColor="#f2f2f2"

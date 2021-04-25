@@ -2,7 +2,7 @@ import React, { Fragment, FunctionComponent } from 'react'
 import { useRouter } from 'next/router'
 import Image from 'next/image'
 import styled from 'styled-components'
-import { Bonus } from '../../../pages/api/interfaces'
+import { Bonus } from '../../../interfaces'
 
 type PageProps = {
     data: Bonus 
@@ -30,7 +30,7 @@ const FreeCard: FunctionComponent<PageProps> = ({data}) => {
                         src={data.circular_image.url}
                         layout="responsive"
                         priority={true}
-                        width={75}
+                        width={60}
                         height={'auto'}/>
                 </Thumbnail>
 
@@ -49,7 +49,6 @@ const Main = styled.div`
     display: flex;
     flex-direction: row;
     align-items: center;
-    height: 100%;
     font-size: 12px;
     border-bottom: 1px solid ${({theme}) => theme.colors.gradient};
     padding: 10px 0px;

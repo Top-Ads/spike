@@ -1,7 +1,7 @@
 import React, { Fragment, FunctionComponent } from 'react'
 import { useRouter } from 'next/router'
 import styled from 'styled-components'
-import { Bonus } from '../../../pages/api/interfaces'
+import { Bonus } from '../../../interfaces'
 import Image from 'next/image'
 import Divider from '../../Divider'
 

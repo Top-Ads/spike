@@ -1,5 +1,5 @@
 import { createGlobalStyle } from "styled-components"
-import { StyledTheme } from "../pages/api/interfaces"
+import { StyledTheme } from "../interfaces"
 
 export const styledTheme: StyledTheme = {
 
@@ -19,7 +19,6 @@ export const styledTheme: StyledTheme = {
         boxShadowY: '0px 0px 5px 5px rgba(255,255,255,0.4)',
         borderRadius: '5px'
     }
-
 }
 
 export const GlobalStyle = createGlobalStyle`
@@ -36,6 +35,7 @@ export const GlobalStyle = createGlobalStyle`
         font-family: Montserrat, sans-serif;
         background-color: #f2f2f2;
         margin: 0 auto;
+        overflow-y: scroll !important;
     }
 
     a { text-decoration : none; text-align: center; }
@@ -48,4 +48,3 @@ export const GlobalStyle = createGlobalStyle`
 
     p { color: ${styledTheme.text.color.secondary}; }
 `
-
