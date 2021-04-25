@@ -55,7 +55,6 @@ const Header = () => {
 
   useEffect(() => {
     if (openDialog) {
-
       if (category === Category.FAVORITES) {
         const currentItem = localStorage.getItem(category)
         if (currentItem) {

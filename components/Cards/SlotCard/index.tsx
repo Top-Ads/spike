@@ -21,7 +21,6 @@ const SlotCard: FunctionComponent<PageProps> = ({data}) => {
 
     const  {slotDislikedId}  = useContext(DislikedSlotContext)
 
-    
     const playSlot = () => {
         router.push({
             pathname: '/slot/[url]',
@@ -61,6 +60,7 @@ const SlotCard: FunctionComponent<PageProps> = ({data}) => {
 
                 localStorage.setItem(Category.FAVORITES, JSON.stringify(newItems))
             }
+
             setTriggerOnClick(false)
         }  
 
