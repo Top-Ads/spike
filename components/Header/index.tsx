@@ -79,7 +79,7 @@ const Header = () => {
                 <TextInput
                       autoFocus={true}
                       searchIcon={true}
-                      placeholder="cerca una slot, un casino..."/>
+                      placeholder="Cerca una slot, un casino..."/>
               </Fragment> :
 
               <TopHeader>
@@ -103,7 +103,7 @@ const Header = () => {
                       <TextInput 
                         width="30ch" 
                         searchIcon={true}
-                        placeholder="cerca una slot, un casino..."
+                        placeholder="Cerca una slot, un casino..."
                         handleOnFocus={() => setOverlay(true)}/>
                     </div>
 

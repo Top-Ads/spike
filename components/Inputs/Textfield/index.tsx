@@ -12,7 +12,7 @@ const useStyles = makeStyles<Theme, PageProps>(() =>
         '& .MuiInputBase-root': {
             backgroundColor: '#fff',
             color: '#ec564f',
-            fontSize: '14px',
+            fontSize: '16px',
             fontWeight: 'bold',
             borderRadius: '20px'
         },
@@ -20,7 +20,7 @@ const useStyles = makeStyles<Theme, PageProps>(() =>
             border: 0
         },
         '& input::placeholder': {
-            fontSize: '11px'
+          fontWeight: 'normal'
         },
         '& .MuiInputBase-input-focus': {
             color: '#000'

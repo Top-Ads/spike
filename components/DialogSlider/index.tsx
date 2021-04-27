@@ -68,9 +68,7 @@ const DialogSlider: FunctionComponent<PageProps> = ({open, setOpen, category, co
       open={open}
       TransitionComponent={Transition}
       keepMounted
-      onClose={() => setOpen(false)}
-      aria-labelledby="alert-dialog-slide-title"
-      aria-describedby="alert-dialog-slide-description">
+      onClose={() => setOpen(false)}>
 
       <StyledDialogActions>
         <Button onClick={() => setOpen(false)} color="default">
