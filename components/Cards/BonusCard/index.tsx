@@ -85,13 +85,15 @@ const BonusInfo = styled.div `
     display: flex;
     flex-direction: column;
     justify-content: center;
-    min-height: 200px;
-      
+    min-height: 160px;
+    font-size: 15px;
+
     .bonus {
-        padding: 10px 5px;
+        padding: 10px;
         display: flex;
         flex-direction: column;
         align-items: center;
+        max-height: 60px;
     }
 `
 

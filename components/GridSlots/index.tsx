@@ -10,10 +10,16 @@ const useStyles = makeStyles<Theme, PageProps>(() =>
   createStyles({
     root: {
       flexGrow: 1,
-      width: ({width}) => width ? width : '400px',
-      margin: '10px 10px'
+      width: ({width}) => width ? width : 'fill-available',
+      margin: '10px 10px',
+
+      '& .MuiGrid-container' : {
+        flexWrap: ({noWrap}) => noWrap ? 'nowrap' : 'wrap',
+        overflowX:  ({noWrap}) => noWrap ? 'scroll' : 'unset'
+      }
     },
     paper: {
+      width: ({noWrap}) => noWrap ? '275px' : 'auto',
       padding: '0px',
       textAlign: ({textAlign}) => textAlign ? 'left' : 'center',
       fontWeight: 'bold',
@@ -40,7 +46,9 @@ type PageProps = {
     disableBoxShadow?: boolean,
     textAlign?: string,
     bgColor?: string,
-    spacing?: GridSpacing
+    spacing?: GridSpacing,
+    noWrap?: boolean,
+    reversed?: boolean
   }
 
 type LabelType = {
@@ -49,7 +57,7 @@ type LabelType = {
 
 const GridSlots: FunctionComponent<PageProps> = (props) => {
 
-  const {content, label, xs, sm, md, AlignItem, showIndex, spacing} = props;
+  const {content, label, xs, sm, md, AlignItem, showIndex, spacing, reversed} = props;
 
   const classes = useStyles(props)
 
@@ -66,7 +74,7 @@ const GridSlots: FunctionComponent<PageProps> = (props) => {
                 <Paper className={classes.paper}>
                     {showIndex ? 
                       <div style={{position: 'absolute', top: '-10px', right: '0px'}}>
-                        <RankingCard index={index+1} />
+                        <RankingCard index={ reversed ? (content.length-index) : (index+1) } />
                       </div> : '' }
                     {child}
                 </Paper>

@@ -76,10 +76,12 @@ const IndexPage: FunctionComponent<PageProps> = ({slotsData, freeBonusData, topB
 
         <Grids>
           <GridSlots 
+            width={'400px'}
             content={ slotsData.slice(0, 12).map( (slot) => <SlotCard key={slot.name} data={slot}/> )}
             label="Le migliori Novomatic selezionate per te."
             xs={6} sm={4} md={4}/>
           <GridSlots
+            width={'400px'}
             content={ slotsData.slice(12, 24).map( (slot) => <SlotCard key={slot.name} data={slot}/> )}
             label="Le slot online del momento."
             xs={6} sm={4} md={4}/>
@@ -87,10 +89,12 @@ const IndexPage: FunctionComponent<PageProps> = ({slotsData, freeBonusData, topB
 
         <Grids>
           <GridSlots
+            width={'400px'}
             content={ slotsData.slice(24, 36).map( (slot) => <SlotCard key={slot.id} data={slot}/> )}
             label="Le slot da bar più famose."
             xs={6} sm={4} md={4}/>
-          <GridSlots 
+          <GridSlots
+            width={'400px'} 
             content={ slotsData.slice(36, 48).map( (slot) => <SlotCard key={slot.id} data={slot}/> )}
             label="Le slot VLT più divertenti."
             xs={6} sm={4} md={4}/>
@@ -115,10 +119,13 @@ const IndexPage: FunctionComponent<PageProps> = ({slotsData, freeBonusData, topB
 
             <div className="bonus-list">
               <GridSlots
-                content={ allBonusData.map( (bonus) => <BonusCard key={bonus.id} data={bonus}/> )}
+                content={ allBonusData.reverse().map( (bonus) => <BonusCard key={bonus.id} data={bonus}/> )}
                 AlignItem={"center"}
                 xs={12} sm={12} md={12}
-                showIndex={false}/>
+                showIndex={true}
+                reversed={true}
+                noWrap={true}
+                spacing={3}/>
             </div>
         </Grids>
 
