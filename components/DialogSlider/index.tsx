@@ -81,7 +81,7 @@ const DialogSlider: FunctionComponent<PageProps> = ({open, setOpen, category, co
       <DialogContent>
         { content.length ? 
           content.map( (child: JSX.Element, index: number) => <Fragment key={index}>{child}</Fragment> ) 
-          : <EmtyContent><p> No slots have been added to favorites yet.</p></EmtyContent>
+          : <EmtyContent><p> No card have been added to {category} yet.</p></EmtyContent>
         }
       </DialogContent>
     </StyledDialog>

@@ -63,7 +63,7 @@ const Header = () => {
       }
       
       if (category === Category.NOTIFICATIONS) {
-         setItem([1])
+         setItem([])
       }
     }
   }, [openDialog, category])
