@@ -85,10 +85,7 @@ const IndexPage: FunctionComponent<PageProps> = ({slotsData, freeBonusData, topB
             content={ slotsData.slice(12, 24).map( (slot) => <SlotCard key={slot.name} data={slot}/> )}
             label="Le slot online del momento."
             xs={6} sm={4} md={4}/>
-        </Grids>
-
-        <Grids>
-          <GridSlots
+            <GridSlots
             width={'400px'}
             content={ slotsData.slice(24, 36).map( (slot) => <SlotCard key={slot.id} data={slot}/> )}
             label="Le slot da bar più famose."
