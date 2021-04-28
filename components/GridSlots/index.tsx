@@ -5,6 +5,7 @@ import Grid, { GridSize, GridSpacing } from '@material-ui/core/Grid'
 import Divider from '../Divider'
 import styled from 'styled-components'
 import RankingCard from '../Cards/RankingCard'
+import { GridType } from '../../utils/constants'
 
 const useStyles = makeStyles<Theme, PageProps>(() =>
   createStyles({
@@ -13,13 +14,16 @@ const useStyles = makeStyles<Theme, PageProps>(() =>
       width: ({width}) => width ? width : 'fill-available',
       margin: '10px 10px',
 
-      '& .MuiGrid-container' : {
-        flexWrap: ({noWrap}) => noWrap ? 'nowrap' : 'wrap',
-        overflowX:  ({noWrap}) => noWrap ? 'scroll' : 'unset'
+      ['@media (max-width: 425px)']: {
+        '& .MuiGrid-container' : {
+          width: ({type}) => type === GridType.SLOTS ? '90vw': 'auto',
+          flexWrap: ({type}) => type === GridType.BONUS ? 'nowrap': 'wrap',
+          overflowX: ({type}) => type === GridType.BONUS ? 'scroll': 'unset',
+          padding: '5px'
+        }
       }
     },
     paper: {
-      width: ({noWrap}) => noWrap ? '275px' : 'auto',
       padding: '0px',
       textAlign: ({textAlign}) => textAlign ? 'left' : 'center',
       fontWeight: 'bold',
@@ -28,28 +32,31 @@ const useStyles = makeStyles<Theme, PageProps>(() =>
       borderRadius: ({disableBorderRadius}) => disableBorderRadius ? '0px' : '8px',
       boxShadow: ({disableBoxShadow}) => disableBoxShadow ? 'none' : 'auto',
       backgroundColor: ({bgColor}) => bgColor ? bgColor : '#ff1313',
-      position: 'relative'
+      position: 'relative',
+      ['@media (max-width: 425px)']: {
+        width: ({type}) => type === GridType.BONUS ? '80vw': 'auto'
+      }
     }
   }),
 );
 
 type PageProps = {
+    type: GridType,
     content: JSX.Element[],
     label?: string,
-    width?: string,
     xs: GridSize,
     sm: GridSize,
     md: GridSize,
+    width?: string,
     AlignItem?: string,
+    textAlign?: string,
     showIndex?: boolean,
+    reversedList?: boolean,
     disableBorderRadius?: boolean,
     disableBoxShadow?: boolean,
-    textAlign?: string,
     bgColor?: string,
-    spacing?: GridSpacing,
-    noWrap?: boolean,
-    reversed?: boolean
-  }
+    spacing?: GridSpacing
+}
 
 type LabelType = {
   align?: string
@@ -57,7 +64,7 @@ type LabelType = {
 
 const GridSlots: FunctionComponent<PageProps> = (props) => {
 
-  const {content, label, xs, sm, md, AlignItem, showIndex, spacing, reversed} = props;
+  const {content, label, xs, sm, md, AlignItem, showIndex, reversedList, spacing} = props;
 
   const classes = useStyles(props)
 
@@ -74,7 +81,7 @@ const GridSlots: FunctionComponent<PageProps> = (props) => {
                 <Paper className={classes.paper}>
                     {showIndex ? 
                       <div style={{position: 'absolute', top: '-10px', right: '0px'}}>
-                        <RankingCard index={ reversed ? (content.length-index) : (index+1) } />
+                        <RankingCard index={ reversedList ? (content.length-index) : (index+1) } />
                       </div> : '' }
                     {child}
                 </Paper>

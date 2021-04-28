@@ -6,10 +6,7 @@ type PageProps = {
    data: any
 };
 
-const NotificationCard: FunctionComponent<PageProps> = ({data}) => {
-
-    console.log('notification data ', data)
-    
+const NotificationCard: FunctionComponent<PageProps> = () => {
     return (
         <Fragment>
             <Main> Notification Card</Main>
