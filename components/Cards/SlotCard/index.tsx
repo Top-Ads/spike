@@ -164,7 +164,7 @@ const Thumbnail = styled.div`
 `
 
 const Button = styled.div`
-    background-color: ${({theme}) => theme.colors.backGround};
+    background-color: ${({theme}) => theme.colors.background};
     border: 2px solid #fff;
     color: ${({theme}) => theme.text.color.primary};
     border-radius: ${({theme}) => theme.button.borderRadius};

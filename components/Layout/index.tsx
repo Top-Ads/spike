@@ -53,7 +53,7 @@ const Main = styled.div`
     padding: 10px 10%;
 
     @media ${device.tablet} {
-      padding: 10px 5%;
+      padding: 10px 2%;
     }
   } 
 `

@@ -77,8 +77,8 @@ const Header = () => {
               <Fragment>
                 { showTextInput ? <Overlay onClick={() => setShowTextInput(!showTextInput)}/> : '' }
                 <TextInput
-                      autoFocus={true}
-                      searchIcon={true}
+                      autoFocus
+                      searchIcon
                       placeholder="Cerca una slot, un casino..."/>
               </Fragment> :
 
@@ -102,7 +102,7 @@ const Header = () => {
                     <div className="text-input">
                       <TextInput 
                         width="30ch" 
-                        searchIcon={true}
+                        searchIcon
                         placeholder="Cerca una slot, un casino..."
                         handleOnFocus={() => setOverlay(true)}/>
                     </div>
@@ -157,7 +157,7 @@ const Main = styled.div`
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
-  background-image: linear-gradient(180deg, ${({theme}) => theme.colors.backGround} 0%, ${({theme}) => theme.colors.gradient} 50%);
+  background-image: linear-gradient(180deg, ${({theme}) => theme.colors.background} 0%, ${({theme}) => theme.colors.gradient} 50%);
   border-radius: 0px 0px 20px 20px;
   box-shadow: ${({theme}) => theme.button.boxShadowX};
   color: ${({theme}) => theme.text.color.primary};
@@ -254,7 +254,7 @@ const Button = styled.div`
     font-weight: bold;
 
     &:hover {
-      color: ${({theme}) => theme.colors.backGround};
+      color: ${({theme}) => theme.colors.background};
       background-color: #fff;
     }
 `

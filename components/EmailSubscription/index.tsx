@@ -11,7 +11,7 @@ const EmailSubcription = () => {
           <Main>
             <p>Ricevi aggiornamenti ed anticipazioni sui nuovi video e su bonus e promozio.</p>
 
-            <TextInput placeholder="Email" sm={true}/>
+            <TextInput placeholder="Email" size='small'/>
 
             <br/>
 
@@ -29,7 +29,7 @@ const EmailSubcription = () => {
 }
 
 const Main = styled.div`
-    background-color: ${({theme}) => theme.colors.backGround};
+    background-color: ${({theme}) => theme.colors.background};
     border: 2px solid #fff;
     border-radius: 10px;
     max-width: 270px;

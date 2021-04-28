@@ -1,6 +1,7 @@
 import { createStyles, InputAdornment, makeStyles, TextField, Theme } from '@material-ui/core'
 import React, { Fragment, FunctionComponent } from 'react'
 import SearchIcon from '@material-ui/icons/Search'
+import { BaseTextFieldProps } from '@material-ui/core/TextField';
 
 const useStyles = makeStyles<Theme, PageProps>(() =>
   createStyles({
@@ -35,7 +36,7 @@ const useStyles = makeStyles<Theme, PageProps>(() =>
 );
 
 type PageProps = {
-  sm?: boolean,
+  size?: BaseTextFieldProps['size'],
   searchIcon?: boolean,
   placeholder?: string,
   handleOnFocus?: Function,
@@ -46,7 +47,7 @@ type PageProps = {
 
 const TextInput: FunctionComponent<PageProps> = (props) => {
 
-    const {sm, searchIcon, placeholder, handleOnFocus, handleOnBlur, autoFocus} = props;
+    const {size='medium', searchIcon=false, placeholder, handleOnFocus, handleOnBlur, autoFocus=false} = props;
 
     const classes = useStyles(props)
         
@@ -65,7 +66,7 @@ const TextInput: FunctionComponent<PageProps> = (props) => {
                 <TextField 
                     autoFocus={autoFocus ? autoFocus : false}
                     className={classes.textField}
-                    size={sm ? "small" : "medium"}
+                    size={size}
                     variant="outlined"
                     placeholder={placeholder ? placeholder : '' }
                     onChange={handleChange}

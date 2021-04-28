@@ -1,6 +1,6 @@
 export interface StyledTheme {
     colors: {
-        backGround: string,
+        background: string,
         gradient: string
     }
 

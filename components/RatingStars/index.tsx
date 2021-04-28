@@ -8,23 +8,19 @@ type PageProps = {
    rating: number
 };
 
-const RatingStars: FunctionComponent<PageProps> = ({size, rating}) => { 
-    
-    return (
-            <Rating>
-                { [...Array(size ? size : 5)].map( (_value, index) =>
-                rating > index ? 
-                <StarIcon key={index} className="star-icon"/> : <StarOutlineIcon key={index} className="star-icon"/>)}
-            </Rating> 
-    ) 
-}
+const RatingStars: FunctionComponent<PageProps> = ({size=5, rating}) => 
+    <Rating>
+        { [...Array(size)].map( (_value, index) =>
+        rating > index ? 
+        <StarIcon key={index} className="star-icon"/> : <StarOutlineIcon key={index} className="star-icon"/>)}
+    </Rating> 
 
 const Rating = styled.div`
     width: max-content;
 
     .star-icon {
         font-size: 17px;
-        color: ${({theme}) => theme.colors.backGround};
+        color: ${({theme}) => theme.colors.background};
     }
 `
 

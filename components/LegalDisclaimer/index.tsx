@@ -27,7 +27,7 @@ const Main = styled.div`
     bottom: 0px;
     width: 100%;
     height: auto;
-    background-image: linear-gradient(180deg, ${({theme}) => theme.colors.backGround} 0%, ${({theme}) => theme.colors.gradient} 50%);
+    background-image: linear-gradient(180deg, ${({theme}) => theme.colors.background} 0%, ${({theme}) => theme.colors.gradient} 50%);
     display: flex;
     flex-direction: center;
     align-items: inherit;
@@ -40,7 +40,7 @@ const Main = styled.div`
         margin: 10px 15px;
         
         @media ${device.mobileL} {
-            width: 160px;
+            width: 170px;
           }
     }
 

@@ -2,6 +2,7 @@ import React, { Fragment } from 'react'
 import { FunctionComponent } from 'react'
 import styled from 'styled-components'
 import { Bonus } from '../../interfaces'
+import { GridType } from '../../utils/constants'
 import FreeCard from '../Cards/FreeCard'
 import GridSlots from '../GridSlots'
 
@@ -37,14 +38,16 @@ const FreeSlots: FunctionComponent<PageProps> = ({data}) => {
 
             <Grids>
               <GridSlots
-                label="I migliori casinò con giri gratis."
-                AlignItem="center"
+                type={GridType.FREE}
                 content={ data.map( (bonus, index) => <FreeCard key={index} data={bonus}/> )}
+                label="I migliori casinò con giri gratis."
+                xs={12} sm={12} md={12}
                 width={"200px"}
-                disableBoxShadow={true}
+                AlignItem="center"
+                disableBoxShadow
                 bgColor="#f2f2f2"
-                spacing={0}
-                xs={12} sm={12} md={12}/>
+                spacing={0}      
+                />
             </Grids>
 
           </Main>
@@ -60,13 +63,13 @@ const Main = styled.div`
 const Summary = styled.div`
   flex-grow: 2;
   width: 300px;
-  color: ${({theme}) => theme.colors.backGround}; 
+  color: ${({theme}) => theme.colors.background}; 
   padding: 10px;
 `
 const Grids = styled.div`
   display: inherit;
   flex-grow: 1;
-  color: ${({theme}) => theme.colors.backGround}; 
+  color: ${({theme}) => theme.colors.background}; 
 `
 
 export default FreeSlots
