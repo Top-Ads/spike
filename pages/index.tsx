@@ -1,4 +1,4 @@
-import React, { FunctionComponent } from 'react'
+import React, { FunctionComponent, useState } from 'react'
 import { useRouter } from 'next/router'
 import Image from 'next/image'
 import styled from 'styled-components'
@@ -26,6 +26,8 @@ type PageProps = {
 const IndexPage: FunctionComponent<PageProps> = ({slotsData, freeBonusData, topBonusData, allBonusData}) => {
 
   const router = useRouter()
+
+  const [triggerBanner, setTriggerBanner] = useState(false)
 
   return (
     <Layout title="Home">
@@ -78,7 +80,7 @@ const IndexPage: FunctionComponent<PageProps> = ({slotsData, freeBonusData, topB
         <Grids id="grid-slots">
           <GridSlots
             type={GridType.SLOTS} 
-            content={ slotsData.slice(0, 12).map( (slot) => <SlotCard key={slot.name} data={slot}/> )}
+            content={ slotsData.slice(0, 12).map( (slot) => <SlotCard triggerBanner={triggerBanner} setTriggerBanner={setTriggerBanner} key={slot.name} data={slot}/> )}
             label="Le migliori Novomatic per te."
             xs={6} sm={4} md={4}
             width={'400px'}
@@ -86,7 +88,7 @@ const IndexPage: FunctionComponent<PageProps> = ({slotsData, freeBonusData, topB
             />
           <GridSlots
             type={GridType.SLOTS}
-            content={ slotsData.slice(12, 24).map( (slot) => <SlotCard key={slot.name} data={slot}/> )}
+            content={ slotsData.slice(12, 24).map( (slot) => <SlotCard triggerBanner={triggerBanner} setTriggerBanner={setTriggerBanner} key={slot.name} data={slot}/> )}
             label="Le slot online del momento."
             xs={6} sm={4} md={4}
             width={'400px'}
@@ -94,7 +96,7 @@ const IndexPage: FunctionComponent<PageProps> = ({slotsData, freeBonusData, topB
             />
           <GridSlots
             type={GridType.SLOTS}
-            content={ slotsData.slice(24, 36).map( (slot) => <SlotCard key={slot.id} data={slot}/> )}
+            content={ slotsData.slice(24, 36).map( (slot) => <SlotCard triggerBanner={triggerBanner} setTriggerBanner={setTriggerBanner} key={slot.id} data={slot}/> )}
             label="Le slot da bar più famose."
             xs={6} sm={4} md={4}
             width={'400px'}
@@ -103,7 +105,7 @@ const IndexPage: FunctionComponent<PageProps> = ({slotsData, freeBonusData, topB
           <GridSlots
             type={GridType.SLOTS} 
             width={'400px'} 
-            content={ slotsData.slice(36, 48).map( (slot) => <SlotCard key={slot.id} data={slot}/> )}
+            content={ slotsData.slice(36, 48).map( (slot) => <SlotCard triggerBanner={triggerBanner} setTriggerBanner={setTriggerBanner} key={slot.id} data={slot}/> )}
             label="Le slot VLT più divertenti."
             xs={6} sm={4} md={4}
             currentIndex={3}

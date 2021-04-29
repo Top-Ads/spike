@@ -8,14 +8,17 @@ import { Category } from '../../../utils/constants'
 import { DislikedSlotContext } from '../../../contexts'
 
 type PageProps = {
-   data: Slot
+   data: Slot,
+   triggerBanner: boolean
+   setTriggerBanner: Function
 };
 
-const SlotCard: FunctionComponent<PageProps> = ({data}) => { 
+const SlotCard: FunctionComponent<PageProps> = ({data, triggerBanner, setTriggerBanner}) => { 
 
     const router = useRouter()
 
     const [triggerOnClick, setTriggerOnClick] = useState<boolean>(false)
+    const [triggerOnTouch, setTriggerOnTouch] = useState<boolean>(false)
     const [showBanner, setShowBanner] = useState<boolean>(false)
     const [isFavorite, setIsFavorite] = useState<boolean>(false)
 
@@ -32,6 +35,17 @@ const SlotCard: FunctionComponent<PageProps> = ({data}) => {
         setTriggerOnClick(true)
         setIsFavorite(!isFavorite)
     }
+
+    const handleOnTouch = () => {
+        setShowBanner(!showBanner)
+        setTriggerOnTouch(true) 
+        setTriggerBanner(!triggerBanner) 
+    }
+
+    useEffect( () => {
+        if (!triggerOnTouch) 
+            setShowBanner(false)      
+    }, [triggerBanner])
 
     useEffect( () => {
         const currentItem: string | null = localStorage.getItem(Category.FAVORITES)
@@ -80,7 +94,9 @@ const SlotCard: FunctionComponent<PageProps> = ({data}) => {
                 onClick={playSlot}
                 onMouseEnter={ () => setShowBanner(true)}
                 onMouseLeave={ () => setShowBanner(false)}
-                onTouchStart={ () => setShowBanner(!showBanner)}>
+                onTouchStart={handleOnTouch}
+                onTouchEnd={ () =>  setTriggerOnTouch(false) }
+               >
                 
                 { showBanner || isFavorite ?
                 <Icon>  
