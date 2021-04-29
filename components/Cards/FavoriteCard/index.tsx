@@ -47,7 +47,7 @@ const FavoriteCard: FunctionComponent<PageProps> = ({data, deleteItem}) => {
                     </Info>
                 </Container>
 
-                <Button className="button" onClick={ () =>deleteItem(data.id) } color="secondary">
+                <Button className="button" onClick={ () => deleteItem(data.id) } color="secondary">
                     <CloseIcon/>
                 </Button>
 

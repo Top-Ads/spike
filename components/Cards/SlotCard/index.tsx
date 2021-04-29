@@ -22,7 +22,7 @@ const SlotCard: FunctionComponent<PageProps> = ({data, triggerBanner, setTrigger
     const [showBanner, setShowBanner] = useState<boolean>(false)
     const [isFavorite, setIsFavorite] = useState<boolean>(false)
 
-    const  {slotDislikedId}  = useContext(DislikedSlotContext)
+    const  {slotDislikedId, setSlotDislikedId}  = useContext(DislikedSlotContext)
 
     const playSlot = () => {
         router.push({
@@ -50,10 +50,9 @@ const SlotCard: FunctionComponent<PageProps> = ({data, triggerBanner, setTrigger
     useEffect( () => {
         const currentItem: string | null = localStorage.getItem(Category.FAVORITES)
 
-        if (currentItem && JSON.parse(currentItem).some( (slot: Slot) => slot.id === data.id )) {
+        if (currentItem && JSON.parse(currentItem).some( (slot: Slot) => slot.id === data.id )) 
             setIsFavorite(true)
-        }
-
+        
     }, [])
 
     useEffect( () => {
@@ -82,10 +81,11 @@ const SlotCard: FunctionComponent<PageProps> = ({data, triggerBanner, setTrigger
 
     
     useEffect( () => {
+
         if (slotDislikedId === data.id) {
             setIsFavorite(false)
-        }
-            
+            setSlotDislikedId('')
+        }        
     }, [slotDislikedId])
 
     return (
@@ -109,8 +109,8 @@ const SlotCard: FunctionComponent<PageProps> = ({data, triggerBanner, setTrigger
                         src={data.image && data.image.url ? data.image.url : '/svg/no_img_available.svg'} 
                         layout="responsive"
                         priority={true}
-                        width={241}
-                        height={161}/>
+                        width={1080}
+                        height={608}/>
                 </Thumbnail>
                 
                 { showBanner ? 
@@ -126,9 +126,7 @@ const SlotCard: FunctionComponent<PageProps> = ({data, triggerBanner, setTrigger
 
             </Main>
 
-            <Title>
-                    {data.name}
-            </Title>       
+            <Title>{data.name}</Title>       
         </Fragment>
     ) 
 }

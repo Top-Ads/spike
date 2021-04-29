@@ -36,7 +36,7 @@ const Main = styled.div`
     z-index: 100;
 
     .legal-image {
-        width: 120px;
+        width: 130px;
         margin: 10px 15px;
         
         @media ${device.mobileL} {
@@ -47,8 +47,12 @@ const Main = styled.div`
     .legal-text {
         display: inherit;
         align-items: center;
-        font-size: 10px;
         p { color: ${({theme}) => theme.text.color.primary}; }
+        font-size: 11px;
+       
+        @media ${device.mobileL} {
+            font-size: 10px;
+        }
     }
 `
 export default LegalDisclaimer
