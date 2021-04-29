@@ -16,7 +16,7 @@ const Breadcrumbs: FunctionComponent<PageProps> = ({size=4, currentIndex}) =>
 const Main = styled.div`
     display: none;
 
-    @media ${device.mobileL} {
+    @media ${device.tablet} {
         width: auto;
         display: flex;
         flex-direction: row;

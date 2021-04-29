@@ -12,12 +12,19 @@ const useStyles = makeStyles<Theme, PageProps>(() =>
   createStyles({
     root: {
       flexGrow: 1,
-      width: ({width}) => width ? width : 'fill-available',
       margin: '10px 10px',
 
-      ['@media (max-width: 425px)']: {
+      width: ({width, type}) => {
+        if (width)
+          return width
+        else {
+          return type === GridType.SLOTS ? '400px': 'fill-available'
+        }
+      },
+      ['@media (max-width: 768px)']: {
+        width: ({width}) => width ? width : 'fill-available',
         '& .MuiGrid-container' : {
-          width: ({type}) => type === GridType.SLOTS ? '95vw': 'auto',
+          width: ({type}) => type === GridType.SLOTS ? '96vw': 'auto',
           flexWrap: ({type}) => type === GridType.BONUS ? 'nowrap': 'wrap',
           overflowX: ({type}) => type === GridType.BONUS ? 'scroll': 'unset',
           padding: '5px'

@@ -24,7 +24,6 @@ const FreqentlyAsked = () => {
                                 triggerCollpase={(collapse: boolean) => setCollapse(collapse)}
                                 data={data}/> )}
                         xs={12} sm={6} md={6}
-                        width={'auto'}
                         disableBorderRadius
                         disableBoxShadow
                     />
