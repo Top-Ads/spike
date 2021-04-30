@@ -12,7 +12,6 @@ type PageProps = {
 type LikeIconType = {
     color?: string
  };
-
  
 const LikeIcon: FunctionComponent<PageProps> = ({color, active, setActive}) => { 
     

@@ -1,4 +1,4 @@
-import React, { Fragment, FunctionComponent, useContext, useEffect, useState } from 'react'
+import React, { Fragment, FunctionComponent, useContext, useEffect, useRef, useState } from 'react'
 import { useRouter } from 'next/router'
 import Image from 'next/image'
 import styled from 'styled-components'
@@ -8,21 +8,33 @@ import { Category } from '../../../utils/constants'
 import { DislikedSlotContext } from '../../../contexts'
 
 type PageProps = {
-   data: Slot,
-   triggerBanner: boolean
-   setTriggerBanner: Function
+   data: Slot
 };
 
-const SlotCard: FunctionComponent<PageProps> = ({data, triggerBanner, setTriggerBanner}) => { 
+const SlotCard: FunctionComponent<PageProps> = ({data}) => { 
 
     const router = useRouter()
 
+    const ref = useRef<HTMLDivElement>(null);
+
     const [triggerOnClick, setTriggerOnClick] = useState<boolean>(false)
-    const [triggerOnTouch, setTriggerOnTouch] = useState<boolean>(false)
     const [showBanner, setShowBanner] = useState<boolean>(false)
     const [isFavorite, setIsFavorite] = useState<boolean>(false)
 
     const  {slotDislikedId, setSlotDislikedId}  = useContext(DislikedSlotContext)
+
+    const handleTouchOutside = (event: TouchEvent) => {
+        if (ref.current && !ref.current.contains(event.target as Node)) {
+            setShowBanner(false)
+        }
+    };
+
+    useEffect(() => {
+        document.addEventListener('touchstart', handleTouchOutside, true);
+        return () => {
+            document.removeEventListener('touchstart', handleTouchOutside, true);
+        };
+    }, [ref]);
 
     const playSlot = () => {
         router.push({
@@ -38,21 +50,14 @@ const SlotCard: FunctionComponent<PageProps> = ({data, triggerBanner, setTrigger
 
     const handleOnTouch = () => {
         setShowBanner(!showBanner)
-        setTriggerOnTouch(true) 
-        setTriggerBanner(!triggerBanner) 
     }
-
-    useEffect( () => {
-        if (!triggerOnTouch) 
-            setShowBanner(false)      
-    }, [triggerBanner])
 
     useEffect( () => {
         const currentItem: string | null = localStorage.getItem(Category.FAVORITES)
 
         if (currentItem && JSON.parse(currentItem).some( (slot: Slot) => slot.id === data.id )) 
             setIsFavorite(true)
-        
+
     }, [])
 
     useEffect( () => {
@@ -79,7 +84,6 @@ const SlotCard: FunctionComponent<PageProps> = ({data, triggerBanner, setTrigger
 
     }, [isFavorite, triggerOnClick])
 
-    
     useEffect( () => {
 
         if (slotDislikedId === data.id) {
@@ -90,13 +94,12 @@ const SlotCard: FunctionComponent<PageProps> = ({data, triggerBanner, setTrigger
 
     return (
         <Fragment>
-            <Main 
+            <Main  
+                ref={ref}
                 onClick={playSlot}
                 onMouseEnter={ () => setShowBanner(true)}
                 onMouseLeave={ () => setShowBanner(false)}
-                onTouchStart={handleOnTouch}
-                onTouchEnd={ () =>  setTriggerOnTouch(false) }
-               >
+                onTouchStart={handleOnTouch}>
                 
                 { showBanner || isFavorite ?
                 <Icon>  
@@ -109,8 +112,8 @@ const SlotCard: FunctionComponent<PageProps> = ({data, triggerBanner, setTrigger
                         src={data.image && data.image.url ? data.image.url : '/svg/no_img_available.svg'} 
                         layout="responsive"
                         priority={true}
-                        width={1080}
-                        height={608}/>
+                        width={540}
+                        height={304}/>
                 </Thumbnail>
                 
                 { showBanner ? 
