@@ -5,13 +5,13 @@ import { Bonus } from '../../interfaces'
 import { GridType } from '../../utils/constants'
 import FreeCard from '../Cards/FreeCard'
 import GridSlots from '../GridSlots'
+import LazyLoad from 'react-lazyload'
 
 type PageProps = {
   data: Bonus []
 }
 
 const FreeSlots: FunctionComponent<PageProps> = ({data}) => { 
-    
     return (
         <Fragment>
           <Main>
@@ -39,7 +39,10 @@ const FreeSlots: FunctionComponent<PageProps> = ({data}) => {
             <Grids>
               <GridSlots
                 type={GridType.FREE}
-                content={ data.map( (bonus, index) => <FreeCard key={index} data={bonus}/> )}
+                content={ data.map( (bonus, index) =>
+                  <LazyLoad offset={100}>
+                    <FreeCard key={index} data={bonus}/>
+                  </LazyLoad> )}
                 label="I migliori casinò con giri gratis."
                 xs={12} sm={12} md={12}
                 width={"200px"}

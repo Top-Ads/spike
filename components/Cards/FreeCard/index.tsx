@@ -23,7 +23,6 @@ const FreeCard: FunctionComponent<PageProps> = ({data}) => {
     return (
         <Fragment>
             <Main>
-            
                 <Thumbnail>
                     <Image
                         alt={data.name}
