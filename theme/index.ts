@@ -25,7 +25,7 @@ export const GlobalStyle = createGlobalStyle`
 
     @font-face {
         font-family: 'Montserrat';
-        src: local('Montserrat'), url(./fonts/Montserrat-Black) format('ttf');
+        src: local('Montserrat'), url(https://spikewebsitemedia.b-cdn.net/spike_v2/fonts/Montserrat-Black) format('ttf');
         font-display: swap;
     }
 

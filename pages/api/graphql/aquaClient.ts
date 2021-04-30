@@ -1,9 +1,10 @@
 import axios, { AxiosInstance } from 'axios';
+import { API } from '../../../public/environment';
 
 class AquaClient {
     axios: AxiosInstance;
 
-    constructor(public baseURL: string = 'https://spikeapistaging.tech/graphql', public headers?: string) {
+    constructor(public baseURL: string = API, public headers?: string) {
         this.axios = axios.create({ baseURL })
     }
 

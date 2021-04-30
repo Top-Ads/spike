@@ -16,6 +16,7 @@ import FavoriteCard from '../Cards/FavoriteCard'
 import { Slot } from '../../interfaces'
 import NotificationCard from '../Cards/NotificationCard'
 import { DislikedSlotContext } from '../../contexts'
+import { CDN } from '../../public/environment'
 
 type NavProps = {
   expand: boolean
@@ -87,7 +88,7 @@ const Header = () => {
                 <Logo>
                   <Image
                     alt="Casino Legal Information"
-                    src="/svg/logo-spike.svg"
+                    src={`${CDN}/svg/logo-spike.svg`}
                     layout="responsive"
                     priority={true}
                     width={150}

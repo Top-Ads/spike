@@ -7,6 +7,7 @@ import Image from 'next/image'
 import RatingStars from '../../RatingStars'
 import CloseIcon from '@material-ui/icons/Close'
 import Button from '@material-ui/core/Button'
+import { CDN } from '../../../public/environment'
 
 type PageProps = {
    data: Slot,
@@ -33,7 +34,7 @@ const FavoriteCard: FunctionComponent<PageProps> = ({data, deleteItem}) => {
                     <Thumbnail>
                         <Image
                             alt={data.name}
-                            src={data.image && data.image.url ? data.image.url : '/svg/no_img_available.svg'} 
+                            src={data.image && data.image.url ? data.image.url : `${CDN}/svg/no_img_available.svg`} 
                             layout="responsive"
                             priority={true}
                             width={75}

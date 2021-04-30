@@ -2,6 +2,7 @@ import React, { Fragment, FunctionComponent } from 'react'
 import styled from 'styled-components'
 import Image from 'next/image'
 import { device } from '../../utils/device'
+import { CDN } from '../../public/environment'
 
 const LegalDisclaimer: FunctionComponent = () =>   
     <Fragment>
@@ -9,7 +10,7 @@ const LegalDisclaimer: FunctionComponent = () =>
             <div className="legal-image">
                 <Image
                     alt="Casino Legal Information"
-                    src="/png/it-legal-logos.png"
+                    src={`${CDN}/png/it-legal-logos.png`}
                     layout="responsive"
                     priority={true}
                     width={295}

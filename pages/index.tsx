@@ -15,6 +15,7 @@ import { Bonus, Slot } from '../interfaces'
 import { BONUSES } from './api/graphql/queries/bonuses'
 import { SLOTS } from './api/graphql/queries/slots'
 import { GridType } from '../utils/constants'
+import { CDN } from '../public/environment'
 
 type PageProps = {
   slotsData: Slot [],
@@ -57,7 +58,7 @@ const IndexPage: FunctionComponent<PageProps> = ({slotsData, freeBonusData, topB
             <Thumbnail>
               <Image
                 alt="Spike poster"
-                src="/png/spike-poster.png"
+                src={`${CDN}/png/spike-poster.png`}
                 layout="responsive"
                 priority={true}
                 width={624}

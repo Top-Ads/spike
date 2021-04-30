@@ -14,6 +14,7 @@ import { Bonus } from '../../interfaces'
 import styled from 'styled-components'
 import RatingStars from '../RatingStars'
 import RankingCard from '../Cards/RankingCard'
+import { CDN } from '../../public/environment'
 
 type PageProps = {
     data: Bonus[]
@@ -114,7 +115,7 @@ const BonusTable: FunctionComponent<PageProps> = ({data}) => {
                   <Licence>
                           <Image
                               alt="licence ADM"
-                              src={'https://img.slotjava.it/wp-content/plugins/strove-casino/static/images/casino-license/adm.svg'}
+                              src={`${CDN}/svg/adm.svg`}
                               layout="responsive"
                               priority={true}
                               width={23}

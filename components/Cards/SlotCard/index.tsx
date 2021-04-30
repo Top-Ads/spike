@@ -6,6 +6,7 @@ import { Slot } from '../../../interfaces'
 import LikeIcon from '../../LikeIcon'
 import { Category } from '../../../utils/constants'
 import { DislikedSlotContext } from '../../../contexts'
+import { CDN } from '../../../public/environment'
 
 type PageProps = {
    data: Slot
@@ -109,7 +110,7 @@ const SlotCard: FunctionComponent<PageProps> = ({data}) => {
                 <Thumbnail>
                     <Image
                         alt="image not available"
-                        src={data.image && data.image.url ? data.image.url : '/svg/no_img_available.svg'} 
+                        src={data.image && data.image.url ? data.image.url : `${CDN}/svg/no_img_available.svg`} 
                         layout="responsive"
                         priority={true}
                         width={540}

@@ -4,6 +4,7 @@ import styled from 'styled-components'
 import { Bonus } from '../../../interfaces'
 import Image from 'next/image'
 import Divider from '../../Divider'
+import { CDN } from '../../../public/environment'
 
 type PageProps = {
    data: Bonus 
@@ -60,7 +61,7 @@ const BonusCard: FunctionComponent<PageProps> = ({data}) => {
                         <Provider key={index}>
                             <Image
                                 alt={provider}
-                                src={'https://img.slotjava.it/wp-content/plugins/strove-casino/static/images/payment-providers/svg/' + provider + '.svg'} 
+                                src={`${CDN}/svg/${provider}.svg`} 
                                 layout="responsive"
                                 priority={true}
                                 width={30}
