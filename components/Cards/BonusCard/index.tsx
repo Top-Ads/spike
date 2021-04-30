@@ -27,7 +27,6 @@ const BonusCard: FunctionComponent<PageProps> = ({data}) => {
     return (
         <Fragment>
             <Main>
-            
                 <Name bgColor={data.backgroundColor}>
                     <Thumbnail>
                         <Image
@@ -59,18 +58,19 @@ const BonusCard: FunctionComponent<PageProps> = ({data}) => {
                 <PaymentProviders>
                     {paymentProviders. map( (provider, index) => 
                         <Provider key={index}>
-                            <Image
-                                alt={provider}
-                                src={`${CDN}/svg/${provider}.svg`} 
-                                layout="responsive"
-                                priority={true}
-                                width={30}
-                                height={30}/>
+                                <Image
+                                    alt={provider}
+                                    src={`${CDN}/svg/${provider}.svg`} 
+                                    layout="responsive"
+                                    priority={true}
+                                    width={30}
+                                    height={30}/>
                       </Provider>
                     )}
                 </PaymentProviders>       
             
             </Main>
+            
         </Fragment>
     ) 
 }

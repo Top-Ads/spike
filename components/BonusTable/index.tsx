@@ -113,13 +113,13 @@ const BonusTable: FunctionComponent<PageProps> = ({data}) => {
                 
                 <StyledTableCell align="left">
                   <Licence>
-                          <Image
-                              alt="licence ADM"
-                              src={`${CDN}/svg/adm.svg`}
-                              layout="responsive"
-                              priority={true}
-                              width={23}
-                              height={'auto'}/>
+                      <Image
+                          alt="licence ADM"
+                          src={`${CDN}/svg/adm.svg`}
+                          layout="responsive"
+                          priority={true}
+                          width={23}
+                          height={'auto'}/>
                   </Licence>
 
                   <Button bgColor={row.backgroundColor} onClick={() => linkToBonus(row.link)}>

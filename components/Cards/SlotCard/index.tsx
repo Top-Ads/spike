@@ -54,6 +54,7 @@ const SlotCard: FunctionComponent<PageProps> = ({data}) => {
     }
 
     useEffect( () => {
+
         const currentItem: string | null = localStorage.getItem(Category.FAVORITES)
 
         if (currentItem && JSON.parse(currentItem).some( (slot: Slot) => slot.id === data.id )) 
@@ -130,7 +131,7 @@ const SlotCard: FunctionComponent<PageProps> = ({data}) => {
 
             </Main>
 
-            <Title>{data.name}</Title>       
+            <Title>{data.name}</Title>
         </Fragment>
     ) 
 }
