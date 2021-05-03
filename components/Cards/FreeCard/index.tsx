@@ -3,6 +3,7 @@ import { useRouter } from 'next/router'
 import Image from 'next/image'
 import styled from 'styled-components'
 import { Bonus } from '../../../interfaces'
+import LazyLoad from 'react-lazyload'
 
 type PageProps = {
     data: Bonus 
@@ -24,13 +25,15 @@ const FreeCard: FunctionComponent<PageProps> = ({data}) => {
         <Fragment>
             <Main>
                 <Thumbnail>
-                    <Image
-                        alt={data.name}
-                        src={data.circular_image.url}
-                        layout="responsive"
-                        priority={true}
-                        width={60}
-                        height={'auto'}/>
+                    <LazyLoad key={data.id} height={60} offset={200}>
+                        <Image
+                            alt={data.name}
+                            src={data.circular_image.url}
+                            layout="responsive"
+                            priority={true}
+                            width={60}
+                            height={'auto'}/>
+                    </LazyLoad>
                 </Thumbnail>
 
                 <Container>

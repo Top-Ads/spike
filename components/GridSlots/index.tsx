@@ -64,7 +64,9 @@ type PageProps = {
     disableBoxShadow?: boolean,
     bgColor?: string,
     spacing?: GridSpacing,
-    currentIndex?: number
+    breadcrumbIndex?: number
+    breadcrumbSize?: number
+
 }
 
 type HeadType = {
@@ -73,7 +75,7 @@ type HeadType = {
 
 const GridSlots: FunctionComponent<PageProps> = (props) => {
 
-  const {type, content, label, xs, sm, md, AlignItem, showIndex=false, reversedList, spacing=2, currentIndex=0} = props;
+  const {type, content, label, xs, sm, md, AlignItem, showIndex=false, reversedList, spacing=2, breadcrumbIndex=0, breadcrumbSize} = props;
 
   const classes = useStyles(props)
 
@@ -84,7 +86,7 @@ const GridSlots: FunctionComponent<PageProps> = (props) => {
               <Fragment>
                 <Label> 
                   { label }
-                  { type === GridType.SLOTS ? <Breadcrumbs currentIndex={currentIndex}/> : '' }
+                  { type === GridType.SLOTS ? <Breadcrumbs currentIndex={breadcrumbIndex} size={breadcrumbSize}/> : '' }
                 </Label>
                 <Divider/>
               </Fragment>

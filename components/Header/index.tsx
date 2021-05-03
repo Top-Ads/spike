@@ -80,6 +80,7 @@ const Header = () => {
                 <TextInput
                       autoFocus
                       searchIcon
+                      borderRadius={'20px'}
                       placeholder="Cerca una slot, un casino..."/>
               </Fragment> :
 
@@ -103,6 +104,7 @@ const Header = () => {
                     <div className="text-input">
                       <TextInput 
                         width="30ch" 
+                        borderRadius={'20px'}
                         searchIcon
                         placeholder="Cerca una slot, un casino..."
                         handleOnFocus={() => setOverlay(true)}/>

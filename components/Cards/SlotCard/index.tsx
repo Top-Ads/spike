@@ -7,6 +7,7 @@ import LikeIcon from '../../LikeIcon'
 import { Category } from '../../../utils/constants'
 import { DislikedSlotContext } from '../../../contexts'
 import { CDN } from '../../../public/environment'
+import LazyLoad, { forceCheck } from 'react-lazyload'
 
 type PageProps = {
    data: Slot
@@ -54,6 +55,8 @@ const SlotCard: FunctionComponent<PageProps> = ({data}) => {
     }
 
     useEffect( () => {
+
+        forceCheck()
 
         const currentItem: string | null = localStorage.getItem(Category.FAVORITES)
 
@@ -109,13 +112,15 @@ const SlotCard: FunctionComponent<PageProps> = ({data}) => {
                 </Icon> : '' } 
                
                 <Thumbnail>
-                    <Image
-                        alt="image not available"
-                        src={data.image && data.image.url ? data.image.url : `${CDN}/svg/no_img_available.svg`} 
-                        layout="responsive"
-                        priority={true}
-                        width={540}
-                        height={304}/>
+                    <LazyLoad key={data.id} height={85} offset={200}>
+                        <Image
+                            alt="image not available"
+                            src={data.image && data.image.url ? data.image.url : `${CDN}/svg/no_img_available.svg`} 
+                            layout="responsive"
+                            priority={true}
+                            width={540}
+                            height={304}/>
+                    </LazyLoad>
                 </Thumbnail>
                 
                 { showBanner ? 

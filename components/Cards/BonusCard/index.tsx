@@ -5,6 +5,7 @@ import { Bonus } from '../../../interfaces'
 import Image from 'next/image'
 import Divider from '../../Divider'
 import { CDN } from '../../../public/environment'
+import LazyLoad from 'react-lazyload'
 
 type PageProps = {
    data: Bonus 
@@ -29,13 +30,15 @@ const BonusCard: FunctionComponent<PageProps> = ({data}) => {
             <Main>
                 <Name bgColor={data.backgroundColor}>
                     <Thumbnail>
-                        <Image
-                            alt={data.name}
-                            src={data.circular_image.url}
-                            layout="responsive"
-                            priority={true}
-                            width={100}
-                            height={'auto'}/>
+                        <LazyLoad key={data.id} height={100} offset={200}>
+                            <Image
+                                alt={data.name}
+                                src={data.circular_image.url}
+                                layout="responsive"
+                                priority={true}
+                                width={100}
+                                height={'auto'}/>
+                        </LazyLoad>
                     </Thumbnail>
                 </Name>
         

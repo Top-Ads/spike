@@ -15,7 +15,7 @@ const useStyles = makeStyles<Theme, PageProps>(() =>
             color: '#ec564f',
             fontSize: '16px',
             fontWeight: 'bold',
-            borderRadius: '20px'
+            borderRadius: ({borderRadius}) => borderRadius ? borderRadius: '15px',
         },
         '& .MuiOutlinedInput-notchedOutline': {
             border: 0
@@ -42,7 +42,8 @@ type PageProps = {
   handleOnFocus?: Function,
   handleOnBlur?: Function,
   width?: string,
-  autoFocus?: boolean
+  autoFocus?: boolean,
+  borderRadius?: string
 }
 
 const TextInput: FunctionComponent<PageProps> = (props) => {

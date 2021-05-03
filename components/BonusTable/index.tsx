@@ -15,6 +15,7 @@ import styled from 'styled-components'
 import RatingStars from '../RatingStars'
 import RankingCard from '../Cards/RankingCard'
 import { CDN } from '../../public/environment'
+import LazyLoad from 'react-lazyload'
 
 type PageProps = {
     data: Bonus[]
@@ -90,6 +91,7 @@ const BonusTable: FunctionComponent<PageProps> = ({data}) => {
 
                 <StyledTableCell component="th" >
                   <Thumbnail>
+                    <LazyLoad key={index} height={50} offset={200}>
                       <Image
                           alt={row.name}
                           src={row.circular_image.url}
@@ -97,6 +99,7 @@ const BonusTable: FunctionComponent<PageProps> = ({data}) => {
                           priority={true}
                           width={100}
                           height={'auto'}/>
+                    </LazyLoad>
                   </Thumbnail>
                 </StyledTableCell>
 
