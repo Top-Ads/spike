@@ -37,7 +37,7 @@ const useStyles = makeStyles<Theme, PageProps>(() =>
       fontWeight: 'bold',
       color: "#fff",
       height: 'auto',
-      borderRadius: ({disableBorderRadius}) => disableBorderRadius ? '0px' : '10px',
+      borderRadius: ({disableBorderRadius}) => disableBorderRadius ? '0px' : '5px',
       boxShadow: ({disableBoxShadow}) => disableBoxShadow ? 'none' : 'auto',
       backgroundColor: ({bgColor}) => bgColor ? bgColor : '#ff1313',
       position: 'relative',

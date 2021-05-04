@@ -145,7 +145,7 @@ const Main = styled.div`
     position: relative;
     list-style-type: none;
     cursor: pointer;
-    border-radius: 8px 8px 0px 0px;
+    border-radius: 5px 5px 0px 0px;
     overflow: hidden;
 `
 
@@ -184,7 +184,7 @@ const Icon = styled.div`
 
 const Thumbnail = styled.div` 
   z-index: 1;
-  img { border-radius: 8px 8px 0px 0px; }
+  img { border-radius: 5px 5px 0px 0px; }
 `
 
 const Button = styled.div`

@@ -113,7 +113,7 @@ const Name = styled.div<BonusType> `
     width: 100%;
     background-color: ${({bgColor}) => bgColor ? bgColor : 'inherit'};
     color: ${({theme}) => theme.text.color.primary};
-    border-radius: 10px 10px 0px 0px;
+    border-radius: 5px 5px 0px 0px;
     display: flex;
     flex-direction: column;
     align-items: center;
