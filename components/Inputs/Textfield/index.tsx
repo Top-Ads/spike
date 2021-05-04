@@ -1,5 +1,5 @@
 import { createStyles, InputAdornment, makeStyles, TextField, Theme } from '@material-ui/core'
-import React, { Fragment, FunctionComponent } from 'react'
+import React, { Fragment, FunctionComponent, useState } from 'react'
 import SearchIcon from '@material-ui/icons/Search'
 import { BaseTextFieldProps } from '@material-ui/core/TextField';
 
@@ -43,22 +43,32 @@ type PageProps = {
   handleOnBlur?: Function,
   width?: string,
   autoFocus?: boolean,
-  borderRadius?: string
+  borderRadius?: string,
+  onChange?: Function,
+  onSearch?: Function
+
 }
 
 const TextInput: FunctionComponent<PageProps> = (props) => {
 
-    const {size='medium', searchIcon=false, placeholder, handleOnFocus, handleOnBlur, autoFocus=false} = props;
+    const {size='medium', searchIcon=false, placeholder, handleOnFocus, handleOnBlur, autoFocus=false, onChange, onSearch} = props;
 
     const classes = useStyles(props)
-        
+    
+    const [text, setText] = useState<string>('')
+
     const search = () => {
-      console.log("SEARCH ICON CLICKED");
+      if (onSearch)
+        onSearch(text)
     }
 
     const handleChange =  (event: React.ChangeEvent<HTMLInputElement>) => {
       event.preventDefault()
-      console.log('Onchange textfield ', event.target.value)
+
+      if (onChange)
+        onChange(event.target.value)
+
+      setText(event.target.value)
     }
 
     return (

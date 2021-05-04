@@ -11,7 +11,7 @@ const EmailSubcription = () => {
           <Main>
             <p>Ricevi aggiornamenti ed anticipazioni sui nuovi video e su bonus e promozio.</p>
 
-            <TextInput placeholder="Email" size='small'/>
+            <TextInput onChange={(text: string) => console.log('onchange', text)} placeholder="Email" size='small'/>
 
             <br/>
 

@@ -102,7 +102,9 @@ const Header = () => {
                 <Actions>
                   <Search>
                     <div className="text-input">
-                      <TextInput 
+                      <TextInput
+                        onChange={(text: string) => console.log('onchange', text)}
+                        onSearch={(text: string) => console.log('onsearch', text)}
                         width="30ch" 
                         borderRadius={'20px'}
                         searchIcon

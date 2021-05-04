@@ -82,6 +82,7 @@ const Slots: FunctionComponent<PageProps> = ({newSlotsData, pupularSlotsData, fr
                             <Actions>
                                 <div className="search-input">
                                     <TextInput
+                                        onSearch={(text: string) => console.log('onsearch', text)}
                                         size={'small'}
                                         borderRadius={'5px'}
                                         searchIcon

@@ -20,7 +20,6 @@ const useStyles = makeStyles( () =>
   createStyles({
     root: {
       display: 'flex',
-
     },
     itemText: {
         width: '145px',
@@ -46,12 +45,12 @@ export default function MenuListComposition() {
   const anchorRef = React.useRef<HTMLDivElement>(null)
 
   // return focus to the button when we transitioned from !open -> open
-  const prevOpen = React.useRef(open);
+  const prevOpen = React.useRef(open)
 
 
   const handleToggle = () => {
     setOpen((prevOpen) => !prevOpen)
-  };
+  }
 
   const handleClose = (event: React.MouseEvent<EventTarget>) => {
     if (anchorRef.current && anchorRef.current.contains(event.target as HTMLDivElement)) {
@@ -59,7 +58,7 @@ export default function MenuListComposition() {
     }
 
     setOpen(false)
-  };
+  }
 
   function handleListKeyDown(event: React.KeyboardEvent) {
     if (event.key === 'Tab') {
@@ -72,6 +71,7 @@ export default function MenuListComposition() {
     setItemSelected(item)
     setOpen(false)
   }
+
   const renderIconForItem = (value: string) => {
         switch(value) {
             case 'RTP' :
@@ -93,11 +93,7 @@ export default function MenuListComposition() {
     }
 
     prevOpen.current = open;
-  }, [open]);
-
-  React.useEffect(() => {
-    console.log('itemSelected ', itemSelected)
-  }, [itemSelected]);
+  }, [open])
 
   return (
     <div className={classes.root}>
