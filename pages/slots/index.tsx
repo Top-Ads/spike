@@ -27,16 +27,46 @@ const Slots: FunctionComponent<PageProps> = ({newSlotsData, pupularSlotsData, fr
 
     const [freeSlots, setFreeSlots] = useState<Slot[]>(freeSlotsData)
     
-    const loadMore = async () => {
-        
-        const moreFreeSlotsRequest =  await aquaClient.query({ 
+    function getRandomInt(min: number, max: number) {
+        min = Math.ceil(min);
+        max = Math.floor(max);
+        return Math.floor(Math.random() * (max - min) + min); //The maximum is exclusive and the minimum is inclusive
+      }
+    const fetchData = async (limit: number) => {
+        const request =  await aquaClient.query({ 
             query: SLOTS, 
-            variables: { code: 'it', limit: 12, start: freeSlots.length } 
+            variables: { code: 'it', limit: limit, start: getRandomInt(freeSlots.length, 500) } 
         })
 
-        const newData = [...freeSlots, ...moreFreeSlotsRequest.data.data.slots]
+        return request.data.data.slots
+    }
 
-        setFreeSlots(newData)    
+    const loadMore = async () => {
+        const moreFreeSlots = await fetchData(12)
+
+        setFreeSlots([...freeSlots, ...moreFreeSlots])    
+    }
+
+    const shuffle = async () => {
+        const shuffleFreeSlots = await fetchData(36)
+
+        setFreeSlots(shuffleFreeSlots)    
+    }
+
+    const handleSearch = async (text: string) => {
+        if (!text.length) {
+            setFreeSlots(freeSlotsData)
+        }
+
+        if (text.length > 3) {
+            const searchSlotRequest =  await aquaClient.query({ 
+                query: SLOTS, 
+                variables: { code: 'it', name_contains: text } 
+            })
+
+            const newData = searchSlotRequest.data.data.slots
+            setFreeSlots(newData)
+        }
     }
 
     return (
@@ -75,14 +105,16 @@ const Slots: FunctionComponent<PageProps> = ({newSlotsData, pupularSlotsData, fr
 
                     <Container>
                         <Section>
-                            <SlotsCounter total={598}/>
+                            <SlotsCounter total={1528}/>
                         </Section>
 
                         <Article>
                             <Actions>
+
                                 <div className="search-input">
                                     <TextInput
-                                        onSearch={(text: string) => console.log('onsearch', text)}
+                                        onSearch={handleSearch}
+                                        onChange={handleSearch}
                                         size={'small'}
                                         borderRadius={'5px'}
                                         searchIcon
@@ -92,8 +124,9 @@ const Slots: FunctionComponent<PageProps> = ({newSlotsData, pupularSlotsData, fr
                                     <MenuList/>
                                 </div>
                                 <div className="shuffle">
-                                    <ShuffleIcon/>
+                                    <ShuffleIcon onClick={shuffle}/>
                                 </div>
+
                             </Actions>
 
                             <Grids id='free-slots'>
@@ -172,15 +205,15 @@ const Actions = styled.div`
     display: flex;
     flex-direction: row;
     padding: 10px 30px;
-    
+    flex-wrap: wrap;
+
     .search-input {
-        height: min-content;
         flex-grow: 2;
         border: 1px solid ${({theme}) => theme.colors.background};
         border-radius: 5px;
 
         @media ${device.mobileL} {
-            display: none;
+            margin-bottom: 20px;
         }
     }
 
@@ -191,7 +224,7 @@ const Actions = styled.div`
         z-index: 99;
     }
 
-    .shuffle {
+    .shuffle, .search-icon {
         border: 1px solid #ff1313;
         display: flex;
         align-items: center;
@@ -199,13 +232,13 @@ const Actions = styled.div`
         flex-grow: 0;
         border-radius: 5px;
        
-        color: #ff1313;
+        color: #212530;
         background-color: #fff;
         width: 40px;
         cursor: pointer;
 
         &:hover {
-            color: #212530;
+            color: #ff1313;
         }
     }
 `
@@ -237,7 +270,7 @@ export async function getStaticProps() {
 
     const popularSlotsRequest =  await aquaClient.query({ 
         query: SLOTS, 
-        variables: { code: 'it', limit: 6, start: 0 } })
+        variables: { code: 'it', limit: 6, start: 6 } })
 
     const freeSlotsRequest =  await aquaClient.query({ 
         query: SLOTS, 

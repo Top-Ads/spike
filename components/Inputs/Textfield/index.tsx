@@ -5,8 +5,12 @@ import { BaseTextFieldProps } from '@material-ui/core/TextField';
 
 const useStyles = makeStyles<Theme, PageProps>(() =>
   createStyles({
+    root:{
+      height: '100%',
+    },
     textField: {
         width: ({width}) => width ? width : '100%',
+        height: '100%',
         backgroundColor: "inherit",
         zIndex: 100,
 
@@ -16,6 +20,7 @@ const useStyles = makeStyles<Theme, PageProps>(() =>
             fontSize: '16px',
             fontWeight: 'bold',
             borderRadius: ({borderRadius}) => borderRadius ? borderRadius: '15px',
+            height: '100%'
         },
         '& .MuiOutlinedInput-notchedOutline': {
             border: 0
@@ -73,7 +78,7 @@ const TextInput: FunctionComponent<PageProps> = (props) => {
 
     return (
         <Fragment>
-            <form noValidate>
+            <form noValidate className={classes.root}>
                 <TextField 
                     autoFocus={autoFocus ? autoFocus : false}
                     className={classes.textField}
@@ -81,8 +86,8 @@ const TextInput: FunctionComponent<PageProps> = (props) => {
                     variant="outlined"
                     placeholder={placeholder ? placeholder : '' }
                     onChange={handleChange}
-                    onFocus={() => handleOnFocus ? handleOnFocus() : ''}
-                    onBlur={() => handleOnBlur ? handleOnBlur() : ''}
+                    onFocus={ () => handleOnFocus ? handleOnFocus() : ''}
+                    onBlur={ () => handleOnBlur ? handleOnBlur() : ''}
                     InputProps={searchIcon ? {
                         endAdornment: (
                           <InputAdornment position="end">
