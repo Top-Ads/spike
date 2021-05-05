@@ -1,11 +1,11 @@
 import React, { Fragment, FunctionComponent } from 'react'
 import { useRouter } from 'next/router'
 import styled from 'styled-components'
-import { Bonus } from '../../../interfaces'
 import Image from 'next/image'
 import Divider from '../../Divider'
 import { CDN } from '../../../public/environment'
 import LazyLoad from 'react-lazyload'
+import { Bonus } from '../../../pages/api/graphql/schemas/bonus'
 
 type PageProps = {
    data: Bonus 

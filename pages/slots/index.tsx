@@ -6,7 +6,6 @@ import Divider from '../../components/Divider'
 import GridSlots from '../../components/GridSlots'
 import Layout from '../../components/Layout'
 import SlotsCounter from '../../components/SlotsCounter'
-import { Slot } from '../../interfaces'
 import { GridType } from '../../utils/constants'
 import { device } from '../../utils/device'
 import AquaClient from '../api/graphql/aquaClient'
@@ -14,6 +13,7 @@ import { SLOTS } from '../api/graphql/queries/slots'
 import TextInput from '../../components/Inputs/Textfield'
 import MenuList from '../../components/MenuList'
 import ShuffleIcon from '@material-ui/icons/Shuffle'
+import { Slot } from '../api/graphql/schemas/slot'
 
 type PageProps = {
     freeSlotsData: Slot [],

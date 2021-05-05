@@ -11,11 +11,12 @@ import SlotCard from '../components/Cards/SlotCard'
 import BonusCard from '../components/Cards/BonusCard'
 import BonusTable from '../components/BonusTable'
 import AquaClient from './api/graphql/aquaClient'
-import { Bonus, Slot } from '../interfaces'
 import { BONUSES } from './api/graphql/queries/bonuses'
 import { SLOTS } from './api/graphql/queries/slots'
 import { GridType } from '../utils/constants'
 import { CDN } from '../public/environment'
+import { Slot } from './api/graphql/schemas/slot'
+import { Bonus } from './api/graphql/schemas/bonus'
 
 type PageProps = {
   slotsData: Slot [],

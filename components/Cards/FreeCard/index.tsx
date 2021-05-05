@@ -2,8 +2,8 @@ import React, { Fragment, FunctionComponent } from 'react'
 import { useRouter } from 'next/router'
 import Image from 'next/image'
 import styled from 'styled-components'
-import { Bonus } from '../../../interfaces'
 import LazyLoad from 'react-lazyload'
+import { Bonus } from '../../../pages/api/graphql/schemas/bonus'
 
 type PageProps = {
     data: Bonus 

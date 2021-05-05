@@ -2,12 +2,12 @@ import React, { Fragment, FunctionComponent, useContext, useEffect, useRef, useS
 import { useRouter } from 'next/router'
 import Image from 'next/image'
 import styled from 'styled-components'
-import { Slot } from '../../../interfaces'
 import LikeIcon from '../../LikeIcon'
 import { Category } from '../../../utils/constants'
 import { DislikedSlotContext } from '../../../contexts'
 import { CDN } from '../../../public/environment'
 import LazyLoad, { forceCheck } from 'react-lazyload'
+import { Slot } from '../../../pages/api/graphql/schemas/slot'
 
 type PageProps = {
    data: Slot

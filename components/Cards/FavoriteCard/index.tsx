@@ -2,12 +2,12 @@ import React, { FunctionComponent } from 'react'
 import { useRouter } from 'next/router'
 import { Fragment } from 'react'
 import styled from 'styled-components'
-import { Slot } from '../../../interfaces'
 import Image from 'next/image'
 import RatingStars from '../../RatingStars'
 import CloseIcon from '@material-ui/icons/Close'
 import Button from '@material-ui/core/Button'
 import { CDN } from '../../../public/environment'
+import { Slot } from '../../../pages/api/graphql/schemas/slot'
 
 type PageProps = {
    data: Slot,

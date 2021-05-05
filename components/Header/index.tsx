@@ -13,10 +13,10 @@ import NotificationsNoneIcon from '@material-ui/icons/NotificationsNone'
 import DialogSlider from '../DialogSlider'
 import { Category } from '../../utils/constants'
 import FavoriteCard from '../Cards/FavoriteCard'
-import { Slot } from '../../interfaces'
 import NotificationCard from '../Cards/NotificationCard'
 import { DislikedSlotContext } from '../../contexts'
 import { CDN } from '../../public/environment'
+import { Slot } from '../../pages/api/graphql/schemas/slot'
 
 type NavProps = {
   expand: boolean
