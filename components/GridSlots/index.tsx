@@ -12,7 +12,7 @@ const useStyles = makeStyles<Theme, PageProps>(() =>
   createStyles({
     root: {
       flexGrow: 1,
-      margin: '10px 10px',
+      margin: '10px 5px',
 
       width: ({width, type}) => {
         if (width)
@@ -35,11 +35,10 @@ const useStyles = makeStyles<Theme, PageProps>(() =>
       padding: '0px',
       textAlign: ({textAlign}) => textAlign ? 'left' : 'center',
       fontWeight: 'bold',
-      color: "#fff",
       height: 'auto',
       borderRadius: ({disableBorderRadius}) => disableBorderRadius ? '0px' : '5px',
-      boxShadow: ({disableBoxShadow}) => disableBoxShadow ? 'none' : 'auto',
-      backgroundColor: ({bgColor}) => bgColor ? bgColor : '#ff1313',
+      boxShadow: ({showBoxShadow}) => showBoxShadow ? 'auto' : 'none',
+      backgroundColor: ({bgColor}) => bgColor ? bgColor : 'transparent',
       position: 'relative',
       ['@media (max-width: 425px)']: {
         width: ({type}) => type === GridType.BONUS ? '75vw': 'auto'
@@ -61,7 +60,7 @@ type PageProps = {
     showIndex?: boolean,
     reversedList?: boolean,
     disableBorderRadius?: boolean,
-    disableBoxShadow?: boolean,
+    showBoxShadow?: boolean,
     bgColor?: string,
     spacing?: GridSpacing,
     breadcrumbIndex?: number
@@ -75,7 +74,7 @@ type HeadType = {
 
 const GridSlots: FunctionComponent<PageProps> = (props) => {
 
-  const {type, content, label, xs, sm, md, AlignItem, showIndex=false, reversedList, spacing=2, breadcrumbIndex=0, breadcrumbSize} = props;
+  const {type, content, label, xs, sm, md, AlignItem, showIndex=false, reversedList, spacing=1, breadcrumbIndex=0, breadcrumbSize} = props;
 
   const classes = useStyles(props)
 

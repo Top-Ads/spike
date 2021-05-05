@@ -53,6 +53,7 @@ const Main = styled.div`
     width: 100%;
     cursor: pointer;
     justify-content: center;
+    color: #fff;
 `
 
 const Question = styled.div`

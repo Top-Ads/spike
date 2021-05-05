@@ -47,8 +47,6 @@ const FreeSlots: FunctionComponent<PageProps> = ({data}) => {
                 xs={12} sm={12} md={12}
                 width={"200px"}
                 AlignItem="center"
-                disableBoxShadow
-                bgColor="#f2f2f2"
                 spacing={0}      
                 />
             </Grids>

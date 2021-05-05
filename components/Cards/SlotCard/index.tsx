@@ -145,15 +145,15 @@ const Main = styled.div`
     position: relative;
     list-style-type: none;
     cursor: pointer;
-    border-radius: 5px 5px 0px 0px;
+    border-radius: 5px;
     overflow: hidden;
 `
 
 const Title = styled.div` 
     display: flex;
     justify-content: center;
-    align-items: center;
-    height: 35px;   
+    align-items: flex-start;
+    height: 30px;   
     font-weight: bolder;
     font-size: 11px;
 `
@@ -184,7 +184,7 @@ const Icon = styled.div`
 
 const Thumbnail = styled.div` 
   z-index: 1;
-  img { border-radius: 5px 5px 0px 0px; }
+  img { border-radius: 5px; }
 `
 
 const Button = styled.div`

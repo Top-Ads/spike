@@ -118,6 +118,9 @@ const IndexPage: FunctionComponent<PageProps> = ({slotsData, freeBonusData, topB
             AlignItem={"center"}
             xs={12} sm={4} md={4}
             showIndex
+            showBoxShadow
+            bgColor="#fff"
+            spacing={2}
           />
         </Grids>
 
@@ -139,6 +142,9 @@ const IndexPage: FunctionComponent<PageProps> = ({slotsData, freeBonusData, topB
                 xs={12} sm={12} md={12}
                 showIndex
                 reversedList
+                showBoxShadow
+                bgColor="#fff"
+                spacing={2}
               />
             </div>
         </Grids>

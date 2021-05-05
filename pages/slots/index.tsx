@@ -159,7 +159,7 @@ const Slots: FunctionComponent<PageProps> = ({newSlotsData, pupularSlotsData, fr
                                 type={GridType.SLOTS} 
                                 content={ freeSlots.map( (slot: Slot) => 
                                 <Fragment>
-                                    <SlotCard key={slot.name} data={slot}/>
+                                    
                                     <Info>
                                         {itemSelected === menuList.RTP ? slot.rtp ? `RTP: ${slot.rtp}%` : 'NA' : ''}
                                         {itemSelected === menuList.LIKES ? slot.likes ? `${slot.likes} likes`: 'NA' : ''}
@@ -168,6 +168,7 @@ const Slots: FunctionComponent<PageProps> = ({newSlotsData, pupularSlotsData, fr
                                         {itemSelected === menuList.UPDATED_AT ? slot.created_at ?
                                              `${shortDate(slot.updated_at)}`: 'NA' : ''}
                                     </Info>
+                                    <SlotCard key={slot.name} data={slot}/>
                                 </Fragment>
                                 )}
                                 width={'100%'}
@@ -203,7 +204,6 @@ const Grids = styled.div`
     color: ${({theme}) => theme.colors.background};
 
     &#free-slots {
-        padding: 0px 10px;
         justify-content: center;
     }
 
@@ -290,7 +290,7 @@ const Actions = styled.div`
 `
 
 const Button = styled.div`
-    background-color: #ff1313;
+    background-color: ${({theme}) => theme.colors.background};
     border: 2px solid ${({theme}) => theme.colors.background};
     color: #fff;
     border-radius: ${({theme}) => theme.button.borderRadius};

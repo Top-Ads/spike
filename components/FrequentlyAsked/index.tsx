@@ -25,7 +25,7 @@ const FreqentlyAsked = () => {
                                 data={data}/> )}
                         xs={12} sm={6} md={6}
                         disableBorderRadius
-                        disableBoxShadow
+                        bgColor={'#ff1313'}
                     />
                 </Questions>
 
