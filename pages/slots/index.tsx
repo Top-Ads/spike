@@ -6,7 +6,7 @@ import Divider from '../../components/Divider'
 import GridSlots from '../../components/GridSlots'
 import Layout from '../../components/Layout'
 import SlotsCounter from '../../components/SlotsCounter'
-import { GridType } from '../../utils/constants'
+import { GridType, menuList } from '../../utils/constants'
 import { device } from '../../utils/device'
 import AquaClient from '../api/graphql/aquaClient'
 import { SLOTS } from '../api/graphql/queries/slots'
@@ -14,6 +14,8 @@ import TextInput from '../../components/Inputs/Textfield'
 import MenuList from '../../components/MenuList'
 import ShuffleIcon from '@material-ui/icons/Shuffle'
 import { Slot } from '../api/graphql/schemas/slot'
+import { Fragment } from 'react'
+import { shortDate } from '../../utils/shortDate'
 
 type PageProps = {
     freeSlotsData: Slot [],
@@ -25,30 +27,41 @@ const Slots: FunctionComponent<PageProps> = ({newSlotsData, pupularSlotsData, fr
 
     const aquaClient = new AquaClient()
 
+    const listItems:string[] = [menuList.RTP, menuList.LIKES, menuList.UPDATED_AT, menuList.CREATED_AT, menuList.ALPHABETIC]
+
     const [freeSlots, setFreeSlots] = useState<Slot[]>(freeSlotsData)
-    
+
+    const [itemSelected, setItemSelected] = useState<string>(menuList.ALPHABETIC)
+
+
     function getRandomInt(min: number, max: number) {
         min = Math.ceil(min);
         max = Math.floor(max);
         return Math.floor(Math.random() * (max - min) + min); //The maximum is exclusive and the minimum is inclusive
-      }
-    const fetchData = async (limit: number) => {
+    }
+
+    const fetchData = async (limit: number, start: number, sort?: string) => {
         const request =  await aquaClient.query({ 
             query: SLOTS, 
-            variables: { code: 'it', limit: limit, start: getRandomInt(freeSlots.length, 500) } 
+            variables: { 
+                code: 'it',
+                limit: limit,
+                start: start,
+                sort: sort
+             } 
         })
 
         return request.data.data.slots
     }
 
     const loadMore = async () => {
-        const moreFreeSlots = await fetchData(12)
+        const moreFreeSlots = await fetchData(12, freeSlots.length)
 
         setFreeSlots([...freeSlots, ...moreFreeSlots])    
     }
 
     const shuffle = async () => {
-        const shuffleFreeSlots = await fetchData(36)
+        const shuffleFreeSlots = await fetchData(36, getRandomInt(freeSlots.length, 500))
 
         setFreeSlots(shuffleFreeSlots)    
     }
@@ -68,87 +81,120 @@ const Slots: FunctionComponent<PageProps> = ({newSlotsData, pupularSlotsData, fr
             setFreeSlots(newData)
         }
     }
+ 
+    React.useEffect(  () => {
+        
+        async function fetchDataFiltered() {
+            const data = await fetchData(36, 0, itemSelected.toLowerCase())
+            
+            setFreeSlots(data)
+        }
+
+        fetchDataFiltered()
+
+    }, [itemSelected])
 
     return (
         <Layout title="FreeSlots">
-            <div className="space-around">
-                <Grids id='ads-slots'>
-                    <GridSlots
-                        type={GridType.SLOTS} 
-                        content={ newSlotsData.map( (slot) => 
-                        <LazyLoad once key={slot.id} height={400} offset={300}>
-                            <SlotCard key={slot.name} data={slot}/>
-                        </LazyLoad> )}
-                        label="Nuove slot."
-                        xs={6} sm={4} md={4}
-                        breadcrumbIndex={0}
-                        breadcrumbSize={2}
-                    />
-                    <GridSlots
-                        type={GridType.SLOTS}
-                        content={ pupularSlotsData.map( (slot) =>  
-                        <LazyLoad once key={slot.id} height={400} offset={300} >
-                            <SlotCard key={slot.id} data={slot}/>
-                        </LazyLoad> )}
-                        label="Le slot piu popolari."
-                        xs={6} sm={4} md={4}
-                        breadcrumbIndex={1}
-                        breadcrumbSize={2}   
-                    />
-                </Grids>
+        <div className="space-around">
+            <Grids id='ads-slots'>
+                <GridSlots
+                    type={GridType.SLOTS} 
+                    content={ newSlotsData.map( (slot) => 
+                    <LazyLoad once key={slot.id} height={400} offset={300}>
+                        <SlotCard key={slot.name} data={slot}/>
+                    </LazyLoad> )}
+                    label="Nuove slot."
+                    xs={6} sm={4} md={4}
+                    breadcrumbIndex={0}
+                    breadcrumbSize={2}
+                />
+                <GridSlots
+                    type={GridType.SLOTS}
+                    content={ pupularSlotsData.map( (slot) =>  
+                    <LazyLoad once key={slot.id} height={400} offset={300} >
+                        <SlotCard key={slot.id} data={slot}/>
+                    </LazyLoad> )}
+                    label="Le slot piu popolari."
+                    xs={6} sm={4} md={4}
+                    breadcrumbIndex={1}
+                    breadcrumbSize={2}   
+                />
+            </Grids>
 
-                <Main>
-                    <Title>
-                        <h3>LA NOSTRA LIBRERIA DI SLOT - TUTTE DA GIOCARE GRATIS!</h3>
-                        <Divider/>
-                    </Title>
+            <Main>
+                <Title>
+                    <h3>LA NOSTRA LIBRERIA DI SLOT - TUTTE DA GIOCARE GRATIS!</h3>
+                    <Divider/>
+                </Title>
 
-                    <Container>
-                        <Section>
-                            <SlotsCounter total={1528}/>
-                        </Section>
+                <Container>
+                    <Section>
+                        <SlotsCounter total={1528}/>
+                    </Section>
 
-                        <Article>
-                            <Actions>
+                    <Article>
+                        <Actions>
 
-                                <div className="search-input">
-                                    <TextInput
-                                        onSearch={handleSearch}
-                                        onChange={handleSearch}
-                                        size={'small'}
-                                        borderRadius={'5px'}
-                                        searchIcon
-                                        placeholder="Cerca una slot..."/>
-                                </div>
-                                <div className="menu-list">
-                                    <MenuList/>
-                                </div>
-                                <div className="shuffle">
-                                    <ShuffleIcon onClick={shuffle}/>
-                                </div>
+                            <div className="search-input">
+                                <TextInput
+                                    onSearch={handleSearch}
+                                    onChange={handleSearch}
+                                    size={'small'}
+                                    borderRadius={'5px'}
+                                    searchIcon
+                                    placeholder="Cerca una slot..."/>
+                            </div>
+                            <div className="menu-list">
+                                <MenuList listItems={listItems} itemSelected={itemSelected} setItemSelected={setItemSelected}/>
+                            </div>
+                            <div className="shuffle">
+                                <ShuffleIcon onClick={shuffle}/>
+                            </div>
 
-                            </Actions>
+                        </Actions>
 
-                            <Grids id='free-slots'>
-                                <GridSlots 
-                                    type={GridType.SLOTS} 
-                                    content={ freeSlots.map( (slot) => <SlotCard key={slot.name} data={slot}/> )}
-                                    width={'100%'}
-                                    xs={6} sm={4} md={3}
-                                />
-                            </Grids>
+                        <Grids id='free-slots'>
+                            <GridSlots 
+                                type={GridType.SLOTS} 
+                                content={ freeSlots.map( (slot: Slot) => 
+                                <Fragment>
+                                    <SlotCard key={slot.name} data={slot}/>
+                                    <Info>
+                                        {itemSelected === menuList.RTP ? slot.rtp ? `RTP: ${slot.rtp}%` : 'NA' : ''}
+                                        {itemSelected === menuList.LIKES ? slot.likes ? `${slot.likes} likes`: 'NA' : ''}
+                                        {itemSelected === menuList.CREATED_AT ? slot.created_at ?
+                                             `${shortDate(slot.created_at)}`: 'NA' : ''}
+                                        {itemSelected === menuList.UPDATED_AT ? slot.created_at ?
+                                             `${shortDate(slot.updated_at)}`: 'NA' : ''}
+                                    </Info>
+                                </Fragment>
+                                )}
+                                width={'100%'}
+                                xs={6} sm={4} md={3}
+                            />
+                        </Grids>
 
-                            <Button onClick={loadMore}>
-                                <span>CARICA ALTRO</span>
-                            </Button>
+                        <Button onClick={loadMore}>
+                            <span>CARICA ALTRO</span>
+                        </Button>
 
-                        </Article>
-                    </Container>  
-                </Main>
-            </div>
+                    </Article>
+                </Container>  
+            </Main>
+        </div>
         </Layout>
     ) 
 }
+
+const Info = styled.div` 
+    display: flex;
+    justify-content: flex-end;
+    font-weight: normal;
+    font-size: 10px;
+    padding: 5px;
+    height: auto;
+`
 
 const Grids = styled.div`
     display: flex;

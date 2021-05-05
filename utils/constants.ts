@@ -11,3 +11,10 @@ export enum Category {
     FREE = 'free'
   }
   
+  export enum menuList {
+    RTP = 'RTP',
+    LIKES = 'likes',
+    UPDATED_AT = 'updated_at',
+    CREATED_AT = 'created_at',
+    ALPHABETIC = 'name'
+}

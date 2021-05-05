@@ -1,4 +1,5 @@
 import React from 'react'
+import { FunctionComponent } from 'react'
 import ClickAwayListener from '@material-ui/core/ClickAwayListener'
 import Grow from '@material-ui/core/Grow'
 import Paper from '@material-ui/core/Paper'
@@ -15,6 +16,7 @@ import ThumbUpAltIcon from '@material-ui/icons/ThumbUpAlt'
 import EqualizerIcon from '@material-ui/icons/Equalizer'
 import ExpandLessIcon from '@material-ui/icons/ExpandLess'
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore'
+import { menuList } from '../../utils/constants'
 
 const useStyles = makeStyles( () =>
   createStyles({
@@ -32,15 +34,17 @@ const useStyles = makeStyles( () =>
   }),
 );
 
-export default function MenuListComposition() {
+type PageProps = {
+  itemSelected: string,
+  setItemSelected: Function,
+  listItems: string []
+}
 
-  const listItems = ['RTP', 'Più votate', 'Aggiunte di recente', 'Data di rilascio', 'Nome']
-
+const MenuListComposition: FunctionComponent<PageProps> = ({itemSelected, setItemSelected, listItems}) => {
 
   const classes = useStyles()
 
   const [open, setOpen] = React.useState<boolean>(false)
-  const [itemSelected, setItemSelected] = React.useState<string>(listItems[0])
 
   const anchorRef = React.useRef<HTMLDivElement>(null)
 
@@ -74,15 +78,15 @@ export default function MenuListComposition() {
 
   const renderIconForItem = (value: string) => {
         switch(value) {
-            case 'RTP' :
+            case menuList.RTP :
                 return  <EqualizerIcon fontSize="small" />
-            case 'Più votate' :
+            case menuList.LIKES :
                 return  <ThumbUpAltIcon fontSize="small" />
-            case 'Aggiunte di recente' :
+            case menuList.UPDATED_AT :
                 return  <ScheduleIcon fontSize="small" />
-            case 'Data di rilascio' :
+            case menuList.CREATED_AT :
                 return  <DateRangeIcon fontSize="small" />
-            case 'Nome' :
+            case menuList.ALPHABETIC :
                 return  <SortByAlphaIcon fontSize="small" />
         }
   }
@@ -129,7 +133,7 @@ export default function MenuListComposition() {
                            <ListItemIcon>
                                {renderIconForItem(item)}
                            </ListItemIcon>
-                           <ListItemText primary={item} />
+                           <ListItemText primary={`${item.charAt(0).toUpperCase()}${item.slice(1)}`} />
                        </MenuItem>
                       )}
 
@@ -157,3 +161,5 @@ const Button = styled.div`
     display: flex;
     align-items: center;
 `
+
+export default MenuListComposition

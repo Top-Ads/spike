@@ -15,9 +15,8 @@ export interface Slot {
     name: string
     rating: number
     tips: string
-    technicals: string
-    legacyId: string
     slug: string
+    likes: number
     producer: Producer
     image: {
         url: string

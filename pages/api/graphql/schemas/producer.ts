@@ -1,4 +1,3 @@
-import { Slot } from "./slot";
 
 export interface Producer {
     id: number
@@ -10,5 +9,4 @@ export interface Producer {
     }
     slug: string
     bottomArticle?: string
-    slots: Slot[]
 }
