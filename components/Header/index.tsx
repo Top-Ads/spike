@@ -78,6 +78,7 @@ const Header = () => {
               <Fragment>
                 { showTextInput ? <Overlay onClick={() => setShowTextInput(!showTextInput)}/> : '' }
                 <TextInput
+                      zIndex={100}
                       autoFocus
                       searchIcon
                       borderRadius={'20px'}
@@ -103,6 +104,7 @@ const Header = () => {
                   <Search>
                     <div className="text-input">
                       <TextInput
+                        zIndex={100}
                         onChange={(text: string) => console.log('onchange', text)}
                         onSearch={(text: string) => console.log('onsearch', text)}
                         width="30ch" 
@@ -172,7 +174,7 @@ const Main = styled.div`
     position: fixed;
     top: 0px;
     width: fill-available;
-    z-index: 999;
+    z-index: 100;
   }
 `
 
@@ -203,7 +205,7 @@ const Overlay = styled.div`
   right: 0;
   bottom: 0;
   background: rgba(0,0,0,.25);
-  z-index: 99;
+  z-index: 100;
 `
 
 const Search = styled.div` 

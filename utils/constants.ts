@@ -8,7 +8,6 @@ export enum Category {
     TOPBONUS = 'top bonus',
     BONUS = 'bonus',
     QUESTIONS = 'questions',
-    FREE = 'free'
   }
   
   export enum menuList {
@@ -16,5 +15,6 @@ export enum Category {
     LIKES = 'likes',
     UPDATED_AT = 'updated_at',
     CREATED_AT = 'created_at',
-    ALPHABETIC = 'name'
+    ALPHABETIC = 'name',
+    SHUFFLE = 'shuffle'
 }

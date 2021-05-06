@@ -12,7 +12,7 @@ const useStyles = makeStyles<Theme, PageProps>(() =>
   createStyles({
     root: {
       flexGrow: 1,
-      margin: '10px 5px',
+      margin: '5px',
 
       width: ({width, type}) => {
         if (width)
