@@ -16,6 +16,7 @@ import ThumbUpAltIcon from '@material-ui/icons/ThumbUpAlt'
 import EqualizerIcon from '@material-ui/icons/Equalizer'
 import ExpandLessIcon from '@material-ui/icons/ExpandLess'
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore'
+import ShuffleIcon from '@material-ui/icons/Shuffle'
 import { menuList } from '../../utils/constants'
 
 const useStyles = makeStyles( () =>
@@ -88,6 +89,8 @@ const MenuListComposition: FunctionComponent<PageProps> = ({itemSelected, setIte
                 return  <DateRangeIcon fontSize="small" />
             case menuList.ALPHABETIC :
                 return  <SortByAlphaIcon fontSize="small" />
+            case menuList.SHUFFLE :
+              return  <ShuffleIcon fontSize="small" />
         }
   }
 

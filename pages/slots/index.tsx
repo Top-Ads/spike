@@ -34,9 +34,8 @@ const Slots: FunctionComponent<PageProps> = ({newSlotsData, pupularSlotsData, fr
     const listItems:string[] = [menuList.RTP, menuList.LIKES, menuList.UPDATED_AT, menuList.CREATED_AT, menuList.ALPHABETIC]
 
     const [freeSlots, setFreeSlots] = useState<Slot[]>(freeSlotsData)
-
     const [itemSelected, setItemSelected] = useState<string>(menuList.ALPHABETIC)
-
+    const [producerSelected, setProducerSelected] = useState<string>('')
 
     function getRandomInt(min: number, max: number) {
         min = Math.ceil(min);
@@ -44,14 +43,15 @@ const Slots: FunctionComponent<PageProps> = ({newSlotsData, pupularSlotsData, fr
         return Math.floor(Math.random() * (max - min) + min); //The maximum is exclusive and the minimum is inclusive
     }
 
-    const fetchData = async (limit: number, start: number, sort?: string) => {
+    const fetchData = async (limit: number, start: number, sortBy?: string, producer?: string) => {
         const request =  await aquaClient.query({ 
             query: SLOTS, 
             variables: { 
                 code: 'it',
                 limit: limit,
                 start: start,
-                sort: sort
+                sort: sortBy,
+                producer: producer
              } 
         })
 
@@ -65,12 +65,16 @@ const Slots: FunctionComponent<PageProps> = ({newSlotsData, pupularSlotsData, fr
     }
 
     const shuffle = async () => {
+        setProducerSelected('')
+        setItemSelected(menuList.SHUFFLE)
         const shuffleFreeSlots = await fetchData(36, getRandomInt(freeSlots.length, 500))
 
         setFreeSlots(shuffleFreeSlots)    
     }
 
     const handleSearch = async (text: string) => {
+        setProducerSelected('')
+        
         if (!text.length) {
             setFreeSlots(freeSlotsData)
         }
@@ -84,13 +88,25 @@ const Slots: FunctionComponent<PageProps> = ({newSlotsData, pupularSlotsData, fr
             const newData = searchSlotRequest.data.data.slots
             setFreeSlots(newData)
         }
+
     }
  
     const handleItemSelected = async (itemSelected: string) => {
+        setProducerSelected('')
+
         const data = await fetchData(36, 0, itemSelected.toLowerCase())
             
         setFreeSlots(data)
         setItemSelected(itemSelected)
+    }
+
+    const handleProducerSelected = async (producerSelected: string) => {
+        const sortBy = itemSelected.toLowerCase() === menuList.SHUFFLE ? menuList.ALPHABETIC : itemSelected.toLowerCase()
+
+        const data = await fetchData(36, 0, sortBy, producerSelected)
+            
+        setFreeSlots(data)
+        setProducerSelected(producerSelected)
     }
 
     return (
@@ -130,22 +146,22 @@ const Slots: FunctionComponent<PageProps> = ({newSlotsData, pupularSlotsData, fr
                 <Container>
                     <Section>
                         <SlotsCounter total={1528}/>
-
-                        <GridSlots
-                            type={GridType.FREE}
-                            content={ producersData.map( (producer, index) =>
-                                <LazyLoad offset={100}>
-                                    <ProducerCard key={index} data={producer}/>
-                                </LazyLoad> 
-                            )}
-                            label="PROVIDER FAMOSI"
-                            xs={12} sm={12} md={12}
-                            width={"200px"}
-                            AlignItem="center"
-                            spacing={0}
-                            bgColor={'#fff'}   
-                        />
-
+                        <Grids id='providers'>
+                            <GridSlots
+                                type={GridType.SLOTS}
+                                content={ producersData.map( (producer, index) =>
+                                    <LazyLoad offset={100}>
+                                        <ProducerCard selected={handleProducerSelected} key={index} data={producer}/>
+                                    </LazyLoad> 
+                                )}
+                                label="PROVIDER FAMOSI"
+                                xs={12} sm={12} md={12}
+                                width={"200px"}
+                                AlignItem="center"
+                                spacing={0}
+                                bgColor={'#fff'}   
+                            />
+                        </Grids>
                     </Section>
 
                     <Article>
@@ -160,11 +176,13 @@ const Slots: FunctionComponent<PageProps> = ({newSlotsData, pupularSlotsData, fr
                                     searchIcon
                                     placeholder="Cerca una slot..."/>
                             </div>
+
                             <div className="menu-list">
                                 <MenuList listItems={listItems} itemSelected={itemSelected} setItemSelected={handleItemSelected}/>
-                            </div>
-                            <div className="shuffle">
-                                <ShuffleIcon onClick={shuffle}/>
+
+                                <div className="shuffle">
+                                    <ShuffleIcon onClick={shuffle}/>
+                                </div>
                             </div>
 
                         </Actions>
@@ -174,8 +192,9 @@ const Slots: FunctionComponent<PageProps> = ({newSlotsData, pupularSlotsData, fr
                                 type={GridType.SLOTS} 
                                 content={ freeSlots.map( (slot: Slot) => 
                                 <Fragment>
-                                    
                                     <Info>
+                                        <div className="producer">{ producerSelected ?  slot.producer.name : ''}</div>
+
                                         {itemSelected === menuList.RTP ? slot.rtp ? `RTP: ${slot.rtp}%` : 'NA' : ''}
                                         {itemSelected === menuList.LIKES ? slot.likes ? `${slot.likes} likes`: 'NA' : ''}
                                         {itemSelected === menuList.CREATED_AT ? slot.created_at ?
@@ -210,6 +229,12 @@ const Info = styled.div`
     font-size: 10px;
     padding: 5px;
     height: auto;
+
+    .producer {
+        display: inherit;
+        flex-direction: row;
+        flex-grow: 1;
+    }
 `
 
 const Grids = styled.div`
@@ -218,8 +243,13 @@ const Grids = styled.div`
     flex-wrap: wrap;
     color: ${({theme}) => theme.colors.background};
 
+    &#providers{
+        margin-top: 20px;
+    }
+
     &#free-slots {
         justify-content: center;
+        align-self: center;
     }
 
     @media ${device.tablet} {
@@ -235,6 +265,7 @@ const Main = styled.div`
     flex-direction: column;
 `
 const Title = styled.div`
+    color: ${({theme}) => theme.colors.background};
     flex-grow: 1;
     h3 { margin-bottom: 0; }
 `
@@ -283,7 +314,7 @@ const Actions = styled.div`
         z-index: 99;
     }
 
-    .shuffle, .search-icon {
+    .shuffle {
         border: 1px solid #ff1313;
         display: flex;
         align-items: center;

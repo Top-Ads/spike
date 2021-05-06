@@ -44,7 +44,7 @@ const Main = styled.div<ScrollType>`
     display: flex;
     border-radius: 100px;
     cursor: pointer;
-    z-index: 80;
+    z-index: 99;
     transition: bottom .2s ease-in-out,opacity .2s ease-in-out;
 
     &::after {

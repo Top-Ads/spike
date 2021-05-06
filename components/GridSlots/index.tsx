@@ -12,15 +12,8 @@ const useStyles = makeStyles<Theme, PageProps>(() =>
   createStyles({
     root: {
       flexGrow: 1,
-      margin: '10px 5px',
-
-      width: ({width, type}) => {
-        if (width)
-          return width
-        else {
-          return type === GridType.SLOTS ? '400px': 'fill-available'
-        }
-      },
+      margin: '5px',
+      width: ({width, type}) => width ? width : type === GridType.SLOTS ? '400px': 'fill-available',
       ['@media (max-width: 768px)']: {
         width: ({width}) => width ? width : 'fill-available',
         '& .MuiGrid-container' : {
@@ -32,6 +25,8 @@ const useStyles = makeStyles<Theme, PageProps>(() =>
       }
     },
     paper: {
+      position: 'relative',
+      margin: '0 auto',
       padding: '0px',
       textAlign: ({textAlign}) => textAlign ? 'left' : 'center',
       fontWeight: 'bold',
@@ -39,9 +34,12 @@ const useStyles = makeStyles<Theme, PageProps>(() =>
       borderRadius: ({disableBorderRadius}) => disableBorderRadius ? '0px' : '5px',
       boxShadow: ({showBoxShadow}) => showBoxShadow ? 'auto' : 'none',
       backgroundColor: ({bgColor}) => bgColor ? bgColor : 'transparent',
-      position: 'relative',
+      width: ({type}) => type === GridType.TOPBONUS ? '20vw': 'unset',
+      ['@media (max-width: 768px)']: {
+        width: ({type}) => type === GridType.TOPBONUS ? '30vw': 'unset',
+      },
       ['@media (max-width: 425px)']: {
-        width: ({type}) => type === GridType.BONUS ? '75vw': 'auto'
+        width: ({type}) => type ===  GridType.BONUS || type === GridType.TOPBONUS ? '80vw': 'auto',
       }
     }
   }),
@@ -65,7 +63,6 @@ type PageProps = {
     spacing?: GridSpacing,
     breadcrumbIndex?: number
     breadcrumbSize?: number
-
 }
 
 type HeadType = {

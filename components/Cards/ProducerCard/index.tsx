@@ -7,14 +7,15 @@ import LazyLoad from 'react-lazyload';
 import { CDN } from '../../../public/environment';
 
 type PageProps = {
-    data: Producer 
+    data: Producer,
+    selected: Function 
 };
 
-const ProducerCard: FunctionComponent<PageProps> = ({data}) => {
+const ProducerCard: FunctionComponent<PageProps> = ({data, selected}) => {
    
     return (
         <Fragment>
-            <Main>
+            <Main onClick={() => selected(data.name)}>
                 <Thumbnail>
                     <LazyLoad key={data.id} height={60} offset={200}>
                         <Image
@@ -42,10 +43,11 @@ const Main = styled.div`
     align-items: center;
     font-size: 12px;
     border-bottom: 1px solid ${({theme}) => theme.colors.gradient};
-    padding: 10px 0px;
+    padding: 5px;
+    cursor: pointer;
 
     &:hover {
-        background-color: rgba(255, 255, 255, 0.3);
+        background-color: #f2f2f2;
     }
 `
 
@@ -66,7 +68,7 @@ const Container = styled.div`
 `
 
 const Name = styled.div`
-   text-transform: uppercase;
+  
 `
 
 

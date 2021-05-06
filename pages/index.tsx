@@ -120,7 +120,7 @@ const IndexPage: FunctionComponent<PageProps> = ({slotsData, freeBonusData, topB
             showIndex
             showBoxShadow
             bgColor="#fff"
-            spacing={4}
+            spacing={2}
           />
         </Grids>
 

@@ -12,7 +12,7 @@ const useStyles = makeStyles<Theme, PageProps>(() =>
         width: ({width}) => width ? width : '100%',
         height: '100%',
         backgroundColor: "inherit",
-        zIndex: 100,
+        zIndex: ({zIndex}) => zIndex ? zIndex : 10,
 
         '& .MuiInputBase-root': {
             backgroundColor: '#fff',
@@ -48,6 +48,7 @@ type PageProps = {
   handleOnBlur?: Function,
   width?: string,
   autoFocus?: boolean,
+  zIndex? :number,
   borderRadius?: string,
   onChange?: Function,
   onSearch?: Function

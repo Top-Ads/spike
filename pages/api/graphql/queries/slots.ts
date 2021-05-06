@@ -1,8 +1,15 @@
 
 export const SLOTS = `
-query slots($countryCode: String, $limit: Int, $start: Int, $name_contains: String, $sort: String) {
+query slots($countryCode: String, $limit: Int, $start: Int, $name_contains: String, $sort: String, $producer: String) {
     slots( 
-          where : { country : {code : $countryCode}, name_contains: $name_contains},
+          where : { 
+            country : {code : $countryCode},
+            name_contains: $name_contains,
+            producer: {
+              name: $producer
+            }
+          },
+
           limit: $limit,
           start: $start,
           sort: $sort 
