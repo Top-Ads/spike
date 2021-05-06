@@ -94,7 +94,7 @@ const Slots: FunctionComponent<PageProps> = ({newSlotsData, pupularSlotsData, fr
     }
 
     return (
-        <Layout title="FreeSlots">
+        <Layout title="Free Slots">
         <div className="space-around">
             <Grids id='ads-slots'>
                 <GridSlots
