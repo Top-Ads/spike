@@ -112,14 +112,14 @@ const SlotCard: FunctionComponent<PageProps> = ({data}) => {
                 </Icon> : '' } 
                
                 <Thumbnail>
-                    <LazyLoad key={data.id} height={85} offset={200}>
+                    <LazyLoad key={data.id} height={85} offset={300}>
                         <Image
                             alt="image not available"
                             src={data.image && data.image.url ? data.image.url : `${CDN}/svg/no_img_available.svg`} 
                             layout="responsive"
                             priority={true}
-                            width={540}
-                            height={304}/>
+                            width={250}
+                            height={140}/>
                     </LazyLoad>
                 </Thumbnail>
                 

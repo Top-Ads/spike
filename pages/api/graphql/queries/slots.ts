@@ -22,10 +22,15 @@ query slots($countryCode: String, $limit: Int, $start: Int, $name_contains: Stri
             tips
             slug
             likes
+            type
+            producer {
+              id
+              name
+            }
             image {
               url
             }
-            type
+            
     }
 }
 ` 

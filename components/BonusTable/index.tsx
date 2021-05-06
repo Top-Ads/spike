@@ -121,7 +121,7 @@ const BonusTable: FunctionComponent<PageProps> = ({data}) => {
                           src={`${CDN}/svg/adm.svg`}
                           layout="responsive"
                           priority={true}
-                          width={23}
+                          width={'auto'}
                           height={'auto'}/>
                   </Licence>
 

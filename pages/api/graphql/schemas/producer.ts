@@ -4,9 +4,7 @@ export interface Producer {
     name: string
     website: string
     description: string
-    image: {
-        url: string
-    }
+    image: [any]
     slug: string
     bottomArticle?: string
 }

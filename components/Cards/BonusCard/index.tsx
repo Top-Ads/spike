@@ -36,8 +36,8 @@ const BonusCard: FunctionComponent<PageProps> = ({data}) => {
                                 src={data.circular_image.url}
                                 layout="responsive"
                                 priority={true}
-                                width={100}
-                                height={'auto'}/>
+                                width={150}
+                                height={150}/>
                         </LazyLoad>
                     </Thumbnail>
                 </Name>

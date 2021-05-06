@@ -1,25 +1,17 @@
-import React, { Fragment, FunctionComponent } from 'react'
-import { useRouter } from 'next/router'
+import React, { FunctionComponent } from 'react'
+import { Fragment } from 'react';
 import Image from 'next/image'
 import styled from 'styled-components'
-import LazyLoad from 'react-lazyload'
-import { Bonus } from '../../../pages/api/graphql/schemas/bonus'
+import { Producer } from '../../../pages/api/graphql/schemas/producer'
+import LazyLoad from 'react-lazyload';
+import { CDN } from '../../../public/environment';
 
 type PageProps = {
-    data: Bonus 
- };
+    data: Producer 
+};
 
- type BonusType = {
-    bgColor?: string
-}
-
-const FreeCard: FunctionComponent<PageProps> = ({data}) => { 
-    const router = useRouter()
-
-    const linkToBonus = () => {
-        router.push(data.link)
-    }
-
+const ProducerCard: FunctionComponent<PageProps> = ({data}) => {
+   
     return (
         <Fragment>
             <Main>
@@ -27,24 +19,22 @@ const FreeCard: FunctionComponent<PageProps> = ({data}) => {
                     <LazyLoad key={data.id} height={60} offset={200}>
                         <Image
                             alt={data.name}
-                            src={data.circular_image.url}
+                            src={data.image[0] ? data.image[0].url : `${CDN}/svg/no_img_available.svg`}
                             layout="responsive"
                             priority={true}
-                            width={150}
-                            height={150}/>
+                            width={195}
+                            height={109}/>
                     </LazyLoad>
                 </Thumbnail>
 
                 <Container>
                     <Name><strong>{data.name}</strong></Name>
-                    <Info>{data.description}</Info>
                 </Container>
 
-                <Button bgColor={data.backgroundColor} onClick={linkToBonus}>SITO WEB</Button>
             </Main>
         </Fragment>
-    ) 
-}
+    )
+} 
 
 const Main = styled.div`
     display: flex;
@@ -68,7 +58,7 @@ const Thumbnail = styled.div`
 const Container = styled.div`
     display: flex;
     flex-direction: column;
-    align-self: flex-start;
+    align-self: center;
     text-align: left;
     flex-grow: 2;
     width: min-content;
@@ -84,18 +74,5 @@ const Info = styled.div `
     padding: 5px 0px;
 `
 
-const Button = styled.div<BonusType>`
-    color: ${({theme}) => theme.text.color.primary};
-    background-color: ${({bgColor}) => bgColor ? bgColor : 'inherit'};
-    border-radius: ${({theme}) => theme.button.borderRadius};
-    font-weight: bold;
-    cursor: pointer;
-    padding: 10px;
-    width: min-content;
 
-    &:hover {
-        box-shadow: ${({theme}) => theme.button.boxShadowX};
-    }
-`
-
-export default FreeCard
+export default ProducerCard

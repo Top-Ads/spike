@@ -16,14 +16,18 @@ import ShuffleIcon from '@material-ui/icons/Shuffle'
 import { Slot } from '../api/graphql/schemas/slot'
 import { Fragment } from 'react'
 import { shortDate } from '../../utils/shortDate'
+import { PRODUCERS } from '../api/graphql/queries/producers'
+import { Producer } from '../api/graphql/schemas/producer'
+import ProducerCard from '../../components/Cards/ProducerCard'
 
 type PageProps = {
     freeSlotsData: Slot [],
     newSlotsData: Slot [],
-    pupularSlotsData: Slot []
+    pupularSlotsData: Slot [],
+    producersData: Producer []
 }
 
-const Slots: FunctionComponent<PageProps> = ({newSlotsData, pupularSlotsData, freeSlotsData}) => { 
+const Slots: FunctionComponent<PageProps> = ({newSlotsData, pupularSlotsData, freeSlotsData, producersData}) => { 
 
     const aquaClient = new AquaClient()
 
@@ -82,17 +86,12 @@ const Slots: FunctionComponent<PageProps> = ({newSlotsData, pupularSlotsData, fr
         }
     }
  
-    React.useEffect(  () => {
-        
-        async function fetchDataFiltered() {
-            const data = await fetchData(36, 0, itemSelected.toLowerCase())
+    const handleItemSelected = async (itemSelected: string) => {
+        const data = await fetchData(36, 0, itemSelected.toLowerCase())
             
-            setFreeSlots(data)
-        }
-
-        fetchDataFiltered()
-
-    }, [itemSelected])
+        setFreeSlots(data)
+        setItemSelected(itemSelected)
+    }
 
     return (
         <Layout title="FreeSlots">
@@ -131,6 +130,22 @@ const Slots: FunctionComponent<PageProps> = ({newSlotsData, pupularSlotsData, fr
                 <Container>
                     <Section>
                         <SlotsCounter total={1528}/>
+
+                        <GridSlots
+                            type={GridType.FREE}
+                            content={ producersData.map( (producer, index) =>
+                                <LazyLoad offset={100}>
+                                    <ProducerCard key={index} data={producer}/>
+                                </LazyLoad> 
+                            )}
+                            label="PROVIDER FAMOSI"
+                            xs={12} sm={12} md={12}
+                            width={"200px"}
+                            AlignItem="center"
+                            spacing={0}
+                            bgColor={'#fff'}   
+                        />
+
                     </Section>
 
                     <Article>
@@ -146,7 +161,7 @@ const Slots: FunctionComponent<PageProps> = ({newSlotsData, pupularSlotsData, fr
                                     placeholder="Cerca una slot..."/>
                             </div>
                             <div className="menu-list">
-                                <MenuList listItems={listItems} itemSelected={itemSelected} setItemSelected={setItemSelected}/>
+                                <MenuList listItems={listItems} itemSelected={itemSelected} setItemSelected={handleItemSelected}/>
                             </div>
                             <div className="shuffle">
                                 <ShuffleIcon onClick={shuffle}/>
@@ -232,9 +247,8 @@ const Container = styled.div`
 const Section = styled.div`
     display: inherit;  
     flex-grow: 1;
-
-    width: 25%;
-    height: 500px;
+    flex-direction: column;
+    margin-right: 20px;
 
     @media ${device.tablet} {
        display: none;
@@ -244,7 +258,6 @@ const Article = styled.div`
     display: inherit;
     flex-direction: column;
     flex-grow: 2;
-    width: 75%;
 `
 
 const Actions = styled.div`
@@ -322,11 +335,17 @@ export async function getStaticProps() {
         query: SLOTS, 
         variables: { code: 'it', limit: 36, start: 0 } })
 
+    
+    const producersRequest =  await aquaClient.query({ 
+        query: PRODUCERS, 
+        variables: { limit: 10, start: 0 } })
+
     return {
         props: {
             newSlotsData: newSlotsRequest.data.data.slots,
             pupularSlotsData: popularSlotsRequest.data.data.slots,
-            freeSlotsData: freeSlotsRequest.data.data.slots
+            freeSlotsData: freeSlotsRequest.data.data.slots,
+            producersData: producersRequest.data.data.producers
         }
     }
 }
