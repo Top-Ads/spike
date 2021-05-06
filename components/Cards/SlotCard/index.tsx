@@ -149,13 +149,14 @@ const Main = styled.div`
     overflow: hidden;
 `
 
-const Title = styled.div` 
+const Title = styled.span` 
     display: flex;
     justify-content: center;
     align-items: flex-start;
-    height: 30px;   
-    font-weight: bolder;
+    height: 25px;   
+    font-weight: bold;
     font-size: 11px;
+    padding-top: 2px;
 `
 
 const Banner = styled.div`

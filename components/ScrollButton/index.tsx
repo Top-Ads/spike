@@ -12,7 +12,7 @@ type ScrollType = {
 }
 const ScrollButton: FunctionComponent<PageProps> = ({eleRef}) => { 
    
-    const offsetY = 3000
+    const offsetY = 1500
 
     const [show, setShow] = useState<boolean>(false)
 

@@ -69,10 +69,6 @@ const Name = styled.div`
    text-transform: uppercase;
 `
 
-const Info = styled.div `
-    color: ${({theme}) => theme.text.color.secondary};
-    padding: 5px 0px;
-`
 
 
 export default ProducerCard
