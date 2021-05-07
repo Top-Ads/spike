@@ -18,7 +18,7 @@ import { Fragment } from 'react'
 import { shortDate } from '../../utils/shortDate'
 import { PRODUCERS } from '../api/graphql/queries/producers'
 import { Producer } from '../api/graphql/schemas/producer'
-import ProducerCard from '../../components/Cards/ProducerCard'
+import ProvidersList from '../../components/ProvidersList'
 
 type PageProps = {
     freeSlotsData: Slot [],
@@ -146,22 +146,7 @@ const Slots: FunctionComponent<PageProps> = ({newSlotsData, pupularSlotsData, fr
                 <Container>
                     <Section>
                         <SlotsCounter total={1528}/>
-                        <Grids id='providers'>
-                            <GridSlots
-                                type={GridType.SLOTS}
-                                content={ producersData.map( (producer, index) =>
-                                    <LazyLoad offset={100}>
-                                        <ProducerCard selected={handleProducerSelected} key={index} data={producer}/>
-                                    </LazyLoad> 
-                                )}
-                                label="PROVIDER FAMOSI"
-                                xs={12} sm={12} md={12}
-                                width={"200px"}
-                                AlignItem="center"
-                                spacing={0}
-                                bgColor={'#fff'}   
-                            />
-                        </Grids>
+                        <ProvidersList data={producersData} setSelected={handleProducerSelected}/> 
                     </Section>
 
                     <Article>
@@ -181,7 +166,7 @@ const Slots: FunctionComponent<PageProps> = ({newSlotsData, pupularSlotsData, fr
                                 <MenuList listItems={listItems} itemSelected={itemSelected} setItemSelected={handleItemSelected}/>
 
                                 <div className="shuffle">
-                                    <ShuffleIcon onClick={shuffle}/>
+                                    <ShuffleIcon fontSize={'small'} onClick={shuffle}/>
                                 </div>
                             </div>
 
@@ -243,15 +228,6 @@ const Grids = styled.div`
     flex-wrap: wrap;
     color: ${({theme}) => theme.colors.background};
 
-    &#providers{
-        margin-top: 20px;
-    }
-
-    &#free-slots {
-        justify-content: center;
-        align-self: center;
-    }
-
     @media ${device.tablet} {
         &#ads-slots {
             flex-wrap: nowrap;
@@ -277,9 +253,9 @@ const Container = styled.div`
 `
 const Section = styled.div`
     display: inherit;  
-    flex-grow: 1;
     flex-direction: column;
     margin-right: 20px;
+    width: 250px;
 
     @media ${device.tablet} {
        display: none;

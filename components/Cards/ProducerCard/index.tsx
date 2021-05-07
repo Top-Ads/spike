@@ -1,10 +1,11 @@
-import React, { FunctionComponent } from 'react'
-import { Fragment } from 'react';
+import React, { FunctionComponent, useState } from 'react'
+import { Fragment } from 'react'
 import Image from 'next/image'
 import styled from 'styled-components'
 import { Producer } from '../../../pages/api/graphql/schemas/producer'
-import LazyLoad from 'react-lazyload';
-import { CDN } from '../../../public/environment';
+import LazyLoad from 'react-lazyload'
+import { CDN } from '../../../public/environment'
+import FilterListIcon from '@material-ui/icons/FilterList'
 
 type PageProps = {
     data: Producer,
@@ -13,9 +14,14 @@ type PageProps = {
 
 const ProducerCard: FunctionComponent<PageProps> = ({data, selected}) => {
    
+    const [show, setShow] = useState<boolean>(false)
+
     return (
         <Fragment>
-            <Main onClick={() => selected(data.name)}>
+            <Main 
+            onClick={() => selected(data.name)}
+            onMouseEnter={() => setShow(true)}
+            onMouseLeave={() => setShow(false)}>
                 <Thumbnail>
                     <LazyLoad key={data.id} height={60} offset={200}>
                         <Image
@@ -29,7 +35,8 @@ const ProducerCard: FunctionComponent<PageProps> = ({data, selected}) => {
                 </Thumbnail>
 
                 <Container>
-                    <Name><strong>{data.name}</strong></Name>
+                    <div><strong>{data.name}</strong></div>
+                    { show ? <FilterListIcon fontSize={'small'} className={'filter-icon'}/> : '' }
                 </Container>
 
             </Main>
@@ -40,11 +47,12 @@ const ProducerCard: FunctionComponent<PageProps> = ({data, selected}) => {
 const Main = styled.div`
     display: flex;
     flex-direction: row;
-    align-items: center;
     font-size: 12px;
-    border-bottom: 1px solid ${({theme}) => theme.colors.gradient};
-    padding: 5px;
+    border: 1px solid ${({theme}) => theme.colors.gradient};
+    border-left-width: thick;
+    padding: 0px 5px;
     cursor: pointer;
+    align-items: center;
 
     &:hover {
         background-color: #f2f2f2;
@@ -59,18 +67,13 @@ const Thumbnail = styled.div`
 
 const Container = styled.div`
     display: flex;
-    flex-direction: column;
-    align-self: center;
+    flex-direction: row;
+    justify-content: space-between;
     text-align: left;
+    align-items: center;
     flex-grow: 2;
     width: min-content;
     padding: 0px 5px;
 `
-
-const Name = styled.div`
-  
-`
-
-
 
 export default ProducerCard

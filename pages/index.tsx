@@ -6,7 +6,7 @@ import { device } from '../utils/device'
 import GridSlots from '../components/GridSlots'
 import Layout from '../components/Layout'
 import FreqentlyAsked from '../components/FrequentlyAsked'
-import FreeSlots from '../components/FreeSlots/indext'
+import FreeSlotsList from '../components/FreeSlotsList'
 import SlotCard from '../components/Cards/SlotCard'
 import BonusCard from '../components/Cards/BonusCard'
 import BonusTable from '../components/BonusTable'
@@ -154,7 +154,7 @@ const IndexPage: FunctionComponent<PageProps> = ({slotsData, freeBonusData, topB
       <FreqentlyAsked/>
 
       <div className="space-around">
-        <FreeSlots data={freeBonusData}/>
+        <FreeSlotsList data={freeBonusData}/>
       </div>
 
     </Layout>

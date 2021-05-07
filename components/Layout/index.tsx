@@ -46,7 +46,11 @@ const Main = styled.div`
   padding-bottom: 70px;
 
   @media ${device.tablet} {
-    padding: 70px 0px;
+    padding: 100px 0px 80px;
+  }
+
+  @media ${device.mobileL} {
+    padding: 70px 0px 80px;
   }
 
   .space-around {

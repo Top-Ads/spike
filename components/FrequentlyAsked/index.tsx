@@ -42,7 +42,7 @@ const Main = styled.div`
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    padding: 0 10%;
+    padding: 0 10% 5px;
     background-image: linear-gradient(180deg, ${({theme}) => theme.colors.background} 0%, ${({theme}) => theme.colors.gradient} 50%);
 
 `

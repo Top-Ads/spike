@@ -1,7 +1,7 @@
 import { createStyles, InputAdornment, makeStyles, TextField, Theme } from '@material-ui/core'
 import React, { Fragment, FunctionComponent, useState } from 'react'
 import SearchIcon from '@material-ui/icons/Search'
-import { BaseTextFieldProps } from '@material-ui/core/TextField';
+import { BaseTextFieldProps } from '@material-ui/core/TextField'
 
 const useStyles = makeStyles<Theme, PageProps>(() =>
   createStyles({
@@ -93,7 +93,8 @@ const TextInput: FunctionComponent<PageProps> = (props) => {
                         endAdornment: (
                           <InputAdornment position="end">
                             <SearchIcon 
-                              style={{ color: '#ec564', fontSize: '30px', cursor: 'pointer'}}
+                              fontSize={'default'}
+                              style={{ color: '#ec564', cursor: 'pointer'}}
                               onClick={search}/>
                           </InputAdornment>
                         )

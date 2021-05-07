@@ -11,7 +11,7 @@ type PageProps = {
   data: Bonus []
 }
 
-const FreeSlots: FunctionComponent<PageProps> = ({data}) => { 
+const FreeSlotsList: FunctionComponent<PageProps> = ({data}) => { 
     return (
         <Fragment>
           <Main>
@@ -73,4 +73,4 @@ const Grids = styled.div`
   color: ${({theme}) => theme.colors.background}; 
 `
 
-export default FreeSlots
+export default FreeSlotsList
