@@ -19,15 +19,22 @@ import { shortDate } from '../../utils/shortDate'
 import { PRODUCERS } from '../api/graphql/queries/producers'
 import { Producer } from '../api/graphql/schemas/producer'
 import ProvidersList from '../../components/ProvidersList'
+import { BONUSES } from '../api/graphql/queries/bonuses'
+import { Bonus } from '../api/graphql/schemas/bonus'
+import FreeBonusList from '../../components/FreeBonusList'
 
 type PageProps = {
     freeSlotsData: Slot [],
     newSlotsData: Slot [],
     pupularSlotsData: Slot [],
-    producersData: Producer []
+    producersData: Producer [],
+    freeBonusData: Bonus []
 }
 
-const Slots: FunctionComponent<PageProps> = ({newSlotsData, pupularSlotsData, freeSlotsData, producersData}) => { 
+const Slots: FunctionComponent<PageProps> = (props) => { 
+
+    const { newSlotsData, pupularSlotsData, freeSlotsData, producersData, freeBonusData } = props;
+
 
     const aquaClient = new AquaClient()
 
@@ -146,7 +153,8 @@ const Slots: FunctionComponent<PageProps> = ({newSlotsData, pupularSlotsData, fr
                 <Container>
                     <Section>
                         <SlotsCounter total={1528}/>
-                        <ProvidersList data={producersData} setSelected={handleProducerSelected}/> 
+                        <ProvidersList data={producersData} setSelected={handleProducerSelected}/> <br/>
+                        <FreeBonusList data={freeBonusData}/>
                     </Section>
 
                     <Article>
@@ -254,7 +262,7 @@ const Section = styled.div`
     display: inherit;  
     flex-direction: column;
     margin-right: 20px;
-    width: 250px;
+    width: 280px;
 
     @media ${device.tablet} {
        display: none;
@@ -379,12 +387,17 @@ export async function getStaticProps() {
         query: PRODUCERS, 
         variables: { limit: 10, start: 0 } })
 
+    const freeBonusRequest =  await aquaClient.query({ 
+        query: BONUSES, 
+        variables: { code: 'it', limit: 5, start: 0 } })
+
     return {
         props: {
             newSlotsData: newSlotsRequest.data.data.slots,
             pupularSlotsData: popularSlotsRequest.data.data.slots,
             freeSlotsData: freeSlotsRequest.data.data.slots,
-            producersData: producersRequest.data.data.producers
+            producersData: producersRequest.data.data.producers,
+            freeBonusData: freeBonusRequest.data.data.bonuses,
         }
     }
 }

@@ -26,9 +26,6 @@ const Main = styled.div`
     border: 2px solid ${({theme}) => theme.colors.background};
     color: ${({theme}) => theme.colors.background};
     border-radius: 5px;
-
-    font-weight: bold;
-
     font-weight: bold;
     font-size: 25px;
 `

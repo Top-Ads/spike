@@ -154,7 +154,30 @@ const IndexPage: FunctionComponent<PageProps> = ({slotsData, freeBonusData, topB
       <FreqentlyAsked/>
 
       <div className="space-around">
-        <FreeBonusList data={freeBonusData}/>
+        <FreeBonus>
+          <Summary>
+                <div><strong>GIOCA ALLE SLOT ONLINE – GRATIS</strong></div>
+
+                <div><p>Se ti piacciono le slot machine online ma vuoi giocare senza rischiare nulla,
+                allora sei nel posto giusto. Qui su Slotjava.it trovi soltanto slot online gratis, 
+                insieme ad altri giochi da casinò a cui potrai giocare per tutto il tempo che vorrai, 
+                senza pagare nulla, senza registrarti e senza scaricare alcun software. Potrai 
+                semplicemente giocare, e basta. Giocare alle slot machine gratis online ti consente 
+                di poterle provare e imparare le loro caratteristiche, il loro comportamento, scoprire
+                quanto pagano e se hanno delle fasi bonus. Puoi scoprire in anteprima i segreti delle ultime
+                slot rilasciate, per giudicarle personalmente e metterle tra i preferiti o tra quelle da evitare.
+                Il tutto, senza alcun rischio e senza limiti di tempo.</p></div>
+
+                <div><strong>ALTRI GIOCHI A CUI PUOI GIOCARE GRATIS SUL NOSTRO SITO</strong></div>
+
+                <div><p>Noi siamo specializzati soprattutto in slot machine, poiché esse rappresentano il gioco da 
+                casinò online più popolare del momento. Tuttavia, sul nostro sito sono disponibili anche altre
+                tipologie di gioco, che ben conoscerai e che potrai apprezzare.</p></div>
+          </Summary>
+
+          <FreeBonusList data={freeBonusData}/>
+
+        </FreeBonus>
       </div>
 
     </Layout>
@@ -233,6 +256,21 @@ const Grids = styled.div`
     .bonus-list { display: contents; }
     .bonus-table { display: none; }
   }
+`
+
+const FreeBonus = styled.div`
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+`
+
+const Summary = styled.div`
+  display: flex;
+  flex-direction: column;
+  flex-grow: 2;
+  width: 300px;
+  color: ${({theme}) => theme.colors.background}; 
+  padding: 10px;
 `
 
 export async function getStaticProps() {

@@ -33,7 +33,7 @@ const ProvidersList: FunctionComponent<PageProps> = ({data, setSelected}) => {
                     )}
                     label="PROVIDER FAMOSI"
                     xs={12} sm={12} md={12}
-                    width={"200px"}
+                    width={"auto"}
                     AlignItem="center"
                     spacing={0}
                     bgColor={'#fff'}   
