@@ -109,7 +109,7 @@ const GridSlots: FunctionComponent<PageProps> = (props) => {
 const Head = styled.div<HeadType>`
   text-align: ${({align}) => align ? align : 'unset'};
   font-weight: bold;
-  margin-bottom: 20px;
+  margin-bottom: 15px;
 `
 
 const Label = styled.div`

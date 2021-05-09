@@ -7,6 +7,7 @@ const useStyles = makeStyles<Theme, PageProps>(() =>
   createStyles({
     root:{
       height: '100%',
+      width: '100%'
     },
     textField: {
         width: ({width}) => width ? width : '100%',

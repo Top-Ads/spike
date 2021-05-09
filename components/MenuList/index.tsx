@@ -158,7 +158,6 @@ const Button = styled.div`
     border-radius: ${({theme}) => theme.button.borderRadius};
     font-weight: normal;
     cursor: pointer;
-    width: fit-content;
     text-transform: uppercase;
     margin: auto 0;
     display: flex;

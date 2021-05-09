@@ -151,8 +151,7 @@ const Slots: FunctionComponent<PageProps> = ({newSlotsData, pupularSlotsData, fr
 
                     <Article>
                         <Actions>
-
-                            <div className="search-input">
+                            <div id="search-input">
                                 <TextInput
                                     onSearch={handleSearch}
                                     onChange={handleSearch}
@@ -162,14 +161,12 @@ const Slots: FunctionComponent<PageProps> = ({newSlotsData, pupularSlotsData, fr
                                     placeholder="Cerca una slot..."/>
                             </div>
 
-                            <div className="menu-list">
-                                <MenuList listItems={listItems} itemSelected={itemSelected} setItemSelected={handleItemSelected}/>
+                            <div id='filter-slots'>
+                                    <MenuList listItems={listItems} itemSelected={itemSelected} setItemSelected={handleItemSelected}/>
 
-                                <div className="shuffle">
-                                    <ShuffleIcon fontSize={'small'} onClick={shuffle}/>
-                                </div>
+                                    <div id="shuffle"><ShuffleIcon fontSize={'small'} onClick={shuffle}/></div>                                    
                             </div>
-
+                            <div id="filter-providers"><span>LIST PROVIDERS</span></div>
                         </Actions>
 
                         <Grids id='free-slots'>
@@ -177,7 +174,7 @@ const Slots: FunctionComponent<PageProps> = ({newSlotsData, pupularSlotsData, fr
                                 type={GridType.SLOTS} 
                                 content={ freeSlots.map( (slot: Slot) => 
                                 <Fragment>
-                                    <Info>
+                                    <SlotInfo>
                                         <div className="producer">{ producerSelected ?  slot.producer.name : ''}</div>
 
                                         {itemSelected === menuList.RTP ? slot.rtp ? `RTP: ${slot.rtp}%` : 'NA' : ''}
@@ -186,7 +183,7 @@ const Slots: FunctionComponent<PageProps> = ({newSlotsData, pupularSlotsData, fr
                                              `${shortDate(slot.created_at)}`: 'NA' : ''}
                                         {itemSelected === menuList.UPDATED_AT ? slot.created_at ?
                                              `${shortDate(slot.updated_at)}`: 'NA' : ''}
-                                    </Info>
+                                    </SlotInfo>
                                     <SlotCard key={slot.name} data={slot}/>
                                 </Fragment>
                                 )}
@@ -207,7 +204,7 @@ const Slots: FunctionComponent<PageProps> = ({newSlotsData, pupularSlotsData, fr
     ) 
 }
 
-const Info = styled.div` 
+const SlotInfo = styled.div` 
     display: flex;
     justify-content: flex-end;
     font-weight: normal;
@@ -240,6 +237,7 @@ const Main = styled.div`
     display: flex;
     flex-direction: column;
 `
+
 const Title = styled.div`
     color: ${({theme}) => theme.colors.background};
     flex-grow: 1;
@@ -251,6 +249,7 @@ const Container = styled.div`
     flex-direction: row;
     flex-grow: 1;
 `
+
 const Section = styled.div`
     display: inherit;  
     flex-direction: column;
@@ -261,6 +260,7 @@ const Section = styled.div`
        display: none;
     }
 `
+
 const Article = styled.div`
     display: inherit;
     flex-direction: column;
@@ -270,41 +270,73 @@ const Article = styled.div`
 const Actions = styled.div`
     display: flex;
     flex-direction: row;
+    justify-content: flex-end;
     padding: 10px 30px;
     flex-wrap: wrap;
 
-    .search-input {
+    #search-input {
+        display: inherit;
         flex-grow: 2;
         border: 1px solid ${({theme}) => theme.colors.background};
         border-radius: 5px;
-
+       
         @media ${device.mobileL} {
-            margin-bottom: 20px;
+            margin-bottom: 10px;
         }
     }
 
-    .menu-list {
-        display: inherit;
-        flex-grow: 1;
-        justify-content: flex-end;
-        z-index: 99;
-    }
-
-    .shuffle {
-        border: 1px solid #ff1313;
-        display: flex;
-        align-items: center;
+    #filter-providers {
+        display: none;
         justify-content: center;
-        flex-grow: 0;
+        border: 1px solid #ff1313;
         border-radius: 5px;
-       
+        padding: 12px;
+        margin-top: 10px;
         color: #212530;
         background-color: #fff;
-        width: 40px;
         cursor: pointer;
+        flex-grow: 0;
+
+        @media ${device.tablet} {
+            display: flex;
+        }
+
+        @media ${device.mobileL} {
+            flex-grow: 1;
+        }
 
         &:hover {
             color: #ff1313;
+        }
+    }
+
+    #filter-slots {
+        display: inherit;
+        flex-direction: row;
+        justify-content: flex-end;
+        flex-grow: 1;
+        z-index: 99;
+
+        @media ${device.mobileL} {
+            justify-content: space-between;
+        }
+
+        #shuffle {
+            border: 1px solid #ff1313;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-grow: 0;
+            border-radius: 5px;
+           
+            color: #212530;
+            background-color: #fff;
+            width: 50px;
+            cursor: pointer;
+    
+            &:hover {
+                color: #ff1313;
+            }
         }
     }
 `
