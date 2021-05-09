@@ -77,17 +77,19 @@ const GridSlots: FunctionComponent<PageProps> = (props) => {
 
   return (
     <div className={classes.root}>
-        <Head align={AlignItem}>
-            { label ? 
-              <Fragment>
-                <Label> 
-                  { label }
-                  { type === GridType.SLOTS ? <Breadcrumbs currentIndex={breadcrumbIndex} size={breadcrumbSize}/> : '' }
-                </Label>
-                <Divider/>
-              </Fragment>
-              : '' }
-        </Head>
+       { label ? 
+          <Head align={AlignItem}>
+            
+                <Fragment>
+                  <Label> 
+                    { label }
+                    { type === GridType.SLOTS ? <Breadcrumbs currentIndex={breadcrumbIndex} size={breadcrumbSize}/> : '' }
+                  </Label>
+                  <Divider/>
+                </Fragment>
+              
+          </Head>
+          : '' }
 
         <Grid container item spacing={spacing}>
           {content.map((child: JSX.Element, index: number) => 

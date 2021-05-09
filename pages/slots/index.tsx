@@ -205,7 +205,38 @@ const Slots: FunctionComponent<PageProps> = (props) => {
                         </Button>
 
                     </Article>
-                </Container>  
+
+                </Container> 
+
+                <BannerList>
+                    <Banner>
+                        <span className="banner-name">Slot disponibili</span>
+                        <div className="banner-info">1528+</div> 
+                    </Banner>
+                    <Banner>
+                        <span className="banner-name">Migliori fornitori</span>
+                        <div className="banner-info">
+                            <a>WMG </a>|
+                            <a> Novomatic </a>|
+                            <a> WMS</a>
+                        </div>  
+                    </Banner>
+                    <Banner>
+                        <span className="banner-name">Disponibile su</span>
+                        <div className="banner-info">
+                            <a>888 </a>|
+                            <a> Casino </a>|
+                            <a> Leovegas </a>|
+                            <a> Starcasino</a>
+                        </div> 
+                    </Banner>	
+                    <Banner>
+                        <span className="banner-name">Tipo di gioco</span>
+                        <div className="banner-info">
+                            <a>Gioco gratis</a>
+                        </div> 
+                    </Banner>
+                </BannerList> 
             </Main>
         </div>
         </Layout>
@@ -256,6 +287,7 @@ const Container = styled.div`
     display: flex;
     flex-direction: row;
     flex-grow: 1;
+    margin-bottom: 20px;
 `
 
 const Section = styled.div`
@@ -367,6 +399,41 @@ const Button = styled.div`
       box-shadow: ${({theme}) => theme.button.boxShadowX};
     }
 `
+
+const BannerList = styled.div`
+    border: 1px solid white;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    background-color: ${({theme}) => theme.colors.background};
+    padding: 10px;
+    flex-wrap: wrap;
+    color: #fff;
+`
+const Banner = styled.div`
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    
+    @media ${device.mobileL} {
+        width: 100%;
+        margin: 5px 0px;
+    }
+
+    .banner-name {
+        font-size: 14px;
+        font-weight: bold;
+        margin-bottom: 2px;
+    }
+
+    .banner-info {
+        font-size: 13px;
+        font-weight: normal;
+        
+    }
+`
+
 export async function getStaticProps() {
     const aquaClient = new AquaClient()
 
