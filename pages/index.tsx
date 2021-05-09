@@ -227,11 +227,11 @@ const Header = styled.div`
 `
 
 const Thumbnail = styled.div`
-  width: 470px;
-  margin: 20px auto;
+  width: 35%;
+  margin: 15px auto;
 
-  @media ${device.laptop} {
-    max-width: 335px;
+  @media ${device.mobileL} {
+    width: 90%;
   }
 `
 

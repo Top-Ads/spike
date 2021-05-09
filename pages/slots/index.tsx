@@ -22,6 +22,9 @@ import ProvidersList from '../../components/ProvidersList'
 import { BONUSES } from '../api/graphql/queries/bonuses'
 import { Bonus } from '../api/graphql/schemas/bonus'
 import FreeBonusList from '../../components/FreeBonusList'
+import Image from 'next/image'
+import { CDN } from '../../public/environment'
+import BannerList from '../../components/BannerList'
 
 type PageProps = {
     freeSlotsData: Slot [],
@@ -34,7 +37,6 @@ type PageProps = {
 const Slots: FunctionComponent<PageProps> = (props) => { 
 
     const { newSlotsData, pupularSlotsData, freeSlotsData, producersData, freeBonusData } = props;
-
 
     const aquaClient = new AquaClient()
 
@@ -118,6 +120,34 @@ const Slots: FunctionComponent<PageProps> = (props) => {
 
     return (
         <Layout title="Free Slots">
+
+        <Header>
+            <Intro>
+                <h2>
+                    SLOT GRATIS – GIOCA ALLE SLOT MACHINE GRATIS ONLINE IN ITALIANO
+                </h2>
+                <span>Pubblicato: 2019-06-11 • Ultimo aggiornamento: 2021-05-07</span>
+                <p>
+                    Prima di tutto, benvenuto! Sappiamo che ti piace giocare alle slot machine
+                    gratis online: è per quello che sei qui! La buona notizia e che anche noi 
+                    piacciono molto le slot machine e abbiamo una grande collezione di giochi 
+                    disponibile. Sfoglia la nostra selezione delle migliori slot machines, scegli 
+                    una che ti piace e divertiti. Senza download o registrazione.
+                </p>
+            </Intro>
+            
+            <Thumbnail>
+              <Image
+                alt="Spike poster"
+                src={`${CDN}/png/spike-poster.png`}
+                layout="responsive"
+                priority={true}
+                width={624}
+                height={484}/>
+            </Thumbnail>
+        </Header>
+
+
         <div className="space-around">
             <Grids id='ads-slots'>
                 <GridSlots
@@ -208,40 +238,48 @@ const Slots: FunctionComponent<PageProps> = (props) => {
 
                 </Container> 
 
-                <BannerList>
-                    <Banner>
-                        <span className="banner-name">Slot disponibili</span>
-                        <div className="banner-info">1528+</div> 
-                    </Banner>
-                    <Banner>
-                        <span className="banner-name">Migliori fornitori</span>
-                        <div className="banner-info">
-                            <a>WMG </a>|
-                            <a> Novomatic </a>|
-                            <a> WMS</a>
-                        </div>  
-                    </Banner>
-                    <Banner>
-                        <span className="banner-name">Disponibile su</span>
-                        <div className="banner-info">
-                            <a>888 </a>|
-                            <a> Casino </a>|
-                            <a> Leovegas </a>|
-                            <a> Starcasino</a>
-                        </div> 
-                    </Banner>	
-                    <Banner>
-                        <span className="banner-name">Tipo di gioco</span>
-                        <div className="banner-info">
-                            <a>Gioco gratis</a>
-                        </div> 
-                    </Banner>
-                </BannerList> 
+                <BannerList totalSlots={1528}/>
             </Main>
         </div>
         </Layout>
     ) 
 }
+
+const Header = styled.div`
+    background-image: linear-gradient(180deg, ${({theme}) => theme.colors.background} 0%, ${({theme}) => theme.colors.gradient} 50%);
+    padding: 0 10%;
+    margin: 20px 0px;
+    color: #fff;
+    display: flex;
+    flex=direction: row;
+    flex-wrap: wrap;
+
+    span {
+        font-size: small;
+    }
+
+    p {
+        color: #fff;
+    }
+`
+
+const Intro = styled.div`
+    width: 50%;
+    flex-grow: 1;
+`
+
+const Thumbnail = styled.div`
+    margin: 15px auto;
+    flex-grow: 1;
+   
+    @media ${device.laptop} {
+        width: 15%;
+    }
+
+    @media ${device.tablet} {
+        display: none;
+    }
+`
 
 const SlotInfo = styled.div` 
     display: flex;
@@ -356,7 +394,7 @@ const Actions = styled.div`
         justify-content: flex-end;
         flex-grow: 1;
         z-index: 99;
-
+        
         @media ${device.mobileL} {
             justify-content: space-between;
         }
@@ -397,40 +435,6 @@ const Button = styled.div`
 
     &:hover {
       box-shadow: ${({theme}) => theme.button.boxShadowX};
-    }
-`
-
-const BannerList = styled.div`
-    border: 1px solid white;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-evenly;
-    background-color: ${({theme}) => theme.colors.background};
-    padding: 10px;
-    flex-wrap: wrap;
-    color: #fff;
-`
-const Banner = styled.div`
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    
-    @media ${device.mobileL} {
-        width: 100%;
-        margin: 5px 0px;
-    }
-
-    .banner-name {
-        font-size: 14px;
-        font-weight: bold;
-        margin-bottom: 2px;
-    }
-
-    .banner-info {
-        font-size: 13px;
-        font-weight: normal;
-        
     }
 `
 
