@@ -1,8 +1,9 @@
 import React, { Fragment, ReactNode, useRef } from 'react'
-import Head from 'next/head'
-import Header from '../Header'
 import styled from 'styled-components'
+import Head from 'next/head'
 import { device } from '../../utils/device'
+import Header from '../Header'
+import Footer from '../Footer'
 import ScrollButton from '../ScrollButton'
 import LegalDisclaimer from '../LegalDisclaimer'
 
@@ -28,12 +29,16 @@ const Layout = ({ children, title}: Props) => {
 
       <Header/>
 
+      <MarginHeader/>
+
       <Main>
         {children}
       </Main>
 
+      <Footer/>
+      
       <ScrollButton eleRef={eleRef}/>
-    
+
       <LegalDisclaimer/>
 
     </Fragment>
@@ -43,15 +48,6 @@ const Layout = ({ children, title}: Props) => {
 export default Layout
 
 const Main = styled.div`
-  padding-bottom: 70px;
-
-  @media ${device.tablet} {
-    padding: 100px 0px 80px;
-  }
-
-  @media ${device.mobileL} {
-    padding: 70px 0px 80px;
-  }
 
   .space-around {
     padding: 10px 10%;
@@ -60,4 +56,20 @@ const Main = styled.div`
       padding: 10px 2%;
     }
   } 
+`
+
+const MarginHeader = styled.div`
+  display: none;
+  width: min-content;
+  
+  @media ${device.tablet} {
+    display: block;
+    height: 100px;
+  }
+
+  @media ${device.mobileL} {
+    display: block;
+    height: 70px;
+  }
+
 `

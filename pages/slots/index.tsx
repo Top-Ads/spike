@@ -121,126 +121,126 @@ const Slots: FunctionComponent<PageProps> = (props) => {
     return (
         <Layout title="Free Slots">
 
-        <Header>
-            <Intro>
-                <h2>
-                    SLOT GRATIS – GIOCA ALLE SLOT MACHINE GRATIS ONLINE IN ITALIANO
-                </h2>
-                <span>Pubblicato: 2019-06-11 • Ultimo aggiornamento: 2021-05-07</span>
-                <p>
-                    Prima di tutto, benvenuto! Sappiamo che ti piace giocare alle slot machine
-                    gratis online: è per quello che sei qui! La buona notizia e che anche noi 
-                    piacciono molto le slot machine e abbiamo una grande collezione di giochi 
-                    disponibile. Sfoglia la nostra selezione delle migliori slot machines, scegli 
-                    una che ti piace e divertiti. Senza download o registrazione.
-                </p>
-            </Intro>
-            
-            <Thumbnail>
-              <Image
-                alt="Spike poster"
-                src={`${CDN}/png/spike-poster.png`}
-                layout="responsive"
-                priority={true}
-                width={624}
-                height={484}/>
-            </Thumbnail>
-        </Header>
+            <Header>
+                <Intro>
+                    <h2>
+                        SLOT GRATIS – GIOCA ALLE SLOT MACHINE GRATIS ONLINE IN ITALIANO
+                    </h2>
+                    <span>Pubblicato: 2019-06-11 • Ultimo aggiornamento: 2021-05-07</span>
+                    <p>
+                        Prima di tutto, benvenuto! Sappiamo che ti piace giocare alle slot machine
+                        gratis online: è per quello che sei qui! La buona notizia e che anche noi 
+                        piacciono molto le slot machine e abbiamo una grande collezione di giochi 
+                        disponibile. Sfoglia la nostra selezione delle migliori slot machines, scegli 
+                        una che ti piace e divertiti. Senza download o registrazione.
+                    </p>
+                </Intro>
+                
+                <Thumbnail>
+                <Image
+                    alt="Spike poster"
+                    src={`${CDN}/png/spike-poster.png`}
+                    layout="responsive"
+                    priority={true}
+                    width={624}
+                    height={484}/>
+                </Thumbnail>
+            </Header>
 
 
-        <div className="space-around">
-            <Grids id='ads-slots'>
-                <GridSlots
-                    type={GridType.SLOTS} 
-                    content={ newSlotsData.map( (slot) => 
-                    <LazyLoad once key={slot.id} height={400} offset={300}>
-                        <SlotCard key={slot.name} data={slot}/>
-                    </LazyLoad> )}
-                    label="Nuove slot."
-                    xs={6} sm={4} md={4}
-                    breadcrumbIndex={0}
-                    breadcrumbSize={2}
-                />
-                <GridSlots
-                    type={GridType.SLOTS}
-                    content={ pupularSlotsData.map( (slot) =>  
-                    <LazyLoad once key={slot.id} height={400} offset={300} >
-                        <SlotCard key={slot.id} data={slot}/>
-                    </LazyLoad> )}
-                    label="Le slot piu popolari."
-                    xs={6} sm={4} md={4}
-                    breadcrumbIndex={1}
-                    breadcrumbSize={2}   
-                />
-            </Grids>
+            <div className="space-around">
+                <Grids id='ads-slots'>
+                    <GridSlots
+                        type={GridType.SLOTS} 
+                        content={ newSlotsData.map( (slot) => 
+                        <LazyLoad once key={slot.id} height={400} offset={300}>
+                            <SlotCard key={slot.name} data={slot}/>
+                        </LazyLoad> )}
+                        label="Nuove slot."
+                        xs={6} sm={4} md={4}
+                        breadcrumbIndex={0}
+                        breadcrumbSize={2}
+                    />
+                    <GridSlots
+                        type={GridType.SLOTS}
+                        content={ pupularSlotsData.map( (slot) =>  
+                        <LazyLoad once key={slot.id} height={400} offset={300} >
+                            <SlotCard key={slot.id} data={slot}/>
+                        </LazyLoad> )}
+                        label="Le slot piu popolari."
+                        xs={6} sm={4} md={4}
+                        breadcrumbIndex={1}
+                        breadcrumbSize={2}   
+                    />
+                </Grids>
 
-            <Main>
-                <Title>
-                    <h3>LA NOSTRA LIBRERIA DI SLOT - TUTTE DA GIOCARE GRATIS!</h3>
-                    <Divider/>
-                </Title>
+                <Main>
+                    <Title>
+                        <h3>LA NOSTRA LIBRERIA DI SLOT - TUTTE DA GIOCARE GRATIS!</h3>
+                        <Divider/>
+                    </Title>
 
-                <Container>
-                    <Section>
-                        <SlotsCounter total={1528}/>
-                        <ProvidersList data={producersData} setSelected={handleProducerSelected}/> <br/>
-                        <FreeBonusList data={freeBonusData}/>
-                    </Section>
+                    <Container>
+                        <Section>
+                            <SlotsCounter total={1528}/>
+                            <ProvidersList data={producersData} setSelected={handleProducerSelected}/> <br/>
+                            <FreeBonusList data={freeBonusData}/>
+                        </Section>
 
-                    <Article>
-                        <Actions>
-                            <div id="search-input">
-                                <TextInput
-                                    onSearch={handleSearch}
-                                    onChange={handleSearch}
-                                    size={'small'}
-                                    borderRadius={'5px'}
-                                    searchIcon
-                                    placeholder="Cerca una slot..."/>
-                            </div>
+                        <Article>
+                            <Actions>
+                                <div id="search-input">
+                                    <TextInput
+                                        onSearch={handleSearch}
+                                        onChange={handleSearch}
+                                        size={'small'}
+                                        borderRadius={'5px'}
+                                        searchIcon
+                                        placeholder="Cerca una slot..."/>
+                                </div>
 
-                            <div id='filter-slots'>
-                                    <MenuList listItems={listItems} itemSelected={itemSelected} setItemSelected={handleItemSelected}/>
+                                <div id='filter-slots'>
+                                        <MenuList listItems={listItems} itemSelected={itemSelected} setItemSelected={handleItemSelected}/>
 
-                                    <div id="shuffle"><ShuffleIcon fontSize={'small'} onClick={shuffle}/></div>                                    
-                            </div>
-                            <div id="filter-providers"><span>LIST PROVIDERS</span></div>
-                        </Actions>
+                                        <div id="shuffle"><ShuffleIcon fontSize={'small'} onClick={shuffle}/></div>                                    
+                                </div>
+                                <div id="filter-providers"><span>LIST PROVIDERS</span></div>
+                            </Actions>
 
-                        <Grids id='free-slots'>
-                            <GridSlots 
-                                type={GridType.SLOTS} 
-                                content={ freeSlots.map( (slot: Slot) => 
-                                <Fragment>
-                                    <SlotInfo>
-                                        <div className="producer">{ producerSelected ?  slot.producer.name : ''}</div>
+                            <Grids id='free-slots'>
+                                <GridSlots 
+                                    type={GridType.SLOTS} 
+                                    content={ freeSlots.map( (slot: Slot) => 
+                                    <Fragment>
+                                        <SlotInfo>
+                                            <div className="producer">{ producerSelected ?  slot.producer.name : ''}</div>
 
-                                        {itemSelected === menuList.RTP ? slot.rtp ? `RTP: ${slot.rtp}%` : 'NA' : ''}
-                                        {itemSelected === menuList.LIKES ? slot.likes ? `${slot.likes} likes`: 'NA' : ''}
-                                        {itemSelected === menuList.CREATED_AT ? slot.created_at ?
-                                             `${shortDate(slot.created_at)}`: 'NA' : ''}
-                                        {itemSelected === menuList.UPDATED_AT ? slot.created_at ?
-                                             `${shortDate(slot.updated_at)}`: 'NA' : ''}
-                                    </SlotInfo>
-                                    <SlotCard key={slot.name} data={slot}/>
-                                </Fragment>
-                                )}
-                                width={'100%'}
-                                xs={6} sm={4} md={3}
-                            />
-                        </Grids>
+                                            {itemSelected === menuList.RTP ? slot.rtp ? `RTP: ${slot.rtp}%` : 'NA' : ''}
+                                            {itemSelected === menuList.LIKES ? slot.likes ? `${slot.likes} likes`: 'NA' : ''}
+                                            {itemSelected === menuList.CREATED_AT ? slot.created_at ?
+                                                `${shortDate(slot.created_at)}`: 'NA' : ''}
+                                            {itemSelected === menuList.UPDATED_AT ? slot.created_at ?
+                                                `${shortDate(slot.updated_at)}`: 'NA' : ''}
+                                        </SlotInfo>
+                                        <SlotCard key={slot.name} data={slot}/>
+                                    </Fragment>
+                                    )}
+                                    width={'100%'}
+                                    xs={6} sm={4} md={3}
+                                />
+                            </Grids>
 
-                        <Button onClick={loadMore}>
-                            <span>CARICA ALTRO</span>
-                        </Button>
+                            <Button onClick={loadMore}>
+                                <span>CARICA ALTRO</span>
+                            </Button>
 
-                    </Article>
+                        </Article>
 
-                </Container> 
+                    </Container> 
 
-                <BannerList totalSlots={1528}/>
-            </Main>
-        </div>
+                    <BannerList totalSlots={1528}/>
+                </Main>
+            </div>
         </Layout>
     ) 
 }
@@ -248,12 +248,13 @@ const Slots: FunctionComponent<PageProps> = (props) => {
 const Header = styled.div`
     background-image: linear-gradient(180deg, ${({theme}) => theme.colors.background} 0%, ${({theme}) => theme.colors.gradient} 50%);
     padding: 0 10%;
-    margin: 20px 0px;
+    margin-top: 20px;
     color: #fff;
     display: flex;
     flex=direction: row;
     flex-wrap: wrap;
-
+    
+    
     span {
         font-size: small;
     }
@@ -349,7 +350,6 @@ const Actions = styled.div`
     display: flex;
     flex-direction: row;
     justify-content: flex-end;
-    padding: 10px 30px;
     flex-wrap: wrap;
 
     #search-input {
@@ -377,10 +377,12 @@ const Actions = styled.div`
 
         @media ${device.tablet} {
             display: flex;
+            padding: 10px 25px;
         }
 
         @media ${device.mobileL} {
             flex-grow: 1;
+            padding: 10px 0px;
         }
 
         &:hover {

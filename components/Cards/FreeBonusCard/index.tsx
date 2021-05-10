@@ -13,7 +13,7 @@ type PageProps = {
     bgColor?: string
 }
 
-const FreeCard: FunctionComponent<PageProps> = ({data}) => { 
+const FreeBonusCard: FunctionComponent<PageProps> = ({data}) => { 
     const router = useRouter()
 
     const linkToBonus = () => {
@@ -98,4 +98,4 @@ const Button = styled.div<BonusType>`
     }
 `
 
-export default FreeCard
+export default FreeBonusCard
