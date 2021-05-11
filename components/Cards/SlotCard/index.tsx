@@ -14,7 +14,6 @@ type PageProps = {
 };
 
 const SlotCard: FunctionComponent<PageProps> = ({data}) => { 
-
     const router = useRouter()
 
     const ref = useRef<HTMLDivElement>(null);

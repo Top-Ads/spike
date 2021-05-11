@@ -6,6 +6,7 @@ import InstagramIcon from '@material-ui/icons/Instagram'
 import LinkedInIcon from '@material-ui/icons/LinkedIn'
 import YouTubeIcon from '@material-ui/icons/YouTube'
 import { device } from '../../utils/device'
+import Link from 'next/link'
 
 const Footer: FunctionComponent = () => {
     return (
@@ -14,8 +15,13 @@ const Footer: FunctionComponent = () => {
                 <Container>
                     <List>
                         <strong>slots</strong>
-                        <a>Video</a>
-                        <a>Giochi Slot Machine Gratis</a>
+                        <Link href={'/'}>
+                            <a>Video</a>
+                        </Link>
+                        <Link href={'/'}>
+                            <a>Giochi Slot Machine Gratis</a>
+                        </Link>
+                       
                     </List>
                     <List>
                         <strong>casinos</strong>
@@ -87,6 +93,7 @@ const Main = styled.div`
         font-size: 13px;
         margin: 3px 0px;
         text-align: left;
+        color: inherit;
     }
 `
 

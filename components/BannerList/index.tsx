@@ -52,6 +52,7 @@ const Main = styled.div`
     padding: 10px;
     flex-wrap: wrap;
     color: #fff;
+    margin: 10px 0px;
 `
 const Banner = styled.div`
     display: flex;

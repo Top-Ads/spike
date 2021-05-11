@@ -25,6 +25,7 @@ import FreeBonusList from '../../components/FreeBonusList'
 import Image from 'next/image'
 import { CDN } from '../../public/environment'
 import BannerList from '../../components/BannerList'
+import Article from '../../components/Article'
 
 type PageProps = {
     freeSlotsData: Slot [],
@@ -181,13 +182,13 @@ const Slots: FunctionComponent<PageProps> = (props) => {
                     </Title>
 
                     <Container>
-                        <Section>
+                        <Aside>
                             <SlotsCounter total={1528}/>
                             <ProvidersList data={producersData} setSelected={handleProducerSelected}/> <br/>
                             <FreeBonusList data={freeBonusData}/>
-                        </Section>
+                        </Aside>
 
-                        <Article>
+                        <Section>
                             <Actions>
                                 <div id="search-input">
                                     <TextInput
@@ -207,6 +208,8 @@ const Slots: FunctionComponent<PageProps> = (props) => {
                                 <div id="filter-providers"><span>LIST PROVIDERS</span></div>
                             </Actions>
 
+                            <br/>
+                            
                             <Grids id='free-slots'>
                                 <GridSlots 
                                     type={GridType.SLOTS} 
@@ -234,12 +237,14 @@ const Slots: FunctionComponent<PageProps> = (props) => {
                                 <span>CARICA ALTRO</span>
                             </Button>
 
-                        </Article>
+                        </Section>
 
                     </Container> 
 
                     <BannerList totalSlots={1528}/>
                 </Main>
+
+                <Article/>
             </div>
         </Layout>
     ) 
@@ -329,7 +334,7 @@ const Container = styled.div`
     margin-bottom: 20px;
 `
 
-const Section = styled.div`
+const Aside = styled.div`
     display: inherit;  
     flex-direction: column;
     margin-right: 20px;
@@ -340,7 +345,7 @@ const Section = styled.div`
     }
 `
 
-const Article = styled.div`
+const Section = styled.div`
     display: inherit;
     flex-direction: column;
     flex-grow: 2;
