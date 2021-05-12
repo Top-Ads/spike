@@ -155,14 +155,17 @@ const IndexPage: FunctionComponent<PageProps> = ({slotsData, freeBonusData, topB
       <FreqentlyAsked/>
 
       <div className="space-around">
-        <FreeBonus>
-          <Summary>
+        <Section>
+          <div className="article">
                 <Article/>
-          </Summary>
+          </div>
 
-          <FreeBonusList data={freeBonusData}/>
-
-        </FreeBonus>
+          <div className="free-bonus-list">
+            <FreeBonusList data={freeBonusData.slice(0, 5)} label="I MIGLIORI CASINÒ"/>
+            <FreeBonusList data={freeBonusData.slice(5, 10)} label="I MIGLIORI CASINÒ CON GIRI GRATIS"/>
+          </div>
+         
+        </Section>
       </div>
 
     </Layout>
@@ -243,18 +246,29 @@ const Grids = styled.div`
   }
 `
 
-const FreeBonus = styled.div`
+const Section = styled.section`
   display: flex;
   flex-direction: row;
-  flex-wrap: wrap-reverse;
-`
+  flex-wrap: wrap;
 
-const Summary = styled.div`
-  display: flex;
-  flex-direction: column;
-  flex-grow: 2;
-  width: 300px;
-  padding: 10px;
+  @media ${device.mobileL} {
+    flex-wrap: wrap-reverse;
+  }
+
+  .article {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 2;
+    width: 300px;
+    padding: 10px;
+  }
+
+  .free-bonus-list {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    height: min-content;
+  }
 `
 
 export async function getStaticProps() {
@@ -267,7 +281,7 @@ export async function getStaticProps() {
 
   const freeBonusRequest =  await aquaClient.query({ 
     query: BONUSES, 
-    variables: { code: 'it', limit: 5, start: 0 } })
+    variables: { code: 'it', limit: 15, start: 0 } })
     
   const topBonusRequest = await aquaClient.query({ 
     query: BONUSES, 

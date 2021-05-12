@@ -118,6 +118,7 @@ const Label = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  text-align: left;
 `
 
 export default GridSlots

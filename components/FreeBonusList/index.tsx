@@ -9,9 +9,10 @@ import { Bonus } from '../../pages/api/graphql/schemas/bonus'
 
 type PageProps = {
   data: Bonus [],
+  label: string
 }
 
-const FreeBonusList: FunctionComponent<PageProps> = ({data}) => { 
+const FreeBonusList: FunctionComponent<PageProps> = ({data, label}) => { 
     return (
         <Fragment>
       
@@ -22,7 +23,7 @@ const FreeBonusList: FunctionComponent<PageProps> = ({data}) => {
                   <LazyLoad offset={100}>
                     <FreeBonusCard key={index} data={bonus}/>
                   </LazyLoad> )}
-                label="I migliori casinò con giri gratis."
+                label={label}
                 xs={12} sm={12} md={12}
                 width={"200px"}
                 AlignItem="center"
@@ -38,6 +39,7 @@ const Grids = styled.div`
   display: inherit;
   flex-grow: 1;
   color: ${({theme}) => theme.colors.background}; 
+  margin: 10px 0px;
 `
 
 export default FreeBonusList

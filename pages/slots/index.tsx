@@ -185,7 +185,7 @@ const Slots: FunctionComponent<PageProps> = (props) => {
                         <Aside>
                             <SlotsCounter total={1528}/>
                             <ProvidersList data={producersData} setSelected={handleProducerSelected}/> <br/>
-                            <FreeBonusList data={freeBonusData}/>
+                            <FreeBonusList data={freeBonusData} label="I MIGLIORI CASINÒ CON GIRI GRATIS"/>
                         </Aside>
 
                         <Section>
@@ -258,7 +258,6 @@ const Header = styled.div`
     display: flex;
     flex=direction: row;
     flex-wrap: wrap;
-    
     
     span {
         font-size: small;
@@ -339,7 +338,8 @@ const Aside = styled.div`
     flex-direction: column;
     margin-right: 20px;
     width: 280px;
-
+    height: min-content;
+    
     @media ${device.tablet} {
        display: none;
     }
@@ -467,7 +467,7 @@ export async function getStaticProps() {
 
     const freeBonusRequest =  await aquaClient.query({ 
         query: BONUSES, 
-        variables: { code: 'it', limit: 5, start: 0 } })
+        variables: { code: 'it', limit: 5, start: 5 } })
 
     return {
         props: {
