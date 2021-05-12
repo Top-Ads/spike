@@ -12,7 +12,7 @@ query slots($countryCode: String, $limit: Int, $start: Int, $name_contains: Stri
 
           limit: $limit,
           start: $start,
-          sort: $sort 
+          sort: $sort
           ) {
             id
             created_at

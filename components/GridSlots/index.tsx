@@ -56,7 +56,6 @@ type PageProps = {
     AlignItem?: string,
     textAlign?: string,
     showIndex?: boolean,
-    reversedList?: boolean,
     disableBorderRadius?: boolean,
     showBoxShadow?: boolean,
     bgColor?: string,
@@ -71,7 +70,7 @@ type HeadType = {
 
 const GridSlots: FunctionComponent<PageProps> = (props) => {
 
-  const {type, content, label, xs, sm, md, AlignItem, showIndex=false, reversedList, spacing=1, breadcrumbIndex=0, breadcrumbSize} = props;
+  const {type, content, label, xs, sm, md, AlignItem, showIndex=false, spacing=1, breadcrumbIndex=0, breadcrumbSize} = props;
 
   const classes = useStyles(props)
 
@@ -97,7 +96,7 @@ const GridSlots: FunctionComponent<PageProps> = (props) => {
                 <Paper className={classes.paper}>
                     {showIndex ? 
                       <div style={{position: 'absolute', top: '-10px', right: '0px'}}>
-                        <RankingCard index={ reversedList ? (content.length-index) : (index+1) } />
+                        <RankingCard index={index+1} />
                       </div> : '' }
                     {child}
                 </Paper>

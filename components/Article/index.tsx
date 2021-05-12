@@ -16,7 +16,7 @@ const Article: FunctionComponent = () => {
                         <LazyLoad  height={85} offset={300}>
                             <Image
                                 alt="image not available"
-                                src={'https://spike-images.s3.eu-central-1.amazonaws.com/almighty_sparta-min_9caf037e56.jpeg'} 
+                                src={"https://spike-images.s3.eu-central-1.amazonaws.com/gold-volcano-logo_3aa1e358a3.png"} 
                                 layout="responsive"
                                 priority={true}
                                 width={200}
@@ -476,11 +476,9 @@ const Main = styled.div`
 `
 
 const Thumbnail = styled.div` 
-    width: 200px;
+    width: 250px;
     shape-outside: circle(115px at 49.9% 49.9%);
     clip-path: circle(115px at 49.9% 49.9%);
-    
-    img { border-radius: 100px; }
-`
+    `
 
 export default Article

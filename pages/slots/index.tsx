@@ -75,7 +75,8 @@ const Slots: FunctionComponent<PageProps> = (props) => {
     }
 
     const shuffle = async () => {
-        setProducerSelected('')
+        clear()
+
         setItemSelected(menuList.SHUFFLE)
         const shuffleFreeSlots = await fetchData(36, getRandomInt(freeSlots.length, 500))
 
@@ -83,7 +84,7 @@ const Slots: FunctionComponent<PageProps> = (props) => {
     }
 
     const handleSearch = async (text: string) => {
-        setProducerSelected('')
+        clear()
         
         if (!text.length) {
             setFreeSlots(freeSlotsData)
@@ -102,9 +103,12 @@ const Slots: FunctionComponent<PageProps> = (props) => {
     }
  
     const handleItemSelected = async (itemSelected: string) => {
-        setProducerSelected('')
+        clear()
 
-        const data = await fetchData(36, 0, itemSelected.toLowerCase())
+        const sortItem = itemSelected === menuList.ALPHABETIC ? 
+        itemSelected.toLowerCase().concat(':asc') : itemSelected.toLowerCase().concat(':desc')
+        
+        const data = await fetchData(36, 0, sortItem)
             
         setFreeSlots(data)
         setItemSelected(itemSelected)
@@ -119,6 +123,9 @@ const Slots: FunctionComponent<PageProps> = (props) => {
         setProducerSelected(producerSelected)
     }
 
+    const clear = () => {
+        setProducerSelected('')
+    }
     return (
         <Layout title="Free Slots">
 
@@ -147,7 +154,6 @@ const Slots: FunctionComponent<PageProps> = (props) => {
                     height={484}/>
                 </Thumbnail>
             </Header>
-
 
             <div className="space-around">
                 <Grids id='ads-slots'>

@@ -136,13 +136,12 @@ const IndexPage: FunctionComponent<PageProps> = ({slotsData, freeBonusData, topB
             <div className="bonus-list">
               <GridSlots
                 type={GridType.BONUS}
-                content={ allBonusData.reverse().map( (bonus) => 
+                content={ allBonusData.map( (bonus) => 
                     <BonusCard key={bonus.id} data={bonus}/>
                    )}
                 AlignItem={"center"}
                 xs={12} sm={12} md={12}
                 showIndex
-                reversedList
                 showBoxShadow
                 bgColor="#fff"
                 spacing={2}
