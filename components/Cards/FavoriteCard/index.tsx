@@ -20,9 +20,9 @@ const FavoriteCard: FunctionComponent<PageProps> = ({data, deleteItem}) => {
     
     const playSlot = () => {
         router.push({
-            pathname: '/slot/[url]',
-            query: { playLink: data.playLink, name: data.name}
-        }, '/slot')
+            pathname: '/play/[slot]',
+            query: { slot: JSON.stringify(data) }
+        }, `${data.slug}`)
     }
 
     return (

@@ -145,13 +145,13 @@ const Slots: FunctionComponent<PageProps> = (props) => {
                 </Intro>
                 
                 <Thumbnail>
-                <Image
-                    alt="Spike poster"
-                    src={`${CDN}/png/spike-poster.png`}
-                    layout="responsive"
-                    priority={true}
-                    width={624}
-                    height={484}/>
+                    <Image
+                        alt="Spike poster"
+                        src={`${CDN}/png/spike-poster.png`}
+                        layout="responsive"
+                        priority={true}
+                        width={624}
+                        height={484}/>
                 </Thumbnail>
             </Header>
 

@@ -136,8 +136,8 @@ const Header = () => {
                   <a><Button>Home</Button></a>
               </Link>
 
-              <Link href={'/video'}>
-                  <a><Button>Video</Button></a>
+              <Link href={'/casino-squad'}>
+                  <a><Button>Casino Squad</Button></a>
               </Link>
 
               <Link href={'/slots'}>
