@@ -1,16 +1,11 @@
 import React, { Fragment, FunctionComponent, useEffect, useState } from 'react'
-import { RefObject } from 'react'
 import styled from 'styled-components'
-import SmoothScrolling from "../../utils/smoothScrolling"
-
-type PageProps = {
-    eleRef: RefObject<HTMLDivElement>
-};
+import { animateScroll as scroll } from "react-scroll"
 
 type ScrollType = {
     show: boolean
 }
-const ScrollButton: FunctionComponent<PageProps> = ({eleRef}) => { 
+const ScrollButton: FunctionComponent = () => { 
    
     const offsetY = 1500
 
@@ -28,7 +23,7 @@ const ScrollButton: FunctionComponent<PageProps> = ({eleRef}) => {
 
     return (
         <Fragment>
-            <Main show={show} onClick={ () => SmoothScrolling.scrollTo(eleRef.current)}/>
+            <Main show={show} onClick={ () => scroll.scrollToTop()}/>
         </Fragment>
     ) 
 }

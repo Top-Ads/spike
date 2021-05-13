@@ -1,4 +1,4 @@
-import React, { Fragment, ReactNode, useRef } from 'react'
+import React, { Fragment, ReactNode } from 'react'
 import styled from 'styled-components'
 import Head from 'next/head'
 import { device } from '../../utils/device'
@@ -14,8 +14,6 @@ type Props = {
 
 const Layout = ({ children, title}: Props) => { 
   
-  const eleRef = useRef<HTMLDivElement>(null)
-
   return (
     <Fragment>
       
@@ -25,8 +23,6 @@ const Layout = ({ children, title}: Props) => {
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
       </Head>
       
-      <div ref={eleRef}/>
-
       <Header/>
 
       <MarginHeader/>
@@ -37,7 +33,7 @@ const Layout = ({ children, title}: Props) => {
 
       <Footer/>
       
-      <ScrollButton eleRef={eleRef}/>
+      <ScrollButton/>
 
       <LegalDisclaimer/>
 
