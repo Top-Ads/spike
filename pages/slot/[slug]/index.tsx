@@ -13,15 +13,14 @@ import CustomizedAccordions from '../../../components/CustomizedAccordions'
 import { shortDate } from '../../../utils/shortDate'
 import { device } from '../../../utils/device'
 
-
-const Play = () => {
+const SlotPage = () => {
 
     const router = useRouter()
 
     const [item, setItem] = useState<Slot>()
 
     useEffect(() => {
-        setItem(JSON.parse(String(router.query.slot)))
+        setItem(JSON.parse(String(router.query.slug)))
     }, [router.query])
 
     return (
@@ -148,4 +147,4 @@ const Description = styled.div`
     }
 `
 
-export default Play
+export default SlotPage

@@ -35,7 +35,7 @@ type PageProps = {
     freeBonusData: Bonus []
 }
 
-const Slots: FunctionComponent<PageProps> = (props) => { 
+const SlotsPage: FunctionComponent<PageProps> = (props) => { 
 
     const { newSlotsData, pupularSlotsData, freeSlotsData, producersData, freeBonusData } = props;
 
@@ -486,4 +486,4 @@ export async function getStaticProps() {
     }
 }
 
-export default Slots
+export default SlotsPage

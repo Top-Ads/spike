@@ -20,9 +20,9 @@ const FavoriteCard: FunctionComponent<PageProps> = ({data, deleteItem}) => {
     
     const playSlot = () => {
         router.push({
-            pathname: '/play/[slot]',
-            query: { slot: JSON.stringify(data) }
-        }, `${data.slug}`)
+            pathname: '/slot/[slug]',
+            query: { slug: JSON.stringify(data) }
+        })
     }
 
     return (
@@ -108,6 +108,5 @@ const Rating = styled.div `
     color: ${({theme}) => theme.text.color.secondary};
     padding: 5px 0px;
 `
-
 
 export default FavoriteCard

@@ -39,9 +39,9 @@ const SlotCard: FunctionComponent<PageProps> = ({data}) => {
 
     const playSlot = () => {
         router.push({
-            pathname: '/play/[slot]',
-            query: { slot: JSON.stringify(data) }
-        }, `${data.slug}`)
+            pathname: '/slot/[slug]',
+            query: { slug: JSON.stringify(data) }
+        }, )
     }
  
     const handleActiveLike = () => {
