@@ -17,7 +17,7 @@ const useStyles = makeStyles<Theme, PageProps>(() =>
 
         '& .MuiInputBase-root': {
             backgroundColor: '#fff',
-            color: '#ec564f',
+            color: '#212530',
             fontSize: '16px',
             fontWeight: 'bold',
             borderRadius: ({borderRadius}) => borderRadius ? borderRadius: '15px',

@@ -76,7 +76,7 @@ const Header = () => {
 
           { showTextInput ? 
               <Fragment>
-                { showTextInput ? <Overlay onClick={() => setShowTextInput(!showTextInput)}/> : '' }
+                <Overlay onClick={() => setShowTextInput(!showTextInput)}/>
                 <TextInput
                       zIndex={100}
                       autoFocus
@@ -87,17 +87,19 @@ const Header = () => {
 
               <TopHeader>
 
+              <Link href={'/'}>
                 <Logo>
                   <Image
-                    alt="Casino Legal Information"
-                    src={`${CDN}/svg/logo-spike.svg`}
-                    layout="responsive"
+                    alt="Casino Squad"
+                    src={`${CDN}/png/logo.png`}
+                    layout="intrinsic"
                     priority={true}
-                    width={150}
-                    height={60}
+                    width={200}
+                    height={100}
                   />
                 </Logo>
-                
+              </Link>
+
                 { overlay ? <Overlay onClick={() => setOverlay(!overlay)}/> : '' }
 
                 <Actions>
@@ -136,12 +138,16 @@ const Header = () => {
                   <a><Button>Home</Button></a>
               </Link>
 
-              <Link href={'/casino-squad'}>
-                  <a><Button>Casino Squad</Button></a>
+              <Link href={'/comparator'}>
+                  <a><Button>Comparator</Button></a>
               </Link>
 
-              <Link href={'/slots'}>
-                  <a><Button>Giochi Slot Machine Gratis</Button></a>
+              <Link href={'/giochi'}>
+                  <a><Button>Giochi</Button></a>
+              </Link>
+
+              <Link href={'/shop'}>
+                  <a><Button>Shop</Button></a>
               </Link>
            </Nav> 
 
@@ -191,7 +197,7 @@ const Logo = styled.div`
   display: inherit;
   position: relative;
   flex-direction: column;
-  width: 150px;
+  width: 120px;
 
   @media ${device.mobileL} {
     width: 100px;

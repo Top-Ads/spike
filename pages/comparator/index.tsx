@@ -2,12 +2,12 @@ import React from 'react'
 import styled from 'styled-components'
 import Layout from '../../components/Layout'
 
-const CasinoSquad = () => { 
+const ComparatorPage = () => { 
     
     return (
-        <Layout title="Video">
+        <Layout title="Comparator">
             <Main>
-                CasinoSquad Page (still in development)
+             Comparator Page (still in development)
             </Main>
         </Layout>
     ) 
@@ -21,4 +21,4 @@ const Main = styled.div`
 }
 `
 
-export default CasinoSquad
+export default ComparatorPage

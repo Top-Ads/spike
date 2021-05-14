@@ -35,7 +35,7 @@ type PageProps = {
     freeBonusData: Bonus []
 }
 
-const SlotsPage: FunctionComponent<PageProps> = (props) => { 
+const GiochiPage: FunctionComponent<PageProps> = (props) => { 
 
     const { newSlotsData, pupularSlotsData, freeSlotsData, producersData, freeBonusData } = props;
 
@@ -127,7 +127,7 @@ const SlotsPage: FunctionComponent<PageProps> = (props) => {
         setProducerSelected('')
     }
     return (
-        <Layout title="Free Slots">
+        <Layout title="Giochi">
 
             <Header>
                 <Intro>
@@ -147,11 +147,11 @@ const SlotsPage: FunctionComponent<PageProps> = (props) => {
                 <Thumbnail>
                     <Image
                         alt="Spike poster"
-                        src={`${CDN}/png/spike-poster.png`}
-                        layout="responsive"
+                        src={`${CDN}/png/logo_3d.png`}
+                        layout="intrinsic"
                         priority={true}
-                        width={624}
-                        height={484}/>
+                        width={200}
+                        height={200}/>
                 </Thumbnail>
             </Header>
 
@@ -281,11 +281,6 @@ const Intro = styled.div`
 
 const Thumbnail = styled.div`
     margin: 15px auto;
-    flex-grow: 1;
-   
-    @media ${device.laptop} {
-        width: 15%;
-    }
 
     @media ${device.tablet} {
         display: none;
@@ -377,7 +372,7 @@ const Actions = styled.div`
     #filter-providers {
         display: none;
         justify-content: center;
-        border: 1px solid #ff1313;
+        border: 1px solid ${({theme}) => theme.colors.background};
         border-radius: 5px;
         padding: 12px;
         margin-top: 10px;
@@ -397,7 +392,7 @@ const Actions = styled.div`
         }
 
         &:hover {
-            color: #ff1313;
+            color: #e1ba6f;
         }
     }
 
@@ -413,7 +408,7 @@ const Actions = styled.div`
         }
 
         #shuffle {
-            border: 1px solid #ff1313;
+            border: 1px solid #e1ba6f;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -426,7 +421,7 @@ const Actions = styled.div`
             cursor: pointer;
     
             &:hover {
-                color: #ff1313;
+                color: #e1ba6f;
             }
         }
     }
@@ -486,4 +481,4 @@ export async function getStaticProps() {
     }
 }
 
-export default SlotsPage
+export default GiochiPage

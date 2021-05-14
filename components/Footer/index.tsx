@@ -15,13 +15,15 @@ const Footer: FunctionComponent = () => {
                 <Container>
                     <List>
                         <strong>slots</strong>
-                        <Link href={'/'}>
-                            <a>Video</a>
+                        <Link href={'/giochi'}>
+                            <a>Giochi</a>
                         </Link>
-                        <Link href={'/'}>
-                            <a>Giochi Slot Machine Gratis</a>
+                        <Link href={'/comparator'}>
+                            <a>Comparator</a>
                         </Link>
-                       
+                        <Link href={'/shop'}>
+                            <a>Shop</a>
+                        </Link>
                     </List>
                     <List>
                         <strong>casinos</strong>

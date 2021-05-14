@@ -25,7 +25,7 @@ const Article: FunctionComponent = () => {
                     </Thumbnail>
                     <p>
                     Se ti piacciono le slot machine online ma vuoi giocare senza rischiare nulla,
-                    allora sei nel posto giusto. Qui su Slotjava.it trovi soltanto slot online gratis,
+                    allora sei nel posto giusto. Qui su casinosquad.it trovi soltanto slot online gratis,
                     insieme ad altri giochi da casinò a cui potrai giocare per tutto il tempo che vorrai,
                     senza pagare nulla, senza registrarti e senza scaricare alcun software.
                     Potrai semplicemente giocare, e basta. Giocare alle <strong>slot machine gratis</strong> online ti
@@ -66,7 +66,7 @@ const Article: FunctionComponent = () => {
                 <div><strong>Slot – Giocare senza download e senza registrazione</strong></div>
                 <div
                     ><p>
-                    Su Slotjava.it puoi giocare subito, senza perdere tempo in download
+                    Su casinosquad.it puoi giocare subito, senza perdere tempo in download
                     e registrazioni. Molti casinò richiedono ancora di scaricare il proprio software
                     di gioco, richiedendo quindi tempo per il download e l’installazione. Sul nostro
                     sito potrai giocare subito senza scaricare nulla. Inoltre, non dovrai registrarti!
@@ -123,7 +123,7 @@ const Article: FunctionComponent = () => {
                 <div><strong>Come realizziamo le recensioni delle slot online?</strong></div>
                 <div>
                     <p>
-                    I nostri esperti di Slotjava.it valutano ogni gioco di slot online attraverso un rigoroso processo
+                    I nostri esperti di casinosquad.it valutano ogni gioco di slot online attraverso un rigoroso processo
                     di verifica per garantire che venga offerta ai giocatori la migliore esperienza di gioco possibile.
                     Scopriamo ogni dettaglio nella nostra ricerca per offrirti i migliori giochi di slot online nelle
                     nostre recensioni. I giocatori possono essere certi che ogni guida alle slot online è recensita in
@@ -272,7 +272,7 @@ const Article: FunctionComponent = () => {
                     L’importante è che tu scelga un <strong>casinò italiano</strong> legale, sicuro e affidabile. Sul nostro sito,
                     trovi soltanto i <strong>migliori casinò affidabili</strong>, conosciuti e con licenza AAMS.
                     Se non hai mai giocato ai casinò online, dai un’occhiata alla <strong>nostra sezione casinò</strong> dove troverai
-                    tanti consigli utili per scegliere il casinò che fa al caso tuo. Se stai accedendo al sito di Slotjava.it
+                    tanti consigli utili per scegliere il casinò che fa al caso tuo. Se stai accedendo al sito di casinosquad.it
                     con uno smartphone o un computer su cui non sia installato Flash Player,
                     potresti utilizzare il filtro “Dispositivi Mobile Supportati”, per giocare alle slot con soldi veri senza la richiesta di Flash Player.
                     </p>

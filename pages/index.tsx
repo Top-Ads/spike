@@ -35,48 +35,43 @@ const IndexPage: FunctionComponent<PageProps> = ({slotsData, freeBonusData, topB
 
       <div className="space-around">
 
-        <Welcome>
+      <Header>
 
-          <Header>
+        <Intro>
+            <h1>BENVENUTO SU CASINÓ SQUAD!</h1>
 
-            <Intro>
-              <h1>BENVENUTO SU SPIKE SLOT!</h1>
+            <div>
+              <p><span><strong>Benvenuto</strong> sul nostro sito puoi:</span></p>
+              <ul>
+                <li>Trovare i migliori casino online.</li>
+                <li>Ricivere offerte bonus esclusive.</li>
+                <li>Giocare gratis alle slot machine famose.</li>
+              </ul>
+            </div>
 
-              <div>
-                <p><span><strong>Benvenuto</strong> sono Spike e sul mio sito puoi:</span></p>
-                <ul>
-                  <li>Trovare i migliori casino online.</li>
-                  <li>Ricivere offerte bonus esclusive.</li>
-                  <li>Giocare gratis alle slot machine famose.</li>
-                </ul>
-              </div>
+            <Button onClick={ () => router.push('/giochi')}>
+                  <span>lista completa delle slot</span>
+            </Button>
+        </Intro>
 
-              <Button onClick={ () => router.push('/slots')}>
-                    <span>lista completa delle slot</span>
-              </Button>
-              
-            </Intro>
+        <Thumbnail>
+            <Image
+              alt="Casino Squad"
+              src={`${CDN}/png/logo_3d.png`}
+              layout="responsive"
+              priority={true}
+              width={400}
+              height={400}/>
+        </Thumbnail>
 
-            <Thumbnail>
-              <Image
-                alt="Spike poster"
-                src={`${CDN}/png/spike-poster.png`}
-                layout="responsive"
-                priority={true}
-                width={624}
-                height={484}/>
-            </Thumbnail>
-          
-          </Header>
-    
-          <p>
-              Ti diamo il benvenuto su <strong>SPIKE SLOT</strong> dove potrai trovare consigli per tutte le Slot Machine esistenti.
-              Cerca la tua slot preferita e leggi i consigli per giocare, provala in modalità SLOT GRATIS direttamente qui senza registrazione,
-              senza scaricare app e senza limiti di tempo. Puoi ottenere informazioni guardando le Video Guide ai Bonus.  <br/>
-              Ancora indeciso? Guarda i video di SPIKE per farti un' idea. Offriamo le migliori comparazioni di siti di Casinò e siti Scommesse.
-          </p>
+        <p>
+        Ti diamo il benvenuto su <strong>CASINÓ SQUAD</strong> dove potrai trovare consigli per tutte le Slot Machine esistenti.
+        Cerca la tua slot preferita e leggi i consigli per giocare, provala in modalità SLOT GRATIS direttamente qui senza registrazione,
+        senza scaricare app e senza limiti di tempo. Puoi ottenere informazioni guardando le Video Guide ai Bonus.  <br/>
+        Ancora indeciso? Guarda i video di SPIKE per farti un' idea. Offriamo le migliori comparazioni di siti di Casinò e siti Scommesse.
+      </p>
 
-        </Welcome>
+      </Header>
 
         <Grids id="grid-slots">
           <GridSlots
@@ -171,10 +166,11 @@ const IndexPage: FunctionComponent<PageProps> = ({slotsData, freeBonusData, topB
   )
 }
   
-const Welcome = styled.div`
+
+const Header = styled.div`
   display: flex;
-  flex-direction: column;
-  color: ${({theme}) => theme.colors.background};
+  flex-direction: row;
+  flex-wrap: wrap;
 `
 
 const Intro = styled.div`
@@ -190,8 +186,7 @@ const Intro = styled.div`
 `
 
 const Button = styled.div`
-    background-color: #ff1313;
-    border: 2px solid ${({theme}) => theme.colors.background};
+    background-color: ${({theme}) => theme.colors.background};
     color: #fff;
     border-radius: ${({theme}) => theme.button.borderRadius};
     font-weight: normal;
@@ -206,19 +201,14 @@ const Button = styled.div`
   }
 `
 
-const Header = styled.div`
-  display: inherit;
-  flex-direction: row;
-  justify-content: space-between;
-  flex-wrap: wrap;
-`
 
 const Thumbnail = styled.div`
-  width: 35%;
-  margin: 15px auto;
+  width: 25%;
+  margin: auto;
 
   @media ${device.mobileL} {
     width: 90%;
+    margin-top: 15px;
   }
 `
 

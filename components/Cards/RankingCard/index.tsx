@@ -8,9 +8,8 @@ type PageProps = {
 const RankingCard: FunctionComponent<PageProps> = ({index}) => <Main> {index} </Main>
 
 const Main = styled.div`
-    border: 2px solid #ff1313;
     color: #fff;
-    background-color: #ff1313;
+    background-color: ${({theme}) => theme.colors.background};
     border-radius: 69px;
     width: 30px;
     height: 30px;

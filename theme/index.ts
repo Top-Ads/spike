@@ -4,8 +4,8 @@ import { StyledTheme } from "../interfaces"
 export const styledTheme: StyledTheme = {
 
     colors: {
-        background: "#ff1313",
-        gradient: "#ff5656"
+        background: "#e1ba6f",
+        gradient: "#e0c584"
     },
     text: {
         primaryFont: 'Montserrat, sans-serif',
@@ -44,7 +44,7 @@ export const GlobalStyle = createGlobalStyle`
 
     h1, strong { font-weight: bold; }
 
-    strong { color: ${styledTheme.colors.background}; }
+    strong, h1 { color: ${styledTheme.colors.background}; }
 
     p { color: ${styledTheme.text.color.secondary}; }
 `
