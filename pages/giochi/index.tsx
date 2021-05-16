@@ -10,7 +10,7 @@ import { GridType, menuList } from '../../utils/constants'
 import { device } from '../../utils/device'
 import AquaClient from '../api/graphql/aquaClient'
 import { SLOTS } from '../api/graphql/queries/slots'
-import TextInput from '../../components/Inputs/Textfield'
+import CustomTextField from '../../components/Inputs/Textfield'
 import MenuList from '../../components/MenuList'
 import ShuffleIcon from '@material-ui/icons/Shuffle'
 import { Slot } from '../api/graphql/schemas/slot'
@@ -90,7 +90,7 @@ const GiochiPage: FunctionComponent<PageProps> = (props) => {
             setFreeSlots(freeSlotsData)
         }
 
-        if (text.length > 3) {
+        if (text.length > 1) {
             const searchSlotRequest =  await aquaClient.query({ 
                 query: SLOTS, 
                 variables: { code: 'it', name_contains: text } 
@@ -197,8 +197,7 @@ const GiochiPage: FunctionComponent<PageProps> = (props) => {
                         <Section>
                             <Actions>
                                 <div id="search-input">
-                                    <TextInput
-                                        onSearch={handleSearch}
+                                    <CustomTextField
                                         onChange={handleSearch}
                                         size={'small'}
                                         borderRadius={'5px'}

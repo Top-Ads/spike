@@ -2,7 +2,7 @@ import React, { Fragment, useContext, useEffect, useState } from 'react'
 import styled from 'styled-components'
 import Image from 'next/image'
 import Divider from '../Divider'
-import TextInput from '../Inputs/Textfield'
+import CustomTextField from '../Inputs/Textfield'
 import MenuIcon from '@material-ui/icons/Menu'
 import CloseIcon from '@material-ui/icons/Close'
 import Link from 'next/link'
@@ -15,8 +15,11 @@ import { Category } from '../../utils/constants'
 import FavoriteCard from '../Cards/FavoriteCard'
 import NotificationCard from '../Cards/NotificationCard'
 import { DislikedSlotContext } from '../../contexts'
-import { CDN } from '../../public/environment'
+import { APIKEY, APPLICATIONID, CDN } from '../../public/environment'
 import { Slot } from '../../pages/api/graphql/schemas/slot'
+import { SearchIndex } from 'algoliasearch/lite'
+import SearchHit from '../SearchHit'
+import { AlgoliaSearchData } from '../../pages/api/graphql/schemas/algoliaSearchData'
 
 type NavProps = {
   expand: boolean
@@ -30,6 +33,8 @@ const Header = () => {
   const [openDialog, setOpenDialog] = useState<boolean>(false)
   const [category, setCategory] = useState<string>('')
   const [item, setItem] = useState<any[]>([])
+  const [algoliaIndex, setAlgoliaIndex] = useState<SearchIndex | undefined>(undefined)
+  const [searchResult, setSearchResult] = useState<AlgoliaSearchData[]>([])
 
   const  {setSlotDislikedId}  = useContext(DislikedSlotContext)
 
@@ -54,6 +59,42 @@ const Header = () => {
     }
   }
 
+  const handleOnSearch = async (searchItem: string) => {
+    
+    if (!searchItem.length) {
+      setSearchResult([])
+      return
+    }
+    else {
+      const results = await algoliaIndex!.search<AlgoliaSearchData[] | undefined>(searchItem, { 
+        filters: `country: it`,
+      })
+
+      setSearchResult(results.hits.map((obj: any) => {
+        return {
+            name: obj.name,
+            type: obj.type,
+            slug: obj.slug,
+            country: obj.country,
+            link: obj.link,
+            image: obj.image,
+            bonuses: obj.link,
+            rating: obj.rating
+        }
+      }))
+    }
+  }
+
+  useEffect(() => {
+    if (algoliaIndex === undefined) {
+      import('algoliasearch').then().then(algoliasearch => {
+          const client = algoliasearch.default(APPLICATIONID, APIKEY)
+          const index = client.initIndex('entities')
+          setAlgoliaIndex(index)
+      })
+    }
+  }, [])
+
   useEffect(() => {
     if (openDialog) {
       if (category === Category.FAVORITES) {
@@ -77,48 +118,52 @@ const Header = () => {
           { showTextInput ? 
               <Fragment>
                 <Overlay onClick={() => setShowTextInput(!showTextInput)}/>
-                <TextInput
-                      zIndex={100}
-                      autoFocus
-                      searchIcon
-                      borderRadius={'20px'}
-                      placeholder="Cerca una slot, un casino..."/>
+                <div className="textFieldMobile">
+                  <CustomTextField
+                        zIndex={100}
+                        onChange={handleOnSearch}
+                        autoFocus
+                        searchIcon
+                        borderRadius={'20px'}
+                        placeholder="Cerca una slot, un casino..."/>
+                  <SearchHit data={searchResult}/>
+                </div>
+              
               </Fragment> :
 
               <TopHeader>
 
-              <Link href={'/'}>
-                <Logo>
-                  <Image
-                    alt="Casino Squad"
-                    src={`${CDN}/png/logo.png`}
-                    layout="intrinsic"
-                    priority={true}
-                    width={200}
-                    height={100}
-                  />
-                </Logo>
-              </Link>
+                <Link href={'/'}>
+                  <Logo>
+                    <Image
+                      alt="Casino Squad"
+                      src={`${CDN}/png/logo.png`}
+                      layout="intrinsic"
+                      priority={true}
+                      width={200}
+                      height={100}
+                    />
+                  </Logo>
+                </Link>
 
                 { overlay ? <Overlay onClick={() => setOverlay(!overlay)}/> : '' }
 
                 <Actions>
                   <Search>
-                    <div className="text-input">
-                      <TextInput
+                    <div className="textFieldDesktop">
+                      <CustomTextField
                         zIndex={100}
-                        onChange={(text: string) => console.log('onchange', text)}
-                        onSearch={(text: string) => console.log('onsearch', text)}
+                        onChange={handleOnSearch}
                         width="30ch" 
                         borderRadius={'20px'}
                         searchIcon
                         placeholder="Cerca una slot, un casino..."
                         handleOnFocus={() => setOverlay(true)}/>
+
+                        { overlay ? <SearchHit data={searchResult}/> : '' }
                     </div>
 
-                    <SearchIcon
-                      className="search-icon icons" 
-                      onClick={() => setShowTextInput(true) }/> 
+                    <SearchIcon className="search-icon icons" onClick={() => setShowTextInput(true) }/> 
                   </Search>
               
                   <NotificationsNoneIcon className='icons' onClick={ () => handleDialogSlider(Category.NOTIFICATIONS)} />
@@ -158,7 +203,7 @@ const Header = () => {
             content={item.map( (element: Slot, index: number) => 
               category === Category.FAVORITES ? 
               <FavoriteCard key={index} data={element} deleteItem={deleteItem} /> : <NotificationCard key={index} data={element}/> )}
-            />
+          />
 
         </Main>
       </header>
@@ -220,7 +265,7 @@ const Search = styled.div`
   .search-icon { display: none; }
 
   @media ${device.mobileL} {
-    .text-input { display: none; }
+    .textFieldDesktop { display: none; }
     .search-icon { display: flex; }
   } 
 `

@@ -117,8 +117,8 @@ const SlotCard: FunctionComponent<PageProps> = ({data}) => {
                             src={data.image && data.image.url ? data.image.url : `${CDN}/svg/no_img_available.svg`} 
                             layout="responsive"
                             priority={true}
-                            width={250}
-                            height={140}/>
+                            width={1200}
+                            height={700}/>
                     </LazyLoad>
                 </Thumbnail>
                 
