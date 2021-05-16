@@ -54,7 +54,7 @@ const BonusCard: FunctionComponent<PageProps> = ({data}) => {
                     </div>
                 </BonusInfo>
 
-                <Divider color="#fff" width="90%"/>
+                <Divider width="90%"/>
 
                 <Button bgColor={data.backgroundColor} onClick={linkToBonus}>ACEDI AL BONUS</Button>
 

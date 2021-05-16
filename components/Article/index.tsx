@@ -479,6 +479,13 @@ const Thumbnail = styled.div`
     width: 250px;
     shape-outside: circle(115px at 49.9% 49.9%);
     clip-path: circle(115px at 49.9% 49.9%);
-    `
+
+
+    @media ${device.mobileL} {
+        clip-path: circle(73px at 50.15% 50.15%);
+        shape-outside: circle(73px at 50.1% 50.15%);
+        width: 145px;
+    }
+`
 
 export default Article

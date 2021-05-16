@@ -1,12 +1,13 @@
 import { createStyles, InputAdornment, makeStyles, TextField, Theme } from '@material-ui/core'
-import React, { Fragment, FunctionComponent, useState } from 'react'
+import React, { Fragment, FunctionComponent, useEffect, useRef, useState } from 'react'
 import SearchIcon from '@material-ui/icons/Search'
+import ClearIcon from '@material-ui/icons/Clear'
 import { BaseTextFieldProps } from '@material-ui/core/TextField'
 
 const useStyles = makeStyles<Theme, PageProps>(() =>
   createStyles({
     root:{
-      height: '100%',
+      maxHeight: '100%',
       width: '100%'
     },
     textField: {
@@ -52,36 +53,42 @@ type PageProps = {
   zIndex? :number,
   borderRadius?: string,
   onChange?: Function,
-  onSearch?: Function
 
 }
 
-const TextInput: FunctionComponent<PageProps> = (props) => {
+const CustomTextField: FunctionComponent<PageProps> = (props) => {
 
-    const {size='medium', searchIcon=false, placeholder, handleOnFocus, handleOnBlur, autoFocus=false, onChange, onSearch} = props;
+    const {size='medium', searchIcon=false, placeholder, handleOnFocus, handleOnBlur, autoFocus=false, onChange} = props;
 
     const classes = useStyles(props)
     
     const [text, setText] = useState<string>('')
 
-    const search = () => {
-      if (onSearch)
-        onSearch(text)
-    }
+    const inputRef = useRef<HTMLInputElement>(null);
 
     const handleChange =  (event: React.ChangeEvent<HTMLInputElement>) => {
       event.preventDefault()
 
-      if (onChange)
-        onChange(event.target.value)
-
       setText(event.target.value)
     }
+
+    const handleClearField = () => {
+      if (inputRef.current !== null && onChange) {
+        inputRef.current.value = ''
+        setText('')
+      }
+    }
+
+    useEffect( () => {
+      if (onChange)
+        onChange(text)
+    }, [text])
 
     return (
         <Fragment>
             <form noValidate className={classes.root}>
                 <TextField 
+                    inputRef={inputRef}
                     autoFocus={autoFocus ? autoFocus : false}
                     className={classes.textField}
                     size={size}
@@ -93,10 +100,11 @@ const TextInput: FunctionComponent<PageProps> = (props) => {
                     InputProps={searchIcon ? {
                         endAdornment: (
                           <InputAdornment position="end">
-                            <SearchIcon 
-                              fontSize={'default'}
-                              style={{ color: '#ec564', cursor: 'pointer'}}
-                              onClick={search}/>
+                            {text.length ? 
+                              <ClearIcon onClick={handleClearField} fontSize={'default'} color='inherit' style={{cursor: 'pointer'}}/> :
+                              <SearchIcon fontSize={'default'} color='inherit'/> 
+                            }
+                            
                           </InputAdornment>
                         )
                     } : undefined }
@@ -106,4 +114,4 @@ const TextInput: FunctionComponent<PageProps> = (props) => {
     ) 
 }
 
-export default TextInput
+export default CustomTextField

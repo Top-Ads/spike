@@ -1,7 +1,7 @@
 import React, { Fragment } from 'react'
 import styled from 'styled-components'
-import TextInput from '../Inputs/Textfield'
-import CheckboxInput from '../Inputs/Checkbox'
+import CustomTextField from '../Inputs/Textfield'
+import CustomCheckbox from '../Inputs/Checkbox'
 import { device } from '../../utils/device'
 
 const EmailSubcription = () => { 
@@ -11,11 +11,11 @@ const EmailSubcription = () => {
           <Main>
             <p>Ricevi aggiornamenti ed anticipazioni sui nuovi video e su bonus e promozio.</p>
 
-            <TextInput onChange={(text: string) => console.log('onchange', text)} placeholder="Email" size='small'/>
+            <CustomTextField onChange={(text: string) => console.log('onchange', text)} placeholder="Email" size='small'/>
 
             <br/>
 
-            <CheckboxInput 
+            <CustomCheckbox 
               label={`Dichiaro di aver compiuto 18 anni e di dare il mio consenso per
                     ricevere aggiornamenti ed antecipazioni su video ed offerte promozionali
                     via email da Spikeslot.com.`}/>

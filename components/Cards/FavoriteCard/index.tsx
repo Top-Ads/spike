@@ -37,8 +37,8 @@ const FavoriteCard: FunctionComponent<PageProps> = ({data, deleteItem}) => {
                             src={data.image && data.image.url ? data.image.url : `${CDN}/svg/no_img_available.svg`} 
                             layout="responsive"
                             priority={true}
-                            width={75}
-                            height={'auto'}/>
+                            width={1200}
+                            height={700}/>
                     </Thumbnail>
 
                     <Info>
@@ -85,7 +85,7 @@ const Container = styled.div`
 `
 
 const Thumbnail = styled.div`
-    width: 60px;
+    width: 80px;
     border-radius: ${({theme}) => theme.button.borderRadius};
     overflow: hidden;
 `

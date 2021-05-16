@@ -24,7 +24,7 @@ const useStyles = makeStyles<Theme>(() =>
   }),
 );
 
-const CheckboxInput: FunctionComponent<PageProps> = ({label}) => {
+const CustomCheckbox: FunctionComponent<PageProps> = ({label}) => {
 
   const classes = useStyles()
 
@@ -40,4 +40,4 @@ const CheckboxInput: FunctionComponent<PageProps> = ({label}) => {
   );
 }
 
-export default CheckboxInput
+export default CustomCheckbox
