@@ -140,8 +140,8 @@ const Header = () => {
                       src={`${CDN}/png/logo_header.png`}
                       layout="intrinsic"
                       priority={true}
-                      width={200}
-                      height={100}
+                      width={640}
+                      height={299}
                     />
                   </Logo>
                 </Link>

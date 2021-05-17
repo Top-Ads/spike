@@ -60,8 +60,8 @@ const IndexPage: FunctionComponent<PageProps> = ({slotsData, freeBonusData, topB
               src={`${CDN}/png/logo_3d.png`}
               layout="responsive"
               priority={true}
-              width={400}
-              height={400}/>
+              width={622}
+              height={622 }/>
         </Thumbnail>
 
         <p>

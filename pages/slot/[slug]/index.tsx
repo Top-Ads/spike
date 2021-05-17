@@ -1,5 +1,5 @@
 import { useRouter } from 'next/router'
-import React, { useEffect, useRef, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import styled from 'styled-components'
 import Layout from '../../../components/Layout'
 import { Slot } from '../../api/graphql/schemas/slot'
@@ -12,17 +12,20 @@ import YouTubeIcon from '@material-ui/icons/YouTube'
 import CustomizedAccordions from '../../../components/CustomizedAccordions'
 import { shortDate } from '../../../utils/shortDate'
 import { device } from '../../../utils/device'
-/* import FullscreenIcon from '@material-ui/icons/Fullscreen'
-import FullscreenExitIcon from '@material-ui/icons/FullscreenExit' */
-
+import { animateScroll as scroll } from "react-scroll"
+import { Fragment } from 'react'
 
 const SlotPage = () => {
 
     const router = useRouter()
 
     const [item, setItem] = useState<Slot>()
+    const [showIframe, setShowIframe] = useState<boolean>(false)
 
-    const IframeRef = useRef<HTMLIFrameElement>(null)
+    const handleOnPlay = () => {
+        setShowIframe(true)
+        scroll.scrollTo(500)
+    }
 
     useEffect(() => {
         setItem(JSON.parse(String(router.query.slug)))
@@ -30,16 +33,16 @@ const SlotPage = () => {
 
     return (
         <Layout title="Slot"> 
-          <Main>
+            <Fragment>
                 <div className="space-around">
 
                     <Divider/><br/>
 
                     <Container>
-                        <Thumbnail>
+                        <Thumbnail onClick={handleOnPlay}>
                             <LazyLoad key={item?.id} height={85} offset={300}>
                                 <Image
-                                    alt="image not available"
+                                    alt={item?.name}
                                     src={item?.image.url ? item.image.url : `${CDN}/svg/no_img_available.svg`} 
                                     layout="responsive"
                                     priority={true}
@@ -88,39 +91,19 @@ const SlotPage = () => {
                     <CustomizedAccordions videoDescription={item?.description} tips={item?.tips}/>
                 </div>
         
-                {/* <FullscreenIcon 
-                        className="full-screen-icon" 
-                        fontSize="large" 
-                        onClick={ () => IframeRef.current ?  IframeRef.current?.requestFullscreen() : '' }/> */}
-
-                <IframeContainers 
-                    ref={IframeRef}
-                    scrolling={'auto'} 
-                    src={item?.playLink}
-                    allow={'fullscreen'}/>
-            </Main>
+                { showIframe ? 
+                    <IframeContainers
+                        name={item?.slug}
+                        scrolling={'auto'} 
+                        src={item?.playLink}
+                        allow={'fullscreen'}
+                        sandbox={'allow-orientation-lock allow-scripts allow-same-origin'}/> 
+                : ''}
+            </Fragment>
         </Layout>       
     )
 }
  
-
-const Main = styled.div`
-    .full-screen-icon {
-        position: absolute;
-        color: #fff;
-        
-
-        @media ${device.tablet} {
-            margin-top: 13px;
-            right: 45px;
-        }
-
-        @media ${device.mobileL} {
-            right: 16px;
-            margin-top: 8px;
-        }   
-    }
-`
 
 const IframeContainers = styled.iframe`
     display: flex;
@@ -152,6 +135,7 @@ const Container = styled.div`
 
 const Thumbnail = styled.div`
     width: 350px;
+    cursor: pointer;
 `
 
 const Description = styled.div`
