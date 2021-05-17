@@ -11,6 +11,10 @@ type PageProps = {
    data: AlgoliaSearchData[]
 };
 
+type ThumbnailProp = {
+    type?: string
+}
+
 const SearchHit: FunctionComponent<PageProps> = ({data}) => {
     
     const router = useRouter()
@@ -40,7 +44,7 @@ const SearchHit: FunctionComponent<PageProps> = ({data}) => {
                                 <SearchType> <b>{item.type}</b> </SearchType> : '' }  
 
                             <Container onClick={() => linkToItem(item.link ? item.link : '')}>
-                                <Thumbnail>
+                                <Thumbnail type={item.type}>
                                     <Image
                                         alt={item.name}
                                         src={item.image ? item.image : `${CDN}/svg/no_img_available.svg`} 
@@ -91,8 +95,8 @@ const Container = styled.div`
     
 `
 
-const Thumbnail = styled.div`
-    width: 80px;
+const Thumbnail = styled.div<ThumbnailProp>`
+    width: ${({type}) => type === 'slot' ? '80px' : '50px'};
     border-radius: ${({theme}) => theme.button.borderRadius};
     overflow: hidden;
 `

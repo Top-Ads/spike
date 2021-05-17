@@ -137,7 +137,7 @@ const Header = () => {
                   <Logo>
                     <Image
                       alt="Casino Squad"
-                      src={`${CDN}/png/logo.png`}
+                      src={`${CDN}/png/logo_header.png`}
                       layout="intrinsic"
                       priority={true}
                       width={200}

@@ -10,7 +10,7 @@ const LegalDisclaimer: FunctionComponent = () =>
             <div className="legal-image">
                 <Image
                     alt="Casino Legal Information"
-                    src={`${CDN}/png/it-legal-logos.png`}
+                    src={`${CDN}/png/it_legal_logos.png`}
                     layout="responsive"
                     priority={true}
                     width={295}

@@ -147,7 +147,7 @@ const GiochiPage: FunctionComponent<PageProps> = (props) => {
                 <Thumbnail>
                     <Image
                         alt="Spike poster"
-                        src={`${CDN}/png/logo_3d.png`}
+                        src={`${CDN}/png/logo_white.png`}
                         layout="intrinsic"
                         priority={true}
                         width={200}
