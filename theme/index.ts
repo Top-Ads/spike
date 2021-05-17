@@ -4,8 +4,8 @@ import { StyledTheme } from "../interfaces"
 export const styledTheme: StyledTheme = {
 
     colors: {
-        background: "#e1ba6f",
-        gradient: "#e0c584"
+        background:  '#e2b96d',
+        gradient: '#e0c685'
     },
     text: {
         primaryFont: 'Montserrat, sans-serif',

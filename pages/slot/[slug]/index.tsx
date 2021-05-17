@@ -1,5 +1,5 @@
 import { useRouter } from 'next/router'
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import styled from 'styled-components'
 import Layout from '../../../components/Layout'
 import { Slot } from '../../api/graphql/schemas/slot'
@@ -12,6 +12,9 @@ import YouTubeIcon from '@material-ui/icons/YouTube'
 import CustomizedAccordions from '../../../components/CustomizedAccordions'
 import { shortDate } from '../../../utils/shortDate'
 import { device } from '../../../utils/device'
+/* import FullscreenIcon from '@material-ui/icons/Fullscreen'
+import FullscreenExitIcon from '@material-ui/icons/FullscreenExit' */
+
 
 const SlotPage = () => {
 
@@ -19,76 +22,105 @@ const SlotPage = () => {
 
     const [item, setItem] = useState<Slot>()
 
+    const IframeRef = useRef<HTMLIFrameElement>(null)
+
     useEffect(() => {
         setItem(JSON.parse(String(router.query.slug)))
     }, [router.query])
 
     return (
         <Layout title="Slot"> 
-          
-            <div className="space-around">
+          <Main>
+                <div className="space-around">
 
-                <Divider/>
-                <br/>
+                    <Divider/><br/>
 
-                <Container>
-                    <Thumbnail>
-                        <LazyLoad key={item?.id} height={85} offset={300}>
-                            <Image
-                                alt="image not available"
-                                src={item?.image.url ? item.image.url : `${CDN}/svg/no_img_available.svg`} 
-                                layout="responsive"
-                                priority={true}
-                                width={250}
-                                height={140}/>
-                        </LazyLoad>
-                    </Thumbnail>
+                    <Container>
+                        <Thumbnail>
+                            <LazyLoad key={item?.id} height={85} offset={300}>
+                                <Image
+                                    alt="image not available"
+                                    src={item?.image.url ? item.image.url : `${CDN}/svg/no_img_available.svg`} 
+                                    layout="responsive"
+                                    priority={true}
+                                    width={250}
+                                    height={140}/>
+                            </LazyLoad>
+                        </Thumbnail>
 
-                    <Description>
-                        <h2 className="name">{item?.name}</h2>
+                        <Description>
+                            <h2 className="name">{item?.name}</h2>
 
-                        <div className="title likes"> {item?.likes}
-                            {item?.likes &&  item.likes > 0 ? <span>Likes: {item.likes}</span> : ''}
-                        </div>
-
-                        <div className="title rating">
-                            {item?.rating ? <RatingStars rating={item.rating}/> : ''}
-                        </div>
-
-                        <div className="title rtp"><b>RTP: </b>{item?.rtp}%</div>
-                            <div className="volatility">
-                                {item?.volatility ? <span><b>Volatilità: </b> {item.volatility}</span> : ''}
+                            <div className="title likes"> {item?.likes}
+                                {item?.likes &&  item.likes > 0 ? <span>Likes: {item.likes}</span> : ''}
                             </div>
 
-                        <div className="title created-at"> 
-                            {item?.created_at ? <span><b>Created at:</b> {shortDate(item.created_at)}</span> : ''}
-                        </div>
+                            <div className="title rating">
+                                {item?.rating ? <RatingStars rating={item.rating}/> : ''}
+                            </div>
 
-                        <div className="title linkYoutube">
-                           <a href={item?.linkYoutube}><YouTubeIcon fontSize={'large'}/> {'<<video available>>'} </a>
-                        </div>
+                            <div className="title rtp"><b>RTP: </b>{item?.rtp}%</div>
+                                <div className="volatility">
+                                    {item?.volatility ? <span><b>Volatilità: </b> {item.volatility}</span> : ''}
+                                </div>
 
-                        <div className="title producer">
-                            { item?.producer ? 
-                            <>
-                                <span><b>Provider: </b></span>
-                                <b>{item?.producer.name}</b>
-                            </> 
-                            : '' }
-                        </div>
-                    </Description>
-                </Container>
-                
-                <br/>
+                            <div className="title created-at"> 
+                                {item?.created_at ? <span><b>Created at:</b> {shortDate(item.created_at)}</span> : ''}
+                            </div>
 
-                <CustomizedAccordions videoDescription={item?.description} tips={item?.tips}/>
-            </div>
-       
-            <IframeContainers scrolling={'auto'} src={item?.playLink}></IframeContainers>
+                            <div className="title linkYoutube">
+                            <a href={item?.linkYoutube}><YouTubeIcon fontSize={'large'}/> {'<<video available>>'} </a>
+                            </div>
+
+                            <div className="title producer">
+                                { item?.producer ? 
+                                <>
+                                    <span><b>Provider: </b></span>
+                                    <b>{item?.producer.name}</b>
+                                </> 
+                                : '' }
+                            </div>
+                        </Description>
+                    </Container>
+                    
+                    <br/>
+
+                    <CustomizedAccordions videoDescription={item?.description} tips={item?.tips}/>
+                </div>
+        
+                {/* <FullscreenIcon 
+                        className="full-screen-icon" 
+                        fontSize="large" 
+                        onClick={ () => IframeRef.current ?  IframeRef.current?.requestFullscreen() : '' }/> */}
+
+                <IframeContainers 
+                    ref={IframeRef}
+                    scrolling={'auto'} 
+                    src={item?.playLink}
+                    allow={'fullscreen'}/>
+            </Main>
         </Layout>       
     )
 }
  
+
+const Main = styled.div`
+    .full-screen-icon {
+        position: absolute;
+        color: #fff;
+        
+
+        @media ${device.tablet} {
+            margin-top: 13px;
+            right: 45px;
+        }
+
+        @media ${device.mobileL} {
+            right: 16px;
+            margin-top: 8px;
+        }   
+    }
+`
 
 const IframeContainers = styled.iframe`
     display: flex;

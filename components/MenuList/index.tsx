@@ -26,11 +26,11 @@ const useStyles = makeStyles( () =>
     },
     itemText: {
         width: '145px',
-        color: '#e1ba6f'
+        color: '#e2b96d'
     },
     itemIcon: {
         minWidth: '30px',
-        color: '#e1ba6f'
+        color: '#e2b96d'
     },
   }),
 );

@@ -392,7 +392,7 @@ const Actions = styled.div`
         }
 
         &:hover {
-            color: #e1ba6f;
+            color: ${({theme}) => theme.colors.background};
         }
     }
 
@@ -408,7 +408,7 @@ const Actions = styled.div`
         }
 
         #shuffle {
-            border: 1px solid #e1ba6f;
+            border: 1px solid #e2b96d;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -421,7 +421,7 @@ const Actions = styled.div`
             cursor: pointer;
     
             &:hover {
-                color: #e1ba6f;
+                color: #e2b96d;
             }
         }
     }
