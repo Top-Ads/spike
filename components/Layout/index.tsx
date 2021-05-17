@@ -20,7 +20,10 @@ const Layout = ({ children, title}: Props) => {
       <Head>
         <title>{title}</title>
         <meta charSet="utf-8" />
-        <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+        <meta name="viewport" content="initial-scale=1.0, width=device-width"/>
+        <link rel="manifest" href="/manifest.json"/>
+        <meta name="theme-color" content="#e0c685"/>
+        <meta name="apple-mobile-web-app-status-bar-style" content="#e0c685"></meta>
       </Head>
       
       <Header/>
