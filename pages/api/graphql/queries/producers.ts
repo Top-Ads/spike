@@ -1,7 +1,7 @@
 
 export const PRODUCERS = `
-query producers($limit: Int, $start: Int) {
-    producers(limit: $limit, start: $start) {
+query producers($limit: Int, $start: Int, $sort: String) {
+    producers(limit: $limit, start: $start, sort: $sort) {
         id
         name
         website

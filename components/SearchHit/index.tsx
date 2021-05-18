@@ -35,7 +35,7 @@ const SearchHit: FunctionComponent<PageProps> = ({data}) => {
 
     return (
         <Fragment>
-             <Main> 
+             <Main className='main'> 
                 {data.length ? 
                     data.map((item: AlgoliaSearchData, index: number) => 
                         <Fragment key={index}>
@@ -45,13 +45,13 @@ const SearchHit: FunctionComponent<PageProps> = ({data}) => {
 
                             <Container onClick={() => linkToItem(item.link ? item.link : '')}>
                                 <Thumbnail type={item.type}>
-                                    <Image
-                                        alt={item.name}
-                                        src={item.image ? item.image : `${CDN}/svg/no_img_available.svg`} 
-                                        layout="responsive"
-                                        priority={true}
-                                        width={item.type === 'slot' ? 1200 : 150}
-                                        height={item.type === 'slot' ? 675 : 150}/>
+                                        <Image
+                                            alt={item.name}
+                                            src={item.image ? item.image : `${CDN}/svg/no_img_available.svg`} 
+                                            layout="responsive"
+                                            priority={true}
+                                            width={item.type === 'slot' ? 1200 : 150}
+                                            height={item.type === 'slot' ? 675 : 150}/>
                                 </Thumbnail>
 
                                 <Info>

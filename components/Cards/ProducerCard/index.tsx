@@ -3,35 +3,34 @@ import { Fragment } from 'react'
 import Image from 'next/image'
 import styled from 'styled-components'
 import { Producer } from '../../../pages/api/graphql/schemas/producer'
-import LazyLoad from 'react-lazyload'
 import { CDN } from '../../../public/environment'
 import FilterListIcon from '@material-ui/icons/FilterList'
 
 type PageProps = {
     data: Producer,
-    selected: Function 
+    setSelected: Function
 };
 
-const ProducerCard: FunctionComponent<PageProps> = ({data, selected}) => {
+const ProducerCard: FunctionComponent<PageProps> = ({data, setSelected}) => {
    
     const [show, setShow] = useState<boolean>(false)
 
     return (
         <Fragment>
             <Main 
-            onClick={() => selected(data.name)}
+            onClick={() => setSelected(data.name)}
             onMouseEnter={() => setShow(true)}
-            onMouseLeave={() => setShow(false)}>
+            onMouseLeave={() => setShow(false)}
+            onTouchEnd={() => setShow(false)}
+            onTouchStart={() => setShow(true)}>
                 <Thumbnail>
-                    <LazyLoad key={data.id} height={60} offset={200}>
-                        <Image
-                            alt={data.name}
-                            src={data.image[0] ? data.image[0].url : `${CDN}/svg/no_img_available.svg`}
-                            layout="responsive"
-                            priority={true}
-                            width={195}
-                            height={109}/>
-                    </LazyLoad>
+                    <Image
+                        alt={data.name}
+                        src={data.image[0] ? data.image[0].url : `${CDN}/svg/no_img_available.svg`}
+                        layout="responsive"
+                        priority={true}
+                        width={195}
+                        height={109}/>
                 </Thumbnail>
 
                 <Container>
@@ -61,6 +60,7 @@ const Main = styled.div`
 
 const Thumbnail = styled.div`
     width: 60px;
+    padding: 1px;
     border-radius: ${({theme}) => theme.button.borderRadius};
     overflow: hidden;
 `

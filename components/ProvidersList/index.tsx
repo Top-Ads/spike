@@ -10,10 +10,11 @@ import GridSlots from '../GridSlots'
 
 type PageProps = {
    data: Producer []
-   setSelected: Function
+   setSelected: Function,
+   setOpenDialog: Function
 };
 
-const ProvidersList: FunctionComponent<PageProps> = ({data, setSelected}) => {
+const ProvidersList: FunctionComponent<PageProps> = ({data, setSelected, setOpenDialog}) => {
 
     return (
         <Fragment>
@@ -23,9 +24,9 @@ const ProvidersList: FunctionComponent<PageProps> = ({data, setSelected}) => {
                     content={ 
                         data.map( (producer, index) =>
                         <LazyLoad offset={100}>
-                            <ProducerCard selected={setSelected} key={index} data={producer}/>
+                            <ProducerCard setSelected={setSelected} key={index} data={producer}/>
                             { index === data.length-1 ? 
-                            <Button>
+                            <Button onClick={ () => setOpenDialog(true)}>
                                 <span>MORE PROVIDER +</span>   
                             </Button> : '' }
 
@@ -38,7 +39,6 @@ const ProvidersList: FunctionComponent<PageProps> = ({data, setSelected}) => {
                     spacing={0}
                     bgColor={'#fff'}   
                 />
-              
             </Grids>
         </Fragment>
     )

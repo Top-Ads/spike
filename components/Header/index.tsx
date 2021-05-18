@@ -10,7 +10,6 @@ import { device } from '../../utils/device'
 import SearchIcon from '@material-ui/icons/Search'
 import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder'
 import NotificationsNoneIcon from '@material-ui/icons/NotificationsNone'
-import DialogSlider from '../DialogSlider'
 import { Category } from '../../utils/constants'
 import FavoriteCard from '../Cards/FavoriteCard'
 import NotificationCard from '../Cards/NotificationCard'
@@ -20,6 +19,7 @@ import { Slot } from '../../pages/api/graphql/schemas/slot'
 import { SearchIndex } from 'algoliasearch/lite'
 import SearchHit from '../SearchHit'
 import { AlgoliaSearchData } from '../../pages/api/graphql/schemas/algoliaSearchData'
+import DialogSlider from '../Modals/DialogSlider'
 
 type NavProps = {
   expand: boolean

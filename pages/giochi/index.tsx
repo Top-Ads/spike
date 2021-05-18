@@ -26,6 +26,7 @@ import Image from 'next/image'
 import { CDN } from '../../public/environment'
 import BannerList from '../../components/BannerList'
 import Article from '../../components/Article'
+import DialogPopup from '../../components/Modals/DialogPopup'
 
 type PageProps = {
     freeSlotsData: Slot [],
@@ -46,6 +47,8 @@ const GiochiPage: FunctionComponent<PageProps> = (props) => {
     const [freeSlots, setFreeSlots] = useState<Slot[]>(freeSlotsData)
     const [itemSelected, setItemSelected] = useState<string>(menuList.ALPHABETIC)
     const [producerSelected, setProducerSelected] = useState<string>('')
+    const [openDialog, setOpenDialog] = useState<boolean>(false)
+
 
     function getRandomInt(min: number, max: number) {
         min = Math.ceil(min);
@@ -53,7 +56,7 @@ const GiochiPage: FunctionComponent<PageProps> = (props) => {
         return Math.floor(Math.random() * (max - min) + min); //The maximum is exclusive and the minimum is inclusive
     }
 
-    const fetchData = async (limit: number, start: number, sortBy?: string, producer?: string) => {
+    const fetchSlotsData = async (limit: number, start: number, sortBy?: string, producer?: string) => {
         const request =  await aquaClient.query({ 
             query: SLOTS, 
             variables: { 
@@ -69,7 +72,7 @@ const GiochiPage: FunctionComponent<PageProps> = (props) => {
     }
 
     const loadMore = async () => {
-        const moreFreeSlots = await fetchData(12, freeSlots.length)
+        const moreFreeSlots = await fetchSlotsData(12, freeSlots.length)
 
         setFreeSlots([...freeSlots, ...moreFreeSlots])    
     }
@@ -78,37 +81,40 @@ const GiochiPage: FunctionComponent<PageProps> = (props) => {
         clear()
 
         setItemSelected(menuList.SHUFFLE)
-        const shuffleFreeSlots = await fetchData(36, getRandomInt(freeSlots.length, 500))
+        const shuffleFreeSlots = await fetchSlotsData(36, getRandomInt(freeSlots.length, 500))
 
         setFreeSlots(shuffleFreeSlots)    
     }
 
-    const handleSearch = async (text: string) => {
+    const handleSearch = (text: string) => {
         clear()
         
         if (!text.length) {
             setFreeSlots(freeSlotsData)
         }
 
-        if (text.length > 1) {
-            const searchSlotRequest =  await aquaClient.query({ 
-                query: SLOTS, 
-                variables: { code: 'it', name_contains: text } 
-            })
+        if (text.length >= 2) {
 
-            const newData = searchSlotRequest.data.data.slots
-            setFreeSlots(newData)
+            setTimeout( async () => {
+                const searchSlotRequest =  await aquaClient.query({ 
+                    query: SLOTS, 
+                    variables: { code: 'it', name_contains: text } 
+                })
+    
+                const newData = searchSlotRequest.data.data.slots
+                
+                setFreeSlots(newData)
+            }, 750);
         }
-
     }
  
     const handleItemSelected = async (itemSelected: string) => {
         clear()
 
         const sortItem = itemSelected === menuList.ALPHABETIC ? 
-        itemSelected.toLowerCase().concat(':asc') : itemSelected.toLowerCase().concat(':desc')
+        `${itemSelected.toLowerCase()}:asc` : `${itemSelected.toLowerCase()}:desc`
         
-        const data = await fetchData(36, 0, sortItem)
+        const data = await fetchSlotsData(36, 0, sortItem)
             
         setFreeSlots(data)
         setItemSelected(itemSelected)
@@ -117,7 +123,7 @@ const GiochiPage: FunctionComponent<PageProps> = (props) => {
     const handleProducerSelected = async (producerSelected: string) => {
         const sortBy = itemSelected.toLowerCase() === menuList.SHUFFLE ? menuList.ALPHABETIC : itemSelected.toLowerCase()
 
-        const data = await fetchData(36, 0, sortBy, producerSelected)
+        const data = await fetchSlotsData(36, 0, sortBy, producerSelected)
             
         setFreeSlots(data)
         setProducerSelected(producerSelected)
@@ -126,6 +132,7 @@ const GiochiPage: FunctionComponent<PageProps> = (props) => {
     const clear = () => {
         setProducerSelected('')
     }
+
     return (
         <Layout title="Giochi">
 
@@ -190,7 +197,7 @@ const GiochiPage: FunctionComponent<PageProps> = (props) => {
                     <Container>
                         <Aside>
                             <SlotsCounter total={1528}/>
-                            <ProvidersList data={producersData} setSelected={handleProducerSelected}/> <br/>
+                            <ProvidersList data={producersData.slice(0,10)} setSelected={handleProducerSelected} setOpenDialog={setOpenDialog}/> <br/>
                             <FreeBonusList data={freeBonusData} label="I MIGLIORI CASINÒ CON GIRI GRATIS"/>
                         </Aside>
 
@@ -211,7 +218,7 @@ const GiochiPage: FunctionComponent<PageProps> = (props) => {
                                         <div id="shuffle"><ShuffleIcon fontSize={'small'} onClick={shuffle}/></div>                                    
                                 </div>
                                 
-                                <div id="filter-providers"><span>LIST PROVIDERS</span></div>
+                                <div id="filter-providers" onClick={() => setOpenDialog(true)}><span>LIST PROVIDERS</span></div>
                             </Actions>
 
                             <br/>
@@ -251,6 +258,8 @@ const GiochiPage: FunctionComponent<PageProps> = (props) => {
                 </Main>
 
                 <Article/>
+
+                <DialogPopup open={openDialog} setOpen={setOpenDialog} data={producersData} setSelected={handleProducerSelected}/>
             </div>
         </Layout>
     ) 
@@ -464,7 +473,7 @@ export async function getStaticProps() {
     
     const producersRequest =  await aquaClient.query({ 
         query: PRODUCERS, 
-        variables: { limit: 10, start: 0 } })
+        variables: { limit: 80, start: 0, sort:'name:asc' } })
 
     const freeBonusRequest =  await aquaClient.query({ 
         query: BONUSES, 
