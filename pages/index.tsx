@@ -266,19 +266,19 @@ export async function getStaticProps() {
 
   const slotsRequest =  await aquaClient.query({ 
     query: SLOTS, 
-    variables: { code: 'it', limit: 48, start: 0 } })
+    variables: { countryCode: 'it', limit: 48, start: 0 } })
 
   const freeBonusRequest =  await aquaClient.query({ 
     query: BONUSES, 
-    variables: { code: 'it', limit: 15, start: 0 } })
+    variables: { countryCode: 'it', limit: 15, start: 0 } })
     
   const topBonusRequest = await aquaClient.query({ 
     query: BONUSES, 
-    variables: { code: 'it', limit: 3, start: 0 } })
+    variables: { countryCode: 'it', limit: 3, start: 0 } })
 
   const allBonusRequest = await aquaClient.query({ 
     query: BONUSES, 
-    variables: { code: 'it', limit: 15, start: 3 } })
+    variables: { countryCode: 'it', limit: 15, start: 3 } })
 
   return {
     props: {

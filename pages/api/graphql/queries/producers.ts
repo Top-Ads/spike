@@ -1,7 +1,13 @@
 
 export const PRODUCERS = `
-query producers($limit: Int, $start: Int, $sort: String) {
-    producers(limit: $limit, start: $start, sort: $sort) {
+query producers($countryCode: String, $start: Int, $sort: String) {
+    producers(
+        start: $start,
+        sort: $sort,
+        where : { 
+            country : {code : $countryCode},
+          },
+        ) {
         id
         name
         website

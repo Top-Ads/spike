@@ -60,7 +60,7 @@ const GiochiPage: FunctionComponent<PageProps> = (props) => {
         const request =  await aquaClient.query({ 
             query: SLOTS, 
             variables: { 
-                code: 'it',
+                countryCode: 'it',
                 limit: limit,
                 start: start,
                 sort: sortBy,
@@ -98,7 +98,7 @@ const GiochiPage: FunctionComponent<PageProps> = (props) => {
             setTimeout( async () => {
                 const searchSlotRequest =  await aquaClient.query({ 
                     query: SLOTS, 
-                    variables: { code: 'it', name_contains: text } 
+                    variables: { countryCode: 'it', name_contains: text } 
                 })
     
                 const newData = searchSlotRequest.data.data.slots
@@ -460,24 +460,24 @@ export async function getStaticProps() {
 
     const newSlotsRequest =  await aquaClient.query({ 
         query: SLOTS, 
-        variables: { code: 'it', limit: 6, start: 0 } })
+        variables: { countryCode: 'it', limit: 6, start: 0 } })
 
     const popularSlotsRequest =  await aquaClient.query({ 
         query: SLOTS, 
-        variables: { code: 'it', limit: 6, start: 6 } })
+        variables: { countryCode: 'it', limit: 6, start: 6 } })
 
     const freeSlotsRequest =  await aquaClient.query({ 
         query: SLOTS, 
-        variables: { code: 'it', limit: 36, start: 0 } })
+        variables: { countryCode: 'it', limit: 36, start: 0 } })
 
     
     const producersRequest =  await aquaClient.query({ 
         query: PRODUCERS, 
-        variables: { limit: 80, start: 0, sort:'name:asc' } })
+        variables: { countryCode: 'it', start: 0, sort: 'name:asc' } })
 
     const freeBonusRequest =  await aquaClient.query({ 
         query: BONUSES, 
-        variables: { code: 'it', limit: 5, start: 5 } })
+        variables: { countryCode: 'it', limit: 5, start: 5 } })
 
     return {
         props: {
