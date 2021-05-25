@@ -3,7 +3,7 @@ import { useRouter } from 'next/router'
 import Image from 'next/image'
 import styled from 'styled-components'
 import { device } from '../utils/device'
-import GridSlots from '../components/GridSlots'
+import GridCards from '../components/GridCards'
 import Layout from '../components/Layout'
 import FreqentlyAsked from '../components/FrequentlyAsked'
 import FreeBonusList from '../components/FreeBonusList'
@@ -74,28 +74,28 @@ const IndexPage: FunctionComponent<PageProps> = ({slotsData, freeBonusData, topB
       </Header>
 
         <Grids id="grid-slots">
-          <GridSlots
+          <GridCards
             type={GridType.SLOTS} 
             content={ slotsData.slice(0, 12).map( (slot) => <SlotCard key={slot.name} data={slot}/> )}
             label="Le migliori Novomatic per te."
             xs={6} sm={4} md={4}
             breadcrumbIndex={0}
             />
-          <GridSlots
+          <GridCards
             type={GridType.SLOTS}
             content={ slotsData.slice(12, 24).map( (slot) => <SlotCard key={slot.id} data={slot}/> )}
             label="Le slot online del momento."
             xs={6} sm={4} md={4}
             breadcrumbIndex={1}
             />
-          <GridSlots
+          <GridCards
             type={GridType.SLOTS}
             content={ slotsData.slice(24, 36).map( (slot) => <SlotCard key={slot.id} data={slot}/> )}
             label="Le slot da bar più famose."
             xs={6} sm={4} md={4}
             breadcrumbIndex={2}
             />
-          <GridSlots
+          <GridCards
             type={GridType.SLOTS} 
             content={ slotsData.slice(36, 48).map( (slot) => <SlotCard key={slot.id} data={slot}/> )}
             label="Le slot VLT più divertenti."
@@ -105,7 +105,7 @@ const IndexPage: FunctionComponent<PageProps> = ({slotsData, freeBonusData, topB
         </Grids>
 
         <Grids>
-          <GridSlots
+          <GridCards
             type={GridType.TOPBONUS} 
             content={ topBonusData.map( (bonus) => 
                 <BonusCard key={bonus.id} data={bonus}/>
@@ -129,7 +129,7 @@ const IndexPage: FunctionComponent<PageProps> = ({slotsData, freeBonusData, topB
             </div>
 
             <div className="bonus-list">
-              <GridSlots
+              <GridCards
                 type={GridType.BONUS}
                 content={ allBonusData.map( (bonus) => 
                     <BonusCard key={bonus.id} data={bonus}/>

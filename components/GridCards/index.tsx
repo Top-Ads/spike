@@ -68,7 +68,7 @@ type HeadType = {
   align?: string
 }
 
-const GridSlots: FunctionComponent<PageProps> = (props) => {
+const GridCards: FunctionComponent<PageProps> = (props) => {
 
   const {type, content, label, xs, sm, md, AlignItem, showIndex=false, spacing=1, breadcrumbIndex=0, breadcrumbSize} = props;
 
@@ -120,4 +120,4 @@ const Label = styled.div`
   text-align: left;
 `
 
-export default GridSlots
+export default GridCards

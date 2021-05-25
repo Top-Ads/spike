@@ -5,7 +5,7 @@ import Layout from '../../components/Layout'
 const ShopPage = () => { 
     
     return (
-        <Layout title="Comparator">
+        <Layout title="Shop">
             <Main>
              Shop Page (still in development)
             </Main>

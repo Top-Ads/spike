@@ -4,11 +4,12 @@ export enum Category {
   }
   
   export enum GridType {
-    SLOTS = 'slots',
-    TOPBONUS = 'top bonus',
-    BONUS = 'bonus',
-    QUESTIONS = 'questions',
-    FREE = "free"
+    SLOTS ,
+    TOPBONUS,
+    BONUS,
+    QUESTIONS,
+    FREE,
+    STATS 
   }
   
   export enum menuList {

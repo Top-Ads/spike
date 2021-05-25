@@ -3,7 +3,7 @@ import LazyLoad from 'react-lazyload'
 import styled from 'styled-components'
 import SlotCard from '../../components/Cards/SlotCard'
 import Divider from '../../components/Divider'
-import GridSlots from '../../components/GridSlots'
+import GridCards from '../../components/GridCards'
 import Layout from '../../components/Layout'
 import SlotsCounter from '../../components/SlotsCounter'
 import { GridType, menuList } from '../../utils/constants'
@@ -164,7 +164,7 @@ const GiochiPage: FunctionComponent<PageProps> = (props) => {
 
             <div className="space-around">
                 <Grids id='ads-slots'>
-                    <GridSlots
+                    <GridCards
                         type={GridType.SLOTS} 
                         content={ newSlotsData.map( (slot) => 
                         <LazyLoad once key={slot.id} height={400} offset={300}>
@@ -175,7 +175,7 @@ const GiochiPage: FunctionComponent<PageProps> = (props) => {
                         breadcrumbIndex={0}
                         breadcrumbSize={2}
                     />
-                    <GridSlots
+                    <GridCards
                         type={GridType.SLOTS}
                         content={ pupularSlotsData.map( (slot) =>  
                         <LazyLoad once key={slot.id} height={400} offset={300} >
@@ -224,7 +224,7 @@ const GiochiPage: FunctionComponent<PageProps> = (props) => {
                             <br/>
                             
                             <Grids id='free-slots'>
-                                <GridSlots 
+                                <GridCards 
                                     type={GridType.SLOTS} 
                                     content={ freeSlots.map( (slot: Slot) => 
                                     <Fragment>

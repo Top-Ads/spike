@@ -3,7 +3,7 @@ import { FunctionComponent } from 'react'
 import styled from 'styled-components'
 import { GridType } from '../../utils/constants'
 import FreeBonusCard from '../Cards/FreeBonusCard'
-import GridSlots from '../GridSlots'
+import GridCards from '../GridCards'
 import LazyLoad from 'react-lazyload'
 import { Bonus } from '../../pages/api/graphql/schemas/bonus'
 
@@ -17,7 +17,7 @@ const FreeBonusList: FunctionComponent<PageProps> = ({data, label}) => {
         <Fragment>
       
             <Grids>
-              <GridSlots
+              <GridCards
                 type={GridType.FREE}
                 content={ data.map( (bonus, index) =>
                   <LazyLoad offset={100}>

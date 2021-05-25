@@ -6,7 +6,7 @@ import { Producer } from '../../pages/api/graphql/schemas/producer'
 import { GridType } from '../../utils/constants'
 import { device } from '../../utils/device'
 import ProducerCard from '../Cards/ProducerCard'
-import GridSlots from '../GridSlots'
+import GridCards from '../GridCards'
 
 type PageProps = {
    data: Producer []
@@ -19,7 +19,7 @@ const ProvidersList: FunctionComponent<PageProps> = ({data, setSelected, setOpen
     return (
         <Fragment>
            <Grids>
-                <GridSlots
+                <GridCards
                     type={GridType.SLOTS}
                     content={ 
                         data.map( (producer, index) =>

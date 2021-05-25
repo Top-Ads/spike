@@ -3,7 +3,7 @@ import styled from 'styled-components'
 import { GridType } from '../../utils/constants'
 import QuestionCard from '../Cards/QuestionCard'
 import EmailSubcription from '../EmailSubscription'
-import GridSlots from '../GridSlots'
+import GridCards from '../GridCards'
 import { frequentlyAsked } from './mock'
 
 const FreqentlyAsked = () => { 
@@ -16,7 +16,7 @@ const FreqentlyAsked = () => {
 
                 <Questions>
                     <Header>DOMANDE FREQUENTI</Header>
-                    <GridSlots 
+                    <GridCards 
                         type={GridType.QUESTIONS}
                         content={ frequentlyAsked.map( (data: any) => 
                             <QuestionCard 
