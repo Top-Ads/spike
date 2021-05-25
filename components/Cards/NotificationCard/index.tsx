@@ -1,5 +1,5 @@
 import React, { FunctionComponent } from 'react'
-import { Fragment } from 'react';
+import { Fragment } from 'react'
 import styled from 'styled-components'
 
 type PageProps = {
