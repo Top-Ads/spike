@@ -191,6 +191,10 @@ const Header = () => {
                   <a><Button>Giochi</Button></a>
               </Link>
 
+              <Link href={'/squad'}>
+                  <a><Button>Squad</Button></a>
+              </Link>
+
               <Link href={'/shop'}>
                   <a><Button>Shop</Button></a>
               </Link>

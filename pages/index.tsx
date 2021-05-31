@@ -61,7 +61,7 @@ const IndexPage: FunctionComponent<PageProps> = ({slotsData, freeBonusData, topB
               layout="responsive"
               priority={true}
               width={622}
-              height={622 }/>
+              height={622}/>
         </Thumbnail>
 
         <p>

@@ -4,7 +4,7 @@ import { GridType } from '../../utils/constants'
 import QuestionCard from '../Cards/QuestionCard'
 import EmailSubcription from '../EmailSubscription'
 import GridCards from '../GridCards'
-import { frequentlyAsked } from './mock'
+import { frequentlyAsked } from '../../assets/mockFrequentlyAsked'
 
 const FreqentlyAsked = () => { 
 
