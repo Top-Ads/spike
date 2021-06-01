@@ -52,29 +52,31 @@ const SquadPage: FunctionComponent<PageProps> = ({freeBonusData, topBonusData}) 
                     </Main>
                 )}
 
-                <GridCards
-                    type={GridType.TOPBONUS} 
-                    content={ topBonusData.map( (bonus) => 
-                        <BonusCard key={bonus.id} data={bonus}/>
-                    )}
-                    label="I top bonus dei casinò online in Italia."
-                    AlignItem={"center"}
-                    xs={12} sm={4} md={4}
-                    showIndex
-                    showBoxShadow
-                    bgColor="#fff"
-                    spacing={2}
-                />
-
             </div>
 
             <FreqentlyAsked/>
 
             <div className="space-around">
+
+                <Grids>
+                    <GridCards
+                        type={GridType.TOPBONUS} 
+                        content={ topBonusData.map( (bonus) => 
+                            <BonusCard key={bonus.id} data={bonus}/>
+                        )}
+                        label="I top bonus dei casinò online in Italia."
+                        AlignItem={"center"}
+                        xs={12} sm={4} md={4}
+                        showIndex
+                        showBoxShadow
+                        bgColor="#fff"
+                        spacing={2}/>
+                </Grids>
+
+                <Divider/>  
+
                 <Section>
-                    <div className="article">
-                            <Article/>
-                    </div>
+                    <div className="article"><Article/></div>
 
                     <div className="free-bonus-list">
                         <FreeBonusList data={freeBonusData.slice(0, 5)} label="I MIGLIORI CASINÒ"/>
@@ -142,10 +144,15 @@ const Thumbnail = styled.div`
     }
 `
 
+const Grids = styled.div`
+    margin: 30px 0px;
+`
+
 const Section = styled.section`
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
+  margin-top: 30px;
 
   @media ${device.mobileL} {
     flex-wrap: wrap-reverse;
