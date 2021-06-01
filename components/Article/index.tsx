@@ -15,7 +15,7 @@ const Article: FunctionComponent = () => {
                     <Thumbnail style={{float: 'right', marginLeft: '30px'}}>
                         <LazyLoad  height={85} offset={300}>
                             <Image
-                                alt="image not available"
+                                alt="gold-volcano"
                                 src={"https://spike-images.s3.eu-central-1.amazonaws.com/gold-volcano-logo_3aa1e358a3.png"} 
                                 layout="responsive"
                                 priority={true}
