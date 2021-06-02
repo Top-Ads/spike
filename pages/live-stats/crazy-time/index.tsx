@@ -1,20 +1,20 @@
 import React, { FunctionComponent, useEffect, useState } from 'react'
 import styled from 'styled-components'
-import StatsCard from '../../components/Cards/StatsCard'
-import Divider from '../../components/Divider'
-import GridCards from '../../components/GridCards'
-import CustumSelect from '../../components/Inputs/Select'
-import Layout from '../../components/Layout'
-import { GridType } from '../../utils/constants'
+import StatsCard from '../../../components/Cards/StatsCard'
+import Divider from '../../../components/Divider'
+import GridCards from '../../../components/GridCards'
+import CustumSelect from '../../../components/Inputs/Select'
+import Layout from '../../../components/Layout'
+import { GridType } from '../../../utils/constants'
 import axios from 'axios'
-import { APISOCKET } from '../../public/environment'
+import { APISOCKET } from '../../../public/environment'
 import { io, Socket } from 'socket.io-client'
 
 type PageProps = {
     statsData: any
 };
 
-const LiveStatsPage: FunctionComponent<PageProps> = ({statsData}) => {
+const CrazyTimePage: FunctionComponent<PageProps> = ({statsData}) => {
 
     const [stats, setStats] = useState<any>(statsData.stats)
     
@@ -133,4 +133,4 @@ export const getServerSideProps = async () => {
       }
     
 }
-export default LiveStatsPage
+export default CrazyTimePage

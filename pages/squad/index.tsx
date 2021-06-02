@@ -33,7 +33,7 @@ const SquadPage: FunctionComponent<PageProps> = ({freeBonusData, topBonusData}) 
                         <Container>
                             <Resume>
                                 <Name>{member.name}</Name>
-                                <Info dangerouslySetInnerHTML={{__html:member.info[0]}} className="resume-info"/>
+                                <Info dangerouslySetInnerHTML={{__html:member.info}} className="resume-info"/>
                             </Resume>
                             <Thumbnail>
                                 <LazyLoad height={200} offset={200}>
@@ -47,7 +47,7 @@ const SquadPage: FunctionComponent<PageProps> = ({freeBonusData, topBonusData}) 
                                 </LazyLoad>
                             </Thumbnail>  
                         </Container>
-                        <Info dangerouslySetInnerHTML={{__html:member.info[1]}}></Info>  
+                       
                         { index < squadTeam.length - 1 ? <Divider/> : '' }
                     </Main>
                 )}
