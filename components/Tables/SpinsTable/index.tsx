@@ -53,19 +53,22 @@ const StyledTableRow = withStyles((theme: Theme) =>
       '&:nth-of-type(odd)': {
         backgroundColor: theme.palette.action.hover,
       },
+      '& .update-icon': {
+        position: 'absolute',
+        top: '3px',
+        right: '3px'
+      }
     },
   }),
 )(TableRow)
 
 const useStyles = makeStyles({
   paper: {
-    width: '100%',
+    position: 'relative',
+    width: '100%'
   },
   table: {
     minWidth: 690,
-    '& .update-icon': {
-      marginLeft: '10px'
-    }
   },
   pagination: {
     backgroundColor: '#e2b96d'
@@ -131,7 +134,7 @@ const SpinsTable: FunctionComponent<PageProps> = ({data=[]}) => {
                   active={orderBy === 'date'}
                   direction={orderBy === 'date' ? order : 'desc'}
                   onClick={handleSort('date')}>
-                  <div className="table-head">Alle ore<UpdateIcon className="update-icon" fontSize={'small'}/></div>
+                  <div className="table-head">Alle ore</div>
                 </TableSortLabel>
               
               </StyledTableCell>
@@ -214,6 +217,7 @@ const SpinsTable: FunctionComponent<PageProps> = ({data=[]}) => {
                   <StyledTableCell align="left">{row.totalPayout}€</StyledTableCell>
 
                   <StyledTableCell align="center">
+                    <UpdateIcon className="update-icon" fontSize={'small'} style={{}}/>
                     {row.watchVideo !== "no_video" ? <a href={row.watchVideo}><YouTubeIcon color={"secondary"} fontSize={'large'}/></a> : <BlockIcon fontSize={'large'}/>}
                   </StyledTableCell>
 
@@ -231,7 +235,9 @@ const SpinsTable: FunctionComponent<PageProps> = ({data=[]}) => {
         rowsPerPage={rowsPerPage}
         page={page}
         onChangePage={handleChangePage}
-        onChangeRowsPerPage={handleChangeRowsPerPage}/>
+        onChangeRowsPerPage={handleChangeRowsPerPage}>
+
+        </TablePagination>
     </Paper>
 
   )
