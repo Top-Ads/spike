@@ -5,7 +5,7 @@ import Image from 'next/image'
 import Divider from '../../Divider'
 import { CDN } from '../../../public/environment'
 import LazyLoad from 'react-lazyload'
-import { Bonus } from '../../../pages/api/graphql/schemas/bonus'
+import { Bonus } from '../../../interfaces'
 
 type PageProps = {
    data: Bonus 

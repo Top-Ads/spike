@@ -9,35 +9,42 @@ import { GridType } from '../../../utils/constants'
 import axios from 'axios'
 import { APISOCKET } from '../../../public/environment'
 import { io, Socket } from 'socket.io-client'
+import { Stats } from '../../../interfaces'
 
 type PageProps = {
-    statsData: any
+    statsData: Stats[]
 };
 
 const CrazyTimePage: FunctionComponent<PageProps> = ({statsData}) => {
 
-    const [stats, setStats] = useState<any>(statsData.stats)
-    
+    const [stats, setStats] = useState<Stats[]>(statsData)
     const [socket, setSocket] = useState<Socket | undefined>()
+    const [selected, setSelected] = useState<string>('24h')
 
+    const fetchStatsData = async (timeFrame: string) => {
+        const dataStataRequest  = await axios.get(`${APISOCKET}/api/data-for-the-last-hours/${timeFrame}`)
+        setStats(dataStataRequest.data.stats.stats)
+    }
 
     useEffect( () => {
         setSocket(io(APISOCKET, {secure:true, rejectUnauthorized : false, transports: ["websocket"]}))
 
-        return () => {
-            socket && socket.disconnect()
-        }
-
+        return () => { socket && socket.disconnect() }
     }, [])
 
     useEffect(() => {
         if(socket) {
-            socket.emit('24h')
-            socket.on('24h', (data) => {
+            socket.emit(selected)
+            socket.on(selected, (data) => {
                 setStats(data.stats.stats)
             })
         }
     }, [socket])
+
+    useEffect( () => {
+        if (selected)
+            fetchStatsData(selected)
+    }, [selected])
 
     return (
         <Layout title="Live Stats">
@@ -64,13 +71,13 @@ const CrazyTimePage: FunctionComponent<PageProps> = ({statsData}) => {
                         <Header className="stats-card-header">
                             <h3>Statistiche Crazy Time</h3>
                             
-                            <CustumSelect/>
+                            <CustumSelect setSelected={setSelected}/>
                         </Header>
                        
                         <Grids>
                             <GridCards
                                 type={GridType.STATS} 
-                                content={ stats.map( (stats: any, index: number) => 
+                                content={ stats.map( (stats: Stats, index: number) => 
                                     <StatsCard key={index} data={stats}/>
                                 )}
                                 AlignItem={"center"}
@@ -128,7 +135,7 @@ export const getServerSideProps = async () => {
 
     return {
         props: {
-          statsData: dataStataRequest.data.stats
+          statsData: dataStataRequest.data.stats.stats
         }
       }
     

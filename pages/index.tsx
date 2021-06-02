@@ -15,9 +15,8 @@ import { BONUSES } from './api/graphql/queries/bonuses'
 import { SLOTS } from './api/graphql/queries/slots'
 import { GridType } from '../utils/constants'
 import { CDN } from '../public/environment'
-import { Slot } from './api/graphql/schemas/slot'
-import { Bonus } from './api/graphql/schemas/bonus'
 import Article from '../components/Article'
+import { Bonus, Slot } from '../interfaces'
 
 type PageProps = {
   slotsData: Slot [],

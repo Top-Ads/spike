@@ -2,7 +2,7 @@ import React, { FunctionComponent, useState } from 'react'
 import { Fragment } from 'react'
 import Image from 'next/image'
 import styled from 'styled-components'
-import { Producer } from '../../../pages/api/graphql/schemas/producer'
+import { Producer } from '../../../interfaces'
 import { CDN } from '../../../public/environment'
 import FilterListIcon from '@material-ui/icons/FilterList'
 

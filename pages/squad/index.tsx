@@ -5,7 +5,6 @@ import Layout from '../../components/Layout'
 import { CDN } from '../../public/environment'
 import AquaClient from '../api/graphql/aquaClient'
 import { BONUSES } from '../api/graphql/queries/bonuses'
-import { Bonus } from '../api/graphql/schemas/bonus'
 import GridCards from '../../components/GridCards'
 import { GridType } from '../../utils/constants'
 import BonusCard from '../../components/Cards/BonusCard'
@@ -16,6 +15,7 @@ import Article from '../../components/Article'
 import Divider from '../../components/Divider'
 import { squadTeam } from '../../assets/mockSquadTeam'
 import LazyLoad from 'react-lazyload'
+import { Bonus } from '../../interfaces'
 
 type PageProps = {
     freeBonusData: Bonus [],

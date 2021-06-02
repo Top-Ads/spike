@@ -2,7 +2,6 @@ import { useRouter } from 'next/router'
 import React, { useEffect, useState } from 'react'
 import styled from 'styled-components'
 import Layout from '../../../components/Layout'
-import { Slot } from '../../api/graphql/schemas/slot'
 import Image from 'next/image'
 import LazyLoad from 'react-lazyload'
 import { CDN } from '../../../public/environment'
@@ -14,6 +13,7 @@ import { shortDate } from '../../../utils/shortDate'
 import { device } from '../../../utils/device'
 import { animateScroll as scroll } from "react-scroll"
 import { Fragment } from 'react'
+import { Slot } from '../../../interfaces'
 
 const SlotPage = () => {
 

@@ -3,7 +3,7 @@ import { useRouter } from 'next/router'
 import Image from 'next/image'
 import styled from 'styled-components'
 import LazyLoad from 'react-lazyload'
-import { Bonus } from '../../../pages/api/graphql/schemas/bonus'
+import { Bonus } from '../../../interfaces'
 
 type PageProps = {
     data: Bonus 

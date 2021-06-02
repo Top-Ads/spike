@@ -5,9 +5,10 @@ import LazyLoad from 'react-lazyload'
 import styled from 'styled-components'
 import { CDN } from '../../../public/environment'
 import UpdateIcon from '@material-ui/icons/Update'
+import { Stats } from '../../../interfaces'
 
 type PageProps = {
-   data: any
+   data: Stats
 };
 
 const dataCard: FunctionComponent<PageProps> = ({data}) => {
@@ -53,7 +54,7 @@ const dataCard: FunctionComponent<PageProps> = ({data}) => {
                 </Thumbnail>
                 <Main>
                     <li className="live-result">Total Spins: <span>{data.spinSince}</span></li>
-                    <li className="live-result">In the last 12h: <span>{`${Math.round(data.percentage * 100) / 100}%`}</span></li>
+                    <li className="live-result">In the last 24h: <span>{`${Math.round(data.percentage * 100) / 100}%`}</span></li>
                     <li className="live-result">Total Draws: <span>{data.lands}</span></li>
                 </Main>
             </Container>

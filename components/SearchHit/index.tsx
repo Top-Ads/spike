@@ -1,11 +1,11 @@
 import React, { FunctionComponent, Fragment, useState, useEffect } from 'react'
 import Image from 'next/image'
 import styled from 'styled-components'
-import { AlgoliaSearchData } from '../../pages/api/graphql/schemas/algoliaSearchData'
 import { CDN } from '../../public/environment'
 import RatingStars from '../RatingStars'
 import { device } from '../../utils/device'
 import { useRouter } from 'next/router'
+import { AlgoliaSearchData } from '../../interfaces'
 
 type PageProps = {
    data: AlgoliaSearchData[]

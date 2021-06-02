@@ -7,7 +7,7 @@ import { Category } from '../../../utils/constants'
 import { DislikedSlotContext } from '../../../contexts'
 import { CDN } from '../../../public/environment'
 import LazyLoad, { forceCheck } from 'react-lazyload'
-import { Slot } from '../../../pages/api/graphql/schemas/slot'
+import { Slot } from '../../../interfaces'
 
 type PageProps = {
    data: Slot

@@ -15,11 +15,10 @@ import FavoriteCard from '../Cards/FavoriteCard'
 import NotificationCard from '../Cards/NotificationCard'
 import { DislikedSlotContext } from '../../contexts'
 import { APIKEY, APPLICATIONID, CDN } from '../../public/environment'
-import { Slot } from '../../pages/api/graphql/schemas/slot'
 import { SearchIndex } from 'algoliasearch/lite'
 import SearchHit from '../SearchHit'
-import { AlgoliaSearchData } from '../../pages/api/graphql/schemas/algoliaSearchData'
 import DialogSlider from '../Modals/DialogSlider'
+import { AlgoliaSearchData, Slot } from '../../interfaces'
 
 type NavProps = {
   expand: boolean

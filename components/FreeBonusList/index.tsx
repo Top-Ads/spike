@@ -5,7 +5,7 @@ import { GridType } from '../../utils/constants'
 import FreeBonusCard from '../Cards/FreeBonusCard'
 import GridCards from '../GridCards'
 import LazyLoad from 'react-lazyload'
-import { Bonus } from '../../pages/api/graphql/schemas/bonus'
+import { Bonus } from '../../interfaces'
 
 type PageProps = {
   data: Bonus [],

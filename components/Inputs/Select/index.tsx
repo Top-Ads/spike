@@ -15,16 +15,21 @@ const useStyles = makeStyles((theme: Theme) =>
   }),
 );
 
-const CustumSelect: FunctionComponent = () => {
+type PageProps = {
+  setSelected: Function
+}
+
+const CustumSelect: FunctionComponent<PageProps> = ({setSelected}) => {
   const classes = useStyles();
 
-  const intervalTime: string[] = ['1h', '24h']
+  const intervalTime: string[] = ['1h', '12h', '24h']
 
-  const [time, setTime] = React.useState('24h');
-
+  const [time, setTime] = React.useState('24h')
 
   const handleChange = (event: React.ChangeEvent<{ value: unknown }>) => {
-    setTime(event.target.value as string);
+    setTime(event.target.value as string)
+
+    setSelected(event.target.value as string)
   };
 
   return (

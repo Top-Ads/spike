@@ -7,7 +7,7 @@ import RatingStars from '../../RatingStars'
 import CloseIcon from '@material-ui/icons/Close'
 import Button from '@material-ui/core/Button'
 import { CDN } from '../../../public/environment'
-import { Slot } from '../../../pages/api/graphql/schemas/slot'
+import { Slot } from '../../../interfaces'
 
 type PageProps = {
    data: Slot,

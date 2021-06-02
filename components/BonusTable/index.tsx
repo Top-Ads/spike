@@ -10,12 +10,12 @@ import TableContainer from '@material-ui/core/TableContainer'
 import TableHead from '@material-ui/core/TableHead'
 import TableRow from '@material-ui/core/TableRow'
 import Paper from '@material-ui/core/Paper'
-import { Bonus } from '../../pages/api/graphql/schemas/bonus'
 import styled from 'styled-components'
 import RatingStars from '../RatingStars'
 import RankingCard from '../Cards/RankingCard'
 import { CDN } from '../../public/environment'
 import LazyLoad from 'react-lazyload'
+import { Bonus } from '../../interfaces'
 
 type PageProps = {
     data: Bonus[]
