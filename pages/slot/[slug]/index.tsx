@@ -72,7 +72,7 @@ const SlotPage = () => {
                             </div>
 
                             <div className="title linkYoutube">
-                            <a href={item?.linkYoutube}><YouTubeIcon fontSize={'large'}/> {'<<video available>>'} </a>
+                            <a href={item?.linkYoutube}><YouTubeIcon color={"secondary"} fontSize={'large'}/> {'<<video available>>'} </a>
                             </div>
 
                             <div className="title producer">
@@ -151,7 +151,6 @@ const Description = styled.div`
     .linkYoutube a {
         display: flex;
         align-items: center;
-        color: red;
     }
 
     .videoDescription {

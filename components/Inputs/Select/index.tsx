@@ -39,7 +39,7 @@ const CustumSelect: FunctionComponent<PageProps> = ({setSelected}) => {
           Time
         </InputLabel>
         <Select
-          labelId="demo-simple-select-placeholder-label-label"
+          labelId="simple-select"
           id="demo-simple-select-placeholder-label"
           value={time}
           onChange={handleChange}

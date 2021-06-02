@@ -1,5 +1,5 @@
 
-export function shortDate(date: Date) {
+export function shortDate(date: Date | string) {
     const current = new Date(date)
 
     const day =  current.getDay() < 10 ?  `0${current.getDay()}` : current.getDay()

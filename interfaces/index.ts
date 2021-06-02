@@ -93,3 +93,18 @@ export interface Stats {
     spinSince: number,
     symbol: string
 }
+
+export interface Spins {
+    date: string
+    multiplier: string
+    multiplierInfo: string
+    rawTime: string
+    sameSlotAndSpinResult: boolean
+    slotResult: string
+    slotResultSymbol: string
+    spinResultSymbol: string
+    timeOfSpin: number
+    totalPayout: number
+    totalWinners: number
+    watchVideo: string
+}

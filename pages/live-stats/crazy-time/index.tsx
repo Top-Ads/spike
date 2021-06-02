@@ -9,17 +9,21 @@ import { GridType } from '../../../utils/constants'
 import axios from 'axios'
 import { APISOCKET } from '../../../public/environment'
 import { io, Socket } from 'socket.io-client'
-import { Stats } from '../../../interfaces'
+import { Spins, Stats } from '../../../interfaces'
+import SpinsTable from '../../../components/Tables/SpinsTable'
 
 type PageProps = {
-    statsData: Stats[]
+    statsData: Stats[],
+    spinsData: Spins[]
 };
 
-const CrazyTimePage: FunctionComponent<PageProps> = ({statsData}) => {
+const CrazyTimePage: FunctionComponent<PageProps> = ({statsData, spinsData}) => {
 
     const [stats, setStats] = useState<Stats[]>(statsData)
+    const [spins, setSpins] = useState<Spins[]>(spinsData)
     const [socket, setSocket] = useState<Socket | undefined>()
     const [selected, setSelected] = useState<string>('24h')
+    const [lastUpdate, setLastUpdate] = useState<Date>(new Date(Date.now()))
 
     const fetchStatsData = async (timeFrame: string) => {
         const dataStataRequest  = await axios.get(`${APISOCKET}/api/data-for-the-last-hours/${timeFrame}`)
@@ -37,6 +41,8 @@ const CrazyTimePage: FunctionComponent<PageProps> = ({statsData}) => {
             socket.emit(selected)
             socket.on(selected, (data) => {
                 setStats(data.stats.stats)
+                setSpins(data.spins)
+                setLastUpdate(new Date(Date.now()))
             })
         }
     }, [socket])
@@ -69,16 +75,20 @@ const CrazyTimePage: FunctionComponent<PageProps> = ({statsData}) => {
                     <StatsCards>
 
                         <Header className="stats-card-header">
-                            <h3>Statistiche Crazy Time</h3>
-                            
+                            <div>
+                                <h3>Statistiche Crazy Time</h3>
+                                <span>Last Updated: {lastUpdate.toLocaleString()}</span>
+                            </div>
+                           
                             <CustumSelect setSelected={setSelected}/>
                         </Header>
-                       
+                        <Divider/>
+
                         <Grids>
                             <GridCards
                                 type={GridType.STATS} 
                                 content={ stats.map( (stats: Stats, index: number) => 
-                                    <StatsCard key={index} data={stats}/>
+                                    <StatsCard key={index} data={stats} timeFrame={selected}/>
                                 )}
                                 AlignItem={"center"}
                                 xs={12} sm={3} md={3}
@@ -89,6 +99,10 @@ const CrazyTimePage: FunctionComponent<PageProps> = ({statsData}) => {
 
                     </StatsCards>
 
+                    <br/>
+
+                    <h3>Storico degli Spin</h3>
+                    <SpinsTable data={spins}/>
                 </Main>
              </div>
             
@@ -107,12 +121,8 @@ const Header = styled.div`
             align-items: center;
         }
 
-        .update-icon {
-            margin-left: 5px;
-        }
-        strong {
+        span {
             font-size: 13px;
-            margin-left: 5px;
         }
    }
 `
@@ -132,10 +142,12 @@ const Grids = styled.div`
 
 export const getServerSideProps = async () => {
     const dataStataRequest  = await axios.get(`${APISOCKET}/api/data-for-the-last-hours/24`)
+    const dataSpinsRequest  = await axios.get(`${APISOCKET}/api/get-latest/15`)
 
     return {
         props: {
-          statsData: dataStataRequest.data.stats.stats
+          statsData: dataStataRequest.data.stats.stats,
+          spinsData: dataSpinsRequest.data.latestSpins
         }
       }
     

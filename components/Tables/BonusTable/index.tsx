@@ -11,11 +11,11 @@ import TableHead from '@material-ui/core/TableHead'
 import TableRow from '@material-ui/core/TableRow'
 import Paper from '@material-ui/core/Paper'
 import styled from 'styled-components'
-import RatingStars from '../RatingStars'
-import RankingCard from '../Cards/RankingCard'
-import { CDN } from '../../public/environment'
+import RatingStars from '../../RatingStars'
+import RankingCard from '../../Cards/RankingCard'
+import { CDN } from '../../../public/environment'
 import LazyLoad from 'react-lazyload'
-import { Bonus } from '../../interfaces'
+import { Bonus } from '../../../interfaces'
 
 type PageProps = {
     data: Bonus[]
