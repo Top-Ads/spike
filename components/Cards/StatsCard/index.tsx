@@ -4,12 +4,13 @@ import { Fragment } from 'react'
 import LazyLoad from 'react-lazyload'
 import styled from 'styled-components'
 import { CDN } from '../../../public/environment'
+import UpdateIcon from '@material-ui/icons/Update'
 
 type PageProps = {
    data: any
 };
 
-const StatsCard: FunctionComponent<PageProps> = ({data}) => {
+const dataCard: FunctionComponent<PageProps> = ({data}) => {
 
     const injectSymbolImage = (symbolString : string) => {
         switch(symbolString){
@@ -37,10 +38,12 @@ const StatsCard: FunctionComponent<PageProps> = ({data}) => {
     return (
         <Fragment>
              <Container>
+                <UpdateIcon className="update-icon"/>
+                
                 <Thumbnail>
                     <LazyLoad height={200} offset={200}>
                         <Image
-                            alt={'one'}
+                            alt={data.symbol}
                             src={injectSymbolImage(data.symbol)}
                             layout="responsive"
                             priority={true}
@@ -49,9 +52,9 @@ const StatsCard: FunctionComponent<PageProps> = ({data}) => {
                     </LazyLoad>
                 </Thumbnail>
                 <Main>
-                    <div className="live-result">Total Spins: <span>{data.spinSince}</span></div>
-                    <div className="live-result">In the last 12h: <span>{`${Math.round(data.percentage * 100) / 100}%`}</span></div>
-                    <div className="live-result">Total Draws: <span>{data.lands}</span></div>
+                    <li className="live-result">Total Spins: <span>{data.spinSince}</span></li>
+                    <li className="live-result">In the last 12h: <span>{`${Math.round(data.percentage * 100) / 100}%`}</span></li>
+                    <li className="live-result">Total Draws: <span>{data.lands}</span></li>
                 </Main>
             </Container>
             
@@ -62,35 +65,44 @@ const StatsCard: FunctionComponent<PageProps> = ({data}) => {
 const Container = styled.div`
     display: flex;
     flex-direction: row;
+    justify-content: center;
     align-items: center;
+
     padding: 10px 5px;
-    min-height: 75px;
+    min-height: 100px;
+    flex-wrap: wrap;
+
+    .update-icon {
+        position: absolute;
+        top: 2px;
+        right: 2px;
+    }
 `
 
-const Main = styled.div`
-   display: flex;
-   flex-direction: column;
-   font-weight: normal;
-   justify-content: space-around;
-   text-align: left;
-   border-left: 1px solid;
-   padding-left: 5px;
-   font-size: 14px;
+const Main = styled.ul`
+    display: flex;
+    flex-direction: column;
+    align-self: center;
+    justify-content: start;
 
-   .live-result {
+    font-weight: normal;
+    text-align: left;
+   
+    font-size: 12px;
+
+    li.live-result {
         width: fill-available;
+        margin: 2px 0px;
 
         span {
             font-weight: bold;
             color: red;
         }
    }
-
 `
 
 const Thumbnail = styled.div`
-   min-width: 80px;
-   margin: 0px 10px;
+    min-width: 100px;
 `
 
-export default StatsCard
+export default dataCard

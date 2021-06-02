@@ -1,4 +1,4 @@
-import React, { FunctionComponent, useState } from 'react'
+import React, { FunctionComponent, useEffect, useState } from 'react'
 import styled from 'styled-components'
 import StatsCard from '../../components/Cards/StatsCard'
 import Divider from '../../components/Divider'
@@ -6,17 +6,38 @@ import GridCards from '../../components/GridCards'
 import CustumSelect from '../../components/Inputs/Select'
 import Layout from '../../components/Layout'
 import { GridType } from '../../utils/constants'
-import UpdateIcon from '@material-ui/icons/Update'
 import axios from 'axios'
+import { APISOCKET } from '../../public/environment'
+import { io, Socket } from 'socket.io-client'
 
 type PageProps = {
     statsData: any
 };
 
 const LiveStatsPage: FunctionComponent<PageProps> = ({statsData}) => {
-    console.log(statsData)
 
-    const [stats] = useState<any>(statsData.stats)
+    const [stats, setStats] = useState<any>(statsData.stats)
+    
+    const [socket, setSocket] = useState<Socket | undefined>()
+
+
+    useEffect( () => {
+        setSocket(io(APISOCKET, {secure:true, rejectUnauthorized : false, transports: ["websocket"]}))
+
+        return () => {
+            socket && socket.disconnect()
+        }
+
+    }, [])
+
+    useEffect(() => {
+        if(socket) {
+            socket.emit('24h')
+            socket.on('24h', (data) => {
+                setStats(data.stats.stats)
+            })
+        }
+    }, [socket])
 
     return (
         <Layout title="Live Stats">
@@ -41,7 +62,7 @@ const LiveStatsPage: FunctionComponent<PageProps> = ({statsData}) => {
                     <StatsCards>
 
                         <Header className="stats-card-header">
-                            <h3>Statistiche Crazy Time <UpdateIcon className="update-icon"/></h3>
+                            <h3>Statistiche Crazy Time</h3>
                             
                             <CustumSelect/>
                         </Header>
@@ -53,10 +74,10 @@ const LiveStatsPage: FunctionComponent<PageProps> = ({statsData}) => {
                                     <StatsCard key={index} data={stats}/>
                                 )}
                                 AlignItem={"center"}
-                                xs={12} sm={6} md={3}
+                                xs={12} sm={3} md={3}
                                 showBoxShadow
                                 bgColor="#fff"
-                                spacing={2}/>
+                                spacing={3}/>
                         </Grids>
 
                     </StatsCards>
@@ -103,7 +124,7 @@ const Grids = styled.div`
 `
 
 export const getServerSideProps = async () => {
-    const dataStataRequest  = await axios.get('https://crazytime.spike-realtime-api.eu/api/data-for-the-last-hours/24')
+    const dataStataRequest  = await axios.get(`${APISOCKET}/api/data-for-the-last-hours/24`)
 
     return {
         props: {
