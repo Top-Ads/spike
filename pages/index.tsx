@@ -197,7 +197,7 @@ const Button = styled.div`
 
     &:hover {
       box-shadow: ${({theme}) => theme.button.boxShadowX};
-  }
+    }
 `
 
 

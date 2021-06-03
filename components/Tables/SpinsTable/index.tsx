@@ -13,11 +13,11 @@ import styled from 'styled-components'
 import { Spins } from '../../../interfaces'
 import { injectSymbolImage } from '../../../utils/injectSymbollmage'
 import LazyLoad from 'react-lazyload'
-import YouTubeIcon from '@material-ui/icons/YouTube'
 import BlockIcon from '@material-ui/icons/Block'
 import UpdateIcon from '@material-ui/icons/Update'
 import { TablePagination, TableSortLabel } from '@material-ui/core'
 import { stableSort } from '../../../utils/stableSort'
+import PlayCircleOutlineIcon from '@material-ui/icons/PlayCircleOutline'
 
 type PageProps = {
     data: Spins[]
@@ -57,6 +57,9 @@ const StyledTableRow = withStyles((theme: Theme) =>
         position: 'absolute',
         top: '3px',
         right: '3px'
+      },
+      '& .video-icon': {
+        color: '#000'
       }
     },
   }),
@@ -89,9 +92,6 @@ const SpinsTable: FunctionComponent<PageProps> = ({data=[]}) => {
 
       setorderBy(key)
       setOrder(isAsc ? 'desc' : 'asc');
-
-      // implement sort 
-
   }
 
   const handleChangePage = (_event: unknown, newPage: number) => {
@@ -217,8 +217,10 @@ const SpinsTable: FunctionComponent<PageProps> = ({data=[]}) => {
                   <StyledTableCell align="left">{row.totalPayout}€</StyledTableCell>
 
                   <StyledTableCell align="center">
-                    <UpdateIcon className="update-icon" fontSize={'small'} style={{}}/>
-                    {row.watchVideo !== "no_video" ? <a href={row.watchVideo}><YouTubeIcon color={"secondary"} fontSize={'large'}/></a> : <BlockIcon fontSize={'large'}/>}
+                    <UpdateIcon className="update-icon" fontSize={'small'}/>
+                      {row.watchVideo !== "no_video" ? 
+                        <a href={row.watchVideo}><PlayCircleOutlineIcon fontSize={'large'} className={'video-icon'}/></a> 
+                        : <BlockIcon fontSize={'large'}/>}
                   </StyledTableCell>
 
               </StyledTableRow>

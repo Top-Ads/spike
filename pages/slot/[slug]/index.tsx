@@ -7,13 +7,14 @@ import LazyLoad from 'react-lazyload'
 import { CDN } from '../../../public/environment'
 import Divider from '../../../components/Divider'
 import RatingStars from '../../../components/RatingStars'
-import YouTubeIcon from '@material-ui/icons/YouTube'
 import CustomizedAccordions from '../../../components/CustomizedAccordions'
 import { shortDate } from '../../../utils/shortDate'
 import { device } from '../../../utils/device'
 import { animateScroll as scroll } from "react-scroll"
 import { Fragment } from 'react'
 import { Slot } from '../../../interfaces'
+import PlayCircleOutlineIcon from '@material-ui/icons/PlayCircleOutline'
+import VideoLabelIcon from '@material-ui/icons/VideoLabel'
 
 const SlotPage = () => {
 
@@ -71,10 +72,6 @@ const SlotPage = () => {
                                 {item?.created_at ? <span><b>Created at:</b> {shortDate(item.created_at)}</span> : ''}
                             </div>
 
-                            <div className="title linkYoutube">
-                            <a href={item?.linkYoutube}><YouTubeIcon color={"secondary"} fontSize={'large'}/> {'<<video available>>'} </a>
-                            </div>
-
                             <div className="title producer">
                                 { item?.producer ? 
                                 <>
@@ -83,6 +80,20 @@ const SlotPage = () => {
                                 </> 
                                 : '' }
                             </div>
+
+                            <div className="title actions">  
+                                <Button>
+                                    <a href={item?.linkYoutube}>
+                                        <PlayCircleOutlineIcon className={'video-icon'}/> <span>Play Video</span>
+                                    </a>
+                                </Button>
+
+                                <Button onClick={handleOnPlay}>
+                                    <VideoLabelIcon className={'playGame-icon'}/> <span>Play Game</span>
+                                </Button>
+                                 
+                            </div>
+
                         </Description>
                     </Container>
                     
@@ -143,14 +154,19 @@ const Description = styled.div`
     flex-direction: column;
     padding: 5px 10px;
     font-size: 13px;
-    
+    flex-grow: 1;
+
     .title {
         margin-bottom: 2px;
     }
 
-    .linkYoutube a {
+    .actions {
         display: flex;
-        align-items: center;
+        flex-direction: row;
+
+        @media ${device.mobileL} {
+            justify-content: center;
+        }
     }
 
     .videoDescription {
@@ -162,4 +178,38 @@ const Description = styled.div`
     }
 `
 
+const Button = styled.div`
+    background-color: ${({theme}) => theme.colors.background};
+    color: #fff;
+    border-radius: ${({theme}) => theme.button.borderRadius};
+    font-weight: bold;
+    width: fit-content;
+    text-transform: uppercase;
+    cursor: pointer;
+    margin: 5px 5px;
+    padding: 7px;
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+    a {
+        display: inherit;
+        align-items: inherit;
+        color: #fff;
+
+        &:hover {
+            color: ${({theme}) => theme.text.color.secondary};;
+        }
+    }
+
+    &:hover {
+        color: ${({theme}) => theme.text.color.secondary};;
+    }
+   
+    .video-icon, .playGame-icon {
+        margin-right: 10px;
+    }
+
+`
 export default SlotPage
