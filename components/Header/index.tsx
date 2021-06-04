@@ -19,6 +19,7 @@ import { SearchIndex } from 'algoliasearch/lite'
 import SearchHit from '../SearchHit'
 import DialogSlider from '../Modals/DialogSlider'
 import { AlgoliaSearchData, Slot } from '../../interfaces'
+import { isMobile } from 'react-device-detect'
 
 type NavProps = {
   expand: boolean
@@ -26,7 +27,7 @@ type NavProps = {
 
 const Header = () => { 
   
-  const [showNav, setShowNav] = useState<boolean>(false)
+  const [showNav, setShowNav] = useState<boolean>(true)
   const [showTextInput, setShowTextInput] = useState<boolean>(false)
   const [overlay, setOverlay] = useState<boolean>(false)
   const [openDialog, setOpenDialog] = useState<boolean>(false)
@@ -85,6 +86,9 @@ const Header = () => {
   }
 
   useEffect(() => {
+    
+    setShowNav(!isMobile)  
+
     if (algoliaIndex === undefined) {
       import('algoliasearch').then().then(algoliasearch => {
           const client = algoliasearch.default(APPLICATIONID, APIKEY)
