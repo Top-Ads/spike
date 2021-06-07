@@ -185,13 +185,13 @@ const SpinsTable: FunctionComponent<PageProps> = ({data=[]}) => {
                   <StyledTableCell component="th">
                     <Thumbnail>
                       <LazyLoad height={200} offset={200}>
-                          <Image
-                              alt={row.spinResultSymbol as string}
+                        <Image
+                              alt={row.spinResultSymbol}
                               src={injectSymbolImage(row.spinResultSymbol)}
-                              layout="responsive"
+                              layout="intrinsic"
                               priority={true}
-                              width={row.spinResultSymbol === 'one' || row.spinResultSymbol === 'two' || row.spinResultSymbol === 'five' || row.spinResultSymbol === 'ten' ? 140 : 215}
-                              height={row.spinResultSymbol === 'one' || row.spinResultSymbol === 'two' || row.spinResultSymbol === 'five' || row.spinResultSymbol === 'ten' ? 140 : 130}/> 
+                              width={['one', 'two', 'five', 'ten'].includes(row.spinResultSymbol) === true ? '140' : '215'}
+                              height={130}/>   
                       </LazyLoad>
                     </Thumbnail>
                   </StyledTableCell>
@@ -199,13 +199,13 @@ const SpinsTable: FunctionComponent<PageProps> = ({data=[]}) => {
                   <StyledTableCell align="left">
                     <Thumbnail>
                       <LazyLoad height={200} offset={200}>
-                          <Image
-                              alt={row.spinResultSymbol}
-                              src={injectSymbolImage(row.slotResultSymbol)}
-                              layout="responsive"
-                              priority={true}
-                              width={row.spinResultSymbol === 'one' || row.spinResultSymbol === 'two' || row.spinResultSymbol === 'five' || row.spinResultSymbol === 'ten' ? 140 : 215}
-                              height={row.spinResultSymbol === 'one' || row.spinResultSymbol === 'two' || row.spinResultSymbol === 'five' || row.spinResultSymbol === 'ten' ? 140 : 130}/> 
+                        <Image
+                            alt={row.spinResultSymbol}
+                            src={injectSymbolImage(row.slotResultSymbol)}
+                            layout="intrinsic"
+                            priority={true}
+                            width={['one', 'two', 'five', 'ten'].includes(row.slotResultSymbol) === true ? '140' : '215'}
+                            height={130}/>      
                       </LazyLoad>
                     </Thumbnail>
                   </StyledTableCell>
