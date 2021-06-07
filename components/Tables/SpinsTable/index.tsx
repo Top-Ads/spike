@@ -68,7 +68,8 @@ const StyledTableRow = withStyles((theme: Theme) =>
 const useStyles = makeStyles({
   paper: {
     position: 'relative',
-    width: '100%'
+    width: '100%',
+    ['@media (max-width: 768px)']: { width: 'fit-content' }
   },
   table: {
     minWidth: 690,

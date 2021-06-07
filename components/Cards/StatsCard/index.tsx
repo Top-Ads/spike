@@ -17,7 +17,7 @@ const dataCard: FunctionComponent<PageProps> = ({data, timeFrame}) => {
     return (
         <Fragment>
              <Container>
-                <UpdateIcon className="update-icon"/>
+                <UpdateIcon className="update-icon" fontSize={'small'}/>
                 
                 <Thumbnail>
                     <LazyLoad height={200} offset={200}>
