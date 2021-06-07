@@ -14,7 +14,6 @@ import { Spins } from '../../../interfaces'
 import { injectSymbolImage } from '../../../utils/injectSymbollmage'
 import LazyLoad from 'react-lazyload'
 import BlockIcon from '@material-ui/icons/Block'
-import UpdateIcon from '@material-ui/icons/Update'
 import { TablePagination, TableSortLabel } from '@material-ui/core'
 import { stableSort } from '../../../utils/stableSort'
 import PlayCircleOutlineIcon from '@material-ui/icons/PlayCircleOutline'
@@ -69,7 +68,6 @@ const useStyles = makeStyles({
   paper: {
     position: 'relative',
     width: '100%',
-    ['@media (max-width: 768px)']: { width: 'fit-content' }
   },
   table: {
     minWidth: 690,
@@ -218,7 +216,6 @@ const SpinsTable: FunctionComponent<PageProps> = ({data=[]}) => {
                   <StyledTableCell align="left">{row.totalPayout}€</StyledTableCell>
 
                   <StyledTableCell align="center">
-                    <UpdateIcon className="update-icon" fontSize={'small'}/>
                       {row.watchVideo !== "no_video" ? 
                         <a href={row.watchVideo}><PlayCircleOutlineIcon fontSize={'large'} className={'video-icon'}/></a> 
                         : <BlockIcon fontSize={'large'}/>}

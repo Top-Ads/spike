@@ -10,16 +10,20 @@ import { GridType } from '../../../utils/constants'
 import axios from 'axios'
 import { APISOCKET } from '../../../public/environment'
 import { io, Socket } from 'socket.io-client'
-import { Spins, Stats } from '../../../interfaces'
+import { Bonus, Spins, Stats } from '../../../interfaces'
 import SpinsTable from '../../../components/Tables/SpinsTable'
 import LazyLoad from 'react-lazyload'
+import BonusTable from '../../../components/Tables/BonusTable'
+import AquaClient from '../../api/graphql/aquaClient'
+import { BONUSES } from '../../api/graphql/queries/bonuses'
 
 type PageProps = {
     statsData: Stats[],
-    spinsData: Spins[]
+    spinsData: Spins[],
+    bonusData: Bonus[]
 };
 
-const CrazyTimePage: FunctionComponent<PageProps> = ({statsData, spinsData}) => {
+const CrazyTimePage: FunctionComponent<PageProps> = ({statsData, spinsData, bonusData}) => {
 
     const [stats, setStats] = useState<Stats[]>(statsData)
     const [spins, setSpins] = useState<Spins[]>(spinsData)
@@ -103,9 +107,15 @@ const CrazyTimePage: FunctionComponent<PageProps> = ({statsData, spinsData}) => 
 
                     <br/>
 
+                    <h3>Puoi giocare alla CRAZY TIME QUI</h3>
+                    <BonusTable data={bonusData}/>
+
+                    <br/>
+                    
                     <h3>Storico degli Spin</h3>
                     <SpinsTable data={spins}/>
                 </Main>
+
                 <Footer>
                     <h3>Confronta i numeri in ritardo alla Crazy Time</h3>
                     <p>Crazy Time è il gioco live online che ha spopolato tra i Live Casino Game Show.
@@ -222,13 +232,23 @@ const Thumbnail = styled.div`
 
 
 export const getServerSideProps = async () => {
+    
+    const aquaClient = new AquaClient()
+
     const dataStataRequest  = await axios.get(`${APISOCKET}/api/data-for-the-last-hours/24`)
     const dataSpinsRequest  = await axios.get(`${APISOCKET}/api/get-latest/15`)
 
+    const PAGE_BONUSES = ["BetFlag", "LeoVegas", "888 Casino", "StarCasinò", "Unibet", "PokerStars Casino"]
+
+    const bonusRequest = await aquaClient.query({ 
+        query: BONUSES, 
+        variables: { countryCode: 'it', limit: PAGE_BONUSES.length, start: 0, names: PAGE_BONUSES } })
+        
     return {
         props: {
           statsData: dataStataRequest.data.stats.stats,
-          spinsData: dataSpinsRequest.data.latestSpins
+          spinsData: dataSpinsRequest.data.latestSpins,
+          bonusData: bonusRequest.data.data.bonuses
         }
       }
     
