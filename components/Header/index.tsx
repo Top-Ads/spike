@@ -1,7 +1,6 @@
 import React, { Fragment, useContext, useEffect, useState } from 'react'
 import styled from 'styled-components'
 import Image from 'next/image'
-import Divider from '../Divider'
 import CustomTextField from '../Inputs/Textfield'
 import MenuIcon from '@material-ui/icons/Menu'
 import CloseIcon from '@material-ui/icons/Close'
@@ -19,10 +18,7 @@ import { SearchIndex } from 'algoliasearch/lite'
 import SearchHit from '../SearchHit'
 import DialogSlider from '../Modals/DialogSlider'
 import { AlgoliaSearchData, Slot } from '../../interfaces'
-
-type NavProps = {
-  expand: boolean
-};
+import NavProvider from '../NavProvider'
 
 const Header = () => { 
   
@@ -37,8 +33,12 @@ const Header = () => {
 
   const  {setSlotDislikedId}  = useContext(DislikedSlotContext)
 
-  const handleMenu = () => setShowNav(!showNav)
-  
+  const handleMenu = (event: React.MouseEvent) => { 
+    event.stopPropagation()
+    
+    setShowNav(!showNav) 
+  }
+
   const handleDialogSlider = (category: string) => {
     setCategory(category)
     setOpenDialog(!openDialog)
@@ -170,39 +170,14 @@ const Header = () => {
 
                   <FavoriteBorderIcon className='icons' onClick={ () => handleDialogSlider(Category.FAVORITES)} />
                   {showNav ? 
-                    <CloseIcon className='icons' onClick={handleMenu}/> : <MenuIcon className='icons' onClick={handleMenu}/> }
+                    <CloseIcon className='icons' onClick={handleMenu}/> 
+                  : <MenuIcon className='icons' onClick={handleMenu}/> }
                 </Actions>
 
               </TopHeader>
-          }       
-
-          <Nav expand={showNav}>
-              <Divider color={'#fff'}/>
-
-              <Link href={'/'}>
-                  <a><Button>Home</Button></a>
-              </Link>
-
-              <Link href={'/comparator'}>
-                  <a><Button>Comparator</Button></a>
-              </Link>
-
-              <Link href={'/giochi'}>
-                  <a><Button>Giochi</Button></a>
-              </Link>
-
-              <Link href={'/squad'}>
-                  <a><Button>Squad</Button></a>
-              </Link>
-
-              <Link href={'/shop'}>
-                  <a><Button>Shop</Button></a>
-              </Link>
-
-              <Link href={'/live-stats/crazy-time'}>
-                  <a><Button>Live Stats</Button></a>
-              </Link>
-           </Nav> 
+          }     
+          
+          <NavProvider showNav={showNav} setShowNav={setShowNav}/>  
 
           <DialogSlider
             category={category} 
@@ -299,30 +274,6 @@ const Actions = styled.div`
       font-size: 30px;
     }
   }  
-`
-
-const Nav = styled.nav<NavProps>`    
-  display: inherit;
-  flex-wrap: inherit;
-  flex-direction: row;
-  flex-grow: 0;
-  justify-content: flex-start;
-  height: auto;
-  max-height: ${({expand}) => expand ? "120px" : "0px"};
-  transition: max-height 0.2s linear; 
-  overflow: ${({expand}) => expand ? "visible" : "hidden"};
-`
-
-const Button = styled.div`
-    color: ${({theme}) => theme.text.color.primary};
-    margin: 0px 10px;
-    padding: 10px 15px;
-    font-weight: bold;
-
-    &:hover {
-      color: ${({theme}) => theme.colors.background};
-      background-color: #fff;
-    }
 `
 
 export default Header
