@@ -198,6 +198,10 @@ const Header = () => {
               <Link href={'/shop'}>
                   <a><Button>Shop</Button></a>
               </Link>
+
+              <Link href={'/live-stats/crazy-time'}>
+                  <a><Button>Live Stats</Button></a>
+              </Link>
            </Nav> 
 
           <DialogSlider
