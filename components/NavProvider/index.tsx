@@ -17,14 +17,12 @@ type NavProps = {
 };
 
 const NavProvider: FunctionComponent<PageProps> = ({showNav, setShowNav}) => {
-
     const handleClick = () => {
         isMobile && deviceType !== 'tablet' && setShowNav(false)
-      };
+    };
 
     return (
         <Fragment>
-
             <ClickAwayListener 
                 mouseEvent="onClick"
                 touchEvent={false} 

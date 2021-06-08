@@ -1,4 +1,4 @@
-import React, { Fragment, useContext, useEffect, useState } from 'react'
+import React, { Fragment, FunctionComponent, useContext, useEffect, useState } from 'react'
 import styled from 'styled-components'
 import Image from 'next/image'
 import CustomTextField from '../Inputs/Textfield'
@@ -20,9 +20,13 @@ import DialogSlider from '../Modals/DialogSlider'
 import { AlgoliaSearchData, Slot } from '../../interfaces'
 import NavProvider from '../NavProvider'
 
-const Header = () => { 
+type PageProps = {
+  isBrowserView: boolean
+}
+
+const Header: FunctionComponent<PageProps> = ({isBrowserView}) => { 
   
-  const [showNav, setShowNav] = useState<boolean>(false)
+  const [showNav, setShowNav] = useState<boolean>(isBrowserView)
   const [showTextInput, setShowTextInput] = useState<boolean>(false)
   const [overlay, setOverlay] = useState<boolean>(false)
   const [openDialog, setOpenDialog] = useState<boolean>(false)
@@ -85,7 +89,6 @@ const Header = () => {
   }
 
   useEffect(() => {
-    
     if (algoliaIndex === undefined) {
       import('algoliasearch').then().then(algoliasearch => {
           const client = algoliasearch.default(APPLICATIONID, APIKEY)
@@ -112,7 +115,6 @@ const Header = () => {
 
   return (
     <Fragment>
-      <header>
         <Main>
 
           { showTextInput ? 
@@ -189,7 +191,6 @@ const Header = () => {
           />
 
         </Main>
-      </header>
     </Fragment>
   )
 }

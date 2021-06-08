@@ -2,10 +2,10 @@ import React, { Fragment, ReactNode } from 'react'
 import styled from 'styled-components'
 import Head from 'next/head'
 import { device } from '../../utils/device'
-import Header from '../Header'
 import Footer from '../Footer'
 import ScrollButton from '../ScrollButton'
 import LegalDisclaimer from '../LegalDisclaimer'
+import Header from '../Header'
 
 type Props = {
   children?: ReactNode
@@ -16,7 +16,6 @@ const Layout = ({ children, title}: Props) => {
   
   return (
     <Fragment>
-      
       <Head>
         <title>{title}</title>
         <meta charSet="utf-8" />
@@ -26,8 +25,14 @@ const Layout = ({ children, title}: Props) => {
         <meta name="apple-mobile-web-app-status-bar-style" content="#e2b96d"></meta>
       </Head>
       
-      <Header/>
+      <BrowserView>
+        <Header isBrowserView={true}/>
+      </BrowserView>
 
+      <MobileView>
+        <Header isBrowserView={false}/>
+      </MobileView>
+     
       <MarginHeader/>
 
       <Main>
@@ -70,5 +75,20 @@ const MarginHeader = styled.div`
     display: block;
     height: 70px;
   }
+`
 
+const BrowserView = styled.header`
+  display: revert;
+
+  @media ${device.mobileL} {
+    display: none;
+  } 
+`
+
+const MobileView = styled.header`
+  display: none;
+
+  @media ${device.mobileL} {
+      display: revert;
+  } 
 `
