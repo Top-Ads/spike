@@ -9,11 +9,11 @@ import Header from '../Header'
 
 type Props = {
   children?: ReactNode
-  title?: string,
+  title?: string
 }
 
-const Layout = ({ children, title}: Props) => { 
-  
+const Layout = ( {children, title}: Props) => { 
+    
   return (
     <Fragment>
       <Head>
