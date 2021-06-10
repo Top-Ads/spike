@@ -213,7 +213,7 @@ const GiochiPage: FunctionComponent<PageProps> = (props) => {
                                 <div id='filter-slots'>
                                         <MenuList listItems={listItems} itemSelected={itemSelected} setItemSelected={handleItemSelected}/>
 
-                                        <div id="shuffle"><ShuffleIcon fontSize={'small'} onClick={shuffle}/></div>                                    
+                                        <div id="shuffle"><ShuffleIcon fontSize={'large'} onClick={shuffle}/></div>                                    
                                 </div>
                                 
                                 <div id="filter-providers" onClick={() => setOpenDialog(true)}><span>LIST PROVIDERS</span></div>
@@ -411,7 +411,7 @@ const Actions = styled.div`
         z-index: 99;
         
         @media ${device.mobileL} {
-            justify-content: space-between;
+            justify-content: space-evenly;
         }
 
         #shuffle {

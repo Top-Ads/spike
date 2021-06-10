@@ -177,7 +177,7 @@ const SpinsTable: FunctionComponent<PageProps> = ({data=[]}) => {
                 .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map((row: any, index: number) => (
                 <StyledTableRow key={index}>
 
-                  <StyledTableCell scope="row">
+                  <StyledTableCell scope="row" suppressHydrationWarning>
                     {new Date(row.date).toLocaleString()}
                   </StyledTableCell>
 

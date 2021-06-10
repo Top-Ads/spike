@@ -87,7 +87,7 @@ const CrazyTimePage: FunctionComponent<PageProps> = ({statsData, spinsData, bonu
                         <Header className="stats-card-header">
                             <div>
                                 <h3>Statistiche Crazy Time</h3>
-                                <span>Last Updated: {lastUpdate.toLocaleString()}</span>
+                                <span suppressHydrationWarning>Last Updated: {lastUpdate.toLocaleString()}</span>
                             </div>
                            
                             <CustumSelect setSelected={setSelected}/>
