@@ -53,6 +53,8 @@ const CrazyTimePage: FunctionComponent<PageProps> = ({statsData, spinsData, bonu
                 setLastUpdate(new Date(Date.now()))
             })
         }
+
+        return () => { socket && socket.disconnect() }
     }, [socket])
 
     useEffect( () => {
