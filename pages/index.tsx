@@ -127,7 +127,7 @@ const IndexPage: FunctionComponent<PageProps> = ({slotsData, freeBonusData, topB
               <BonusTable data={allBonusData}/>
             </div>
 
-            <div className="bonus-list">
+            <div className="bonus-cards">
               <GridCards
                 type={GridType.BONUS}
                 content={ allBonusData.map( (bonus) => 
@@ -153,7 +153,7 @@ const IndexPage: FunctionComponent<PageProps> = ({slotsData, freeBonusData, topB
                 <Article/>
           </div>
 
-          <div className="free-bonus-list">
+          <div className="free-bonus-cards">
             <FreeBonusList data={freeBonusData.slice(0, 5)} label="I MIGLIORI CASINÒ"/>
             <FreeBonusList data={freeBonusData.slice(5, 10)} label="I MIGLIORI CASINÒ CON GIRI GRATIS"/>
           </div>
@@ -225,11 +225,11 @@ const Grids = styled.div`
 
   color: ${({theme}) => theme.colors.background};
 
-  .bonus-list { display: none; }
+  .bonus-cards { display: none; }
   .bonus-table { display: contents; }
 
   @media ${device.mobileL} {
-    .bonus-list { display: contents; }
+    .bonus-cards { display: contents; }
     .bonus-table { display: none; }
   }
 `
@@ -251,7 +251,7 @@ const Section = styled.section`
     padding: 10px;
   }
 
-  .free-bonus-list {
+  .free-bonus-cards {
     display: flex;
     flex-direction: column;
     flex-grow: 1;

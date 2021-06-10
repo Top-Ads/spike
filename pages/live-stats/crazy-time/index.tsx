@@ -16,6 +16,8 @@ import LazyLoad from 'react-lazyload'
 import BonusTable from '../../../components/Tables/BonusTable'
 import AquaClient from '../../api/graphql/aquaClient'
 import { BONUSES } from '../../api/graphql/queries/bonuses'
+import BonusCard from '../../../components/Cards/BonusCard'
+import { device } from '../../../utils/device'
 
 type PageProps = {
     statsData: Stats[],
@@ -78,7 +80,7 @@ const CrazyTimePage: FunctionComponent<PageProps> = ({statsData, spinsData, bonu
 
                 <Main>
 
-                    <StatsCards>
+                    <StatsContainer>
 
                         <Header className="stats-card-header">
                             <div>
@@ -90,7 +92,7 @@ const CrazyTimePage: FunctionComponent<PageProps> = ({statsData, spinsData, bonu
                         </Header>
                         <Divider/>
 
-                        <Grids>
+                        <Grids className={"stats-cards"}>
                             <GridCards
                                 type={GridType.STATS} 
                                 content={ stats.map( (stats: Stats, index: number) => 
@@ -103,17 +105,39 @@ const CrazyTimePage: FunctionComponent<PageProps> = ({statsData, spinsData, bonu
                                 spacing={3}/>
                         </Grids>
 
-                    </StatsCards>
+                    </StatsContainer>
 
                     <br/>
 
-                    <h3>Puoi giocare alla CRAZY TIME QUI</h3>
-                    <BonusTable data={bonusData}/>
+                    <BonusContainer>
+                        <h3>Puoi giocare alla CRAZY TIME QUI</h3>
+                        <div className="bonus-table">
+                            <BonusTable data={bonusData}/>
+                        </div>
+                        
+                        <Grids className={"bonus-cards"}>
+                            <GridCards
+                                type={GridType.BONUS}
+                                content={ bonusData.map( (bonus) => 
+                                    <BonusCard key={bonus.id} data={bonus}/>
+                                )}
+                                AlignItem={"center"}
+                                xs={12} sm={12} md={12}
+                                showIndex
+                                showBoxShadow
+                                bgColor="#fff"
+                                spacing={2}
+                            />
+                        </Grids>
+                    </BonusContainer>
 
                     <br/>
-                    
-                    <h3>Storico degli Spin</h3>
-                    <SpinsTable data={spins}/>
+
+                    <SpinsContainer>
+                        <h3>Storico degli Spin</h3>
+                        <SpinsTable data={spins}/>
+                    </SpinsContainer>
+ 
                 </Main>
 
                 <Footer>
@@ -204,19 +228,39 @@ const Header = styled.div`
    }
 `
 
-const Main = styled.div`
-`
+const Main = styled.div``
+
 
 const Footer = styled.div`
     margin-top: 40px;
+
     h3 {
         color: ${({theme}) => theme.colors.background};
     }
 `
 
-const StatsCards = styled.div`
+const StatsContainer = styled.div`
   display: flex;
   flex-direction: column;
+`
+
+const BonusContainer = styled.div`
+    .bonus-table {
+        display: revert;
+        @media ${device.mobileL} {
+            display: none; 
+        }
+    }      
+    
+    .bonus-cards { 
+        display: none; 
+        @media ${device.mobileL} {
+             display: revert;
+        }
+    }
+`
+
+const SpinsContainer = styled.div`
 `
 
 const Grids = styled.div`
