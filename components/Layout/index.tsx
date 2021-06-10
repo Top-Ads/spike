@@ -80,7 +80,7 @@ const MarginHeader = styled.div`
 const BrowserView = styled.header`
   display: revert;
 
-  @media ${device.mobileL} {
+  @media ${device.tablet} {
     display: none;
   } 
 `
@@ -88,7 +88,7 @@ const BrowserView = styled.header`
 const MobileView = styled.header`
   display: none;
 
-  @media ${device.mobileL} {
+  @media ${device.tablet} {
       display: revert;
   } 
 `
