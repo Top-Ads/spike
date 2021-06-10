@@ -17,11 +17,11 @@ type PageProps = {
 const FavoriteCard: FunctionComponent<PageProps> = ({data, deleteItem}) => {
 
     const router = useRouter()
-    
+
     const playSlot = () => {
         router.push({
             pathname: '/slot/[slug]',
-            query: { slug: JSON.stringify(data) }
+            query: { slug: data.slug }
         })
     }
 

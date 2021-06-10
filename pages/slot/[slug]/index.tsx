@@ -1,5 +1,4 @@
-import { useRouter } from 'next/router'
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import styled from 'styled-components'
 import Layout from '../../../components/Layout'
 import Image from 'next/image'
@@ -15,22 +14,21 @@ import { Fragment } from 'react'
 import { Slot } from '../../../interfaces'
 import PlayCircleOutlineIcon from '@material-ui/icons/PlayCircleOutline'
 import VideoLabelIcon from '@material-ui/icons/VideoLabel'
+import { FunctionComponent } from 'react'
+import AquaClient from '../../api/graphql/aquaClient'
+import { SLOTS } from '../../api/graphql/queries/slots'
 
-const SlotPage = () => {
+type PageProps = {
+    slotData: Slot
+}
+const SlotPage: FunctionComponent<PageProps> = ({slotData}) => {
 
-    const router = useRouter()
-
-    const [item, setItem] = useState<Slot>()
     const [showIframe, setShowIframe] = useState<boolean>(false)
 
     const handleOnPlay = () => {
         setShowIframe(true)
         scroll.scrollTo(500)
     }
-
-    useEffect(() => {
-        setItem(JSON.parse(String(router.query.slug)))
-    }, [router.query])
 
     return (
         <Layout title="Slot"> 
@@ -41,10 +39,10 @@ const SlotPage = () => {
 
                     <Container>
                         <Thumbnail onClick={handleOnPlay}>
-                            <LazyLoad key={item?.id} height={85} offset={300}>
+                            <LazyLoad key={slotData?.id} height={85} offset={300}>
                                 <Image
-                                    alt={item?.name}
-                                    src={item?.image.url ? item.image.url : `${CDN}/svg/no_img_available.svg`} 
+                                    alt={slotData?.name}
+                                    src={slotData?.image.url ? slotData.image.url : `${CDN}/svg/no_img_available.svg`} 
                                     layout="responsive"
                                     priority={true}
                                     width={250}
@@ -53,37 +51,37 @@ const SlotPage = () => {
                         </Thumbnail>
 
                         <Description>
-                            <h2 className="name">{item?.name}</h2>
+                            <h2 className="name">{slotData?.name}</h2>
 
-                            <div className="title likes"> {item?.likes}
-                                {item?.likes &&  item.likes > 0 ? <span>Likes: {item.likes}</span> : ''}
+                            <div className="title likes"> {slotData?.likes}
+                                {slotData?.likes &&  slotData.likes > 0 ? <span>Likes: {slotData.likes}</span> : ''}
                             </div>
 
                             <div className="title rating">
-                                {item?.rating ? <RatingStars rating={item.rating}/> : ''}
+                                {slotData?.rating ? <RatingStars rating={slotData.rating}/> : ''}
                             </div>
 
-                            <div className="title rtp"><b>RTP: </b>{item?.rtp}%</div>
+                            <div className="title rtp"><b>RTP: </b>{slotData?.rtp}%</div>
                                 <div className="volatility">
-                                    {item?.volatility ? <span><b>Volatilità: </b> {item.volatility}</span> : ''}
+                                    {slotData?.volatility ? <span><b>Volatilità: </b> {slotData.volatility}</span> : ''}
                                 </div>
 
                             <div className="title created-at"> 
-                                {item?.created_at ? <span><b>Created at:</b> {shortDate(item.created_at)}</span> : ''}
+                                {slotData?.created_at ? <span><b>Created at:</b> {shortDate(slotData.created_at)}</span> : ''}
                             </div>
 
                             <div className="title producer">
-                                { item?.producer ? 
+                                { slotData?.producer ? 
                                 <>
                                     <span><b>Provider: </b></span>
-                                    <b>{item?.producer.name}</b>
+                                    <b>{slotData?.producer.name}</b>
                                 </> 
                                 : '' }
                             </div>
 
                             <div className="title actions">  
                                 <Button>
-                                    <a href={item?.linkYoutube}>
+                                    <a href={slotData?.linkYoutube}>
                                         <PlayCircleOutlineIcon className={'video-icon'}/> <span>Play Video</span>
                                     </a>
                                 </Button>
@@ -99,14 +97,14 @@ const SlotPage = () => {
                     
                     <br/>
 
-                    <CustomizedAccordions videoDescription={item?.description} tips={item?.tips}/>
+                    <CustomizedAccordions videoDescription={slotData?.description} tips={slotData?.tips}/>
                 </div>
         
                 { showIframe ? 
                     <IframeContainers
-                        name={item?.slug}
+                        name={slotData?.slug}
                         scrolling={'auto'} 
-                        src={item?.playLink}
+                        src={slotData?.playLink}
                         allow={'fullscreen'}
                         sandbox={'allow-orientation-lock allow-scripts allow-same-origin'}/> 
                 : ''}
@@ -115,6 +113,23 @@ const SlotPage = () => {
     )
 }
  
+export async function getServerSideProps({ query }: any) {
+    
+    const slug = query.slug as string
+
+    const aquaClient = new AquaClient()
+
+    const slotRequest =  await aquaClient.query({ 
+        query: SLOTS, 
+        variables: { countryCode: 'it', slug: slug } })
+
+    return {
+        props: {
+            slotData: slotRequest.data.data.slots[0],
+        }
+    }
+
+}
 
 const IframeContainers = styled.iframe`
     display: flex;
