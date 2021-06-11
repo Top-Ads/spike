@@ -3,7 +3,7 @@ import styled from 'styled-components'
 import Divider from '../Divider'
 import FacebookIcon from '@material-ui/icons/Facebook'
 import InstagramIcon from '@material-ui/icons/Instagram'
-import LinkedInIcon from '@material-ui/icons/LinkedIn'
+import TelegramIcon from '@material-ui/icons/Telegram'
 import YouTubeIcon from '@material-ui/icons/YouTube'
 import { device } from '../../utils/device'
 import Link from 'next/link'
@@ -58,10 +58,10 @@ const Footer: FunctionComponent = () => {
                 <Divider color="#f2f2f2"/>
 
                 <SocialNetworks>
-                    <FacebookIcon fontSize={'large'}/>
-                    <InstagramIcon fontSize={'large'}/>
-                    <YouTubeIcon fontSize={'large'}/>
-                    <LinkedInIcon fontSize={'large'}/>
+                    <a href="https://www.facebook.com/casinosquad"><FacebookIcon fontSize={'large'}/></a>
+                    <a href="https://www.instagram.com/casino.squad.team/"><InstagramIcon fontSize={'large'}/></a>
+                    <a href="https://t.me/casino_squad"><TelegramIcon fontSize={'large'}/></a>
+                    <a href="https://www.youtube.com/channel/UClcCLY3"><YouTubeIcon fontSize={'large'}/></a>
                 </SocialNetworks>
 
             </Main>
