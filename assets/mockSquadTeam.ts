@@ -17,7 +17,10 @@ export const squadTeam: any [] = [
         in questo caso una telefonata in diretta, per far sbancare il resto della Squad. Quando qualcuno ha da dire sulle mie giocate, 
         io risponderò con un secco: “<strong>I’m mister J, shhh</strong>”. E non imitatemi… non fatelo a casa!
         `,
-        thumbnail:'/jpeg/squad/mrj.jpeg' 
+        thumbnail:'/jpeg/squad/mrj.jpeg',
+        social: {
+            instagram: 'https://www.instagram.com/mister.j_17/'
+        } 
     },
     { 
         name: "CHILY", 
@@ -34,7 +37,11 @@ export const squadTeam: any [] = [
         Ogni volta che sento dire: “Esci che non paga” risponderò con un amplificato: “<strong>Chi ha detto di uscire da qua?</strong>”.
         <br/><br/>
         Ad ogni pagata, tra sedie che volano e signore che sbattono la scopa sono certo che non potrete fare a meno di me. Vi aspetto!`,
-        thumbnail:'/jpeg/squad/chily.jpeg' 
+        thumbnail:'/jpeg/squad/chily.jpeg',
+        social: {
+            facebook: 'https://www.facebook.com/chilyslot',
+            instagram: 'https://www.instagram.com/chilyslot/'
+        } 
     },
     { 
         name: "PITBULL", 
@@ -48,7 +55,11 @@ export const squadTeam: any [] = [
         Si narra che le mie numerose vincite siano stato accompagnate dalla turbochiappa, che è candidata
         a diventare patrimonio dell’UNESCO. Ogni volta che sento dire: “E che cos’è….” prontamente rispondo: “<strong>LA SCOTECAAA</strong>”.
         Durante le mie migliori vincite sentirete sempre: “<strong>VAMONOOOS</strong>”`,
-        thumbnail:'/jpeg/squad/pitbull.jpeg' 
+        thumbnail:'/jpeg/squad/pitbull.jpeg',
+        social: {
+            facebook: 'https://www.facebook.com/pitbullslot',
+            instagram: 'https://www.instagram.com/pitbullslot/'
+        } 
     },
     { 
         name: "LUCKY", 
@@ -67,7 +78,11 @@ export const squadTeam: any [] = [
         <br/><br/>
         Sono un tipo pazzerello e non mi tiro mai indietro se mi viene chiesto dai followers di cantare o ballare.
         Bella raga, ci si vede in live.`,
-        thumbnail:'/jpeg/squad/lucky.jpeg' 
+        thumbnail:'/jpeg/squad/lucky.jpeg',
+        social: {
+            facebook: 'https://www.facebook.com/luckyilfortunato/',
+            instagram: 'https://www.instagram.com/lucky_ilfortunato/'
+        } 
     },
     { 
         name: "VALUE", 
@@ -81,8 +96,10 @@ export const squadTeam: any [] = [
         infatti, è celebre la frase :”Dovevo entrare 2 minuti prima!”
         <br/><br/>
         <strong>Sono un abitante della Papuasia </strong>e gioco al BJ come scusa per cimentare le dealer… ops di più non posso dirvi,
-        vi aspetto in live!
-        `,
-        thumbnail:'/jpeg/squad/value.jpeg' 
+        vi aspetto in live!`,
+        thumbnail:'/jpeg/squad/value.jpeg',
+        social: {
+            instagram: 'https://www.instagram.com/mr_value_bet/'
+        } 
     },
 ];

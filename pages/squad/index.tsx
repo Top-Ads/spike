@@ -16,6 +16,8 @@ import Divider from '../../components/Divider'
 import { squadTeam } from '../../assets/mockSquadTeam'
 import LazyLoad from 'react-lazyload'
 import { Bonus } from '../../interfaces'
+import FacebookIcon from '@material-ui/icons/Facebook'
+import InstagramIcon from '@material-ui/icons/Instagram'
 
 type PageProps = {
     freeBonusData: Bonus [],
@@ -35,19 +37,27 @@ const SquadPage: FunctionComponent<PageProps> = ({freeBonusData, topBonusData}) 
                                 <Name>{member.name}</Name>
                                 <Info dangerouslySetInnerHTML={{__html:member.info}} className="resume-info"/>
                             </Resume>
-                            <Thumbnail>
-                                <LazyLoad height={200} offset={200}>
-                                    <Image
-                                        alt={member.name}
-                                        src={`${CDN}/${member.thumbnail}`}
-                                        layout="responsive"
-                                        priority={true}
-                                        width={550}
-                                        height={550}/> 
-                                </LazyLoad>
-                            </Thumbnail>  
+
+                            <Profile> 
+                                <Thumbnail>
+                                    <LazyLoad height={200} offset={200}>
+                                        <Image
+                                            alt={member.name}
+                                            src={`${CDN}/${member.thumbnail}`}
+                                            layout="responsive"
+                                            priority={true}
+                                            width={550}
+                                            height={550}/> 
+                                    </LazyLoad>
+                                </Thumbnail> 
+
+                                <SocialLinks>
+                                        {member.social.facebook && <a href={member.social.facebook}><FacebookIcon/></a>}
+                                        {member.social.instagram && <a href={member.social.instagram}><InstagramIcon/></a>}
+                                </SocialLinks>
+
+                            </Profile> 
                         </Container>
-                       
                         { index < squadTeam.length - 1 ? <Divider/> : '' }
                     </Main>
                 )}
@@ -82,7 +92,6 @@ const SquadPage: FunctionComponent<PageProps> = ({freeBonusData, topBonusData}) 
                         <FreeBonusList data={freeBonusData.slice(0, 5)} label="I MIGLIORI CASINÒ"/>
                         <FreeBonusList data={freeBonusData.slice(5, 10)} label="I MIGLIORI CASINÒ CON GIRI GRATIS"/>
                     </div>
-  
                 </Section>
              </div>
 
@@ -130,11 +139,14 @@ const Info = styled.p`
     }
 `
 
-const Thumbnail = styled.div`
+const Profile = styled.div`
     flex-grow: 1;
+    margin: auto;
+`
+
+const Thumbnail = styled.div`
     height: 220px;
     overflow: hidden;
-    margin: auto;
     border: 5px solid ${({theme}) => theme.colors.background};
     border-radius: 10px;
     background-color: ${({theme}) => theme.colors.background};
@@ -142,6 +154,15 @@ const Thumbnail = styled.div`
     @media ${device.laptop} {
         height: auto;
     }
+`
+
+const SocialLinks = styled.div`
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    margin: 5px 5px 0px 0px;
+
+    a { color: ${({theme}) => theme.text.color.secondary}; }
 `
 
 const Grids = styled.div`

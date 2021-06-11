@@ -55,6 +55,7 @@ const Footer: FunctionComponent = () => {
                     <a>Address</a>
                 </List>
                 </Container>
+                
                 <Divider color="#f2f2f2"/>
 
                 <SocialNetworks>
