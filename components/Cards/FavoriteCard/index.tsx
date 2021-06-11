@@ -1,4 +1,4 @@
-import React, { FunctionComponent } from 'react'
+import React, { FunctionComponent, useState } from 'react'
 import { useRouter } from 'next/router'
 import { Fragment } from 'react'
 import styled from 'styled-components'
@@ -8,6 +8,7 @@ import CloseIcon from '@material-ui/icons/Close'
 import Button from '@material-ui/core/Button'
 import { CDN } from '../../../public/environment'
 import { Slot } from '../../../interfaces'
+import SpinnerLoader from '../../SpinnerLoader'
 
 type PageProps = {
    data: Slot,
@@ -17,6 +18,8 @@ type PageProps = {
 const FavoriteCard: FunctionComponent<PageProps> = ({data, deleteItem}) => {
 
     const router = useRouter()
+    
+    const [loading, setLoading] = useState<boolean>(true)
 
     const playSlot = () => {
         router.push({
@@ -31,14 +34,17 @@ const FavoriteCard: FunctionComponent<PageProps> = ({data, deleteItem}) => {
             <Main>
 
                 <Container onClick={playSlot}>
+                    
                     <Thumbnail>
+                        <SpinnerLoader show={loading}/>
                         <Image
                             alt={data.name}
                             src={data.image && data.image.url ? data.image.url : `${CDN}/svg/no_img_available.svg`} 
                             layout="responsive"
                             priority={true}
                             width={1200}
-                            height={700}/>
+                            height={700}
+                            onLoad={()=> setLoading(false)}/>
                     </Thumbnail>
 
                     <Info>
@@ -81,10 +87,10 @@ const Container = styled.div`
     align-items: center;
     flex-grow: 2;
     padding: 5px;
-
 `
 
 const Thumbnail = styled.div`
+    position: relative;
     width: 80px;
     border-radius: ${({theme}) => theme.button.borderRadius};
     overflow: hidden;

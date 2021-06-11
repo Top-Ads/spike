@@ -8,6 +8,7 @@ import { DislikedSlotContext } from '../../../contexts'
 import { CDN } from '../../../public/environment'
 import LazyLoad, { forceCheck } from 'react-lazyload'
 import { Slot } from '../../../interfaces'
+import SpinnerLoader from '../../SpinnerLoader'
 
 type PageProps = {
    data: Slot
@@ -21,6 +22,7 @@ const SlotCard: FunctionComponent<PageProps> = ({data}) => {
     const [triggerOnClick, setTriggerOnClick] = useState<boolean>(false)
     const [showBanner, setShowBanner] = useState<boolean>(false)
     const [isFavorite, setIsFavorite] = useState<boolean>(false)
+    const [loading, setLoading] = useState<boolean>(true)
 
     const  {slotDislikedId, setSlotDislikedId}  = useContext(DislikedSlotContext)
 
@@ -110,15 +112,18 @@ const SlotCard: FunctionComponent<PageProps> = ({data}) => {
                     <LikeIcon setActive={handleActiveLike} active={isFavorite}/>
                 </Icon> : '' } 
                
+                
                 <Thumbnail>
-                    <LazyLoad key={data.id} height={85} offset={300}>
+                    <SpinnerLoader show={loading}/>
+                    <LazyLoad key={data.id} height={85} offset={200}>
                         <Image
                             alt="image not available"
                             src={data.image && data.image.url ? data.image.url : `${CDN}/svg/no_img_available.svg`} 
                             layout="responsive"
                             priority={true}
                             width={1200}
-                            height={700}/>
+                            height={700}
+                            onLoad={()=> setLoading(false)}/>
                     </LazyLoad>
                 </Thumbnail>
                 
@@ -183,8 +188,9 @@ const Icon = styled.div`
 `
 
 const Thumbnail = styled.div` 
-  z-index: 1;
-  img { border-radius: 5px; }
+    position: relative;
+    z-index: 1;
+    img { border-radius: 5px; }
 `
 
 const Button = styled.div`
