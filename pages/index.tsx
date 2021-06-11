@@ -56,11 +56,11 @@ const IndexPage: FunctionComponent<PageProps> = ({slotsData, freeBonusData, topB
         <Thumbnail>
             <Image
               alt="Casino Squad"
-              src={`${CDN}/png/logo_3d.png`}
+              src={`${CDN}/gif/logo3D.gif`}
               layout="responsive"
               priority={true}
-              width={622}
-              height={622}/>
+              width={948}
+              height={533}/>
         </Thumbnail>
 
         <p>
@@ -200,9 +200,8 @@ const Button = styled.div`
     }
 `
 
-
 const Thumbnail = styled.div`
-  width: 25%;
+  width: 29%;
   margin: auto;
 
   @media ${device.mobileL} {
