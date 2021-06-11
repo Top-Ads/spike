@@ -46,5 +46,5 @@ export const GlobalStyle = createGlobalStyle`
 
     strong, h1 { color: ${styledTheme.colors.background}; }
 
-    p { color: ${styledTheme.text.color.secondary}; }
+    p { color: ${styledTheme.text.color.secondary}; line-height: 1.5; word-spacing: normal;}
 `
