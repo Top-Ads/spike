@@ -34,29 +34,30 @@ const SquadPage: FunctionComponent<PageProps> = ({freeBonusData, topBonusData}) 
                     <Main key={index}>
                         <Container>
                             <Resume>
-                                <Name>{member.name}</Name>
+                                <Profile> 
+                                    <Name>{member.name}</Name>
+
+                                    <SocialLinks>
+                                            {member.social.facebook && <a href={member.social.facebook}><FacebookIcon fontSize={'large'}/></a>}
+                                            {member.social.instagram && <a href={member.social.instagram}><InstagramIcon fontSize={'large'}/></a>}
+                                    </SocialLinks>
+                                </Profile>
+
                                 <Info dangerouslySetInnerHTML={{__html:member.info}} className="resume-info"/>
                             </Resume>
 
-                            <Profile> 
-                                <Thumbnail>
-                                    <LazyLoad height={200} offset={200}>
-                                        <Image
-                                            alt={member.name}
-                                            src={`${CDN}/${member.thumbnail}`}
-                                            layout="responsive"
-                                            priority={true}
-                                            width={550}
-                                            height={550}/> 
-                                    </LazyLoad>
-                                </Thumbnail> 
+                            <Thumbnail>
+                                <LazyLoad height={200} offset={200}>
+                                    <Image
+                                        alt={member.name}
+                                        src={`${CDN}/${member.thumbnail}`}
+                                        layout="responsive"
+                                        priority={true}
+                                        width={550}
+                                        height={550}/> 
+                                </LazyLoad>
+                            </Thumbnail> 
 
-                                <SocialLinks>
-                                        {member.social.facebook && <a href={member.social.facebook}><FacebookIcon/></a>}
-                                        {member.social.instagram && <a href={member.social.instagram}><InstagramIcon/></a>}
-                                </SocialLinks>
-
-                            </Profile> 
                         </Container>
                         { index < squadTeam.length - 1 ? <Divider/> : '' }
                     </Main>
@@ -111,6 +112,7 @@ const Container = styled.div`
 `
 
 const Resume = styled.div`
+    position: relative;
     display: inherit;
     flex-direction: column;
     flex-grow: 2;
@@ -140,29 +142,42 @@ const Info = styled.p`
 `
 
 const Profile = styled.div`
-    flex-grow: 1;
-    margin: auto;
+    display: flex;
+    justify-content: space-between;
+
+    @media ${device.mobileL} {
+        display: inherit;
+        align-items: center;
+    }
 `
 
 const Thumbnail = styled.div`
-    height: 220px;
+    height: fill-available;
     overflow: hidden;
     border: 5px solid ${({theme}) => theme.colors.background};
     border-radius: 10px;
     background-color: ${({theme}) => theme.colors.background};
-
-    @media ${device.laptop} {
-        height: auto;
-    }
+    flex-grow: 1;
 `
 
 const SocialLinks = styled.div`
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     justify-content: flex-end;
-    margin: 5px 5px 0px 0px;
 
     a { color: ${({theme}) => theme.text.color.secondary}; }
+
+    position: absolute;
+    top: 5px;
+    right: 0;
+
+    @media ${device.mobileL} {
+        display: inherit;
+        flex-direction: row;
+        position: unset;
+        right: unset;
+        top: unset;
+    }
 `
 
 const Grids = styled.div`
