@@ -89,6 +89,7 @@ const Article: FunctionComponent = () => {
                                 src={`${CDN}/svg/adm.svg`}
                                 layout="responsive"
                                 priority={true}
+                                quality={50}
                                 width={200}
                                 height={'auto'}/>
                         </LazyLoad>
