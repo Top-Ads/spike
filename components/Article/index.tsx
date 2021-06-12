@@ -465,8 +465,6 @@ const Main = styled.div`
     @media ${device.mobileL} {
         padding: 5px
     }
-    
-    p { text-align: justify; }
 
     li { 
         list-style: square;

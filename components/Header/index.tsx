@@ -18,7 +18,8 @@ import { SearchIndex } from 'algoliasearch/lite'
 import SearchHit from '../SearchHit'
 import DialogSlider from '../Modals/DialogSlider'
 import { AlgoliaSearchData, Slot } from '../../interfaces'
-import NavProvider from '../NavProvider'
+import NavBrowserProvider from '../NavProvider/BrowserView'
+import NavMobileProvider from '../NavProvider/MobileView'
 
 type PageProps = {
   isBrowserView: boolean
@@ -179,8 +180,9 @@ const Header: FunctionComponent<PageProps> = ({isBrowserView}) => {
               </TopHeader>
           }     
           
-          <NavProvider showNav={showNav} setShowNav={setShowNav}/>  
-
+          { isBrowserView ? <NavBrowserProvider showNav={showNav} setShowNav={setShowNav}/> : 
+          <NavMobileProvider showNav={showNav} setShowNav={setShowNav}/>}
+            
           <DialogSlider
             category={category} 
             open={openDialog} 

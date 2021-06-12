@@ -65,6 +65,7 @@ const Footer: FunctionComponent = () => {
                     <a href="https://www.youtube.com/channel/UClcCLY3"><YouTubeIcon fontSize={'large'}/></a>
                 </SocialNetworks>
 
+                <Divider color="#f2f2f2"/>
             </Main>
 
         </Fragment>
@@ -94,7 +95,7 @@ const Main = styled.div`
 
     a {
         font-size: 13px;
-        margin: 3px 0px;
+        margin: 3px;
         text-align: left;
         color: inherit;
     }

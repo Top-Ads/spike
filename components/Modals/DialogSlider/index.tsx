@@ -26,8 +26,7 @@ const StyledDialog = withStyles(() =>
       maxWidth: '100%',
       maxHeight: 'none',
       borderRadius: '0',
-      position: 'absolute',
-      top: '1px',
+      position: 'fixed',
       right: '0',
       ['@media (max-width: 768px)']: { width: '50vw' },
       ['@media (max-width: 425px)']: { width: '85vw' }

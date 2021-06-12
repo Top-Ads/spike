@@ -1,10 +1,9 @@
 import { ClickAwayListener } from '@material-ui/core'
-import Link from 'next/link';
+import Link from 'next/link'
 import React, { FunctionComponent } from 'react'
 import { Fragment } from 'react'
 import styled from 'styled-components'
-import { device } from '../../utils/device'
-import Divider from '../Divider'
+import Divider from '../../Divider'
 import { isMobile, deviceType } from "react-device-detect"
 
 type PageProps = {
@@ -17,6 +16,7 @@ type NavProps = {
 };
 
 const NavProvider: FunctionComponent<PageProps> = ({showNav, setShowNav}) => {
+    
     const handleClick = () => {
         isMobile && deviceType !== 'tablet' && setShowNav(false)
     };
@@ -66,11 +66,6 @@ const NavProvider: FunctionComponent<PageProps> = ({showNav, setShowNav}) => {
 const Title = styled.h2`
     width: 100%;
     display: none;
-
-    @media ${device.mobileL} {
-        display: flex;
-        justify-content: center;
-    }
 `
 
 const Nav = styled.nav<NavProps>`    
@@ -83,22 +78,6 @@ const Nav = styled.nav<NavProps>`
     max-height: ${({expand}) => expand ? "120px" : "0px"};
     transition: max-height 0.2s linear; 
     overflow: ${({expand}) => expand ? "visible" : "hidden"};
-
-    @media ${device.mobileL} {
-        background-color: ${({theme}) => theme.colors.background};
-        position: fixed;
-        top: 0;
-        left: ${({expand}) => expand ? "0px" : "-80%"};
-
-        display: inherit;
-        flex-direction: column;
-        align-items: flex-start;
-        width: 80%;
-        height: 100%;
-        max-height: 100%;
-        transition: left 0.2s linear;
-        overflow: hidden;
-  }
 `
 
 const Button = styled.div`

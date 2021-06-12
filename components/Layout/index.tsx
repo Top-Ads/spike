@@ -25,14 +25,16 @@ const Layout = ( {children, title}: Props) => {
         <meta name="apple-mobile-web-app-status-bar-style" content="#e2b96d"></meta>
       </Head>
       
-      <BrowserView>
-        <Header isBrowserView={true}/>
-      </BrowserView>
+      <header>
+        <BrowserView>
+          <Header isBrowserView={true}/>
+        </BrowserView>
 
-      <MobileView>
-        <Header isBrowserView={false}/>
-      </MobileView>
-     
+        <MobileView>
+          <Header isBrowserView={false}/>
+        </MobileView>
+      </header>
+      
       <MarginHeader/>
 
       <Main>
@@ -77,7 +79,7 @@ const MarginHeader = styled.div`
   }
 `
 
-const BrowserView = styled.header`
+const BrowserView = styled.div`
   display: revert;
 
   @media ${device.tablet} {
@@ -85,7 +87,7 @@ const BrowserView = styled.header`
   } 
 `
 
-const MobileView = styled.header`
+const MobileView = styled.div`
   display: none;
 
   @media ${device.tablet} {
