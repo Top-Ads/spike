@@ -193,12 +193,13 @@ const CrazyTimePage: FunctionComponent<PageProps> = ({statsData, spinsData, bonu
                         Buon divertimento a tutti alla Crazy Time.</p>
 
                         <Thumbnail>
-                                <LazyLoad height={548} offset={200}>
+                                <LazyLoad height={548} offset={300}>
                                     <Image
-                                        alt={''}
+                                        alt={'crazy time live stats'}
                                         src={`https://spike-images.s3.eu-central-1.amazonaws.com/crazy-time-stats_1c1293a185.jpeg`}
                                         layout="responsive"
                                         priority={true}
+                                        quality={70}
                                         width={975}
                                         height={548}/> 
                                 </LazyLoad>
@@ -281,7 +282,7 @@ export const getServerSideProps = async () => {
     
     const aquaClient = new AquaClient()
 
-    const dataStataRequest  = await axios.get(`${APISOCKET}/api/data-for-the-last-hours/24`)
+    const dataStatsRequest  = await axios.get(`${APISOCKET}/api/data-for-the-last-hours/24`)
     const dataSpinsRequest  = await axios.get(`${APISOCKET}/api/get-latest/15`)
 
     const PAGE_BONUSES = ["BetFlag", "LeoVegas", "888 Casino", "StarCasinò", "Unibet", "PokerStars Casino"]
@@ -292,7 +293,7 @@ export const getServerSideProps = async () => {
         
     return {
         props: {
-          statsData: dataStataRequest.data.stats.stats,
+          statsData: dataStatsRequest.data.stats.stats,
           spinsData: dataSpinsRequest.data.latestSpins,
           bonusData: bonusRequest.data.data.bonuses
         }

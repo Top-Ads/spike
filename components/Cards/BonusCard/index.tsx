@@ -65,7 +65,7 @@ const BonusCard: FunctionComponent<PageProps> = ({data}) => {
                                     alt={provider}
                                     src={`${CDN}/svg/${provider}.svg`} 
                                     layout="responsive"
-                                    priority={true}
+                                    quality={50}
                                     width={30}
                                     height={30}/>
                       </Provider>
