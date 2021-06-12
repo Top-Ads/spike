@@ -37,6 +37,7 @@ const IndexPage: FunctionComponent<PageProps> = ({slotsData, freeBonusData, topB
       <Header>
 
         <Intro>
+            
             <h1>BENVENUTO SU CASINÓ SQUAD!</h1>
 
             <div>
@@ -56,19 +57,19 @@ const IndexPage: FunctionComponent<PageProps> = ({slotsData, freeBonusData, topB
         <Thumbnail>
             <Image
               alt="Casino Squad"
-              src={`${CDN}/gif/logo3D.gif`}
+              src={`${CDN}/gif/logo3D-min.gif`}
               layout="responsive"
-              priority={true}
-              width={948}
-              height={533}/>
+              priority={false}
+              width={1280}
+              height={720}/>
         </Thumbnail>
 
         <p>
-        Ti diamo il benvenuto su <strong>CASINÓ SQUAD</strong> dove potrai trovare consigli per tutte le Slot Machine esistenti.
-        Cerca la tua slot preferita e leggi i consigli per giocare, provala in modalità SLOT GRATIS direttamente qui senza registrazione,
-        senza scaricare app e senza limiti di tempo. Puoi ottenere informazioni guardando le Video Guide ai Bonus.  <br/>
-        Ancora indeciso? Guarda i video di SPIKE per farti un' idea. Offriamo le migliori comparazioni di siti di Casinò e siti Scommesse.
-      </p>
+          Ti diamo il benvenuto su <strong>CASINÓ SQUAD</strong> dove potrai trovare consigli per tutte le Slot Machine esistenti.
+          Cerca la tua slot preferita e leggi i consigli per giocare, provala in modalità SLOT GRATIS direttamente qui senza registrazione,
+          senza scaricare app e senza limiti di tempo. Puoi ottenere informazioni guardando le Video Guide ai Bonus.  <br/>
+          Ancora indeciso? Guarda i video di SPIKE per farti un' idea. Offriamo le migliori comparazioni di siti di Casinò e siti Scommesse.
+        </p>
 
       </Header>
 
@@ -175,10 +176,13 @@ const Header = styled.div`
 const Intro = styled.div`
   display: inherit;
   flex-direction: column;
+  width: 70%;
+  flex-grow: 1;
 
   ul { color: ${({theme}) => theme.text.color.secondary}; }
 
   @media ${device.mobileL} {
+    
     h1 { text-align: center; }
     align-items: center;
   } 
@@ -201,7 +205,7 @@ const Button = styled.div`
 `
 
 const Thumbnail = styled.div`
-  width: 29%;
+  width: 30%;
   margin: auto;
 
   @media ${device.mobileL} {

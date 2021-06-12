@@ -32,8 +32,6 @@ const Footer: FunctionComponent = () => {
                         <a>Casinò AAMS – ADM</a>
                         <a>Casinò Sicuri</a>
                         <a>Casinò Online Italiani</a>
-                        <a>Siti Scommesse</a>
-                        <a>Siti Ippica</a>
                     </List>
                     <List>
                         <strong>casino games</strong>
@@ -47,7 +45,6 @@ const Footer: FunctionComponent = () => {
                         <a>Free Spin</a>
                         <a>Bonus Casinò</a>
                         <a>Codici bonus casinò</a>
-                        <a>Bonus scommesse</a>
                     </List>
                     <List>
                     <strong>contacts</strong>
@@ -77,7 +74,7 @@ const Main = styled.div`
     color: #fff;
     display: flex;
     flex-direction: column;
-    margin-bottom: 44px;
+    margin-bottom: 30px;
     padding: 5px;
 
     strong {

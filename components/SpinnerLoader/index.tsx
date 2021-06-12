@@ -25,7 +25,7 @@ const CircularProgressStyled = withStyles(() =>
 const SpinnerLoader: FunctionComponent<PageProps> = ({show}) => {
     return (
         <Fragment>
-            {show && <CircularProgressStyled size={'30px'}/>}
+            {show && <CircularProgressStyled role={'progressbar'} aria-label={'Progress Bar'} size={'30px'}/>}
         </Fragment>
     )
 } 

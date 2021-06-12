@@ -29,7 +29,6 @@ const NavProvider: FunctionComponent<PageProps> = ({showNav, setShowNav}) => {
                 onClickAway={handleClick}>
 
                 <Nav expand={showNav}>
-                    <Title>BENVENUTO</Title>
                     <Divider color={'#fff'}/>
 
                     <Link href={'/'}>
@@ -62,11 +61,6 @@ const NavProvider: FunctionComponent<PageProps> = ({showNav, setShowNav}) => {
         </Fragment>
     )
 } 
-
-const Title = styled.h2`
-    width: 100%;
-    display: none;
-`
 
 const Nav = styled.nav<NavProps>`    
     display: flex;

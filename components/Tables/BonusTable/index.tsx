@@ -120,7 +120,7 @@ const BonusTable: FunctionComponent<PageProps> = ({data}) => {
                           alt="licence ADM"
                           src={`${CDN}/svg/adm.svg`}
                           layout="responsive"
-                          priority={true}
+                          quality={50}
                           width={'auto'}
                           height={'auto'}/>
                   </Licence>

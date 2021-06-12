@@ -43,7 +43,7 @@ const FavoriteCard: FunctionComponent<PageProps> = ({data, deleteItem}) => {
                             layout="responsive"
                             priority={true}
                             width={1200}
-                            height={700}
+                            height={675}
                             onLoad={()=> setLoading(false)}/>
                     </Thumbnail>
 

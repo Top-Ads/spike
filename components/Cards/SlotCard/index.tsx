@@ -122,7 +122,7 @@ const SlotCard: FunctionComponent<PageProps> = ({data}) => {
                             layout="responsive"
                             priority={true}
                             width={1200}
-                            height={700}
+                            height={675}
                             onLoad={()=> setLoading(false)}/>
                     </LazyLoad>
                 </Thumbnail>

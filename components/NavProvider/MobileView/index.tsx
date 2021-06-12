@@ -116,7 +116,7 @@ const Button = styled.div`
     padding: 10px 15px;
     font-weight: bold;
 
-    &:hover {
+    &:hover, &:active {
       color: ${({theme}) => theme.colors.background};
       background-color: #fff;
     }

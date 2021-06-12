@@ -30,7 +30,7 @@ const ScrollButton: FunctionComponent = () => {
 
 const Main = styled.div<ScrollType>`
     position: fixed;
-    bottom: ${({show}) => show ? '67px' : '-60px'};
+    bottom: ${({show}) => show ? '52px' : '-52px'};
     right: 10px;
     background: ${({theme}) => theme.colors.gradient};
     width: 50px;

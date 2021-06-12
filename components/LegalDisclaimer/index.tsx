@@ -18,7 +18,7 @@ const LegalDisclaimer: FunctionComponent = () =>
                 />
             </div>
             <div className="legal-text">
-            <p>Il gioco e vietato ai minori e puo causare dipendenza patologica - probabilita di vincita</p>
+                <p>Il gioco e vietato ai minori e puo causare dipendenza patologica - probabilita di vincita</p>
             </div>
         </Main>
     </Fragment>
@@ -49,8 +49,12 @@ const Main = styled.div`
     .legal-text {
         display: inherit;
         align-items: center;
-        p { color: ${({theme}) => theme.text.color.primary}; }
         font-size: 11px;
+
+        p { 
+            color: ${({theme}) => theme.text.color.primary}; 
+            line-height: revert;
+        }
        
         @media ${device.mobileL} {
             font-size: 10px;
