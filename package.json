@@ -3,15 +3,19 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start"
+    "dev": "node server.js",
+    "build": "cross-env NODE_ENV=production next build",
+    "start": "cross-env NODE_ENV=production node server.js",
+    "analyze": "cross-env ANALYZE=true next build"
   },
   "dependencies": {
     "@material-ui/core": "^4.11.3",
     "@material-ui/icons": "^4.11.2",
     "algoliasearch": "^4.9.1",
     "axios": "^0.21.1",
+    "cacheable-response": "^2.1.12",
+    "cross-env": "^7.0.3",
+    "express": "^4.17.1",
     "next": "10.0.7",
     "react": "17.0.1",
     "react-device-detect": "^1.17.0",
