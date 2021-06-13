@@ -1,4 +1,4 @@
-import Document, { DocumentContext } from 'next/document'
+import Document, { DocumentContext, Html, Head, Main, NextScript } from 'next/document'
 import { ServerStyleSheet as StyledComponentSheets } from 'styled-components'
 import { ServerStyleSheets as MaterialUiServerStyleSheets } from '@material-ui/core/styles'
 
@@ -33,4 +33,19 @@ export default class MyDocument extends Document {
       sheet.seal()
     }
   }
+
+  render() {
+    return (
+        <Html lang="it">
+            <Head>
+              <link rel="preconnect" href="https://casino-squad.b-cdn.net/" />
+              <link rel="dns-prefetch" href="https://casino-squad.b-cdn.net/" />
+            </Head>
+            <body>
+                <Main />
+                <NextScript />
+            </body>
+        </Html>
+    );
+}
 }
