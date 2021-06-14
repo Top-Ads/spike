@@ -172,6 +172,7 @@ const Banner = styled.div`
     position: absolute;
     top: 0;
     background-color: rgba(0,0,0,0.5);
+    z-index: 2;
 
     span {
         opacity:1;
@@ -184,7 +185,7 @@ const Icon = styled.div`
     position: absolute;
     right: 4px;
     top: 4px;
-    z-index: 2;
+    z-index: 3;
 `
 
 const Thumbnail = styled.div` 
