@@ -231,8 +231,8 @@ const Header = styled.div`
    }
 `
 
-const Main = styled.div``
-
+const Main = styled.div`
+`
 
 const Footer = styled.div`
     margin-top: 40px;
@@ -277,12 +277,11 @@ const Thumbnail = styled.div`
     width: 100%;
 `
 
-
 export const getServerSideProps = async () => {
     
     const aquaClient = new AquaClient()
 
-    const dataStatsRequest  = await axios.get(`${APISOCKET}/api/data-for-the-last-hours/24`)
+    const dataStatsRequest  = await axios.get(`${APISOCKET}/api/data-for-the-last-hours/24h`)
     const dataSpinsRequest  = await axios.get(`${APISOCKET}/api/get-latest/15`)
 
     const PAGE_BONUSES = ["BetFlag", "LeoVegas", "888 Casino", "StarCasinò", "Unibet", "PokerStars Casino"]
@@ -300,4 +299,5 @@ export const getServerSideProps = async () => {
       }
     
 }
+
 export default CrazyTimePage

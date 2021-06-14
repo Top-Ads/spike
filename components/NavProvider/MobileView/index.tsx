@@ -1,13 +1,12 @@
-import React from 'react'
+import React, { FunctionComponent, Fragment } from 'react'
+import Link from 'next/link'
+import { useRouter } from 'next/router'
 import Dialog from '@material-ui/core/Dialog'
 import DialogContent from '@material-ui/core/DialogContent'
 import Slide from '@material-ui/core/Slide'
 import { TransitionProps } from '@material-ui/core/transitions'
-import { FunctionComponent } from 'react'
-import { Fragment } from 'react'
 import { createStyles, withStyles } from '@material-ui/core'
 import styled from 'styled-components'
-import Link from 'next/link'
 import Divider from '../../Divider'
 
 const Transition = React.forwardRef(function Transition(
@@ -38,8 +37,12 @@ type NavProps = {
     expand: boolean
 };
 
-const NavProvider: FunctionComponent<PageProps> = ({showNav, setShowNav}) => 
-  <Fragment>
+const NavProvider: FunctionComponent<PageProps> = ({showNav, setShowNav}) => {
+
+  const router = useRouter()
+
+  return (
+    <Fragment>
     <StyledDialog 
       open={showNav}
       TransitionComponent={Transition}
@@ -53,33 +56,34 @@ const NavProvider: FunctionComponent<PageProps> = ({showNav, setShowNav}) =>
             <Divider color={'#fff'}/>
 
             <Link href={'/'}>
-              <a><Button>Home</Button></a>
+                <a><Button className={router.pathname === '/' ? 'active' : ''}>Home</Button></a>
             </Link>
 
             <Link href={'/comparator'}>
-                <a><Button>Comparator</Button></a>
+                <a><Button className={router.pathname === '/comparator' ? 'active' : ''}>Comparator</Button></a>
             </Link>
 
             <Link href={'/giochi'}>
-                <a><Button>Giochi</Button></a>
+                <a><Button className={router.pathname === '/giochi' ? 'active' : ''}>Giochi</Button></a>
             </Link>
 
             <Link href={'/squad'}>
-                <a><Button>Squad</Button></a>
+                <a><Button className={router.pathname === '/squad' ? 'active' : ''}>Squad</Button></a>
             </Link>
 
             <Link href={'/shop'}>
-                <a><Button>Shop</Button></a>
+                <a><Button className={router.pathname === '/shop' ? 'active' : ''}>Shop</Button></a>
             </Link>
 
             <Link href={'/live-stats/crazy-time'}>
-                <a><Button>Live Stats</Button></a>
+                <a><Button className={router.pathname === '/live-stats/crazy-time' ? 'active' : ''}>Live Stats</Button></a>
             </Link>
         </Nav> 
       </DialogContent>
     </StyledDialog>
   </Fragment>
-
+  )
+}
 const Nav = styled.nav<NavProps>`    
 
     background-color: ${({theme}) => theme.colors.background};
@@ -116,10 +120,11 @@ const Button = styled.div`
     padding: 10px 15px;
     font-weight: bold;
 
-    &:hover, &:active {
+    &:active,  &.active {
       color: ${({theme}) => theme.colors.background};
       background-color: #fff;
     }
+
 `
 
 export default NavProvider

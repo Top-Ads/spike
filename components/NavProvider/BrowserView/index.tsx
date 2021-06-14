@@ -1,10 +1,11 @@
-import { ClickAwayListener } from '@material-ui/core'
+
+import React, { FunctionComponent, Fragment } from 'react'
 import Link from 'next/link'
-import React, { FunctionComponent } from 'react'
-import { Fragment } from 'react'
+import { useRouter } from 'next/router'
+import { isMobile, deviceType } from "react-device-detect"
+import { ClickAwayListener } from '@material-ui/core'
 import styled from 'styled-components'
 import Divider from '../../Divider'
-import { isMobile, deviceType } from "react-device-detect"
 
 type PageProps = {
     showNav: boolean
@@ -16,6 +17,8 @@ type NavProps = {
 };
 
 const NavProvider: FunctionComponent<PageProps> = ({showNav, setShowNav}) => {
+    
+    const router = useRouter()
     
     const handleClick = () => {
         isMobile && deviceType !== 'tablet' && setShowNav(false)
@@ -32,27 +35,27 @@ const NavProvider: FunctionComponent<PageProps> = ({showNav, setShowNav}) => {
                     <Divider color={'#fff'}/>
 
                     <Link href={'/'}>
-                        <a><Button>Home</Button></a>
+                        <a><Button className={router.pathname === '/' ? 'active' : ''}>Home</Button></a>
                     </Link>
 
                     <Link href={'/comparator'}>
-                        <a><Button>Comparator</Button></a>
+                        <a><Button className={router.pathname === '/comparator' ? 'active' : ''}>Comparator</Button></a>
                     </Link>
 
                     <Link href={'/giochi'}>
-                        <a><Button>Giochi</Button></a>
+                        <a><Button className={router.pathname === '/giochi' ? 'active' : ''}>Giochi</Button></a>
                     </Link>
 
                     <Link href={'/squad'}>
-                        <a><Button>Squad</Button></a>
+                        <a><Button className={router.pathname === '/squad' ? 'active' : ''}>Squad</Button></a>
                     </Link>
 
                     <Link href={'/shop'}>
-                        <a><Button>Shop</Button></a>
+                        <a><Button className={router.pathname === '/shop' ? 'active' : ''}>Shop</Button></a>
                     </Link>
 
                     <Link href={'/live-stats/crazy-time'}>
-                        <a><Button>Live Stats</Button></a>
+                        <a><Button className={router.pathname === '/live-stats/crazy-time' ? 'active' : ''}>Live Stats</Button></a>
                     </Link>
                 </Nav> 
 
@@ -80,7 +83,7 @@ const Button = styled.div`
     padding: 10px 15px;
     font-weight: bold;
 
-    &:hover {
+    &:hover, &.active {
       color: ${({theme}) => theme.colors.background};
       background-color: #fff;
     }
