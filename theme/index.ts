@@ -38,7 +38,7 @@ export const GlobalStyle = createGlobalStyle`
         overflow-y: scroll !important;
     }
 
-    a { text-decoration : none; text-align: center; }
+    a { text-decoration : none; text-align: center; color: inherit;}
 
     * { box-sizing: borderRadius-box; }
 

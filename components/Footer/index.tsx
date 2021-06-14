@@ -74,7 +74,7 @@ const Main = styled.div`
     color: #fff;
     display: flex;
     flex-direction: column;
-    margin-bottom: 30px;
+    margin-bottom: 33px;
     padding: 5px;
 
     strong {

@@ -1,10 +1,10 @@
+
+import React, { FunctionComponent, Fragment } from 'react'
+import { isMobile, deviceType } from "react-device-detect"
 import { ClickAwayListener } from '@material-ui/core'
-import Link from 'next/link'
-import React, { FunctionComponent } from 'react'
-import { Fragment } from 'react'
 import styled from 'styled-components'
 import Divider from '../../Divider'
-import { isMobile, deviceType } from "react-device-detect"
+import Routes from '../Routes'
 
 type PageProps = {
     showNav: boolean
@@ -16,7 +16,7 @@ type NavProps = {
 };
 
 const NavProvider: FunctionComponent<PageProps> = ({showNav, setShowNav}) => {
-    
+        
     const handleClick = () => {
         isMobile && deviceType !== 'tablet' && setShowNav(false)
     };
@@ -30,30 +30,7 @@ const NavProvider: FunctionComponent<PageProps> = ({showNav, setShowNav}) => {
 
                 <Nav expand={showNav}>
                     <Divider color={'#fff'}/>
-
-                    <Link href={'/'}>
-                        <a><Button>Home</Button></a>
-                    </Link>
-
-                    <Link href={'/comparator'}>
-                        <a><Button>Comparator</Button></a>
-                    </Link>
-
-                    <Link href={'/giochi'}>
-                        <a><Button>Giochi</Button></a>
-                    </Link>
-
-                    <Link href={'/squad'}>
-                        <a><Button>Squad</Button></a>
-                    </Link>
-
-                    <Link href={'/shop'}>
-                        <a><Button>Shop</Button></a>
-                    </Link>
-
-                    <Link href={'/live-stats/crazy-time'}>
-                        <a><Button>Live Stats</Button></a>
-                    </Link>
+                    <Routes/>
                 </Nav> 
 
             </ClickAwayListener>
@@ -72,18 +49,6 @@ const Nav = styled.nav<NavProps>`
     max-height: ${({expand}) => expand ? "120px" : "0px"};
     transition: max-height 0.2s linear; 
     overflow: ${({expand}) => expand ? "visible" : "hidden"};
-`
-
-const Button = styled.div`
-    color: ${({theme}) => theme.text.color.primary};
-    margin: 0px 10px;
-    padding: 10px 15px;
-    font-weight: bold;
-
-    &:hover {
-      color: ${({theme}) => theme.colors.background};
-      background-color: #fff;
-    }
 `
 
 export default NavProvider
