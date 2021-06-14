@@ -40,6 +40,7 @@ export default class MyDocument extends Document {
             <Head>
               <link rel="preconnect" href="https://casino-squad.b-cdn.net/" />
               <link rel="dns-prefetch" href="https://casino-squad.b-cdn.net/" />
+              <link rel="apple-touch-icon" href="/public/apple_icon.png"></link>
             </Head>
             <body>
                 <Main />

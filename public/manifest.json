@@ -1,3 +1,21 @@
 {
-    "theme_color": "#e2b96d"
+    "start_url": "/",
+    "name": "Casino Squad",
+    "short_name": "Casino Squad",
+    "theme_color": "#e2b96d",
+    "background_color":"#e2b96d",
+    "display": "minimal-ui",
+    "icons": [
+        {
+          "src": "/maskable_icon.png",
+          "sizes": "196x196",
+          "type": "image/png",
+          "purpose": "any maskable"
+        },
+        {
+            "src": "/launch_screen.png",
+            "sizes": "512x512",
+            "type": "image/png"
+        }
+      ]
 }
