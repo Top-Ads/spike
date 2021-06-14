@@ -487,4 +487,4 @@ const Thumbnail = styled.div`
     }
 `
 
-export default Article
+export default React.memo(Article)

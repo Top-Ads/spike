@@ -30,4 +30,4 @@ const SpinnerLoader: FunctionComponent<PageProps> = ({show}) => {
     )
 } 
 
-export default SpinnerLoader
+export default React.memo(SpinnerLoader)
