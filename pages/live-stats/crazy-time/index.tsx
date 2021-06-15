@@ -277,7 +277,7 @@ const Thumbnail = styled.div`
     width: 100%;
 `
 
-export const getServerSideProps = async () => {
+export async function getStaticProps() {
     
     const aquaClient = new AquaClient()
 

@@ -1,22 +1,21 @@
-import React, { useState } from 'react'
-import styled from 'styled-components'
-import Layout from '../../../components/Layout'
-import Image from 'next/image'
+import React, { FunctionComponent, useState, Fragment } from 'react'
 import LazyLoad from 'react-lazyload'
+import { animateScroll as scroll } from "react-scroll"
+import { NextPageContext } from 'next'
+import Image from 'next/image'
+import styled from 'styled-components'
+import PlayCircleOutlineIcon from '@material-ui/icons/PlayCircleOutline'
+import VideoLabelIcon from '@material-ui/icons/VideoLabel'
+import Layout from '../../../components/Layout'
 import { CDN } from '../../../public/environment'
 import Divider from '../../../components/Divider'
 import RatingStars from '../../../components/RatingStars'
 import CustomizedAccordions from '../../../components/CustomizedAccordions'
 import { shortDate } from '../../../utils/shortDate'
 import { device } from '../../../utils/device'
-import { animateScroll as scroll } from "react-scroll"
-import { Fragment } from 'react'
-import { Slot } from '../../../interfaces'
-import PlayCircleOutlineIcon from '@material-ui/icons/PlayCircleOutline'
-import VideoLabelIcon from '@material-ui/icons/VideoLabel'
-import { FunctionComponent } from 'react'
 import AquaClient from '../../api/graphql/aquaClient'
 import { SLOTS } from '../../api/graphql/queries/slots'
+import { Slot } from '../../../interfaces'
 
 type PageProps = {
     slotData: Slot
@@ -113,9 +112,9 @@ const SlotPage: FunctionComponent<PageProps> = ({slotData}) => {
     )
 }
  
-export async function getServerSideProps({ query }: any) {
+export async function getServerSideProps(context : NextPageContext) {
     
-    const slug = query.slug as string
+    const slug = context.query.slug as string
 
     const aquaClient = new AquaClient()
 
