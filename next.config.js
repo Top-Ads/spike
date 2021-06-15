@@ -3,7 +3,9 @@ const withWorkbox = require("next-with-workbox")
 
 module.exports = withWorkbox({
   workbox: {
-    swSrc:'/public/service-worker.js'
+    dest: "public",
+    swDest: "service-worker.js",
+    maximumFileSizeToCacheInBytes: 10000000
   },
   images: {
     domains: [
@@ -13,4 +15,5 @@ module.exports = withWorkbox({
       'casino-squad.com'
     ],
   },
+  future: { webpack5: true }
 });

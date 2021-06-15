@@ -13,23 +13,15 @@ export default function App( {Component, pageProps}: IProps) {
     
     useEffect(()=> {
         
-        /* if ('serviceWorker' in navigator) {
-            // Use the window load event to keep the page load performant
-            window.addEventListener('load', () => {
-              navigator.serviceWorker.register('/service-worker.js');
-            });
-        } */
-
         if ( localStorage.getItem('favorites') === null ) 
             localStorage.setItem('favorites', '[]')
-
-        if (!("serviceWorker" in navigator) || process.env.NODE_ENV !== "production") {
-            console.warn("Pwa support is disabled")
-            return
-        }
-      
-        const wb = new Workbox("/public/service-worker.js", { scope: "/" })
-        wb.register()
+        console.log(process.env.NODE_ENV)
+        if ('serviceWorker' in navigator || process.env.NODE_ENV === "production") {
+            window.addEventListener('load', () => {
+                const wb =new Workbox("/public/service-worker.js", { scope: "/public/" })
+                wb.register()
+            })
+          }
 
     }, [])
 
