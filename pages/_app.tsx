@@ -1,5 +1,6 @@
 import React, { Fragment, FunctionComponent, useEffect, useState } from "react"
 import { ThemeProvider } from "styled-components"
+import { Workbox } from "workbox-window"
 import { DislikedSlotContext } from "../contexts"
 import { GlobalStyle, styledTheme } from "../theme"
 
@@ -12,7 +13,14 @@ export default function App( {Component, pageProps}: IProps) {
     
     useEffect(()=> {
         if ( localStorage.getItem('favorites') === null ) 
-            localStorage.setItem('favorites', '[]') 
+            localStorage.setItem('favorites', '[]')
+        
+        if("serviceWorker" in navigator || process.env.NODE_ENV === "production") {
+            window.addEventListener("load", function () {
+                const wb = new Workbox("/sw.js", { scope: "/" })
+                wb.register()
+            });
+        }
     }, [])
 
     const ContextProvider: FunctionComponent = ({ children }) => {
