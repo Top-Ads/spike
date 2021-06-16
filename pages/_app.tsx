@@ -15,10 +15,12 @@ export default function App( {Component, pageProps}: IProps) {
         
         if ( localStorage.getItem('favorites') === null ) 
             localStorage.setItem('favorites', '[]')
+
         console.log(process.env.NODE_ENV)
+
         if ('serviceWorker' in navigator || process.env.NODE_ENV === "production") {
             window.addEventListener('load', () => {
-                const wb =new Workbox("/public/service-worker.js", { scope: "/public/" })
+                const wb = new Workbox("/sw.js", { scope: "/" })
                 wb.register()
             })
           }

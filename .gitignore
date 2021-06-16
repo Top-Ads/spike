@@ -34,7 +34,3 @@ yarn-error.log*
 .vercel
 
 .vercel
-
-# service-worker
-public/service-worker.js
-public/service-worker.js.map

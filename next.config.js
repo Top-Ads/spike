@@ -3,8 +3,7 @@ const withWorkbox = require("next-with-workbox")
 
 module.exports = withWorkbox({
   workbox: {
-    dest: "public",
-    swDest: "service-worker.js",
+    force: true,
     maximumFileSizeToCacheInBytes: 10000000
   },
   images: {
