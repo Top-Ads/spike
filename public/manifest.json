@@ -1,19 +1,22 @@
 {
+    "lang": "it",
     "start_url": "/",
     "name": "Casino Squad",
     "short_name": "Casino Squad",
+    "description": "Online casino gaming",
     "theme_color": "#e2b96d",
     "background_color":"#e2b96d",
     "display": "minimal-ui",
+    "orientation": "portrait-primary",
     "icons": [
         {
-          "src": "/maskable_icon.png",
+          "src": "/maskable.png",
           "sizes": "196x196",
           "type": "image/png",
           "purpose": "any maskable"
         },
         {
-            "src": "/launch_screen.png",
+            "src": "/splash.png",
             "sizes": "512x512",
             "type": "image/png"
         }
