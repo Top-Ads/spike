@@ -1,6 +1,5 @@
 import React, { FunctionComponent, useState, Fragment } from 'react'
 import LazyLoad from 'react-lazyload'
-import { animateScroll as scroll } from "react-scroll"
 import { NextPageContext } from 'next'
 import Image from 'next/image'
 import styled from 'styled-components'
@@ -16,6 +15,9 @@ import { device } from '../../../utils/device'
 import AquaClient from '../../api/graphql/aquaClient'
 import { SLOTS } from '../../api/graphql/queries/slots'
 import { Slot } from '../../../interfaces'
+import { useRef } from 'react'
+/* import HighlightOffOutlinedIcon from '@material-ui/icons/HighlightOffOutlined';
+import OpenWithIcon from '@material-ui/icons/OpenWith'; */
 
 type PageProps = {
     slotData: Slot
@@ -23,10 +25,10 @@ type PageProps = {
 const SlotPage: FunctionComponent<PageProps> = ({slotData}) => {
 
     const [showIframe, setShowIframe] = useState<boolean>(false)
+    const ele = useRef(null)
 
     const handleOnPlay = () => {
         setShowIframe(true)
-        scroll.scrollTo(500)
     }
 
     return (
@@ -36,7 +38,8 @@ const SlotPage: FunctionComponent<PageProps> = ({slotData}) => {
 
                     <Divider/><br/>
 
-                    <Container>
+                    <Main>
+
                         <Thumbnail onClick={handleOnPlay}>
                             <LazyLoad key={slotData?.id} height={85} offset={300}>
                                 <Image
@@ -49,36 +52,41 @@ const SlotPage: FunctionComponent<PageProps> = ({slotData}) => {
                             </LazyLoad>
                         </Thumbnail>
 
-                        <Description>
-                            <h2 className="name">{slotData?.name}</h2>
+                        <Section>
 
-                            <div className="title likes"> {slotData?.likes}
-                                {slotData?.likes &&  slotData.likes > 0 ? <span>Likes: {slotData.likes}</span> : ''}
-                            </div>
+                            <Title>
+                                <h2>{slotData?.name}</h2>
 
-                            <div className="title rating">
-                                {slotData?.rating ? <RatingStars rating={slotData.rating}/> : ''}
-                            </div>
-
-                            <div className="title rtp"><b>RTP: </b>{slotData?.rtp}%</div>
-                                <div className="volatility">
-                                    {slotData?.volatility ? <span><b>Volatilità: </b> {slotData.volatility}</span> : ''}
+                                <div className="likes"> {slotData?.likes}
+                                    {slotData?.likes &&  slotData.likes > 0 ? <span>Likes: {slotData.likes}</span> : ''}
                                 </div>
 
-                            <div className="title created-at"> 
-                                {slotData?.created_at ? <span><b>Created at:</b> {shortDate(slotData.created_at)}</span> : ''}
-                            </div>
+                                <div className="rating">
+                                    {slotData?.rating ? <RatingStars rating={slotData.rating}/> : ''}
+                                </div>
+                            </Title>
 
-                            <div className="title producer">
-                                { slotData?.producer ? 
-                                <>
-                                    <span><b>Provider: </b></span>
-                                    <b>{slotData?.producer.name}</b>
-                                </> 
-                                : '' }
-                            </div>
+                            <Info>
+                                <div className="rtp"><b>RTP: </b>{slotData?.rtp}%</div>
+                                    <div className="volatility">
+                                        {slotData?.volatility ? <span><b>Volatilità: </b> {slotData.volatility}</span> : ''}
+                                    </div>
 
-                            <div className="title actions">  
+                                <div className="created-at"> 
+                                    {slotData?.created_at ? <span><b>Created at:</b> {shortDate(slotData.created_at)}</span> : ''}
+                                </div>
+
+                                <div className="producer">
+                                    { slotData?.producer ? 
+                                    <>
+                                        <span><b>Provider: </b></span>
+                                        <b>{slotData?.producer.name}</b>
+                                    </> 
+                                    : '' }
+                                </div>
+                            </Info>
+
+                            <Actions className="slot-actions">  
                                 <Button>
                                     <a href={slotData?.linkYoutube}>
                                         <PlayCircleOutlineIcon className={'video-icon'}/> <span>Play Video</span>
@@ -88,24 +96,35 @@ const SlotPage: FunctionComponent<PageProps> = ({slotData}) => {
                                 <Button onClick={handleOnPlay}>
                                     <VideoLabelIcon className={'playGame-icon'}/> <span>Play Game</span>
                                 </Button>
-                                 
-                            </div>
+                                    
+                            </Actions>
 
-                        </Description>
-                    </Container>
+                        </Section>
+                    </Main>
                     
-                    <br/>
-
-                    <CustomizedAccordions videoDescription={slotData?.description} tips={slotData?.tips}/>
+                    <br/><CustomizedAccordions videoDescription={slotData?.description} tips={slotData?.tips}/><br/>
                 </div>
         
                 { showIframe ? 
-                    <IframeContainers
+                    <IframeContainer>
+                       <IframeGame ref={ele}
+                        width="560" 
+                        height="315" 
+                        src="https://www.youtube.com/embed/3uvbcI-7uDQ?controls=0" 
+                        slot="YouTube video player" 
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                        allowFullScreen/> 
+
+                     {/*    <IframeGame
                         name={slotData?.slug}
-                        scrolling={'auto'} 
                         src={slotData?.playLink}
                         allow={'fullscreen'}
-                        sandbox={'allow-orientation-lock allow-scripts allow-same-origin'}/> 
+                        sandbox={'allow-orientation-lock allow-scripts allow-same-origin'}/> */}
+
+                        <Actions className={'iframe-actions'}>
+                           {/*  <OpenWithIcon/>    */} 
+                        </Actions> 
+                    </IframeContainer>
                 : ''}
             </Fragment>
         </Layout>       
@@ -130,58 +149,30 @@ export async function getServerSideProps(context : NextPageContext) {
 
 }
 
-const IframeContainers = styled.iframe`
-    display: flex;
-    margin: 10px auto;
-    width: 80vw;
-    height: 45vw;
-    border: 0;
-
-    @media ${device.tablet} {
-        width: 90vw;
-        height: 60vw;
-    }
-
-    @media ${device.laptopL} and (orientation : landscape) {
-        width: 100vw;
-        height: 100vh;
-        position: fixed;
-        top: 0;
-        z-index: 999;
-        margin: 0;
-    }
-`
-
-const Container = styled.div`
+const Main = styled.div`
    display: flex;
    flex-direction: row;
    flex-wrap: wrap;
 `
 
 const Thumbnail = styled.div`
-    width: 350px;
+    width: 50vw;
     cursor: pointer;
+
+    @media ${device.tablet} {
+        width: 100%;
+    }
 `
 
-const Description = styled.div`
+const Section = styled.div`
     display: inherit;
     flex-direction: column;
-    padding: 5px 10px;
+    padding: 0px 10px;
+    margin-bottom: 10px;
+
     font-size: 13px;
     flex-grow: 1;
 
-    .title {
-        margin-bottom: 2px;
-    }
-
-    .actions {
-        display: flex;
-        flex-direction: row;
-
-        @media ${device.mobileL} {
-            justify-content: center;
-        }
-    }
 
     .videoDescription {
         display: none;
@@ -189,6 +180,34 @@ const Description = styled.div`
 
     .tips {
         display: none;
+    }
+`
+
+const Title = styled.div`
+    margin-bottom: 10px;
+
+    h2 { margin-bottom: 0; }
+` 
+
+const Info = styled.div`
+    div { margin-bottom: 2px; }
+` 
+
+
+const Actions = styled.div`
+
+    &.iframe-actions {
+
+    }
+
+    &.slot-actions {
+        display: flex;
+        flex-direction: column;
+
+        @media ${device.mobileL} {
+            flex-direction: row;
+            justify-content: space-evenly;
+        }
     }
 `
 
@@ -200,7 +219,7 @@ const Button = styled.div`
     width: fit-content;
     text-transform: uppercase;
     cursor: pointer;
-    margin: 5px 5px;
+    margin: 5px 0px;
     padding: 7px;
 
     display: flex;
@@ -224,6 +243,31 @@ const Button = styled.div`
     .video-icon, .playGame-icon {
         margin-right: 10px;
     }
-
 `
+
+const IframeContainer = styled.div`
+    display: flex;
+    flex-direction: column;
+`
+
+const IframeGame = styled.iframe`
+    margin: 0;
+    border: 0;
+    z-index: 999;
+    transform: rotate(-90deg);
+    transform-origin: left top;
+    position: fixed;
+    top: 100%;
+    left: 0px;
+    width: 50vw;
+    height: auto;
+
+   /*  @media all and (orientation:landscape) {
+        transform: rotate(0deg);
+        top: 0;
+        width: 100vw;
+        height: 100vh;
+    } */
+`
+
 export default SlotPage

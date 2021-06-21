@@ -56,10 +56,10 @@ export default Layout
 const Main = styled.div`
 
   .space-around {
-    padding: 10px 10%;
+    padding: 5px 10%;
 
     @media ${device.tablet} {
-      padding: 10px 2%;
+      padding: 0px 2% 5px;
     }
   } 
 `

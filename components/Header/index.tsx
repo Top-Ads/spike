@@ -205,13 +205,17 @@ const Main = styled.div`
   border-radius: 0px 0px 20px 20px;
   box-shadow: ${({theme}) => theme.button.boxShadowX};
   color: ${({theme}) => theme.text.color.primary};
-  padding: 10px 10%;
+  padding: 5px 10%;
 
   @media ${device.tablet} {
     position: fixed;
     top: 0px;
     width: fill-available;
     z-index: 100;
+  }
+
+  @media (orientation: landscape) {
+    padding: 5px 5%;
   }
 `
 
