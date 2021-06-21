@@ -8,10 +8,10 @@ import Link from 'next/link'
 import { device } from '../../utils/device'
 import SearchIcon from '@material-ui/icons/Search'
 import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder'
-import NotificationsNoneIcon from '@material-ui/icons/NotificationsNone'
+import ShoppingCartOutlinedIcon from '@material-ui/icons/ShoppingCartOutlined'
 import { Category } from '../../utils/constants'
 import FavoriteCard from '../Cards/FavoriteCard'
-import NotificationCard from '../Cards/NotificationCard'
+import ShoppingCard from '../Cards/ShoppingCard'
 import { DislikedSlotContext } from '../../contexts'
 import { APIKEY, APPLICATIONID, CDN } from '../../public/environment'
 import { SearchIndex } from 'algoliasearch/lite'
@@ -108,7 +108,7 @@ const Header: FunctionComponent<PageProps> = ({isBrowserView}) => {
         }
       }
       
-      if (category === Category.NOTIFICATIONS) {
+      if (category === Category.SHOPPINGCART) {
          setItem([])
       }
     }
@@ -169,7 +169,7 @@ const Header: FunctionComponent<PageProps> = ({isBrowserView}) => {
                     <SearchIcon className="search-icon icons" onClick={() => setShowTextInput(true) }/> 
                   </Search>
               
-                  <NotificationsNoneIcon className='icons' onClick={ () => handleDialogSlider(Category.NOTIFICATIONS)} />
+                  <ShoppingCartOutlinedIcon className='icons' onClick={ () => handleDialogSlider(Category.SHOPPINGCART)} />
 
                   <FavoriteBorderIcon className='icons' onClick={ () => handleDialogSlider(Category.FAVORITES)} />
                   {showNav ? 
@@ -189,7 +189,7 @@ const Header: FunctionComponent<PageProps> = ({isBrowserView}) => {
             setOpen={setOpenDialog}
             content={item.map( (element: Slot, index: number) => 
               category === Category.FAVORITES ? 
-              <FavoriteCard key={index} data={element} deleteItem={deleteItem} /> : <NotificationCard key={index} data={element}/> )}
+              <FavoriteCard key={index} data={element} deleteItem={deleteItem} /> : <ShoppingCard key={index} data={element}/> )}
           />
 
         </Main>

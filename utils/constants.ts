@@ -1,6 +1,6 @@
 export enum Category {
     FAVORITES = 'favorites',
-    NOTIFICATIONS = 'notifications'
+    SHOPPINGCART = 'shopping cart'
   }
   
   export enum GridType {

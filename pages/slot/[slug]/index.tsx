@@ -30,7 +30,7 @@ const SlotPage: FunctionComponent<PageProps> = ({slotData}) => {
     }
 
     return (
-        <Layout title="Slot"> 
+        <Layout title={slotData.name}> 
             <Fragment>
                 <div className="space-around">
 

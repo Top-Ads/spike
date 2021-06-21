@@ -6,10 +6,10 @@ type PageProps = {
    data: any
 };
 
-const NotificationCard: FunctionComponent<PageProps> = () => {
+const ShoppingCard: FunctionComponent<PageProps> = () => {
     return (
         <Fragment>
-            <Main> Notification Card</Main>
+            <Main> Shopping Card</Main>
         </Fragment>
     )
 } 
@@ -17,4 +17,4 @@ const NotificationCard: FunctionComponent<PageProps> = () => {
 const Main = styled.div`
    
 `
-export default NotificationCard
+export default ShoppingCard
