@@ -1,9 +1,5 @@
 const withWorkbox = require("next-with-workbox");
 
-module.exports = {
-    
-  };
-
 module.exports = withWorkbox({
   images: {
     domains: [

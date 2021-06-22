@@ -72,7 +72,7 @@ const MarginHeader = styled.div`
     display: block;
     height: 100px;
   }
-
+  
   @media ${device.mobileL} {
     display: block;
     height: 70px;

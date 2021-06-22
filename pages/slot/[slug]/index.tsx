@@ -1,10 +1,10 @@
-import React, { FunctionComponent, useState, Fragment } from 'react'
-import LazyLoad from 'react-lazyload'
+import React, { FunctionComponent, useState, Fragment, useRef, useEffect } from 'react'
 import { NextPageContext } from 'next'
 import Image from 'next/image'
 import styled from 'styled-components'
 import PlayCircleOutlineIcon from '@material-ui/icons/PlayCircleOutline'
 import VideoLabelIcon from '@material-ui/icons/VideoLabel'
+import FullscreenIcon from '@material-ui/icons/Fullscreen'
 import Layout from '../../../components/Layout'
 import { CDN } from '../../../public/environment'
 import Divider from '../../../components/Divider'
@@ -15,21 +15,44 @@ import { device } from '../../../utils/device'
 import AquaClient from '../../api/graphql/aquaClient'
 import { SLOTS } from '../../api/graphql/queries/slots'
 import { Slot } from '../../../interfaces'
-import { useRef } from 'react'
-/* import HighlightOffOutlinedIcon from '@material-ui/icons/HighlightOffOutlined';
-import OpenWithIcon from '@material-ui/icons/OpenWith'; */
 
 type PageProps = {
     slotData: Slot
 }
+
+type ThumbnailProps = {
+    isFullscreen?: boolean
+}
+
 const SlotPage: FunctionComponent<PageProps> = ({slotData}) => {
 
     const [showIframe, setShowIframe] = useState<boolean>(false)
-    const ele = useRef(null)
+    const [isFullscreen, setFullscreen] = useState<boolean>(false)
 
-    const handleOnPlay = () => {
-        setShowIframe(true)
+    const iframeRef = useRef<HTMLIFrameElement>(null)
+    const thumbnailRef = useRef<HTMLDivElement>(null)
+
+    const handleOnPlay = () =>  setShowIframe(true)
+
+    const handleFullScreen = () => { 
+        setFullscreen(true)
+        thumbnailRef.current?.requestFullscreen() 
     }
+
+    const handleKeyDown = (event: KeyboardEvent) => {
+        if (event.code === "Escape") {
+            document.exitFullscreen()
+        }
+    }
+
+    const handleScreenChange = () => {
+        document.fullscreenElement ? setFullscreen(true) : setFullscreen(false)
+    }
+
+    useEffect( () => {
+        document.addEventListener("keydown", handleKeyDown, false)
+        document.addEventListener("fullscreenchange", handleScreenChange, false)
+    }, [])
 
     return (
         <Layout title={slotData.name}> 
@@ -40,17 +63,37 @@ const SlotPage: FunctionComponent<PageProps> = ({slotData}) => {
 
                     <Main>
 
-                        <Thumbnail onClick={handleOnPlay}>
-                            <LazyLoad key={slotData?.id} height={85} offset={300}>
-                                <Image
-                                    alt={slotData?.name}
-                                    src={slotData?.image.url ? slotData.image.url : `${CDN}/svg/no_img_available.svg`} 
-                                    layout="responsive"
-                                    priority={true}
-                                    width={1200}
-                                    height={675}/>
-                            </LazyLoad>
-                        </Thumbnail>
+                        <SlotContainer>
+
+                            <Thumbnail onClick={handleOnPlay} ref={thumbnailRef} isFullscreen={isFullscreen}>
+
+                                <div className={isFullscreen ? 'fullscreen' : ''}>
+                                    <Image
+                                        alt={slotData?.name}
+                                        src={slotData?.image.url ? slotData.image.url : `${CDN}/svg/no_img_available.svg`} 
+                                        layout="responsive"
+                                        priority={true}
+                                        width={1200}
+                                        height={675}/> 
+                                </div>                              
+
+                                { showIframe ? 
+                                <IframeContainer
+                                    ref={iframeRef}
+                                    name={slotData?.slug}
+                                    src={slotData?.playLink}
+                                    allow={'fullscreen'}
+                                    sandbox={'allow-orientation-lock allow-scripts allow-same-origin'}/>
+                                : ''}
+
+                                <PlayCircleOutlineIcon className={'playGame-icon'}/>
+                            </Thumbnail>
+
+                            <Actions className={'slot-actions'}>
+                                <FullscreenIcon className="fullscreen-icon" onClick={handleFullScreen}/>    
+                            </Actions> 
+
+                        </SlotContainer>
 
                         <Section>
 
@@ -86,7 +129,7 @@ const SlotPage: FunctionComponent<PageProps> = ({slotData}) => {
                                 </div>
                             </Info>
 
-                            <Actions className="slot-actions">  
+                            <Actions className="play-actions">  
                                 <Button>
                                     <a href={slotData?.linkYoutube}>
                                         <PlayCircleOutlineIcon className={'video-icon'}/> <span>Play Video</span>
@@ -100,32 +143,12 @@ const SlotPage: FunctionComponent<PageProps> = ({slotData}) => {
                             </Actions>
 
                         </Section>
+                    
                     </Main>
                     
                     <br/><CustomizedAccordions videoDescription={slotData?.description} tips={slotData?.tips}/><br/>
                 </div>
         
-                { showIframe ? 
-                    <IframeContainer>
-                       <IframeGame ref={ele}
-                        width="560" 
-                        height="315" 
-                        src="https://www.youtube.com/embed/3uvbcI-7uDQ?controls=0" 
-                        slot="YouTube video player" 
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                        allowFullScreen/> 
-
-                     {/*    <IframeGame
-                        name={slotData?.slug}
-                        src={slotData?.playLink}
-                        allow={'fullscreen'}
-                        sandbox={'allow-orientation-lock allow-scripts allow-same-origin'}/> */}
-
-                        <Actions className={'iframe-actions'}>
-                           {/*  <OpenWithIcon/>    */} 
-                        </Actions> 
-                    </IframeContainer>
-                : ''}
             </Fragment>
         </Layout>       
     )
@@ -146,7 +169,6 @@ export async function getServerSideProps(context : NextPageContext) {
             slotData: slotRequest.data.data.slots[0],
         }
     }
-
 }
 
 const Main = styled.div`
@@ -155,12 +177,37 @@ const Main = styled.div`
    flex-wrap: wrap;
 `
 
-const Thumbnail = styled.div`
+const SlotContainer = styled.div`
     width: 50vw;
-    cursor: pointer;
+
+    position: relative;
 
     @media ${device.tablet} {
         width: 100%;
+    }
+`
+
+const Thumbnail = styled.div<ThumbnailProps>`
+    position: relative;
+    cursor: pointer;
+
+    .fullscreen {
+        position: relative;
+        top: ${({isFullscreen}) => isFullscreen ? '50%' : 'unset'};
+        left: ${({isFullscreen}) => isFullscreen ? '50%' : 'unset'};
+        transform:  ${({isFullscreen}) => isFullscreen ? 'translate(-50%, -50%)' : 'unset'};
+    }
+    
+    .playGame-icon {
+        top: 0;
+        bottom: 0;
+        margin: auto;
+        position: absolute;
+        left: 0;
+        right: 0;
+        color: white;
+        opacity: 0.6;
+        font-size: 100px;
     }
 `
 
@@ -173,40 +220,45 @@ const Section = styled.div`
     font-size: 13px;
     flex-grow: 1;
 
+    .videoDescription { display: none; }
 
-    .videoDescription {
-        display: none;
-    }
-
-    .tips {
-        display: none;
-    }
+    .tips { display: none; }
 `
 
 const Title = styled.div`
     margin-bottom: 10px;
 
-    h2 { margin-bottom: 0; }
+    h2 {
+         margin-bottom: 0; 
+
+         @media ${device.mobileL} {
+            width: 60%;
+         }
+    }
 ` 
 
 const Info = styled.div`
     div { margin-bottom: 2px; }
 ` 
 
-
 const Actions = styled.div`
 
-    &.iframe-actions {
+    &.slot-actions {
+        background-color: ${({theme}) => theme.colors.background};
+        color: white;
+        display: flex;
+        justify-content: flex-end;
 
+        svg { cursor: pointer; }
     }
 
-    &.slot-actions {
+    &.play-actions {
         display: flex;
         flex-direction: column;
 
-        @media ${device.mobileL} {
-            flex-direction: row;
-            justify-content: space-evenly;
+        @media ${device.tablet} {
+            position: absolute;
+            right: 10px;
         }
     }
 `
@@ -245,29 +297,18 @@ const Button = styled.div`
     }
 `
 
-const IframeContainer = styled.div`
+const IframeContainer = styled.iframe`
     display: flex;
     flex-direction: column;
-`
-
-const IframeGame = styled.iframe`
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0px;
+    left: 0px;
     margin: 0;
     border: 0;
-    z-index: 999;
-    transform: rotate(-90deg);
-    transform-origin: left top;
-    position: fixed;
-    top: 100%;
-    left: 0px;
-    width: 50vw;
-    height: auto;
-
-   /*  @media all and (orientation:landscape) {
-        transform: rotate(0deg);
-        top: 0;
-        width: 100vw;
-        height: 100vh;
-    } */
+    z-index: 99;
+    background-color: #000;
 `
 
 export default SlotPage

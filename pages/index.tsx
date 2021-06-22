@@ -176,13 +176,12 @@ const Header = styled.div`
 const Intro = styled.div`
   display: inherit;
   flex-direction: column;
-  width: 70%;
+  width: 65%;
   flex-grow: 1;
 
   ul { color: ${({theme}) => theme.text.color.secondary}; }
 
   @media ${device.mobileL} {
-    
     h1 { text-align: center; }
     align-items: center;
   } 
@@ -205,9 +204,9 @@ const Button = styled.div`
 `
 
 const Thumbnail = styled.div`
-  width: 30%;
+  width: 35%;
   margin: auto;
-
+  
   @media ${device.mobileL} {
     width: 90%;
     margin-top: 15px;

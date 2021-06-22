@@ -214,7 +214,7 @@ const Main = styled.div`
     z-index: 100;
   }
 
-  @media (orientation: landscape) {
+  @media ${device.mobileL} {
     padding: 5px 5%;
   }
 `
