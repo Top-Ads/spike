@@ -15,6 +15,7 @@ import { device } from '../../../utils/device'
 import AquaClient from '../../api/graphql/aquaClient'
 import { SLOTS } from '../../api/graphql/queries/slots'
 import { Slot } from '../../../interfaces'
+import LikeIcon from '../../../components/LikeIcon'
 
 type PageProps = {
     slotData: Slot
@@ -28,6 +29,7 @@ const SlotPage: FunctionComponent<PageProps> = ({slotData}) => {
 
     const [showIframe, setShowIframe] = useState<boolean>(false)
     const [isFullscreen, setFullscreen] = useState<boolean>(false)
+    const [active, setActive] = useState<boolean>(false)
 
     const iframeRef = useRef<HTMLIFrameElement>(null)
     const thumbnailRef = useRef<HTMLDivElement>(null)
@@ -53,6 +55,10 @@ const SlotPage: FunctionComponent<PageProps> = ({slotData}) => {
         document.addEventListener("keydown", handleKeyDown, false)
         document.addEventListener("fullscreenchange", handleScreenChange, false)
     }, [])
+
+    const handleActiveLike = () => {
+        setActive(!active)
+    }
 
     return (
         <Layout title={slotData.name}> 
@@ -90,6 +96,7 @@ const SlotPage: FunctionComponent<PageProps> = ({slotData}) => {
                             </Thumbnail>
 
                             <Actions className={'slot-actions'}>
+                                <LikeIcon setActive={handleActiveLike} active={active}/>
                                 <FullscreenIcon className="fullscreen-icon" onClick={handleFullScreen}/>    
                             </Actions> 
 
@@ -249,7 +256,11 @@ const Actions = styled.div`
         display: flex;
         justify-content: flex-end;
 
-        svg { cursor: pointer; }
+        svg {  
+            cursor: pointer;
+            font-size: 25px;
+            margin: 0px 3px;
+        }
     }
 
     &.play-actions {

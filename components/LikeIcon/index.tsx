@@ -28,7 +28,7 @@ const LikeIcon: FunctionComponent<PageProps> = ({color, active, setActive}) => {
         <Fragment>
             <Like 
                 onClick={handleClick} 
-                onTouchStart={handleClick}
+                onTouchStart={(event: React.SyntheticEvent<HTMLElement>) => event.stopPropagation()}
                 onMouseEnter={() => setFill(true)}
                 onMouseLeave={() => !active && setFill(false)}
                 color={color}>
