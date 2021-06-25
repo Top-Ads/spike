@@ -16,6 +16,7 @@ import AquaClient from '../../api/graphql/aquaClient'
 import { SLOTS } from '../../api/graphql/queries/slots'
 import { Slot } from '../../../interfaces'
 import LikeIcon from '../../../components/LikeIcon'
+import CloseIcon from '@material-ui/icons/HighlightOff'
 
 type PageProps = {
     slotData: Slot
@@ -34,26 +35,34 @@ const SlotPage: FunctionComponent<PageProps> = ({slotData}) => {
     const iframeRef = useRef<HTMLIFrameElement>(null)
     const thumbnailRef = useRef<HTMLDivElement>(null)
 
-    const handleOnPlay = () =>  setShowIframe(true)
+    const handleOnPlay = () => setShowIframe(true)
 
-    const handleFullScreen = () => { 
+    const openFullScreen = () => { 
         setFullscreen(true)
         thumbnailRef.current?.requestFullscreen() 
     }
 
+    const exitFullScreen = (event: React.SyntheticEvent) => { 
+        event.stopPropagation()
+
+        document.exitFullscreen()
+    }
+
     const handleKeyDown = (event: KeyboardEvent) => {
-        if (event.code === "Escape") {
+        if (event.code === "Escape") 
             document.exitFullscreen()
-        }
     }
 
-    const handleScreenChange = () => {
-        document.fullscreenElement ? setFullscreen(true) : setFullscreen(false)
-    }
-
+    const handleScreenChange = () => document.fullscreenElement ? setFullscreen(true) : setFullscreen(false)
+    
     useEffect( () => {
         document.addEventListener("keydown", handleKeyDown, false)
         document.addEventListener("fullscreenchange", handleScreenChange, false)
+
+        return () => {
+            document.removeEventListener("keydown", handleKeyDown)
+            document.removeEventListener("fullscreenchange", handleScreenChange)
+        }
     }, [])
 
     const handleActiveLike = () => {
@@ -89,15 +98,17 @@ const SlotPage: FunctionComponent<PageProps> = ({slotData}) => {
                                     name={slotData?.slug}
                                     src={slotData?.playLink}
                                     allow={'fullscreen'}
-                                    sandbox={'allow-orientation-lock allow-scripts allow-same-origin'}/>
+                                    sandbox={'allow-orientation-lock allow-scripts allow-same-origin'}
+                                    scrolling={'no'}/>
                                 : ''}
 
-                                <PlayCircleOutlineIcon className={'playGame-icon'}/>
+                                <PlayCircleOutlineIcon className='playGame-icon'/>
+                                {isFullscreen ? <CloseIcon fontSize={'large'} className='closeGame-icon' onClick={exitFullScreen}/> : ''}
                             </Thumbnail>
 
                             <Actions className={'slot-actions'}>
                                 <LikeIcon setActive={handleActiveLike} active={active}/>
-                                <FullscreenIcon className="fullscreen-icon" onClick={handleFullScreen}/>    
+                                <FullscreenIcon className="fullscreen-icon" onClick={openFullScreen}/>    
                             </Actions> 
 
                         </SlotContainer>
@@ -215,6 +226,17 @@ const Thumbnail = styled.div<ThumbnailProps>`
         color: white;
         opacity: 0.6;
         font-size: 100px;
+    }
+
+    @media ${device.tablet} {
+        .closeGame-icon {
+            color: white;
+            position: fixed;
+            top: 1px;
+            left: 1px;
+            opacity: 0.8;
+            z-index: 999;        
+        }
     }
 `
 

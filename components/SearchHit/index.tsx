@@ -82,7 +82,7 @@ const Main = styled.div`
         overflow-y: scroll;
         overflow-x: hidden;
         max-height: 70vh;
-        width: 80%;
+        width: 90%;
     } 
 `
 

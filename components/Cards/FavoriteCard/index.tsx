@@ -103,7 +103,7 @@ const Info = styled.div`
     text-align: left;
     flex-grow: 2;
     width: min-content;
-    padding: 0px 5px;
+    margin-left: 10px;
 `
 
 const Name = styled.div`
