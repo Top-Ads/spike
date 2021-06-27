@@ -6,7 +6,6 @@ import { device } from '../utils/device'
 import GridCards from '../components/GridCards'
 import Layout from '../components/Layout'
 import FreqentlyAsked from '../components/FrequentlyAsked'
-import FreeBonusList from '../components/FreeBonusList'
 import SlotCard from '../components/Cards/SlotCard'
 import BonusCard from '../components/Cards/BonusCard'
 import BonusTable from '../components/Tables/BonusTable'
@@ -150,15 +149,7 @@ const IndexPage: FunctionComponent<PageProps> = ({slotsData, freeBonusData, topB
 
       <div className="space-around">
         <Section>
-          <div className="article">
-                <Article/>
-          </div>
-
-          <div className="free-bonus-cards">
-            <FreeBonusList data={freeBonusData.slice(0, 5)} label="I MIGLIORI CASINÒ"/>
-            <FreeBonusList data={freeBonusData.slice(5, 10)} label="I MIGLIORI CASINÒ CON GIRI GRATIS"/>
-          </div>
-         
+          <Article data={freeBonusData}/>
         </Section>
       </div>
 
@@ -238,27 +229,9 @@ const Grids = styled.div`
 
 const Section = styled.section`
   display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-
-  @media ${device.mobileL} {
-    flex-wrap: wrap-reverse;
-  }
-
-  .article {
-    display: flex;
-    flex-direction: column;
-    flex-grow: 2;
-    width: 300px;
-    padding: 10px;
-  }
-
-  .free-bonus-cards {
-    display: flex;
-    flex-direction: column;
-    flex-grow: 1;
-    height: min-content;
-  }
+  flex-direction: column;
+  flex-grow: 2;
+  padding: 10px;
 `
 
 export async function getStaticProps() {

@@ -4,11 +4,23 @@ import styled from 'styled-components'
 import Image from 'next/image'
 import { device } from '../../utils/device'
 import { CDN } from '../../public/environment'
+import FreeBonusList from '../FreeBonusList'
+import { Bonus } from '../../interfaces'
 
-const Article: FunctionComponent = () => {
+type PageProps = {
+    data?: Bonus[]
+}
+
+const Article: FunctionComponent<PageProps> = ({data}) => {
     return (
         <Fragment>
             <Main>
+                {data && 
+                    <FreeBonusSection>
+                        <FreeBonusList data={data.slice(0,5)} label="I MIGLIORI CASINÒ"/>
+                        <FreeBonusList data={data.slice(5,10)} label="I MIGLIORI CASINÒ CON GIRI GRATIS"/>
+                    </FreeBonusSection>
+                }
 
                 <div><strong>Gioca alle slot online – gratis</strong></div>
                 <div>
@@ -484,6 +496,22 @@ const Thumbnail = styled.div`
         clip-path: circle(73px at 50.15% 50.15%);
         shape-outside: circle(73px at 50.1% 50.15%);
         width: 145px;
+    }
+`
+
+const FreeBonusSection = styled.div`
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    height: min-content;
+    float: right;
+    width: 450px;
+    margin-left: 25px;
+
+    @media ${device.tablet} {
+        float: unset;
+        width: 100%;
+        margin-left: 0;
     }
 `
 

@@ -10,7 +10,6 @@ import { GridType } from '../../utils/constants'
 import BonusCard from '../../components/Cards/BonusCard'
 import FreqentlyAsked from '../../components/FrequentlyAsked'
 import { device } from '../../utils/device'
-import FreeBonusList from '../../components/FreeBonusList'
 import Article from '../../components/Article'
 import Divider from '../../components/Divider'
 import { squadTeam } from '../../assets/mockSquadTeam'
@@ -84,15 +83,8 @@ const SquadPage: FunctionComponent<PageProps> = ({freeBonusData, topBonusData}) 
                         spacing={2}/>
                 </Grids>
 
-                <Divider/>  
-
                 <Section>
-                    <div className="article"><Article/></div>
-
-                    <div className="free-bonus-list">
-                        <FreeBonusList data={freeBonusData.slice(0, 5)} label="I MIGLIORI CASINÒ"/>
-                        <FreeBonusList data={freeBonusData.slice(5, 10)} label="I MIGLIORI CASINÒ CON GIRI GRATIS"/>
-                    </div>
+                    <Article data={freeBonusData}/>
                 </Section>
              </div>
 
@@ -182,32 +174,17 @@ const SocialLinks = styled.div`
 
 const Grids = styled.div`
     margin: 30px 0px;
+
+    @media ${device.mobileL} { 
+        margin: 30px 0px 0px;
+    }
 `
 
 const Section = styled.section`
   display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  margin-top: 30px;
-
-  @media ${device.mobileL} {
-    flex-wrap: wrap-reverse;
-  }
-
-  .article {
-    display: flex;
-    flex-direction: column;
-    flex-grow: 2;
-    width: 300px;
-    padding: 10px;
-  }
-
-  .free-bonus-list {
-    display: flex;
-    flex-direction: column;
-    flex-grow: 1;
-    height: min-content;
-  }
+  flex-direction: column;
+  flex-grow: 2;
+  padding: 10px;
 `
 
 export async function getStaticProps() {
