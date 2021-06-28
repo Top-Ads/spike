@@ -21,8 +21,7 @@ const StyledDialog = withStyles(() =>
       maxWidth: '100%',
       maxHeight: 'none',
       borderRadius: '0',
-      backgroundColor: 'unset',
-      position: 'fixed',
+      backgroundColor: 'unset'
     },
   })
 )(Dialog)

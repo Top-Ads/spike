@@ -144,7 +144,7 @@ const Profile = styled.div`
 `
 
 const Thumbnail = styled.div`
-    height: fill-available;
+    height: fit-content;
     overflow: hidden;
     border: 5px solid ${({theme}) => theme.colors.background};
     border-radius: 10px;
