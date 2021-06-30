@@ -23,8 +23,12 @@ const SearchHit: FunctionComponent<PageProps> = ({data}) => {
     const [bonusTypeIndex, setBonusTypeIndex] = useState<number>(-1)
     const [producerTypeIndex, setProducerTypeIndex] = useState<number>(-1)
 
-    const linkToItem = (url: string) => {
-        router.push(url)
+    const handleRedirection = ({link, slug, type}: AlgoliaSearchData) => {
+
+        if (type === 'slot') 
+            router.push({ pathname: '/slot/[slug]', query: { slug: slug } })
+        else 
+            link && router.push(link)
     }
     
     useEffect(() => {
@@ -43,7 +47,7 @@ const SearchHit: FunctionComponent<PageProps> = ({data}) => {
                             { index === slotTypeIndex ||  index === bonusTypeIndex ||  index === producerTypeIndex  ?  
                                 <SearchType> <b>{item.type}</b> </SearchType> : '' }  
 
-                            <Container onClick={() => linkToItem(item.link ? item.link : '')}>
+                            <Container onClick={() => handleRedirection(item)}>
                                 <Thumbnail type={item.type}>
                                         <Image
                                             alt={item.name}
