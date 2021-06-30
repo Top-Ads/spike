@@ -53,18 +53,19 @@ type PageProps = {
   zIndex? :number,
   borderRadius?: string,
   onChange?: Function,
+  clearSearchField?: boolean
 
 }
 
 const CustomTextField: FunctionComponent<PageProps> = (props) => {
 
-    const {size='medium', searchIcon=false, placeholder, handleOnFocus, handleOnBlur, autoFocus=false, onChange} = props;
+    const {size='medium', searchIcon=false, placeholder, handleOnFocus, handleOnBlur, autoFocus=false, onChange, clearSearchField=false} = props
 
     const classes = useStyles(props)
     
     const [text, setText] = useState<string>('')
 
-    const inputRef = useRef<HTMLInputElement>(null);
+    const inputRef = useRef<HTMLInputElement>(null)
 
     const handleChange =  (event: React.ChangeEvent<HTMLInputElement>) => {
       event.preventDefault()
@@ -83,6 +84,11 @@ const CustomTextField: FunctionComponent<PageProps> = (props) => {
       if (onChange)
         onChange(text)
     }, [text])
+
+    useEffect( () => {
+      if (clearSearchField)
+        handleClearField()
+    }, [clearSearchField])
 
     return (
         <Fragment>

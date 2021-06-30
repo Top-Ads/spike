@@ -49,13 +49,13 @@ const SearchHit: FunctionComponent<PageProps> = ({data}) => {
 
                             <Container onClick={() => handleRedirection(item)}>
                                 <Thumbnail type={item.type}>
-                                        <Image
-                                            alt={item.name}
-                                            src={item.image ? item.image : `${CDN}/svg/no_img_available.svg`} 
-                                            layout="responsive"
-                                            priority={true}
-                                            width={item.type === 'slot' ? 1200 : 150}
-                                            height={item.type === 'slot' ? 675 : 150}/>
+                                    <Image
+                                        alt={item.name}
+                                        src={item.image ? item.image : `${CDN}/svg/no_img_available.svg`} 
+                                        layout="responsive"
+                                        priority={true}
+                                        width={item.type === 'slot' ? 1200 : 150}
+                                        height={item.type === 'slot' ? 675 : 150}/>
                                 </Thumbnail>
 
                                 <Info>
@@ -80,13 +80,14 @@ const Main = styled.div`
     width: 30ch;
     background-color: #f2f2f2;
     color: ${({theme}) => theme.text.color.secondary};
-    z-index: 100;
-    
+    z-index: 999;
+    max-height: 85vh;
+    overflow-y: auto;
+    overflow-x: hidden;
+
     @media ${device.mobileL} {
-        overflow-y: scroll;
-        overflow-x: hidden;
-        max-height: 70vh;
         width: 90%;
+        max-height: 80vh;
     } 
 `
 

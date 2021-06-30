@@ -20,15 +20,20 @@ import DialogSlider from '../Modals/DialogSlider'
 import { AlgoliaSearchData, Slot } from '../../interfaces'
 import NavBrowserProvider from '../NavProvider/BrowserView'
 import NavMobileProvider from '../NavProvider/MobileView'
+import ClickAwayListener from '@material-ui/core/ClickAwayListener'
 
 type PageProps = {
   isBrowserView: boolean
 }
 
+type OverlayProps = {
+  show: boolean
+}
+
 const Header: FunctionComponent<PageProps> = ({isBrowserView}) => { 
   
   const [showNav, setShowNav] = useState<boolean>(isBrowserView)
-  const [showTextInput, setShowTextInput] = useState<boolean>(false)
+  const [showSearchMobile, setShowSearchMobile] = useState<boolean>(false)
   const [overlay, setOverlay] = useState<boolean>(false)
   const [openDialog, setOpenDialog] = useState<boolean>(false)
   const [category, setCategory] = useState<string>('')
@@ -66,10 +71,15 @@ const Header: FunctionComponent<PageProps> = ({isBrowserView}) => {
   const handleOnSearch = async (searchItem: string) => {
     
     if (!searchItem.length) {
+
+      setOverlay(false)
       setSearchResult([])
+      
       return
-    }
-    else {
+
+    } else {
+      setOverlay(true)
+
       const results = await algoliaIndex!.search<AlgoliaSearchData[] | undefined>(searchItem, { 
         filters: `country: it`,
       })
@@ -87,6 +97,11 @@ const Header: FunctionComponent<PageProps> = ({isBrowserView}) => {
         }
       }))
     }
+  }
+
+  const exitOverlay = () => {
+    setShowSearchMobile(false)
+    setOverlay(false)
   }
 
   useEffect(() => {
@@ -118,22 +133,9 @@ const Header: FunctionComponent<PageProps> = ({isBrowserView}) => {
     <Fragment>
         <Main>
 
-          { showTextInput ? 
-              <Fragment>
-                <Overlay onClick={() => setShowTextInput(!showTextInput)}/>
-                <div className="textFieldMobile">
-                  <CustomTextField
-                        zIndex={100}
-                        onChange={handleOnSearch}
-                        autoFocus
-                        searchIcon
-                        borderRadius={'20px'}
-                        placeholder="Cerca una slot, un casino..."/>
-                  <SearchHit data={searchResult}/>
-                </div>
-              
-              </Fragment> :
+        <Overlay show={overlay} onClick={exitOverlay}/>
 
+          { !showSearchMobile ? 
               <TopHeader>
 
                 <Link href={'/'}>
@@ -149,8 +151,6 @@ const Header: FunctionComponent<PageProps> = ({isBrowserView}) => {
                   </Logo>
                 </Link>
 
-                { overlay ? <Overlay onClick={() => setOverlay(!overlay)}/> : '' }
-
                 <Actions>
                   <Search>
                     <div className="textFieldDesktop">
@@ -161,23 +161,42 @@ const Header: FunctionComponent<PageProps> = ({isBrowserView}) => {
                         borderRadius={'20px'}
                         searchIcon
                         placeholder="Cerca una slot, un casino..."
-                        handleOnFocus={() => setOverlay(true)}/>
+                        clearSearchField={!overlay}
+                        />
 
-                        { overlay ? <SearchHit data={searchResult}/> : '' }
+                        { overlay && <SearchHit data={searchResult}/> }
                     </div>
 
-                    <SearchIcon className="search-icon icons" onClick={() => setShowTextInput(true) }/> 
+                    <SearchIcon className="search-icon icons" onClick={() => setShowSearchMobile(true) }/> 
                   </Search>
               
                   <ShoppingCartOutlinedIcon className='icons' onClick={ () => handleDialogSlider(Category.SHOPPINGCART)} />
 
                   <FavoriteBorderIcon className='icons' onClick={ () => handleDialogSlider(Category.FAVORITES)} />
-                  {showNav ? 
+                  { showNav ? 
                     <CloseIcon className='icons' onClick={handleMenu}/> 
                   : <MenuIcon className='icons' onClick={handleMenu}/> }
                 </Actions>
 
-              </TopHeader>
+              </TopHeader> 
+              
+              :
+
+              <Fragment>
+                <ClickAwayListener onClickAway={exitOverlay}>
+                  <div className="textFieldMobile">
+                    <CustomTextField
+                          zIndex={100}
+                          onChange={handleOnSearch}
+                          autoFocus
+                          searchIcon
+                          borderRadius={'20px'}
+                          placeholder="Cerca una slot, un casino..."/>
+                    <SearchHit data={searchResult}/>
+                  </div>
+                </ClickAwayListener>
+              
+              </Fragment> 
           }     
           
           { isBrowserView ? <NavBrowserProvider showNav={showNav} setShowNav={setShowNav}/> : 
@@ -239,14 +258,16 @@ const Logo = styled.div`
   }
 `
 
-const Overlay = styled.div`    
-  position: fixed;
+const Overlay = styled.div<OverlayProps>` 
+  position: ${({show}) => show ? 'fixed' : 'unset' };
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
   background: rgba(0,0,0,.25);
-  z-index: 100;
+  z-index: ${({show}) => show ? 100 : -1 };
+  opacity: ${({show}) => show ? 1 : 0 };
+  transition: opacity 750ms;
 `
 
 const Search = styled.div` 
