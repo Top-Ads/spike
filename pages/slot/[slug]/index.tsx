@@ -37,15 +37,42 @@ const SlotPage: FunctionComponent<PageProps> = ({slotData}) => {
 
     const handleOnPlay = () => setShowIframe(true)
 
-    const openFullScreen = () => { 
+    const goFullScreen = () => {
         setFullscreen(true)
-        thumbnailRef.current?.requestFullscreen() 
+
+        const elem = thumbnailRef.current as HTMLElement & {
+            mozRequestFullScreen(): Promise<void>;
+            webkitRequestFullscreen(): Promise<void>;
+            msRequestFullscreen(): Promise<void>;
+        };
+        if (elem.requestFullscreen) {
+            elem.requestFullscreen();
+        } else if (elem.mozRequestFullScreen) { /* Firefox */
+            elem.mozRequestFullScreen();
+        } else if (elem.webkitRequestFullscreen) { /* Chrome, Safari & Opera */
+            elem.webkitRequestFullscreen();
+        } else if (elem.msRequestFullscreen) { /* IE/Edge */
+            elem.msRequestFullscreen();
+        }
     }
 
-    const exitFullScreen = (event: React.SyntheticEvent) => { 
+    const exitFullScreen = (event: React.SyntheticEvent) => {
         event.stopPropagation()
 
-        document.exitFullscreen()
+        const elem = document as Document & {
+            mozCancelFullScreen(): Promise<void>;
+            webkitExitFullscreen(): Promise<void>;
+            msExitFullscreen(): Promise<void>;
+        };
+        if (elem.exitFullscreen && elem.fullscreen) {
+            elem.exitFullscreen();
+        } else if (elem.mozCancelFullScreen && elem.fullscreen) { /* Firefox */
+            elem.mozCancelFullScreen();
+        } else if (elem.webkitExitFullscreen && elem.fullscreen) { /* Chrome, Safari and Opera */
+            elem.webkitExitFullscreen();
+        } else if (elem.msExitFullscreen && elem.fullscreen) { /* IE/Edge */
+            elem.msExitFullscreen();
+        }
     }
 
     const handleKeyDown = (event: KeyboardEvent) => {
@@ -74,7 +101,7 @@ const SlotPage: FunctionComponent<PageProps> = ({slotData}) => {
             <Fragment>
                 <div className="space-around">
 
-                    <Divider/><br/>
+                    <Divider/>
 
                     <Main>
 
@@ -108,7 +135,7 @@ const SlotPage: FunctionComponent<PageProps> = ({slotData}) => {
 
                             <Actions className={'slot-actions'}>
                                 <LikeIcon setActive={handleActiveLike} active={active}/>
-                                <FullscreenIcon className="fullscreen-icon" onClick={openFullScreen}/>    
+                                <FullscreenIcon className="fullscreen-icon" onClick={goFullScreen}/>    
                             </Actions> 
 
                         </SlotContainer>
