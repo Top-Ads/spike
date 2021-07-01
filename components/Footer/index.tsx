@@ -122,7 +122,6 @@ const SocialNetworks = styled.div`
     display: flex;
     flex-direction: row;
     justify-content: center;
-    margin-bottom: 5px;
 `
 
 export default Footer

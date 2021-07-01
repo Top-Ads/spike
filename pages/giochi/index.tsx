@@ -54,7 +54,10 @@ const GiochiPage: FunctionComponent<PageProps> = (props) => {
         return Math.floor(Math.random() * (max - min) + min); //The maximum is exclusive and the minimum is inclusive
     }
 
-    const fetchSlotsData = async (limit: number, start: number, sortBy?: string, producer?: string) => {
+    const fetchSlotsData = async (props: any) => {
+
+        const {limit, start, sortBy, producer, search} = props
+
         const request =  await aquaClient.query({ 
             query: SLOTS, 
             variables: { 
@@ -62,7 +65,8 @@ const GiochiPage: FunctionComponent<PageProps> = (props) => {
                 limit: limit,
                 start: start,
                 sort: sortBy,
-                producer: producer
+                producer: producer,
+                name_contains: search
              } 
         })
 
@@ -70,7 +74,7 @@ const GiochiPage: FunctionComponent<PageProps> = (props) => {
     }
 
     const loadMore = async () => {
-        const moreFreeSlots = await fetchSlotsData(12, freeSlots.length)
+        const moreFreeSlots = await fetchSlotsData({limit: 12, start: freeSlots.length})
 
         setFreeSlots([...freeSlots, ...moreFreeSlots])    
     }
@@ -79,7 +83,7 @@ const GiochiPage: FunctionComponent<PageProps> = (props) => {
         clear()
 
         setItemSelected(menuList.SHUFFLE)
-        const shuffleFreeSlots = await fetchSlotsData(36, getRandomInt(freeSlots.length, 500))
+        const shuffleFreeSlots = await fetchSlotsData({limit: 36, start: getRandomInt(freeSlots.length, 500)})
 
         setFreeSlots(shuffleFreeSlots)    
     }
@@ -87,23 +91,12 @@ const GiochiPage: FunctionComponent<PageProps> = (props) => {
     const handleSearch = (text: string) => {
         clear()
         
-        if (!text.length) {
-            setFreeSlots(freeSlotsData)
-        }
-
-        if (text.length >= 2) {
-
-            setTimeout( async () => {
-                const searchSlotRequest =  await aquaClient.query({ 
-                    query: SLOTS, 
-                    variables: { countryCode: 'it', name_contains: text } 
-                })
-    
-                const newData = searchSlotRequest.data.data.slots
-                
-                setFreeSlots(newData)
-            }, 750);
-        }
+        setTimeout( async function () { 
+            if (text.length >= 2) {
+                setFreeSlots(await fetchSlotsData({search: text}))
+            } else 
+                setFreeSlots(freeSlotsData)
+        }, 500); 
     }
  
     const handleItemSelected = async (itemSelected: string) => {
@@ -112,7 +105,7 @@ const GiochiPage: FunctionComponent<PageProps> = (props) => {
         const sortItem = itemSelected === menuList.ALPHABETIC ? 
         `${itemSelected.toLowerCase()}:asc` : `${itemSelected.toLowerCase()}:desc`
         
-        const data = await fetchSlotsData(36, 0, sortItem)
+        const data = await fetchSlotsData({limit:36, start: 0, sortBy: sortItem})
             
         setFreeSlots(data)
         setItemSelected(itemSelected)
@@ -121,7 +114,7 @@ const GiochiPage: FunctionComponent<PageProps> = (props) => {
     const handleProducerSelected = async (producerSelected: string) => {
         const sortBy = itemSelected.toLowerCase() === menuList.SHUFFLE ? menuList.ALPHABETIC : itemSelected.toLowerCase()
 
-        const data = await fetchSlotsData(36, 0, sortBy, producerSelected)
+        const data = await fetchSlotsData({limit:36, start: 0, sortBy: sortBy, producer: producerSelected})
             
         setFreeSlots(data)
         setProducerSelected(producerSelected)

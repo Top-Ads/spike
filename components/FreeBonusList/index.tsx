@@ -20,7 +20,7 @@ const FreeBonusList: FunctionComponent<PageProps> = ({data, label}) => {
               <GridCards
                 type={GridType.FREE}
                 content={ data.map( (bonus, index) =>
-                  <LazyLoad offset={100}>
+                  <LazyLoad offset={200}>
                     <FreeBonusCard key={index} data={bonus}/>
                   </LazyLoad> )}
                 label={label}
