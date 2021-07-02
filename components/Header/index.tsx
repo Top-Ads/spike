@@ -224,7 +224,7 @@ const Main = styled.div`
   border-radius: 0px 0px 20px 20px;
   box-shadow: ${({theme}) => theme.button.boxShadowX};
   color: ${({theme}) => theme.text.color.primary};
-  padding: 5px 10%;
+  padding: 5px 7%;
 
   @media ${device.tablet} {
     position: fixed;

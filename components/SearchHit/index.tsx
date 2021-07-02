@@ -39,7 +39,7 @@ const SearchHit: FunctionComponent<PageProps> = ({data}) => {
 
     return (
         <Fragment>
-             <Main className='main'> 
+             <Main> 
                 {data.length ? 
                     data.map((item: AlgoliaSearchData, index: number) => 
                         <Fragment key={index}>
@@ -74,20 +74,21 @@ const SearchHit: FunctionComponent<PageProps> = ({data}) => {
 
 const Main = styled.div`
     position: absolute;
-    margin-top: 5px;
+    margin-top: 12px;
     display: flex;
     flex-direction: column;
-    width: 30ch;
+    width: 45ch;
+    height: auto;
     background-color: #f2f2f2;
     color: ${({theme}) => theme.text.color.secondary};
     z-index: 999;
-    max-height: 85vh;
-    overflow-y: auto;
-    overflow-x: hidden;
-
+    overflow: hidden;
+    border-radius: 5px;
+\
     @media ${device.mobileL} {
         width: 90%;
-        max-height: 80vh;
+        max-height: 75vh;
+        overflow: scroll;
     } 
 `
 
@@ -97,6 +98,9 @@ const Container = styled.div`
     align-items: center;
     padding: 10px 5px;
     border-top: 1px solid ${({theme}) => theme.colors.background};
+    &:hover {
+        background-color: rgba(0, 0, 0, 0.1);
+    }
     
 `
 
@@ -110,10 +114,9 @@ const Info = styled.div`
     display: flex;
     flex-direction: column;
     align-self: flex-start;
-    text-align: left;
     flex-grow: 2;
     width: min-content;
-    padding: 0px 5px;
+    margin: auto 15px
 `
 
 const Name = styled.div`
@@ -134,6 +137,8 @@ const SearchType = styled.div `
     background-color: ${({theme}) => theme.colors.background};
     text-transform: uppercase;
     color: #fff;
+    border-top-left-radius: inherit;
+    border-top-right-radius: inherit;
 `
 
 export default SearchHit

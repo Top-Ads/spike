@@ -505,7 +505,7 @@ const FreeBonusSection = styled.div`
     flex-grow: 1;
     height: min-content;
     float: right;
-    width: 450px;
+    width: 350px;
     margin-left: 25px;
 
     @media ${device.tablet} {

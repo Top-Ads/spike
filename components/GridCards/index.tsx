@@ -13,7 +13,7 @@ const useStyles = makeStyles<Theme, PageProps>(() =>
     root: {
       flexGrow: 1,
       margin: '5px',
-      width: ({width, type}) => width ? width : type === GridType.SLOTS ? '400px': 'fill-available',
+      width: ({width, type}) => width ? width : type === GridType.SLOTS ? '500px': 'fill-available',
       ['@media (max-width: 768px)']: {
         width: ({width}) => width ? width : 'fill-available',
         '& .MuiGrid-container' : {

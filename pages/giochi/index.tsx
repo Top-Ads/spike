@@ -258,20 +258,16 @@ const GiochiPage: FunctionComponent<PageProps> = (props) => {
 
 const Header = styled.div`
     background-image: linear-gradient(180deg, ${({theme}) => theme.colors.background} 0%, ${({theme}) => theme.colors.gradient} 50%);
-    padding: 0 10%;
+    padding: 0px 7%;
     margin-top: 20px;
     color: #fff;
     display: flex;
     flex=direction: row;
     flex-wrap: wrap;
     
-    span {
-        font-size: small;
-    }
+    span { font-size: small; }
 
-    p {
-        color: #fff;
-    }
+    p { color: #fff; }
 `
 
 const Intro = styled.div`
