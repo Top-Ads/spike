@@ -1,7 +1,7 @@
 import { createContext } from "react"
 
-export const DislikedSlotContext = createContext({
-    slotDislikedId: '',
-    setSlotDislikedId: (_id: string) => {}
+export const removeLikeSlotContext = createContext({
+    removeLikeSlotId: '',
+    setRemoveLikeSlotId: (_id: string) => {}
 })
 

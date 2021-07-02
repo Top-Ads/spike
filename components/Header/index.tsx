@@ -12,7 +12,7 @@ import ShoppingCartOutlinedIcon from '@material-ui/icons/ShoppingCartOutlined'
 import { Category } from '../../utils/constants'
 import FavoriteCard from '../Cards/FavoriteCard'
 import ShoppingCard from '../Cards/ShoppingCard'
-import { DislikedSlotContext } from '../../contexts'
+import { removeLikeSlotContext } from '../../contexts'
 import { APIKEY, APPLICATIONID, CDN } from '../../public/environment'
 import { SearchIndex } from 'algoliasearch/lite'
 import SearchHit from '../SearchHit'
@@ -37,11 +37,11 @@ const Header: FunctionComponent<PageProps> = ({isBrowserView}) => {
   const [overlay, setOverlay] = useState<boolean>(false)
   const [openDialog, setOpenDialog] = useState<boolean>(false)
   const [category, setCategory] = useState<string>('')
-  const [item, setItem] = useState<any[]>([])
+  const [contentSlider, setContentSlider] = useState<any[]>([])
   const [algoliaIndex, setAlgoliaIndex] = useState<SearchIndex | undefined>(undefined)
   const [searchResult, setSearchResult] = useState<AlgoliaSearchData[]>([])
 
-  const  {setSlotDislikedId}  = useContext(DislikedSlotContext)
+  const {setRemoveLikeSlotId}  = useContext(removeLikeSlotContext)
 
   const handleMenu = (event: React.MouseEvent) => { 
     event.stopPropagation()
@@ -56,15 +56,15 @@ const Header: FunctionComponent<PageProps> = ({isBrowserView}) => {
 
   const deleteItem = (id: string) => {
 
-    setSlotDislikedId(id)
+    setRemoveLikeSlotId(id)
 
-    const newItems: any[] = item.filter( (card: Slot) => {
+    const newContent: any[] = contentSlider.filter( (card: Slot) => {
           return card.id !== id
     })
 
-    if (newItems) {
-      setItem(newItems)
-      localStorage.setItem(Category.FAVORITES, JSON.stringify(newItems))
+    if (newContent) {
+      setContentSlider(newContent)
+      localStorage.setItem(Category.FAVORITES, JSON.stringify(newContent))
     }
   }
 
@@ -119,12 +119,12 @@ const Header: FunctionComponent<PageProps> = ({isBrowserView}) => {
       if (category === Category.FAVORITES) {
         const currentItem = localStorage.getItem(category)
         if (currentItem) {
-          setItem(JSON.parse(currentItem))
+          setContentSlider(JSON.parse(currentItem))
         }
       }
       
       if (category === Category.SHOPPINGCART) {
-         setItem([])
+         setContentSlider([])
       }
     }
   }, [openDialog, category])
@@ -206,9 +206,9 @@ const Header: FunctionComponent<PageProps> = ({isBrowserView}) => {
             category={category} 
             open={openDialog} 
             setOpen={setOpenDialog}
-            content={item.map( (element: Slot, index: number) => 
+            content={contentSlider.map( (content: Slot, index: number) => 
               category === Category.FAVORITES ? 
-              <FavoriteCard key={index} data={element} deleteItem={deleteItem} /> : <ShoppingCard key={index} data={element}/> )}
+              <FavoriteCard key={index} data={content} deleteItem={deleteItem} /> : <ShoppingCard key={index} data={content}/> )}
           />
 
         </Main>

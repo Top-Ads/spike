@@ -1,4 +1,4 @@
-import React, { Fragment, FunctionComponent, useState } from 'react'
+import React, { Fragment, FunctionComponent, useState, useEffect } from 'react'
 import styled from 'styled-components'
 import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder'
 import FavoriteIcon from '@material-ui/icons/Favorite'
@@ -24,6 +24,10 @@ const LikeIcon: FunctionComponent<PageProps> = ({color, active, setActive}) => {
         setFill(!active)
     }
     
+    useEffect( () => {
+        setFill(active)
+    }, [active])
+
     return (
         <Fragment>
             <Like 

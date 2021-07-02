@@ -1,4 +1,4 @@
-import React, { FunctionComponent, useState, Fragment, useRef, useEffect } from 'react'
+import React, { FunctionComponent, useState, Fragment, useRef, useEffect, useContext } from 'react'
 import { NextPageContext } from 'next'
 import Image from 'next/image'
 import styled from 'styled-components'
@@ -17,6 +17,8 @@ import { SLOTS } from '../../api/graphql/queries/slots'
 import { Slot } from '../../../interfaces'
 import LikeIcon from '../../../components/LikeIcon'
 import CloseIcon from '@material-ui/icons/HighlightOff'
+import { Category } from '../../../utils/constants'
+import { removeLikeSlotContext } from '../../../contexts'
 
 type PageProps = {
     slotData: Slot
@@ -30,10 +32,12 @@ const SlotPage: FunctionComponent<PageProps> = ({slotData}) => {
 
     const [showIframe, setShowIframe] = useState<boolean>(false)
     const [isFullscreen, setFullscreen] = useState<boolean>(false)
-    const [active, setActive] = useState<boolean>(false)
+    const [likedSlot, setLikedSlot] = useState<boolean>(false)
 
     const iframeRef = useRef<HTMLIFrameElement>(null)
     const thumbnailRef = useRef<HTMLDivElement>(null)
+
+    const {removeLikeSlotId, setRemoveLikeSlotId}  = useContext(removeLikeSlotContext)
 
     const handleOnPlay = () => setShowIframe(true)
 
@@ -83,6 +87,11 @@ const SlotPage: FunctionComponent<PageProps> = ({slotData}) => {
     const handleScreenChange = () => document.fullscreenElement ? setFullscreen(true) : setFullscreen(false)
     
     useEffect( () => {
+        const currentItem: string | null = localStorage.getItem(Category.FAVORITES)
+
+        if (currentItem && JSON.parse(currentItem).some( (slot: Slot) => slot.id === slotData.id )) 
+            setLikedSlot(true)
+
         document.addEventListener("keydown", handleKeyDown, false)
         document.addEventListener("fullscreenchange", handleScreenChange, false)
 
@@ -92,10 +101,35 @@ const SlotPage: FunctionComponent<PageProps> = ({slotData}) => {
         }
     }, [])
 
-    const handleActiveLike = () => {
-        setActive(!active)
-    }
+    useEffect( () => {
+        if (removeLikeSlotId === slotData.id) {
+            setLikedSlot(false)
+            setRemoveLikeSlotId('')
+        }        
+    }, [removeLikeSlotId])
 
+    useEffect( () => {
+        const currentItem: string | null = localStorage.getItem(Category.FAVORITES)
+
+        if (currentItem) {
+            if (likedSlot) {
+                const currFavorites: Slot[] = JSON.parse(currentItem)
+
+                currFavorites?.push(slotData)
+
+                localStorage.setItem(Category.FAVORITES, JSON.stringify(currFavorites))
+           
+            } else {
+                const newItems: any[] = JSON.parse(currentItem).filter( (card: Slot) => {
+                    return card.id !== slotData.id
+                })
+
+                localStorage.setItem(Category.FAVORITES, JSON.stringify(newItems))
+            }
+        }  
+
+    }, [likedSlot])
+    
     return (
         <Layout title={slotData.name}> 
             <Fragment>
@@ -134,7 +168,7 @@ const SlotPage: FunctionComponent<PageProps> = ({slotData}) => {
                             </Thumbnail>
 
                             <Actions className={'slot-actions'}>
-                                <LikeIcon setActive={handleActiveLike} active={active}/>
+                                <LikeIcon setActive={() => setLikedSlot(!likedSlot)} active={likedSlot}/>
                                 <FullscreenIcon className="fullscreen-icon" onClick={goFullScreen}/>    
                             </Actions> 
 

@@ -1,7 +1,7 @@
 import React, { Fragment, FunctionComponent, useEffect, useState } from "react"
 import { ThemeProvider } from "styled-components"
 import { Workbox } from "workbox-window"
-import { DislikedSlotContext } from "../contexts"
+import { removeLikeSlotContext } from "../contexts"
 import { GlobalStyle, styledTheme } from "../theme"
 
 interface IProps {
@@ -25,13 +25,13 @@ export default function App( {Component, pageProps}: IProps) {
 
     const ContextProvider: FunctionComponent = ({ children }) => {
 
-        const [slotDislikedId, setSlotDislikedId] = useState('')
+        const [removeLikeSlotId, setRemoveLikeSlotId] = useState('')
 
         return (
             <Fragment>
-                <DislikedSlotContext.Provider value={{slotDislikedId, setSlotDislikedId}}>
+                <removeLikeSlotContext.Provider value={{removeLikeSlotId, setRemoveLikeSlotId}}>
                     {children}
-                </DislikedSlotContext.Provider>
+                </removeLikeSlotContext.Provider>
             </Fragment>
         )
     }

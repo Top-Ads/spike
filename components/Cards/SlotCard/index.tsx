@@ -1,14 +1,15 @@
-import React, { Fragment, FunctionComponent, useContext, useEffect, useRef, useState } from 'react'
+import React, { Fragment, FunctionComponent, useContext, useEffect, useState } from 'react'
 import { useRouter } from 'next/router'
 import Image from 'next/image'
 import styled from 'styled-components'
 import LikeIcon from '../../LikeIcon'
 import { Category } from '../../../utils/constants'
-import { DislikedSlotContext } from '../../../contexts'
+import { removeLikeSlotContext } from '../../../contexts'
 import { CDN } from '../../../public/environment'
 import LazyLoad, { forceCheck } from 'react-lazyload'
 import { Slot } from '../../../interfaces'
 import SpinnerLoader from '../../SpinnerLoader'
+import ClickAwayListener from '@material-ui/core/ClickAwayListener'
 
 type PageProps = {
    data: Slot
@@ -17,27 +18,11 @@ type PageProps = {
 const SlotCard: FunctionComponent<PageProps> = ({data}) => { 
     const router = useRouter()
 
-    const ref = useRef<HTMLDivElement>(null);
-
-    const [triggerOnClick, setTriggerOnClick] = useState<boolean>(false)
     const [showBanner, setShowBanner] = useState<boolean>(false)
-    const [isFavorite, setIsFavorite] = useState<boolean>(false)
+    const [likedSlot, setLikedSlot] = useState<boolean>(false)
     const [loading, setLoading] = useState<boolean>(true)
 
-    const  {slotDislikedId, setSlotDislikedId}  = useContext(DislikedSlotContext)
-
-    const handleTouchOutside = (event: TouchEvent) => {
-        if (ref.current && !ref.current.contains(event.target as Node)) {
-            setShowBanner(false)
-        }
-    };
-
-    useEffect(() => {
-        document.addEventListener('touchstart', handleTouchOutside, true);
-        return () => {
-            document.removeEventListener('touchstart', handleTouchOutside, true);
-        };
-    }, [ref]);
+    const {removeLikeSlotId, setRemoveLikeSlotId}  = useContext(removeLikeSlotContext)
 
     const playSlot = () => {
         router.push({
@@ -45,32 +30,21 @@ const SlotCard: FunctionComponent<PageProps> = ({data}) => {
             query: { slug: data.slug }
         })
     }
- 
-    const handleActiveLike = () => {
-        setTriggerOnClick(true)
-        setIsFavorite(!isFavorite)
-    }
-
-    const handleOnTouch = () => {
-        setShowBanner(!showBanner)
-    }
 
     useEffect( () => {
-
         forceCheck()
 
         const currentItem: string | null = localStorage.getItem(Category.FAVORITES)
 
         if (currentItem && JSON.parse(currentItem).some( (slot: Slot) => slot.id === data.id )) 
-            setIsFavorite(true)
-
+            setLikedSlot(true)
     }, [])
 
     useEffect( () => {
         const currentItem: string | null = localStorage.getItem(Category.FAVORITES)
 
-        if (currentItem && triggerOnClick) {
-            if (isFavorite) {
+        if (currentItem) {
+            if (likedSlot) {
                 const currFavorites: Slot[] = JSON.parse(currentItem)
 
                 currFavorites?.push(data)
@@ -84,32 +58,29 @@ const SlotCard: FunctionComponent<PageProps> = ({data}) => {
 
                 localStorage.setItem(Category.FAVORITES, JSON.stringify(newItems))
             }
-
-            setTriggerOnClick(false)
         }  
 
-    }, [isFavorite, triggerOnClick])
+    }, [likedSlot])
 
     useEffect( () => {
-
-        if (slotDislikedId === data.id) {
-            setIsFavorite(false)
-            setSlotDislikedId('')
+        if (removeLikeSlotId === data.id) {
+            setLikedSlot(false)
+            setRemoveLikeSlotId('')
         }        
-    }, [slotDislikedId])
+    }, [removeLikeSlotId])
 
     return (
         <Fragment>
+            <ClickAwayListener onClickAway={ () =>  setShowBanner(false)} >
             <Main  
-                ref={ref}
                 onClick={playSlot}
                 onMouseEnter={ () => setShowBanner(true)}
                 onMouseLeave={ () => setShowBanner(false)}
-                onTouchStart={handleOnTouch}>
+                onTouchStart={ () => setShowBanner(!showBanner)}>
                 
-                { showBanner || isFavorite ?
+                { showBanner || likedSlot ?
                 <Icon>  
-                    <LikeIcon setActive={handleActiveLike} active={isFavorite}/>
+                    <LikeIcon setActive={() => setLikedSlot(!likedSlot)} active={likedSlot}/>
                 </Icon> : '' } 
                
                 
@@ -140,6 +111,8 @@ const SlotCard: FunctionComponent<PageProps> = ({data}) => {
 
             </Main>
 
+            </ClickAwayListener>
+          
             <Title>{data.name}</Title>
         </Fragment>
     ) 
