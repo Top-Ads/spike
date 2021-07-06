@@ -44,7 +44,7 @@ const SlotPage: FunctionComponent<PageProps> = ({slotData}) => {
     const goFullScreen = () => {
         setFullscreen(true)
 
-        const elem = thumbnailRef.current as HTMLElement & {
+        const elem = thumbnailRef.current as HTMLDivElement & {
             mozRequestFullScreen(): Promise<void>;
             webkitRequestFullscreen(): Promise<void>;
             msRequestFullscreen(): Promise<void>;

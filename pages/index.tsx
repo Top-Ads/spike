@@ -56,11 +56,11 @@ const IndexPage: FunctionComponent<PageProps> = ({slotsData, freeBonusData, topB
         <Thumbnail>
             <Image
               alt="Casino Squad"
-              src={`${CDN}/gif/logo3D-min.gif`}
+              src={`${CDN}/gif/casinosquad-3D.gif`}
               layout="responsive"
               priority={false}
-              width={1280}
-              height={720}/>
+              width={540}
+              height={540}/>
         </Thumbnail>
 
         <p>
@@ -168,13 +168,13 @@ const Intro = styled.div`
   display: inherit;
   flex-direction: column;
   width: 65%;
-  flex-grow: 1;
 
   ul { color: ${({theme}) => theme.text.color.secondary}; }
 
   @media ${device.mobileL} {
     h1 { text-align: center; }
     align-items: center;
+    flex-grow: 1;
   } 
 `
 
@@ -195,12 +195,15 @@ const Button = styled.div`
 `
 
 const Thumbnail = styled.div`
-  width: 35%;
+  width: 20%;
   margin: auto;
-  
+    
+  @media ${device.tablet} {
+    width: 25%;
+  }
+
   @media ${device.mobileL} {
-    width: 90%;
-    margin-top: 15px;
+    width: 70%;
   }
 `
 

@@ -236,8 +236,7 @@ const SpinsTable: FunctionComponent<PageProps> = ({data=[]}) => {
         page={page}
         onChangePage={handleChangePage}
         onChangeRowsPerPage={handleChangeRowsPerPage}>
-
-        </TablePagination>
+      </TablePagination>
     </Paper>
 
   )
