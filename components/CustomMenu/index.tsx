@@ -17,7 +17,7 @@ import EqualizerIcon from '@material-ui/icons/Equalizer'
 import ExpandLessIcon from '@material-ui/icons/ExpandLess'
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore'
 import ShuffleIcon from '@material-ui/icons/Shuffle'
-import { menuList } from '../../utils/constants'
+import { SlotFilterList } from '../../utils/constants'
 
 const useStyles = makeStyles( () =>
   createStyles({
@@ -41,7 +41,7 @@ type PageProps = {
   listItems: string []
 }
 
-const MenuListComposition: FunctionComponent<PageProps> = ({itemSelected, setItemSelected, listItems}) => {
+const CustomMenu: FunctionComponent<PageProps> = ({itemSelected, setItemSelected, listItems}) => {
 
   const classes = useStyles()
 
@@ -79,17 +79,17 @@ const MenuListComposition: FunctionComponent<PageProps> = ({itemSelected, setIte
 
   const renderIconForItem = (value: string) => {
         switch(value) {
-            case menuList.RTP :
+            case SlotFilterList.RTP :
                 return  <EqualizerIcon fontSize="small" />
-            case menuList.LIKES :
+            case SlotFilterList.LIKES :
                 return  <ThumbUpAltIcon fontSize="small" />
-            case menuList.UPDATED_AT :
+            case SlotFilterList.UPDATED_AT :
                 return  <ScheduleIcon fontSize="small" />
-            case menuList.CREATED_AT :
+            case SlotFilterList.CREATED_AT :
                 return  <DateRangeIcon fontSize="small" />
-            case menuList.ALPHABETIC :
+            case SlotFilterList.ALPHABETIC :
                 return  <SortByAlphaIcon fontSize="small" />
-            case menuList.SHUFFLE :
+            case SlotFilterList.SHUFFLE :
               return  <ShuffleIcon fontSize="small" />
         }
   }
@@ -164,4 +164,4 @@ const Button = styled.div`
     align-items: center;
 `
 
-export default MenuListComposition
+export default CustomMenu

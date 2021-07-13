@@ -21,7 +21,7 @@ const useStyles = makeStyles<Theme, PageProps>(() =>
             color: '#212530',
             fontSize: '16px',
             fontWeight: 'bold',
-            borderRadius: ({borderRadius}) => borderRadius ? borderRadius: '15px',
+            borderRadius: ({borderRadius}) => borderRadius ? borderRadius: '10px',
             height: '100%'
         },
         '& .MuiOutlinedInput-notchedOutline': {

@@ -6,7 +6,7 @@ import Divider from '../../../components/Divider'
 import GridCards from '../../../components/GridCards'
 import CustumSelect from '../../../components/Inputs/Select'
 import Layout from '../../../components/Layout'
-import { GridType } from '../../../utils/constants'
+import { GridType, LiveStats } from '../../../utils/constants'
 import axios from 'axios'
 import { APISOCKET } from '../../../public/environment'
 import { io, Socket } from 'socket.io-client'
@@ -34,12 +34,12 @@ const CrazyTimePage: FunctionComponent<PageProps> = ({statsData, spinsData, bonu
     const [lastUpdate, setLastUpdate] = useState<Date>(new Date(Date.now()))
 
     const fetchStatsData = async (timeFrame: string) => {
-        const dataStataRequest  = await axios.get(`${APISOCKET}/api/data-for-the-last-hours/${timeFrame}`)
+        const dataStataRequest  = await axios.get(`${APISOCKET.CRAZYTIME}/api/data-for-the-last-hours/${timeFrame}`)
         setStats(dataStataRequest.data.stats.stats)
     }
 
     useEffect( () => {
-        setSocket(io(APISOCKET, {secure:true, rejectUnauthorized : false, transports: ["websocket"]}))
+        setSocket(io(APISOCKET.CRAZYTIME, {secure:true, rejectUnauthorized : false, transports: ["websocket"]}))
 
         return () => { socket && socket.disconnect() }
     }, [])
@@ -98,7 +98,7 @@ const CrazyTimePage: FunctionComponent<PageProps> = ({statsData, spinsData, bonu
                             <GridCards
                                 type={GridType.STATS} 
                                 content={ stats.map( (stats: Stats, index: number) => 
-                                    <StatsCard key={index} data={stats} timeFrame={selected}/>
+                                    <StatsCard key={index} data={stats} timeFrame={selected} type={LiveStats.CRAZYTIME}/>
                                 )}
                                 AlignItem={"center"}
                                 xs={12} sm={3} md={3}
@@ -137,7 +137,7 @@ const CrazyTimePage: FunctionComponent<PageProps> = ({statsData, spinsData, bonu
 
                     <SpinsContainer>
                         <h3>Storico degli Spin</h3>
-                        <SpinsTable data={spins}/>
+                        <SpinsTable data={spins} type={LiveStats.CRAZYTIME}/>
                     </SpinsContainer>
  
                 </Main>
@@ -281,8 +281,8 @@ export async function getStaticProps() {
     
     const aquaClient = new AquaClient()
 
-    const dataStatsRequest  = await axios.get(`${APISOCKET}/api/data-for-the-last-hours/24h`)
-    const dataSpinsRequest  = await axios.get(`${APISOCKET}/api/get-latest/15`)
+    const dataStatsRequest  = await axios.get(`${APISOCKET.CRAZYTIME}/api/data-for-the-last-hours/24h`)
+    const dataSpinsRequest  = await axios.get(`${APISOCKET.CRAZYTIME}/api/get-latest/15`)
 
     const PAGE_BONUSES = ["BetFlag", "LeoVegas", "888 Casino", "StarCasinò", "Unibet", "PokerStars Casino"]
 

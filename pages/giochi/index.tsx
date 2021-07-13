@@ -6,12 +6,12 @@ import Divider from '../../components/Divider'
 import GridCards from '../../components/GridCards'
 import Layout from '../../components/Layout'
 import SlotsCounter from '../../components/SlotsCounter'
-import { GridType, menuList } from '../../utils/constants'
+import { GridType, SlotFilterList } from '../../utils/constants'
 import { device } from '../../utils/device'
 import AquaClient from '../api/graphql/aquaClient'
 import { SLOTS } from '../api/graphql/queries/slots'
 import CustomTextField from '../../components/Inputs/Textfield'
-import MenuList from '../../components/MenuList'
+import CustomMenu from '../../components/CustomMenu'
 import ShuffleIcon from '@material-ui/icons/Shuffle'
 import { Fragment } from 'react'
 import { shortDate } from '../../utils/shortDate'
@@ -40,10 +40,10 @@ const GiochiPage: FunctionComponent<PageProps> = (props) => {
 
     const aquaClient = new AquaClient()
 
-    const listItems:string[] = [menuList.RTP, menuList.LIKES, menuList.UPDATED_AT, menuList.CREATED_AT, menuList.ALPHABETIC]
+    const listItems:string[] = [SlotFilterList.RTP, SlotFilterList.LIKES, SlotFilterList.UPDATED_AT, SlotFilterList.CREATED_AT, SlotFilterList.ALPHABETIC]
 
     const [freeSlots, setFreeSlots] = useState<Slot[]>(freeSlotsData)
-    const [itemSelected, setItemSelected] = useState<string>(menuList.ALPHABETIC)
+    const [itemSelected, setItemSelected] = useState<string>(SlotFilterList.ALPHABETIC)
     const [producerSelected, setProducerSelected] = useState<string>('')
     const [openDialog, setOpenDialog] = useState<boolean>(false)
 
@@ -82,7 +82,7 @@ const GiochiPage: FunctionComponent<PageProps> = (props) => {
     const shuffle = async () => {
         clear()
 
-        setItemSelected(menuList.SHUFFLE)
+        setItemSelected(SlotFilterList.SHUFFLE)
         const shuffleFreeSlots = await fetchSlotsData({limit: 36, start: getRandomInt(freeSlots.length, 500)})
 
         setFreeSlots(shuffleFreeSlots)    
@@ -102,7 +102,7 @@ const GiochiPage: FunctionComponent<PageProps> = (props) => {
     const handleItemSelected = async (itemSelected: string) => {
         clear()
 
-        const sortItem = itemSelected === menuList.ALPHABETIC ? 
+        const sortItem = itemSelected === SlotFilterList.ALPHABETIC ? 
         `${itemSelected.toLowerCase()}:asc` : `${itemSelected.toLowerCase()}:desc`
         
         const data = await fetchSlotsData({limit:36, start: 0, sortBy: sortItem})
@@ -112,7 +112,7 @@ const GiochiPage: FunctionComponent<PageProps> = (props) => {
     }
 
     const handleProducerSelected = async (producerSelected: string) => {
-        const sortBy = itemSelected.toLowerCase() === menuList.SHUFFLE ? menuList.ALPHABETIC : itemSelected.toLowerCase()
+        const sortBy = itemSelected.toLowerCase() === SlotFilterList.SHUFFLE ? SlotFilterList.ALPHABETIC : itemSelected.toLowerCase()
 
         const data = await fetchSlotsData({limit:36, start: 0, sortBy: sortBy, producer: producerSelected})
             
@@ -204,7 +204,7 @@ const GiochiPage: FunctionComponent<PageProps> = (props) => {
                                 </div>
 
                                 <div id='filter-slots'>
-                                        <MenuList listItems={listItems} itemSelected={itemSelected} setItemSelected={handleItemSelected}/>
+                                        <CustomMenu listItems={listItems} itemSelected={itemSelected} setItemSelected={handleItemSelected}/>
 
                                         <div id="shuffle"><ShuffleIcon fontSize={'large'} onClick={shuffle}/></div>                                    
                                 </div>
@@ -222,11 +222,11 @@ const GiochiPage: FunctionComponent<PageProps> = (props) => {
                                         <SlotInfo>
                                             <div className="producer">{ producerSelected ?  slot.producer.name : ''}</div>
 
-                                            {itemSelected === menuList.RTP ? slot.rtp ? `RTP: ${slot.rtp}%` : 'NA' : ''}
-                                            {itemSelected === menuList.LIKES ? slot.likes ? `${slot.likes} likes`: 'NA' : ''}
-                                            {itemSelected === menuList.CREATED_AT ? slot.created_at ?
+                                            {itemSelected === SlotFilterList.RTP ? slot.rtp ? `RTP: ${slot.rtp}%` : 'NA' : ''}
+                                            {itemSelected === SlotFilterList.LIKES ? slot.likes ? `${slot.likes} likes`: 'NA' : ''}
+                                            {itemSelected === SlotFilterList.CREATED_AT ? slot.created_at ?
                                                 `${shortDate(slot.created_at)}`: 'NA' : ''}
-                                            {itemSelected === menuList.UPDATED_AT ? slot.created_at ?
+                                            {itemSelected === SlotFilterList.UPDATED_AT ? slot.created_at ?
                                                 `${shortDate(slot.updated_at)}`: 'NA' : ''}
                                         </SlotInfo>
                                         <SlotCard key={slot.name} data={slot}/>

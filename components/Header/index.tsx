@@ -158,7 +158,6 @@ const Header: FunctionComponent<PageProps> = ({isBrowserView}) => {
                         zIndex={100}
                         onChange={handleOnSearch}
                         width="30ch" 
-                        borderRadius={'20px'}
                         searchIcon
                         placeholder="Cerca una slot, un casino..."
                         clearSearchField={!overlay}
@@ -190,7 +189,6 @@ const Header: FunctionComponent<PageProps> = ({isBrowserView}) => {
                           onChange={handleOnSearch}
                           autoFocus
                           searchIcon
-                          borderRadius={'20px'}
                           placeholder="Cerca una slot, un casino..."/>
                     <SearchHit data={searchResult}/>
                   </div>

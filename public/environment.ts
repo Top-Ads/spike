@@ -2,4 +2,8 @@ export const API = "https://spikeapistaging.tech/graphql"
 export const CDN = "https://casino-squad.b-cdn.net"
 export const APPLICATIONID = "92GGCDET16"
 export const APIKEY = "fcbd92dd892fe6dc9b67fce3bf44fa04"
-export const APISOCKET = "https://crazytime.spike-realtime-api.eu"
+
+export const APISOCKET = {
+    CRAZYTIME: "https://crazytime.spike-realtime-api.eu",
+    MONOPOLY: "https://monopoly.spike-realtime-api.eu"
+}

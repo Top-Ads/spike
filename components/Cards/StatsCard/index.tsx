@@ -6,13 +6,15 @@ import styled from 'styled-components'
 import UpdateIcon from '@material-ui/icons/Update'
 import { Stats } from '../../../interfaces'
 import { injectSymbolImage } from '../../../utils/injectSymbollmage'
+import { LiveStats, SymbolLayout } from '../../../utils/constants'
 
 type PageProps = {
    data: Stats,
-   timeFrame: string
+   timeFrame: string,
+   type: LiveStats
 };
 
-const dataCard: FunctionComponent<PageProps> = ({data, timeFrame}) => {
+const StatsCard: FunctionComponent<PageProps> = ({data, timeFrame, type}) => {
 
     return (
         <Fragment>
@@ -23,11 +25,11 @@ const dataCard: FunctionComponent<PageProps> = ({data, timeFrame}) => {
                     <LazyLoad height={200} offset={200}>
                         <Image
                             alt={data.symbol}
-                            src={injectSymbolImage(data.symbol)}
+                            src={injectSymbolImage(data.symbol, type, SymbolLayout.CARD).url}
                             layout="responsive"
                             priority={true}
-                            width={data.symbol === 'one' || data.symbol === 'two' || data.symbol === 'five' || data.symbol === 'ten' ? 140 : 215}
-                            height={data.symbol === 'one' || data.symbol === 'two' || data.symbol === 'five' || data.symbol === 'ten' ? 140 : 130}/> 
+                            width={injectSymbolImage(data.symbol, type, SymbolLayout.CARD).width}
+                            height={injectSymbolImage(data.symbol, type, SymbolLayout.CARD).height}/> 
                     </LazyLoad>
                 </Thumbnail>
                 <Main>
@@ -84,4 +86,4 @@ const Thumbnail = styled.div`
     min-width: 100px;
 `
 
-export default dataCard
+export default StatsCard
