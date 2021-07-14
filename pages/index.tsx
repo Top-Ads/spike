@@ -75,28 +75,28 @@ const IndexPage: FunctionComponent<PageProps> = ({slotsData, freeBonusData, topB
         <Grids id="grid-slots">
           <GridCards
             type={GridType.SLOTS} 
-            content={ slotsData.slice(0, 12).map( (slot) => <SlotCard key={slot.name} data={slot}/> )}
+            content={ slotsData.slice(0, 6).map( (slot) => <SlotCard key={slot.name} data={slot}/> )}
             label="Le migliori Novomatic per te."
             xs={6} sm={4} md={4}
             breadcrumbIndex={0}
             />
           <GridCards
             type={GridType.SLOTS}
-            content={ slotsData.slice(12, 24).map( (slot) => <SlotCard key={slot.id} data={slot}/> )}
+            content={ slotsData.slice(6, 12).map( (slot) => <SlotCard key={slot.id} data={slot}/> )}
             label="Le slot online del momento."
             xs={6} sm={4} md={4}
             breadcrumbIndex={1}
             />
           <GridCards
             type={GridType.SLOTS}
-            content={ slotsData.slice(24, 36).map( (slot) => <SlotCard key={slot.id} data={slot}/> )}
+            content={ slotsData.slice(12, 18).map( (slot) => <SlotCard key={slot.id} data={slot}/> )}
             label="Le slot da bar più famose."
             xs={6} sm={4} md={4}
             breadcrumbIndex={2}
             />
           <GridCards
             type={GridType.SLOTS} 
-            content={ slotsData.slice(36, 48).map( (slot) => <SlotCard key={slot.id} data={slot}/> )}
+            content={ slotsData.slice(18, 24).map( (slot) => <SlotCard key={slot.id} data={slot}/> )}
             label="Le slot VLT più divertenti."
             xs={6} sm={4} md={4}
             breadcrumbIndex={3}
@@ -195,15 +195,15 @@ const Button = styled.div`
 `
 
 const Thumbnail = styled.div`
-  width: 20%;
+  width: 15%;
   margin: auto;
     
   @media ${device.tablet} {
-    width: 25%;
+    width: 20%;
   }
 
   @media ${device.mobileL} {
-    width: 70%;
+    width: 60%;
   }
 `
 
@@ -243,7 +243,7 @@ export async function getStaticProps() {
 
   const slotsRequest =  await aquaClient.query({ 
     query: SLOTS, 
-    variables: { countryCode: 'it', limit: 48, start: 0 } })
+    variables: { countryCode: 'it', limit: 24, start: 0 } })
 
   const freeBonusRequest =  await aquaClient.query({ 
     query: BONUSES, 

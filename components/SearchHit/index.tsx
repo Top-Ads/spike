@@ -74,7 +74,7 @@ const SearchHit: FunctionComponent<PageProps> = ({data}) => {
 
 const Main = styled.div`
     position: absolute;
-    margin-top: 12px;
+    margin-top: 8px;
     display: flex;
     flex-direction: column;
     width: 45ch;
@@ -84,8 +84,15 @@ const Main = styled.div`
     z-index: 999;
     overflow: hidden;
     border-radius: 5px;
-\
+    
+    @media ${device.tablet} {
+        position: fixed;
+        max-height: 80vh;
+        overflow: scroll;
+    } 
+
     @media ${device.mobileL} {
+        position: fixed;
         width: 90%;
         max-height: 75vh;
         overflow: scroll;

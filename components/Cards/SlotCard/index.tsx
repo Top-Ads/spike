@@ -1,4 +1,4 @@
-import React, { Fragment, FunctionComponent, useContext, useEffect, useState } from 'react'
+import React, { Fragment, FunctionComponent, useContext, useEffect, useRef, useState } from 'react'
 import { useRouter } from 'next/router'
 import Image from 'next/image'
 import styled from 'styled-components'
@@ -9,7 +9,6 @@ import { CDN } from '../../../public/environment'
 import LazyLoad, { forceCheck } from 'react-lazyload'
 import { Slot } from '../../../interfaces'
 import SpinnerLoader from '../../SpinnerLoader'
-import ClickAwayListener from '@material-ui/core/ClickAwayListener'
 
 type PageProps = {
    data: Slot
@@ -17,6 +16,8 @@ type PageProps = {
 
 const SlotCard: FunctionComponent<PageProps> = ({data}) => { 
     const router = useRouter()
+
+    const ref = useRef<HTMLDivElement>(null);
 
     const [showBanner, setShowBanner] = useState<boolean>(false)
     const [likedSlot, setLikedSlot] = useState<boolean>(false)
@@ -30,6 +31,12 @@ const SlotCard: FunctionComponent<PageProps> = ({data}) => {
             query: { slug: data.slug }
         })
     }
+
+    const handleTouchOutside = (event: TouchEvent) => {
+        if (ref.current && !ref.current.contains(event.target as Node)) {
+            setShowBanner(false)
+        }
+    };
 
     useEffect( () => {
         forceCheck()
@@ -69,10 +76,18 @@ const SlotCard: FunctionComponent<PageProps> = ({data}) => {
         }        
     }, [removeLikeSlotId])
 
+    useEffect(() => {
+        document.addEventListener('touchstart', handleTouchOutside, true);
+        return () => {
+            document.removeEventListener('touchstart', handleTouchOutside, true);
+        };
+    }, [ref]);
+
     return (
         <Fragment>
-            <ClickAwayListener onClickAway={ () =>  setShowBanner(false)} >
-            <Main  
+            
+            <Main 
+                ref={ref} 
                 onClick={playSlot}
                 onMouseEnter={ () => setShowBanner(true)}
                 onMouseLeave={ () => setShowBanner(false)}
@@ -83,7 +98,6 @@ const SlotCard: FunctionComponent<PageProps> = ({data}) => {
                     <LikeIcon setActive={() => setLikedSlot(!likedSlot)} active={likedSlot}/>
                 </Icon> : '' } 
                
-                
                 <Thumbnail>
                     <SpinnerLoader show={loading}/>
                     <LazyLoad key={data.id} height={85} offset={200}>
@@ -97,7 +111,6 @@ const SlotCard: FunctionComponent<PageProps> = ({data}) => {
                             onLoad={()=> setLoading(false)}/>
                     </LazyLoad>
                 </Thumbnail>
-                
                 { showBanner ? 
                     <Banner>
                         <Button> 
@@ -111,7 +124,6 @@ const SlotCard: FunctionComponent<PageProps> = ({data}) => {
 
             </Main>
 
-            </ClickAwayListener>
           
             <Title>{data.name}</Title>
         </Fragment>

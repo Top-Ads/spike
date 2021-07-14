@@ -67,7 +67,7 @@ const Question = styled.div`
 const Answer = styled.div<AnswerType>`
     max-height: ${({show}) => show ? '310px' : '0px'};
     overflow: hidden;
-    transition: max-height 0.2s linear;
+    transition: max-height 0.2s ease-in-out;
     text-align: left;
     
     p {

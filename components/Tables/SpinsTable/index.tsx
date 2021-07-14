@@ -13,7 +13,6 @@ import styled from 'styled-components'
 import { Spins } from '../../../interfaces'
 import { injectSymbolImage } from '../../../utils/injectSymbollmage'
 import LazyLoad from 'react-lazyload'
-import BlockIcon from '@material-ui/icons/Block'
 import { TablePagination, TableSortLabel } from '@material-ui/core'
 import { stableSort } from '../../../utils/stableSort'
 import PlayCircleOutlineIcon from '@material-ui/icons/PlayCircleOutline'
@@ -21,7 +20,11 @@ import { LiveStats, SymbolLayout } from '../../../utils/constants'
 
 type PageProps = {
     data: Spins[],
-    type: LiveStats
+    gameType: LiveStats
+}
+
+type ThumbnailProps = {
+  gameType: LiveStats
 }
 
 type Order = 'asc' | 'desc';
@@ -79,7 +82,7 @@ const useStyles = makeStyles({
   }
 })
 
-const SpinsTable: FunctionComponent<PageProps> = ({data=[], type}) => {
+const SpinsTable: FunctionComponent<PageProps> = ({data=[], gameType}) => {
   
   const classes = useStyles()
   
@@ -140,9 +143,9 @@ const SpinsTable: FunctionComponent<PageProps> = ({data=[], type}) => {
               
               </StyledTableCell>
 
-              <StyledTableCell><div className="table-head">Risultato Ruota</div></StyledTableCell>
+              <StyledTableCell align="left"><div className="table-head">Risultato Ruota</div></StyledTableCell>
               
-              { type === LiveStats.CRAZYTIME && 
+              { gameType === LiveStats.CRAZYTIME && 
                 <StyledTableCell align="left"><div className="table-head">Risultato Slot</div></StyledTableCell>
               }
 
@@ -155,7 +158,7 @@ const SpinsTable: FunctionComponent<PageProps> = ({data=[], type}) => {
                 </TableSortLabel>
               </StyledTableCell>
 
-              { type === LiveStats.MONOPOLY && 
+              { gameType === LiveStats.MONOPOLY && 
                 <Fragment>
                   <StyledTableCell align="left"><div className="table-head">Lancio Dadi</div></StyledTableCell>
                   <StyledTableCell align="left"><div className="table-head">Moltiplicatore Imprevisti</div></StyledTableCell>
@@ -193,30 +196,30 @@ const SpinsTable: FunctionComponent<PageProps> = ({data=[], type}) => {
                   </StyledTableCell>
 
                   <StyledTableCell component="th">
-                    <Thumbnail>
+                    <Thumbnail gameType={gameType}>
                       <LazyLoad height={200} offset={200}>
                         <Image
                               alt={row.spinResultSymbol}
-                              src={injectSymbolImage(row.spinResultSymbol, type, SymbolLayout.TABLE).url}
+                              src={injectSymbolImage(row.spinResultSymbol, gameType, SymbolLayout.TABLE).url}
                               layout="intrinsic"
                               priority={true}
-                              width={injectSymbolImage(row.spinResultSymbol, type, SymbolLayout.TABLE).width}
-                              height={injectSymbolImage(row.spinResultSymbol, type, SymbolLayout.TABLE).height}/>   
+                              width={injectSymbolImage(row.spinResultSymbol, gameType, SymbolLayout.TABLE).width}
+                              height={injectSymbolImage(row.spinResultSymbol, gameType, SymbolLayout.TABLE).height}/>   
                       </LazyLoad>
                     </Thumbnail>
                   </StyledTableCell>
 
-                  { type === LiveStats.CRAZYTIME && 
+                  { gameType === LiveStats.CRAZYTIME && 
                     <StyledTableCell align="left">
-                      <Thumbnail>
+                      <Thumbnail gameType={gameType}>
                         <LazyLoad height={200} offset={200}>
                           <Image
                               alt={row.spinResultSymbol}
-                              src={injectSymbolImage(row.slotResultSymbol, type).url}
+                              src={injectSymbolImage(row.slotResultSymbol, gameType).url}
                               layout="intrinsic"
                               priority={true}
-                              width={injectSymbolImage(row.slotResultSymbol, type).width}
-                              height={injectSymbolImage(row.slotResultSymbol, type).height}/>      
+                              width={injectSymbolImage(row.slotResultSymbol, gameType).width}
+                              height={injectSymbolImage(row.slotResultSymbol, gameType).height}/>      
                         </LazyLoad>
                       </Thumbnail>
                     </StyledTableCell>
@@ -224,7 +227,7 @@ const SpinsTable: FunctionComponent<PageProps> = ({data=[], type}) => {
 
                   <StyledTableCell align="left">{row.multiplier}</StyledTableCell>
 
-                  { type === LiveStats.MONOPOLY && 
+                  { gameType === LiveStats.MONOPOLY && 
                     <Fragment>
                       <StyledTableCell align="left">{row.boardRolls}</StyledTableCell>
                       <StyledTableCell align="left">{row.chanceMultiplier}</StyledTableCell>
@@ -236,9 +239,9 @@ const SpinsTable: FunctionComponent<PageProps> = ({data=[], type}) => {
                   <StyledTableCell align="left">{row.totalPayout}€</StyledTableCell>
 
                   <StyledTableCell align="center">
-                      {row.watchVideo !== "no_video" ? 
+                      {row.watchVideo !== "no_video" && 
                         <a href={row.watchVideo}><PlayCircleOutlineIcon fontSize={'large'} className={'video-icon'}/></a> 
-                        : <BlockIcon fontSize={'large'}/>}
+                      }
                   </StyledTableCell>
 
               </StyledTableRow>
@@ -262,8 +265,8 @@ const SpinsTable: FunctionComponent<PageProps> = ({data=[], type}) => {
   )
 }
 
-const Thumbnail = styled.div`
-    width: 60px;
+const Thumbnail = styled.div<ThumbnailProps>`
+    width: ${({gameType}) => gameType === LiveStats.CRAZYTIME ? '60px' : '100px'};
 `
 
 export default SpinsTable

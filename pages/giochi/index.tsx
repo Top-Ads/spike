@@ -356,7 +356,7 @@ const Actions = styled.div`
 
     #search-input {
         display: inherit;
-        flex-grow: 2;
+        flex-grow: 1;
         border: 1px solid ${({theme}) => theme.colors.background};
         border-radius: 5px;
        

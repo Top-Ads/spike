@@ -63,7 +63,7 @@ const CrazyTimePage: FunctionComponent<PageProps> = ({statsData, spinsData, bonu
     }, [selected])
 
     return (
-        <Layout title="Live Stats">
+        <Layout title="LiveStats - Crazy Time">
              <div className="space-around">
 
                 <Header className="intro-header">
@@ -137,7 +137,7 @@ const CrazyTimePage: FunctionComponent<PageProps> = ({statsData, spinsData, bonu
 
                     <SpinsContainer>
                         <h3>Storico degli Spin</h3>
-                        <SpinsTable data={spins} type={LiveStats.CRAZYTIME}/>
+                        <SpinsTable data={spins} gameType={LiveStats.CRAZYTIME}/>
                     </SpinsContainer>
  
                 </Main>

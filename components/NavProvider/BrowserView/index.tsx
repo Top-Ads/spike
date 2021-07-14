@@ -46,8 +46,8 @@ const Nav = styled.nav<NavProps>`
     flex-grow: 0;
     justify-content: flex-start;
     height: auto;
-    max-height: ${({expand}) => expand ? "120px" : "0px"};
-    transition: max-height 0.2s linear; 
+    max-height: ${({expand}) => expand ? "60px" : "0px"};
+    transition: max-height 0.2s ease-in-out; 
     overflow: ${({expand}) => expand ? "visible" : "hidden"};
 `
 

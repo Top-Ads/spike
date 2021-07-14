@@ -22,10 +22,13 @@ import { device } from '../../../utils/device'
 type PageProps = {
     statsData: Stats[],
     spinsData: Spins[],
-    bonusData: Bonus[]
+    bonusData: Bonus[],
+    tablesData: []
 };
 
-const MonopolyPage: FunctionComponent<PageProps> = ({statsData, spinsData, bonusData}) => {
+const MonopolyPage: FunctionComponent<PageProps> = ({statsData, spinsData, bonusData, tablesData}) => {
+
+    console.log(tablesData)
 
     const [stats, setStats] = useState<Stats[]>(statsData)
     const [spins, setSpins] = useState<Spins[]>(spinsData)
@@ -48,8 +51,6 @@ const MonopolyPage: FunctionComponent<PageProps> = ({statsData, spinsData, bonus
         if(socket) {
             socket.emit(selected)
             socket.on(selected, (data) => {
-                console.log('statsData', data)
-
                 setStats(data.stats.stats)
                 setSpins(data.spins)
                 setLastUpdate(new Date(Date.now()))
@@ -64,9 +65,8 @@ const MonopolyPage: FunctionComponent<PageProps> = ({statsData, spinsData, bonus
             fetchStatsData(selected)
     }, [selected])
 
-   
     return (
-        <Layout title="">
+        <Layout title="LiveStats - Monopoly">
              <div className="space-around">
 
                 <Header className="intro-header">
@@ -137,7 +137,7 @@ const MonopolyPage: FunctionComponent<PageProps> = ({statsData, spinsData, bonus
 
                 <SpinsContainer>
                     <h3>Storico degli Spin</h3>
-                    <SpinsTable data={spins} type={LiveStats.MONOPOLY}/>
+                    <SpinsTable data={spins} gameType={LiveStats.MONOPOLY}/>
                 </SpinsContainer>
 
                 </Main>
@@ -285,12 +285,14 @@ export async function getStaticProps() {
     const bonusRequest = await aquaClient.query({ 
         query: BONUSES, 
         variables: { countryCode: 'it', limit: PAGE_BONUSES.length, start: 0, names: PAGE_BONUSES } })
-        
+    
     return {
         props: {
           statsData: dataStatsRequest.data.stats.stats,
           spinsData: dataSpinsRequest.data.latestSpins,
-          bonusData: bonusRequest.data.data.bonuses
+          bonusData: bonusRequest.data.data.bonuses,
+          tablesData: dataStatsRequest.data.tables[0],
+
         }
       }
     

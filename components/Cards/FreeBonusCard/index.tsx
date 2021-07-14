@@ -82,6 +82,7 @@ const Name = styled.div`
 const Info = styled.div `
     color: ${({theme}) => theme.text.color.secondary};
     padding: 5px 0px;
+    font-size: 11px;
 `
 
 const Button = styled.div<BonusType>`

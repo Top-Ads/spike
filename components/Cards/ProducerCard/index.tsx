@@ -49,7 +49,7 @@ const Main = styled.div`
     font-size: 12px;
     border: 1px solid ${({theme}) => theme.colors.gradient};
     border-left-width: thick;
-    padding: 0px 5px;
+    padding: 5px;
     cursor: pointer;
     align-items: center;
 

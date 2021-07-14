@@ -30,7 +30,7 @@ type OverlayProps = {
   show: boolean
 }
 
-const Header: FunctionComponent<PageProps> = ({isBrowserView}) => { 
+const Header: FunctionComponent<PageProps> = ({isBrowserView}) => {
   
   const [showNav, setShowNav] = useState<boolean>(isBrowserView)
   const [showSearchMobile, setShowSearchMobile] = useState<boolean>(false)
@@ -41,7 +41,7 @@ const Header: FunctionComponent<PageProps> = ({isBrowserView}) => {
   const [algoliaIndex, setAlgoliaIndex] = useState<SearchIndex | undefined>(undefined)
   const [searchResult, setSearchResult] = useState<AlgoliaSearchData[]>([])
 
-  const {setRemoveLikeSlotId}  = useContext(removeLikeSlotContext)
+  const {setRemoveLikeSlotId} = useContext(removeLikeSlotContext)
 
   const handleMenu = (event: React.MouseEvent) => { 
     event.stopPropagation()
@@ -177,11 +177,9 @@ const Header: FunctionComponent<PageProps> = ({isBrowserView}) => {
                   : <MenuIcon className='icons' onClick={handleMenu}/> }
                 </Actions>
 
-              </TopHeader> 
-              
-              :
-
+              </TopHeader> :
               <Fragment>
+
                 <ClickAwayListener onClickAway={exitOverlay}>
                   <div className="textFieldMobile">
                     <CustomTextField
@@ -223,7 +221,8 @@ const Main = styled.div`
   box-shadow: ${({theme}) => theme.button.boxShadowX};
   color: ${({theme}) => theme.text.color.primary};
   padding: 5px 7%;
-
+  overflow: hidden;
+  
   @media ${device.tablet} {
     position: fixed;
     top: 0px;
