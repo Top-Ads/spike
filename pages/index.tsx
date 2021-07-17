@@ -169,6 +169,8 @@ const Intro = styled.div`
   flex-direction: column;
   width: 65%;
 
+  h1 { margin-bottom: 0;  }
+
   ul { color: ${({theme}) => theme.text.color.secondary}; }
 
   @media ${device.mobileL} {

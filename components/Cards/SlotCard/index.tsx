@@ -144,7 +144,7 @@ const Title = styled.span`
     align-items: flex-start;
     height: 25px;   
     font-weight: bold;
-    font-size: 11px;
+    font-size: 12px;
     padding-top: 2px;
 `
 

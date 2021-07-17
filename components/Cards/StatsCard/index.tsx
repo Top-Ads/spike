@@ -5,7 +5,7 @@ import LazyLoad from 'react-lazyload'
 import styled from 'styled-components'
 import UpdateIcon from '@material-ui/icons/Update'
 import { Stats } from '../../../interfaces'
-import { injectSymbolImage } from '../../../utils/injectSymbollmage'
+import { injectSymbolImage } from '../../../utils/injectSymbolTolmage'
 import { LiveStats, SymbolLayout } from '../../../utils/constants'
 
 type PageProps = {
