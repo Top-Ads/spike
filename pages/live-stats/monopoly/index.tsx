@@ -10,7 +10,7 @@ import { GridType, LiveStats } from '../../../utils/constants'
 import axios from 'axios'
 import { APISOCKET } from '../../../public/environment'
 import { io, Socket } from 'socket.io-client'
-import { Bonus, Spins, Stats } from '../../../interfaces'
+import { Bonus, MonopolyTables, Spins, Stats } from '../../../interfaces'
 import SpinsTable from '../../../components/Tables/SpinsTable'
 import LazyLoad from 'react-lazyload'
 import BonusTable from '../../../components/Tables/BonusTable'
@@ -18,20 +18,19 @@ import AquaClient from '../../api/graphql/aquaClient'
 import { BONUSES } from '../../api/graphql/queries/bonuses'
 import BonusCard from '../../../components/Cards/BonusCard'
 import { device } from '../../../utils/device'
+import DiceRollTable from '../../../components/Tables/DiceRollTable'
 
 type PageProps = {
     statsData: Stats[],
     spinsData: Spins[],
     bonusData: Bonus[],
-    tablesData: []
+    tablesData: MonopolyTables
 };
 
 const MonopolyPage: FunctionComponent<PageProps> = ({statsData, spinsData, bonusData, tablesData}) => {
-
-    console.log(tablesData)
-
     const [stats, setStats] = useState<Stats[]>(statsData)
     const [spins, setSpins] = useState<Spins[]>(spinsData)
+    const [tables, setTables] = useState<MonopolyTables>(tablesData)
     const [socket, setSocket] = useState<Socket | undefined>()
     const [selected, setSelected] = useState<string>('24h')
     const [lastUpdate, setLastUpdate] = useState<Date>(new Date(Date.now()))
@@ -53,6 +52,9 @@ const MonopolyPage: FunctionComponent<PageProps> = ({statsData, spinsData, bonus
             socket.on(selected, (data) => {
                 setStats(data.stats.stats)
                 setSpins(data.spins)
+                setTables(data.tables[0])
+    
+                console.log(data.tables[0])
                 setLastUpdate(new Date(Date.now()))
             })
         }
@@ -80,65 +82,72 @@ const MonopolyPage: FunctionComponent<PageProps> = ({statsData, spinsData, bonus
 
                     <Divider/>  
                 </Header>
+
                 <Main>
 
-                <StatsContainer>
+                    <StatsContainer>
+                        <Header className="stats-card-header">
+                            <div>
+                                <h3>Statistiche Crazy Time</h3>
+                                <span suppressHydrationWarning>Last Updated: {lastUpdate.toLocaleString()}</span>
+                            </div>
+                        
+                            <CustumSelect setSelected={setSelected}/>
+                        </Header>
+                        <Divider/>
 
-                    <Header className="stats-card-header">
-                        <div>
-                            <h3>Statistiche Crazy Time</h3>
-                            <span suppressHydrationWarning>Last Updated: {lastUpdate.toLocaleString()}</span>
+                        <Grids className={"stats-cards"}>
+                            <GridCards
+                                type={GridType.STATS} 
+                                content={ stats.map( (stats: Stats, index: number) => 
+                                    <StatsCard key={index} data={stats} timeFrame={selected} type={LiveStats.MONOPOLY}/>
+                                )}
+                                AlignItem={"center"}
+                                xs={12} sm={3} md={3}
+                                showBoxShadow
+                                bgColor="#fff"
+                                spacing={3}/>
+                        </Grids>
+                    </StatsContainer>
+
+                    <br/>
+
+                    <BonusContainer>
+                        <h3>Puoi giocare alla CRAZY TIME QUI</h3>
+                        <div className="bonus-table">
+                            <BonusTable data={bonusData}/>
                         </div>
-                    
-                        <CustumSelect setSelected={setSelected}/>
-                    </Header>
-                    <Divider/>
+                        
+                        <Grids className={"bonus-cards"}>
+                            <GridCards
+                                type={GridType.BONUS}
+                                content={ bonusData.map( (bonus) => 
+                                    <BonusCard key={bonus.id} data={bonus}/>
+                                )}
+                                AlignItem={"center"}
+                                xs={12} sm={12} md={12}
+                                showIndex
+                                showBoxShadow
+                                bgColor="#fff"
+                                spacing={2}
+                            />
+                        </Grids>
+                    </BonusContainer>
 
-                    <Grids className={"stats-cards"}>
-                        <GridCards
-                            type={GridType.STATS} 
-                            content={ stats.map( (stats: Stats, index: number) => 
-                                <StatsCard key={index} data={stats} timeFrame={selected} type={LiveStats.MONOPOLY}/>
-                            )}
-                            AlignItem={"center"}
-                            xs={12} sm={3} md={3}
-                            showBoxShadow
-                            bgColor="#fff"
-                            spacing={3}/>
-                    </Grids>
+                    <br/>
 
-                </StatsContainer>
+                    <SpinsContainer>
+                        <h3>Storico degli Spin</h3>
+                        <SpinsTable data={spins} gameType={LiveStats.MONOPOLY}/>
+                    </SpinsContainer>
 
-                <br/>
+                    <br/>
 
-                <BonusContainer>
-                    <h3>Puoi giocare alla CRAZY TIME QUI</h3>
-                    <div className="bonus-table">
-                        <BonusTable data={bonusData}/>
-                    </div>
-                    
-                    <Grids className={"bonus-cards"}>
-                        <GridCards
-                            type={GridType.BONUS}
-                            content={ bonusData.map( (bonus) => 
-                                <BonusCard key={bonus.id} data={bonus}/>
-                            )}
-                            AlignItem={"center"}
-                            xs={12} sm={12} md={12}
-                            showIndex
-                            showBoxShadow
-                            bgColor="#fff"
-                            spacing={2}
-                        />
-                    </Grids>
-                </BonusContainer>
-
-                <br/>
-
-                <SpinsContainer>
-                    <h3>Storico degli Spin</h3>
-                    <SpinsTable data={spins} gameType={LiveStats.MONOPOLY}/>
-                </SpinsContainer>
+                    <DiceRollContainer>
+                        <DiceRollTable type='low' data={tables.lowTierTable.rows}/> 
+                        <DiceRollTable type='mid' data={tables.midTierTable.rows}/>  
+                        <DiceRollTable type='high' data={tables.highTierTable.rows}/> 
+                    </DiceRollContainer> 
 
                 </Main>
 
@@ -260,6 +269,12 @@ const BonusContainer = styled.div`
 `
 
 const SpinsContainer = styled.div`
+`
+
+const DiceRollContainer = styled.div`
+    display : flex;
+    justify-content: space-between;
+    flex-wrap : wrap;
 `
 
 const Grids = styled.div`
