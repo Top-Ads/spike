@@ -45,12 +45,12 @@ const BonusCard: FunctionComponent<PageProps> = ({data}) => {
                 <BonusInfo>
                     <div className="bonus"> 
                         <Label>BONUS DI BENVENUTO</Label>
-                        <Info>{data.description}</Info>
+                        <Info dangerouslySetInnerHTML={{__html: String(data.description.replace("+", "<br/>"))}}/> 
                     </div>
 
                     <div className="bonus">
                         <Label>BONUS SENZA DEPOSITO</Label>
-                        <Info className="bonus-info">{data.withDeposit}</Info>
+                        <Info className="bonus-info" dangerouslySetInnerHTML={{__html: String(data.withDeposit.replace("+", "<br/>"))}}/> 
                     </div>
                 </BonusInfo>
 

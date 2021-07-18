@@ -37,7 +37,7 @@ const FreeBonusCard: FunctionComponent<PageProps> = ({data}) => {
 
                 <Container>
                     <Name><strong>{data.name}</strong></Name>
-                    <Info>{data.description}</Info>
+                    <Info dangerouslySetInnerHTML={{__html: String(data.description.replace("+", "<br/>"))}}/> 
                 </Container>
 
                 <Button bgColor={data.backgroundColor} onClick={linkToBonus}>SITO WEB</Button>

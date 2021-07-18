@@ -240,11 +240,7 @@ const Main = styled.div`
 `
 
 const Footer = styled.div`
-    margin-top: 40px;
-
-    h3 {
-        color: ${({theme}) => theme.colors.background};
-    }
+    h3 { color: ${({theme}) => theme.colors.background}; }
 `
 
 const StatsContainer = styled.div`

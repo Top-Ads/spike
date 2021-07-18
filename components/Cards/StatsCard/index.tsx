@@ -7,6 +7,7 @@ import UpdateIcon from '@material-ui/icons/Update'
 import { Stats } from '../../../interfaces'
 import { injectSymbolImage } from '../../../utils/injectSymbolTolmage'
 import { LiveStats, SymbolLayout } from '../../../utils/constants'
+import { crazyTimeProbability, monopolyProbability } from '../../../utils/livsStatsProbality'
 
 type PageProps = {
    data: Stats,
@@ -36,6 +37,7 @@ const StatsCard: FunctionComponent<PageProps> = ({data, timeFrame, type}) => {
                     <li className="live-result">Total Spins: <span>{data.spinSince}</span></li>
                     <li className="live-result">In the last {timeFrame}: <span>{`${Math.round(data.percentage * 100) / 100}%`}</span></li>
                     <li className="live-result">Total Draws: <span>{data.lands}</span></li>
+                    <li className="live-result">{type === LiveStats.CRAZYTIME ?  crazyTimeProbability(data.symbol) : monopolyProbability(data.symbol)}</li>
                 </Main>
             </Container>
             
@@ -87,3 +89,5 @@ const Thumbnail = styled.div`
 `
 
 export default StatsCard
+
+

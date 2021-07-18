@@ -110,9 +110,9 @@ const BonusTable: FunctionComponent<PageProps> = ({data}) => {
                   
                 </StyledTableCell>
 
-                <StyledTableCell align="left">{row.withDeposit}</StyledTableCell>
+                <StyledTableCell align="left" dangerouslySetInnerHTML={{__html: String(row.withDeposit.replace("+", "<br/>"))}}/>
 
-                <StyledTableCell align="left">{row.description}</StyledTableCell>
+                <StyledTableCell align="left" dangerouslySetInnerHTML={{__html: String(row.description.replace("+", "<br/>"))}}/>
                 
                 <StyledTableCell align="left">
                   <Licence>
