@@ -10,7 +10,7 @@ import { GridType, LiveStats } from '../../../utils/constants'
 import axios from 'axios'
 import { APISOCKET } from '../../../public/environment'
 import { io, Socket } from 'socket.io-client'
-import { Bonus, Spins, Stats } from '../../../interfaces'
+import { Bonus, Spin, Stat } from '../../../interfaces'
 import SpinsTable from '../../../components/Tables/SpinsTable'
 import LazyLoad from 'react-lazyload'
 import BonusTable from '../../../components/Tables/BonusTable'
@@ -20,17 +20,17 @@ import BonusCard from '../../../components/Cards/BonusCard'
 import { device } from '../../../utils/device'
 
 type PageProps = {
-    statsData: Stats[],
-    spinsData: Spins[],
+    statsData: Stat[],
+    spinsData: Spin[],
     bonusData: Bonus[]
 };
 
 const CrazyTimePage: FunctionComponent<PageProps> = ({statsData, spinsData, bonusData}) => {
 
-    const [stats, setStats] = useState<Stats[]>(statsData)
-    const [spins, setSpins] = useState<Spins[]>(spinsData)
+    const [stats, setStats] = useState<Stat[]>(statsData)
+    const [spins, setSpins] = useState<Spin[]>(spinsData)
     const [socket, setSocket] = useState<Socket | undefined>()
-    const [selected, setSelected] = useState<string>('24h')
+    const [timeFrame, seTimeFrame] = useState<string>('24h')
     const [lastUpdate, setLastUpdate] = useState<Date>(new Date(Date.now()))
 
     const fetchStatsData = async (timeFrame: string) => {
@@ -46,10 +46,14 @@ const CrazyTimePage: FunctionComponent<PageProps> = ({statsData, spinsData, bonu
 
     useEffect(() => {
         if(socket) {
-            socket.emit(selected)
-            socket.on(selected, (data) => {
+            socket.emit(timeFrame)
+            socket.on(timeFrame, (data) => {
                 setStats(data.stats.stats)
-                setSpins(data.spins)
+                setSpins(mergeWithUpdate(spins, data.spins.map((r: Spin) => {
+                  r.timeOfSpin = r.timeOfSpin - 1000 * 60 * 60 * 2
+                  return r
+                })))
+
                 setLastUpdate(new Date(Date.now()))
             })
         }
@@ -58,16 +62,16 @@ const CrazyTimePage: FunctionComponent<PageProps> = ({statsData, spinsData, bonu
     }, [socket])
 
     useEffect( () => {
-        if (selected)
-            fetchStatsData(selected)
-    }, [selected])
+        if (timeFrame)
+            fetchStatsData(timeFrame)
+    }, [timeFrame])
 
     return (
         <Layout title="LiveStats - Crazy Time">
              <div className="space-around">
 
                 <Header className="intro-header">
-                    <h2>Crazy Time Stats Live: Tutte le Estrazioni in Tempo Reale</h2>
+                    <h2>Crazy Time Stat Live: Tutte le Estrazioni in Tempo Reale</h2>
 
                     <p>
                         In questa pagina si trovano tutti i <strong>dati sulle estrazioni in diretta live alla ruota della Crazy Time</strong>.
@@ -90,15 +94,15 @@ const CrazyTimePage: FunctionComponent<PageProps> = ({statsData, spinsData, bonu
                                 <span suppressHydrationWarning>Last Updated: {lastUpdate.toLocaleString()}</span>
                             </div>
                            
-                            <CustumSelect setSelected={setSelected}/>
+                            <CustumSelect setSelected={seTimeFrame}/>
                         </Header>
                         <Divider/>
 
                         <Grids className={"stats-cards"}>
                             <GridCards
                                 type={GridType.STATS} 
-                                content={ stats.map( (stats: Stats, index: number) => 
-                                    <StatsCard key={index} data={stats} timeFrame={selected} type={LiveStats.CRAZYTIME}/>
+                                content={ stats.map( (stats: Stat, index: number) => 
+                                    <StatsCard key={index} data={stats} timeFrame={timeFrame} type={LiveStats.CRAZYTIME}/>
                                 )}
                                 AlignItem={"center"}
                                 xs={12} sm={3} md={3}
@@ -276,13 +280,21 @@ const Thumbnail = styled.div`
     flex-grow: 1;
     width: 100%;
 `
+export const mergeWithUpdate = (current : Spin[], update : Spin[]) => {
+    // the latest row in the table
+    const lastFromCurrent = current[0]
+    // slicing up the update array to the last known row based on the _id
+
+    const slicedUpdate = update.slice(0, update.map(u => u._id).indexOf(lastFromCurrent._id))
+    // spreading the result so that is automatically ordered by time as returned by the Socket
+    return [...slicedUpdate, ...current]
+}
 
 export async function getStaticProps() {
     
     const aquaClient = new AquaClient()
 
-    const dataStatsRequest  = await axios.get(`${APISOCKET.CRAZYTIME}/api/data-for-the-last-hours/24h`)
-    const dataSpinsRequest  = await axios.get(`${APISOCKET.CRAZYTIME}/api/get-latest/15`)
+    const dataRequest  = await axios.get(`${APISOCKET.CRAZYTIME}/api/data-for-the-last-hours/24h`)
 
     const PAGE_BONUSES = ["BetFlag", "LeoVegas", "888 Casino", "StarCasinò", "Unibet", "PokerStars Casino"]
 
@@ -292,8 +304,11 @@ export async function getStaticProps() {
         
     return {
         props: {
-          statsData: dataStatsRequest.data.stats.stats,
-          spinsData: dataSpinsRequest.data.latestSpins,
+          statsData: dataRequest.data.stats.stats,
+          spinsData: dataRequest.data.spinsInTimeFrame.map( (r: Spin) => {
+            r.timeOfSpin = r.timeOfSpin - 1000 * 60 * 60 * 2
+            return r
+          }),
           bonusData: bonusRequest.data.data.bonuses
         }
       }

@@ -10,7 +10,7 @@ import TableHead from '@material-ui/core/TableHead'
 import TableRow from '@material-ui/core/TableRow'
 import Paper from '@material-ui/core/Paper'
 import styled from 'styled-components'
-import { Spins } from '../../../interfaces'
+import { Spin } from '../../../interfaces'
 import { injectSymbolImage } from '../../../utils/injectSymbolTolmage'
 import LazyLoad from 'react-lazyload'
 import { TablePagination, TableSortLabel } from '@material-ui/core'
@@ -19,7 +19,7 @@ import PlayCircleOutlineIcon from '@material-ui/icons/PlayCircleOutline'
 import { LiveStats, SymbolLayout } from '../../../utils/constants'
 
 type PageProps = {
-    data: Spins[],
+    data: Spin[],
     gameType: LiveStats
 }
 

@@ -4,13 +4,13 @@ import { Fragment } from 'react'
 import LazyLoad from 'react-lazyload'
 import styled from 'styled-components'
 import UpdateIcon from '@material-ui/icons/Update'
-import { Stats } from '../../../interfaces'
+import { Stat } from '../../../interfaces'
 import { injectSymbolImage } from '../../../utils/injectSymbolTolmage'
 import { LiveStats, SymbolLayout } from '../../../utils/constants'
 import { crazyTimeProbability, monopolyProbability } from '../../../utils/livsStatsProbality'
 
 type PageProps = {
-   data: Stats,
+   data: Stat,
    timeFrame: string,
    type: LiveStats
 };

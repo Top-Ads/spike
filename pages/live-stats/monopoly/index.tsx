@@ -10,7 +10,7 @@ import { GridType, LiveStats } from '../../../utils/constants'
 import axios from 'axios'
 import { APISOCKET } from '../../../public/environment'
 import { io, Socket } from 'socket.io-client'
-import { Bonus, MonopolyTables, Spins, Stats } from '../../../interfaces'
+import { Bonus, MonopolyTables, Spin, Stat } from '../../../interfaces'
 import SpinsTable from '../../../components/Tables/SpinsTable'
 import LazyLoad from 'react-lazyload'
 import BonusTable from '../../../components/Tables/BonusTable'
@@ -21,15 +21,15 @@ import { device } from '../../../utils/device'
 import DiceRollTable from '../../../components/Tables/DiceRollTable'
 
 type PageProps = {
-    statsData: Stats[],
-    spinsData: Spins[],
+    statsData: Stat[],
+    spinsData: Spin[],
     bonusData: Bonus[],
     tablesData: MonopolyTables
 };
 
 const MonopolyPage: FunctionComponent<PageProps> = ({statsData, spinsData, bonusData, tablesData}) => {
-    const [stats, setStats] = useState<Stats[]>(statsData)
-    const [spins, setSpins] = useState<Spins[]>(spinsData)
+    const [stats, setStats] = useState<Stat[]>(statsData)
+    const [spins, setSpins] = useState<Spin[]>(spinsData)
     const [tables, setTables] = useState<MonopolyTables>(tablesData)
     const [socket, setSocket] = useState<Socket | undefined>()
     const [selected, setSelected] = useState<string>('24h')
@@ -99,7 +99,7 @@ const MonopolyPage: FunctionComponent<PageProps> = ({statsData, spinsData, bonus
                         <Grids className={"stats-cards"}>
                             <GridCards
                                 type={GridType.STATS} 
-                                content={ stats.map( (stats: Stats, index: number) => 
+                                content={ stats.map( (stats: Stat, index: number) => 
                                     <StatsCard key={index} data={stats} timeFrame={selected} type={LiveStats.MONOPOLY}/>
                                 )}
                                 AlignItem={"center"}
@@ -167,7 +167,7 @@ const MonopolyPage: FunctionComponent<PageProps> = ({statsData, spinsData, bonus
                         del 2 rolls o del 4 rolls.
                     </p>
 
-                    <h3>Quali sono i vantaggi dei dati mostrati tramite Monopoly Live Stats?</h3>
+                    <h3>Quali sono i vantaggi dei dati mostrati tramite Monopoly Live Stat?</h3>
                     <p>
                         L'utilità dei dati forniti da tale pagina sta nella possibilità di <b>vedere la differenza</b> tra le previsioni date dalla probabilità teorica
                         all’andamento effettivo che sta avendo la ruota.

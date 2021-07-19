@@ -87,14 +87,15 @@ export interface Slot {
     },
 }
 
-export interface Stats {
+export interface Stat {
     lands: number,
     percentage: number,
     spinSince: number,
     symbol: string
 }
 
-export interface Spins {
+export interface Spin {
+    _id: string,
     date: string
     multiplier: string
     multiplierInfo: string
