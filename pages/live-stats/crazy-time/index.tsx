@@ -18,6 +18,7 @@ import AquaClient from '../../api/graphql/aquaClient'
 import { BONUSES } from '../../api/graphql/queries/bonuses'
 import BonusCard from '../../../components/Cards/BonusCard'
 import { device } from '../../../utils/device'
+import { mergeWithUpdate } from '../../../utils/mergeWithUpdate'
 
 type PageProps = {
     statsData: Stat[],
@@ -49,6 +50,7 @@ const CrazyTimePage: FunctionComponent<PageProps> = ({statsData, spinsData, bonu
             socket.emit(timeFrame)
             socket.on(timeFrame, (data) => {
                 setStats(data.stats.stats)
+                
                 setSpins(mergeWithUpdate(spins, data.spins.map((r: Spin) => {
                   r.timeOfSpin = r.timeOfSpin - 1000 * 60 * 60 * 2
                   return r
@@ -280,15 +282,6 @@ const Thumbnail = styled.div`
     flex-grow: 1;
     width: 100%;
 `
-export const mergeWithUpdate = (current : Spin[], update : Spin[]) => {
-    // the latest row in the table
-    const lastFromCurrent = current[0]
-    // slicing up the update array to the last known row based on the _id
-
-    const slicedUpdate = update.slice(0, update.map(u => u._id).indexOf(lastFromCurrent._id))
-    // spreading the result so that is automatically ordered by time as returned by the Socket
-    return [...slicedUpdate, ...current]
-}
 
 export async function getStaticProps() {
     

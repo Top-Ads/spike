@@ -52,9 +52,7 @@ const MonopolyPage: FunctionComponent<PageProps> = ({statsData, spinsData, bonus
             socket.on(selected, (data) => {
                 setStats(data.stats.stats)
                 setSpins(data.spins)
-                setTables(data.tables[0])
-    
-                console.log(data.tables[0])
+                setTables(data.tables[0])    
                 setLastUpdate(new Date(Date.now()))
             })
         }

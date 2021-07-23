@@ -104,22 +104,22 @@ export const injectSymbolImage = (symbol: string, type: LiveStats, symbolLayout?
             case 'tworolls':
                 return {
                     url: `${API}/monopoly-2r-card_7607c7f4e2.png`,
-                    width: 215,
-                    height: 140
+                    width: 148,
+                    height: 80
                 }
     
             case 'fourrolls':
                 return {
                     url: `${API}/monopoly-4r-card_abbeacf82a.png`,
-                    width: 215,
-                    height: 140
+                    width: 148,
+                    height: 80
                 }
     
             case 'chance':
                 return {
                     url: `${API}/monopoly-chance-card_0faa3808a5.png`,
-                    width: 215,
-                    height: 140
+                    width: 148,
+                    height: 80
                 }
                 
             default:
@@ -182,6 +182,138 @@ export const injectSymbolImage = (symbol: string, type: LiveStats, symbolLayout?
                     height: 140
                 }
                 
+            default:
+                return {
+                    url: `${CDN}/svg/no_img_available.svg`,
+                    width: 'auto',
+                    height: 'auto'
+                }
+        }
+    }
+
+    if(type === LiveStats.DREAMCATCHER && symbolLayout === SymbolLayout.CARD) {
+        switch(symbol) {
+            case 'one':
+                return {
+                    url: `${API}/dc-stat-1_ebd7750b06.png`,
+                    width: 148,
+                    height: 80
+                }
+        
+            case 'two':
+                return {
+                    url: `${API}/dc-stat-2_a37e4208fd.png`,
+                    width: 148,
+                    height: 80
+                }
+    
+            case 'five':
+                return {
+                    url: `${API}/dc-stat-5_c33567ad9d.png`,
+                    width: 148,
+                    height: 80
+                }
+            case 'ten':
+                return {
+                    url: `${API}/dc-stat-10_570e4c7d79.png`,
+                    width: 148,
+                    height: 80
+                }
+
+            case 'twenty':
+                return {
+                    url: `${API}/dc-stat-20_1d6b83d48a.png`,
+                    width: 148,
+                    height: 80
+                }
+
+            case 'fourty':
+                return {
+                    url: `${API}/dc-stat-40_86269dad25.png`,
+                    width: 148,
+                    height: 80
+                }
+    
+            case 'twox':
+                return {
+                    url: `${API}/dc-stat-2x_f9cc0df223.png`,
+                    width: 148,
+                    height: 80
+                }
+    
+            case 'sevenx':
+                return {
+                    url: `${API}/dc-stat-7x_6f84041aad.png`,
+                    width: 148,
+                    height: 80
+                }
+
+            default:
+                return {
+                    url: `${CDN}/svg/no_img_available.svg`,
+                    width: 'auto',
+                    height: 'auto'
+                }
+        }
+    }
+
+    if(type === LiveStats.DREAMCATCHER && symbolLayout === SymbolLayout.TABLE) {
+        switch(symbol) {
+            case 'one':
+                return {
+                    url: `${API}/dream-1_833467952a.png`,
+                    width: 148,
+                    height: 80
+                }
+        
+            case 'two':
+                return {
+                    url: `${API}/dream-2_56ce403c16.png`,
+                    width: 148,
+                    height: 80
+                }
+    
+            case 'five':
+                return {
+                    url: `${API}/dream-5_c9b1f823b1.png`,
+                    width: 148,
+                    height: 80
+                }
+            case 'ten':
+                return {
+                    url: `${API}/dream-10_45ea179a8c.png`,
+                    width: 148,
+                    height: 80
+                }
+
+            case 'twenty':
+                return {
+                    url: `${API}/dream-20_25b58433fd.png`,
+                    width: 148,
+                    height: 80
+                }
+
+            case 'fourty':
+                return {
+                    url: `${API}/dream-40_2d67647708.png`,
+                    width: 148,
+                    height: 80
+                }
+    
+            case 'twox':
+                return {
+                    url: `${API}/dream-2x_ca1958f422.png`,
+                    width: 148,
+                    height: 80
+                }
+    
+            case 'sevenx':
+                return {
+                    url: `${API}/dream-7x_710530a00a.png`,
+                    width: 148,
+                    height: 80
+                }
+
             default:
                 return {
                     url: `${CDN}/svg/no_img_available.svg`,
