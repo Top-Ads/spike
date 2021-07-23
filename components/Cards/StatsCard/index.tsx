@@ -7,7 +7,7 @@ import UpdateIcon from '@material-ui/icons/Update'
 import { Stat } from '../../../interfaces'
 import { injectSymbolImage } from '../../../utils/injectSymbolTolmage'
 import { LiveStats, SymbolLayout } from '../../../utils/constants'
-import { crazyTimeProbability, monopolyProbability } from '../../../utils/livsStatsProbality'
+import { crazyTimeProbability, monopolyProbability, dreamCatcherProbability } from '../../../utils/livsStatsProbality'
 
 type PageProps = {
    data: Stat,
@@ -16,6 +16,16 @@ type PageProps = {
 };
 
 const StatsCard: FunctionComponent<PageProps> = ({data, timeFrame, type}) => {
+
+    const getProbabilty = (type: LiveStats) => {
+
+        if (type === LiveStats.CRAZYTIME) 
+            return  crazyTimeProbability(data.symbol)
+        else if (type === LiveStats.MONOPOLY) 
+            return monopolyProbability(data.symbol)
+        else if  (type === LiveStats.DREAMCATCHER)
+            return dreamCatcherProbability(data.symbol)
+    }
 
     return (
         <Fragment>
@@ -37,7 +47,7 @@ const StatsCard: FunctionComponent<PageProps> = ({data, timeFrame, type}) => {
                     <li className="live-result">Total Spins: <span>{data.spinSince}</span></li>
                     <li className="live-result">In the last {timeFrame}: <span>{`${Math.round(data.percentage * 100) / 100}%`}</span></li>
                     <li className="live-result">Total Draws: <span>{data.lands}</span></li>
-                    <li className="live-result">{type === LiveStats.CRAZYTIME ?  crazyTimeProbability(data.symbol) : monopolyProbability(data.symbol)}</li>
+                    <li className="live-result">{getProbabilty(type)}</li>
                 </Main>
             </Container>
             

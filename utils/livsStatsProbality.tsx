@@ -80,3 +80,46 @@ export const monopolyProbability = (str : string) => {
         </Fragment>
     )
 }
+
+export const dreamCatcherProbability = (str : string) => {
+    if(str === 'one') return(
+        <Fragment>
+            Expected: 21 / 54 (38.89%) 
+        </Fragment>
+    )
+    if(str === 'two') return(
+        <Fragment>
+           Expected: 13 / 54 (24.07%) 
+        </Fragment>
+    )
+    if(str === 'five') return(
+        <Fragment>
+           Expected: 7 / 54 (12.96%) 
+        </Fragment>
+    )
+    if(str === 'ten') return(
+        <Fragment>
+           Expected: 4 / 54 (7.41%) 
+        </Fragment>
+    )
+    if(str === 'twenty') return(
+        <Fragment>
+           Expected: 2 / 54 (3.70%) 
+        </Fragment>
+    )
+    if(str === 'fourty') return(
+        <Fragment>
+           Expected: 4 / 54 (7.41) 
+        </Fragment>
+    )
+    if(str === 'twox') return(
+        <Fragment>
+           Expected: 2 / 54 (3.70%) 
+        </Fragment>
+    )
+    if(str === 'sevenx') return(
+        <Fragment>
+           Expected: 1 / 54 (1.85%) 
+        </Fragment>
+    )
+}

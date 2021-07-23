@@ -69,6 +69,10 @@ const Routes: FunctionComponent = () => {
                         <Link href={'/live-stats/monopoly'}>
                             <a><Button active={activeRoute} className={`dropdown-link ${router.pathname === '/live-stats/monopoly' ? 'active' : ''}`}>Monopoly</Button></a>
                         </Link>
+
+                        <Link href={'/live-stats/dream-catcher'}>
+                            <a><Button active={activeRoute} className={`dropdown-link ${router.pathname === '/live-stats/dream-catcher' ? 'active' : ''}`}>Dream Catcher</Button></a>
+                        </Link>
                 </DropDownMenu>
             </div>
            
@@ -81,7 +85,6 @@ const Button = styled.div<ButtonProps>`
     margin: 0px 10px;
     padding: 10px 15px;
     font-weight: bold;
-    max-height: 18px;
 
     &.active:not(#dropdown-menu, .dropdown-link) {
         background-color: #fff;
@@ -165,7 +168,7 @@ const DropDownMenu = styled.div<MenuProps>`
     position: absolute;
     z-index: 99;
     height: auto; 
-    max-height: ${({show}) => show ?  '120px' : 0};
+    max-height: ${({show}) => show ?  '300px' : 0};
     transition: max-height 0.2s ease-in-out;
     overflow: hidden;
 `

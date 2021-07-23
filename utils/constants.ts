@@ -22,9 +22,12 @@ export enum SlotFilterList {
 }
 
   
+
+
 export enum LiveStats {
-  MONOPOLY,
-  CRAZYTIME
+    MONOPOLY,
+    CRAZYTIME,
+    DREAMCATCHER
 }
 
 export enum SymbolLayout {
