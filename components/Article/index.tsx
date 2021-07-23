@@ -22,7 +22,7 @@ const Article: FunctionComponent<PageProps> = ({data}) => {
                     </FreeBonusSection>
                 }
 
-                <div><strong>Gioca alle slot online – gratis</strong></div>
+                <div><strong>Giocare gratis alle slot online</strong></div>
                 <div>
                     <Thumbnail style={{float: 'right', marginLeft: '30px'}}>
                         <LazyLoad  height={85} offset={300}>
@@ -36,63 +36,60 @@ const Article: FunctionComponent<PageProps> = ({data}) => {
                         </LazyLoad>
                     </Thumbnail>
                     <p>
-                    Se ti piacciono le slot machine online ma vuoi giocare senza rischiare nulla,
-                    allora sei nel posto giusto. Qui su casinosquad.it trovi soltanto slot online gratis,
-                    insieme ad altri giochi da casinò a cui potrai giocare per tutto il tempo che vorrai,
-                    senza pagare nulla, senza registrarti e senza scaricare alcun software.
-                    Potrai semplicemente giocare, e basta. Giocare alle <strong>slot machine gratis</strong> online ti
-                    consente di poterle provare e imparare le loro caratteristiche, il loro comportamento,
-                    scoprire quanto pagano e se hanno delle fasi bonus. Puoi scoprire in anteprima i segreti
-                    delle ultime slot rilasciate, per giudicarle personalmente e metterle tra i preferiti
-                    o tra quelle da evitare. Il tutto, senza alcun rischio e senza limiti di tempo.
-                </p>
+                    Ti piacciono le slot machine online? Vorresti esplorare tutte le dimensioni di questi giochi, senza rischiare di perderci nulla? 
+                    Bene: sei nel posto giusto.
+                    Infatti su casinosquad.it hai una vasta scelta di <b>slot online gratis</b> e non solo. Potrai provare tante dimensioni del <b>gioco d’azzardo</b>, 
+                    sperimentando altri <b>giochi da casinò</b>.
+                    Potrai giocarci quanto vuoi, senza limiti di tempo e senza pagare niente. Non dovrai registrarti al sito, né scaricare software.
+                    Sì, hai capito bene: avrai la possibilità di giocare e basta, allenarti alle <b>slot machine gratis online</b>, in modo da esplorarle e 
+                    imparare a conoscere le loro caratteristiche peculiari.
+                    In effetti, osservare come si comportano, provare i bonus e scoprire come e quanto pagano, è davvero importante prima di scommettere soldi veri.
+                    Su casinosquad.it potrai individuare in anteprima, ogni segreto delle nuove slot rilasciate sul mercato, ma anche provarle personalmente e scegliere 
+                    quali salvare o mettere tra le tue preferite
+                    </p>
                 
-               
-
                 </div>
 
 
-                <div><strong>Altri giochi a cui puoi giocare gratis sul nostro sito</strong></div>
+                <div><strong>Quali sono gli altri giochi da casinò disponibili sul nostro sito?</strong></div>
                 <div>
                     <p>
-                    Noi siamo specializzati soprattutto in slot machine, poiché esse rappresentano
-                    il gioco da <strong>casinò online</strong> più popolare del momento. Tuttavia, sul nostro sito sono
-                    disponibili anche altre tipologie di gioco, che ben conoscerai e che potrai apprezzare.
-                    Eccole qui:
+                    Devi sapere che il nostro forte – lo avrai capito – sono le <b>slot machine.</b><br/>
+                    Questo poiché attualmente, le slot rappresentano il gioco da <b>casinò online</b> più diffuso e di successo.
+                    Però sul nostro sito, potrai trovare anche giochi, che sono fra i più classici e conosciuti. 
+                    Qualche esempio?
                     </p>
                     <ul>
-                        <li>Roulette</li>
-                        <li>Blackjack</li>
-                        <li>Baccarat</li>
-                        <li>Bingo</li>
-                        <li>Video Poker</li>
+                        <li>Il gioco della Roulette</li>
+                        <li>il celebre Videopoker</li>
+                        <li>Il classico Blackjack</li>
+                        <li>l’elegante Baccarat</li>
+                        <li>il popolare Bingo</li>
                     </ul>
                     <p>
-                    Se stavi cercando uno specifico casinò, allora visita la nostra pagina dedicata
-                    dove potrai scegliere la tipologia di gioco che preferisci. Nella pagina, troverai
-                    dei filtri che potrai utilizzare per trovare più facilmente il gioco che stai cercando.
+                    Stai forse cercando degli specifici casinò? Se la risposta è sì, dovrai semplicemente visitare la nostra pagina dedicata: 
+                    qui potrai selezionare il tipo di gioco che desideri provare.
+                    Infatti, nella parte dedicata, troverai filtri da impostare e utilizzare per individuare in modo semplice il gioco che cerchi.
                     </p>
                </div>
 
 
-                <div><strong>Slot – Giocare senza download e senza registrazione</strong></div>
+                <div><strong>Giocare alle Slot senza download e senza registrazione</strong></div>
                 <div
                     ><p>
-                    Su casinosquad.it puoi giocare subito, senza perdere tempo in download
-                    e registrazioni. Molti casinò richiedono ancora di scaricare il proprio software
-                    di gioco, richiedendo quindi tempo per il download e l’installazione. Sul nostro
-                    sito potrai giocare subito senza scaricare nulla. Inoltre, non dovrai registrarti!
-                    Ciò significa che per giocare su Slotjava non devi riempire moduli con i tuoi dati,
-                    poiché tutti i giochi che ti offriamo sono completamente gratuiti. Per giocare, devi
-                    semplicemente selezionare una slot e cliccare sulla sua anteprima. A tutte le slot presenti
-                    sul nostro sito si può giocare semplicemente accedendo dal browser. Questo grazie ai progressi
-                        della tecnologia HTML5 e dei browser ottenuti sia per desktop che mobile. Grazie al HTML5 puoi goderti
-                    più di 1000 slot senza download e con il massimo della qualità audio e video possibile.
+                    Devi sapere che su casinosquad.it potrai giocare subito, senza limiti o perdite di tempo. Sì, infatti, non dovrai iscriverti o fare registrazioni. 
+                    Tanti casinò, invece, ti obbligano a fare il download dei loro software di gioco. Questo togliendo tempo che potrebbe essere prezioso per te, fra download e installazione. 
+                    Su casinosquad.it potrai giocare subito senza alcun obbligo.
+                    Facendo un esempio, se decidi di giocare su Slotjava, non dovrai riempire complicati moduli con i tuoi dati sensibili, poiché offriamo un’anteprima completamente gratuita. 
+                    Infatti, per provare una slot, dovrai semplicemente selezionarla, cliccando sulla sua anteprima. 
+                    Insomma, ti basterà accedere del browser per provare a giocare.
+                    Com’è possibile? Dobbiamo ringraziare i passi da gigante fatti dalla tecnologia HTML5 e dei browser negli ultimi anni, sia per desktop che per dispositivo mobile. 
+                    Infatti, è grazie al HTML5 che potrai avere a disposizione oltre 1000 slot, con il meglio della qualità audio e video.
                     </p>
                 </div>
 
 
-                <div><strong>È legale giocare alle slot online in Italia?</strong></div>
+                <div><strong>Le slot online sono legali in Italia?</strong></div>
                 <div>
                     <Thumbnail style={{float: 'left', marginRight: '30px'}}>
                         <LazyLoad height={85} offset={300}>
@@ -107,80 +104,80 @@ const Article: FunctionComponent<PageProps> = ({data}) => {
                         </LazyLoad>
                     </Thumbnail>
                     <p>
-                    Il gioco d’azzardo in Italia è legale e include l’accesso ai casinò online.
-                    Non ci sono scappatoie poiché i casinò di gioco online sono autorizzati
-                    a operare purché detengano una licenza dalle autorità italiane. Dal 3 dicembre 2012
-                    sono disponibili le slot online AAMS-ADM. Questo permette di giocare legalmente e in modo
-                    sicuro alle slot machine online sui siti di casinò certificati dall’Agenzia delle Dogane e dei Monopoli.
-                    In questo modo, oggi gli appassionati di slot online, possono giocare sia da desktop che da mobile,
-                    grazie ad una vasta offerta di titoli in continuo aggiornamento, che accontenta un pubblico variegato di scommettitori,
-                    dai principianti ai professionisti. Le slot machine nei casinò online AAMS-ADM italiani sono
-                    al primo posto della classifica mondiale per la qualità, la generosità e l’altissimo livello di intrattenimento. Qui,
-                    i migliori casino legali con slot machine AAMS a confronto.
+                    Stai tranquillo, puoi giocare serenamente perché il gioco d'azzardo è legale in Italia, ma bisogna fare delle precisazioni.
+                    Anche se il concetto di legalità, include i <b>casinò online</b>, bisogna fare attenzione al fatto che la piattaforma di gioco abbia la licenza.
+                    Infatti, i <b>casinò di gioco online</b> possono operare se hanno una licenza rilasciata dalle autorità italiane. 
+                    In effetti, dal 3 dicembre 2012 le slot online AAMS-ADM sono disponibili.
+                    Ciò significa la possibilità di giocare legalmente e in serenità, alle <b>slot machine online</b> almeno sui siti certificati.
+                    Stiamo parlando dei <b>casinò online</b>autorizzati dall'Agenzia delle Dogane e dei Monopoli.
+                    Questo, affinché gli amanti delle <b>slot online</b>, abbiano la possibilità di giocare da desktop, ma anche da mobile, grazie alla varietà dell’offerta 
+                    dei titoli che sono continuamente aggiornati.
+                    Il pubblico appassionato del gioco online, è variegato - dai principianti ai professionisti. 
+                    Forse non sai che le slot machine nei <b>casinò online</b> italiani AAMS-ADM hanno una posizione di pregio. Infatti, sono al primo posto al mondo, per qualità, 
+                    generosità e il livello di intrattenimento. 
+                    Vuoi scoprire i migliori casino legali con slot machine AAMS? Ecco qui un confronto.
                     </p>
                 </div>
 
 
-                <div><strong>Dietro alle slot e ai giochi da casinò c’è tanta tecnologia. A tua disposizione.</strong></div>
+                <div><strong>Il valore della tecnologia e l’impegno dietro le quinte nel mondo delle slot e dei giochi da casinò.</strong></div>
                 <div><p>
-                    lash è stato molto utile e ai tempi rivoluzionario, ma ora è diventato un po’ datato.
-                    Le nuove tecnologie e i nuovi standard grafici e sonori hanno richiesto un cambio di passo.
-                    Questo è il motivo per cui oggi le slot e gli altri giochi da casinò online sono sviluppati in HTML5:
-                    richiedono il minimo spazio, sono veloci e incredibilmente qualitativi. Soprattutto, c’è da far notare
-                    che la tecnologia HTML5 è ottimale anche per i dispositivi mobili, che oggi sono capillarmente diffusi.
-                    Tutti hanno uno smartphone e quindi si deve avere la possibilità di poter giocare ovunque ci si trovi.
-                    I provider non potevano farsi scappare l’occasione di soddisfare questa crescente esigenza.
+                Attualmente, siamo abituati ad una determinata raffinatezza visiva e amiamo standard grafici visivi e audio di un certo livello.
+                Ecco perché in tempi recenti, sia slot che altri prodotti dei <b>casinò online</b> sono sviluppati in HTML5.
+                Infatti, la tecnologia HTML5 è ottimale anche e soprattutto per i dispositivi mobili, sono quelli più utilizzati per interfacciarsi alla rete.
+                La tecnologia HTML5 è veloce, e leggera. Ottima per chi ha uno smartphone e quindi può voler giocare ovunque si trovi: un’eventualità di cui i maggiori 
+                provider hanno tenuto conto.
                 </p></div>
 
 
-                <div><strong>Come realizziamo le recensioni delle slot online?</strong></div>
+                <div><strong>In che modo casinosquad.it realizza le recensioni delle slot online?</strong></div>
                 <div>
                     <p>
-                    I nostri esperti di casinosquad.it valutano ogni gioco di slot online attraverso un rigoroso processo
-                    di verifica per garantire che venga offerta ai giocatori la migliore esperienza di gioco possibile.
-                    Scopriamo ogni dettaglio nella nostra ricerca per offrirti i migliori giochi di slot online nelle
-                    nostre recensioni. I giocatori possono essere certi che ogni guida alle slot online è recensita in
-                    base a 5 requisiti standard:
+                    Abbiamo a disposizione un team di esperti che valuta ogni <b>slot online</b>, facendo un capillare percorso di verifica, rigoroso ed efficace.
+                    L’obiettivo è una missione del nostro team, ovvero la garanzia di un’esperienza di gioco avvincente e divertente.<br/>
+                    <b>casinosquad.it</b> è qui per svelarti ogni dettaglio e per offrirti le recensioni dei migliori giochi di slot online.
+                    Si tratta di recensioni preparate con serietà e professionalità, in considerazione di 5 requisiti di base, vediamoli assieme:
+
                     </p>
 
                     <ul>
                         <li>
                             <p>
-                                <b>Presenza di bonus.</b> Valutiamo ogni gioco di slot in base ai suoi bonus e ricompense.
-                                Che si tratti di giri gratuiti, moltiplicatori o premi in denaro, i giocatori sapranno
-                                come attivare questi bonus e se valgono il loro prezioso bankroll.
+                            Abbiamo a disposizione un team di esperti che valuta ogni slot online, facendo un capillare percorso di verifica, rigoroso ed efficace.
+                            L’obiettivo è una missione del nostro team, ovvero la garanzia di un’esperienza di gioco avvincente e divertente. 
+                            casinosquad.it è qui per svelarti ogni dettaglio e per offrirti le recensioni dei migliori giochi di slot online.
+                            Si tratta di recensioni preparate con serietà e professionalità, in considerazione di 5 requisiti di base, vediamoli assieme:
                             </p>
                         </li>
 
                         <li>
                             <p>
-                            <b>RTP e Varianza</b> – Le dimensioni delle vincite di un giocatore dipendono dall’RTP e dalla
-                            varianza di un gioco di slot. I nostri esperti trovano i giochi con i RTP più alti verificandone
-                            il livello di varianza, per non far trovare impreparati i nostri giocatori.
+                            Il gioco online è ottimizzato per mobile? Un posto di rilievo nella valutazione è ricoperto anche dalla valutazione di quanto i giochi di slot 
+                            siano mobile friendly. I nostri giocatori valutano infatti – nell’introdurre un nuovo gioco nella libreria del sito – se sia o meno ottimizzato per 
+                            il gioco mobile, in modo da non sacrificare l’esperienza ludica.
                             </p>
                         </li>
 
                         <li>
                             <p>
-                            <b>Esperienza di gioco</b> – Per conquistare i nostri esperti, una slot machine deve avere un tema
-                            originale e una grafica di alta qualità. I nostri giocatori cercano un’esperienza coinvolgente,
-                            quindi sul nostro sito Web non c’è spazio per giochi di slot noiosi.
+                            Il gioco recensito propone bonus? Il nostro team di professionisti valuta ogni gioco di slot, tenendo conto del sistema di bonus e ricompense. 
+                            Che si tratti di free spin, moltiplicatori o premi in denaro, gli utenti avranno la possibilità di conoscere le modalità di attivazione dei bonus.
                             </p>
                         </li>
 
                         <li>
                             <p>
-                            <b>Ottimizzazione mobile</b> – I giocatori vogliono divertirsi con i giochi di slot,
-                            indipendentemente da dove si trovino. Il nostro team di recensioni verifica che ogni
-                            titolo presente nella libreria sia ottimizzato per il gioco mobile, senza sacrificare l’esperienza ludica.
+                            Nello scegliere un gioco di slot, è essenziale conoscere sia i valori di RTP che di Varianza. Come forse sai, la stessa vincita stessa, 
+                            è definita in parte dall'RTP, ma anche dalla varianza di un gioco di slot. Il nostro team si impegna a trovare i giochi con gli RTP più alti, 
+                            testando il livello di varianza, in modo da facilitare tutti i giocatori.
                             </p>
                         </li>
 
                         <li>
                             <p>
-                            <b>Valore del jackpot</b> – Ogni giocatore di slot sogna di vincere un jackpot. Scopriamo il valore massimo
-                            che puoi aspettarti di vincere da una slot machine e come vincerlo. Vogliamo offrire ai nostri lettori
-                            le migliori potenzialità di vittoria sempre!.
+                            E infine, nel testare una slot online, è anche importante considerate il valore del Jackpot. In effetti, è il sogno di un giocatore, quello di 
+                            vincere un jackpot cospicuo. Anche scoprire il valore massimo che puoi sognare di vincere ad una slot machine, assume rilevanza. Offriamo perciò ai nostri lettori, 
+                            i dati sulle vincite potenziali di una una slot machine e come ottenerle. 
                             </p>
                         </li>
                         
@@ -189,281 +186,232 @@ const Article: FunctionComponent<PageProps> = ({data}) => {
                 </div>
 
                 
-                <div><strong>Qual è la differenza tra le slot online e le slot live?</strong></div>
+                <div><strong>Esistono differenze fra slot online e le slot dei casinò terrestri?</strong></div>
                 <div>
                     <p>
-                    Le slot nei casinò di Las Vegas hanno alcune somiglianze con i giochi online? Apparentemente sì,
-                    la versione online infatti, è molto simile alla sua controparte meccanica che trovi nei casinò terrestri.
-                    Le tipiche slot machine dispongono di una serie di tre o più bobine che ruotano alla spinta di una leva.
-                    Una volta che i rulli smettono di girare, vinci o perdi in base alla combinazione di simboli sui rulli.
-                    È così semplice ma anche divertente e potenzialmente redditizio. Cosa succede quando giochi alle slot online?
-                    Invece di dover tirare una leva, tutto ciò che fai nelle slot online è premere un pulsante per mettere in moto i rulli.
+                    Bisogna sottolineare che – almeno in apparenza - le slot che puoi trovare nei casinò di Las Vegas, vantano alcune somiglianze con i giochi online.
+                    Infatti, la versione online, è molto simile alla controparte meccanica che puoi facilmente trovare all’interno dei <b>casinò terrestri</b>. 
+                    Le slot machine classiche, hanno una serie di tre o più rulli, che girano dopo aver azionato una leva. 
+                    Così, mentre i rulli girano, puoi vincere o perdere in base alle combinazioni ed alla validità dei simboli che appaiono sui rulli stessi.
+                    Ma è la stessa cosa anche con le slot online? 
+                    Intanto, ti ricordiamo che anziché tirare una leva, nelle slot online dovrai premere un pulsante per azionare i rulli.
                     </p>
                 </div>
 
 
-                <div><strong>Quali sono i vantaggi di giocare alle slot online?</strong></div>
+                <div><strong>I vantaggi di provare le slot online</strong></div>
                 <div>
-                    <ul>
+                    <ol type="1">
                         <li>
                             <p>
-                            Grazie all’innovativo software Random Number Generator (RNG) che sostituisce
-                            le leve meccaniche presenti nelle slot machine nei casinò tradizionali a terra,
-                            il risultato per ogni giro risulta davvero casuale. Il software RNG è certificato per il fair play,
-                            quindi ti viene garantito un gioco trasparente.
+                            <b>Random Number Generator</b><br/>
+                            I livelli meccanici presenti nelle slot machine dei casinò tradizionali, sono sostituiti nelle slot online, da un meccanismo davvero sofisticato, 
+                            chiamato Random Number Generator (RNG).
+                            Si tratta di un software che fungendo da generatore di combinazioni, porta il risultato di ogni giro ad essere davvero casuale. 
+                            Si tratta di un software certificato per il fairplay: in questo modo RNG ti garantisce la trasparenza del gioco.
                             </p>
                         </li>
                         <li>
                             <p>
-                            Maggiore payback / RTP ( Ritorno al Giocatore) – Secondo gli esperti di casinò, la percentuale
-                            di rimborso o RTP nelle slot online è molto più alta. Ad esempio, se una slot ha un RTP del 95%
-                            e fai 1 x 100 scommesse, puoi aspettarti di ottenere circa 95,00€ in vincite. Questo è esattamente
-                            l’opposto del vantaggio della casa, che nel caso di questo esempio è del 5%. La maggior parte delle
-                            slot online ha un RTP del 92% o più, con molti casinò che rimborsano fino al 95% e oltre,
-                            a differenza delle slot terrestri che di solito rimborsano un massimo del 90%.
+                            <b>Return to Player (RTP)</b><br/>
+                            Le slot online assicurano un maggior Ritorno al Giocatore (RTP), ovvero un payback più elevato.
+                            In effetti - gli esperti di casinò - sostengono che l’RTP in media, nelle slot online è molto più elevata. 
+                            Facciamo un esempio: se ho una slot online con un RTP DEL 97%, e farai 1 x 100 scommesse, potrai aspettarti all’incirca 97 euro di vincita.
+                            Bisogna sottolineare che la maggior parte delle slot online ha valori di RTP pari al 92% o più.
+                            Inoltre, in tantissimi casi, diversi casinò possono rimborsare fino al 95% e più.
+                            Si tratta di un’enorme differenza, se consideri che nei casinò terrestri, il rimborso massimo arriva al 90%.
+
                             </p>
                         </li>
                         <li>
-                            <p>
-                            Praticamente tutti i casinò online offrono bonus sul primo deposito e sulla ricarica.
-                            Questi bonus tendono ad applicarsi solo alle slot. Il rendimento aggiunto attraverso il bonus
-                            sul primo deposito è di circa il 5%. Ciò significa che le slot online possono avere un margine
-                            di casa minimo o nullo quando si gioca con un bonus.
+                            <p><b>Il Bonus deposito e il Bonus Ricarica</b><br/>
+                            La stragrande maggioranza dei casinò online, propongono bonus sul primo deposito e sulla ricarica. 
+                            Attraverso il bonus, il rendimento aggiunto sul primo deposito è circa il 5%. 
                             </p>
                         </li>
                         <li>
-                            <p>
-                            Varietà di gioco – La selezione del gioco è un’altra area in cui le slot online ottengono buoni punteggi
-                            rispetto alle loro controparti terrestri. Molti casinò online offrono da 200 a 350 o più delle migliori
-                            slot online di una vasta gamma di fornitori di software come Microgaming, Net Entertainment, Real Time Gaming,
-                            Playtech e molti altri.Mentre hai l’imbarazzo della scelta, puoi anche giocare istantaneamente sul tuo desktop
-                            o dispositivo mobile senza dover aspettare il tuo turno.
+                            <p><b>Ampia varietà nella selezione dei giochi</b><br/>
+                            La grande varietà dei giochi disponibili, è un altro dei vantaggi di scegliere le slot online.
+                            Solitamente, le migliori piattaforme di gioco, propongo oltre 300 fra le migliori slot online.
+                            Marchi come Microgaming, NetEnt, Real Time Gaming, Playtech, sono una garanzia di affidabilità e successo.
                             </p>
                         </li>
-                    </ul> 
+                    </ol> 
                </div>
 
 
-                <div><strong>Fornitori di software: i Provider di Slot</strong></div>
+                <div><strong>Chi sono provider delle slot machine</strong></div>
                 <div>
                     <p>
-                    I giochi dei casinò non vengono creati dagli stessi casinò ma vengono loro forniti da dei provider,
-                    che sono per l’appunto dei fornitori di giochi. I provider non sono tutti uguali. Ciascuno di loro
-                    ha il proprio stile che si vede nella produzione degli stessi giochi, che mostrano delle particolarità
-                    e caratteristiche differenti. Dopo un po’ di tempo, chi gioca impara a riconoscere le differenze
-                    e persino riconoscere di quale provider sia una slot. A tal proposito, è bene notare che se ti piace
-                    un provider in particolare, potrai usare i filtri sul nostro sito per visualizzare solo i suoi giochi.
-                    Allo stesso modo, potrai ad esempio individuare una caratteristica che ti piace (es. free spin) e usare
-                    un filtro che ti consentirà di visualizzare solo slot che presentino quella specifica caratteristica.
-                    Alcuni dei migliori provider che imparerai subito a riconoscere sono NetEnt (con una grafica strepitosa),
-                    Novomatic (il provider di <strong>Book of Ra</strong>), Pragmatic Play (il provider di <strong>Wolf Gold</strong>) e IGT.
-                    Tutti questi provider sono molto popolari in Italia.
+                    Come potrai immaginare, i giochi dei <b>casinò online</b>, sono sviluppati da altri.
+                    Esistono infatti dei provider, che sono fornitori dei giochi che troverai sulle <b>piattaforme di gioco</b>.
+                    Devi sapere che i provider sono molto diversi fra loro, per stile, particolarità e caratteristiche.
+                    I giocatori abituali, con il passare del tempo, sanno distinguere le differenze e persino riconoscere ad una prima occhiata, quale fornitore 
+                    abbia realizzato una determinata slot.
+                    Forse non lo sai, ma sul nostro sito, avrai anche l’opzione di usare un filtro per visualizzare solo i giochi di un determinato provider. 
+                    In più, potrai usare i filtri anche per trovare i prodotti con le caratteristiche che ami di più, come i giri gratis o un particolare tema.
+                    Possiamo già dirti, che alcuni fra i migliori fornitori di giochi, sono IGT, Pragmatic Play, NetEnt e Novomatic: sono tutti davvero celebri in Italia.
                     </p>
                 </div>
 
 
-                <div><strong>Come si gioca alle slot e agli altri giochi da casinò con soldi veri</strong></div>
+                <div><strong>Provare le slot online con soldi veri</strong></div>
                 <div>
                     <p>
-                    Sul nostro sito trovi slot gratuite e ci puoi giocare quanto vuoi per divertimento.
-                    Se c’è qualche slot che ti piace in modo particolare e vorresti giocarci con soldi veri,
-                    puoi farlo in modo molto facile. Quando scegli una slot sul nostro sito,
-                    cliccaci su per avviarla: sotto la finestra di gioco ci troverai alcuni casinò in cui puoi giocarci con soldi veri.
-                    Ripetiamo: vuoi giocare per soldi veri a una slot?
+                    Come hai capito, sul sito casinosquad.it puoi provare tutte le slot che vuoi senza rischiare nulla.
+                    Tuttavia, se avessi voglia di provare le slot soldi veri, hai diverse opportunità.
+                    Nel momento in cui provi la versione demo di una slot sul nostro sito, troverai appena al di sotto, una finestra di gioco con l’indicazione di alcuni casinò in cui potrai provarla con soldi veri. 
+                    Ricapitolando:
                     </p>
 
-                    <ul>
-                        <li>Trova la slot che ti piace sul nostro sito.</li>
-                        <li>Clicca sull’anteprima per aprirla.</li>
-                        <li>Sotto la finestra di gioco, <strong>trovi la lista dei casinò in cui giocarci con soldi veri.</strong></li>
-                    </ul>
+                    <ol type="1">
+                        <li>Scegli una slot che t’ispira su casinosquad.it.</li>
+                        <li>Fai clic sull’anteprima della slot.</li>
+                        <li>Controlla la finestra di gioco sotto la slot: qui troverai l’elenco dei <b>casinò per giocare con soldi veri.</b></li>
+                    </ol>
                     <p>
-                    Ad ogni modo, non avere troppa fretta nello scegliere un casinò, perché ogni casinò è diverso
-                    dall’altro e può offrirti delle promozioni diverse. Ad esempio, potrebbe interessarti un casinò
-                    che offra un determinato tipo di promozione anziché un’altra. Oppure, potresti preferire uno che offre
-                    free spin invece di un bonus senza deposito. Ancora, potresti voler comparare i bonus di benvenuto sul primo deposito.
-                    L’importante è che tu scelga un <strong>casinò italiano</strong> legale, sicuro e affidabile. Sul nostro sito,
-                    trovi soltanto i <strong>migliori casinò affidabili</strong>, conosciuti e con licenza AAMS.
-                    Se non hai mai giocato ai casinò online, dai un’occhiata alla <strong>nostra sezione casinò</strong> dove troverai
-                    tanti consigli utili per scegliere il casinò che fa al caso tuo. Se stai accedendo al sito di casinosquad.it
-                    con uno smartphone o un computer su cui non sia installato Flash Player,
-                    potresti utilizzare il filtro “Dispositivi Mobile Supportati”, per giocare alle slot con soldi veri senza la richiesta di Flash Player.
+                    Concediti però del tempo per fare la tua scelta. Considera che ogni casinò ha le sue particolarità e può garantirti diverse promozioni in termini di bonus, marchi, etc.
+                    Sai quale sarà la cosa più importante? Scegliere un <b>casinò italiano</b> che soddisfi i requisiti di sicurezza, legalità e affidabilità.
+                    Su casinosquad.it troverai una selezione dei <b>migliori casinò</b> del panorama italiano che vantano popolarità e affidabilità grazie ad una licenza AAMS. 
+                    Se ti preoccupa il fatto di non avere mai provato un casinò online, puoi sempre consultare la <b>nostra sezione casinò</b>.
+                    Qui potrai trovare tutte le informazioni e utili consigli per fare la tua scelta migliore.
+                    Importante: se stai consultando il nostro sito da smartphone o pc, ricorda che se non hai Flash Player installato, per giocare con soldi veri, dovrai 
+                    utilizzare il filtro “Dispositivi Mobile Supportati”.
                     </p>
                 </div>
                 
 
-                <div><strong>Slot bonus e promozioni.</strong></div>
+                <div><strong>I Bonus delle slot e le promozioni delle piattaforme di gioco.</strong></div>
                 <div>
                     <p>
-                    Tra i casinò c’è molta concorrenza riguardo alle promozioni. E’ normale:
-                    vogliono attirare i nuovi clienti e soddisfare quanto possibile quelli già iscritti.
-                    Ma quali promozioni offrono i casinò online? Queste sono le tre principali promo che ti offrono:
+                    Ovviamente, tra i vari <b>casinò online</b>, c’è concorrenza e ci possono essere tante differenze in merito alle promozioni. Principalmente, 
+                    le promozioni proposte dai casinò sono di 3 tipologie:
                     </p>
 
                     <ul>
                         <li>
                             <p>
-                            <b>Bonus sul deposito:</b> è un bonus che si riceve al primo deposito e dipende dall’entità dello stesso. Ad esempio,
-                            un bonus del 100% sul primo deposito vuol dire che si riceve un bonus pari al 100% del deposito stesso
-                            (es. depositi 100€ e ricevi altri 100€ in bonus per giocare con complessivi 200€). Presenta dei requisiti
-                            di scommessa che dovrai valutare e che sono espressi con la X
-                            (es. 10X vuol dire che devi giocare l’importo del bonus per 10 volte per poterlo trasformare in denaro reale e prelevare).
+                            <b>Bonus con deposito:</b> Si tratta di un bonus ottenibile al primo deposito effettuato, derivante dal deposito stesso. 
+                                Quindi, se la piattaforma di gioco offre un bonus del 100%, vorrà dire che se depositi 50 euro,  riceverai un bonus di 50 euro) 
+                                che potrai usare giocando (quindi ben 100 euro).
+                                I requisiti di scommessa, sono espressi con il simbolo “X”. 
+                                Per esempio la dicitura 10X significa che per prevelare una vincita in soldi veri, l'importo bonus dovrà essere giocato per 10 volte.
                             </p>
                         </li>
                         <li>
                             <p>
-                            <b>Bonus senza deposito:</b> si tratta di un bonus che invece non richiede deposito.
-                            </p>
-                        </li>
-                        <li>
-                            <p>
-                            <b>Free Spin:</b> letteralmente <strong>“giri gratis”</strong>. Questi generalmente sono associati ad una
-                            determinata slot, sulla quale si possono per l’appunto fare dei giri con del credito gratuito.
-                            Anche in questo caso, generalmente occorre soddisfare dei termini e delle condizioni.
-                            </p>
-                        </li>
-                    </ul>
-
-                    <p>
-                    Oltre a quelli appena elencati, sulla <b>nostra pagina bonus dedicata</b> troverai anche altre tipologie
-                    di promozioni e ulteriori informazioni su come incassarli.
-                    </p>
-                </div>
-
-
-                <div><strong>Gioca alle slot come un Prof – Suggerimenti?</strong></div>
-                <div>
-                    <p>
-                    Le slot online sono un gioco d’azzardo, ma ciò non significa che non puoi
-                    imparare a giocare in modo intelligente e migliorare fino a diventare un vero professionista! Inoltre,\
-                    su questo tipo di slot machine, ci sono più rulli e linee di pagamento per giocare,
-                    una ragione in più per conoscere ulteriori strategie di gioco. Ti confermiamo,
-                    che le ultime slot non assomigliano alle macchinose slot degli anni Settanta,
-                    oggi sono presenti giri gratuiti, bonus e jackpot da non perdere. Esercitarti gratuitamente è possibile con le slot online,
-                    poiché la maggior parte dei casinò offre versioni demo in cui è possibile apprendere le regole
-                    di una determinata slot senza sborsare un centesimo! Inoltre, potresti essere in grado di ottenere
-                    un bonus di giri gratuiti. Scegli gli slot con una percentuale di pagamento o RTP più alta.
-                    Molti casinò elencati sul tuo sito preferito pubblicano la percentuale di pagamento,
-                    quindi presta particolare attenzione e scegli quelli con un RTP dal 95% in su. Ti consigliamo
-                    di di leggere sempre il regolamento in modo da sapere quanto può valere la tua scommessa.
-                    La maggior parte delle slot richiede un importo minimo di puntata per poter usufruire di bonus o jackpot.
-                    Più linee di pagamento scommetti, maggiori sono le possibilità di vincita. Puoi farlo anche con un budget limitato.
-                    Basta abbassare l’importo della scommessa e aumentare il numero di linee di pagamento.
-                    Una volta capito il gioco, sfrutta la pratica funzione Auto Play e inizia a realizzare le tue combinazioni vincenti!
-                    </p>
-                </div>
-
-
-                <div><strong>Come si ottiene il massimo valore dalle slot online?</strong></div>
-                <div>
-                    <p>
-                    La varianza nelle slot online è notevole. I jackpot e i round bonus sono pochi e
-                    lontani tra loro. Quando colpiscono, può essere il momento più emozionante per i giocatori
-                    di casinò online. È importante giocare all’interno del tuo bankroll e avere abbastanza soldi
-                    per attendere i momenti più propizi. Un altro modo per ottenere il massimo valore giocando alle
-                    slot online è utilizzare offerte speciali come welcome bonus e promo ricarica erogate dal casinò prescelto.
-                    Ciò può ridurre drasticamente il margine della casa. Infine, controlla sempre se è presente un Programma VIP,
-                    leggi sempre i Termini e le Condizioni del Programma VIP per assicurarti di poterti qualificare in base a livelli a piramide,
-                    che ti faranno ottenere condizioni di gioco privilegiate oltre premi extra lusso!
-                    </p>
-                </div>
-
-
-                <div><strong>Miti e luoghi comuni sbagliati sui giochi di slot</strong></div>
-                <div>
-                    <p>
-                    Le slot, sia nei casinò terrestri che nei casinò online, sono tra i giochi più famosi al mondo.
-                    Diverse ragioni rendono questi giochi benvoluti, a partire dalla loro facilità. Inoltre,
-                    le slot possono essere giocate a basso prezzo, rendendole le opzioni di betting più sicure per
-                    gli avventori di casinò online con un budget limitato. Ci sono, tuttavia, molti miti e idee
-                    sbagliate che circolano sulle slot. Cercheremo di analizzare alcuni di questi falsi miti e convinzioni
-                    errate in modo da offrirti una chiara comprensione delle slot.
-                    </p>
-
-                    <ul>
-                        <li>
-                            <p>
-                            Non ci sono slot vincenti e slot perdenti – Questo non è vero, in quanto alcune slot sono state
-                            impostate appositamente per ridurre i pagamenti. Ciò implica fondamentalmente che alcune slot sono
-                            un po’ tirate di altre a livello di erogazioni di vincite.
-                            I giocatori di slot di veterani possono facilmente identificare le due tipologie di slot.
-                            </p>
-                        </li>
-                        <li>
-                            <p>
-                            La macchina a cui giochi più spesso ti offre maggiori possibilità di colpire in grande
-                            – Questo è un grande malinteso perché, indipendentemente dalla macchina utilizzata,
-                            i risultati sono indipendenti e applicano le stesse regole e principi fondamentali a
-                            ogni singolo giro, senza essere condizionati da precedenti giri o pagamenti.
-                            Non importa se hai giocato su una determinata macchina per ore o se ti sei appena seduto.
-                            Questo rende le slot ancora più emozionanti e allettanti.
-                            </p>
-                        </li>
-                        <li>
-                            <p>
-                            Affinché una macchina funzioni costantemente senza interrompere i pagamenti,
-                            un operatore deve continuare ad aprirla – Questo è un malinteso perché l’unica volta
-                            in cui le slot machine dovrebbero essere aperte è quando le monete vengono ricaricate.
-                            Questo non ha nulla a che fare con i termini del gioco. Una volta aggiunte le monete e riavviata la macchina,
-                            continua da dove si era fermata.
-                            </p>
-                        </li>
-                        <li>
-                            <p>
-                            Le slot machine di valore superiore hanno pagamenti migliori di quelle inferiori – Ciò che è vero è che i
-                            pagamenti delle slot machine a puntata più elevata si verificano più frequentemente rispetto alle slot
-                            machine a scommessa più bassa, e questo potrebbe essere il motivo di questo malinteso.
-                            Questi pagamenti sono in realtà inferiori al gioco di denominazione delle monete.
-                            Si noti che tutte le slot machine, siano esse di taglio superiore o quarti,
-                            sono programmate con pagamenti fissi indipendentemente dalla frequenza con cui raramente colpiscono.
-                            Inoltre, dovrebbe essere ovvio, se si effettua una scommessa più grande, si otterrà un pagamento maggiore.
-                            </p>
-                        </li>
-                        <li>
-                            <p>
-                            Se hai riempito la slot machine con troppi soldi, alla fine vincerai… – Questo è un malinteso
-                            che lascia frustrati molti giocatori. Non è garantito che, poiché hai effettuato centinaia di giri,
-                            alla fine raggiungerai il jackpot. È per pura fortuna che vinci il jackpot, se mai ci riuscirai.
-                            La slot machine, come spiegato sopra, funziona in modo indipendente e non ha memoria di precedenti
-                            giri o vittorie, quindi non ha idea se meriti di vincere o meno.
-                            </p>
-                        </li>
-                        <li>
-                            <p>
-                            Quando diventi un membro di uno slot club, le slot machine ti favoriscono – Questa è una bugia
-                            per le ragioni sopra menzionate. Ciò che è vero è che essere membri di un determinato
-                            club di slot ha i suoi vantaggi, ma questi benefici non hanno nulla a che fare con pagamenti migliori.
-                            Le slot machine non hanno la possibilità di capire se stai usando monete o carte, e quindi essere
-                            un membro di un club non influenza in alcun modo i risultati del gioco. Devono seguire la percentuale
-                            di pagamento fissa programmata.
-                            </p>
-                        </li>
-                        <li>
-                            <p>
-                            Non puoi colpire due jackpot consecutivamente – Anche questo è un malinteso perché, come affermato in precedenza,
-                            è per pura fortuna che vinci il jackpot. In effetti, ci sono state numerose occasioni in cui i giocatori
-                            di slot online hanno raggiunto un jackpot considerevole e hanno continuato a giocare sullo stesso gioco di slot,
-                            solo per vincere un altro jackpot grandioso 
+                            <b>Giri gratis</b> I giri gratis (free spins), rappresentano la possibilità di fare sessioni di gioco usufruendo 
+                            di credito gratuito. Variano a seconda delle slot.
+                            Se vuoi, puoi consultare la pagina bonus dedicata per scoprire tutte le promozioni e le regole per l’incasso.
                             </p>
                         </li>
                     </ul>
                 </div>
 
 
-                <div><strong>Gioca alle slot come un Prof – Suggerimenti?</strong></div>
+                <div><strong><b>Vuoi giocare alle slot come un professionista? Prova queste strategie</b></strong></div>
                 <div>
                     <p>
-                    Il problema della dipendenza da gioco d’azzardo è reale e non va sottovalutata.
-                    Può succedere a tutti di avere un momento difficile e di volersi rifare o sfogare con il gioco.
-                    Tuttavia, il gioco dovrebbe essere considerato sempre e soltanto una forma di divertimento.
-                    Il problema della dipendenza dal gioco d’azzardo è una cosa seria e perciò va affrontato seriamente.
-                    Questo può valere per te o per chi ti è vicino, in famiglia o tra gli amici. Uno dei sintomi più comuni
-                    di chi soffre della dipendenza dal gioco d’azzardo è proprio il passare troppo tempo a giocare
-                    (al casinò online o alle slot, ad esempio).
-                    Questo è il motivo per cui ci sentiamo di incoraggiare fortemente i nostri lettori di giocare soltanto
-                    il denaro che possono permettersi di perdere senza alcun problema. Se iniziate ad avvertire che il vostro
-                    gioco sta diventando problematico, o se pensate che già sia un problema, ti consigliamo di chiamare urgentemente
-                    <strong> il numero di aiuto per il gioco d’azzardo: 800558822</strong> è un numero verde, completamente gratuito.
+                    Il mondo delle <b>slot online</b> fa parte del gioco d'azzardo.
+                    Se sei veramente interessato, potresti volere imparare a giocare in modo consapevole e professionale.
+                    Le nuove slot machine, vantano differenti quantità di rulli e di paylines; molto diverse dalle classiche slot degli anni Settanta e Ottanta.
+                    Il primo step da fare, è esercitarsi con le versioni free dei giochi, dato che l’opportunità proviene dalle stesse piattaforme di gioco.
+                    Ti consigliamo di provare slot con percentuale di pagamento RTP elevata.
+                    Sui siti dei vari casinò, troverete indicate chiaramente, le di pagamento (valuta quelle dal 95% in su).
+                    Sulla maggior parte delle slot, ti sarà necessario investire un importo minimo nella puntata, in modo da poterti avvantaggiare di bonus o jackpot. 
+                    Ricorda che scommettere su numerose linee di pagamento, aumenta le tue probabilità di vincita e ciò vale anche se hai un budget davvero limitato.
+                    Devi semplicemente impostare l'importo della scommessa, aumentando il numero di linee di pagamento. Una volta fatto questo, puoi utilizzare anche 
+                    la funzione Autoplay e tentare la fortuna.
+                    </p>
+                </div>
+
+
+                <div><strong>Massimizzare le vincite delle slot</strong></div>
+                <div>
+                    <p>
+                    Come abbiamo ricordato, un modo per prendere il massimo valore dalle slot online
+                    è sfruttare sia le offerte speciali - bonus di benvenuto e promo ricarica.
+                    Poi, è fondamentale mantenere la tua attività di gioco online, nell’intervallo del tuo bankroll (ovvero il budget per le scommesse). 
+                    Se sfori il tuo bankroll, forse dovresti evitare il gioco per un po’. 
+                    Inoltre, anche la varianza delle è molto ampia: colpire round bonus e jackpot può essere un evento raro, quanto emozionante.
+                    </p>
+                </div>
+
+
+                <div><strong><b>False credenze e luoghi comuni sui giochi di slot</b></strong></div>
+                <div>
+                    <p>
+                    Il gioco declinato nelle slot, che si parli dei casinò online, che di quelli tradizionali, è il gioco d’azzardo più popolare al mondo.
+                    I motivi sono vari, ma in primis mettiamo la facilità e l’accessibilità.
+                    In più le slot online si possono provare scommettendo importi molto bassi. Ciò diventa attraente per la nicchia di giocatori con un budget limitato o che 
+                    giocano per diverstirsi dallo smartphone.
+                    Tuttavia per chi non ha mai giocato, attorno al mondo delle slot, aleggiano false credenze e luoghi comuni.
+                    </p>
+
+                    <ol type="1">
+                        <li>
+                            <p>
+                            Slot machine online che fanno vincere e che fanno perdere. Come abbiamo detto, alcune slot pagano più facilmente di altre. 
+                            Se è vero che da neofiti la differenza è incomprensibile, per i professionisti diventa facile riconoscere le due varietà di slot.
+                            </p>
+                        </li>
+                        <li>
+                            <p>
+                            Più giochi ad una slot, più avrai possibilità di vincere. Falso. La probabilità non rispecchia le leggi della memoria. 
+                            I risultati saranno indipendenti ad ogni spin e non conta se stai giocando da ore o meno.
+                            </p>
+                        </li>
+                        <li>
+                            <p>
+                            Aprire una slot machine per vincere. Molti credono che aprire un dispositivo slot machine in continuazione, 
+                            garantirà vincite. Si tratta di un grande malinteso. In effetti, le slot machine dovrebbero essere aperte solo quando le monete vengono ricaricate. 
+                            </p>
+                        </li>
+                        <li>
+                            <p>
+                            Differenze fra slot machine di valore superiore e inferiore. Le slot machine sono in ogni caso programmate con pagamenti fissi. 
+                            Ovviamente, se si scommette un importo elevato, la vincita pagata sarà maggiore. Per questo ci sono differenze fra quelle di valore superiore e inferiore.
+                            </p>
+                        </li>
+                        <li>
+                            <p>
+                            Imbottire la slot di soldi farà vincere. Non è vero ed è uno sbaglio che crea molta frustrazione nei giocatori. Anche se scommetti importi elevati, 
+                            non sta scritto da nessuna parte che vincerai il jackpot. Infatti, il jackpot si vince per pura fortuna. 
+                            Come abbiamo spesso detto, le slot machine funzionano in modo indipendente e non hanno memoria delle precedenti vincite.
+                            </p>
+                        </li>
+                        <li>
+                            <p>
+                            Se fai parte di uno slot club, vincerai di più. Ancora un pensiero inesatto, una vera e propria bugia non corrispondente alla realtà. 
+                            I benefici del far parte o meno di uno slot club sono altri e non sono collegati a vincite o pagamenti superiori. 
+                            Anche perché le slot non sono “abbastanza intelligenti” da comprendere se tu sia un membro o meno di un club.
+                            </p>
+                        </li>
+                        <li>
+                            <p>
+                            Vincere più di un jackpot contemporaneamente. Molti pensano non sia possibile. Questo è un altro oggetto della confusione legata al mondo delle slot virtuali. 
+                            In alcune occasioni, infatti, è capitato che i giocatori abbiamo vinto un jackpot elevato e continuando a giocare, ne abbiano conquistato un altro.
+                            </p>
+                        </li>
+                    </ol>
+                </div>
+
+
+                <div><strong>E se il gioco diventa un problema? Usa la testa e fermati</strong></div>
+                <div>
+                    <p>
+                    Oltre ad essere una felice forma di intrattenimento e divertimento, per alcune persone, il gioco d’azzardo può portare dipendenza. 
+                    La ludopatia è un problema che ha riflessi nella vita concreta e per questo non deve essere sottovalutato.
+                    In periodo critici della vita, attraversando difficoltà, può capitare a tutti di voler tentare la fortuna e magari liberarsi dei problemi economici o debiti.
+                    Tuttavia, è fondamentale usare la testa e giocare con consapevolezza e se tu o qualcuno che hai vicino ti sembra in difficoltà, fermati e chiedi aiuto.
+                    Rifletti su quanto tempo passi giocando online e sulle piattaforme di gioco e sappi che ci sono strutture, iniziative e anche delle app che possono aiutarti a riequilibrarti.
+                    Perciò, noi di Casinò Squad invitiamo i nostri lettori a giocare soltanto per divertirti ed emozionarti.
+                    Non considerare mai il gioco d’azzardo come una soluzione ai tuoi problemi e non accanirti continuando a scommettere se hai perso soldi che vuoi recuperare.
+                    Gioca soltanto l’importo che puoi permetterti e non soldi che dovresti usare per cose fondamentali della tua vita.
+                    Se pensi di esserti avvicinato al gioco in un modo sereno, ma di non sentirti più così e pensi che la faccenda stia diventando problematica, fermati e chiedi aiuto.
+                    Ti indichiamo qui <b>il numero di aiuto per il gioco d'azzardo 800558822</b>.
+                    Si tratta di un numero verde che potrai chiamare gratis, dove professionisti preparati potranno ascoltarti e indirizzarti al meglio. Non sottovalutare eventuali problemi, 
+                    che siano tuoi o dei tuoi familiari, parenti o amici. Speriamo di esserti stati di aiuto.
                     </p>
                 </div>
 
@@ -480,7 +428,6 @@ const Main = styled.div`
     }
 
     li { 
-        list-style: square;
         text-align: left; 
         p {text-align: inherit}
     }
