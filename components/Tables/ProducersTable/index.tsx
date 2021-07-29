@@ -2,11 +2,11 @@ import React, { FunctionComponent } from 'react'
 import { Fragment } from 'react'
 import LazyLoad from 'react-lazyload'
 import styled from 'styled-components'
-import { Producer } from '../../interfaces'
-import { GridType } from '../../utils/constants'
-import { device } from '../../utils/device'
-import ProducerCard from '../Cards/ProducerCard'
-import GridCards from '../GridCards'
+import { Producer } from '../../../interfaces'
+import { GridType } from '../../../utils/constants'
+import { device } from '../../../utils/device'
+import ProducerCard from '../../Cards/ProducerCard'
+import GridCards from '../../GridCards'
 
 type PageProps = {
    data: Producer []
@@ -14,7 +14,7 @@ type PageProps = {
    setOpenDialog: Function
 };
 
-const ProvidersList: FunctionComponent<PageProps> = ({data, setSelected, setOpenDialog}) => {
+const ProducersTable: FunctionComponent<PageProps> = ({data, setSelected, setOpenDialog}) => {
 
     return (
         <Fragment>
@@ -24,15 +24,21 @@ const ProvidersList: FunctionComponent<PageProps> = ({data, setSelected, setOpen
                     content={ 
                         data.map( (producer, index) =>
                         <LazyLoad offset={100}>
+
+                            { index === 0 ? 
+                            <Button id="provider-famosi" style={{borderTopWidth: 'thick'}} >
+                                <span>PROVIDER FAMOSI</span>   
+                            </Button> : '' }
+
                             <ProducerCard setSelected={setSelected} key={index} data={producer}/>
+
                             { index === data.length-1 ? 
-                            <Button onClick={ () => setOpenDialog(true)}>
+                            <Button id="more-provider" onClick={ () => setOpenDialog(true)} style={{borderBottomWidth: 'thick'}} >
                                 <span>MORE PROVIDER +</span>   
                             </Button> : '' }
 
                         </LazyLoad>     
                     )}
-                    label="PROVIDER FAMOSI"
                     xs={12} sm={12} md={12}
                     width={"auto"}
                     AlignItem="center"
@@ -49,7 +55,7 @@ const Grids = styled.div`
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    color: ${({theme}) => theme.colors.background};
+    color: ${({theme}) => theme.palette.background};
     margin-top: 20px;
 
     @media ${device.tablet} {
@@ -60,22 +66,25 @@ const Button = styled.div`
     display: flex;
     flex-direction: row;
     justify-content: center;
-    font-size: 12px;
-    border: 1px solid ${({theme}) => theme.colors.gradient};
-    border-left-width: thick;
-    padding: 10px;
-    cursor: pointer;
     align-items: center;
+    border: 1px solid ${({theme}) => theme.palette.gradient};
+    padding: 10px;
     margin: 0 auto;
+    font-weight: bold;
+    cursor: pointer;
 
-    span {
-        color: ${({theme}) => theme.colors.background};
+    span { color: ${({theme}) => theme.palette.background}; }
+    
+    &#provider-famosi:hover {
+        background-color: unset;
     }
-    &:hover {
-        background-color: #f2f2f2;
+
+    &#more-provider:hover {
+        background-color: ${({theme}) => theme.palette.gradient};
+        span { color: #fff; } 
     }
 `
 
 
 
-export default ProvidersList
+export default ProducersTable

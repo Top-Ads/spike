@@ -81,7 +81,7 @@ const Header: FunctionComponent<PageProps> = ({isBrowserView}) => {
       setOverlay(true)
 
       const results = await algoliaIndex!.search<AlgoliaSearchData[] | undefined>(searchItem, { 
-        filters: `country: it`,
+        filters: `country: it`
       })
 
       setSearchResult(results.hits.map((obj: any) => {
@@ -157,7 +157,7 @@ const Header: FunctionComponent<PageProps> = ({isBrowserView}) => {
                       <CustomTextField
                         zIndex={100}
                         onChange={handleOnSearch}
-                        width="30ch" 
+                        size={'small'}
                         searchIcon
                         placeholder="Cerca una slot, un casino..."
                         clearSearchField={!overlay}
@@ -216,10 +216,8 @@ const Main = styled.div`
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
-  background-image: linear-gradient(180deg, ${({theme}) => theme.colors.background} 0%, ${({theme}) => theme.colors.gradient} 50%);
-  border-radius: 0px 0px 20px 20px;
-  box-shadow: ${({theme}) => theme.button.boxShadowX};
-  color: ${({theme}) => theme.text.color.primary};
+  background-image: ${({theme}) => theme.palette.backgroundImage};;
+  color: ${({theme}) => theme.text.color.white};
   padding: 5px 7%;
   overflow: hidden;
   
@@ -228,6 +226,7 @@ const Main = styled.div`
     top: 0px;
     width: fill-available;
     z-index: 100;
+    background-image: linear-gradient(180deg, rgb(226,185,109) 0%, rgb(224 198 133) 50%);
   }
 
   @media ${device.mobileL} {
@@ -248,7 +247,7 @@ const Logo = styled.div`
   display: inherit;
   position: relative;
   flex-direction: column;
-  width: 120px;
+  width: 130px;
 
   @media ${device.mobileL} {
     width: 100px;
@@ -287,7 +286,7 @@ const Actions = styled.div`
   justify-content: flex-end;
 
   .icons {
-    color: ${({theme}) => theme.text.color.primary};
+    color: ${({theme}) => theme.text.color.white};
     margin-left: 5px;
     font-size: 40px;
 

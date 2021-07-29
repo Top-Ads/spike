@@ -56,12 +56,17 @@ export default Layout
 const Main = styled.div`
 
   .space-around {
-    padding: 5px 7%;
+    padding: 0px 7%;
 
     @media ${device.tablet} {
       padding: 0px 2% 5px;
     }
-  } 
+  }
+  
+  .topBonus {
+    background-image: ${({theme}) => theme.palette.backgroundImage};
+    color: #fff;
+  }
 `
 
 const MarginHeader = styled.div`
@@ -70,12 +75,12 @@ const MarginHeader = styled.div`
   
   @media ${device.tablet} {
     display: block;
-    height: 100px;
+    height: 75px;
   }
   
   @media ${device.mobileL} {
     display: block;
-    height: 70px;
+    height: 65px;
   }
 `
 

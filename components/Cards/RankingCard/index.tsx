@@ -9,7 +9,7 @@ const RankingCard: FunctionComponent<PageProps> = ({index}) => <Main> {index} </
 
 const Main = styled.div`
     color: #fff;
-    background-color: ${({theme}) => theme.colors.background};
+    background-color: ${({theme}) => theme.palette.background};
     border-radius: 69px;
     width: 30px;
     height: 30px;

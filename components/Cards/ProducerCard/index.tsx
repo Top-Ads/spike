@@ -47,19 +47,14 @@ const Main = styled.div`
     display: flex;
     flex-direction: row;
     font-size: 12px;
-    border: 1px solid ${({theme}) => theme.colors.gradient};
-    border-left-width: thick;
+    border: 1px solid ${({theme}) => theme.palette.gradient};
     padding: 5px;
     cursor: pointer;
     align-items: center;
-
-    &:hover {
-        background-color: #f2f2f2;
-    }
 `
 
 const Thumbnail = styled.div`
-    width: 60px;
+    width: 50px;
     padding: 1px;
     border-radius: ${({theme}) => theme.button.borderRadius};
     overflow: hidden;
@@ -73,7 +68,11 @@ const Container = styled.div`
     align-items: center;
     flex-grow: 2;
     width: min-content;
-    padding: 0px 5px;
+    padding: 0px 10px;
+
+    .filter-icon {
+        color: ${({theme}) => theme.palette.background};
+    }
 `
 
 export default ProducerCard

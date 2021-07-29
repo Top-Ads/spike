@@ -32,7 +32,6 @@ const FavoriteCard: FunctionComponent<PageProps> = ({data, deleteItem}) => {
         <Fragment>
 
             <Main>
-
                 <Container onClick={playSlot}>
                     
                     <Thumbnail>
@@ -50,7 +49,11 @@ const FavoriteCard: FunctionComponent<PageProps> = ({data, deleteItem}) => {
                     <Info>
                         <Name><strong>{data.name}</strong></Name>
                         <Rating><RatingStars rating={data.rating}/></Rating>
+                        <Producer>
+                            { data.producer.name }
+                            <span className="card-likes" > { data.likes > 0 &&  ` • ${data.likes} likes` } </span>
                     
+                        </Producer>
                     </Info>
                 </Container>
 
@@ -69,8 +72,8 @@ const Main = styled.div`
     flex-direction: row;
     align-items: strech;
     font-size: 12px;
-    border-bottom: 1px solid ${({theme}) => theme.colors.gradient};
-    padding: 10px 0px;
+    border-bottom: 1px solid ${({theme}) => theme.palette.gradient};
+    padding: 5px 0px;
     cursor: pointer;
 
     .button {
@@ -91,7 +94,7 @@ const Container = styled.div`
 
 const Thumbnail = styled.div`
     position: relative;
-    width: 80px;
+    width: 100px;
     border-radius: ${({theme}) => theme.button.borderRadius};
     overflow: hidden;
 `
@@ -110,9 +113,12 @@ const Name = styled.div`
    text-transform: uppercase;
 `
 
+const Producer = styled.div`
+    font-size: 0.67rem;
+`
+
 const Rating = styled.div `
-    color: ${({theme}) => theme.text.color.secondary};
-    padding: 5px 0px;
+    color: ${({theme}) => theme.text.color.black};
 `
 
 export default FavoriteCard

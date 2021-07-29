@@ -28,7 +28,7 @@ const Main = styled.div`
     bottom: 0px;
     width: 100%;
     height: auto;
-    background-color: ${({theme}) => theme.colors.background};
+    background-color: ${({theme}) => theme.palette.background};
 
     display: flex;
     flex-direction: center;
@@ -52,7 +52,7 @@ const Main = styled.div`
         font-size: 11px;
 
         p { 
-            color: ${({theme}) => theme.text.color.primary}; 
+            color: ${({theme}) => theme.text.color.white}; 
             line-height: revert;
         }
        

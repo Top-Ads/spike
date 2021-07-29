@@ -3,18 +3,20 @@ import { useRouter } from 'next/router'
 import Image from 'next/image'
 import styled from 'styled-components'
 import LikeIcon from '../../LikeIcon'
-import { Category } from '../../../utils/constants'
+import { Category, SlotType } from '../../../utils/constants'
 import { removeLikeSlotContext } from '../../../contexts'
 import { CDN } from '../../../public/environment'
 import LazyLoad, { forceCheck } from 'react-lazyload'
 import { Slot } from '../../../interfaces'
 import SpinnerLoader from '../../SpinnerLoader'
+import { dateDiff } from '../../../utils/date'
 
 type PageProps = {
-   data: Slot
+   data: Slot,
+   type?: SlotType
 };
 
-const SlotCard: FunctionComponent<PageProps> = ({data}) => { 
+const SlotCard: FunctionComponent<PageProps> = ({data, type}) => { 
     const router = useRouter()
 
     const ref = useRef<HTMLDivElement>(null);
@@ -107,11 +109,12 @@ const SlotCard: FunctionComponent<PageProps> = ({data}) => {
                             layout="responsive"
                             priority={true}
                             width={1200}
-                            height={675}
+                            height={840}
+                            quality={80}
                             onLoad={()=> setLoading(false)}/>
                     </LazyLoad>
                 </Thumbnail>
-                { showBanner ? 
+                { showBanner &&  
                     <Banner>
                         <Button> 
                             <span>PLAY FREE</span>
@@ -120,12 +123,23 @@ const SlotCard: FunctionComponent<PageProps> = ({data}) => {
                             <span>REAL MONEY</span>
                         </Button>
                     </Banner>
-                : '' } 
+                } 
 
             </Main>
-
           
-            <Title>{data.name}</Title>
+            <Description>
+                <span className="card-name" >{data.name.toLowerCase()}</span> 
+                <div className="card-info">
+                    { data.producer && data.producer.name && <span className="card-producer"> {data.producer.name} </span> }
+                    { type === SlotType.NEW  && 
+                        <span className="card-date" > • { dateDiff(data.created_at) } days ago</span>
+                    }
+                    { type === SlotType.ONLINE  && 
+                        <span className="card-likes" > { data.likes > 0 &&  ` • ${data.likes} likes` } </span>
+                    }
+                </div>
+            </Description>
+
         </Fragment>
     ) 
 }
@@ -138,24 +152,44 @@ const Main = styled.div`
     overflow: hidden;
 `
 
-const Title = styled.span` 
+const Description = styled.span` 
     display: flex;
-    justify-content: center;
-    align-items: flex-start;
-    height: 25px;   
-    font-weight: bold;
-    font-size: 12px;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: baseline;
+    height: 35px;   
+    font-size: 0.7rem;
     padding-top: 2px;
+    
+    .card-info {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        font-weight: normal;
+        font-size: 0.6rem;
+    }
+
+    span {
+        margin: 0 2px;
+        text-align: left;
+    }
+
+    span.card-name {
+        font-weight: bold;
+        text-transform: capitalize;
+    }
 `
 
 const Banner = styled.div`
-    display: flex;
-    align-items: flex-end;
-    width: 100%;
-    height: 100%;
-    color: ${({theme}) => theme.text.color.primary};
     position: absolute;
     top: 0;
+    display:flex;
+    flex-direction: column;
+    align-items:center;
+    justify-content:center;
+    width: 100%;
+    height: 100%;
+    color: ${({theme}) => theme.text.color.white};
     background-color: rgba(0,0,0,0.5);
     z-index: 2;
 
@@ -176,13 +210,14 @@ const Icon = styled.div`
 const Thumbnail = styled.div` 
     position: relative;
     z-index: 1;
+
     img { border-radius: 5px; }
 `
 
 const Button = styled.div`
-    background-color: ${({theme}) => theme.colors.background};
+    background-color: ${({theme}) => theme.palette.background};
     border: 2px solid #fff;
-    color: ${({theme}) => theme.text.color.primary};
+    color: ${({theme}) => theme.text.color.white};
     border-radius: ${({theme}) => theme.button.borderRadius};
     cursor: pointer;
     width: 50%;
@@ -191,11 +226,11 @@ const Button = styled.div`
     font-size: 9px;
     font-weight: bold;
     align-items: center;
-    display: inherit;
+    display: flex;
     justify-content: center;
 
     &:hover {
-        box-shadow: ${({theme}) => theme.button.boxShadowY};
+      
     }
 `
 

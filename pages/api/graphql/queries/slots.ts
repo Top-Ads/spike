@@ -4,6 +4,7 @@ query slots(
     $countryCode: String,
     $limit: Int, $start: Int, 
     $name_contains: String,
+    $type_contains: String,
     $slug: String, 
     $sort: String, 
     $producer: String
@@ -12,6 +13,7 @@ query slots(
           where : { 
             country : {code : $countryCode},
             name_contains: $name_contains,
+            type_contains: $type_contains,
             slug: $slug,
             producer: {
               name: $producer

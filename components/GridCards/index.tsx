@@ -6,14 +6,14 @@ import Divider from '../Divider'
 import styled from 'styled-components'
 import RankingCard from '../Cards/RankingCard'
 import { GridType } from '../../utils/constants'
-import Breadcrumbs from '../Breadcrumbs'
+import GridIndicators from '../GridIndicators'
 
 const useStyles = makeStyles<Theme, PageProps>(() =>
   createStyles({
     root: {
       flexGrow: 1,
-      margin: '5px',
-      width: ({width, type}) => width ? width : type === GridType.SLOTS ? '500px': 'fill-available',
+      margin: '10px',
+      width: ({width, type}) => width ? width : type === GridType.SLOTS ? '45%;': 'fill-available',
       ['@media (max-width: 768px)']: {
         width: ({width}) => width ? width : 'fill-available',
         '& .MuiGrid-container' : {
@@ -34,7 +34,7 @@ const useStyles = makeStyles<Theme, PageProps>(() =>
       borderRadius: ({disableBorderRadius}) => disableBorderRadius ? '0px' : '5px',
       boxShadow: ({showBoxShadow}) => showBoxShadow ? 'auto' : 'none',
       backgroundColor: ({bgColor}) => bgColor ? bgColor : 'transparent',
-      width: ({type}) => type === GridType.TOPBONUS ? '20vw': 'unset',
+      width: ({type}) => type === GridType.TOPBONUS ? '25vw': 'unset',
       ['@media (max-width: 768px)']: {
         width: ({type}) => type === GridType.TOPBONUS ? '30vw': 'unset',
       },
@@ -70,34 +70,32 @@ type HeadType = {
 
 const GridCards: FunctionComponent<PageProps> = (props) => {
 
-  const {type, content, label, xs, sm, md, AlignItem, showIndex=false, spacing=1, breadcrumbIndex=0, breadcrumbSize} = props;
+  const {type, content, label, xs, sm, md, AlignItem, showIndex=false, spacing=2, breadcrumbIndex=0, breadcrumbSize} = props;
 
   const classes = useStyles(props)
 
   return (
     <div className={classes.root}>
-       { label ? 
+       { label && 
           <Head align={AlignItem}>
-            
-                <Fragment>
-                  <Label> 
-                    { label }
-                    { type === GridType.SLOTS ? <Breadcrumbs currentIndex={breadcrumbIndex} size={breadcrumbSize}/> : '' }
-                  </Label>
-                  <Divider/>
-                </Fragment>
-              
+              <Fragment>
+                <Label> 
+                  { label }
+                  { type === GridType.SLOTS ? <GridIndicators currentIndex={breadcrumbIndex} size={breadcrumbSize}/> : '' }
+                </Label>
+                <Divider color={ type === GridType.TOPBONUS ? '#fff' : ''}/>
+              </Fragment>    
           </Head>
-          : '' }
+         }
 
         <Grid container item spacing={spacing}>
           {content.map((child: JSX.Element, index: number) => 
              <Grid item xs={xs} sm={sm} md={md} key={index}>
                 <Paper className={classes.paper}>
-                    {showIndex ? 
+                    {showIndex && 
                       <div style={{position: 'absolute', top: '-10px', right: '0px'}}>
                         <RankingCard index={index+1} />
-                      </div> : '' }
+                      </div> }
                     {child}
                 </Paper>
             </Grid>
@@ -113,11 +111,15 @@ const Head = styled.div<HeadType>`
   margin-bottom: 15px;
 `
 
-const Label = styled.div`
+const Label = styled.h2`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   text-align: left;
+  text-transform: uppercase;
+  color: inherit;
+  font-size: 1.2rem;
+  margin: 0;
 `
 
 export default GridCards

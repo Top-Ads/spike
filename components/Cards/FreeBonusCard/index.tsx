@@ -4,6 +4,7 @@ import Image from 'next/image'
 import styled from 'styled-components'
 import LazyLoad from 'react-lazyload'
 import { Bonus } from '../../../interfaces'
+import { replaceAll } from '../../../utils/replaceAll'
 
 type PageProps = {
     data: Bonus 
@@ -37,7 +38,7 @@ const FreeBonusCard: FunctionComponent<PageProps> = ({data}) => {
 
                 <Container>
                     <Name><strong>{data.name}</strong></Name>
-                    <Info dangerouslySetInnerHTML={{__html: String(data.description.replace("+", "<br/>"))}}/> 
+                    <Info dangerouslySetInnerHTML={{__html: String(replaceAll(data.description, "+", "<br/>"))}}/> 
                 </Container>
 
                 <Button bgColor={data.backgroundColor} onClick={linkToBonus}>SITO WEB</Button>
@@ -50,8 +51,8 @@ const Main = styled.div`
     display: flex;
     flex-direction: row;
     align-items: center;
-    font-size: 12px;
-    border-bottom: 1px solid ${({theme}) => theme.colors.gradient};
+    font-size: 11px;
+    border-bottom: 1px solid ${({theme}) => theme.palette.gradient};
     padding: 10px 0px;
 
     &:hover {
@@ -80,13 +81,14 @@ const Name = styled.div`
 `
 
 const Info = styled.div `
-    color: ${({theme}) => theme.text.color.secondary};
-    padding: 5px 0px;
-    font-size: 11px;
+    color: ${({theme}) => theme.text.color.black};
+    padding: 5px 5px;
+    font-size: 12px;
+    font-weight: normal;
 `
 
 const Button = styled.div<BonusType>`
-    color: ${({theme}) => theme.text.color.primary};
+    color: ${({theme}) => theme.text.color.white};
     background-color: ${({bgColor}) => bgColor ? bgColor : 'inherit'};
     border-radius: ${({theme}) => theme.button.borderRadius};
     font-weight: bold;
@@ -95,7 +97,7 @@ const Button = styled.div<BonusType>`
     width: min-content;
 
     &:hover {
-        box-shadow: ${({theme}) => theme.button.boxShadowX};
+        
     }
 `
 

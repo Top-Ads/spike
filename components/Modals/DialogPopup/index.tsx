@@ -53,10 +53,10 @@ const DialogPopup: FunctionComponent<PageProps> = ({open, setOpen, data, setSele
       
       <Dialog
         fullWidth
-        maxWidth={'lg'}
+        maxWidth={'sm'}
         open={open}
         onClose={() => setOpen(false)}
-        scroll={'body'}
+        scroll={'paper'}
         aria-labelledby="scroll-dialog-title"
         aria-describedby="scroll-dialog-description"
       >
@@ -110,7 +110,7 @@ const CategoryList = styled.div `
 `
 
 const Card = styled.div `
-  width: 200px;
+  width: 220px;
   margin: 5px;
 
   @media ${device.mobileL} {

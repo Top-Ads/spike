@@ -6,6 +6,7 @@ import Divider from '../../Divider'
 import { CDN } from '../../../public/environment'
 import LazyLoad from 'react-lazyload'
 import { Bonus } from '../../../interfaces'
+import RatingStars from '../../RatingStars'
 
 type PageProps = {
    data: Bonus 
@@ -13,6 +14,10 @@ type PageProps = {
 
 type BonusType = {
     bgColor?: string
+}
+
+type ThumbnailProps = {
+    borderColor?: string
 }
 
 const BonusCard: FunctionComponent<PageProps> = ({data}) => { 
@@ -28,8 +33,8 @@ const BonusCard: FunctionComponent<PageProps> = ({data}) => {
     return (
         <Fragment>
             <Main>
-                <Name bgColor={data.backgroundColor}>
-                    <Thumbnail>
+                <BonusHeader bgColor={data.backgroundColor}>
+                    <Thumbnail borderColor={data.borderColor}>
                         <LazyLoad key={data.id} height={100} offset={200}>
                             <Image
                                 alt={data.name}
@@ -40,7 +45,12 @@ const BonusCard: FunctionComponent<PageProps> = ({data}) => {
                                 height={150}/>
                         </LazyLoad>
                     </Thumbnail>
-                </Name>
+                    <div style={{textAlign: 'left' }}>
+                        <span>{data.name}</span>
+                        <RatingStars rating={data.rating}/>
+                    </div>
+                   
+                </BonusHeader>
         
                 <BonusInfo>
                     <div className="bonus"> 
@@ -50,13 +60,31 @@ const BonusCard: FunctionComponent<PageProps> = ({data}) => {
 
                     <div className="bonus">
                         <Label>BONUS SENZA DEPOSITO</Label>
-                        <Info className="bonus-info" dangerouslySetInnerHTML={{__html: String(data.withDeposit.replace("+", "<br/>"))}}/> 
+                        <Info className="bonus-info" dangerouslySetInnerHTML={{__html: String(data.noDeposit.replace("+", "<br/>"))}}/> 
                     </div>
                 </BonusInfo>
 
                 <Divider width="90%"/>
 
-                <Button bgColor={data.backgroundColor} onClick={linkToBonus}>ACEDI AL BONUS</Button>
+                <LicenceContainer>
+                    <div className="licence-icon">
+                        <Image
+                            alt="licence ADM"
+                            src={`${CDN}/svg/adm.svg`}
+                            layout="responsive"
+                            quality={50}
+                            priority={true}
+                            width={'1141'}
+                            height={'760'}/>
+                    </div>
+
+                    <span> Licenza ADM</span>
+
+                </LicenceContainer>
+                
+                
+
+                <Button bgColor={data.backgroundColor} onClick={linkToBonus}>ACCEDI AL BONUS</Button>
 
                 <PaymentProviders>
                     {paymentProviders. map( (provider, index) => 
@@ -87,41 +115,47 @@ const Main = styled.div<BonusType>`
 
 const BonusInfo = styled.div `
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     justify-content: center;
-    min-height: 160px;
-    font-size: 15px;
-
+    height: 130px;
+    font-size: 12px;
+    
     .bonus {
         padding: 10px;
         display: flex;
         flex-direction: column;
-        align-items: center;
-        max-height: 60px;
+        align-items: flex-start;
+        width: 50%;
     }
 `
 
 const Label = styled.div `
     height: 20px;
     width: fit-content;
-    border-bottom: 1px dashed;
-    margin-bottom: 10px;
+    margin-bottom: 20px;
     font-size: 12px;
+    color:  ${({theme}) => theme.palette.background};
+    text-align: left;
 `
 
-const Name = styled.div<BonusType> `
+const BonusHeader = styled.div<BonusType> `
     width: 100%;
     background-color: ${({bgColor}) => bgColor ? bgColor : 'inherit'};
-    color: ${({theme}) => theme.text.color.primary};
+    color: ${({theme}) => theme.text.color.white};
     border-radius: 5px 5px 0px 0px;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     align-items: center;
+    justify-content: flex-start;
+
+    span {
+        font-size: 20px;
+    }
 `
 
 const Button = styled.div<BonusType>`
     background-color: ${({bgColor}) => bgColor ? bgColor : 'inherit'};
-    color: ${({theme}) => theme.text.color.primary};
+    color: ${({theme}) => theme.text.color.white};
     border-radius: ${({theme}) => theme.button.borderRadius};
     font-weight: bold;
     cursor: pointer;
@@ -130,8 +164,24 @@ const Button = styled.div<BonusType>`
     margin: 10px 0px;
 
     &:hover {
-        box-shadow: ${({theme}) => theme.button.boxShadowX};
+       
     }
+`
+
+const LicenceContainer = styled.div`
+    display: flex;
+    align-items: center;
+
+    .licence-icon {
+        width: 25px;
+    }
+
+    span {
+        font-size: 11px;
+        font-weight: normal;
+        margin-left: 3px;
+    }
+}
 `
 
 const PaymentProviders = styled.div `
@@ -147,12 +197,18 @@ const Provider = styled.div `
     margin: 0 5px;
 `
 
-const Thumbnail = styled.div`
-    width: 100px;
+const Thumbnail = styled.div<ThumbnailProps>`
+    width: 90px;
+    border-radius: 50%;
+    overflow: hidden;
+    margin: 10px 20px;
+    border: 2px solid ${({borderColor}) => borderColor ? borderColor : 'unset'};
 `
 
 const Info = styled.div`
-    color: ${({theme}) => theme.text.color.secondary};
+    color: ${({theme}) => theme.text.color.black};
+    text-align: left;
+    font-size: 14px;
 `
 
 export default BonusCard

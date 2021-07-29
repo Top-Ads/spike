@@ -47,10 +47,9 @@ const Routes: FunctionComponent = () => {
                 <a><Button className={router.pathname === '/squad' ? 'active' : ''}>Squad</Button></a>
             </Link>
 
-            <Link href={'/shop'}>
-                <a><Button 
-                className={router.pathname === '/shop' ? 'active' : ''}>Shop</Button></a>
-            </Link>
+            <a href={'https://casino-squad.com/shop/'}>
+                <Button className={router.pathname === '/shop' ? 'active' : ''}>Shop</Button>
+            </a>
             
             <div className="dropdown" onMouseEnter={() => setShow(true)} onMouseLeave={() => setShow(false)}>
                 <a><Button 
@@ -81,23 +80,22 @@ const Routes: FunctionComponent = () => {
 } 
 
 const Button = styled.div<ButtonProps>`
-    color: ${({theme}) => theme.text.color.primary};
+    color: ${({theme}) => theme.text.color.white};
     margin: 0px 10px;
     padding: 10px 15px;
-    font-weight: bold;
-
+    
     &.active:not(#dropdown-menu, .dropdown-link) {
         background-color: #fff;
-        color: ${({theme}) => theme.colors.background}; 
+        color: ${({theme}) => theme.palette.background}; 
     }
 
     &:hover:not(#dropdown-menu, .dropdown-link) { 
-        color: ${({theme}) => theme.colors.background};
+        color: ${({theme}) => theme.palette.background};
         background-color: #fff;
 
         @media ${device.tablet} { 
             color: #fff;
-            background-color: ${({theme}) => theme.colors.background}; 
+            background-color: ${({theme}) => theme.palette.background}; 
         }
     }
 
@@ -109,12 +107,12 @@ const Button = styled.div<ButtonProps>`
 
         &.active {
             background-color: #fff;
-            color: ${({theme}) => theme.colors.background}; 
+            color: ${({theme}) => theme.palette.background}; 
         }
 
         @media ${device.tablet} {
             &.active {
-                background-color: ${({theme}) => theme.colors.background}; 
+                background-color: ${({theme}) => theme.palette.background}; 
                 color: #fff;
             }
         }
@@ -123,27 +121,27 @@ const Button = styled.div<ButtonProps>`
     &.dropdown-link {
         width: 100px;
         color: #fff; 
-        background-color: ${({theme}) => theme.colors.gradient};
+        background-color: ${({theme}) => theme.palette.background};
 
         &.active { 
             background-color: #fff;
-            color: ${({theme}) => theme.colors.background};  
+            color: ${({theme}) => theme.palette.background};  
         }
 
         &:hover:not(.active) { 
-            background-color: ${({theme}) => theme.colors.background}; 
+            background-color: #cda65f;
         }
 
         @media ${device.tablet} {
-            background-color: ${({theme}) => theme.colors.background};
+            background-color: ${({theme}) => theme.palette.background};
 
             &.active {
                 background-color: #fff;
-                color: ${({theme}) => theme.colors.background};  
+                color: ${({theme}) => theme.palette.background};  
             }
 
             &:hover:not(.active) { 
-                background-color: ${({theme}) => theme.colors.background}; 
+                background-color: ${({theme}) => theme.palette.background}; 
                 color: #fff;
             }
         }
@@ -157,7 +155,7 @@ const Button = styled.div<ButtonProps>`
         }
 
         &:active {
-            color: ${({theme}) => theme.colors.background};
+            color: ${({theme}) => theme.palette.background};
             background-color: #fff;
         }
     }

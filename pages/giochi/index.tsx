@@ -6,7 +6,7 @@ import Divider from '../../components/Divider'
 import GridCards from '../../components/GridCards'
 import Layout from '../../components/Layout'
 import SlotsCounter from '../../components/SlotsCounter'
-import { GridType, SlotFilterList } from '../../utils/constants'
+import { GridType, SlotFilterList, SlotType } from '../../utils/constants'
 import { device } from '../../utils/device'
 import AquaClient from '../api/graphql/aquaClient'
 import { SLOTS } from '../api/graphql/queries/slots'
@@ -14,29 +14,29 @@ import CustomTextField from '../../components/Inputs/Textfield'
 import CustomMenu from '../../components/CustomMenu'
 import ShuffleIcon from '@material-ui/icons/Shuffle'
 import { Fragment } from 'react'
-import { shortDate } from '../../utils/shortDate'
+import { longDate } from '../../utils/date'
 import { PRODUCERS } from '../api/graphql/queries/producers'
-import ProvidersList from '../../components/ProvidersList'
+import ProducersTable from '../../components/Tables/ProducersTable'
 import { BONUSES } from '../api/graphql/queries/bonuses'
 import Image from 'next/image'
 import { CDN } from '../../public/environment'
 import BannerList from '../../components/BannerList'
 import Article from '../../components/Article'
 import DialogPopup from '../../components/Modals/DialogPopup'
-import { Bonus, Producer, Slot } from '../../interfaces'
+import { Bonus, Producer, Slot, ThemeSlot } from '../../interfaces'
 import FreeBonusList from '../../components/FreeBonusList'
 
 type PageProps = {
     freeSlotsData: Slot [],
-    newSlotsData: Slot [],
-    pupularSlotsData: Slot [],
+    slotsData: ThemeSlot,
     producersData: Producer [],
     freeBonusData: Bonus []
 }
 
 const GiochiPage: FunctionComponent<PageProps> = (props) => { 
 
-    const { newSlotsData, pupularSlotsData, freeSlotsData, producersData, freeBonusData } = props;
+    const { slotsData, freeSlotsData, producersData, freeBonusData } = props;
+    const { newest, popular } = slotsData
 
     const aquaClient = new AquaClient()
 
@@ -44,9 +44,8 @@ const GiochiPage: FunctionComponent<PageProps> = (props) => {
 
     const [freeSlots, setFreeSlots] = useState<Slot[]>(freeSlotsData)
     const [itemSelected, setItemSelected] = useState<string>(SlotFilterList.ALPHABETIC)
-    const [producerSelected, setProducerSelected] = useState<string>('')
+    const [, setProducerSelected] = useState<string>('')
     const [openDialog, setOpenDialog] = useState<boolean>(false)
-
 
     function getRandomInt(min: number, max: number) {
         min = Math.ceil(min);
@@ -120,9 +119,7 @@ const GiochiPage: FunctionComponent<PageProps> = (props) => {
         setProducerSelected(producerSelected)
     }
 
-    const clear = () => {
-        setProducerSelected('')
-    }
+    const clear = () => setProducerSelected('')
 
     return (
         <Layout title="Giochi">
@@ -132,7 +129,7 @@ const GiochiPage: FunctionComponent<PageProps> = (props) => {
                     <h2>
                         SLOT GRATIS – GIOCA ALLE SLOT MACHINE GRATIS ONLINE IN ITALIANO
                     </h2>
-                    <span>Pubblicato: 2019-06-11 • Ultimo aggiornamento: 2021-05-07</span>
+                    <span>Pubblicato: 31-07-2021 • Ultimo aggiornamento { longDate(new Date( Date.now() )) } </span> 
                     <p>
                         Prima di tutto, benvenuto! Sappiamo che ti piace giocare alle slot machine
                         gratis online: è per quello che sei qui! La buona notizia e che anche noi 
@@ -153,13 +150,15 @@ const GiochiPage: FunctionComponent<PageProps> = (props) => {
                 </Thumbnail>
             </Header>
 
+            <br/>
+
             <div className="space-around">
                 <Grids id='ads-slots'>
                     <GridCards
                         type={GridType.SLOTS} 
-                        content={ newSlotsData.map( (slot) => 
+                        content={ newest.map( (slot: Slot) => 
                         <LazyLoad once key={slot.id} height={400} offset={300}>
-                            <SlotCard key={slot.name} data={slot}/>
+                            <SlotCard key={slot.name} data={slot} type={SlotType.NEW}/>
                         </LazyLoad> )}
                         label="Nuove slot."
                         xs={6} sm={4} md={4}
@@ -168,9 +167,9 @@ const GiochiPage: FunctionComponent<PageProps> = (props) => {
                     />
                     <GridCards
                         type={GridType.SLOTS}
-                        content={ pupularSlotsData.map( (slot) =>  
+                        content={ popular.map( (slot: Slot) =>  
                         <LazyLoad once key={slot.id} height={400} offset={300} >
-                            <SlotCard key={slot.id} data={slot}/>
+                            <SlotCard key={slot.id} data={slot} type={SlotType.ONLINE}/>
                         </LazyLoad> )}
                         label="Le slot piu popolari."
                         xs={6} sm={4} md={4}
@@ -188,7 +187,7 @@ const GiochiPage: FunctionComponent<PageProps> = (props) => {
                     <Container>
                         <Aside>
                             <SlotsCounter total={1528}/>
-                            <ProvidersList data={producersData.slice(0,10)} setSelected={handleProducerSelected} setOpenDialog={setOpenDialog}/> <br/>
+                            <ProducersTable data={producersData.slice(0,10)} setSelected={handleProducerSelected} setOpenDialog={setOpenDialog}/>
                             <FreeBonusList data={freeBonusData} label="I MIGLIORI CASINÒ CON GIRI GRATIS"/>
                         </Aside>
 
@@ -211,8 +210,6 @@ const GiochiPage: FunctionComponent<PageProps> = (props) => {
                                 
                                 <div id="filter-providers" onClick={() => setOpenDialog(true)}><span>LIST PROVIDERS</span></div>
                             </Actions>
-
-                            <br/>
                             
                             <Grids id='free-slots'>
                                 <GridCards 
@@ -220,14 +217,12 @@ const GiochiPage: FunctionComponent<PageProps> = (props) => {
                                     content={ freeSlots.map( (slot: Slot) => 
                                     <Fragment>
                                         <SlotInfo>
-                                            <div className="producer">{ producerSelected ?  slot.producer.name : ''}</div>
-
                                             {itemSelected === SlotFilterList.RTP ? slot.rtp ? `RTP: ${slot.rtp}%` : 'NA' : ''}
                                             {itemSelected === SlotFilterList.LIKES ? slot.likes ? `${slot.likes} likes`: 'NA' : ''}
                                             {itemSelected === SlotFilterList.CREATED_AT ? slot.created_at ?
-                                                `${shortDate(slot.created_at)}`: 'NA' : ''}
+                                                `${longDate(slot.created_at)}`: 'NA' : ''}
                                             {itemSelected === SlotFilterList.UPDATED_AT ? slot.created_at ?
-                                                `${shortDate(slot.updated_at)}`: 'NA' : ''}
+                                                `${longDate(slot.updated_at)}`: 'NA' : ''}
                                         </SlotInfo>
                                         <SlotCard key={slot.name} data={slot}/>
                                     </Fragment>
@@ -237,9 +232,9 @@ const GiochiPage: FunctionComponent<PageProps> = (props) => {
                                 />
                             </Grids>
 
-                            <Button onClick={loadMore}>
+                            <LoadMoreButton onClick={loadMore}>
                                 <span>CARICA ALTRO</span>
-                            </Button>
+                            </LoadMoreButton>
 
                         </Section>
 
@@ -257,9 +252,8 @@ const GiochiPage: FunctionComponent<PageProps> = (props) => {
 }
 
 const Header = styled.div`
-    background-image: linear-gradient(180deg, ${({theme}) => theme.colors.background} 0%, ${({theme}) => theme.colors.gradient} 50%);
+    background-image: linear-gradient(0deg, ${({theme}) => theme.palette.background} 0%, ${({theme}) => theme.palette.gradient} 50%);
     padding: 0px 7%;
-    margin-top: 20px;
     color: #fff;
     display: flex;
     flex=direction: row;
@@ -271,12 +265,15 @@ const Header = styled.div`
 `
 
 const Intro = styled.div`
-    width: 50%;
-    flex-grow: 1;
+    width: 70%;
+   
+    @media ${device.mobileL} {
+        flex-grow: 1;
+    }
 `
 
 const Thumbnail = styled.div`
-    margin: 15px auto;
+    margin: auto;
 
     @media ${device.tablet} {
         display: none;
@@ -302,12 +299,13 @@ const Grids = styled.div`
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    color: ${({theme}) => theme.colors.background};
+    color: ${({theme}) => theme.palette.background};
 
     @media ${device.tablet} {
         &#ads-slots {
             flex-wrap: nowrap;
             overflow-x: scroll;
+            overflow-y: hidden;
         }
     }
 `
@@ -318,7 +316,7 @@ const Main = styled.div`
 `
 
 const Title = styled.div`
-    color: ${({theme}) => theme.colors.background};
+    color: ${({theme}) => theme.palette.background};
     flex-grow: 1;
     h3 { margin-bottom: 0; }
 `
@@ -327,7 +325,7 @@ const Container = styled.div`
     display: flex;
     flex-direction: row;
     flex-grow: 1;
-    margin-bottom: 20px;
+    margin: 10px 0px;
 `
 
 const Aside = styled.div`
@@ -351,13 +349,12 @@ const Section = styled.div`
 const Actions = styled.div`
     display: flex;
     flex-direction: row;
-    justify-content: flex-end;
     flex-wrap: wrap;
 
     #search-input {
         display: inherit;
-        flex-grow: 1;
-        border: 1px solid ${({theme}) => theme.colors.background};
+        flex-grow: 2;
+        border: 1px solid ${({theme}) => theme.palette.background};
         border-radius: 5px;
        
         @media ${device.mobileL} {
@@ -368,7 +365,7 @@ const Actions = styled.div`
     #filter-providers {
         display: none;
         justify-content: center;
-        border: 1px solid ${({theme}) => theme.colors.background};
+        border: 1px solid ${({theme}) => theme.palette.background};
         border-radius: 5px;
         padding: 12px;
         margin-top: 10px;
@@ -388,7 +385,7 @@ const Actions = styled.div`
         }
 
         &:hover {
-            color: ${({theme}) => theme.colors.background};
+            color: ${({theme}) => theme.palette.background};
         }
     }
 
@@ -400,7 +397,7 @@ const Actions = styled.div`
         z-index: 99;
         
         @media ${device.mobileL} {
-            justify-content: space-evenly;
+            justify-content: space-between;
         }
 
         #shuffle {
@@ -413,22 +410,26 @@ const Actions = styled.div`
            
             color: #212530;
             background-color: #fff;
-            width: 50px;
+            width: 45px;
             cursor: pointer;
     
             &:hover {
                 color: #e2b96d;
             }
+
+            @media ${device.mobileL} {
+                width: fill-available;
+            }
         }
     }
 `
 
-const Button = styled.div`
-    background-color: ${({theme}) => theme.colors.background};
-    border: 2px solid ${({theme}) => theme.colors.background};
+const LoadMoreButton = styled.div`
+    background-color: ${({theme}) => theme.palette.background};
+    border: 2px solid ${({theme}) => theme.palette.background};
     color: #fff;
     border-radius: ${({theme}) => theme.button.borderRadius};
-    font-weight: normal;
+    font-weight: bold;
     cursor: pointer;
     padding: 15px;
     width: fit-content;
@@ -438,41 +439,42 @@ const Button = styled.div`
     align-self: center;
 
     &:hover {
-      box-shadow: ${({theme}) => theme.button.boxShadowX};
+      
     }
 `
 
 export async function getStaticProps() {
     const aquaClient = new AquaClient()
 
-    const newSlotsRequest =  await aquaClient.query({ 
+    const newestSlotsResponse =  await aquaClient.query({ 
         query: SLOTS, 
-        variables: { countryCode: 'it', limit: 6, start: 0 } })
+        variables: { countryCode: 'it', limit: 6, start: 0, sort: 'created_at:desc' } })
 
-    const popularSlotsRequest =  await aquaClient.query({ 
+    const popularSlotsResponse =  await aquaClient.query({ 
         query: SLOTS, 
-        variables: { countryCode: 'it', limit: 6, start: 6 } })
+        variables: { countryCode: 'it', limit: 6, start: 0, sort: 'updated_at:desc' } })
 
-    const freeSlotsRequest =  await aquaClient.query({ 
+    const freeSlotsResponse =  await aquaClient.query({ 
         query: SLOTS, 
-        variables: { countryCode: 'it', limit: 36, start: 0 } })
+        variables: { countryCode: 'it', limit: 36, start: 0, sort: 'name:asc'} })
 
-    
-    const producersRequest =  await aquaClient.query({ 
+    const producersResponse =  await aquaClient.query({ 
         query: PRODUCERS, 
         variables: { countryCode: 'it', start: 0, sort: 'name:asc' } })
 
-    const freeBonusRequest =  await aquaClient.query({ 
+    const freeBonusResponse =  await aquaClient.query({ 
         query: BONUSES, 
-        variables: { countryCode: 'it', limit: 5, start: 5 } })
+        variables: { countryCode: 'it', limit: 5, start: 5, sort: "updated_at:desc" } })
 
     return {
         props: {
-            newSlotsData: newSlotsRequest.data.data.slots,
-            pupularSlotsData: popularSlotsRequest.data.data.slots,
-            freeSlotsData: freeSlotsRequest.data.data.slots,
-            producersData: producersRequest.data.data.producers,
-            freeBonusData: freeBonusRequest.data.data.bonuses,
+                slotsData: { 
+                newest: newestSlotsResponse.data.data.slots,
+                popular: popularSlotsResponse.data.data.slots 
+            },
+            freeSlotsData: freeSlotsResponse.data.data.slots,
+            producersData: producersResponse.data.data.producers,
+            freeBonusData: freeBonusResponse.data.data.bonuses,
         }
     }
 }

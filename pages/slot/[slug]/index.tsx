@@ -10,7 +10,7 @@ import { CDN } from '../../../public/environment'
 import Divider from '../../../components/Divider'
 import RatingStars from '../../../components/RatingStars'
 import CustomizedAccordions from '../../../components/CustomizedAccordions'
-import { shortDate } from '../../../utils/shortDate'
+import { longDate } from '../../../utils/date'
 import { device } from '../../../utils/device'
 import AquaClient from '../../api/graphql/aquaClient'
 import { SLOTS } from '../../api/graphql/queries/slots'
@@ -21,14 +21,14 @@ import { Category } from '../../../utils/constants'
 import { removeLikeSlotContext } from '../../../contexts'
 
 type PageProps = {
-    slotData: Slot
+    data: Slot
 }
 
 type ThumbnailProps = {
     isFullscreen?: boolean
 }
 
-const SlotPage: FunctionComponent<PageProps> = ({slotData}) => {
+const SlotPage: FunctionComponent<PageProps> = ({data}) => {
 
     const [showIframe, setShowIframe] = useState<boolean>(false)
     const [isFullscreen, setFullscreen] = useState<boolean>(false)
@@ -89,7 +89,7 @@ const SlotPage: FunctionComponent<PageProps> = ({slotData}) => {
     useEffect( () => {
         const currentItem: string | null = localStorage.getItem(Category.FAVORITES)
 
-        if (currentItem && JSON.parse(currentItem).some( (slot: Slot) => slot.id === slotData.id )) 
+        if (currentItem && JSON.parse(currentItem).some( (slot: Slot) => slot.id === data.id )) 
             setLikedSlot(true)
 
         document.addEventListener("keydown", handleKeyDown, false)
@@ -102,7 +102,7 @@ const SlotPage: FunctionComponent<PageProps> = ({slotData}) => {
     }, [])
 
     useEffect( () => {
-        if (removeLikeSlotId === slotData.id) {
+        if (removeLikeSlotId === data.id) {
             setLikedSlot(false)
             setRemoveLikeSlotId('')
         }        
@@ -115,14 +115,12 @@ const SlotPage: FunctionComponent<PageProps> = ({slotData}) => {
             if (likedSlot) {
                 const currFavorites: Slot[] = JSON.parse(currentItem)
 
-                currFavorites?.push(slotData)
+                currFavorites?.push(data)
 
                 localStorage.setItem(Category.FAVORITES, JSON.stringify(currFavorites))
            
             } else {
-                const newItems: any[] = JSON.parse(currentItem).filter( (card: Slot) => {
-                    return card.id !== slotData.id
-                })
+                const newItems: any[] = JSON.parse(currentItem).filter( (card: Slot) => card.id !== data.id )
 
                 localStorage.setItem(Category.FAVORITES, JSON.stringify(newItems))
             }
@@ -131,7 +129,7 @@ const SlotPage: FunctionComponent<PageProps> = ({slotData}) => {
     }, [likedSlot])
     
     return (
-        <Layout title={slotData.name}> 
+        <Layout title={data.name}> 
             <Fragment>
                 <div className="space-around">
 
@@ -145,8 +143,8 @@ const SlotPage: FunctionComponent<PageProps> = ({slotData}) => {
 
                                 <div className={isFullscreen ? 'fullscreen' : ''}>
                                     <Image
-                                        alt={slotData?.name}
-                                        src={slotData?.image.url ? slotData.image.url : `${CDN}/svg/no_img_available.svg`} 
+                                        alt={data?.name}
+                                        src={data?.image.url ? data.image.url : `${CDN}/svg/no_img_available.svg`} 
                                         layout="responsive"
                                         priority={true}
                                         width={1200}
@@ -156,8 +154,8 @@ const SlotPage: FunctionComponent<PageProps> = ({slotData}) => {
                                 { showIframe ? 
                                 <IframeContainer
                                     ref={iframeRef}
-                                    name={slotData?.slug}
-                                    src={slotData?.playLink}
+                                    name={data?.slug}
+                                    src={data?.playLink}
                                     allow={'fullscreen'}
                                     sandbox={'allow-orientation-lock allow-scripts allow-same-origin'}
                                     scrolling={'no'}/>
@@ -177,40 +175,49 @@ const SlotPage: FunctionComponent<PageProps> = ({slotData}) => {
                         <Section>
 
                             <Title>
-                                <h2>{slotData?.name}</h2>
+                                <h2>{data?.name}</h2>
 
-                                <div className="likes"> {slotData?.likes}
-                                    {slotData?.likes &&  slotData.likes > 0 ? <span>Likes: {slotData.likes}</span> : ''}
+                                <div className="likes"> 
+                                    {data?.likes && data.likes > 0 && <span>Likes: {data.likes}</span> }
                                 </div>
 
                                 <div className="rating">
-                                    {slotData?.rating ? <RatingStars rating={slotData.rating}/> : ''}
+                                    {data?.rating && <RatingStars rating={data.rating}/> }
                                 </div>
                             </Title>
 
                             <Info>
-                                <div className="rtp"><b>RTP: </b>{slotData?.rtp}%</div>
+                                <div className="rtp"><b>RTP: </b>{data?.rtp}%</div>
                                     <div className="volatility">
-                                        {slotData?.volatility ? <span><b>Volatilità: </b> {slotData.volatility}</span> : ''}
+                                        {data?.volatility && <span><b>Volatilità: </b> {data.volatility}</span> }
                                     </div>
 
                                 <div className="created-at"> 
-                                    {slotData?.created_at ? <span><b>Created at:</b> {shortDate(slotData.created_at)}</span> : ''}
+                                    {data?.created_at && <span><b>Created at:</b> {longDate(data.created_at)}</span> }
                                 </div>
 
                                 <div className="producer">
-                                    { slotData?.producer ? 
+                                    { data?.producer &&
                                     <>
                                         <span><b>Provider: </b></span>
-                                        <b>{slotData?.producer.name}</b>
+                                        <b>{data?.producer.name}</b>
                                     </> 
-                                    : '' }
+                                    }
+                                </div>
+
+                                <div className="winningSpinFrequency">
+                                    { data?.producer &&
+                                    <>
+                                        <span><b>winning Spin Frequency: </b></span>
+                                        <b>{data?.winningSpinFrequency}</b>
+                                    </> 
+                                    }
                                 </div>
                             </Info>
 
                             <Actions className="play-actions">  
                                 <Button>
-                                    <a href={slotData?.linkYoutube}>
+                                    <a href={data?.linkYoutube}>
                                         <PlayCircleOutlineIcon className={'video-icon'}/> <span>Play Video</span>
                                     </a>
                                 </Button>
@@ -225,7 +232,7 @@ const SlotPage: FunctionComponent<PageProps> = ({slotData}) => {
                     
                     </Main>
                     
-                    <br/><CustomizedAccordions videoDescription={slotData?.description} tips={slotData?.tips}/><br/>
+                    <br/><CustomizedAccordions videoDescription={data?.description} tips={data?.tips}/><br/>
                 </div>
         
             </Fragment>
@@ -239,13 +246,13 @@ export async function getServerSideProps(context : NextPageContext) {
 
     const aquaClient = new AquaClient()
 
-    const slotRequest =  await aquaClient.query({ 
+    const slotResponse =  await aquaClient.query({ 
         query: SLOTS, 
         variables: { countryCode: 'it', slug: slug } })
 
     return {
         props: {
-            slotData: slotRequest.data.data.slots[0],
+            data: slotResponse.data.data.slots[0],
         }
     }
 }
@@ -334,7 +341,7 @@ const Info = styled.div`
 const Actions = styled.div`
 
     &.slot-actions {
-        background-color: ${({theme}) => theme.colors.background};
+        background-color: ${({theme}) => theme.palette.background};
         color: white;
         display: flex;
         justify-content: flex-end;
@@ -358,7 +365,7 @@ const Actions = styled.div`
 `
 
 const Button = styled.div`
-    background-color: ${({theme}) => theme.colors.background};
+    background-color: ${({theme}) => theme.palette.background};
     color: #fff;
     border-radius: ${({theme}) => theme.button.borderRadius};
     font-weight: bold;
@@ -378,12 +385,12 @@ const Button = styled.div`
         color: #fff;
 
         &:hover {
-            color: ${({theme}) => theme.text.color.secondary};;
+            color: ${({theme}) => theme.text.color.black};;
         }
     }
 
     &:hover {
-        color: ${({theme}) => theme.text.color.secondary};;
+        color: ${({theme}) => theme.text.color.black};;
     }
    
     .video-icon, .playGame-icon {

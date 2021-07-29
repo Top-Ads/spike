@@ -60,7 +60,7 @@ const SearchHit: FunctionComponent<PageProps> = ({data}) => {
 
                                 <Info>
                                     <Name><b>{item.name}</b></Name>
-                                    <Rating><RatingStars rating={item.rating}/></Rating>                    
+                                    <Rating><RatingStars rating={item.rating}/></Rating>   
                                 </Info>
                             </Container>
                         
@@ -74,13 +74,13 @@ const SearchHit: FunctionComponent<PageProps> = ({data}) => {
 
 const Main = styled.div`
     position: absolute;
-    margin-top: 8px;
+    margin-top: 6px;
     display: flex;
     flex-direction: column;
     width: 45ch;
     height: auto;
     background-color: #f2f2f2;
-    color: ${({theme}) => theme.text.color.secondary};
+    color: ${({theme}) => theme.text.color.black};
     z-index: 999;
     overflow: hidden;
     border-radius: 5px;
@@ -104,7 +104,7 @@ const Container = styled.div`
     flex-direction: row;
     align-items: center;
     padding: 10px 5px;
-    border-top: 1px solid ${({theme}) => theme.colors.background};
+    border-top: 1px solid ${({theme}) => theme.palette.background};
     &:hover {
         background-color: rgba(0, 0, 0, 0.1);
     }
@@ -112,7 +112,7 @@ const Container = styled.div`
 `
 
 const Thumbnail = styled.div<ThumbnailProp>`
-    width: ${({type}) => type === 'slot' ? '80px' : '50px'};
+    width: ${({type}) => type === 'slot' ? '90px' : '60px;'};
     border-radius: ${({theme}) => theme.button.borderRadius};
     overflow: hidden;
 `
@@ -128,12 +128,12 @@ const Info = styled.div`
 
 const Name = styled.div`
    text-transform: uppercase;
-   color: ${({theme}) => theme.text.color.secondary};
+   color: ${({theme}) => theme.text.color.black};
    font-size: 12px;
 `
 
 const Rating = styled.div `
-    color: ${({theme}) => theme.text.color.secondary};
+    color: ${({theme}) => theme.text.color.black};
     padding: 5px 0px;
 `
 
@@ -141,7 +141,7 @@ const Rating = styled.div `
 const SearchType = styled.div `
     font-size: 12px;
     padding: 5px;
-    background-color: ${({theme}) => theme.colors.background};
+    background-color: ${({theme}) => theme.palette.background};
     text-transform: uppercase;
     color: #fff;
     border-top-left-radius: inherit;

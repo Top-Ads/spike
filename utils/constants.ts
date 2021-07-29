@@ -12,6 +12,13 @@ export enum GridType {
   STATS 
 }
 
+export enum SlotType {
+  NEW,
+  ONLINE = 'online',
+  BAR = 'rtp',
+  VLT = 'vlt'
+}
+
 export enum SlotFilterList {
   RTP = 'RTP',
   LIKES = 'likes',
@@ -20,9 +27,6 @@ export enum SlotFilterList {
   ALPHABETIC = 'name',
   SHUFFLE = 'shuffle'
 }
-
-  
-
 
 export enum LiveStats {
     MONOPOLY,

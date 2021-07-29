@@ -22,9 +22,10 @@ const Article: FunctionComponent<PageProps> = ({data}) => {
                     </FreeBonusSection>
                 }
 
-                <div><strong>Giocare gratis alle slot online</strong></div>
+                <section>
+                <h3><strong>Giocare gratis alle slot online</strong></h3>
                 <div>
-                    <Thumbnail style={{float: 'right', marginLeft: '30px'}}>
+                    <Thumbnail id={'volcano'} style={{float: 'right', marginLeft: '30px'}}>
                         <LazyLoad  height={85} offset={300}>
                             <Image
                                 alt="gold-volcano"
@@ -49,10 +50,11 @@ const Article: FunctionComponent<PageProps> = ({data}) => {
                     </p>
                 
                 </div>
+                </section>
 
-
-                <div><strong>Quali sono gli altri giochi da casinò disponibili sul nostro sito?</strong></div>
-                <div>
+                <section>
+                    <h3><strong>Quali sono gli altri giochi da casinò disponibili sul nostro sito?</strong></h3>
+                    <div>
                     <p>
                     Devi sapere che il nostro forte – lo avrai capito – sono le <b>slot machine.</b><br/>
                     Questo poiché attualmente, le slot rappresentano il gioco da <b>casinò online</b> più diffuso e di successo.
@@ -72,10 +74,11 @@ const Article: FunctionComponent<PageProps> = ({data}) => {
                     Infatti, nella parte dedicata, troverai filtri da impostare e utilizzare per individuare in modo semplice il gioco che cerchi.
                     </p>
                </div>
+                </section>
 
-
-                <div><strong>Giocare alle Slot senza download e senza registrazione</strong></div>
-                <div
+                <section>
+                    <h3><strong>Giocare alle Slot senza download e senza registrazione</strong></h3>
+                    <div
                     ><p>
                     Devi sapere che su casinosquad.it potrai giocare subito, senza limiti o perdite di tempo. Sì, infatti, non dovrai iscriverti o fare registrazioni. 
                     Tanti casinò, invece, ti obbligano a fare il download dei loro software di gioco. Questo togliendo tempo che potrebbe essere prezioso per te, fra download e installazione. 
@@ -87,11 +90,12 @@ const Article: FunctionComponent<PageProps> = ({data}) => {
                     Infatti, è grazie al HTML5 che potrai avere a disposizione oltre 1000 slot, con il meglio della qualità audio e video.
                     </p>
                 </div>
+                </section>
 
-
-                <div><strong>Le slot online sono legali in Italia?</strong></div>
-                <div>
-                    <Thumbnail style={{float: 'left', marginRight: '30px'}}>
+                <section>
+                    <h3><strong>Le slot online sono legali in Italia?</strong></h3>
+                    <div>
+                    <Thumbnail id="adm" style={{float: 'left', marginRight: '30px'}}>
                         <LazyLoad height={85} offset={300}>
                             <Image
                                 alt="image not available"
@@ -118,20 +122,22 @@ const Article: FunctionComponent<PageProps> = ({data}) => {
                     Vuoi scoprire i migliori casino legali con slot machine AAMS? Ecco qui un confronto.
                     </p>
                 </div>
+                </section>
 
-
-                <div><strong>Il valore della tecnologia e l’impegno dietro le quinte nel mondo delle slot e dei giochi da casinò.</strong></div>
-                <div><p>
+                <section>
+                    <h3><strong>Il valore della tecnologia e l’impegno dietro le quinte nel mondo delle slot e dei giochi da casinò.</strong></h3>
+                    <div><p>
                 Attualmente, siamo abituati ad una determinata raffinatezza visiva e amiamo standard grafici visivi e audio di un certo livello.
                 Ecco perché in tempi recenti, sia slot che altri prodotti dei <b>casinò online</b> sono sviluppati in HTML5.
                 Infatti, la tecnologia HTML5 è ottimale anche e soprattutto per i dispositivi mobili, sono quelli più utilizzati per interfacciarsi alla rete.
                 La tecnologia HTML5 è veloce, e leggera. Ottima per chi ha uno smartphone e quindi può voler giocare ovunque si trovi: un’eventualità di cui i maggiori 
                 provider hanno tenuto conto.
                 </p></div>
-
-
-                <div><strong>In che modo casinosquad.it realizza le recensioni delle slot online?</strong></div>
-                <div>
+                </section>
+                
+                <section>
+                    <h3><strong>In che modo casinosquad.it realizza le recensioni delle slot online?</strong></h3>
+                    <div>
                     <p>
                     Abbiamo a disposizione un team di esperti che valuta ogni <b>slot online</b>, facendo un capillare percorso di verifica, rigoroso ed efficace.
                     L’obiettivo è una missione del nostro team, ovvero la garanzia di un’esperienza di gioco avvincente e divertente.<br/>
@@ -184,10 +190,11 @@ const Article: FunctionComponent<PageProps> = ({data}) => {
                     </ul>
 
                 </div>
-
+                </section>
                 
-                <div><strong>Esistono differenze fra slot online e le slot dei casinò terrestri?</strong></div>
-                <div>
+                <section>
+                    <h3><strong>Esistono differenze fra slot online e le slot dei casinò terrestri?</strong></h3>
+                    <div>
                     <p>
                     Bisogna sottolineare che – almeno in apparenza - le slot che puoi trovare nei casinò di Las Vegas, vantano alcune somiglianze con i giochi online.
                     Infatti, la versione online, è molto simile alla controparte meccanica che puoi facilmente trovare all’interno dei <b>casinò terrestri</b>. 
@@ -197,10 +204,11 @@ const Article: FunctionComponent<PageProps> = ({data}) => {
                     Intanto, ti ricordiamo che anziché tirare una leva, nelle slot online dovrai premere un pulsante per azionare i rulli.
                     </p>
                 </div>
+                </section>
 
-
-                <div><strong>I vantaggi di provare le slot online</strong></div>
-                <div>
+                <section>
+                    <h3><strong>I vantaggi di provare le slot online</strong></h3>
+                    <div>
                     <ol type="1">
                         <li>
                             <p>
@@ -238,10 +246,11 @@ const Article: FunctionComponent<PageProps> = ({data}) => {
                         </li>
                     </ol> 
                </div>
+                </section>
 
-
-                <div><strong>Chi sono provider delle slot machine</strong></div>
-                <div>
+                <section>
+                    <h3><strong>Chi sono provider delle slot machine</strong></h3>
+                    <div>
                     <p>
                     Come potrai immaginare, i giochi dei <b>casinò online</b>, sono sviluppati da altri.
                     Esistono infatti dei provider, che sono fornitori dei giochi che troverai sulle <b>piattaforme di gioco</b>.
@@ -253,10 +262,11 @@ const Article: FunctionComponent<PageProps> = ({data}) => {
                     Possiamo già dirti, che alcuni fra i migliori fornitori di giochi, sono IGT, Pragmatic Play, NetEnt e Novomatic: sono tutti davvero celebri in Italia.
                     </p>
                 </div>
+                </section>
 
-
-                <div><strong>Provare le slot online con soldi veri</strong></div>
-                <div>
+                <section>
+                    <h3><strong>Provare le slot online con soldi veri</strong></h3>
+                    <div>
                     <p>
                     Come hai capito, sul sito casinosquad.it puoi provare tutte le slot che vuoi senza rischiare nulla.
                     Tuttavia, se avessi voglia di provare le slot soldi veri, hai diverse opportunità.
@@ -279,10 +289,11 @@ const Article: FunctionComponent<PageProps> = ({data}) => {
                     utilizzare il filtro “Dispositivi Mobile Supportati”.
                     </p>
                 </div>
-                
+                </section>
 
-                <div><strong>I Bonus delle slot e le promozioni delle piattaforme di gioco.</strong></div>
-                <div>
+                <section>
+                    <h3><strong>I Bonus delle slot e le promozioni delle piattaforme di gioco.</strong></h3>
+                    <div>
                     <p>
                     Ovviamente, tra i vari <b>casinò online</b>, c’è concorrenza e ci possono essere tante differenze in merito alle promozioni. Principalmente, 
                     le promozioni proposte dai casinò sono di 3 tipologie:
@@ -307,10 +318,11 @@ const Article: FunctionComponent<PageProps> = ({data}) => {
                         </li>
                     </ul>
                 </div>
+                </section>
 
-
-                <div><strong><b>Vuoi giocare alle slot come un professionista? Prova queste strategie</b></strong></div>
-                <div>
+                <section>
+                    <h3><strong><b>Vuoi giocare alle slot come un professionista? Prova queste strategie</b></strong></h3>
+                    <div>
                     <p>
                     Il mondo delle <b>slot online</b> fa parte del gioco d'azzardo.
                     Se sei veramente interessato, potresti volere imparare a giocare in modo consapevole e professionale.
@@ -324,10 +336,11 @@ const Article: FunctionComponent<PageProps> = ({data}) => {
                     la funzione Autoplay e tentare la fortuna.
                     </p>
                 </div>
+                </section>
 
-
-                <div><strong>Massimizzare le vincite delle slot</strong></div>
-                <div>
+                <section>
+                    <h3><strong>Massimizzare le vincite delle slot</strong></h3>
+                    <div>
                     <p>
                     Come abbiamo ricordato, un modo per prendere il massimo valore dalle slot online
                     è sfruttare sia le offerte speciali - bonus di benvenuto e promo ricarica.
@@ -336,10 +349,11 @@ const Article: FunctionComponent<PageProps> = ({data}) => {
                     Inoltre, anche la varianza delle è molto ampia: colpire round bonus e jackpot può essere un evento raro, quanto emozionante.
                     </p>
                 </div>
+                </section>
 
-
-                <div><strong><b>False credenze e luoghi comuni sui giochi di slot</b></strong></div>
-                <div>
+                <section>
+                    <h3><strong><b>False credenze e luoghi comuni sui giochi di slot</b></strong></h3>
+                    <div>
                     <p>
                     Il gioco declinato nelle slot, che si parli dei casinò online, che di quelli tradizionali, è il gioco d’azzardo più popolare al mondo.
                     I motivi sono vari, ma in primis mettiamo la facilità e l’accessibilità.
@@ -395,10 +409,11 @@ const Article: FunctionComponent<PageProps> = ({data}) => {
                         </li>
                     </ol>
                 </div>
+                </section>
 
-
-                <div><strong>E se il gioco diventa un problema? Usa la testa e fermati</strong></div>
-                <div>
+                <section>
+                    <h3><strong>E se il gioco diventa un problema? Usa la testa e fermati</strong></h3>
+                    <div>
                     <p>
                     Oltre ad essere una felice forma di intrattenimento e divertimento, per alcune persone, il gioco d’azzardo può portare dipendenza. 
                     La ludopatia è un problema che ha riflessi nella vita concreta e per questo non deve essere sottovalutato.
@@ -414,7 +429,7 @@ const Article: FunctionComponent<PageProps> = ({data}) => {
                     che siano tuoi o dei tuoi familiari, parenti o amici. Speriamo di esserti stati di aiuto.
                     </p>
                 </div>
-
+                </section>
             </Main>
         </Fragment>
     )
@@ -423,9 +438,9 @@ const Article: FunctionComponent<PageProps> = ({data}) => {
 const Main = styled.div`
     padding: 5px 10px;
 
-    @media ${device.mobileL} {
-        padding: 5px
-    }
+    section { margin: 30px 0px; }
+
+    @media ${device.mobileL} { padding: 5px; }
 
     li { 
         text-align: left; 
@@ -434,15 +449,29 @@ const Main = styled.div`
 `
 
 const Thumbnail = styled.div` 
-    width: 250px;
-    shape-outside: circle(115px at 49.9% 49.9%);
-    clip-path: circle(115px at 49.9% 49.9%);
+    
 
+    &#adm {
+        width: 180px;
+        shape-outside: circle(96px at 42.8% 66.5%);
 
-    @media ${device.mobileL} {
-        clip-path: circle(73px at 50.15% 50.15%);
-        shape-outside: circle(73px at 50.1% 50.15%);
-        width: 145px;
+        @media ${device.mobileL} {
+            width: 145px;
+            clip-path: circle(73px at 50.15% 50.15%);
+            shape-outside: circle(73px at 50.1% 50.15%);
+        }
+    }
+
+    &#volcano {
+        width: 200px;
+        clip-path: circle(85px at 50.05% 51.95%);
+        shape-outside: circle(89px at 56.55% 51.95%);
+
+        @media ${device.mobileL} {
+            width: 145px;
+            clip-path: circle(73px at 50.15% 50.15%);
+            shape-outside: circle(73px at 50.1% 50.15%);
+        }
     }
 `
 
@@ -452,8 +481,8 @@ const FreeBonusSection = styled.div`
     flex-grow: 1;
     height: min-content;
     float: right;
-    width: 350px;
-    margin-left: 25px;
+    width: 400px;
+    margin-left: 20px;
 
     @media ${device.tablet} {
         float: unset;

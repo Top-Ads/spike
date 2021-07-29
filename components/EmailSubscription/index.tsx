@@ -11,7 +11,7 @@ const EmailSubcription = () => {
           <Main>
             <p>Ricevi aggiornamenti ed anticipazioni sui nuovi video e su bonus e promozio.</p>
 
-            <CustomTextField /* onChange={(text: string) => console.log('onchange', text)} */ placeholder="Email" size='small'/>
+            <CustomTextField /* onChange={(text: string) => console.log('onchange', text)} */ placeholder="Email" size={'small'}/>
 
             <br/>
 
@@ -29,7 +29,7 @@ const EmailSubcription = () => {
 }
 
 const Main = styled.div`
-    background-color: ${({theme}) => theme.colors.background};
+    background-color: ${({theme}) => theme.palette.background};
     border: 2px solid #fff;
     border-radius: 10px;
     max-width: 270px;
@@ -44,20 +44,21 @@ const Main = styled.div`
     margin: 20px 0px;
     padding: 10px;
 
-    p { color: ${({theme}) => theme.text.color.primary}; }
+    p { color: ${({theme}) => theme.text.color.white}; }
 `
 
 const Button = styled.div`
     padding: 10px 20px;
-    background-color: #ffcc03;
-    border: 1px solid ${({theme}) => theme.text.color.primary};
+    background-color: #cda65f;
+    border: 1px solid ${({theme}) => theme.text.color.white};
     border-radius: ${({theme}) => theme.button.borderRadius};
-    color: ${({theme}) => theme.text.color.secondary};
+    color: ${({theme}) => theme.text.color.white};
     cursor: pointer;
+    font-weight: bold;
 
     &:hover {
-      box-shadow: 0px 0px 5px 5px rgba(33,37,41,0.4);
-  }
+     
+    }
 `
 
 export default EmailSubcription

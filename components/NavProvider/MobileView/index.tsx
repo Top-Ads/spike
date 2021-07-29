@@ -58,7 +58,7 @@ const NavProvider: FunctionComponent<PageProps> = ({showNav, setShowNav}) => {
 }
 
 const Nav = styled.nav<NavProps>`    
-    background-color: ${({theme}) => theme.colors.background};
+    background-color: ${({theme}) => theme.palette.background};
     color: white;
     position: fixed;
     top: 0;

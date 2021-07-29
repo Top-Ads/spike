@@ -16,6 +16,10 @@ import RankingCard from '../../Cards/RankingCard'
 import { CDN } from '../../../public/environment'
 import LazyLoad from 'react-lazyload'
 import { Bonus } from '../../../interfaces'
+import { replaceAll } from '../../../utils/replaceAll'
+import InfoIcon from '@material-ui/icons/Info'
+import Tooltip from '@material-ui/core/Tooltip'
+import { Zoom } from '@material-ui/core'
 
 type PageProps = {
     data: Bonus[]
@@ -29,11 +33,17 @@ const StyledTableCell = withStyles((theme: Theme) =>
   createStyles({
     root: {
       fontFamily: 'inherit',
-      fontWeight: 'bold'
+      fontWeight: 'bold',
+      '& .icon': {
+        fontSize: '1.2rem',
+        cursor: 'pointer',
+        color: '#e2b96d'
+      }
     },
     head: {
       backgroundColor: '#e2b96d',
       color: theme.palette.common.white,
+      padding: '7px'
     },
     body: {
       fontSize: 14,
@@ -56,6 +66,10 @@ const useStyles = makeStyles({
   table: {
     minWidth: 690,
   },
+  tooltip: {
+    maxWidth: '200px',
+    padding: '5px'
+  }
 })
 
 const BonusTable: FunctionComponent<PageProps> = ({data}) => {
@@ -73,12 +87,13 @@ const BonusTable: FunctionComponent<PageProps> = ({data}) => {
       <Table className={classes.table} aria-label="customized table">
         <TableHead>
           <TableRow>
-            <StyledTableCell>#</StyledTableCell>
-            <StyledTableCell>Casinò</StyledTableCell>
+            <StyledTableCell align="center">#</StyledTableCell>
+            <StyledTableCell align="left">Casinò</StyledTableCell>
             <StyledTableCell align="left">Valutazione</StyledTableCell>
             <StyledTableCell align="left">Bonus Senza Deposito</StyledTableCell>
             <StyledTableCell align="left">Bonus di Benvenuto</StyledTableCell>
-            <StyledTableCell align="left">Licenza</StyledTableCell>
+            <StyledTableCell align="center">Licenza</StyledTableCell>
+            <StyledTableCell align="left"></StyledTableCell>
           </TableRow>
         </TableHead>
         <TableBody>
@@ -110,23 +125,47 @@ const BonusTable: FunctionComponent<PageProps> = ({data}) => {
                   
                 </StyledTableCell>
 
-                <StyledTableCell align="left" dangerouslySetInnerHTML={{__html: String(row.withDeposit.replace("+", "<br/>"))}}/>
+                <StyledTableCell align="left" dangerouslySetInnerHTML={{__html: String(replaceAll(row.noDeposit, "+", "<br/>"))}}/>
 
-                <StyledTableCell align="left" dangerouslySetInnerHTML={{__html: String(row.description.replace("+", "<br/>"))}}/>
-                
                 <StyledTableCell align="left">
-                  <Licence>
-                      <Image
-                          alt="licence ADM"
-                          src={`${CDN}/svg/adm.svg`}
-                          layout="responsive"
-                          quality={50}
-                          width={'auto'}
-                          height={'auto'}/>
-                  </Licence>
+                  <div className="cell-description">
+                    <div dangerouslySetInnerHTML={{__html: String(replaceAll(row.description, "+", "<br/>"))}}/>
 
+                    { row.tips && 
+                    <Tooltip 
+                      title={row.tips} 
+                      classes={{ tooltip: classes.tooltip }} 
+                      TransitionComponent={Zoom}
+                    >
+                      <InfoIcon className="icon"/> 
+                    </Tooltip>
+                    }
+                    
+                  </div>
+                </StyledTableCell>
+
+                
+                <StyledTableCell align="center">
+                  <LicenceContainer>
+                      <div className="licence-icon">
+                          <Image
+                              alt="licence ADM"
+                              src={`${CDN}/svg/adm.svg`}
+                              layout="responsive"
+                              quality={50}
+                              priority={true}
+                              width={'1141'}
+                              height={'760'}/>
+                      </div>
+
+                      <span> Licenza ADM</span>
+
+                  </LicenceContainer>
+                </StyledTableCell>
+
+                <StyledTableCell align="left">
                   <Button bgColor={row.backgroundColor} onClick={() => linkToBonus(row.link)}>
-                    <span>SITO WEB</span>
+                      <span>SITO WEB</span>
                   </Button>
                 </StyledTableCell>
 
@@ -144,7 +183,7 @@ const Thumbnail = styled.div`
 
 const Button = styled.div<BonusType>`
     background-color: ${({bgColor}) => bgColor ? bgColor : 'inherit'};
-    color: ${({theme}) => theme.text.color.primary};
+    color: ${({theme}) => theme.text.color.white};
     border-radius: ${({theme}) => theme.button.borderRadius};
     font-weight: bold;
     cursor: pointer;
@@ -152,16 +191,28 @@ const Button = styled.div<BonusType>`
     width: max-content;
 
     &:hover {
-      box-shadow: ${({theme}) => theme.button.boxShadowX};
+      
     }
 `
 
-const Licence = styled.div`
-  width: 23px;
-  position: absolute;
-  bottom: 1px;
-  right: 3px;
+const LicenceContainer = styled.div`
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    .licence-icon {
+        width: 40px;
+    }
+
+    span {
+        font-size: 11px;
+        font-weight: normal;
+        margin-left: 3px;
+    }
 }
+
 `
 
 export default BonusTable
+
+

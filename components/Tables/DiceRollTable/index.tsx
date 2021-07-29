@@ -44,15 +44,13 @@ const DiceRollTable: FunctionComponent<PageProps> = ({data, type}) => {
                                 <DiceImage src={injectDiceToImage(1)}/>
                                 <DiceImage src={injectDiceToImage(1)}/>
                             </div>
-                            <PercentageContainer>
-                                <h6>Percentage</h6>
+                            <Container>
                                 <span>{row.percentage}%</span>
-                            </PercentageContainer>
+                            </Container>
 
-                            <RightInfoContainer>
-                                <h6>Lands</h6>
+                            <Container>
                                 {`${row.lands}/${row.total}`}
-                            </RightInfoContainer>
+                            </Container>
                         </RowContainer>
                     )
 
@@ -63,15 +61,15 @@ const DiceRollTable: FunctionComponent<PageProps> = ({data, type}) => {
                                 <DiceImage src={injectDiceToImage(1)}/>
                                 <DiceImage src={injectDiceToImage(2)}/>
                             </div>
-                            <PercentageContainer>
-                                <h6>Percentage</h6>
+                            <Container>
+                                
                                 <span>{row.percentage}%</span>
-                            </PercentageContainer>
+                            </Container>
 
-                            <RightInfoContainer>
-                                <h6>Lands</h6>
+                            <Container>
+                                
                                 {`${row.lands}/${row.total}`}
-                            </RightInfoContainer>
+                            </Container>
                         </RowContainer>
                     )
 
@@ -82,15 +80,15 @@ const DiceRollTable: FunctionComponent<PageProps> = ({data, type}) => {
                                 <DiceImage src={injectDiceToImage(1)}/>
                                 <DiceImage src={injectDiceToImage(3)}/>
                             </div>
-                            <PercentageContainer>
-                                <h6>Percentage</h6>
+                            <Container>
+                                
                                 <span>{row.percentage}%</span>
-                            </PercentageContainer>
+                            </Container>
 
-                            <RightInfoContainer>
-                                <h6>Lands</h6>
+                            <Container>
+                                
                                 {`${row.lands}/${row.total}`}
-                            </RightInfoContainer>
+                            </Container>
                         </RowContainer>
                     )
 
@@ -101,15 +99,15 @@ const DiceRollTable: FunctionComponent<PageProps> = ({data, type}) => {
                                 <DiceImage src={injectDiceToImage(1)}/>
                                 <DiceImage src={injectDiceToImage(4)}/>
                             </div>
-                            <PercentageContainer>
-                                <h6>Percentage</h6>
+                            <Container>
+                                
                                 <span>{row.percentage}%</span>
-                            </PercentageContainer>
+                            </Container>
 
-                            <RightInfoContainer>
-                                <h6>Lands</h6>
+                            <Container>
+                                
                                 {`${row.lands}/${row.total}`}
-                            </RightInfoContainer>
+                            </Container>
                         </RowContainer>
                     )
 
@@ -120,15 +118,15 @@ const DiceRollTable: FunctionComponent<PageProps> = ({data, type}) => {
                                 <DiceImage src={injectDiceToImage(1)}/>
                                 <DiceImage src={injectDiceToImage(5)}/>
                             </div>
-                            <PercentageContainer>
-                                <h6>Percentage</h6>
+                            <Container>
+                                
                                 <span>{row.percentage}%</span>
-                            </PercentageContainer>
+                            </Container>
 
-                            <RightInfoContainer>
-                                <h6>Lands</h6>
+                            <Container>
+                                
                                 {`${row.lands}/${row.total}`}
-                            </RightInfoContainer>
+                            </Container>
                         </RowContainer>
                     )
 
@@ -139,15 +137,15 @@ const DiceRollTable: FunctionComponent<PageProps> = ({data, type}) => {
                                 <DiceImage src={injectDiceToImage(1)}/>
                                 <DiceImage src={injectDiceToImage(6)}/>
                             </div>
-                            <PercentageContainer>
-                                <h6>Percentage</h6>
+                            <Container>
+                                
                                 <span>{row.percentage}%</span>
-                            </PercentageContainer>
+                            </Container>
 
-                            <RightInfoContainer>
-                                <h6>Lands</h6>
+                            <Container>
+                                
                                 {`${row.lands}/${row.total}`}
-                            </RightInfoContainer>
+                            </Container>
                         </RowContainer>
                     )
 
@@ -158,15 +156,15 @@ const DiceRollTable: FunctionComponent<PageProps> = ({data, type}) => {
                                 <DiceImage src={injectDiceToImage(1)}/>
                                 <DiceImage src={injectDiceToImage(1)}/>
                             </div>
-                            <PercentageContainer>
-                                <h6>Percentage</h6>
+                            <Container>
+                                
                                 <span>{row.percentage}%</span>
-                            </PercentageContainer>
+                            </Container>
 
-                            <RightInfoContainer>
-                                <h6>Lands</h6>
+                            <Container>
+                                
                                 {`${row.lands}/${row.total}`}
-                            </RightInfoContainer>
+                            </Container>
                         </RowContainer>
                     )
 
@@ -184,15 +182,15 @@ const DiceRollTable: FunctionComponent<PageProps> = ({data, type}) => {
                                 <DiceImage src={injectDiceToImage(2)}/>
                                 <DiceImage src={injectDiceToImage(3)}/>
                             </div>
-                            <PercentageContainer>
-                                <h6>Percentage</h6>
+                            <Container>
+                                
                                 <span>{row.percentage}%</span>
-                            </PercentageContainer>
+                            </Container>
 
-                            <RightInfoContainer>
-                                <h6>Lands</h6>
+                            <Container>
+                                
                                 {`${row.lands}/${row.total}`}
-                            </RightInfoContainer>
+                            </Container>
                         </RowContainer>
                     )
 
@@ -203,15 +201,15 @@ const DiceRollTable: FunctionComponent<PageProps> = ({data, type}) => {
                                 <DiceImage src={injectDiceToImage(2)}/>
                                 <DiceImage src={injectDiceToImage(4)}/>
                             </div>
-                            <PercentageContainer>
-                                <h6>Percentage</h6>
+                            <Container>
+                                
                                 <span>{row.percentage}%</span>
-                            </PercentageContainer>
+                            </Container>
 
-                            <RightInfoContainer>
-                                <h6>Lands</h6>
+                            <Container>
+                                
                                 {`${row.lands}/${row.total}`}
-                            </RightInfoContainer>
+                            </Container>
                         </RowContainer>
                     )
 
@@ -222,15 +220,15 @@ const DiceRollTable: FunctionComponent<PageProps> = ({data, type}) => {
                                 <DiceImage src={injectDiceToImage(2)}/>
                                 <DiceImage src={injectDiceToImage(5)}/>
                             </div>
-                            <PercentageContainer>
-                                <h6>Percentage</h6>
+                            <Container>
+                                
                                 <span>{row.percentage}%</span>
-                            </PercentageContainer>
+                            </Container>
 
-                            <RightInfoContainer>
-                                <h6>Lands</h6>
+                            <Container>
+                                
                                 {`${row.lands}/${row.total}`}
-                            </RightInfoContainer>
+                            </Container>
                         </RowContainer>
                     )
 
@@ -241,15 +239,15 @@ const DiceRollTable: FunctionComponent<PageProps> = ({data, type}) => {
                                 <DiceImage src={injectDiceToImage(2)}/>
                                 <DiceImage src={injectDiceToImage(6)}/>
                             </div>
-                            <PercentageContainer>
-                                <h6>Percentage</h6>
+                            <Container>
+                                
                                 <span>{row.percentage}%</span>
-                            </PercentageContainer>
+                            </Container>
 
-                            <RightInfoContainer>
-                                <h6>Lands</h6>
+                            <Container>
+                                
                                 {`${row.lands}/${row.total}`}
-                            </RightInfoContainer>
+                            </Container>
                         </RowContainer>
                     )
 
@@ -260,15 +258,15 @@ const DiceRollTable: FunctionComponent<PageProps> = ({data, type}) => {
                                 <DiceImage src={injectDiceToImage(3)}/>
                                 <DiceImage src={injectDiceToImage(3)}/>
                             </div>
-                            <PercentageContainer>
-                                <h6>Percentage</h6>
+                            <Container>
+                                
                                 <span>{row.percentage}%</span>
-                            </PercentageContainer>
+                            </Container>
 
-                            <RightInfoContainer>
-                                <h6>Lands</h6>
+                            <Container>
+                                
                                 {`${row.lands}/${row.total}`}
-                            </RightInfoContainer>
+                            </Container>
                         </RowContainer>
                     )
 
@@ -279,15 +277,15 @@ const DiceRollTable: FunctionComponent<PageProps> = ({data, type}) => {
                                 <DiceImage src={injectDiceToImage(3)}/>
                                 <DiceImage src={injectDiceToImage(4)}/>
                             </div>
-                            <PercentageContainer>
-                                <h6>Percentage</h6>
+                            <Container>
+                                
                                 <span>{row.percentage}%</span>
-                            </PercentageContainer>
+                            </Container>
 
-                            <RightInfoContainer>
-                                <h6>Lands</h6>
+                            <Container>
+                                
                                 {`${row.lands}/${row.total}`}
-                            </RightInfoContainer>
+                            </Container>
                         </RowContainer>
                     )
 
@@ -298,15 +296,15 @@ const DiceRollTable: FunctionComponent<PageProps> = ({data, type}) => {
                                 <DiceImage src={injectDiceToImage(3)}/>
                                 <DiceImage src={injectDiceToImage(5)}/>
                             </div>
-                            <PercentageContainer>
-                                <h6>Percentage</h6>
+                            <Container>
+                                
                                 <span>{row.percentage}%</span>
-                            </PercentageContainer>
+                            </Container>
 
-                            <RightInfoContainer>
-                                <h6>Lands</h6>
+                            <Container>
+                                
                                 {`${row.lands}/${row.total}`}
-                            </RightInfoContainer>
+                            </Container>
                         </RowContainer>
                     )
 
@@ -324,15 +322,15 @@ const DiceRollTable: FunctionComponent<PageProps> = ({data, type}) => {
                                 <DiceImage src={injectDiceToImage(3)}/>
                                 <DiceImage src={injectDiceToImage(6)}/>
                             </div>
-                            <PercentageContainer>
-                                <h6>Percentage</h6>
+                            <Container>
+                                
                                 <span>{row.percentage}%</span>
-                            </PercentageContainer>
+                            </Container>
 
-                            <RightInfoContainer>
-                                <h6>Lands</h6>
+                            <Container>
+                                
                                 {`${row.lands}/${row.total}`}
-                            </RightInfoContainer>
+                            </Container>
                         </RowContainer>
                     )
 
@@ -343,15 +341,15 @@ const DiceRollTable: FunctionComponent<PageProps> = ({data, type}) => {
                                 <DiceImage src={injectDiceToImage(4)}/>
                                 <DiceImage src={injectDiceToImage(4)}/>
                             </div>
-                            <PercentageContainer>
-                                <h6>Percentage</h6>
+                            <Container>
+                                
                                 <span>{row.percentage}%</span>
-                            </PercentageContainer>
+                            </Container>
 
-                            <RightInfoContainer>
-                                <h6>Lands</h6>
+                            <Container>
+                                
                                 {`${row.lands}/${row.total}`}
-                            </RightInfoContainer>
+                            </Container>
                         </RowContainer>
                     )
 
@@ -362,15 +360,15 @@ const DiceRollTable: FunctionComponent<PageProps> = ({data, type}) => {
                                 <DiceImage src={injectDiceToImage(4)}/>
                                 <DiceImage src={injectDiceToImage(5)}/>
                             </div>
-                            <PercentageContainer>
-                                <h6>Percentage</h6>
+                            <Container>
+                                
                                 <span>{row.percentage}%</span>
-                            </PercentageContainer>
+                            </Container>
 
-                            <RightInfoContainer>
-                                <h6>Lands</h6>
+                            <Container>
+                                
                                 {`${row.lands}/${row.total}`}
-                            </RightInfoContainer>
+                            </Container>
                         </RowContainer>
                     )
 
@@ -381,15 +379,15 @@ const DiceRollTable: FunctionComponent<PageProps> = ({data, type}) => {
                                 <DiceImage src={injectDiceToImage(4)}/>
                                 <DiceImage src={injectDiceToImage(6)}/>
                             </div>
-                            <PercentageContainer>
-                                <h6>Percentage</h6>
+                            <Container>
+                                
                                 <span>{row.percentage}%</span>
-                            </PercentageContainer>
+                            </Container>
 
-                            <RightInfoContainer>
-                                <h6>Lands</h6>
+                            <Container>
+                                
                                 {`${row.lands}/${row.total}`}
-                            </RightInfoContainer>
+                            </Container>
                         </RowContainer>
                     )
 
@@ -400,15 +398,15 @@ const DiceRollTable: FunctionComponent<PageProps> = ({data, type}) => {
                                 <DiceImage src={injectDiceToImage(5)}/>
                                 <DiceImage src={injectDiceToImage(5)}/>
                             </div>
-                            <PercentageContainer>
-                                <h6>Percentage</h6>
+                            <Container>
+                                
                                 <span>{row.percentage}%</span>
-                            </PercentageContainer>
+                            </Container>
 
-                            <RightInfoContainer>
-                                <h6>Lands</h6>
+                            <Container>
+                                
                                 {`${row.lands}/${row.total}`}
-                            </RightInfoContainer>
+                            </Container>
                         </RowContainer>
                     )
 
@@ -419,15 +417,13 @@ const DiceRollTable: FunctionComponent<PageProps> = ({data, type}) => {
                                 <DiceImage src={injectDiceToImage(5)}/>
                                 <DiceImage src={injectDiceToImage(6)}/>
                             </div>
-                            <PercentageContainer>
-                                <h6>Percentage</h6>
+                            <Container>
                                 <span>{row.percentage}%</span>
-                            </PercentageContainer>
+                            </Container>
 
-                            <RightInfoContainer>
-                                <h6>Lands</h6>
+                            <Container>
                                 {`${row.lands}/${row.total}`}
-                            </RightInfoContainer>
+                            </Container>
                         </RowContainer>
                     )
 
@@ -438,15 +434,13 @@ const DiceRollTable: FunctionComponent<PageProps> = ({data, type}) => {
                                 <DiceImage src={injectDiceToImage(6)}/>
                                 <DiceImage src={injectDiceToImage(6)}/>
                             </div>
-                            <PercentageContainer>
-                                <h6>Percentage</h6>
+                            <Container>
                                 <span>{row.percentage}%</span>
-                            </PercentageContainer>
+                            </Container>
 
-                            <RightInfoContainer>
-                                <h6>Lands</h6>
+                            <Container>
                                 {`${row.lands}/${row.total}`}
-                            </RightInfoContainer>
+                            </Container>
                         </RowContainer>
                     )
 
@@ -466,28 +460,31 @@ const DiceRollTable: FunctionComponent<PageProps> = ({data, type}) => {
         <Paper className={classes.root}>
             <h1 style={{margin: '10px auto', fontSize : '2rem'}}>{typeToHeader()}</h1>
             <Divider />
+            <RowContainer>
+                <div style={{marginLeft: '20px'}}><h6>Results</h6></div>
+                <Container> 
+                    <h6>Percentage</h6>
+                </Container>
+
+                <Container>
+                    <h6>Lands</h6>
+                </Container>
+                        </RowContainer>
             {data.map((r : MonopolyTableRow, index : number) => renderRow(index, r))}
         </Paper>
     )
 }
 
-const PercentageContainer = styled.div`
+const Container = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
 `
-
-const RightInfoContainer = styled.div`
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-`
-
 
 const RowContainer = styled.div`
     display: flex;
-    justify-content : space-around;
     align-items: center;
+    justify-content: space-around;
     font-family: 'Montserrat' !important;
     margin: 5px 0px;
     span { font-size: 1rem; }
@@ -495,13 +492,12 @@ const RowContainer = styled.div`
     h6 {
         color: tomato;
         margin: 2px auto;
-        font-size: 1rem;
+        font-size: 1.2rem;
     }
 `
 
 const DiceImage = styled.img`
-    width: 40px;
-    height: 40px;
+    width: 45px;
     margin: 3px;
 `
 export default DiceRollTable

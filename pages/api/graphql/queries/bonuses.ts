@@ -1,12 +1,18 @@
 
 export const BONUSES = `
-query bonuses($countryCode: String, $limit: Int, $start: Int, $names: [String]) {
+query bonuses(
+    $countryCode: String, 
+    $limit: Int, $start: Int, 
+    $names: [String], 
+    $sort: String) {
     bonuses( 
           where : { country : {code : $countryCode}, name_in: $names },
           limit: $limit,
           start: $start
+          sort: $sort
           ) {
         id,
+        updated_at
         description
         backgroundColor
         borderColor

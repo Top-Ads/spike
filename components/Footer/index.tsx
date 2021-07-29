@@ -21,9 +21,7 @@ const Footer: FunctionComponent = () => {
                         <Link href={'/comparator'}>
                             <a>Comparator</a>
                         </Link>
-                        <Link href={'/shop'}>
-                            <a>Shop</a>
-                        </Link>
+                        <a href={'https://casino-squad.com/shop/'}>Shop</a>
                     </List>
                     <List>
                         <strong>casinos</strong>
@@ -48,18 +46,18 @@ const Footer: FunctionComponent = () => {
                     </List>
                     <List>
                     <strong>contacts</strong>
-                    <a>Email</a>
-                    <a>Address</a>
+                    <a>info@casino-squad.com</a>
+                    <a>TopAds Limited</a>
                 </List>
                 </Container>
                 
                 <Divider color="#f2f2f2"/>
 
                 <SocialNetworks>
-                    <a href="https://www.facebook.com/casinosquad"><FacebookIcon fontSize={'large'}/></a>
-                    <a href="https://www.instagram.com/casino.squad.team/"><InstagramIcon fontSize={'large'}/></a>
-                    <a href="https://t.me/casino_squad"><TelegramIcon fontSize={'large'}/></a>
-                    <a href="https://www.youtube.com/channel/UClcCLY3"><YouTubeIcon fontSize={'large'}/></a>
+                    <a href="https://www.facebook.com/casinosquad"><FacebookIcon /></a>
+                    <a href="https://www.instagram.com/casino.squad.team/"><InstagramIcon /></a>
+                    <a href="https://t.me/casino_squad"><TelegramIcon /></a>
+                    <a href="https://www.youtube.com/channel/UClcCLY3"><YouTubeIcon /></a>
                 </SocialNetworks>
 
                 <Divider color="#f2f2f2"/>
@@ -70,7 +68,7 @@ const Footer: FunctionComponent = () => {
 } 
 
 const Main = styled.div`
-    background-color: ${({theme}) => theme.colors.background};
+    background-color: ${({theme}) => theme.palette.background};
     color: #fff;
     display: flex;
     flex-direction: column;
@@ -122,6 +120,10 @@ const SocialNetworks = styled.div`
     display: flex;
     flex-direction: row;
     justify-content: center;
+
+    svg {
+        font-size: 3rem;
+    }
 `
 
 export default Footer
