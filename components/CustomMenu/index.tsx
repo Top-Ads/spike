@@ -153,8 +153,8 @@ const CustomMenu: FunctionComponent<PageProps> = ({itemSelected, setItemSelected
 
 const Button = styled.div`
     background-color: #fff;
-    border: 1px solid ${({theme}) => theme.colors.background};
-    color: ${({theme}) => theme.text.color.secondary};
+    border: 1px solid ${({theme}) => theme.color.background};
+    color: ${({theme}) => theme.text.color.black};
     border-radius: ${({theme}) => theme.button.borderRadius};
     font-weight: normal;
     cursor: pointer;

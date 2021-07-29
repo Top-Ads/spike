@@ -12,7 +12,8 @@ const ComparatorPage = () => {
                     src="https://casinosquad.toply.info/compare?options=leovgs-starcsn-goldbt-888-btflg-kingcsn-netbt"
                     width="1200"
                     height="1730"
-                    allow="fullscreen"/>
+                    allow="fullscreen"
+                />
             </Main>
         </Layout>
     ) 
@@ -21,8 +22,8 @@ const ComparatorPage = () => {
 const Main = styled.div`
     display: flex;
     justify-content: center;
-    font-size: xx-large;
-    padding: 30px;
+    width: 100%;
+    background-color: #2B2B2B;
 `
 
 const Iframe = styled.iframe`

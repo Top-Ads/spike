@@ -23,8 +23,8 @@ const Main = styled.div`
     align-items: center;
     justify-content: center;
     background-color: #fff;
-    border: 2px solid ${({theme}) => theme.colors.background};
-    color: ${({theme}) => theme.colors.background};
+    border: 2px solid ${({theme}) => theme.color.background};
+    color: ${({theme}) => theme.color.background};
     border-radius: 5px;
     font-weight: bold;
     font-size: 25px;

@@ -48,7 +48,7 @@ const Main = styled.div`
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
-    background-color: ${({theme}) => theme.colors.background};
+    background-color: ${({theme}) => theme.color.background};
     padding: 10px;
     flex-wrap: wrap;
     color: #fff;

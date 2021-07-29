@@ -49,7 +49,7 @@ const Grids = styled.div`
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    color: ${({theme}) => theme.colors.background};
+    color: ${({theme}) => theme.color.background};
     margin-top: 20px;
 
     @media ${device.tablet} {
@@ -61,7 +61,7 @@ const Button = styled.div`
     flex-direction: row;
     justify-content: center;
     font-size: 12px;
-    border: 1px solid ${({theme}) => theme.colors.gradient};
+    border: 1px solid ${({theme}) => theme.color.gradient};
     border-left-width: thick;
     padding: 10px;
     cursor: pointer;
@@ -69,7 +69,7 @@ const Button = styled.div`
     margin: 0 auto;
 
     span {
-        color: ${({theme}) => theme.colors.background};
+        color: ${({theme}) => theme.color.background};
     }
     &:hover {
         background-color: #f2f2f2;

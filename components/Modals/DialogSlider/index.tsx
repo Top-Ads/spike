@@ -20,7 +20,7 @@ const Transition = React.forwardRef(function Transition(
 const StyledDialog = withStyles(() =>
   createStyles({
     paper: {
-      width: '30vw',
+      width: '25vw',
       height: '99.8%',
       margin: '0',
       maxWidth: '100%',

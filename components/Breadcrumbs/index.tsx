@@ -26,14 +26,14 @@ const Main = styled.div`
 
 const Bullet = styled.div`
     background-color: unset;
-    border: 1px solid ${({theme}) => theme.colors.background};
+    border: 1px solid ${({theme}) => theme.color.background};
     width: 8px;
     height: 8px;
     margin-right: 5px;
     border-radius: 8px;
 
     &.active{
-        background-color: ${({theme}) => theme.colors.background};
+        background-color: ${({theme}) => theme.color.background};
 
     }
 `

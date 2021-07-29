@@ -1,7 +1,7 @@
 import React, { FunctionComponent } from 'react'
 import { Fragment } from 'react'
 import CircularProgress from '@material-ui/core/CircularProgress'
-import { createStyles, withStyles } from '@material-ui/core';
+import { createStyles, withStyles } from '@material-ui/core'
 
 type PageProps = {
     show: boolean

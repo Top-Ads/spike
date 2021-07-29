@@ -5,6 +5,7 @@ import { ClickAwayListener } from '@material-ui/core'
 import styled from 'styled-components'
 import Divider from '../../Divider'
 import Routes from '../Routes'
+import { useRouter } from 'next/router'
 
 type PageProps = {
     showNav: boolean
@@ -17,13 +18,15 @@ type NavProps = {
 
 const NavProvider: FunctionComponent<PageProps> = ({showNav, setShowNav}) => {
         
+    const router = useRouter()
+
     const handleClick = () => {
         isMobile && deviceType !== 'tablet' && setShowNav(false)
     };
 
     return (
         <Fragment>
-            <ClickAwayListener 
+            <ClickAwayListener
                 mouseEvent="onClick"
                 touchEvent={false} 
                 onClickAway={handleClick}>
@@ -31,6 +34,7 @@ const NavProvider: FunctionComponent<PageProps> = ({showNav, setShowNav}) => {
                 <Nav expand={showNav}>
                     <Divider color={'#fff'}/>
                     <Routes/>
+                    { ( router.pathname === '/giochi' || router.pathname === '/' ) && <Divider color={'#fff'} /> }
                 </Nav> 
 
             </ClickAwayListener>

@@ -38,7 +38,7 @@ const FreeBonusList: FunctionComponent<PageProps> = ({data, label}) => {
 const Grids = styled.div`
   display: inherit;
   flex-grow: 1;
-  color: ${({theme}) => theme.colors.background}; 
+  color: ${({theme}) => theme.color.background}; 
   margin: 10px 0px;
 `
 

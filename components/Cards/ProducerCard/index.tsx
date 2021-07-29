@@ -47,7 +47,7 @@ const Main = styled.div`
     display: flex;
     flex-direction: row;
     font-size: 12px;
-    border: 1px solid ${({theme}) => theme.colors.gradient};
+    border: 1px solid ${({theme}) => theme.color.gradient};
     border-left-width: thick;
     padding: 5px;
     cursor: pointer;
@@ -59,7 +59,7 @@ const Main = styled.div`
 `
 
 const Thumbnail = styled.div`
-    width: 60px;
+    width: 80px;
     padding: 1px;
     border-radius: ${({theme}) => theme.button.borderRadius};
     overflow: hidden;
@@ -73,7 +73,7 @@ const Container = styled.div`
     align-items: center;
     flex-grow: 2;
     width: min-content;
-    padding: 0px 5px;
+    padding: 0px 10px;
 `
 
 export default ProducerCard

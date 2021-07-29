@@ -14,7 +14,7 @@ import CustomTextField from '../../components/Inputs/Textfield'
 import CustomMenu from '../../components/CustomMenu'
 import ShuffleIcon from '@material-ui/icons/Shuffle'
 import { Fragment } from 'react'
-import { shortDate } from '../../utils/shortDate'
+import { longDate } from '../../utils/date'
 import { PRODUCERS } from '../api/graphql/queries/producers'
 import ProvidersList from '../../components/ProvidersList'
 import { BONUSES } from '../api/graphql/queries/bonuses'
@@ -46,7 +46,6 @@ const GiochiPage: FunctionComponent<PageProps> = (props) => {
     const [itemSelected, setItemSelected] = useState<string>(SlotFilterList.ALPHABETIC)
     const [producerSelected, setProducerSelected] = useState<string>('')
     const [openDialog, setOpenDialog] = useState<boolean>(false)
-
 
     function getRandomInt(min: number, max: number) {
         min = Math.ceil(min);
@@ -120,9 +119,7 @@ const GiochiPage: FunctionComponent<PageProps> = (props) => {
         setProducerSelected(producerSelected)
     }
 
-    const clear = () => {
-        setProducerSelected('')
-    }
+    const clear = () => setProducerSelected('')
 
     return (
         <Layout title="Giochi">
@@ -132,7 +129,7 @@ const GiochiPage: FunctionComponent<PageProps> = (props) => {
                     <h2>
                         SLOT GRATIS – GIOCA ALLE SLOT MACHINE GRATIS ONLINE IN ITALIANO
                     </h2>
-                    <span>Pubblicato: 2019-06-11 • Ultimo aggiornamento: 2021-05-07</span>
+                    <span>Pubblicato: 31-07-2021 • Ultimo aggiornamento { longDate(new Date( Date.now() )) } </span> 
                     <p>
                         Prima di tutto, benvenuto! Sappiamo che ti piace giocare alle slot machine
                         gratis online: è per quello che sei qui! La buona notizia e che anche noi 
@@ -152,6 +149,8 @@ const GiochiPage: FunctionComponent<PageProps> = (props) => {
                         height={200}/>
                 </Thumbnail>
             </Header>
+
+            <br/>
 
             <div className="space-around">
                 <Grids id='ads-slots'>
@@ -211,8 +210,6 @@ const GiochiPage: FunctionComponent<PageProps> = (props) => {
                                 
                                 <div id="filter-providers" onClick={() => setOpenDialog(true)}><span>LIST PROVIDERS</span></div>
                             </Actions>
-
-                            <br/>
                             
                             <Grids id='free-slots'>
                                 <GridCards 
@@ -225,9 +222,9 @@ const GiochiPage: FunctionComponent<PageProps> = (props) => {
                                             {itemSelected === SlotFilterList.RTP ? slot.rtp ? `RTP: ${slot.rtp}%` : 'NA' : ''}
                                             {itemSelected === SlotFilterList.LIKES ? slot.likes ? `${slot.likes} likes`: 'NA' : ''}
                                             {itemSelected === SlotFilterList.CREATED_AT ? slot.created_at ?
-                                                `${shortDate(slot.created_at)}`: 'NA' : ''}
+                                                `${longDate(slot.created_at)}`: 'NA' : ''}
                                             {itemSelected === SlotFilterList.UPDATED_AT ? slot.created_at ?
-                                                `${shortDate(slot.updated_at)}`: 'NA' : ''}
+                                                `${longDate(slot.updated_at)}`: 'NA' : ''}
                                         </SlotInfo>
                                         <SlotCard key={slot.name} data={slot}/>
                                     </Fragment>
@@ -237,9 +234,9 @@ const GiochiPage: FunctionComponent<PageProps> = (props) => {
                                 />
                             </Grids>
 
-                            <Button onClick={loadMore}>
+                            <LoadMoreButton onClick={loadMore}>
                                 <span>CARICA ALTRO</span>
-                            </Button>
+                            </LoadMoreButton>
 
                         </Section>
 
@@ -257,9 +254,8 @@ const GiochiPage: FunctionComponent<PageProps> = (props) => {
 }
 
 const Header = styled.div`
-    background-image: linear-gradient(180deg, ${({theme}) => theme.colors.background} 0%, ${({theme}) => theme.colors.gradient} 50%);
+    background-image: linear-gradient(0deg, ${({theme}) => theme.color.background} 0%, ${({theme}) => theme.color.gradient} 50%);
     padding: 0px 7%;
-    margin-top: 20px;
     color: #fff;
     display: flex;
     flex=direction: row;
@@ -271,12 +267,15 @@ const Header = styled.div`
 `
 
 const Intro = styled.div`
-    width: 50%;
-    flex-grow: 1;
+    width: 70%;
+   
+    @media ${device.mobileL} {
+        flex-grow: 1;
+    }
 `
 
 const Thumbnail = styled.div`
-    margin: 15px auto;
+    margin: auto;
 
     @media ${device.tablet} {
         display: none;
@@ -302,12 +301,13 @@ const Grids = styled.div`
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    color: ${({theme}) => theme.colors.background};
+    color: ${({theme}) => theme.color.background};
 
     @media ${device.tablet} {
         &#ads-slots {
             flex-wrap: nowrap;
             overflow-x: scroll;
+            overflow-y: hidden;
         }
     }
 `
@@ -318,7 +318,7 @@ const Main = styled.div`
 `
 
 const Title = styled.div`
-    color: ${({theme}) => theme.colors.background};
+    color: ${({theme}) => theme.color.background};
     flex-grow: 1;
     h3 { margin-bottom: 0; }
 `
@@ -327,7 +327,7 @@ const Container = styled.div`
     display: flex;
     flex-direction: row;
     flex-grow: 1;
-    margin-bottom: 20px;
+    margin: 10px 0px;
 `
 
 const Aside = styled.div`
@@ -351,13 +351,12 @@ const Section = styled.div`
 const Actions = styled.div`
     display: flex;
     flex-direction: row;
-    justify-content: flex-end;
     flex-wrap: wrap;
 
     #search-input {
         display: inherit;
-        flex-grow: 1;
-        border: 1px solid ${({theme}) => theme.colors.background};
+        flex-grow: 2;
+        border: 1px solid ${({theme}) => theme.color.background};
         border-radius: 5px;
        
         @media ${device.mobileL} {
@@ -368,7 +367,7 @@ const Actions = styled.div`
     #filter-providers {
         display: none;
         justify-content: center;
-        border: 1px solid ${({theme}) => theme.colors.background};
+        border: 1px solid ${({theme}) => theme.color.background};
         border-radius: 5px;
         padding: 12px;
         margin-top: 10px;
@@ -388,7 +387,7 @@ const Actions = styled.div`
         }
 
         &:hover {
-            color: ${({theme}) => theme.colors.background};
+            color: ${({theme}) => theme.color.background};
         }
     }
 
@@ -400,7 +399,7 @@ const Actions = styled.div`
         z-index: 99;
         
         @media ${device.mobileL} {
-            justify-content: space-evenly;
+            justify-content: space-between;
         }
 
         #shuffle {
@@ -413,7 +412,7 @@ const Actions = styled.div`
            
             color: #212530;
             background-color: #fff;
-            width: 50px;
+            width: 40px;
             cursor: pointer;
     
             &:hover {
@@ -423,12 +422,12 @@ const Actions = styled.div`
     }
 `
 
-const Button = styled.div`
-    background-color: ${({theme}) => theme.colors.background};
-    border: 2px solid ${({theme}) => theme.colors.background};
+const LoadMoreButton = styled.div`
+    background-color: ${({theme}) => theme.color.background};
+    border: 2px solid ${({theme}) => theme.color.background};
     color: #fff;
     border-radius: ${({theme}) => theme.button.borderRadius};
-    font-weight: normal;
+    font-weight: bold;
     cursor: pointer;
     padding: 15px;
     width: fit-content;
@@ -438,7 +437,7 @@ const Button = styled.div`
     align-self: center;
 
     &:hover {
-      box-shadow: ${({theme}) => theme.button.boxShadowX};
+      
     }
 `
 

@@ -13,7 +13,7 @@ const useStyles = makeStyles<Theme, PageProps>(() =>
     root: {
       flexGrow: 1,
       margin: '5px',
-      width: ({width, type}) => width ? width : type === GridType.SLOTS ? '500px': 'fill-available',
+      width: ({width, type}) => width ? width : type === GridType.SLOTS ? '45%;': 'fill-available',
       ['@media (max-width: 768px)']: {
         width: ({width}) => width ? width : 'fill-available',
         '& .MuiGrid-container' : {
@@ -34,7 +34,7 @@ const useStyles = makeStyles<Theme, PageProps>(() =>
       borderRadius: ({disableBorderRadius}) => disableBorderRadius ? '0px' : '5px',
       boxShadow: ({showBoxShadow}) => showBoxShadow ? 'auto' : 'none',
       backgroundColor: ({bgColor}) => bgColor ? bgColor : 'transparent',
-      width: ({type}) => type === GridType.TOPBONUS ? '20vw': 'unset',
+      width: ({type}) => type === GridType.TOPBONUS ? '25vw': 'unset',
       ['@media (max-width: 768px)']: {
         width: ({type}) => type === GridType.TOPBONUS ? '30vw': 'unset',
       },
@@ -70,7 +70,7 @@ type HeadType = {
 
 const GridCards: FunctionComponent<PageProps> = (props) => {
 
-  const {type, content, label, xs, sm, md, AlignItem, showIndex=false, spacing=1, breadcrumbIndex=0, breadcrumbSize} = props;
+  const {type, content, label, xs, sm, md, AlignItem, showIndex=false, spacing=2, breadcrumbIndex=0, breadcrumbSize} = props;
 
   const classes = useStyles(props)
 

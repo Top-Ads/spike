@@ -17,6 +17,7 @@ import { TablePagination, TableSortLabel } from '@material-ui/core'
 import { stableSort } from '../../../utils/stableSort'
 import PlayCircleOutlineIcon from '@material-ui/icons/PlayCircleOutline'
 import { LiveStats, SymbolLayout } from '../../../utils/constants'
+import { longDate, shortTime } from '../../../utils/date'
 
 type PageProps = {
     data: Spin[],
@@ -36,12 +37,13 @@ const StyledTableCell = withStyles((theme: Theme) =>
       fontWeight: 'bold',
       '& .table-head': {
         display: 'flex',
-        alignItems: 'center',
-      }
+        alignItems: 'center'
+      },
     },
     head: {
       backgroundColor: '#e2b96d',
-      color: theme.palette.common.white
+      color: theme.palette.common.white,
+      padding: '7px'
     },
     body: {
       fontSize: 14,
@@ -133,7 +135,7 @@ const SpinsTable: FunctionComponent<PageProps> = ({data=[], gameType}) => {
         <Table className={classes.table} aria-label="customized table">
           <TableHead>
             <TableRow>
-              <StyledTableCell>
+              <StyledTableCell align="center">
                 <TableSortLabel
                   active={orderBy === 'date'}
                   direction={orderBy === 'date' ? order : 'desc'}
@@ -191,8 +193,9 @@ const SpinsTable: FunctionComponent<PageProps> = ({data=[], gameType}) => {
                 .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map((row: any, index: number) => (
                 <StyledTableRow key={index}>
 
-                  <StyledTableCell scope="row" suppressHydrationWarning>
-                    {new Date(row.date).toLocaleString()}
+                  <StyledTableCell align="center" scope="row" suppressHydrationWarning>
+                    <div className="long-date">{longDate(new Date(row.date))}</div>
+                    <div>{shortTime(new Date(row.date))}</div>
                   </StyledTableCell>
 
                   <StyledTableCell component="th">

@@ -107,11 +107,12 @@ const SlotCard: FunctionComponent<PageProps> = ({data}) => {
                             layout="responsive"
                             priority={true}
                             width={1200}
-                            height={675}
+                            height={840}
+                            quality={80}
                             onLoad={()=> setLoading(false)}/>
                     </LazyLoad>
                 </Thumbnail>
-                { showBanner ? 
+                { showBanner &&  
                     <Banner>
                         <Button> 
                             <span>PLAY FREE</span>
@@ -120,12 +121,17 @@ const SlotCard: FunctionComponent<PageProps> = ({data}) => {
                             <span>REAL MONEY</span>
                         </Button>
                     </Banner>
-                : '' } 
+                } 
 
             </Main>
-
           
-            <Title>{data.name}</Title>
+            <Info>
+                <span className="name" >{data.name.toLowerCase()}</span> 
+                 { data.producer && data.producer.name && <span className="producer"> {data.producer.name} </span> }
+                 
+                 {/* - updated {(new Date(data.updated_at).getHours())} hours ago */}
+            </Info>
+
         </Fragment>
     ) 
 }
@@ -138,24 +144,41 @@ const Main = styled.div`
     overflow: hidden;
 `
 
-const Title = styled.span` 
+const Info = styled.span` 
     display: flex;
-    justify-content: center;
-    align-items: flex-start;
-    height: 25px;   
-    font-weight: bold;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: baseline;
+    height: 35px;   
     font-size: 12px;
     padding-top: 2px;
+    
+    span {
+        margin: 0 2px;
+        text-align: left;
+    }
+    span.name {
+        font-weight: bold;
+        text-transform: capitalize;
+    }
+
+    span.producer {
+        font-weight: normal;
+        font-size: 10px;
+
+    }
 `
 
 const Banner = styled.div`
-    display: flex;
-    align-items: flex-end;
-    width: 100%;
-    height: 100%;
-    color: ${({theme}) => theme.text.color.primary};
     position: absolute;
     top: 0;
+    display:flex;
+    flex-direction: column;
+    align-items:center;
+    justify-content:center;
+    width: 100%;
+    height: 100%;
+    color: ${({theme}) => theme.text.color.white};
     background-color: rgba(0,0,0,0.5);
     z-index: 2;
 
@@ -176,13 +199,14 @@ const Icon = styled.div`
 const Thumbnail = styled.div` 
     position: relative;
     z-index: 1;
+
     img { border-radius: 5px; }
 `
 
 const Button = styled.div`
-    background-color: ${({theme}) => theme.colors.background};
+    background-color: ${({theme}) => theme.color.background};
     border: 2px solid #fff;
-    color: ${({theme}) => theme.text.color.primary};
+    color: ${({theme}) => theme.text.color.white};
     border-radius: ${({theme}) => theme.button.borderRadius};
     cursor: pointer;
     width: 50%;
@@ -191,11 +215,11 @@ const Button = styled.div`
     font-size: 9px;
     font-weight: bold;
     align-items: center;
-    display: inherit;
+    display: flex;
     justify-content: center;
 
     &:hover {
-        box-shadow: ${({theme}) => theme.button.boxShadowY};
+        
     }
 `
 

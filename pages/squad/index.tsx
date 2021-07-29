@@ -11,8 +11,6 @@ import BonusCard from '../../components/Cards/BonusCard'
 import FreqentlyAsked from '../../components/FrequentlyAsked'
 import { device } from '../../utils/device'
 import Article from '../../components/Article'
-import Divider from '../../components/Divider'
-import { squadTeam } from '../../assets/mockSquadTeam'
 import LazyLoad from 'react-lazyload'
 import { Bonus } from '../../interfaces'
 import FacebookIcon from '@material-ui/icons/Facebook'
@@ -29,38 +27,208 @@ const SquadPage: FunctionComponent<PageProps> = ({freeBonusData, topBonusData}) 
     return (
         <Layout title="Squad">
             <div className="space-around">
-                {squadTeam.sort((a, b) => a.name > b.name ? 1 : -1).map( (member, index) => 
-                    <Main key={index}>
-                        <Container>
-                            <Resume>
-                                <Profile> 
-                                    <Name>{member.name}</Name>
+                <Main>
+                    <Container>
+                        <Profile>
+                            <Name>LUCKY</Name>
 
-                                    <SocialLinks>
-                                            {member.social.facebook && <a href={member.social.facebook}><FacebookIcon fontSize={'large'}/></a>}
-                                            {member.social.instagram && <a href={member.social.instagram}><InstagramIcon fontSize={'large'}/></a>}
-                                    </SocialLinks>
-                                </Profile>
+                            <div>
+                                <Thumbnail>
+                                    <LazyLoad height={200} offset={200}>
+                                        <Image
+                                            alt={'SQUAD LUCKY'}
+                                            src={`${CDN}/jpeg/squad/lucky.jpeg`}
+                                            layout="responsive"
+                                            priority={true}
+                                            width={550}
+                                            height={550}/> 
+                                    </LazyLoad>
+                                </Thumbnail> 
 
-                                <Info dangerouslySetInnerHTML={{__html:member.info}} className="resume-info"/>
-                            </Resume>
+                                <p>
+                                    Ciao ragazzi, io sono Lucky e da qualche tempo ho guadagnato il soprannome di Lucky il fortunato,
+                                    o meglio ancora il fortu-dado. Nella vita sono un autista di bus e lavoro nel settore del turismo,
+                                    come hobby sono un ballerino da più di 10 anni e m occupo anche di videomaking. Vado d’accordo con tutto
+                                    il resto della Squad, tranne che con Chily… scherzi a parte, siamo molto amici, solo che lui è un tipo
+                                    molto scaramantico mentre io mi affido totalmente alla fortuna. Adoro i dadi e qualunque gioco li comprenda;
+                                    mi piace il <strong>Monopoly Live</strong>ed il Crazy Time, ho un feeling particolare con le slots a tema egizio.
+                                    Le mie vincite più interessanti sono state alla <strong>Sweet Bonanza</strong>, al <strong>Monopoly Live</strong>e alla
+                                    <strong>Lightning Dice</strong>;
+                                    sul canale YouTube trovate il resto.
+                                    <br/><br/>
+                                    Il mio: “<strong>Sono veramente egizio</strong>” è diventato un detto conosciuto ai più, ed inserito anche dalla
+                                    Crusca in tutti i dizionari della lingua italiana.
+                                    <br/><br/>
+                                    Sono un tipo pazzerello e non mi tiro mai indietro se mi viene chiesto dai followers di cantare o ballare.
+                                    Bella raga, ci si vede in live.
+                                </p>
+                            </div>   
+                        </Profile>
 
-                            <Thumbnail>
-                                <LazyLoad height={200} offset={200}>
-                                    <Image
-                                        alt={member.name}
-                                        src={`${CDN}/${member.thumbnail}`}
-                                        layout="responsive"
-                                        priority={true}
-                                        width={550}
-                                        height={550}/> 
-                                </LazyLoad>
-                            </Thumbnail> 
+                    </Container>
 
-                        </Container>
-                        { index < squadTeam.length - 1 ? <Divider/> : '' }
-                    </Main>
-                )}
+                    <Container>
+                        <Profile>
+                            <Name>CHILY</Name>
+
+                            <div>
+                                <Thumbnail>
+                                    <LazyLoad height={200} offset={200}>
+                                        <Image
+                                            alt={'SQUAD CHILY'}
+                                            src={`${CDN}/jpeg/squad/chily.jpeg`}
+                                            layout="responsive"
+                                            priority={true}
+                                            width={550}
+                                            height={550}/> 
+                                    </LazyLoad>
+                                </Thumbnail> 
+
+                                <p>
+                                    Avete mai sentito parlare di un peperoncino rosso che gioca alle slots? Ebbene sì,
+                                    esiste e si chiama Chily. Le mie giornate sono in parte occupate dalla mia impresa di produzione
+                                    di marmi e da divertentissime lezioni di fisica agli studenti, ma trovo del tempo per divertirvi 
+                                    insieme a voi col casinò online. Quando sono live, faccio sempre un salto alla Honey Rush, Legacy of Dead, 
+                                    ed ultimamente ho scoperto di essermi innamorato alla follia della Pillars of Asgard… chissà perché!
+                                    <br/><br/>
+                                    Le vincite più belle in assoluto sono state durante le sessioni alla <strong><strong>Rise of the Mountain King</strong></strong>e alla
+                                    <strong>Pillars of Asgard</strong>. Non avendo la fortuna di Lucky, posso dire di lottare sempre contro la sfortuna.
+                                    <br/><br/>
+                                    Per alimentare le mie chance di vittoria, mangio sempre qualche peperoncino piccantissimo (ci sono clip che lo testimoniano). 
+                                    Ogni volta che sento dire: “Esci che non paga” risponderò con un amplificato: “<strong>Chi ha detto di uscire da qua?</strong>”.
+                                    <br/><br/>
+                                    Ad ogni pagata, tra sedie che volano e signore che sbattono la scopa sono certo che non potrete fare a meno di me. Vi aspetto!
+                                </p>
+                            </div>
+
+                        </Profile>
+
+                        <SocialNetwork>
+                            <a href={'https://www.facebook.com/luckyilfortunato/'}><FacebookIcon fontSize={'large'}/></a>
+                            <a href={'https://www.instagram.com/lucky_ilfortunato/'}><InstagramIcon fontSize={'large'}/></a>
+                        </SocialNetwork>
+                    </Container>
+
+                    <Container>
+                        <Profile>
+                            <Name>MR J</Name>
+
+                            <div>
+                                <Thumbnail>
+                                    <LazyLoad height={200} offset={200}>
+                                        <Image
+                                            alt={'SQUAD MR J'}
+                                            src={`${CDN}/jpeg/squad/mrj.jpeg`}
+                                            layout="responsive"
+                                            priority={true}
+                                            width={550}
+                                            height={550}/> 
+                                    </LazyLoad>
+                                </Thumbnail>
+
+                                <p>
+                                    Fra di voi ci sarà sicuramente qualche appassionato de “La casa de Papel”… ecco Mister J
+                                    è un punto di riferimento per Chily & co. così come El Profesor lo è per i vari Tokyo, Rio, ecc.
+                                    <br/><br/>
+                                    Molti lo accostano anche ad Alan di “2 uomini e 1/2”
+                                    <br/><br/>
+                                    Mi occupo della gestione e cura degli eventi, di qualsiasi tipo (discoteche, concerti… quando si poteva fare). 
+                                    Posseggo vari e-commerce e ho lanciato vari brand da prodotti per la prima infanzia a ritratti realistici e stilizzati.
+                                    <br/><br/>
+                                    Non ho una slot preferita, ma se dovessi scegliere, vi direi Vinci la Gallina, sfidare il lupo mi dà una carica
+                                    di adrenalina pazzesca. Fra le mie sessioni di gioco, ricordo con piacere i 100.000€ PRESI a <strong>Vinci la gallina</strong>, 
+                                    altre vincite con Pitbull alla <strong>Legacy of Dead</strong>, con Lucky alla <strong>Sweet Bonanza</strong> ed insieme a Chily… sono sicuro che presto sbancherò con Mr. Value.
+                                    <br/><br/>
+                                    Sono stato accostato alla figura centrale della serie tv spagnola, non è un caso che anche io abbia sempre pronto un piano, 
+                                    in questo caso una telefonata in diretta, per far sbancare il resto della Squad. Quando qualcuno ha da dire sulle mie giocate, 
+                                    io risponderò con un secco: “<strong>I’m mister J, shhh</strong>”. E non imitatemi… non fatelo a casa!
+                                </p>
+                            </div> 
+                        </Profile>
+
+                        <SocialNetwork>
+                            <a href={'https://www.instagram.com/mister.j_17/'}><InstagramIcon fontSize={'large'}/></a>
+                        </SocialNetwork>
+                    </Container>
+
+                    <Container>
+                        <Profile>
+                            <Name>PITBULL</Name>
+
+                            <div>
+                                <Thumbnail>
+                                    <LazyLoad height={200} offset={200}>
+                                        <Image
+                                            alt={'SQUAD PITBULL'}
+                                            src={`${CDN}/jpeg/squad/pitbull.jpeg`}
+                                            layout="responsive"
+                                            priority={true}
+                                            width={550}
+                                            height={550}/> 
+                                    </LazyLoad>
+                                </Thumbnail> 
+
+                                <p>
+                                    Attenti a non farmi arrabbiare perché … io sono Pitbull! Il mio nome deriva dal fatto che possiedo le
+                                    dell’omonimo cane. La forza, insieme alla tenacia mi hanno permesso di ottenere un sacco di
+                                    soddisfazioni in ambito lavorativo, infatti, sono occupato su più fronti fra cui il turismo,
+                                    il settore dell’abbigliamento e… vorrei coronare il sogno di diventare pilota d’aereo. Gioco spesso a
+                                    qualsiasi tipo di Book, alla Reactoonz ed al Monopoly Live e al Blackjack. Ho dei bellissimi ricordi anche
+                                    con la <strong>White Rabbit</strong>, la <strong>Moon Princess</strong> ecc… fortunato sì, ma so gestire maniacalmente il bet.
+                                    <br/><br/>
+                                    Si narra che le mie numerose vincite siano stato accompagnate dalla turbochiappa, che è candidata
+                                    a diventare patrimonio dell’UNESCO. Ogni volta che sento dire: “E che cos’è….” prontamente rispondo: “<strong>LA SCOTECAAA</strong>”.
+                                    Durante le mie migliori vincite sentirete sempre: “<strong>VAMONOOOS</strong>”
+                                </p>
+                            </div>
+
+                        </Profile>
+
+                        <SocialNetwork>
+                            <a href={'https://www.facebook.com/pitbullslot'}><FacebookIcon fontSize={'large'}/></a>
+                            <a href={'https://www.instagram.com/pitbullslot/'}><InstagramIcon fontSize={'large'}/></a>
+                        </SocialNetwork>
+
+                    </Container>
+
+                    <Container>
+                        <Profile>
+                            <Name>VALUE</Name>
+
+                            <div>
+
+                                <Thumbnail>
+                                    <LazyLoad height={200} offset={200}>
+                                        <Image
+                                            alt={'SQUAD VALUE'}
+                                            src={`${CDN}/jpeg/squad/value.jpeg`}
+                                            layout="responsive"
+                                            priority={true}
+                                            width={550}
+                                            height={550}/> 
+                                    </LazyLoad>
+                                </Thumbnail> 
+                                
+                                <p>
+                                    Salve a tutti, mi presento, sono Mr. Value e mi occupo di forniture di arredo scolastico ed
+                                    urbano in giro per il Mondo. Insieme agli altri ragazzi della Squad, vi farò compagnia quotidianamente
+                                    fra una slot ed un gioco di casinò live. La mia slot preferita è la Book of Dead, anche se preferisco
+                                    di gran lunga i giochi live come Blackjack e Roulette. Personalmente sono ancora alla ricerca della grande
+                                    sbancata, per ora posso ritenermi soddisfatto delle vincite alla <strong>Book of Dead</strong> e al <strong>Monopoly Live</strong>.
+                                    <br/><br/>
+                                    Ogni volta che decido di entrare al Monopoly Live becco sempre il momento in cui sono appena usciti i 4 rolls,
+                                    infatti, è celebre la frase :”Dovevo entrare 2 minuti prima!”
+                                    <br/><br/>
+                                    <strong>Sono un abitante della Papuasia </strong>e gioco al BJ come scusa per cimentare le dealer… ops di più non posso dirvi,
+                                    vi aspetto in live!
+                                </p>
+                            </div> 
+                        </Profile>
+                        <SocialNetwork>
+                            <a href={'https://www.instagram.com/mr_value_bet/'}><InstagramIcon fontSize={'large'}/></a>
+                        </SocialNetwork>
+                    </Container>
+                </Main>
 
             </div>
 
@@ -94,32 +262,34 @@ const SquadPage: FunctionComponent<PageProps> = ({freeBonusData, topBonusData}) 
 
 const Main = styled.div`
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
+    flex-wrap: wrap;
     margin: 20px 0px;
 `
+
 const Container = styled.div`
-   display: inherit;
-   flex-direction: row;
-   flex-wrap: wrap;
+    position: relative;
+    display: inherit;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 40%;
+    flex-grow: 1;
+    padding: 10px;
+    margin: 5px;
+    background-color: white;
+    border-radius: 5px;
+
+    @media ${device.tablet} {
+        width: 100%;
+    }
 `
 
-const Resume = styled.div`
+const Profile = styled.div`
     position: relative;
     display: inherit;
     flex-direction: column;
-    flex-grow: 2;
+    flex-grow: 1;
     width: min-content;
-
-    .resume-info {
-        width: 90%;
-        @media ${device.mobileL} {
-            width: 100%;
-        }
-    }
-
-    @media ${device.mobileL} {
-        width: 100%;
-    }
 `
 
 const Name = styled.span`
@@ -127,49 +297,29 @@ const Name = styled.span`
     font-size: 22px;
 `
 
-const Info = styled.p`
-    @media ${device.mobileL} {
-        width: 100%;
-    }
-`
-
-const Profile = styled.div`
-    display: flex;
-    justify-content: space-between;
-
-    @media ${device.mobileL} {
-        display: inherit;
-        align-items: center;
-    }
-`
-
 const Thumbnail = styled.div`
     height: fit-content;
     overflow: hidden;
-    border: 5px solid ${({theme}) => theme.colors.background};
+    border: 5px solid ${({theme}) => theme.color.background};
     border-radius: 10px;
-    background-color: ${({theme}) => theme.colors.background};
-    flex-grow: 1;
+    background-color: ${({theme}) => theme.color.background};
+    width: 220px;
+    float: right;
+    margin: 10px 15px;
+    
+    @media ${device.mobileL} {
+        float: none;
+        width: auto;
+        margin: 10px 0px;
+    }
 `
 
-const SocialLinks = styled.div`
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
-
-    a { color: ${({theme}) => theme.text.color.secondary}; }
-
+const SocialNetwork = styled.div`
     position: absolute;
     top: 5px;
     right: 0;
 
-    @media ${device.mobileL} {
-        display: inherit;
-        flex-direction: row;
-        position: unset;
-        right: unset;
-        top: unset;
-    }
+    a { color: ${({theme}) => theme.text.color.black}; }
 `
 
 const Grids = styled.div`

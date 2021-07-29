@@ -1,5 +1,5 @@
 export interface StyledTheme {
-    colors: {
+    color: {
         background: string,
         gradient: string
     }
@@ -7,8 +7,8 @@ export interface StyledTheme {
     text: {
         primaryFont: string,
         color: {
-            primary: string,
-            secondary: string
+            white: string,
+            black: string
         }
     }
 
@@ -25,7 +25,7 @@ export interface AlgoliaSearchData {
     slug: string
     country: string
     image: string 
-    bonuses: [{ link: string }],
+    bonuses: [{ link: string }]
     rating: number
     link?: string
     producer?: {
@@ -72,7 +72,6 @@ export interface Slot {
     rtp: number
     winningSpinFrequency: number
     volatility: string
-    isPopularInCountry: boolean
     playLink: string
     linkYoutube: string
     videoDescription: string
@@ -88,9 +87,9 @@ export interface Slot {
 }
 
 export interface Stat {
-    lands: number,
-    percentage: number,
-    spinSince: number,
+    lands: number
+    percentage: number
+    spinSince: number
     symbol: string
 }
 
@@ -111,14 +110,14 @@ export interface Spin {
 }
 
 export interface MonopolyTables {
-    _id : string,
+    _id : string
     time : number
     lowTierTable : {
         id : string,
         type : 'low' | 'mid' | 'high',
         timeOfSpins : number,
         rows : MonopolyTableRow[]
-    },
+    }
     midTierTable : {
         id : string,
         type : 'low' | 'mid' | 'high',
@@ -129,7 +128,7 @@ export interface MonopolyTables {
           lands : number,
           total : number
         }[]
-    },
+    }
     highTierTable : {
         id : string,
         type : 'low' | 'mid' | 'high',
@@ -144,8 +143,8 @@ export interface MonopolyTables {
 }
 
 export interface MonopolyTableRow {
-  rowPosition : number,
-  percentage : number,
-  lands : number,
+  rowPosition : number
+  percentage : number
+  lands : number
   total : number
 }

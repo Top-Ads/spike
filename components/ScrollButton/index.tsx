@@ -7,7 +7,7 @@ type ScrollType = {
 }
 const ScrollButton: FunctionComponent = () => { 
    
-    const offsetY = 1500
+    const offsetY = 1000
 
     const [show, setShow] = useState<boolean>(false)
 
@@ -30,9 +30,9 @@ const ScrollButton: FunctionComponent = () => {
 
 const Main = styled.div<ScrollType>`
     position: fixed;
-    bottom: ${({show}) => show ? '53px' : '-53px'};
+    bottom: ${({show}) => show ? '55px' : '-55px'};
     right: 10px;
-    background: ${({theme}) => theme.colors.gradient};
+    background: ${({theme}) => theme.color.gradient};
     width: 50px;
     height: 50px;
     box-shadow: 0px 0px 5px 5px rgba(33,37,41,0.4);
