@@ -5,7 +5,7 @@ import Grid, { GridSize, GridSpacing } from '@material-ui/core/Grid'
 import Divider from '../Divider'
 import styled from 'styled-components'
 import RankingCard from '../Cards/RankingCard'
-import { GridType } from '../../utils/constants'
+import { GridType } from '../../lib/utils/constants'
 import GridIndicators from '../GridIndicators'
 
 const useStyles = makeStyles<Theme, PageProps>(() =>

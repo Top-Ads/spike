@@ -3,14 +3,14 @@ import Dialog from '@material-ui/core/Dialog'
 import DialogContent from '@material-ui/core/DialogContent'
 import DialogTitle from '@material-ui/core/DialogTitle'
 import { FunctionComponent } from 'react'
-import { Producer } from '../../../interfaces'
+import { Producer } from '../../../lib/schemas'
 import { Fragment } from 'react'
 import styled from 'styled-components'
 import Divider from '../../Divider'
 import ProducerCard from '../../Cards/ProducerCard'
 import { Button, createStyles, DialogActions, withStyles } from '@material-ui/core'
 import CloseIcon from '@material-ui/icons/Close'
-import { device } from '../../../utils/device'
+import { device } from '../../../lib/utils/device'
 
 type PageProps = {
     open: boolean

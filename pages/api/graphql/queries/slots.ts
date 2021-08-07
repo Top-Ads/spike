@@ -7,7 +7,7 @@ query slots(
     $type_contains: String,
     $slug: String, 
     $sort: String, 
-    $producer: String
+    $producer: String,
     ) {
     slots( 
           where : { 
@@ -46,6 +46,9 @@ query slots(
             }
             image {
               url
+            }
+            mainBonus {
+              id
             }
             
     }

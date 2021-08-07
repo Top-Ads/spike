@@ -1,6 +1,6 @@
 import React, { Fragment, useState } from 'react'
 import styled from 'styled-components'
-import { GridType } from '../../utils/constants'
+import { GridType } from '../../lib/utils/constants'
 import QuestionCard from '../Cards/QuestionCard'
 import EmailSubcription from '../EmailSubscription'
 import GridCards from '../GridCards'

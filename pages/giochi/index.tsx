@@ -6,15 +6,15 @@ import Divider from '../../components/Divider'
 import GridCards from '../../components/GridCards'
 import Layout from '../../components/Layout'
 import SlotsCounter from '../../components/SlotsCounter'
-import { GridType, SlotFilterList, SlotType } from '../../utils/constants'
-import { device } from '../../utils/device'
+import { GridType, SlotFilterList, SlotType } from '../../lib/utils/constants'
+import { device } from '../../lib/utils/device'
 import AquaClient from '../api/graphql/aquaClient'
 import { SLOTS } from '../api/graphql/queries/slots'
 import CustomTextField from '../../components/Inputs/Textfield'
 import CustomMenu from '../../components/CustomMenu'
 import ShuffleIcon from '@material-ui/icons/Shuffle'
 import { Fragment } from 'react'
-import { longDate } from '../../utils/date'
+import { longDate } from '../../lib/utils/date'
 import { PRODUCERS } from '../api/graphql/queries/producers'
 import ProducersTable from '../../components/Tables/ProducersTable'
 import { BONUSES } from '../api/graphql/queries/bonuses'
@@ -23,7 +23,7 @@ import { CDN } from '../../public/environment'
 import BannerList from '../../components/BannerList'
 import Article from '../../components/Article'
 import DialogPopup from '../../components/Modals/DialogPopup'
-import { Bonus, Producer, Slot, ThemeSlot } from '../../interfaces'
+import { Bonus, Producer, Slot, ThemeSlot } from '../../lib/schemas'
 import FreeBonusList from '../../components/FreeBonusList'
 
 type PageProps = {
@@ -35,7 +35,7 @@ type PageProps = {
 
 const GiochiPage: FunctionComponent<PageProps> = (props) => { 
 
-    const { slotsData, freeSlotsData, producersData, freeBonusData } = props;
+    const { slotsData, freeSlotsData, producersData, freeBonusData } = props
     const { newest, popular } = slotsData
 
     const aquaClient = new AquaClient()
@@ -141,7 +141,7 @@ const GiochiPage: FunctionComponent<PageProps> = (props) => {
                 
                 <Thumbnail>
                     <Image
-                        alt="Spike poster"
+                        alt="Casino Squad"
                         src={`${CDN}/png/logo_white.png`}
                         layout="intrinsic"
                         priority={true}
@@ -256,7 +256,7 @@ const Header = styled.div`
     padding: 0px 7%;
     color: #fff;
     display: flex;
-    flex=direction: row;
+    flex-direction: row;
     flex-wrap: wrap;
     
     span { font-size: small; }

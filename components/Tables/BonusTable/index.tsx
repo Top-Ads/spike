@@ -15,8 +15,8 @@ import RatingStars from '../../RatingStars'
 import RankingCard from '../../Cards/RankingCard'
 import { CDN } from '../../../public/environment'
 import LazyLoad from 'react-lazyload'
-import { Bonus } from '../../../interfaces'
-import { replaceAll } from '../../../utils/replaceAll'
+import { Bonus } from '../../../lib/schemas'
+import { replaceAll } from '../../../lib/utils/replaceAll'
 import InfoIcon from '@material-ui/icons/Info'
 import Tooltip from '@material-ui/core/Tooltip'
 import { Zoom } from '@material-ui/core'
@@ -33,12 +33,7 @@ const StyledTableCell = withStyles((theme: Theme) =>
   createStyles({
     root: {
       fontFamily: 'inherit',
-      fontWeight: 'bold',
-      '& .icon': {
-        fontSize: '1.2rem',
-        cursor: 'pointer',
-        color: '#e2b96d'
-      }
+      fontWeight: 'bold'
     },
     head: {
       backgroundColor: '#e2b96d',
@@ -69,6 +64,11 @@ const useStyles = makeStyles({
   tooltip: {
     maxWidth: '200px',
     padding: '5px'
+  },
+  icon: {
+    fontSize: '1.2rem',
+    cursor: 'pointer',
+    color: '#e2b96d'
   }
 })
 
@@ -132,13 +132,11 @@ const BonusTable: FunctionComponent<PageProps> = ({data}) => {
                     <div dangerouslySetInnerHTML={{__html: String(replaceAll(row.description, "+", "<br/>"))}}/>
 
                     { row.tips && 
-                    <Tooltip 
-                      title={row.tips} 
-                      classes={{ tooltip: classes.tooltip }} 
-                      TransitionComponent={Zoom}
-                    >
-                      <InfoIcon className="icon"/> 
-                    </Tooltip>
+                      <Tooltip 
+                        title={row.tips} 
+                        classes={{ tooltip: classes.tooltip }} 
+                        TransitionComponent={Zoom}
+                        children={<InfoIcon className={classes.icon}/> }/>
                     }
                     
                   </div>
@@ -201,11 +199,11 @@ const LicenceContainer = styled.div`
     align-items: center;
 
     .licence-icon {
-        width: 40px;
+        width: 30px;
     }
 
     span {
-        font-size: 11px;
+        font-size: 10px;
         font-weight: normal;
         margin-left: 3px;
     }

@@ -3,7 +3,7 @@ import React, { FunctionComponent, Fragment } from 'react'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 import styled from 'styled-components'
-import { device } from '../../../utils/device'
+import { device } from '../../../lib/utils/device'
 import { useState } from 'react'
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore'
 import { useEffect } from 'react'
@@ -164,7 +164,7 @@ const Button = styled.div<ButtonProps>`
 
 const DropDownMenu = styled.div<MenuProps>`
     position: absolute;
-    z-index: 99;
+    z-index: 999;
     height: auto; 
     max-height: ${({show}) => show ?  '300px' : 0};
     transition: max-height 0.2s ease-in-out;

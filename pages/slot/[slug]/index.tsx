@@ -2,23 +2,25 @@ import React, { FunctionComponent, useState, Fragment, useRef, useEffect, useCon
 import { NextPageContext } from 'next'
 import Image from 'next/image'
 import styled from 'styled-components'
-import PlayCircleOutlineIcon from '@material-ui/icons/PlayCircleOutline'
-import VideoLabelIcon from '@material-ui/icons/VideoLabel'
+import { makeStyles } from '@material-ui/core/styles'
 import FullscreenIcon from '@material-ui/icons/Fullscreen'
 import Layout from '../../../components/Layout'
 import { CDN } from '../../../public/environment'
-import Divider from '../../../components/Divider'
-import RatingStars from '../../../components/RatingStars'
-import CustomizedAccordions from '../../../components/CustomizedAccordions'
-import { longDate } from '../../../utils/date'
-import { device } from '../../../utils/device'
+import { device } from '../../../lib/utils/device'
 import AquaClient from '../../api/graphql/aquaClient'
 import { SLOTS } from '../../api/graphql/queries/slots'
-import { Slot } from '../../../interfaces'
+import { Bonus, Slot } from '../../../lib/schemas'
 import LikeIcon from '../../../components/LikeIcon'
 import CloseIcon from '@material-ui/icons/HighlightOff'
-import { Category } from '../../../utils/constants'
-import { removeLikeSlotContext } from '../../../contexts'
+import { Category } from '../../../lib/utils/constants'
+import { removeLikeSlotContext } from '../../../lib/contexts'
+import Tooltip from '@material-ui/core/Tooltip'
+import { Zoom } from '@material-ui/core'
+import InfoIcon from '@material-ui/icons/Info'
+import MainBonusCard from '../../../components/Cards/MainBonusCard'
+import { BONUSES } from '../../api/graphql/queries/bonuses'
+import StartGame from '../../../components/StartGame'
+import SlotReview from '../../../components/SlotReview'
 
 type PageProps = {
     data: Slot
@@ -28,12 +30,27 @@ type ThumbnailProps = {
     isFullscreen?: boolean
 }
 
+const useStyles = makeStyles({
+    icon: {
+        fontSize: '1rem',
+        cursor: 'pointer',
+        margin: '0px 5px'
+    },
+    tooltip: {
+      maxWidth: '200px',
+      padding: '5px'
+    }
+  })
+
 const SlotPage: FunctionComponent<PageProps> = ({data}) => {
+
+    const classes = useStyles()
 
     const [showIframe, setShowIframe] = useState<boolean>(false)
     const [isFullscreen, setFullscreen] = useState<boolean>(false)
     const [likedSlot, setLikedSlot] = useState<boolean>(false)
-
+    const [mainBonus, setMainBonus] = useState<Bonus>()
+    
     const iframeRef = useRef<HTMLIFrameElement>(null)
     const thumbnailRef = useRef<HTMLDivElement>(null)
 
@@ -86,7 +103,20 @@ const SlotPage: FunctionComponent<PageProps> = ({data}) => {
 
     const handleScreenChange = () => document.fullscreenElement ? setFullscreen(true) : setFullscreen(false)
     
+    const getMainBonus = async (id: string) => {
+        const aquaClient = new AquaClient() 
+
+        const bonusResponse =  await aquaClient.query({ 
+            query: BONUSES, 
+            variables: { countryCode: 'it', id: id } })
+
+        setMainBonus(bonusResponse.data.data.bonuses[0]) 
+    }
+   
     useEffect( () => {
+
+        getMainBonus(data.mainBonus.id)
+
         const currentItem: string | null = localStorage.getItem(Category.FAVORITES)
 
         if (currentItem && JSON.parse(currentItem).some( (slot: Slot) => slot.id === data.id )) 
@@ -131,108 +161,109 @@ const SlotPage: FunctionComponent<PageProps> = ({data}) => {
     return (
         <Layout title={data.name}> 
             <Fragment>
-                <div className="space-around">
+                <Main>
+                    <GameContainer>
 
-                    <Divider/>
-
-                    <Main>
-
-                        <SlotContainer>
-
-                            <Thumbnail onClick={handleOnPlay} ref={thumbnailRef} isFullscreen={isFullscreen}>
-
-                                <div className={isFullscreen ? 'fullscreen' : ''}>
-                                    <Image
-                                        alt={data?.name}
-                                        src={data?.image.url ? data.image.url : `${CDN}/svg/no_img_available.svg`} 
-                                        layout="responsive"
-                                        priority={true}
-                                        width={1200}
-                                        height={675}/> 
-                                </div>                              
-
-                                { showIframe ? 
-                                <IframeContainer
+                        <IframeContainer onClick={handleOnPlay} ref={thumbnailRef} isFullscreen={isFullscreen}>
+                            { showIframe && 
+                                <Iframe
                                     ref={iframeRef}
                                     name={data?.slug}
                                     src={data?.playLink}
                                     allow={'fullscreen'}
                                     sandbox={'allow-orientation-lock allow-scripts allow-same-origin'}
                                     scrolling={'no'}/>
-                                : ''}
+                            }
 
-                                <PlayCircleOutlineIcon className='playGame-icon'/>
-                                {isFullscreen ? <CloseIcon fontSize={'large'} className='closeGame-icon' onClick={exitFullScreen}/> : ''}
-                            </Thumbnail>
+                            <div className='playGame-icon'>
+                                <StartGame data={data} triggerGame={handleOnPlay}/>
+                            </div>
+
+                            {isFullscreen && <CloseIcon fontSize={'large'} className='closeGame-icon' onClick={exitFullScreen}/>}
 
                             <Actions className={'slot-actions'}>
+                                <FullscreenIcon className="fullscreen-icon" onClick={goFullScreen}/>
                                 <LikeIcon setActive={() => setLikedSlot(!likedSlot)} active={likedSlot}/>
-                                <FullscreenIcon className="fullscreen-icon" onClick={goFullScreen}/>    
                             </Actions> 
 
-                        </SlotContainer>
+                        </IframeContainer>
 
                         <Section>
 
-                            <Title>
-                                <h2>{data?.name}</h2>
+                            <div style={{display: 'flex', justifyContent: 'space-around'}}>
+                                <InfoTable>
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            <div>
+                                                <span className="label">
+                                                    RTP  
+                                                    <Tooltip 
+                                                        title={'The porcentage of the casino to describe how much of the money wagered on a given slot machine return to players over time'} 
+                                                        classes={{ tooltip: classes.tooltip }} 
+                                                        TransitionComponent={Zoom}
+                                                        children={<InfoIcon className={classes.icon}/> }/>
+                                                </span>
+                                                <span className="value">{data?.rtp}%</span>
+                                            </div>
+                                        </td>
 
-                                <div className="likes"> 
-                                    {data?.likes && data.likes > 0 && <span>Likes: {data.likes}</span> }
-                                </div>
+                                        <td>
+                                            { data?.volatility && 
+                                                <div>
+                                                    <span className="label">Volatilità
+                                                        <Tooltip 
+                                                            title={'It describes how often you can expect to win at particular slot machine'} 
+                                                            classes={{ tooltip: classes.tooltip }} 
+                                                            TransitionComponent={Zoom}
+                                                            children={<InfoIcon className={classes.icon}/> }/>
+                                                    </span>
+                                                    <span className="value">{data.volatility}</span> 
+                                                </div>
+                                            }
+                                        </td>
+                                    </tr>
 
-                                <div className="rating">
-                                    {data?.rating && <RatingStars rating={data.rating}/> }
-                                </div>
-                            </Title>
+                                    <tr>
+                                        <td>
+                                            { data?.winningSpinFrequency && 
+                                                <div>
+                                                    <span className="label">WSF
+                                                        <Tooltip 
+                                                            title={'Winning Spin Frequency'} 
+                                                            classes={{ tooltip: classes.tooltip }} 
+                                                            TransitionComponent={Zoom}
+                                                            children={<InfoIcon className={classes.icon}/> }/>
+                                                    </span>
+                                                    <span className="value">{data.winningSpinFrequency}</span> 
+                                                </div>
+                                            }
+                                        </td>
+                                    </tr> 
+                                </tbody>  
+                                </InfoTable>
 
-                            <Info>
-                                <div className="rtp"><b>RTP: </b>{data?.rtp}%</div>
-                                    <div className="volatility">
-                                        {data?.volatility && <span><b>Volatilità: </b> {data.volatility}</span> }
-                                    </div>
+                                <Thumbnail>
+                                    <Image
+                                        alt="Casino Squad"
+                                        src={`${CDN}/png/logo_white.png`}
+                                        layout="intrinsic"
+                                        priority={true}
+                                        width={200}
+                                        height={200}/>
+                                </Thumbnail>
+                            </div>
 
-                                <div className="created-at"> 
-                                    {data?.created_at && <span><b>Created at:</b> {longDate(data.created_at)}</span> }
-                                </div>
-
-                                <div className="producer">
-                                    { data?.producer &&
-                                    <>
-                                        <span><b>Provider: </b></span>
-                                        <b>{data?.producer.name}</b>
-                                    </> 
-                                    }
-                                </div>
-
-                                <div className="winningSpinFrequency">
-                                    { data?.producer &&
-                                    <>
-                                        <span><b>winning Spin Frequency: </b></span>
-                                        <b>{data?.winningSpinFrequency}</b>
-                                    </> 
-                                    }
-                                </div>
-                            </Info>
-
-                            <Actions className="play-actions">  
-                                <Button>
-                                    <a href={data?.linkYoutube}>
-                                        <PlayCircleOutlineIcon className={'video-icon'}/> <span>Play Video</span>
-                                    </a>
-                                </Button>
-
-                                <Button onClick={handleOnPlay}>
-                                    <VideoLabelIcon className={'playGame-icon'}/> <span>Play Game</span>
-                                </Button>
-                                    
-                            </Actions>
+                            { mainBonus && <MainBonusCard data={mainBonus}/> }
 
                         </Section>
-                    
-                    </Main>
-                    
-                    <br/><CustomizedAccordions videoDescription={data?.description} tips={data?.tips}/><br/>
+
+                    </GameContainer>  
+                </Main>
+
+                <div className="space-around">
+                    <SlotReview data={data}/>   
+                    <br/>
                 </div>
         
             </Fragment>
@@ -259,24 +290,36 @@ export async function getServerSideProps(context : NextPageContext) {
 
 const Main = styled.div`
    display: flex;
-   flex-direction: row;
-   flex-wrap: wrap;
+   flex-direction: column;
+   background-color: rgb(205, 166, 95);
+   padding: 40px 7%;
+
+   @media ${device.mobileL} {
+        padding: 0px;
+    }
+
 `
 
-const SlotContainer = styled.div`
-    width: 50vw;
-
+const GameContainer = styled.div`
+    display: flex;
+    flex-direction: row;  
     position: relative;
-
-    @media ${device.tablet} {
+    
+    @media ${device.mobileL} {
+        flex-wrap: wrap-reverse;
         width: 100%;
     }
 `
 
-const Thumbnail = styled.div<ThumbnailProps>`
+const IframeContainer = styled.div<ThumbnailProps>`
+    display: flex;
+    flex-direction: column;
     position: relative;
     cursor: pointer;
-
+    background-color: #000;
+    width: 100%;
+    height: 540px;
+    
     .fullscreen {
         position: relative;
         top: ${({isFullscreen}) => isFullscreen ? '50%' : 'unset'};
@@ -285,18 +328,10 @@ const Thumbnail = styled.div<ThumbnailProps>`
     }
     
     .playGame-icon {
-        top: 0;
-        bottom: 0;
         margin: auto;
-        position: absolute;
-        left: 0;
-        right: 0;
-        color: white;
-        opacity: 0.6;
-        font-size: 100px;
     }
 
-    @media ${device.tablet} {
+    @media ${device.tablet} {        
         .closeGame-icon {
             color: white;
             position: fixed;
@@ -306,45 +341,81 @@ const Thumbnail = styled.div<ThumbnailProps>`
             z-index: 999;        
         }
     }
+
+    @media ${device.mobileL} {        
+        height: auto;
+        margin-top: 20px;
+    }    
+`
+
+const Iframe = styled.iframe`
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 95%;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    margin: 0;
+    border: 0;
+    z-index: 99;
+    background-color: #000;
 `
 
 const Section = styled.div`
-    display: inherit;
+    display: flex;
     flex-direction: column;
-    padding: 0px 10px;
-    margin-bottom: 10px;
+    font-size: 1rem;
+    background-color: ${({theme}) => theme.text.color.black};
+    color: #fff;
 
-    font-size: 13px;
-    flex-grow: 1;
+    @media ${device.tablet} {  
+        flex-grow: 1;
+    }
 
-    .videoDescription { display: none; }
-
-    .tips { display: none; }
 `
 
-const Title = styled.div`
-    margin-bottom: 10px;
+const Thumbnail = styled.div`
+    width: 150px; 
+`
 
-    h2 {
-         margin-bottom: 0; 
+const InfoTable = styled.table`
+    width: max-content;
+    align-self: flex-start;
+    
+    td > div {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin: 10px;
 
-         @media ${device.mobileL} {
-            width: 60%;
-         }
+        span.label {
+             display: flex;
+             alignItems: center;
+             color: rgb(112,112,112);
+             font-weight: bold;
+             margin-bottom: 3px;
+        }
+
+        span.value {
+            font-weight: bold;
+            text-transform: uppercase;
+        }
     }
 ` 
 
-const Info = styled.div`
-    div { margin-bottom: 2px; }
-` 
-
 const Actions = styled.div`
-
+    background-color: ${({theme}) => theme.text.color.black};
+    z-index: 99;
+    border-top: 1px solid;
+    border-right: 0px;
+    border-left: 0px;
+    z-index: 99;
+    
     &.slot-actions {
-        background-color: ${({theme}) => theme.palette.background};
         color: white;
         display: flex;
-        justify-content: flex-end;
+        justify-content: flex-start;
 
         svg {  
             cursor: pointer;
@@ -353,63 +424,10 @@ const Actions = styled.div`
         }
     }
 
-    &.play-actions {
-        display: flex;
-        flex-direction: column;
+    @media ${device.mobileL} {
+        border-bottom: 1px solid;
 
-        @media ${device.tablet} {
-            position: absolute;
-            right: 10px;
-        }
     }
-`
-
-const Button = styled.div`
-    background-color: ${({theme}) => theme.palette.background};
-    color: #fff;
-    border-radius: ${({theme}) => theme.button.borderRadius};
-    font-weight: bold;
-    width: fit-content;
-    text-transform: uppercase;
-    cursor: pointer;
-    margin: 5px 0px;
-    padding: 7px;
-
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-
-    a {
-        display: inherit;
-        align-items: inherit;
-        color: #fff;
-
-        &:hover {
-            color: ${({theme}) => theme.text.color.black};;
-        }
-    }
-
-    &:hover {
-        color: ${({theme}) => theme.text.color.black};;
-    }
-   
-    .video-icon, .playGame-icon {
-        margin-right: 10px;
-    }
-`
-
-const IframeContainer = styled.iframe`
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    top: 0px;
-    left: 0px;
-    margin: 0;
-    border: 0;
-    z-index: 99;
-    background-color: #000;
 `
 
 export default SlotPage

@@ -1,7 +1,7 @@
 import React, { Fragment, FunctionComponent } from 'react'
 import styled from 'styled-components'
 import Image from 'next/image'
-import { device } from '../../utils/device'
+import { device } from '../../lib/utils/device'
 import { CDN } from '../../public/environment'
 
 const LegalDisclaimer: FunctionComponent = () =>   

@@ -3,13 +3,13 @@ import { useRouter } from 'next/router'
 import Image from 'next/image'
 import styled from 'styled-components'
 import LikeIcon from '../../LikeIcon'
-import { Category, SlotType } from '../../../utils/constants'
-import { removeLikeSlotContext } from '../../../contexts'
+import { Category, SlotType } from '../../../lib/utils/constants'
+import { removeLikeSlotContext } from '../../../lib/contexts'
 import { CDN } from '../../../public/environment'
 import LazyLoad, { forceCheck } from 'react-lazyload'
-import { Slot } from '../../../interfaces'
+import { Slot } from '../../../lib/schemas'
 import SpinnerLoader from '../../SpinnerLoader'
-import { dateDiff } from '../../../utils/date'
+import { dateDiff } from '../../../lib/utils/date'
 
 type PageProps = {
    data: Slot,
@@ -132,7 +132,7 @@ const SlotCard: FunctionComponent<PageProps> = ({data, type}) => {
                 <div className="card-info">
                     { data.producer && data.producer.name && <span className="card-producer"> {data.producer.name} </span> }
                     { type === SlotType.NEW  && 
-                        <span className="card-date" > • { dateDiff(data.created_at) } days ago</span>
+                        <span className="card-date" > • { dateDiff(data.created_at) >  0 ? dateDiff(data.created_at) + ' days ago' : 'today'} </span>
                     }
                     { type === SlotType.ONLINE  && 
                         <span className="card-likes" > { data.likes > 0 &&  ` • ${data.likes} likes` } </span>

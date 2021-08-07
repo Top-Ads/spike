@@ -37,7 +37,7 @@ export interface AlgoliaSearchData {
 }
 
 export interface Bonus {
-    id: number
+    id: string
     description: string
     backgroundColor: string
     borderColor: string
@@ -93,6 +93,7 @@ export interface Slot {
     likes: number
     type: SlotType
     producer: Producer
+    mainBonus: Bonus
     image: {
         url: string
     },

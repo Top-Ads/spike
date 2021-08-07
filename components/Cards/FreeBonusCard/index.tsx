@@ -3,8 +3,8 @@ import { useRouter } from 'next/router'
 import Image from 'next/image'
 import styled from 'styled-components'
 import LazyLoad from 'react-lazyload'
-import { Bonus } from '../../../interfaces'
-import { replaceAll } from '../../../utils/replaceAll'
+import { Bonus } from '../../../lib/schemas'
+import { replaceAll } from '../../../lib/utils/replaceAll'
 
 type PageProps = {
     data: Bonus 
