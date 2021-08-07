@@ -4,9 +4,11 @@ query bonuses(
     $countryCode: String, 
     $limit: Int, $start: Int, 
     $names: [String], 
-    $sort: String) {
+    $sort: String,
+    $id: String,
+    ) {
     bonuses( 
-          where : { country : {code : $countryCode}, name_in: $names },
+          where : { country : {code : $countryCode}, name_in: $names, id: $id },
           limit: $limit,
           start: $start
           sort: $sort

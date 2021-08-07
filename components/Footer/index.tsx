@@ -1,10 +1,6 @@
 import React, { FunctionComponent, Fragment } from 'react'
 import styled from 'styled-components'
 import Divider from '../Divider'
-import FacebookIcon from '@material-ui/icons/Facebook'
-import InstagramIcon from '@material-ui/icons/Instagram'
-import TelegramIcon from '@material-ui/icons/Telegram'
-import YouTubeIcon from '@material-ui/icons/YouTube'
 import { device } from '../../utils/device'
 import Link from 'next/link'
 
@@ -38,11 +34,11 @@ const Footer: FunctionComponent = () => {
                         <a>Live – Dal Vivoò</a>
                     </List>
                     <List>
-                        <strong>promotion</strong>
-                        <a>Bonus Casino Senza Deposito</a>
-                        <a>Free Spin</a>
-                        <a>Bonus Casinò</a>
-                        <a>Codici bonus casinò</a>
+                        <strong>Social Networks</strong>
+                        <a href="https://www.facebook.com/casinosquad">Facebook</a>
+                        <a href="https://www.instagram.com/casino.squad.team/">Instagram</a>
+                        <a href="https://t.me/casino_squad">Telegram</a>
+                        <a href="https://www.youtube.com/channel/UClcCLY3">YouTube</a>
                     </List>
                     <List>
                     <strong>contacts</strong>
@@ -53,14 +49,6 @@ const Footer: FunctionComponent = () => {
                 
                 <Divider color="#f2f2f2"/>
 
-                <SocialNetworks>
-                    <a href="https://www.facebook.com/casinosquad"><FacebookIcon /></a>
-                    <a href="https://www.instagram.com/casino.squad.team/"><InstagramIcon /></a>
-                    <a href="https://t.me/casino_squad"><TelegramIcon /></a>
-                    <a href="https://www.youtube.com/channel/UClcCLY3"><YouTubeIcon /></a>
-                </SocialNetworks>
-
-                <Divider color="#f2f2f2"/>
             </Main>
 
         </Fragment>
@@ -113,16 +101,6 @@ const List = styled.div`
     @media ${device.mobileL} {
         width: 50%;
         flex-grow: 1;
-    }
-`
-
-const SocialNetworks = styled.div`
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-
-    svg {
-        font-size: 3rem;
     }
 `
 

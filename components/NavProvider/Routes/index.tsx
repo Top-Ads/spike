@@ -164,7 +164,7 @@ const Button = styled.div<ButtonProps>`
 
 const DropDownMenu = styled.div<MenuProps>`
     position: absolute;
-    z-index: 99;
+    z-index: 999;
     height: auto; 
     max-height: ${({show}) => show ?  '300px' : 0};
     transition: max-height 0.2s ease-in-out;

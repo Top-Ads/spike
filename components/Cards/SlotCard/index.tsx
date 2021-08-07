@@ -132,7 +132,7 @@ const SlotCard: FunctionComponent<PageProps> = ({data, type}) => {
                 <div className="card-info">
                     { data.producer && data.producer.name && <span className="card-producer"> {data.producer.name} </span> }
                     { type === SlotType.NEW  && 
-                        <span className="card-date" > • { dateDiff(data.created_at) } days ago</span>
+                        <span className="card-date" > • { dateDiff(data.created_at) >  0 ? dateDiff(data.created_at) + ' days ago' : 'today'} </span>
                     }
                     { type === SlotType.ONLINE  && 
                         <span className="card-likes" > { data.likes > 0 &&  ` • ${data.likes} likes` } </span>
