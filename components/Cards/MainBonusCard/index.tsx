@@ -4,8 +4,8 @@ import styled from 'styled-components'
 import Image from 'next/image'
 import Divider from '../../Divider'
 import LazyLoad from 'react-lazyload'
-import { Bonus } from '../../../interfaces'
-import { replaceAll } from '../../../utils/replaceAll'
+import { Bonus } from '../../../lib/schemas'
+import { replaceAll } from '../../../lib/utils/replaceAll'
 
 type PageProps = {
    data: Bonus 

@@ -3,13 +3,13 @@ import { useRouter } from 'next/router'
 import Image from 'next/image'
 import styled from 'styled-components'
 import LikeIcon from '../../LikeIcon'
-import { Category, SlotType } from '../../../utils/constants'
-import { removeLikeSlotContext } from '../../../contexts'
+import { Category, SlotType } from '../../../lib/utils/constants'
+import { removeLikeSlotContext } from '../../../lib/contexts'
 import { CDN } from '../../../public/environment'
 import LazyLoad, { forceCheck } from 'react-lazyload'
-import { Slot } from '../../../interfaces'
+import { Slot } from '../../../lib/schemas'
 import SpinnerLoader from '../../SpinnerLoader'
-import { dateDiff } from '../../../utils/date'
+import { dateDiff } from '../../../lib/utils/date'
 
 type PageProps = {
    data: Slot,

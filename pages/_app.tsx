@@ -1,8 +1,8 @@
 import React, { Fragment, FunctionComponent, useEffect, useState } from "react"
 import { ThemeProvider } from "styled-components"
 import { Workbox } from "workbox-window"
-import { removeLikeSlotContext } from "../contexts"
-import { GlobalStyle, styledTheme } from "../theme"
+import { removeLikeSlotContext } from "../lib/contexts"
+import { GlobalStyle, styledTheme } from "../lib/theme"
 
 interface IProps {
     Component: FunctionComponent

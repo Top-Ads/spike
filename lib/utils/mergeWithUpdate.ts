@@ -1,4 +1,4 @@
-import { Spin } from "../interfaces"
+import { Spin } from "../schemas"
 
 export const mergeWithUpdate = (current : Spin[], update : Spin[]) => {
     // the latest row in the table

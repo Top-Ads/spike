@@ -1,6 +1,6 @@
 import React, { FunctionComponent } from 'react'
 import styled from 'styled-components'
-import { device } from '../../utils/device'
+import { device } from '../../lib/utils/device'
 
 type PageProps = {
    size?: number,

@@ -1,7 +1,7 @@
 import React, { FunctionComponent } from 'react'
 import { useRouter } from 'next/router'
 import styled from 'styled-components'
-import { device } from '../utils/device'
+import { device } from '../lib/utils/device'
 import GridCards from '../components/GridCards'
 import Layout from '../components/Layout'
 import FreqentlyAsked from '../components/FrequentlyAsked'
@@ -11,9 +11,9 @@ import BonusTable from '../components/Tables/BonusTable'
 import AquaClient from './api/graphql/aquaClient'
 import { BONUSES } from './api/graphql/queries/bonuses'
 import { SLOTS } from './api/graphql/queries/slots'
-import { GridType, SlotType } from '../utils/constants'
+import { GridType, SlotType } from '../lib/utils/constants'
 import Article from '../components/Article'
-import { Bonus, ThemeSlot, Slot } from '../interfaces'
+import { Bonus, ThemeSlot, Slot } from '../lib/schemas'
 
 type PageProps = {
   slotsData: ThemeSlot,

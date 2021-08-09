@@ -5,7 +5,7 @@ import Image from 'next/image'
 import Divider from '../../Divider'
 import { CDN } from '../../../public/environment'
 import LazyLoad from 'react-lazyload'
-import { Bonus } from '../../../interfaces'
+import { Bonus } from '../../../lib/schemas'
 import RatingStars from '../../RatingStars'
 
 type PageProps = {

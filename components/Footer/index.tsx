@@ -1,7 +1,7 @@
 import React, { FunctionComponent, Fragment } from 'react'
 import styled from 'styled-components'
 import Divider from '../Divider'
-import { device } from '../../utils/device'
+import { device } from '../../lib/utils/device'
 import Link from 'next/link'
 
 const Footer: FunctionComponent = () => {

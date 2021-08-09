@@ -1,4 +1,4 @@
-import { CDN } from "../public/environment"
+import { CDN } from "../../public/environment"
 import { LiveStats, SymbolLayout } from "./constants"
 
 export const injectSymbolImage = (symbol: string, type: LiveStats, symbolLayout?: SymbolLayout): any => {

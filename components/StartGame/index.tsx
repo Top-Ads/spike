@@ -1,6 +1,6 @@
 import React, { Fragment, FunctionComponent } from 'react'
 import styled from 'styled-components'
-import { Slot } from '../../interfaces'
+import { Slot } from '../../lib/schemas'
 
 type PageProps = {
    data: Slot

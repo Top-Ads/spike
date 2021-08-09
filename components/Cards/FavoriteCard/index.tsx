@@ -7,7 +7,7 @@ import RatingStars from '../../RatingStars'
 import CloseIcon from '@material-ui/icons/Close'
 import Button from '@material-ui/core/Button'
 import { CDN } from '../../../public/environment'
-import { Slot } from '../../../interfaces'
+import { Slot } from '../../../lib/schemas'
 import SpinnerLoader from '../../SpinnerLoader'
 
 type PageProps = {

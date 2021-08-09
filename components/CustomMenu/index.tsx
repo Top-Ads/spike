@@ -17,7 +17,7 @@ import EqualizerIcon from '@material-ui/icons/Equalizer'
 import ExpandLessIcon from '@material-ui/icons/ExpandLess'
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore'
 import ShuffleIcon from '@material-ui/icons/Shuffle'
-import { SlotFilterList } from '../../utils/constants'
+import { SlotFilterList } from '../../lib/utils/constants'
 
 const useStyles = makeStyles( () =>
   createStyles({

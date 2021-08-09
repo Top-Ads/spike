@@ -1,7 +1,7 @@
 import React, { Fragment, ReactNode } from 'react'
 import styled from 'styled-components'
 import Head from 'next/head'
-import { device } from '../../utils/device'
+import { device } from '../../lib/utils/device'
 import Footer from '../Footer'
 import ScrollButton from '../ScrollButton'
 import LegalDisclaimer from '../LegalDisclaimer'

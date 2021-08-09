@@ -2,12 +2,12 @@ import React, { FunctionComponent } from 'react'
 import { Fragment } from 'react'
 import LazyLoad from 'react-lazyload'
 import styled from 'styled-components'
-import { Slot } from '../../interfaces'
+import { Slot } from '../../lib/schemas'
 import Image from 'next/image'
 import { CDN } from '../../public/environment'
 import Divider from '../Divider'
 import CustomizedAccordions from '../CustomizedAccordions'
-import { device } from '../../utils/device'
+import { device } from '../../lib/utils/device'
 
 type PageProps = {
    data: Slot

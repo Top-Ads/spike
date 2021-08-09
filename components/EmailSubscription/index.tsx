@@ -2,7 +2,7 @@ import React, { Fragment } from 'react'
 import styled from 'styled-components'
 import CustomTextField from '../Inputs/Textfield'
 import CustomCheckbox from '../Inputs/Checkbox'
-import { device } from '../../utils/device'
+import { device } from '../../lib/utils/device'
 
 const EmailSubcription = () => { 
     

@@ -1,8 +1,8 @@
 import React, { FunctionComponent } from 'react'
 import styled from 'styled-components'
-import { MonopolyTableRow } from '../../../interfaces'
+import { MonopolyTableRow } from '../../../lib/schemas'
 import { createStyles, makeStyles, Paper, Theme } from '@material-ui/core'
-import { injectDiceToImage } from '../../../utils/injectDiceToImage'
+import { injectDiceToImage } from '../../../lib/utils/injectDiceToImage'
 import Divider from '../../Divider'
 
 type PageProps = {
