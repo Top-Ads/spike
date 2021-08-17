@@ -53,12 +53,12 @@ const IndexPage: FunctionComponent<PageProps> = ({slotsData, freeBonusData, topB
 
         <Intro>
           <p>
-          Siamo lieti di accoglierti su CASINÓ SQUAD. Siamo un sito in cui troverai consigli e dritte su ogni tipo di slot esistente.
-          Puoi scegliere la tua <b>slot online</b> preferita, ma anche apprendere i consigli degli esperti ed avere aggiornamenti sulle leggi e norme del settore.
+          Siamo lieti di accoglierti su CASINÓ SQUAD. Siamo un sito in cui troverai consigli e dritte su ogni tipo di slot esistente.<br/>
+          Puoi scegliere la tua <b>slot online</b> preferita, ma anche apprendere i consigli degli esperti ed avere aggiornamenti sulle leggi e norme del settore.<br/>
           Non hai bisogno di fare alcuna registrazione, né fare download: ti basta consultare il sito e ottenere tantissime info sul <b>gioco d’azzardo</b>, basta
           consultare le nostre <b>guide video bonus</b>.
-          Ti invitiamo a guardare i video di SPIKE per familiarizzare con il meraviglio mondo dell’intrattenimento del <b>gioco online</b>: 
-          troverai infatti confronti approfonditi fra <b>siti di casinò e piattaforme di scommesse</b>.
+          Ti invitiamo a guardare i video di CASINÓ SQUAD per familiarizzare con il meraviglio mondo dell’intrattenimento del <b>gioco online</b>: 
+          troverai infatti confronti approfonditi fra <b>siti di casinò e piattaforme di scommesse</b>.<br/>
           In più, se stai cercando informazioni su quale sia il sito più conveniente per giocare alle <b>slot machine online</b>, ti invitiamo a consultare la tabella seguente. 
           Così tu stesso, potrai fare valutazioni ed essere sempre aggiornato su i <b>migliori bonus disponibili.</b>
           </p>

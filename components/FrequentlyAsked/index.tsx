@@ -59,7 +59,7 @@ const Questions = styled.div`
 const Subcription = styled.div`
     flex-grow: 1;
     justify-content: center;
-    align-items: baseline;
+    align-items: center;
     display: flex;
 `
 

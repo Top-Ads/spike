@@ -50,9 +50,9 @@ const Main = styled.div`
 const Button = styled.div`
     padding: 10px 20px;
     background-color: #cda65f;
-    border: 1px solid ${({theme}) => theme.text.color.white};
+    border: 2px solid #fff;
     border-radius: ${({theme}) => theme.button.borderRadius};
-    color: ${({theme}) => theme.text.color.white};
+    color: ${({theme}) => theme.text.color.black};
     cursor: pointer;
     font-weight: bold;
 

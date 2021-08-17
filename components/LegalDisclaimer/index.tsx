@@ -7,6 +7,9 @@ import { CDN } from '../../public/environment'
 const LegalDisclaimer: FunctionComponent = () =>   
     <Fragment>
         <Main>
+            <div className="keywords left">
+                <span>Casino online</span>
+            </div>
             <div className="legal-image">
                 <Image
                     alt="Casino Legal Information"
@@ -18,7 +21,10 @@ const LegalDisclaimer: FunctionComponent = () =>
                 />
             </div>
             <div className="legal-text">
-                <p>Il gioco e vietato ai minori e puo causare dipendenza patologica - probabilita di vincita</p>
+                <p>Il gioco e vietato ai minori e puo causare dipendenza patologica - probabilita di vincita </p>
+            </div>
+            <div className="keywords right">
+                <span>Slot online</span>
             </div>
         </Main>
     </Fragment>
@@ -29,17 +35,17 @@ const Main = styled.div`
     width: 100%;
     height: auto;
     background-color: ${({theme}) => theme.palette.background};
-
     display: flex;
     flex-direction: center;
-    align-items: inherit;
+    align-items: center;
     flex-wrap: inherit;
     justify-content: center;
     z-index: 100;
+    font-size: 12px;
 
     .legal-image {
         width: 130px;
-        margin: 10px 15px;
+        margin: 10px 10px;
         
         @media ${device.mobileL} {
             width: 170px;
@@ -49,8 +55,8 @@ const Main = styled.div`
     .legal-text {
         display: inherit;
         align-items: center;
-        font-size: 11px;
-
+        margin-right: 10px;
+        
         p { 
             color: ${({theme}) => theme.text.color.white}; 
             line-height: revert;
@@ -60,5 +66,22 @@ const Main = styled.div`
             font-size: 10px;
         }
     }
+
+    .keywords {
+        color: #fff;
+        text-align: center;
+        
+        &.left {
+            border-right: 1px solid;
+            padding: 0 10px;
+        }
+
+        &.right {
+            border-left: 1px solid;
+            padding: 0 10px;
+        }
+     
+    }
 `
+
 export default LegalDisclaimer
