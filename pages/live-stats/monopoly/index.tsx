@@ -3,7 +3,7 @@ import Image from 'next/image'
 import styled from 'styled-components'
 import StatsCard from '../../../components/Cards/StatsCard'
 import Divider from '../../../components/Divider'
-import GridCards from '../../../components/GridCards'
+import GridLayout from '../../../components/GridLayout'
 import CustumSelect from '../../../components/Inputs/Select'
 import Layout from '../../../components/Layout'
 import { GridType, LiveStats } from '../../../lib/utils/constants'
@@ -14,12 +14,11 @@ import { Bonus, MonopolyTables, Spin, Stat } from '../../../lib/schemas'
 import SpinsTable from '../../../components/Tables/SpinsTable'
 import LazyLoad from 'react-lazyload'
 import BonusTable from '../../../components/Tables/BonusTable'
-import AquaClient from '../../api/graphql/aquaClient'
-import { BONUSES } from '../../api/graphql/queries/bonuses'
 import BonusCard from '../../../components/Cards/BonusCard'
 import { device } from '../../../lib/utils/device'
 import DiceRollTable from '../../../components/Tables/DiceRollTable'
 import { longDate } from '../../../lib/utils/date'
+import { getBonuses } from '../../../lib/graphql/queries/bonuses'
 
 type PageProps = {
     statsData: Stat[],
@@ -68,7 +67,7 @@ const MonopolyPage: FunctionComponent<PageProps> = ({statsData, spinsData, bonus
 
     return (
         <Layout title="LiveStats - Monopoly">
-             <div className="space-around">
+             <div className="layout-container">
 
                 <Header className="intro-header">
                     <h2>Monopoly Stat Live: Tutte le Estrazioni in Tempo Reale</h2>
@@ -110,9 +109,9 @@ const MonopolyPage: FunctionComponent<PageProps> = ({statsData, spinsData, bonus
                         </Header>
                         <Divider/>
 
-                        <Grids className={"stats-cards"}>
-                            <GridCards
-                                type={GridType.STATS} 
+                        <GridContainer className={"stats-cards"}>
+                            <GridLayout
+                                gridType={GridType.STATS} 
                                 content={ stats.map( (stats: Stat, index: number) => 
                                     <StatsCard key={index} data={stats} timeFrame={selected} type={LiveStats.MONOPOLY}/>
                                 )}
@@ -121,7 +120,7 @@ const MonopolyPage: FunctionComponent<PageProps> = ({statsData, spinsData, bonus
                                 showBoxShadow
                                 bgColor="#fff"
                                 spacing={3}/>
-                        </Grids>
+                        </GridContainer>
                     </StatsContainer>
 
                     <br/>
@@ -132,9 +131,9 @@ const MonopolyPage: FunctionComponent<PageProps> = ({statsData, spinsData, bonus
                             <BonusTable data={bonusData}/>
                         </div>
                         
-                        <Grids className={"bonus-cards"}>
-                            <GridCards
-                                type={GridType.BONUS}
+                        <GridContainer className={"bonus-cards"}>
+                            <GridLayout
+                                gridType={GridType.BONUS}
                                 content={ bonusData.map( (bonus) => 
                                     <BonusCard key={bonus.id} data={bonus}/>
                                 )}
@@ -145,7 +144,7 @@ const MonopolyPage: FunctionComponent<PageProps> = ({statsData, spinsData, bonus
                                 bgColor="#fff"
                                 spacing={2}
                             />
-                        </Grids>
+                        </GridContainer>
                     </BonusContainer>
 
                     <br/>
@@ -292,7 +291,7 @@ const DiceRollContainer = styled.div`
     flex-wrap : wrap;
 `
 
-const Grids = styled.div`
+const GridContainer = styled.div`
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
@@ -307,24 +306,17 @@ const Thumbnail = styled.div`
 
 export async function getStaticProps() {
     
-    const aquaClient = new AquaClient()
-
     const dataStatsResponse  = await axios.get(`${APISOCKET.MONOPOLY}/api/data-for-the-last-hours/24h`)
     const dataSpinsResponse  = await axios.get(`${APISOCKET.MONOPOLY}/api/get-latest/15`)
 
     const PAGE_BONUSES = ["BetFlag", "LeoVegas", "888 Casino", "StarCasinò", "Unibet", "PokerStars Casino"]
 
-    const bonusResponse = await aquaClient.query({ 
-        query: BONUSES, 
-        variables: { countryCode: 'it', limit: PAGE_BONUSES.length, start: 0, names: PAGE_BONUSES } })
-    
     return {
         props: {
           statsData: dataStatsResponse.data.stats.stats,
           spinsData: dataSpinsResponse.data.latestSpins,
-          bonusData: bonusResponse.data.data.bonuses,
-          tablesData: dataStatsResponse.data.tables[0],
-
+          bonusData: await getBonuses({ countryCode: 'it', limit: PAGE_BONUSES.length, start: 0, names: PAGE_BONUSES }),
+          tablesData: dataStatsResponse.data.tables[0]
         }
       }
 }

@@ -6,12 +6,12 @@ import { Producer } from '../../../lib/schemas'
 import { CDN } from '../../../public/environment'
 import FilterListIcon from '@material-ui/icons/FilterList'
 
-type PageProps = {
+type Props = {
     data: Producer,
     setSelected: Function
 };
 
-const ProducerCard: FunctionComponent<PageProps> = ({data, setSelected}) => {
+const ProducerCard: FunctionComponent<Props> = ({data, setSelected}) => {
    
     const [show, setShow] = useState<boolean>(false)
 

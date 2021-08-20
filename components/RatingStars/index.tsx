@@ -3,12 +3,12 @@ import styled from 'styled-components'
 import StarOutlineIcon from '@material-ui/icons/StarOutline'
 import StarIcon from '@material-ui/icons/Star'
 
-type PageProps = {
+type Props = {
    size?: number,
    rating: number
 };
 
-const RatingStars: FunctionComponent<PageProps> = ({size=5, rating}) => 
+const RatingStars: FunctionComponent<Props> = ({size=5, rating}) => 
     <Rating>
         { [...Array(size)].map( (_value, index) =>
         rating > index ? 

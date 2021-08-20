@@ -4,7 +4,7 @@ import FormControlLabel from '@material-ui/core/FormControlLabel'
 import { FunctionComponent } from 'react'
 import { createStyles, makeStyles, Theme } from '@material-ui/core'
 
-type PageProps = {
+type Props = {
   label?: string
 }
 
@@ -24,7 +24,7 @@ const useStyles = makeStyles<Theme>(() =>
   }),
 );
 
-const CustomCheckbox: FunctionComponent<PageProps> = ({label}) => {
+const CustomCheckbox: FunctionComponent<Props> = ({label}) => {
 
   const classes = useStyles()
 

@@ -1,12 +1,12 @@
 import React, { Fragment, FunctionComponent } from 'react'
 import styled from 'styled-components'
 
-type PageProps = {
+type Props = {
     color?: string,
     width?: string
 };
 
-const Divider: FunctionComponent<PageProps> = (data) => { 
+const Divider: FunctionComponent<Props> = (data) => { 
     
     return (
         <Fragment>
@@ -15,7 +15,7 @@ const Divider: FunctionComponent<PageProps> = (data) => {
     ) 
 }
 
-const Main = styled.hr<PageProps>`
+const Main = styled.hr<Props>`
     border: 1px solid ${({color, theme}) => color ? color : theme.palette.background };
     background-color: ${({color, theme}) => color ? color : theme.palette.background };
     width:  ${({width}) => width ? width : '100%'};
@@ -23,7 +23,6 @@ const Main = styled.hr<PageProps>`
     height: 0px;
     opacity: 0.6;
     font-size: 0.8rem;
-}
 `
 
 export default Divider

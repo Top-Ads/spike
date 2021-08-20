@@ -3,31 +3,30 @@ import LazyLoad from 'react-lazyload'
 import styled from 'styled-components'
 import SlotCard from '../../components/Cards/SlotCard'
 import Divider from '../../components/Divider'
-import GridCards from '../../components/GridCards'
+import GridLayout from '../../components/GridLayout'
 import Layout from '../../components/Layout'
 import SlotsCounter from '../../components/SlotsCounter'
 import { GridType, SlotFilterList, SlotType } from '../../lib/utils/constants'
 import { device } from '../../lib/utils/device'
-import AquaClient from '../api/graphql/aquaClient'
-import { SLOTS } from '../api/graphql/queries/slots'
 import CustomTextField from '../../components/Inputs/Textfield'
 import CustomMenu from '../../components/CustomMenu'
 import ShuffleIcon from '@material-ui/icons/Shuffle'
 import { Fragment } from 'react'
 import { longDate } from '../../lib/utils/date'
-import { PRODUCERS } from '../api/graphql/queries/producers'
 import ProducersTable from '../../components/Tables/ProducersTable'
-import { BONUSES } from '../api/graphql/queries/bonuses'
 import Image from 'next/image'
 import { CDN } from '../../public/environment'
-import BannerList from '../../components/BannerList'
+import GiochiFooter from '../../components/GiochiFooter'
 import Article from '../../components/Article'
 import DialogPopup from '../../components/Modals/DialogPopup'
 import { Bonus, Producer, Slot, ThemeSlot } from '../../lib/schemas'
 import FreeBonusList from '../../components/FreeBonusList'
+import { getBonuses } from '../../lib/graphql/queries/bonuses'
+import { getProducers } from '../../lib/graphql/queries/producers'
+import { getSlots } from '../../lib/graphql/queries/slots'
 
 type PageProps = {
-    freeSlotsData: Slot [],
+    giochiSlotsData: Slot [],
     slotsData: ThemeSlot,
     producersData: Producer [],
     freeBonusData: Bonus []
@@ -35,14 +34,12 @@ type PageProps = {
 
 const GiochiPage: FunctionComponent<PageProps> = (props) => { 
 
-    const { slotsData, freeSlotsData, producersData, freeBonusData } = props
+    const { slotsData, giochiSlotsData, producersData, freeBonusData } = props
     const { newest, popular } = slotsData
-
-    const aquaClient = new AquaClient()
 
     const listItems:string[] = [SlotFilterList.RTP, SlotFilterList.LIKES, SlotFilterList.UPDATED_AT, SlotFilterList.CREATED_AT, SlotFilterList.ALPHABETIC]
 
-    const [freeSlots, setFreeSlots] = useState<Slot[]>(freeSlotsData)
+    const [giochiSlots, setGiochiSlots] = useState<Slot[]>(giochiSlotsData)
     const [itemSelected, setItemSelected] = useState<string>(SlotFilterList.ALPHABETIC)
     const [, setProducerSelected] = useState<string>('')
     const [openDialog, setOpenDialog] = useState<boolean>(false)
@@ -53,38 +50,19 @@ const GiochiPage: FunctionComponent<PageProps> = (props) => {
         return Math.floor(Math.random() * (max - min) + min); //The maximum is exclusive and the minimum is inclusive
     }
 
-    const fetchSlotsData = async (props: any) => {
-
-        const {limit, start, sortBy, producer, search} = props
-
-        const request =  await aquaClient.query({ 
-            query: SLOTS, 
-            variables: { 
-                countryCode: 'it',
-                limit: limit,
-                start: start,
-                sort: sortBy,
-                producer: producer,
-                name_contains: search
-             } 
-        })
-
-        return request.data.data.slots
-    }
-
     const loadMore = async () => {
-        const moreFreeSlots = await fetchSlotsData({limit: 12, start: freeSlots.length})
+        const moreFreeSlots = await getSlots({limit: 12, start: giochiSlots.length})
 
-        setFreeSlots([...freeSlots, ...moreFreeSlots])    
+        setGiochiSlots([...giochiSlots, ...moreFreeSlots])    
     }
 
     const shuffle = async () => {
         clear()
 
         setItemSelected(SlotFilterList.SHUFFLE)
-        const shuffleFreeSlots = await fetchSlotsData({limit: 36, start: getRandomInt(freeSlots.length, 500)})
+        const shuffleFreeSlots = await getSlots({limit: 36, start: getRandomInt(giochiSlots.length, 500)})
 
-        setFreeSlots(shuffleFreeSlots)    
+        setGiochiSlots(shuffleFreeSlots)    
     }
 
     const handleSearch = (text: string) => {
@@ -92,9 +70,9 @@ const GiochiPage: FunctionComponent<PageProps> = (props) => {
         
         setTimeout( async function () { 
             if (text.length >= 2) {
-                setFreeSlots(await fetchSlotsData({search: text}))
+                setGiochiSlots(await getSlots({name_contains: text}))
             } else 
-                setFreeSlots(freeSlotsData)
+                setGiochiSlots(giochiSlotsData)
         }, 500); 
     }
  
@@ -104,18 +82,18 @@ const GiochiPage: FunctionComponent<PageProps> = (props) => {
         const sortItem = itemSelected === SlotFilterList.ALPHABETIC ? 
         `${itemSelected.toLowerCase()}:asc` : `${itemSelected.toLowerCase()}:desc`
         
-        const data = await fetchSlotsData({limit:36, start: 0, sortBy: sortItem})
+        const data = await getSlots({limit:36, start: 0, sortBy: sortItem})
             
-        setFreeSlots(data)
+        setGiochiSlots(data)
         setItemSelected(itemSelected)
     }
 
     const handleProducerSelected = async (producerSelected: string) => {
         const sortBy = itemSelected.toLowerCase() === SlotFilterList.SHUFFLE ? SlotFilterList.ALPHABETIC : itemSelected.toLowerCase()
 
-        const data = await fetchSlotsData({limit:36, start: 0, sortBy: sortBy, producer: producerSelected})
+        const data = await getSlots({limit:36, start: 0, sortBy: sortBy, producer: producerSelected})
             
-        setFreeSlots(data)
+        setGiochiSlots(data)
         setProducerSelected(producerSelected)
     }
 
@@ -152,31 +130,27 @@ const GiochiPage: FunctionComponent<PageProps> = (props) => {
 
             <br/>
 
-            <div className="space-around">
-                <Grids id='ads-slots'>
-                    <GridCards
-                        type={GridType.SLOTS} 
+            <div className="layout-container">
+                <GridContainer id='ads-slots'>
+                    <GridLayout
+                        gridType={GridType.SLOTS} 
                         content={ newest.map( (slot: Slot) => 
                         <LazyLoad once key={slot.id} height={400} offset={300}>
                             <SlotCard key={slot.name} data={slot} type={SlotType.NEW}/>
                         </LazyLoad> )}
-                        label="Nuove slot."
-                        xs={6} sm={4} md={4}
-                        breadcrumbIndex={0}
-                        breadcrumbSize={2}
+                        label="Nuove slot"
+                        xs={12} sm={4} md={4}
                     />
-                    <GridCards
-                        type={GridType.SLOTS}
+                    <GridLayout
+                        gridType={GridType.SLOTS}
                         content={ popular.map( (slot: Slot) =>  
                         <LazyLoad once key={slot.id} height={400} offset={300} >
                             <SlotCard key={slot.id} data={slot} type={SlotType.ONLINE}/>
                         </LazyLoad> )}
-                        label="Le slot piu popolari."
-                        xs={6} sm={4} md={4}
-                        breadcrumbIndex={1}
-                        breadcrumbSize={2}   
+                        label="Le slot piu popolari"
+                        xs={12} sm={4} md={4}
                     />
-                </Grids>
+                </GridContainer>
 
                 <Main>
                     <Title>
@@ -211,10 +185,10 @@ const GiochiPage: FunctionComponent<PageProps> = (props) => {
                                 <div id="filter-providers" onClick={() => setOpenDialog(true)}><span>LIST PROVIDERS</span></div>
                             </Actions>
                             
-                            <Grids id='free-slots'>
-                                <GridCards 
-                                    type={GridType.SLOTS} 
-                                    content={ freeSlots.map( (slot: Slot) => 
+                            <GridContainer id='free-slots'>
+                                <GridLayout 
+                                    gridType={GridType.GIOCHISLOTS} 
+                                    content={ giochiSlots.map( (slot: Slot) => 
                                     <Fragment>
                                         <SlotInfo>
                                             {itemSelected === SlotFilterList.RTP ? slot.rtp ? `RTP: ${slot.rtp}%` : 'NA' : ''}
@@ -230,7 +204,7 @@ const GiochiPage: FunctionComponent<PageProps> = (props) => {
                                     width={'100%'}
                                     xs={6} sm={4} md={3}
                                 />
-                            </Grids>
+                            </GridContainer>
 
                             <LoadMoreButton onClick={loadMore}>
                                 <span>CARICA ALTRO</span>
@@ -240,7 +214,7 @@ const GiochiPage: FunctionComponent<PageProps> = (props) => {
 
                     </Container> 
 
-                    <BannerList totalSlots={1528}/>
+                    <GiochiFooter totalSlots={1528}/>
                 </Main>
 
                 <Article/>
@@ -295,14 +269,14 @@ const SlotInfo = styled.div`
     }
 `
 
-const Grids = styled.div`
+const GridContainer = styled.div`
     display: flex;
-    flex-direction: row;
     flex-wrap: wrap;
     color: ${({theme}) => theme.palette.background};
 
     @media ${device.tablet} {
         &#ads-slots {
+            flex-direction: column;
             flex-wrap: nowrap;
             overflow-x: scroll;
             overflow-y: hidden;
@@ -313,6 +287,7 @@ const Grids = styled.div`
 const Main = styled.div`
     display: flex;
     flex-direction: column;
+    overflow: hidden;
 `
 
 const Title = styled.div`
@@ -434,47 +409,20 @@ const LoadMoreButton = styled.div`
     padding: 15px;
     width: fit-content;
     text-transform: uppercase;
-
     display: flex;
     align-self: center;
-
-    &:hover {
-      
-    }
 `
 
 export async function getStaticProps() {
-    const aquaClient = new AquaClient()
-
-    const newestSlotsResponse =  await aquaClient.query({ 
-        query: SLOTS, 
-        variables: { countryCode: 'it', limit: 6, start: 0, sort: 'created_at:desc' } })
-
-    const popularSlotsResponse =  await aquaClient.query({ 
-        query: SLOTS, 
-        variables: { countryCode: 'it', limit: 6, start: 0, sort: 'updated_at:desc' } })
-
-    const freeSlotsResponse =  await aquaClient.query({ 
-        query: SLOTS, 
-        variables: { countryCode: 'it', limit: 36, start: 0, sort: 'name:asc'} })
-
-    const producersResponse =  await aquaClient.query({ 
-        query: PRODUCERS, 
-        variables: { countryCode: 'it', start: 0, sort: 'name:asc' } })
-
-    const freeBonusResponse =  await aquaClient.query({ 
-        query: BONUSES, 
-        variables: { countryCode: 'it', limit: 5, start: 5, sort: "updated_at:desc" } })
-
     return {
         props: {
                 slotsData: { 
-                newest: newestSlotsResponse.data.data.slots,
-                popular: popularSlotsResponse.data.data.slots 
+                newest: await getSlots({ countryCode: 'it', limit: 6, start: 0, sort: 'created_at:desc' }),
+                popular: await getSlots({ countryCode: 'it', limit: 6, start: 0, sort: 'updated_at:desc' })
             },
-            freeSlotsData: freeSlotsResponse.data.data.slots,
-            producersData: producersResponse.data.data.producers,
-            freeBonusData: freeBonusResponse.data.data.bonuses,
+            giochiSlotsData: await getSlots({ countryCode: 'it', limit: 32, start: 0, sort: 'name:asc' }),
+            producersData: await getProducers({ countryCode: 'it', start: 0, sort: 'name:asc' }),
+            freeBonusData: await getBonuses({ countryCode: 'it', limit: 5, start: 5, sort: "updated_at:desc" }),
         }
     }
 }

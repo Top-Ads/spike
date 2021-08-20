@@ -26,7 +26,7 @@ const StyledDialog = withStyles(() =>
   })
 )(Dialog)
 
-type PageProps = {
+type Props = {
     showNav: boolean
     setShowNav: Function
 };
@@ -35,7 +35,7 @@ type NavProps = {
     expand: boolean
 };
 
-const NavProvider: FunctionComponent<PageProps> = ({showNav, setShowNav}) => {
+const NavProvider: FunctionComponent<Props> = ({showNav, setShowNav}) => {
 
   return (
     <Fragment>

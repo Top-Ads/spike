@@ -2,11 +2,11 @@ import React, { FunctionComponent } from 'react'
 import { Fragment } from 'react'
 import styled from 'styled-components'
 
-type PageProps = {
+type Props = {
    data: any
 };
 
-const ShoppingCard: FunctionComponent<PageProps> = () => {
+const ShoppingCard: FunctionComponent<Props> = () => {
     return (
         <Fragment>
             <Main> Shopping Card</Main>

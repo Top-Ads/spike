@@ -20,7 +20,7 @@ const Footer: FunctionComponent = () => {
                         <a href={'https://casino-squad.com/shop/'}>Shop</a>
                     </List>
                     <List>
-                        <strong>casinos</strong>
+                        <strong>bonuses</strong>
                         <a>Nuovi Casinò Online</a>
                         <a>Casinò in Italia</a>
                         <a>Casinò AAMS – ADM</a>
@@ -63,6 +63,10 @@ const Main = styled.div`
     margin-bottom: 33px;
     padding: 5px;
 
+    @media ${device.tablet} {
+        margin-bottom: 44px;
+    }
+
     strong {
         font-weight: bold;
         font-size: 17px;
@@ -90,6 +94,10 @@ const Container = styled.div`
     justify-content: space-evenly;
     flex-wrap: wrap;
     padding: 20px;    
+
+    @media ${device.tablet} {
+        justify-content: space-between;
+    }
 `
 
 const List = styled.div`
@@ -98,9 +106,14 @@ const List = styled.div`
     justify-content: flex-start;
     align-items: flex-start;
 
+    @media ${device.tablet} {
+        margin-right: 10px;
+    }
+
     @media ${device.mobileL} {
         width: 50%;
         flex-grow: 1;
+        margin-right: 0px;
     }
 `
 

@@ -90,8 +90,8 @@ const Button = styled.div<ButtonProps>`
     }
 
     &:hover:not(#dropdown-menu, .dropdown-link) { 
-        color: ${({theme}) => theme.palette.background};
         background-color: #fff;
+        color: ${({theme}) => theme.palette.background};
 
         @media ${device.tablet} { 
             color: #fff;
@@ -159,7 +159,6 @@ const Button = styled.div<ButtonProps>`
             background-color: #fff;
         }
     }
-
 `
 
 const DropDownMenu = styled.div<MenuProps>`

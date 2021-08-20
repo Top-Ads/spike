@@ -3,7 +3,7 @@ import { Fragment } from 'react'
 import CircularProgress from '@material-ui/core/CircularProgress'
 import { createStyles, withStyles } from '@material-ui/core'
 
-type PageProps = {
+type Props = {
     show: boolean
 };
 
@@ -22,7 +22,7 @@ const CircularProgressStyled = withStyles(() =>
   }),
 )(CircularProgress)
 
-const SpinnerLoader: FunctionComponent<PageProps> = ({show}) => {
+const SpinnerLoader: FunctionComponent<Props> = ({show}) => {
     return (
         <Fragment>
             {show && <CircularProgressStyled role={'progressbar'} aria-label={'Progress Bar'} size={'30px'}/>}

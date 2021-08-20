@@ -2,12 +2,12 @@ import React, { Fragment, FunctionComponent } from 'react'
 import styled from 'styled-components'
 import { Slot } from '../../lib/schemas'
 
-type PageProps = {
+type Props = {
    data: Slot
    triggerGame: Function
 }
 
-const StartGame: FunctionComponent<PageProps> = ({data, triggerGame}) => {
+const StartGame: FunctionComponent<Props> = ({data, triggerGame}) => {
 
     return (
         <Fragment>
@@ -64,10 +64,6 @@ const Button = styled.div`
     width: fit-content;
     text-transform: uppercase;
     margin: 10px 0px;
-    
-    &:hover {
-    
-    }
 `
   
 export default StartGame

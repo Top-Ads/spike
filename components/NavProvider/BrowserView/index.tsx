@@ -7,7 +7,7 @@ import Divider from '../../Divider'
 import Routes from '../Routes'
 import { useRouter } from 'next/router'
 
-type PageProps = {
+type Props = {
     showNav: boolean
     setShowNav: Function
 };
@@ -16,7 +16,7 @@ type NavProps = {
     expand: boolean
 };
 
-const NavProvider: FunctionComponent<PageProps> = ({showNav, setShowNav}) => {
+const NavProvider: FunctionComponent<Props> = ({showNav, setShowNav}) => {
         
     const router = useRouter()
 

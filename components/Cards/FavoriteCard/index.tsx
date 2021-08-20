@@ -10,12 +10,12 @@ import { CDN } from '../../../public/environment'
 import { Slot } from '../../../lib/schemas'
 import SpinnerLoader from '../../SpinnerLoader'
 
-type PageProps = {
+type Props = {
    data: Slot,
    deleteItem: Function
 };
 
-const FavoriteCard: FunctionComponent<PageProps> = ({data, deleteItem}) => {
+const FavoriteCard: FunctionComponent<Props> = ({data, deleteItem}) => {
 
     const router = useRouter()
     
@@ -77,7 +77,7 @@ const Main = styled.div`
     cursor: pointer;
 
     .button {
-        display: flex;3
+        display: flex;
     }
 
     &:hover {
@@ -115,6 +115,7 @@ const Name = styled.div`
 
 const Producer = styled.div`
     font-size: 0.67rem;
+    font-family: "Montserrat-Medium";
 `
 
 const Rating = styled.div `

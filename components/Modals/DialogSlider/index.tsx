@@ -54,14 +54,14 @@ const StyledDialogTitle = withStyles(() =>
   })
 )(DialogTitle)
 
-type PageProps = {
+type Props = {
   open: boolean
   setOpen: Function
   category: string,
   content: JSX.Element[]
 };
 
-const DialogSlider: FunctionComponent<PageProps> = ({open, setOpen, category, content}) => 
+const DialogSlider: FunctionComponent<Props> = ({open, setOpen, category, content}) => 
   <Fragment>
     <StyledDialog 
       open={open}

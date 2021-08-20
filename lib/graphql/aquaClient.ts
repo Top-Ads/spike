@@ -1,5 +1,5 @@
 import axios, { AxiosInstance } from 'axios'
-import { API } from '../../../public/environment'
+import { API } from '../../public/environment'
 
 class AquaClient {
     axios: AxiosInstance;

@@ -7,11 +7,11 @@ import { CDN } from '../../public/environment'
 import FreeBonusList from '../FreeBonusList'
 import { Bonus } from '../../lib/schemas'
 
-type PageProps = {
+type Props = {
     data?: Bonus[]
 }
 
-const Article: FunctionComponent<PageProps> = ({data}) => {
+const Article: FunctionComponent<Props> = ({data}) => {
     return (
         <Fragment>
             <Main>
@@ -446,19 +446,21 @@ const Article: FunctionComponent<PageProps> = ({data}) => {
 const Main = styled.div`
     padding: 5px 10px;
 
-    section { margin: 30px 0px; }
+    section { 
+        margin: 30px 0px; 
+        p {
+            font-family: 'Montserrat-Medium';
+        }
+    }
 
     @media ${device.mobileL} { padding: 5px; }
 
     li { 
         text-align: left; 
-        p {text-align: inherit}
     }
 `
 
 const Thumbnail = styled.div` 
-    
-
     &#adm {
         width: 180px;
         shape-outside: circle(96px at 42.8% 66.5%);

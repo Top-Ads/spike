@@ -4,7 +4,7 @@ import Head from 'next/head'
 import { device } from '../../lib/utils/device'
 import Footer from '../Footer'
 import ScrollButton from '../ScrollButton'
-import LegalDisclaimer from '../LegalDisclaimer'
+import StickyBanner from '../StickyBanner'
 import Header from '../Header'
 
 type Props = {
@@ -45,7 +45,7 @@ const Layout = ( {children, title}: Props) => {
       
       <ScrollButton/>
 
-      <LegalDisclaimer/>
+      <StickyBanner/>
 
     </Fragment>
   )
@@ -55,7 +55,7 @@ export default Layout
 
 const Main = styled.div`
 
-  .space-around {
+  .layout-container {
     padding: 0px 7%;
 
     @media ${device.tablet} {

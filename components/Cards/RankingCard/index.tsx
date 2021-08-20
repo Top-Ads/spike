@@ -1,11 +1,11 @@
 import React, { FunctionComponent } from 'react'
 import styled from 'styled-components';
 
-type PageProps = {
+type Props = {
    index: number
 };
 
-const RankingCard: FunctionComponent<PageProps> = ({index}) => <Main> {index} </Main>
+const RankingCard: FunctionComponent<Props> = ({index}) => <Main> {index} </Main>
 
 const Main = styled.div`
     color: #fff;

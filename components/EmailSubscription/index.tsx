@@ -49,16 +49,12 @@ const Main = styled.div`
 
 const Button = styled.div`
     padding: 10px 20px;
-    background-color: #cda65f;
+    background-color: wheat;
     border: 2px solid #fff;
     border-radius: ${({theme}) => theme.button.borderRadius};
-    color: ${({theme}) => theme.text.color.black};
+    color: red;
     cursor: pointer;
     font-weight: bold;
-
-    &:hover {
-     
-    }
 `
 
 export default EmailSubcription

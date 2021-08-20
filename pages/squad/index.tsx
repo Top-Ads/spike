@@ -3,9 +3,7 @@ import Image from 'next/image'
 import styled from 'styled-components'
 import Layout from '../../components/Layout'
 import { CDN } from '../../public/environment'
-import AquaClient from '../api/graphql/aquaClient'
-import { BONUSES } from '../api/graphql/queries/bonuses'
-import GridCards from '../../components/GridCards'
+import GridLayout from '../../components/GridLayout'
 import { GridType } from '../../lib/utils/constants'
 import BonusCard from '../../components/Cards/BonusCard'
 import FreqentlyAsked from '../../components/FrequentlyAsked'
@@ -15,18 +13,18 @@ import LazyLoad from 'react-lazyload'
 import { Bonus } from '../../lib/schemas'
 import FacebookIcon from '@material-ui/icons/Facebook'
 import InstagramIcon from '@material-ui/icons/Instagram'
+import { getBonuses } from '../../lib/graphql/queries/bonuses'
 
 type PageProps = {
     freeBonusData: Bonus [],
     topBonusData: Bonus [],
   }
   
-
 const SquadPage: FunctionComponent<PageProps> = ({freeBonusData, topBonusData}) => {
         
     return (
         <Layout title="Squad">
-            <div className="space-around">
+            <div className="layout-container">
                 <Main>
                     <Container>
                         <Profile>
@@ -232,11 +230,11 @@ const SquadPage: FunctionComponent<PageProps> = ({freeBonusData, topBonusData}) 
 
             </div>
 
-            <div className="space-around topBonus">
+            <div className="layout-container topBonus">
 
-                <Grids id="grid-topBonus">
-                    <GridCards
-                        type={GridType.TOPBONUS} 
+                <GridContainer id="grid-topBonus">
+                    <GridLayout
+                        gridType={GridType.TOPBONUS} 
                         content={ topBonusData.map( (bonus) => 
                             <BonusCard key={bonus.id} data={bonus}/>
                         )}
@@ -247,14 +245,14 @@ const SquadPage: FunctionComponent<PageProps> = ({freeBonusData, topBonusData}) 
                         showBoxShadow
                         bgColor="#fff"
                         spacing={2}/>
-                </Grids>
+                </GridContainer>
             </div>
             
             <br/><br/>
             
             <FreqentlyAsked/>
 
-            <div className="space-around">
+            <div className="layout-container">
                 <Section>
                     <Article data={freeBonusData}/>
                 </Section>
@@ -324,7 +322,7 @@ const SocialNetwork = styled.div`
     a { color: ${({theme}) => theme.text.color.black}; }
 `
 
-const Grids = styled.div`
+const GridContainer = styled.div`
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
@@ -338,21 +336,10 @@ const Section = styled.section`
 `
 
 export async function getStaticProps() {
- 
-    const aquaClient = new AquaClient()
-  
-    const freeBonusResponse =  await aquaClient.query({ 
-      query: BONUSES, 
-      variables: { countryCode: 'it', limit: 10, start: 0, sort: "updated_at:desc"} })
-      
-    const topBonusResponse = await aquaClient.query({ 
-    query: BONUSES, 
-    variables: { countryCode: 'it', limit: 3, start: 0, sort: "rating:desc" } })    
-  
     return {
       props: {
-        freeBonusData: freeBonusResponse.data.data.bonuses,
-        topBonusData: topBonusResponse.data.data.bonuses,
+        freeBonusData: await getBonuses({ countryCode: 'it', limit: 10, start: 0, sort: "updated_at:desc" }),
+        topBonusData: await getBonuses({ countryCode: 'it', limit: 3, start: 0, sort: "rating:desc" })
       }
     }
 }

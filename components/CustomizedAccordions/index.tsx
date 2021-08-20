@@ -49,12 +49,12 @@ const AccordionDetails = withStyles((theme) => ({
 }))(MuiAccordionDetails)
 
 
-type PageProps = {
+type Props = {
   videoDescription?: string,
   tips?: string
 }
 
-const CustomizedAccordions: FunctionComponent<PageProps> = ({videoDescription, tips}) => {
+const CustomizedAccordions: FunctionComponent<Props> = ({videoDescription, tips}) => {
   const [expanded, setExpanded] = React.useState<string | false>('')
 
   const handleChange = (panel: string) => (_event: React.ChangeEvent<{}>, newExpanded: boolean) => {

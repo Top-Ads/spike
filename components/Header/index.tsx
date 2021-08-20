@@ -15,14 +15,14 @@ import ShoppingCard from '../Cards/ShoppingCard'
 import { removeLikeSlotContext } from '../../lib/contexts'
 import { APIKEY, APPLICATIONID, CDN } from '../../public/environment'
 import { SearchIndex } from 'algoliasearch/lite'
-import SearchHit from '../SearchHit'
+import SearchHits from '../SearchHits'
 import DialogSlider from '../Modals/DialogSlider'
 import { AlgoliaSearchData, Slot } from '../../lib/schemas'
 import NavBrowserProvider from '../NavProvider/BrowserView'
 import NavMobileProvider from '../NavProvider/MobileView'
 import ClickAwayListener from '@material-ui/core/ClickAwayListener'
 
-type PageProps = {
+type Props = {
   isBrowserView: boolean
 }
 
@@ -30,7 +30,7 @@ type OverlayProps = {
   show: boolean
 }
 
-const Header: FunctionComponent<PageProps> = ({isBrowserView}) => {
+const Header: FunctionComponent<Props> = ({isBrowserView}) => {
   
   const [showNav, setShowNav] = useState<boolean>(isBrowserView)
   const [showSearchMobile, setShowSearchMobile] = useState<boolean>(false)
@@ -163,7 +163,7 @@ const Header: FunctionComponent<PageProps> = ({isBrowserView}) => {
                         clearSearchField={!overlay}
                         />
 
-                        { overlay && <SearchHit data={searchResult}/> }
+                        { overlay && <SearchHits data={searchResult}/> }
                     </div>
 
                     <SearchIcon className="search-icon icons" onClick={() => setShowSearchMobile(true) }/> 
@@ -188,7 +188,7 @@ const Header: FunctionComponent<PageProps> = ({isBrowserView}) => {
                           autoFocus
                           searchIcon
                           placeholder="Cerca una slot, un casino..."/>
-                    <SearchHit data={searchResult}/>
+                    <SearchHits data={searchResult}/>
                   </div>
                 </ClickAwayListener>
               

@@ -19,7 +19,7 @@ import PlayCircleOutlineIcon from '@material-ui/icons/PlayCircleOutline'
 import { LiveStats, SymbolLayout } from '../../../lib/utils/constants'
 import { longDate, shortTime } from '../../../lib/utils/date'
 
-type PageProps = {
+type Props = {
     data: Spin[],
     gameType: LiveStats
 }
@@ -34,7 +34,7 @@ const StyledTableCell = withStyles((theme: Theme) =>
   createStyles({
     root: {
       fontFamily: 'inherit',
-      fontWeight: 'bold',
+      fontWeight: 500,
       '& .table-head': {
         display: 'flex',
         alignItems: 'center'
@@ -84,7 +84,7 @@ const useStyles = makeStyles({
   }
 })
 
-const SpinsTable: FunctionComponent<PageProps> = ({data=[], gameType}) => {
+const SpinsTable: FunctionComponent<Props> = ({data=[], gameType}) => {
   
   const classes = useStyles()
   

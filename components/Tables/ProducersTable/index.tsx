@@ -6,21 +6,21 @@ import { Producer } from '../../../lib/schemas'
 import { GridType } from '../../../lib/utils/constants'
 import { device } from '../../../lib/utils/device'
 import ProducerCard from '../../Cards/ProducerCard'
-import GridCards from '../../GridCards'
+import GridLayout from '../../GridLayout'
 
-type PageProps = {
+type Props = {
    data: Producer []
    setSelected: Function,
    setOpenDialog: Function
 };
 
-const ProducersTable: FunctionComponent<PageProps> = ({data, setSelected, setOpenDialog}) => {
+const ProducersTable: FunctionComponent<Props> = ({data, setSelected, setOpenDialog}) => {
 
     return (
         <Fragment>
-           <Grids>
-                <GridCards
-                    type={GridType.SLOTS}
+           <GridContainer>
+                <GridLayout
+                    gridType={GridType.SLOTS}
                     content={ 
                         data.map( (producer, index) =>
                         <LazyLoad offset={100}>
@@ -45,12 +45,12 @@ const ProducersTable: FunctionComponent<PageProps> = ({data, setSelected, setOpe
                     spacing={0}
                     bgColor={'#fff'}   
                 />
-            </Grids>
+            </GridContainer>
         </Fragment>
     )
 } 
 
-const Grids = styled.div`
+const GridContainer = styled.div`
     width: inherit;
     display: flex;
     flex-direction: row;

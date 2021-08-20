@@ -2,7 +2,6 @@ import React, { Fragment, FunctionComponent, useContext, useEffect, useRef, useS
 import { useRouter } from 'next/router'
 import Image from 'next/image'
 import styled from 'styled-components'
-import LikeIcon from '../../LikeIcon'
 import { Category, SlotType } from '../../../lib/utils/constants'
 import { removeLikeSlotContext } from '../../../lib/contexts'
 import { CDN } from '../../../public/environment'
@@ -10,13 +9,14 @@ import LazyLoad, { forceCheck } from 'react-lazyload'
 import { Slot } from '../../../lib/schemas'
 import SpinnerLoader from '../../SpinnerLoader'
 import { dateDiff } from '../../../lib/utils/date'
+import LikeButton from '../../LikeButton'
 
-type PageProps = {
+type Props = {
    data: Slot,
    type?: SlotType
 };
 
-const SlotCard: FunctionComponent<PageProps> = ({data, type}) => { 
+const SlotCard: FunctionComponent<Props> = ({data, type}) => { 
     const router = useRouter()
 
     const ref = useRef<HTMLDivElement>(null);
@@ -97,19 +97,19 @@ const SlotCard: FunctionComponent<PageProps> = ({data, type}) => {
                 
                 { showBanner || likedSlot ?
                 <Icon>  
-                    <LikeIcon setActive={() => setLikedSlot(!likedSlot)} active={likedSlot}/>
+                    <LikeButton setActive={() => setLikedSlot(!likedSlot)} active={likedSlot}/>
                 </Icon> : '' } 
                
                 <Thumbnail>
                     <SpinnerLoader show={loading}/>
                     <LazyLoad key={data.id} height={85} offset={200}>
                         <Image
-                            alt="image not available"
+                            alt={data.name}
                             src={data.image && data.image.url ? data.image.url : `${CDN}/svg/no_img_available.svg`} 
                             layout="responsive"
                             priority={true}
-                            width={1200}
-                            height={840}
+                            width={1295}
+                            height={728}
                             quality={80}
                             onLoad={()=> setLoading(false)}/>
                     </LazyLoad>
@@ -172,6 +172,7 @@ const Description = styled.span`
     span {
         margin: 0 2px;
         text-align: left;
+        font-family: "Montserrat-Medium";
     }
 
     span.card-name {

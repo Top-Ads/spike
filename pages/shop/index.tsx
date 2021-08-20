@@ -18,7 +18,6 @@ const Main = styled.div`
     justify-content: center;
     font-size: xx-large;
     padding: 30px;
-}
 `
 
 export default ShopPage

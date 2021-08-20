@@ -2,11 +2,11 @@ import React, { FunctionComponent, Fragment } from 'react'
 import styled from 'styled-components'
 import { device } from '../../lib/utils/device'
 
-type PageProps = {
+type Props = {
    totalSlots?: number
 };
 
-const BannerList: FunctionComponent<PageProps> = () => {
+const GiochiFooter: FunctionComponent<Props> = () => {
     return (
         <Fragment>
               <Main>
@@ -78,4 +78,4 @@ const Banner = styled.div`
     }
 `
 
-export default BannerList
+export default GiochiFooter

@@ -6,7 +6,7 @@ import LazyLoad from 'react-lazyload'
 import { Bonus } from '../../../lib/schemas'
 import { replaceAll } from '../../../lib/utils/replaceAll'
 
-type PageProps = {
+type Props = {
     data: Bonus 
  };
 
@@ -14,7 +14,7 @@ type PageProps = {
     bgColor?: string
 }
 
-const FreeBonusCard: FunctionComponent<PageProps> = ({data}) => { 
+const FreeBonusCard: FunctionComponent<Props> = ({data}) => { 
     const router = useRouter()
 
     const linkToBonus = () => {
@@ -95,10 +95,6 @@ const Button = styled.div<BonusType>`
     cursor: pointer;
     padding: 10px;
     width: min-content;
-
-    &:hover {
-        
-    }
 `
 
 export default FreeBonusCard

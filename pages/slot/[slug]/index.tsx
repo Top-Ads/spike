@@ -7,10 +7,8 @@ import FullscreenIcon from '@material-ui/icons/Fullscreen'
 import Layout from '../../../components/Layout'
 import { CDN } from '../../../public/environment'
 import { device } from '../../../lib/utils/device'
-import AquaClient from '../../api/graphql/aquaClient'
-import { SLOTS } from '../../api/graphql/queries/slots'
 import { Bonus, Slot } from '../../../lib/schemas'
-import LikeIcon from '../../../components/LikeIcon'
+import LikeButton from '../../../components/LikeButton'
 import CloseIcon from '@material-ui/icons/HighlightOff'
 import { Category } from '../../../lib/utils/constants'
 import { removeLikeSlotContext } from '../../../lib/contexts'
@@ -18,9 +16,10 @@ import Tooltip from '@material-ui/core/Tooltip'
 import { Zoom } from '@material-ui/core'
 import InfoIcon from '@material-ui/icons/Info'
 import MainBonusCard from '../../../components/Cards/MainBonusCard'
-import { BONUSES } from '../../api/graphql/queries/bonuses'
 import StartGame from '../../../components/StartGame'
 import SlotReview from '../../../components/SlotReview'
+import { getSlots } from '../../../lib/graphql/queries/slots'
+import { getBonuses } from '../../../lib/graphql/queries/bonuses'
 
 type PageProps = {
     data: Slot
@@ -103,15 +102,7 @@ const SlotPage: FunctionComponent<PageProps> = ({data}) => {
 
     const handleScreenChange = () => document.fullscreenElement ? setFullscreen(true) : setFullscreen(false)
     
-    const getMainBonus = async (id: string) => {
-        const aquaClient = new AquaClient() 
-
-        const bonusResponse =  await aquaClient.query({ 
-            query: BONUSES, 
-            variables: { countryCode: 'it', id: id } })
-
-        setMainBonus(bonusResponse.data.data.bonuses[0]) 
-    }
+    const getMainBonus = async (id: string) => setMainBonus((await getBonuses({ countryCode: 'it', id: id }))[0]) 
    
     useEffect( () => {
 
@@ -183,7 +174,7 @@ const SlotPage: FunctionComponent<PageProps> = ({data}) => {
 
                             <Actions className={'slot-actions'}>
                                 <FullscreenIcon className="fullscreen-icon" onClick={goFullScreen}/>
-                                <LikeIcon setActive={() => setLikedSlot(!likedSlot)} active={likedSlot}/>
+                                <LikeButton setActive={() => setLikedSlot(!likedSlot)} active={likedSlot}/>
                             </Actions> 
 
                         </IframeContainer>
@@ -261,7 +252,7 @@ const SlotPage: FunctionComponent<PageProps> = ({data}) => {
                     </GameContainer>  
                 </Main>
 
-                <div className="space-around">
+                <div className="layout-container">
                     <SlotReview data={data}/>   
                     <br/>
                 </div>
@@ -275,15 +266,9 @@ export async function getServerSideProps(context : NextPageContext) {
     
     const slug = context.query.slug as string
 
-    const aquaClient = new AquaClient()
-
-    const slotResponse =  await aquaClient.query({ 
-        query: SLOTS, 
-        variables: { countryCode: 'it', slug: slug } })
-
     return {
         props: {
-            data: slotResponse.data.data.slots[0],
+            data: (await getSlots({ countryCode: 'it', slug: slug }))[0]
         }
     }
 }
@@ -297,7 +282,6 @@ const Main = styled.div`
    @media ${device.mobileL} {
         padding: 0px;
     }
-
 `
 
 const GameContainer = styled.div`
@@ -344,7 +328,6 @@ const IframeContainer = styled.div<ThumbnailProps>`
 
     @media ${device.mobileL} {        
         height: auto;
-        margin-top: 20px;
     }    
 `
 
@@ -391,7 +374,7 @@ const InfoTable = styled.table`
 
         span.label {
              display: flex;
-             alignItems: center;
+             align-items: center;
              color: rgb(112,112,112);
              font-weight: bold;
              margin-bottom: 3px;
@@ -426,7 +409,6 @@ const Actions = styled.div`
 
     @media ${device.mobileL} {
         border-bottom: 1px solid;
-
     }
 `
 

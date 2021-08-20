@@ -7,8 +7,9 @@ import { CDN } from '../../../public/environment'
 import LazyLoad from 'react-lazyload'
 import { Bonus } from '../../../lib/schemas'
 import RatingStars from '../../RatingStars'
+import { device } from '../../../lib/utils/device'
 
-type PageProps = {
+type Props = {
    data: Bonus 
 };
 
@@ -20,7 +21,7 @@ type ThumbnailProps = {
     borderColor?: string
 }
 
-const BonusCard: FunctionComponent<PageProps> = ({data}) => { 
+const BonusCard: FunctionComponent<Props> = ({data}) => { 
     
     const router = useRouter()
 
@@ -46,23 +47,23 @@ const BonusCard: FunctionComponent<PageProps> = ({data}) => {
                         </LazyLoad>
                     </Thumbnail>
                     <div style={{textAlign: 'left' }}>
-                        <span>{data.name}</span>
+                        <h2 className="name">{data.name}</h2>
                         <RatingStars rating={data.rating}/>
                     </div>
                    
                 </BonusHeader>
         
-                <BonusInfo>
+                <BonusBody>
                     <div className="bonus"> 
-                        <Label>BONUS DI BENVENUTO</Label>
-                        <Info dangerouslySetInnerHTML={{__html: String(data.description.replace("+", "<br/>"))}}/> 
+                        <div className="label">BONUS DI BENVENUTO</div>
+                        <div className="info" dangerouslySetInnerHTML={{__html: String(data.description.replace("+", "<br/>"))}}/> 
                     </div>
 
                     <div className="bonus">
-                        <Label>BONUS SENZA DEPOSITO</Label>
-                        <Info className="bonus-info" dangerouslySetInnerHTML={{__html: String(data.noDeposit.replace("+", "<br/>"))}}/> 
+                        <div className="label">BONUS SENZA DEPOSITO</div>
+                        <div className="info" dangerouslySetInnerHTML={{__html: String(data.noDeposit.replace("+", "<br/>"))}}/> 
                     </div>
-                </BonusInfo>
+                </BonusBody>
 
                 <Divider width="90%"/>
 
@@ -82,8 +83,6 @@ const BonusCard: FunctionComponent<PageProps> = ({data}) => {
 
                 </LicenceContainer>
                 
-                
-
                 <Button bgColor={data.backgroundColor} onClick={linkToBonus}>ACCEDI AL BONUS</Button>
 
                 <PaymentProviders>
@@ -93,7 +92,6 @@ const BonusCard: FunctionComponent<PageProps> = ({data}) => {
                                     alt={provider}
                                     src={`${CDN}/svg/${provider}.svg`} 
                                     layout="responsive"
-                                    quality={50}
                                     width={30}
                                     height={30}/>
                       </Provider>
@@ -113,29 +111,35 @@ const Main = styled.div<BonusType>`
     height: 100%;
 `
 
-const BonusInfo = styled.div `
+const BonusBody = styled.div `
     display: flex;
     flex-direction: row;
     justify-content: center;
     height: 130px;
-    font-size: 12px;
-    
+    width: 100%;
+
     .bonus {
         padding: 10px;
         display: flex;
         flex-direction: column;
         align-items: flex-start;
         width: 50%;
+        font-size: 12px;
     }
-`
-
-const Label = styled.div `
-    height: 20px;
-    width: fit-content;
-    margin-bottom: 20px;
-    font-size: 12px;
-    color:  ${({theme}) => theme.palette.background};
-    text-align: left;
+    .info {
+        color: ${({theme}) => theme.text.color.black};
+        text-align: left;
+        font-size: 13px;
+        font-weight: 500;
+    }
+    .label {
+        height: 20px;
+        width: fit-content;
+        margin-bottom: 20px;
+        font-size: 12px;
+        color:  ${({theme}) => theme.palette.background};
+        text-align: left;
+    }
 `
 
 const BonusHeader = styled.div<BonusType> `
@@ -148,8 +152,16 @@ const BonusHeader = styled.div<BonusType> `
     align-items: center;
     justify-content: flex-start;
 
-    span {
-        font-size: 20px;
+    h2.name {
+        margin: 0 auto;
+
+        @media ${device.tablet} {
+            font-size: 1.3rem;
+        }
+
+        @media ${device.mobileL} {
+            font-size: 1.7rem;
+        }
     }
 `
 
@@ -160,12 +172,8 @@ const Button = styled.div<BonusType>`
     font-weight: bold;
     cursor: pointer;
     padding: 10px;
-    width: max-content;
-    margin: 10px 0px;
-
-    &:hover {
-       
-    }
+    width: fill-available;
+    margin: 10px 20px;
 `
 
 const LicenceContainer = styled.div`
@@ -181,7 +189,6 @@ const LicenceContainer = styled.div`
         font-weight: normal;
         margin-left: 3px;
     }
-}
 `
 
 const PaymentProviders = styled.div `
@@ -198,17 +205,11 @@ const Provider = styled.div `
 `
 
 const Thumbnail = styled.div<ThumbnailProps>`
-    width: 90px;
+    width: 80px;
     border-radius: 50%;
     overflow: hidden;
-    margin: 10px 20px;
+    margin: 10px;
     border: 2px solid ${({borderColor}) => borderColor ? borderColor : 'unset'};
-`
-
-const Info = styled.div`
-    color: ${({theme}) => theme.text.color.black};
-    text-align: left;
-    font-size: 14px;
 `
 
 export default BonusCard

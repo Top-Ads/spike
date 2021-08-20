@@ -5,7 +5,7 @@ import { createStyles, makeStyles, Paper, Theme } from '@material-ui/core'
 import { injectDiceToImage } from '../../../lib/utils/injectDiceToImage'
 import Divider from '../../Divider'
 
-type PageProps = {
+type Props = {
    data: MonopolyTableRow [],
    type: 'low' | 'mid' | 'high'
 };
@@ -29,7 +29,7 @@ const useStyles = makeStyles((theme: Theme) =>
   }),
 );
 
-const DiceRollTable: FunctionComponent<PageProps> = ({data, type}) => {
+const DiceRollTable: FunctionComponent<Props> = ({data, type}) => {
 
     const classes = useStyles()
 

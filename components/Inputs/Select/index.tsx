@@ -15,11 +15,11 @@ const useStyles = makeStyles((theme: Theme) =>
   }),
 );
 
-type PageProps = {
+type Props = {
   setSelected: Function
 }
 
-const CustumSelect: FunctionComponent<PageProps> = ({setSelected}) => {
+const CustumSelect: FunctionComponent<Props> = ({setSelected}) => {
   const classes = useStyles();
 
   const intervalTime: string[] = ['1h', '12h', '24h']

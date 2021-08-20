@@ -12,7 +12,7 @@ import { Button, createStyles, DialogActions, withStyles } from '@material-ui/co
 import CloseIcon from '@material-ui/icons/Close'
 import { device } from '../../../lib/utils/device'
 
-type PageProps = {
+type Props = {
     open: boolean
     setOpen: Function,
     data: Producer[],
@@ -28,7 +28,7 @@ const StyledDialogActions = withStyles(() =>
   })
 )(DialogActions)
 
-const DialogPopup: FunctionComponent<PageProps> = ({open, setOpen, data, setSelected}) => {
+const DialogPopup: FunctionComponent<Props> = ({open, setOpen, data, setSelected}) => {
 
   let categoryIndex = data && data[0]?.name.charAt(0).toUpperCase()
 
@@ -68,7 +68,7 @@ const DialogPopup: FunctionComponent<PageProps> = ({open, setOpen, data, setSele
         </StyledDialogActions>
 
         <DialogTitle id="scroll-dialog-title">
-          Providers ({data.length})
+          <b>Providers ({data.length})</b>
         </DialogTitle>
         
         <DialogContent dividers={true}>

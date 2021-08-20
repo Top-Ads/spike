@@ -3,22 +3,22 @@ import { FunctionComponent } from 'react'
 import styled from 'styled-components'
 import { GridType } from '../../lib/utils/constants'
 import FreeBonusCard from '../Cards/FreeBonusCard'
-import GridCards from '../GridCards'
+import GridLayout from '../GridLayout'
 import LazyLoad from 'react-lazyload'
 import { Bonus } from '../../lib/schemas'
 
-type PageProps = {
+type Props = {
   data: Bonus [],
   label: string
 }
 
-const FreeBonusList: FunctionComponent<PageProps> = ({data, label}) => { 
+const FreeBonusList: FunctionComponent<Props> = ({data, label}) => { 
     return (
         <Fragment>
       
-            <Grids>
-              <GridCards
-                type={GridType.FREE}
+            <GridContainer>
+              <GridLayout
+                gridType={GridType.FREE}
                 content={ data.map( (bonus, index) =>
                   <LazyLoad offset={200}>
                     <FreeBonusCard key={index} data={bonus}/>
@@ -29,13 +29,13 @@ const FreeBonusList: FunctionComponent<PageProps> = ({data, label}) => {
                 AlignItem="center"
                 spacing={0}      
                 />
-            </Grids>
+            </GridContainer>
 
         </Fragment>
     ) 
 }
 
-const Grids = styled.div`
+const GridContainer = styled.div`
   display: inherit;
   flex-grow: 1;
   color: ${({theme}) => theme.palette.background}; 

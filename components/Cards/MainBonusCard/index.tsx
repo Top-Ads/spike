@@ -7,7 +7,7 @@ import LazyLoad from 'react-lazyload'
 import { Bonus } from '../../../lib/schemas'
 import { replaceAll } from '../../../lib/utils/replaceAll'
 
-type PageProps = {
+type Props = {
    data: Bonus 
 };
 
@@ -19,7 +19,7 @@ type ThumbnailProps = {
     borderColor?: string
 }
 
-const MainBonusCard: FunctionComponent<PageProps> = ({data}) => { 
+const MainBonusCard: FunctionComponent<Props> = ({data}) => { 
     
     const router = useRouter()
 
@@ -109,10 +109,6 @@ const Button = styled.div<BonusType>`
     width: max-content;
     padding: 10px;
     text-align: center;
-    
-    &:hover {
-       
-    }
 `
 
 const Thumbnail = styled.div<ThumbnailProps>`

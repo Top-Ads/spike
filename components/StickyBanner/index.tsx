@@ -4,7 +4,7 @@ import Image from 'next/image'
 import { device } from '../../lib/utils/device'
 import { CDN } from '../../public/environment'
 
-const LegalDisclaimer: FunctionComponent = () =>   
+const StickyBanner: FunctionComponent = () =>   
     <Fragment>
         <Main>
             <div className="keywords left">
@@ -33,6 +33,7 @@ const Main = styled.div`
     position: fixed;
     bottom: 0px;
     width: 100%;
+    max-width: 1600px;
     height: auto;
     background-color: ${({theme}) => theme.palette.background};
     display: flex;
@@ -49,7 +50,7 @@ const Main = styled.div`
         
         @media ${device.mobileL} {
             width: 170px;
-          }
+        }
     }
 
     .legal-text {
@@ -63,7 +64,7 @@ const Main = styled.div`
         }
        
         @media ${device.mobileL} {
-            font-size: 10px;
+            display: none;
         }
     }
 
@@ -84,4 +85,4 @@ const Main = styled.div`
     }
 `
 
-export default LegalDisclaimer
+export default StickyBanner

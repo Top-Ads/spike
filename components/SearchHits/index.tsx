@@ -7,7 +7,7 @@ import { device } from '../../lib/utils/device'
 import { useRouter } from 'next/router'
 import { AlgoliaSearchData } from '../../lib/schemas'
 
-type PageProps = {
+type Props = {
    data: AlgoliaSearchData[]
 };
 
@@ -15,7 +15,7 @@ type ThumbnailProp = {
     type?: string
 }
 
-const SearchHit: FunctionComponent<PageProps> = ({data}) => {
+const SearchHits: FunctionComponent<Props> = ({data}) => {
     
     const router = useRouter()
         
@@ -108,7 +108,6 @@ const Container = styled.div`
     &:hover {
         background-color: rgba(0, 0, 0, 0.1);
     }
-    
 `
 
 const Thumbnail = styled.div<ThumbnailProp>`
@@ -148,4 +147,4 @@ const SearchType = styled.div `
     border-top-right-radius: inherit;
 `
 
-export default SearchHit
+export default SearchHits

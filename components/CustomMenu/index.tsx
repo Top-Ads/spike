@@ -35,13 +35,13 @@ const useStyles = makeStyles( () =>
   }),
 );
 
-type PageProps = {
+type Props = {
   itemSelected: string,
   setItemSelected: Function,
   listItems: string []
 }
 
-const CustomMenu: FunctionComponent<PageProps> = ({itemSelected, setItemSelected, listItems}) => {
+const CustomMenu: FunctionComponent<Props> = ({itemSelected, setItemSelected, listItems}) => {
 
   const classes = useStyles()
 

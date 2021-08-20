@@ -9,13 +9,13 @@ import { injectSymbolImage } from '../../../lib/utils/injectSymbolTolmage'
 import { LiveStats, SymbolLayout } from '../../../lib/utils/constants'
 import { crazyTimeProbability, monopolyProbability, dreamCatcherProbability } from '../../../lib/utils/livsStatsProbality'
 
-type PageProps = {
+type Props = {
    data: Stat,
    timeFrame: string,
    type: LiveStats
 };
 
-const StatsCard: FunctionComponent<PageProps> = ({data, timeFrame, type}) => {
+const StatsCard: FunctionComponent<Props> = ({data, timeFrame, type}) => {
 
     const getProbabilty = (type: LiveStats) => {
 
@@ -57,7 +57,7 @@ const StatsCard: FunctionComponent<PageProps> = ({data, timeFrame, type}) => {
 
 const Container = styled.div`
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
 

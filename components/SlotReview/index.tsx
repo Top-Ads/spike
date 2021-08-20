@@ -9,11 +9,11 @@ import Divider from '../Divider'
 import CustomizedAccordions from '../CustomizedAccordions'
 import { device } from '../../lib/utils/device'
 
-type PageProps = {
+type Props = {
    data: Slot
 };
 
-const SlotReview: FunctionComponent<PageProps> = ({data}) => {
+const SlotReview: FunctionComponent<Props> = ({data}) => {
     return (
         <Fragment>
 
@@ -28,12 +28,12 @@ const SlotReview: FunctionComponent<PageProps> = ({data}) => {
                     <Thumbnail>
                         <LazyLoad key={data.id} height={85} offset={200}>
                             <Image
-                                alt="image not available"
+                                alt={data.name}
                                 src={data.image && data.image.url ? data.image.url : `${CDN}/svg/no_img_available.svg`} 
                                 layout="responsive"
                                 priority={true}
-                                width={1200}
-                                height={840}
+                                width={1295}
+                                height={728}
                                 quality={80}
                             />
                         </LazyLoad>
@@ -60,8 +60,6 @@ const SlotReview: FunctionComponent<PageProps> = ({data}) => {
         </Fragment>
     )
 } 
-
-
 
 const Title = styled.h2`
     margin-bottom: 0px;

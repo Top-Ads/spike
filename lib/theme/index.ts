@@ -12,7 +12,7 @@ export const styledTheme: StyledTheme = {
         primaryFont: 'Montserrat, sans-serif',
         color: {
             white: '#fff',
-            black: '#212530'
+            black: '#3a3935'
         }    
     },
     button: {
@@ -24,11 +24,21 @@ export const styledTheme: StyledTheme = {
 
 export const GlobalStyle = createGlobalStyle`
 
+   
+
     @font-face {
-        font-family: 'Montserrat';
+        font-family: 'Montserrat-Medium';
         src: 
             url(https://casino-squad.b-cdn.net/fonts/Montserrat/Montserrat-Medium.ttf) format('ttf'),
-            url(https://casino-squad.b-cdn.net/fonts/Montserrat/Montserrat-Medium.ttf) format('truetype'),
+            url(https://casino-squad.b-cdn.net/fonts/Montserrat/Montserrat-Medium.ttf) format('truetype');
+        font-display: swap;
+    }
+
+    @font-face {
+        font-family: 'Montserrat-SemiBold';
+        src: 
+            url(https://casino-squad.b-cdn.net/fonts/Montserrat/Montserrat-SemiBold.ttf) format('ttf'),
+            url(https://casino-squad.b-cdn.net/fonts/Montserrat/Montserrat-SemiBold.ttf) format('truetype');
         font-display: swap;
     }
 
@@ -56,7 +66,8 @@ export const GlobalStyle = createGlobalStyle`
     body {
         height: 100%;
         width: 100%;
-        font-family: "Montserrat", sans-serif;
+        max-width: 1600px;
+        font-family: "Montserrat-SemiBold", sans-serif;
         background-color: #f2f2f2;
         margin: 0 auto;
         padding: 0;
@@ -64,7 +75,7 @@ export const GlobalStyle = createGlobalStyle`
         overflow-y: auto !important;
     }
 
-    a { text-decoration : none; text-align: center; color: inherit;}
+    a { text-decoration : none; text-align: center; color: inherit; font-family: 'Montserrat-Medium'}
 
     * { box-sizing: borderRadius-box; }
 
@@ -72,6 +83,10 @@ export const GlobalStyle = createGlobalStyle`
 
     strong, h1 { color: ${styledTheme.palette.background}; }
 
-    p { color: ${styledTheme.text.color.black}; line-height: 1.5em; word-spacing: normal; }
+    p { 
+        color: ${styledTheme.text.color.black}; 
+        line-height: 1.5em; word-spacing: normal; 
+        font-family: 'Montserrat-Medium';
+    }
 
 `

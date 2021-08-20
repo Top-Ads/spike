@@ -4,7 +4,7 @@ import SearchIcon from '@material-ui/icons/Search'
 import ClearIcon from '@material-ui/icons/Clear'
 import { BaseTextFieldProps } from '@material-ui/core/TextField'
 
-const useStyles = makeStyles<Theme, PageProps>(() =>
+const useStyles = makeStyles<Theme, Props>(() =>
   createStyles({
     root:{
       maxHeight: '100%',
@@ -42,7 +42,7 @@ const useStyles = makeStyles<Theme, PageProps>(() =>
   }),
 );
 
-type PageProps = {
+type Props = {
   size?: BaseTextFieldProps['size'],
   searchIcon?: boolean,
   placeholder?: string,
@@ -57,7 +57,7 @@ type PageProps = {
 
 }
 
-const CustomTextField: FunctionComponent<PageProps> = (props) => {
+const CustomTextField: FunctionComponent<Props> = (props) => {
 
     const {size='medium', searchIcon=false, placeholder, handleOnFocus, handleOnBlur, autoFocus=false, onChange, clearSearchField=false} = props
 

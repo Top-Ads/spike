@@ -3,17 +3,17 @@ import styled from 'styled-components'
 import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder'
 import FavoriteIcon from '@material-ui/icons/Favorite'
 
-type PageProps = {
+type Props = {
    color?: string,
    active: boolean,
    setActive: Function
 };
 
-type LikeIconType = {
+type LikeIButtonType = {
     color?: string
  };
  
-const LikeIcon: FunctionComponent<PageProps> = ({color, active, setActive}) => { 
+const LikeButton: FunctionComponent<Props> = ({color, active, setActive}) => { 
     
     const [fill, setFill] = useState<boolean>(active)
 
@@ -45,11 +45,11 @@ const LikeIcon: FunctionComponent<PageProps> = ({color, active, setActive}) => {
     ) 
 }
 
-const Like = styled.div<LikeIconType>`
+const Like = styled.div<LikeIButtonType>`
     .icon {
         font-size: 30px;
         fill: #fff
     }
 `
 
-export default LikeIcon
+export default LikeButton

@@ -1,11 +1,11 @@
 import React, { FunctionComponent, Fragment } from 'react'
 import styled from 'styled-components'
 
-type PageProps = {
+type Props = {
    total: number
 };
 
-const SlotsCounter: FunctionComponent<PageProps> = ({total}) => {
+const SlotsCounter: FunctionComponent<Props> = ({total}) => {
     return (
         <Fragment>
             <Main>

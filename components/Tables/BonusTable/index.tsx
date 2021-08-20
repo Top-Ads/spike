@@ -20,8 +20,9 @@ import { replaceAll } from '../../../lib/utils/replaceAll'
 import InfoIcon from '@material-ui/icons/Info'
 import Tooltip from '@material-ui/core/Tooltip'
 import { Zoom } from '@material-ui/core'
+import { device } from '../../../lib/utils/device'
 
-type PageProps = {
+type Props = {
     data: Bonus[]
 }
 
@@ -33,7 +34,7 @@ const StyledTableCell = withStyles((theme: Theme) =>
   createStyles({
     root: {
       fontFamily: 'inherit',
-      fontWeight: 'bold'
+      fontWeight: 500
     },
     head: {
       backgroundColor: '#e2b96d',
@@ -72,7 +73,7 @@ const useStyles = makeStyles({
   }
 })
 
-const BonusTable: FunctionComponent<PageProps> = ({data}) => {
+const BonusTable: FunctionComponent<Props> = ({data}) => {
   
   const classes = useStyles()
   
@@ -188,8 +189,8 @@ const Button = styled.div<BonusType>`
     padding: 10px;
     width: max-content;
 
-    &:hover {
-      
+    @media ${device.tablet} {
+      width: min-content;
     }
 `
 
@@ -207,8 +208,6 @@ const LicenceContainer = styled.div`
         font-weight: normal;
         margin-left: 3px;
     }
-}
-
 `
 
 export default BonusTable

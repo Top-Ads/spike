@@ -1,7 +1,7 @@
 import React, { Fragment, FunctionComponent, useEffect, useState } from 'react'
 import styled from 'styled-components'
 
-type PageProps = {
+type Props = {
    data: any,
    triggerCollpase: Function,
    collapse: boolean
@@ -10,7 +10,7 @@ type PageProps = {
 type AnswerType = { 
     show: boolean
 }
-const QuestionCard: FunctionComponent<PageProps> = ({data, triggerCollpase, collapse}) => { 
+const QuestionCard: FunctionComponent<Props> = ({data, triggerCollpase, collapse}) => { 
     
     const [ show, setShow] = useState<boolean>(false)
     const [ clicked, setClicked] = useState<boolean>(false)
