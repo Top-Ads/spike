@@ -17,7 +17,7 @@ import { TablePagination, TableSortLabel } from '@material-ui/core'
 import { stableSort } from '../../../lib/utils/stableSort'
 import PlayCircleOutlineIcon from '@material-ui/icons/PlayCircleOutline'
 import { LiveStats, SymbolLayout } from '../../../lib/utils/constants'
-import { longDate, shortTime } from '../../../lib/utils/date'
+import { format } from 'date-fns'
 
 type Props = {
     data: Spin[],
@@ -194,8 +194,8 @@ const SpinsTable: FunctionComponent<Props> = ({data=[], gameType}) => {
                 <StyledTableRow key={index}>
 
                   <StyledTableCell align="center" scope="row" suppressHydrationWarning>
-                    <div className="long-date">{longDate(new Date(row.date))}</div>
-                    <div>{shortTime(new Date(row.date))}</div>
+                    <div>{ format(new Date(row.date), 'dd MMM yyyy').toString()}</div>
+                    <div>{ format(new Date(row.date), 'HH:mm').toString()}</div>
                   </StyledTableCell>
 
                   <StyledTableCell component="th">

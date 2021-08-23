@@ -8,8 +8,8 @@ import { CDN } from '../../../public/environment'
 import LazyLoad, { forceCheck } from 'react-lazyload'
 import { Slot } from '../../../lib/schemas'
 import SpinnerLoader from '../../SpinnerLoader'
-import { dateDiff } from '../../../lib/utils/date'
 import LikeButton from '../../LikeButton'
+import { formatDistance } from 'date-fns'
 
 type Props = {
    data: Slot,
@@ -132,7 +132,7 @@ const SlotCard: FunctionComponent<Props> = ({data, type}) => {
                 <div className="card-info">
                     { data.producer && data.producer.name && <span className="card-producer"> {data.producer.name} </span> }
                     { type === SlotType.NEW  && 
-                        <span className="card-date" > • { dateDiff(data.created_at) >  0 ? dateDiff(data.created_at) + ' days ago' : 'today'} </span>
+                        <span className="card-date" > • { formatDistance(new Date(data.created_at), new Date(), { addSuffix: true })} </span>
                     }
                     { type === SlotType.ONLINE  && 
                         <span className="card-likes" > { data.likes > 0 &&  ` • ${data.likes} likes` } </span>

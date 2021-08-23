@@ -12,7 +12,6 @@ import CustomTextField from '../../components/Inputs/Textfield'
 import CustomMenu from '../../components/CustomMenu'
 import ShuffleIcon from '@material-ui/icons/Shuffle'
 import { Fragment } from 'react'
-import { longDate } from '../../lib/utils/date'
 import ProducersTable from '../../components/Tables/ProducersTable'
 import Image from 'next/image'
 import { CDN } from '../../public/environment'
@@ -25,6 +24,7 @@ import { getBonuses } from '../../lib/graphql/queries/bonuses'
 import { getProducers } from '../../lib/graphql/queries/producers'
 import { getSlots } from '../../lib/graphql/queries/slots'
 import { debounce } from "lodash"
+import { format } from 'date-fns'
 
 type PageProps = {
     giochiSlotsData: Slot [],
@@ -106,7 +106,8 @@ const GiochiPage: FunctionComponent<PageProps> = (props) => {
                     <h2>
                         SLOT GRATIS – GIOCA ALLE SLOT MACHINE GRATIS ONLINE IN ITALIANO
                     </h2>
-                    <span>Pubblicato: 31-07-2021 • Ultimo aggiornamento { longDate(new Date( Date.now() )) } </span> 
+                    <span>Pubblicato: 31 Jul 2021 • Ultimo aggiornamento { format(new Date(Date.now()), 'dd MMM yyyy').toString()} </span> 
+ 
                     <p>
                         Prima di tutto, benvenuto! Sappiamo che ti piace giocare alle slot machine
                         gratis online: è per quello che sei qui! La buona notizia e che anche noi 
@@ -193,9 +194,9 @@ const GiochiPage: FunctionComponent<PageProps> = (props) => {
                                             {itemSelected === SlotFilterList.RTP ? slot.rtp ? `RTP: ${slot.rtp}%` : 'NA' : ''}
                                             {itemSelected === SlotFilterList.LIKES ? slot.likes ? `${slot.likes} likes`: 'NA' : ''}
                                             {itemSelected === SlotFilterList.CREATED_AT ? slot.created_at ?
-                                                `${longDate(slot.created_at)}`: 'NA' : ''}
-                                            {itemSelected === SlotFilterList.UPDATED_AT ? slot.created_at ?
-                                                `${longDate(slot.updated_at)}`: 'NA' : ''}
+                                                `${format(new Date(slot.created_at), 'dd MMM yyyy').toString()}` : 'NA' : ''}
+                                            { itemSelected === SlotFilterList.UPDATED_AT ? slot.created_at ?
+                                                `${format(new Date(slot.updated_at), 'dd MMM yyyy').toString()}` : 'NA' : ''}
                                         </SlotInfo>
                                         <SlotCard key={slot.name} data={slot}/>
                                     </Fragment>

@@ -17,8 +17,8 @@ import BonusTable from '../../../components/Tables/BonusTable'
 import BonusCard from '../../../components/Cards/BonusCard'
 import { device } from '../../../lib/utils/device'
 import DiceRollTable from '../../../components/Tables/DiceRollTable'
-import { longDate } from '../../../lib/utils/date'
 import { getBonuses } from '../../../lib/graphql/queries/bonuses'
+import { format } from 'date-fns'
 
 type PageProps = {
     statsData: Stat[],
@@ -102,7 +102,7 @@ const MonopolyPage: FunctionComponent<PageProps> = ({statsData, spinsData, bonus
                         <Header className="stats-card-header">
                             <div>
                                 <h3>Statistiche Monopoly</h3>
-                                <span suppressHydrationWarning>Last Updated: {longDate(lastUpdate)}</span>
+                                <span suppressHydrationWarning>Last Updated: { format(new Date(lastUpdate), 'dd MMM yyyy • HH:mm').toString() }</span>
                             </div>
                         
                             <CustumSelect setSelected={setSelected}/>
