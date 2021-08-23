@@ -24,6 +24,7 @@ import FreeBonusList from '../../components/FreeBonusList'
 import { getBonuses } from '../../lib/graphql/queries/bonuses'
 import { getProducers } from '../../lib/graphql/queries/producers'
 import { getSlots } from '../../lib/graphql/queries/slots'
+import { debounce } from "lodash"
 
 type PageProps = {
     giochiSlotsData: Slot [],
@@ -65,16 +66,14 @@ const GiochiPage: FunctionComponent<PageProps> = (props) => {
         setGiochiSlots(shuffleFreeSlots)    
     }
 
-    const handleSearch = (text: string) => {
+    const handleSearch = debounce( async(text: string) => {
         clear()
         
-        setTimeout( async function () { 
-            if (text.length >= 2) {
-                setGiochiSlots(await getSlots({name_contains: text}))
-            } else 
-                setGiochiSlots(giochiSlotsData)
-        }, 500); 
-    }
+        if (text.length >= 2) {
+            setGiochiSlots(await getSlots({name_contains: text}))
+        } else 
+            setGiochiSlots(giochiSlotsData)
+    },500)
  
     const handleItemSelected = async (itemSelected: string) => {
         clear()
