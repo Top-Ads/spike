@@ -6,8 +6,8 @@ import { Slot } from '../../lib/schemas'
 import Image from 'next/image'
 import { CDN } from '../../public/environment'
 import Divider from '../Divider'
-import CustomizedAccordions from '../CustomizedAccordions'
 import { device } from '../../lib/utils/device'
+import Markdown from 'markdown-to-jsx'
 
 type Props = {
    data: Slot
@@ -54,7 +54,10 @@ const SlotReview: FunctionComponent<Props> = ({data}) => {
 
                 <Article>
                     <h2>{data.name}</h2>
-                    <CustomizedAccordions videoDescription={data?.description} tips={data?.tips}/>
+                    <MarkDownContainer>
+                        <Markdown>{String(data?.description)}</Markdown>
+                        <h2>Tips:</h2> <Markdown>{String(data?.tips)}</Markdown>
+                    </MarkDownContainer>
                 </Article>
             </Main>
         </Fragment>
@@ -115,6 +118,10 @@ const Article = styled.article`
         padding: 0px;
         width: fill-available;
     }
+`
+
+const MarkDownContainer = styled.div`
+
 `
 
 export default SlotReview
