@@ -1,6 +1,7 @@
 import React, { Fragment, FunctionComponent } from 'react'
 import styled from 'styled-components'
 import { Slot } from '../../lib/schemas'
+import { device } from '../../lib/utils/device'
 
 type Props = {
    data: Slot
@@ -14,7 +15,7 @@ const StartGame: FunctionComponent<Props> = ({data, triggerGame}) => {
         <Main>
             <Title>{data.name}</Title>
 
-            <Producer>by {data.producer.name}</Producer>
+            <h3>by {data.producer.name}</h3>
 
             <LegalText>
                 By clicking on Start the Game, you confirm that you are at least 18 years old.
@@ -42,16 +43,16 @@ const Title = styled.h2`
     text-align: center;
 `
 
-const Producer = styled.h3`
-`
-
 const LegalText = styled.div`
     border: 1px solid white;
     border-radius: 10px;
     font-size: 0.7rem;
     padding: 3px;
     text-align: center;
-    width: 90%;
+
+    @media ${device.mobileL} {
+        width: 90%;
+    }
 `
 
 const Button = styled.div`

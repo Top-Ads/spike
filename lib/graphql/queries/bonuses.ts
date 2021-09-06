@@ -3,6 +3,30 @@ import { Bonus } from './../../schemas/index'
 
 const aquaClient = new AquaClient()
 
+export const BonusProps = `
+  fragment BonusProps on Bonus {
+    id,
+    updated_at
+    description
+    backgroundColor
+    borderColor
+    link
+    name
+    noDeposit
+    withDeposit
+    rating
+    tips
+    slug
+    status
+    freeSpins
+    circular_image {
+        url
+        previewUrl
+        name
+      }
+  }
+`
+
 const BONUSES = `
   query bonuses(
       $countryCode: String, 
@@ -17,28 +41,11 @@ const BONUSES = `
             limit: $limit,
             start: $start
             sort: $sort
-            ) {
-          id,
-          updated_at
-          description
-          backgroundColor
-          borderColor
-          link
-          name
-          noDeposit
-          withDeposit
-          rating
-          tips
-          slug
-          status
-          freeSpins
-          circular_image {
-              url
-              previewUrl
-              name
-            }
+      ) {
+        ...BonusProps
       }
-  }
+  }     
+  ${BonusProps}
 ` 
 
 export const getBonuses = async (params: Object): Promise<Bonus[]> => {

@@ -81,7 +81,7 @@ const Name = styled.div`
 `
 
 const Info = styled.div `
-    color: ${({theme}) => theme.text.color.black};
+    color: inherit;
     padding: 5px 5px;
     font-size: 12px;
     font-weight: normal;

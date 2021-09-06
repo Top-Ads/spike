@@ -1,5 +1,6 @@
 import { Slot } from './../../schemas/index';
 import AquaClient from '../aquaClient'
+import { BonusProps } from './bonuses';
 
 const aquaClient = new AquaClient()
 
@@ -54,8 +55,12 @@ const SLOTS = `
               mainBonus {
                 id
               }
+              bonuses {
+                ...BonusProps
+              }
       }
   }
+  ${BonusProps}
 ` 
 
 export const getSlots = async (params: Object): Promise<Slot[]> => {

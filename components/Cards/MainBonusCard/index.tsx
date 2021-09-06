@@ -65,8 +65,6 @@ const Main = styled.div<BonusType>`
     display: flex;
     flex-direction: column;
     align-items: center;
-    height: 100%;
-    width: 90%;
     margin: auto;
 `
 

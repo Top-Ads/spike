@@ -94,6 +94,7 @@ export interface Slot {
     type: SlotType
     producer: Producer
     mainBonus: Bonus
+    bonuses: [Bonus]
     image: {
         url: string
     },

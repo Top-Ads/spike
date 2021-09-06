@@ -20,6 +20,7 @@ import StartGame from '../../../components/StartGame'
 import SlotReview from '../../../components/SlotReview'
 import { getSlots } from '../../../lib/graphql/queries/slots'
 import { getBonuses } from '../../../lib/graphql/queries/bonuses'
+import FreeBonusCard from '../../../components/Cards/FreeBonusCard'
 
 type PageProps = {
     data: Slot
@@ -245,7 +246,13 @@ const SlotPage: FunctionComponent<PageProps> = ({data}) => {
                                 </Thumbnail>
                             </div>
 
-                            { mainBonus && <MainBonusCard data={mainBonus}/> }
+                            <div style={{width: '90%', margin: 'auto'}}>
+                                { mainBonus && <MainBonusCard data={mainBonus}/> }
+                            
+                                <RelatedBonuses>
+                                    { data.bonuses && (data.bonuses.slice(0,2)).map( (bonus: Bonus) => <FreeBonusCard data={bonus}/> ) }
+                                </RelatedBonuses>
+                            </div>
 
                         </Section>
 
@@ -346,8 +353,6 @@ const Iframe = styled.iframe`
 `
 
 const Section = styled.div`
-    display: flex;
-    flex-direction: column;
     font-size: 1rem;
     background-color: ${({theme}) => theme.text.color.black};
     color: #fff;
@@ -355,7 +360,6 @@ const Section = styled.div`
     @media ${device.tablet} {  
         flex-grow: 1;
     }
-
 `
 
 const Thumbnail = styled.div`
@@ -410,6 +414,10 @@ const Actions = styled.div`
     @media ${device.mobileL} {
         border-bottom: 1px solid;
     }
+`
+
+const RelatedBonuses = styled.div`
+    overflow-y: auto;
 `
 
 export default SlotPage
