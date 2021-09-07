@@ -18,6 +18,7 @@ import { stableSort } from '../../../lib/utils/stableSort'
 import PlayCircleOutlineIcon from '@material-ui/icons/PlayCircleOutline'
 import { LiveStats, SymbolLayout } from '../../../lib/utils/constants'
 import { format } from 'date-fns'
+import { utcToZonedTime } from 'date-fns-tz'
 
 type Props = {
     data: Spin[],
@@ -194,8 +195,8 @@ const SpinsTable: FunctionComponent<Props> = ({data=[], gameType}) => {
                 <StyledTableRow key={index}>
 
                   <StyledTableCell align="center" scope="row" suppressHydrationWarning>
-                    <div>{ format(new Date(row.date), 'dd MMM yyyy').toString()}</div>
-                    <div>{ format(new Date(row.date), 'HH:mm').toString()}</div>
+                    <div>{ format(new Date(row.date), 'dd MMM yyyy').toString() }</div>
+                    <div>{ format(utcToZonedTime(new Date(row.date), "UTC"), 'HH:mm').toString() }</div>
                   </StyledTableCell>
 
                   <StyledTableCell component="th">
