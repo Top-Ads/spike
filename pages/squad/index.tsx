@@ -102,8 +102,8 @@ const SquadPage: FunctionComponent<PageProps> = ({freeBonusData, topBonusData}) 
                         </Profile>
 
                         <SocialNetwork>
-                            <a href={'https://www.facebook.com/luckyilfortunato/'}><FacebookIcon fontSize={'large'}/></a>
-                            <a href={'https://www.instagram.com/lucky_ilfortunato/'}><InstagramIcon fontSize={'large'}/></a>
+                            <a href={'https://www.facebook.com/chilyslotinstagram'}><FacebookIcon fontSize={'large'}/></a>
+                            <a href={'https://www.instagram.com/chilyslot'}><InstagramIcon fontSize={'large'}/></a>
                         </SocialNetwork>
                     </Container>
 

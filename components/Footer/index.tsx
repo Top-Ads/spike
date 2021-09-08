@@ -35,15 +35,15 @@ const Footer: FunctionComponent = () => {
                     </List>
                     <List>
                         <strong>Social Networks</strong>
+                        <a href="https://discord.gg/eXxhPXWHmY">Dicord</a>
                         <a href="https://www.facebook.com/casinosquad">Facebook</a>
                         <a href="https://www.instagram.com/casino.squad.team/">Instagram</a>
                         <a href="https://t.me/casino_squad">Telegram</a>
-                        <a href="https://www.youtube.com/channel/UClcCLY3">YouTube</a>
+                        <a href="https://www.youtube.com/channel/UClcCLY3FE_pGY20jlxjc8gw">YouTube</a>
                     </List>
                     <List>
                     <strong>contacts</strong>
                     <a>info@casino-squad.com</a>
-                    <a>TopAds Limited</a>
                 </List>
                 </Container>
                 
