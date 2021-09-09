@@ -97,7 +97,8 @@ export interface Slot {
     bonuses: [Bonus]
     image: {
         url: string
-    },
+    }
+    relatedSlots: [Slot]
 }
 
 export interface Stat {

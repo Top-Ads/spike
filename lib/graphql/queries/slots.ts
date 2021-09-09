@@ -1,8 +1,36 @@
-import { Slot } from './../../schemas/index';
+import { Slot } from './../../schemas/index'
 import AquaClient from '../aquaClient'
-import { BonusProps } from './bonuses';
+import { BonusProps } from './bonuses'
 
 const aquaClient = new AquaClient()
+
+export const SlotsProps = `
+  fragment SlotsProps on Slot {
+    id
+    created_at
+    updated_at
+    description
+    rtp
+    winningSpinFrequency
+    volatility
+    playLink
+    linkYoutube
+    videoDescription
+    name
+    rating
+    tips
+    slug
+    likes
+    type
+    producer {
+      id
+      name
+    }
+    image {
+      url
+    }
+  }
+`
 
 const SLOTS = `
   query slots(
@@ -24,43 +52,23 @@ const SLOTS = `
                 name: $producer
               }
             },
-
             limit: $limit,
             start: $start,
             sort: $sort
             ) {
-              id
-              created_at
-              updated_at
-              description
-              rtp
-              winningSpinFrequency
-              volatility
-              playLink
-              linkYoutube
-              videoDescription
-              name
-              rating
-              tips
-              slug
-              likes
-              type
-              producer {
-                id
-                name
-              }
-              image {
-                url
-              }
+              ...SlotsProps
               mainBonus {
                 id
               }
               bonuses {
                 ...BonusProps
               }
+              relatedSlots {
+                ...SlotsProps
+            }
       }
   }
-  ${BonusProps}
+  ${BonusProps}, ${SlotsProps}
 ` 
 
 export const getSlots = async (params: Object): Promise<Slot[]> => {

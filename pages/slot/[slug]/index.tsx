@@ -10,7 +10,7 @@ import { device } from '../../../lib/utils/device'
 import { Bonus, Slot } from '../../../lib/schemas'
 import LikeButton from '../../../components/LikeButton'
 import CloseIcon from '@material-ui/icons/HighlightOff'
-import { Category } from '../../../lib/utils/constants'
+import { Category, GridType } from '../../../lib/utils/constants'
 import { removeLikeSlotContext } from '../../../lib/contexts'
 import Tooltip from '@material-ui/core/Tooltip'
 import { Zoom } from '@material-ui/core'
@@ -21,6 +21,9 @@ import SlotReview from '../../../components/SlotReview'
 import { getSlots } from '../../../lib/graphql/queries/slots'
 import { getBonuses } from '../../../lib/graphql/queries/bonuses'
 import FreeBonusCard from '../../../components/Cards/FreeBonusCard'
+import SlotCard from '../../../components/Cards/SlotCard'
+import GridLayout from '../../../components/GridLayout'
+import Divider from '../../../components/Divider'
 
 type PageProps = {
     data: Slot
@@ -260,6 +263,21 @@ const SlotPage: FunctionComponent<PageProps> = ({data}) => {
                 </Main>
 
                 <div className="layout-container">
+                        <h2 style={{textTransform: 'uppercase'}}>ALTRE SLOT {data.producer.name}</h2>
+                        <Divider/>
+                        <GridContainer>
+                        <GridLayout 
+                            gridType={GridType.SLOTS} 
+                            content={ data.relatedSlots.map( (slot: Slot) => 
+                            <Fragment>
+                                <SlotCard key={slot.name} data={slot}/>
+                            </Fragment>
+                            )}
+                            width={'100%'}
+                            xs={12} sm={4} md={3}
+                        />
+                        </GridContainer>
+                  
                     <SlotReview data={data}/>   
                     <br/>
                 </div>
@@ -418,6 +436,13 @@ const Actions = styled.div`
 
 const RelatedBonuses = styled.div`
     overflow-y: auto;
+`
+
+const GridContainer = styled.div`
+    display: flex;
+    flex-wrap: wrap;
+    color: ${({theme}) => theme.palette.background};
+    width: 95%;
 `
 
 export default SlotPage

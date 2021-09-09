@@ -5,7 +5,7 @@ const aquaClient = new AquaClient()
 
 export const BonusProps = `
   fragment BonusProps on Bonus {
-    id,
+    id
     updated_at
     description
     backgroundColor
