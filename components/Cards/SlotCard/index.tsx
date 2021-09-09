@@ -22,6 +22,8 @@ const SlotCard: FunctionComponent<Props> = ({data, type}) => {
     const ref = useRef<HTMLDivElement>(null);
 
     const [showBanner, setShowBanner] = useState<boolean>(false)
+    const [showNewSlot, setShowNewSlot] = useState<boolean>(false)
+    
     const [likedSlot, setLikedSlot] = useState<boolean>(false)
     const [loading, setLoading] = useState<boolean>(true)
 
@@ -47,6 +49,13 @@ const SlotCard: FunctionComponent<Props> = ({data, type}) => {
 
         if (currentItem && JSON.parse(currentItem).some( (slot: Slot) => slot.id === data.id )) 
             setLikedSlot(true)
+
+
+        const dayDiff = (Date.now() - new Date(data.created_at).getTime()) / 86400000
+    
+        if (dayDiff <= 1)
+            setShowNewSlot(true)
+
     }, [])
 
     useEffect( () => {
@@ -124,6 +133,8 @@ const SlotCard: FunctionComponent<Props> = ({data, type}) => {
                         </Button>
                     </Banner>
                 } 
+
+                { showNewSlot && <NewSlot>NUOVA</NewSlot> }
 
             </Main>
           
@@ -230,9 +241,19 @@ const Button = styled.div`
     display: flex;
     justify-content: center;
 
-    &:hover {
-      
-    }
+`
+
+const NewSlot = styled.div`
+    border: 1px solid red;
+    position: absolute;
+    top: 5px;
+    left: 5px;
+    background-color: red;
+    color: white;
+    z-index: 3;
+    border-radius: 20px;
+    font-size: 0.5rem;
+    padding: 2px 5px;
 `
 
 export default SlotCard

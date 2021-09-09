@@ -35,7 +35,8 @@ export const SlotsProps = `
 const SLOTS = `
   query slots(
       $countryCode: String,
-      $limit: Int, $start: Int, 
+      $limit: Int,
+      $start: Int, 
       $name_contains: String,
       $type_contains: String,
       $slug: String, 

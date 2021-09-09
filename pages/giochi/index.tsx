@@ -52,7 +52,7 @@ const GiochiPage: FunctionComponent<PageProps> = (props) => {
     }
 
     const loadMore = async () => {
-        const moreFreeSlots = await getSlots({limit: 12, start: giochiSlots.length})
+        const moreFreeSlots = await getSlots({countryCode: 'it', limit: 12, start: giochiSlots.length})
 
         setGiochiSlots([...giochiSlots, ...moreFreeSlots])    
     }
@@ -61,7 +61,7 @@ const GiochiPage: FunctionComponent<PageProps> = (props) => {
         clear()
 
         setItemSelected(SlotFilterList.SHUFFLE)
-        const shuffleFreeSlots = await getSlots({limit: 36, start: getRandomInt(giochiSlots.length, 500)})
+        const shuffleFreeSlots = await getSlots({countryCode: 'it', limit: 36, start: getRandomInt(giochiSlots.length, 500)})
 
         setGiochiSlots(shuffleFreeSlots)    
     }
@@ -81,16 +81,16 @@ const GiochiPage: FunctionComponent<PageProps> = (props) => {
         const sortItem = itemSelected === SlotFilterList.ALPHABETIC ? 
         `${itemSelected.toLowerCase()}:asc` : `${itemSelected.toLowerCase()}:desc`
         
-        const data = await getSlots({limit:36, start: 0, sortBy: sortItem})
-            
+        const data = await getSlots({countryCode: "it", limit:36, start: 0, sort: sortItem})
+        console.log(data) 
         setGiochiSlots(data)
         setItemSelected(itemSelected)
     }
 
     const handleProducerSelected = async (producerSelected: string) => {
-        const sortBy = itemSelected.toLowerCase() === SlotFilterList.SHUFFLE ? SlotFilterList.ALPHABETIC : itemSelected.toLowerCase()
+        const sortItem = itemSelected.toLowerCase() === SlotFilterList.SHUFFLE ? SlotFilterList.ALPHABETIC : itemSelected.toLowerCase()
 
-        const data = await getSlots({limit:36, start: 0, sortBy: sortBy, producer: producerSelected})
+        const data = await getSlots({limit:36, start: 0, sort: sortItem, producer: producerSelected})
             
         setGiochiSlots(data)
         setProducerSelected(producerSelected)

@@ -263,9 +263,10 @@ const SlotPage: FunctionComponent<PageProps> = ({data}) => {
                 </Main>
 
                 <div className="layout-container">
-                        <h2 style={{textTransform: 'uppercase'}}>ALTRE SLOT {data.producer.name}</h2>
-                        <Divider/>
-                        <GridContainer>
+                    <h2 style={{textTransform: 'uppercase'}}>ALTRE SLOT {data.producer.name}</h2>
+                    <Divider/>
+
+                    <GridContainer>
                         <GridLayout 
                             gridType={GridType.SLOTS} 
                             content={ data.relatedSlots.map( (slot: Slot) => 
@@ -276,7 +277,7 @@ const SlotPage: FunctionComponent<PageProps> = ({data}) => {
                             width={'100%'}
                             xs={12} sm={4} md={3}
                         />
-                        </GridContainer>
+                    </GridContainer>
                   
                     <SlotReview data={data}/>   
                     <br/>
@@ -381,7 +382,11 @@ const Section = styled.div`
 `
 
 const Thumbnail = styled.div`
-    width: 150px; 
+    width: 150px;
+    
+    @media ${device.mobileL} {
+        width: auto;
+    } 
 `
 
 const InfoTable = styled.table`
