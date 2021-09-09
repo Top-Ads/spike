@@ -104,13 +104,14 @@ const CustomTextField: FunctionComponent<Props> = (props) => {
                     onFocus={ () => handleOnFocus ? handleOnFocus() : ''}
                     onBlur={ () => handleOnBlur ? handleOnBlur() : ''}
                     InputProps={searchIcon ? {
+                        startAdornment: (
+                          <InputAdornment position="start">
+                            <SearchIcon fontSize={'default'} color='inherit'/>
+                          </InputAdornment>
+                        ),
                         endAdornment: (
                           <InputAdornment position="end">
-                            {text.length ? 
-                              <ClearIcon onClick={handleClearField} fontSize={'default'} color='inherit' style={{cursor: 'pointer'}}/> :
-                              <SearchIcon fontSize={'default'} color='inherit'/> 
-                            }
-                            
+                            <ClearIcon onClick={handleClearField} fontSize={'default'} color='inherit' style={{cursor: 'pointer', visibility: text.length > 0 ? 'visible' : 'hidden'}}/> 
                           </InputAdornment>
                         )
                     } : undefined }
