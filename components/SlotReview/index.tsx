@@ -113,15 +113,15 @@ const Article = styled.article`
     flex-grow: 2;
     padding: 10px 25px;
     width: min-content;
+    overflow: hidden;
 
     @media ${device.mobileL} {
-        padding: 0px;
+        padding: 0px 2px;
         width: fill-available;
     }
 `
 
 const MarkDownContainer = styled.div`
-
 `
 
 export default SlotReview

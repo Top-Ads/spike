@@ -35,9 +35,15 @@ const BONUSES = `
       $names: [String], 
       $sort: String,
       $id: String,
+      $slug: String
       ) {
       bonuses( 
-            where : { country : {code : $countryCode}, name_in: $names, id: $id },
+            where : { 
+              country : {code : $countryCode}, 
+              name_in: $names, 
+              id: $id, 
+              slug: $slug 
+            },
             limit: $limit,
             start: $start
             sort: $sort

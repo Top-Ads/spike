@@ -6,16 +6,23 @@ import RatingStars from '../RatingStars'
 import { device } from '../../lib/utils/device'
 import { useRouter } from 'next/router'
 import { AlgoliaSearchData } from '../../lib/schemas'
+import NavigateNextOutlinedIcon from '@material-ui/icons/NavigateNextOutlined'
 
 type Props = {
    data: AlgoliaSearchData[]
+   mouseOnHit: Function
+   searchReviewName?: string
 };
 
 type ThumbnailProp = {
     type?: string
 }
 
-const SearchHits: FunctionComponent<Props> = ({data}) => {
+type ContainerProp = {
+    highlight: boolean
+}
+
+const SearchHits: FunctionComponent<Props> = ({data, mouseOnHit, searchReviewName}) => {
     
     const router = useRouter()
         
@@ -30,24 +37,25 @@ const SearchHits: FunctionComponent<Props> = ({data}) => {
         else 
             link && router.push(link)
     }
-    
+
     useEffect(() => {
         setSlotTypeIndex(data.findIndex( (item) => item.type === 'slot'))
         setBonusTypeIndex(data.findIndex( (item) => item.type === 'bonus'))
         setProducerTypeIndex(data.findIndex( (item) => item.type === 'producer'))
     }, [data])
 
+
     return (
         <Fragment>
-             <Main> 
-                {data.length ? 
+             <Main className="custom-scroll"> 
+                {data.length > 0 &&  
                     data.map((item: AlgoliaSearchData, index: number) => 
                         <Fragment key={index}>
                             
-                            { index === slotTypeIndex ||  index === bonusTypeIndex ||  index === producerTypeIndex  ?  
+                            { (index === slotTypeIndex ||  index === bonusTypeIndex ||  index === producerTypeIndex)  ?  
                                 <SearchType> <b>{item.type}</b> </SearchType> : '' }  
 
-                            <Container onClick={() => handleRedirection(item)}>
+                            <Container highlight={searchReviewName === item.name} onClick={() => handleRedirection(item)} onMouseOver={() => mouseOnHit(item)}>
                                 <Thumbnail type={item.type}>
                                     <Image
                                         alt={item.name}
@@ -62,28 +70,27 @@ const SearchHits: FunctionComponent<Props> = ({data}) => {
                                     <Name><b>{item.name}</b></Name>
                                     <Rating><RatingStars rating={item.rating}/></Rating>   
                                 </Info>
+
+                                { searchReviewName === item.name && <NavigateNextOutlinedIcon fontSize="small"/> }
                             </Container>
                         
                         </Fragment>
                     ) 
-                : '' }
+                }
             </Main>               
         </Fragment>
     )
 } 
 
 const Main = styled.div`
-    position: absolute;
-    margin-top: 6px;
     display: flex;
     flex-direction: column;
-    width: 45ch;
-    height: auto;
+    width: 45%;
+    height: inherit;
     background-color: #f2f2f2;
     color: ${({theme}) => theme.text.color.black};
     z-index: 999;
-    overflow: hidden;
-    border-radius: 5px;
+    overflow-y: scroll;
     
     @media ${device.tablet} {
         position: fixed;
@@ -93,18 +100,20 @@ const Main = styled.div`
 
     @media ${device.mobileL} {
         position: fixed;
-        width: 90%;
-        max-height: 75vh;
+        width: 100%;
         overflow: scroll;
     } 
 `
 
-const Container = styled.div`
+const Container = styled.div<ContainerProp>`
     display: inherit;
     flex-direction: row;
     align-items: center;
     padding: 10px 5px;
     border-top: 1px solid ${({theme}) => theme.palette.background};
+    cursor: pointer;
+    background-color: ${({highlight}) => highlight ? 'rgba(0, 0, 0, 0.1)' : 'none' };
+
     &:hover {
         background-color: rgba(0, 0, 0, 0.1);
     }
@@ -129,6 +138,7 @@ const Name = styled.div`
    text-transform: uppercase;
    color: ${({theme}) => theme.text.color.black};
    font-size: 12px;
+   width: 75%;
 `
 
 const Rating = styled.div `
@@ -143,8 +153,6 @@ const SearchType = styled.div `
     background-color: ${({theme}) => theme.palette.background};
     text-transform: uppercase;
     color: #fff;
-    border-top-left-radius: inherit;
-    border-top-right-radius: inherit;
 `
 
 export default SearchHits

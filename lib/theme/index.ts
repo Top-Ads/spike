@@ -24,8 +24,6 @@ export const styledTheme: StyledTheme = {
 
 export const GlobalStyle = createGlobalStyle`
 
-   
-
     @font-face {
         font-family: 'Montserrat-Medium';
         src: 
@@ -53,7 +51,7 @@ export const GlobalStyle = createGlobalStyle`
         }
 
         ::-webkit-scrollbar-track {
-            background: #ffffff;
+            background-color: #ffffff;
         }
         
         ::-webkit-scrollbar-thumb {
@@ -87,6 +85,26 @@ export const GlobalStyle = createGlobalStyle`
         color: ${styledTheme.text.color.black}; 
         line-height: 1.5em; word-spacing: normal; 
         font-family: 'Montserrat-Medium';
+    }
+
+    .custom-scroll {
+        scrollbar-width: thin;
+        scrollbar-color: ${styledTheme.palette.background} #fff;
+
+        /* Chrome, Edge, and Safari */
+        ::-webkit-scrollbar {
+            width: 14px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background-color: #ffffff;
+        }
+        
+        ::-webkit-scrollbar-thumb {
+            background-color: ${styledTheme.palette.background};
+            border-radius: 10px;
+            border: 4px solid #ffffff;
+        }
     }
 
 `

@@ -1,7 +1,6 @@
 import React, { Fragment, FunctionComponent, useContext, useEffect, useState } from 'react'
 import styled from 'styled-components'
 import Image from 'next/image'
-import CustomTextField from '../Inputs/Textfield'
 import MenuIcon from '@material-ui/icons/Menu'
 import CloseIcon from '@material-ui/icons/Close'
 import Link from 'next/link'
@@ -15,31 +14,24 @@ import ShoppingCard from '../Cards/ShoppingCard'
 import { removeLikeSlotContext } from '../../lib/contexts'
 import { APIKEY, APPLICATIONID, CDN } from '../../public/environment'
 import { SearchIndex } from 'algoliasearch/lite'
-import SearchHits from '../SearchHits'
-import DialogSlider from '../Modals/DialogSlider'
-import { AlgoliaSearchData, Slot } from '../../lib/schemas'
+import DialogSlider from '../Modals/SliderDialog'
 import NavBrowserProvider from '../NavProvider/BrowserView'
 import NavMobileProvider from '../NavProvider/MobileView'
-import ClickAwayListener from '@material-ui/core/ClickAwayListener'
+import SearchDialog from '../Modals/SearchDialog'
+import { Slot } from '../../lib/schemas'
 
 type Props = {
   isBrowserView: boolean
 }
 
-type OverlayProps = {
-  show: boolean
-}
-
 const Header: FunctionComponent<Props> = ({isBrowserView}) => {
   
   const [showNav, setShowNav] = useState<boolean>(isBrowserView)
-  const [showSearchMobile, setShowSearchMobile] = useState<boolean>(false)
-  const [overlay, setOverlay] = useState<boolean>(false)
-  const [openDialog, setOpenDialog] = useState<boolean>(false)
+  const [openSearchDialog, setOpenSearchDialog] = useState<boolean>(false)
+  const [openDialogSlider, setOpenDialogSlider] = useState<boolean>(false)
   const [category, setCategory] = useState<string>('')
   const [contentSlider, setContentSlider] = useState<any[]>([])
   const [algoliaIndex, setAlgoliaIndex] = useState<SearchIndex | undefined>(undefined)
-  const [searchResult, setSearchResult] = useState<AlgoliaSearchData[]>([])
 
   const {setRemoveLikeSlotId} = useContext(removeLikeSlotContext)
 
@@ -51,7 +43,7 @@ const Header: FunctionComponent<Props> = ({isBrowserView}) => {
 
   const handleDialogSlider = (category: string) => {
     setCategory(category)
-    setOpenDialog(!openDialog)
+    setOpenDialogSlider(!openDialogSlider)
   }
 
   const deleteItem = (id: string) => {
@@ -68,42 +60,6 @@ const Header: FunctionComponent<Props> = ({isBrowserView}) => {
     }
   }
 
-  const handleOnSearch = async (searchItem: string) => {
-    
-    if (!searchItem.length) {
-
-      setOverlay(false)
-      setSearchResult([])
-      
-      return
-
-    } else {
-      setOverlay(true)
-
-      const results = await algoliaIndex!.search<AlgoliaSearchData[] | undefined>(searchItem, { 
-        filters: `country: it`
-      })
-
-      setSearchResult(results.hits.map((obj: any) => {
-        return {
-            name: obj.name,
-            type: obj.type,
-            slug: obj.slug,
-            country: obj.country,
-            link: obj.link,
-            image: obj.image,
-            bonuses: obj.link,
-            rating: obj.rating
-        }
-      }))
-    }
-  }
-
-  const exitOverlay = () => {
-    setShowSearchMobile(false)
-    setOverlay(false)
-  }
-
   useEffect(() => {
     if (algoliaIndex === undefined) {
       import('algoliasearch').then().then(algoliasearch => {
@@ -115,7 +71,7 @@ const Header: FunctionComponent<Props> = ({isBrowserView}) => {
   }, [])
 
   useEffect(() => {
-    if (openDialog) {
+    if (openDialogSlider) {
       if (category === Category.FAVORITES) {
         const currentItem = localStorage.getItem(category)
         if (currentItem) {
@@ -127,84 +83,54 @@ const Header: FunctionComponent<Props> = ({isBrowserView}) => {
          setContentSlider([])
       }
     }
-  }, [openDialog, category])
+  }, [openDialogSlider, category])
 
   return (
     <Fragment>
         <Main>
+          <TopHeader>
 
-        <Overlay show={overlay} onClick={exitOverlay}/>
+            <Link href={'/'}>
+              <Logo>
+                <Image
+                  alt="Casino Squad"
+                  src={`${CDN}/png/logo_header.png`}
+                  layout="intrinsic"
+                  priority={true}
+                  width={640}
+                  height={299}
+                />
+              </Logo>
+            </Link>
 
-          { !showSearchMobile ? 
-              <TopHeader>
-
-                <Link href={'/'}>
-                  <Logo>
-                    <Image
-                      alt="Casino Squad"
-                      src={`${CDN}/png/logo_header.png`}
-                      layout="intrinsic"
-                      priority={true}
-                      width={640}
-                      height={299}
-                    />
-                  </Logo>
-                </Link>
-
-                <Actions>
-                  <Search>
-                    <div className="textFieldDesktop">
-                      <CustomTextField
-                        zIndex={100}
-                        onChange={handleOnSearch}
-                        size={'small'}
-                        searchIcon
-                        placeholder="Cerca una slot, un casino..."
-                        clearSearchField={!overlay}
-                        />
-
-                        { overlay && <SearchHits data={searchResult}/> }
-                    </div>
-
-                    <SearchIcon className="search-icon icons" onClick={() => setShowSearchMobile(true) }/> 
-                  </Search>
-              
-                  <ShoppingCartOutlinedIcon className='icons' onClick={ () => handleDialogSlider(Category.SHOPPINGCART)} />
-
-                  <FavoriteBorderIcon className='icons' onClick={ () => handleDialogSlider(Category.FAVORITES)} />
-                  { showNav ? 
-                    <CloseIcon className='icons' onClick={handleMenu}/> 
-                  : <MenuIcon className='icons' onClick={handleMenu}/> }
-                </Actions>
-
-              </TopHeader> :
-              <Fragment>
-
-                <ClickAwayListener onClickAway={exitOverlay}>
-                  <div className="textFieldMobile">
-                    <CustomTextField
-                          zIndex={100}
-                          onChange={handleOnSearch}
-                          autoFocus
-                          searchIcon
-                          placeholder="Cerca una slot, un casino..."/>
-                    <SearchHits data={searchResult}/>
-                  </div>
-                </ClickAwayListener>
-              
-              </Fragment> 
-          }     
+            <Actions>
+              <SearchIcon className="search-icon icons" onClick={() => setOpenSearchDialog(true) }/> 
           
+              <ShoppingCartOutlinedIcon className='icons' onClick={ () => handleDialogSlider(Category.SHOPPINGCART)} />
+
+              <FavoriteBorderIcon className='icons' onClick={ () => handleDialogSlider(Category.FAVORITES)} />
+              { showNav ? 
+                <CloseIcon className='icons' onClick={handleMenu}/> 
+              : <MenuIcon className='icons' onClick={handleMenu}/> }
+            </Actions>
+
+          </TopHeader> 
+
           { isBrowserView ? <NavBrowserProvider showNav={showNav} setShowNav={setShowNav}/> : 
           <NavMobileProvider showNav={showNav} setShowNav={setShowNav}/>}
             
           <DialogSlider
             category={category} 
-            open={openDialog} 
-            setOpen={setOpenDialog}
+            open={openDialogSlider} 
+            setOpen={setOpenDialogSlider}
             content={contentSlider.map( (content: Slot, index: number) => 
               category === Category.FAVORITES ? 
               <FavoriteCard key={index} data={content} deleteItem={deleteItem} /> : <ShoppingCard key={index} data={content}/> )}
+          />
+
+          <SearchDialog
+            open={openSearchDialog}
+            setOpen={setOpenSearchDialog}
           />
 
         </Main>
@@ -252,29 +178,6 @@ const Logo = styled.div`
   @media ${device.mobileL} {
     width: 100px;
   }
-`
-
-const Overlay = styled.div<OverlayProps>` 
-  position: ${({show}) => show ? 'fixed' : 'unset' };
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: rgba(0,0,0,.25);
-  z-index: ${({show}) => show ? 100 : -1 };
-  opacity: ${({show}) => show ? 1 : 0 };
-  transition: opacity 750ms;
-`
-
-const Search = styled.div` 
-  display: inherit;
-
-  .search-icon { display: none; }
-
-  @media ${device.mobileL} {
-    .textFieldDesktop { display: none; }
-    .search-icon { display: flex; }
-  } 
 `
 
 const Actions = styled.div` 

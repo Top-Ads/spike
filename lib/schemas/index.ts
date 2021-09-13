@@ -28,12 +28,12 @@ export interface AlgoliaSearchData {
     slug: string
     country: string
     image: string 
-    bonuses: [{ link: string }]
     rating: number
     link?: string
     producer?: {
         id: number
     }
+    objectID?: string
 }
 
 export interface Bonus {

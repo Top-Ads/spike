@@ -61,7 +61,7 @@ type Props = {
   content: JSX.Element[]
 };
 
-const DialogSlider: FunctionComponent<Props> = ({open, setOpen, category, content}) => 
+const SliderDialog: FunctionComponent<Props> = ({open, setOpen, category, content}) => 
   <Fragment>
     <StyledDialog 
       open={open}
@@ -86,7 +86,7 @@ const DialogSlider: FunctionComponent<Props> = ({open, setOpen, category, conten
     </StyledDialog>
   </Fragment>
 
-export default DialogSlider
+export default SliderDialog
 
 const EmtyContent = styled.div`
   .icon {

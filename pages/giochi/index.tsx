@@ -17,7 +17,7 @@ import Image from 'next/image'
 import { CDN } from '../../public/environment'
 import GiochiFooter from '../../components/GiochiFooter'
 import Article from '../../components/Article'
-import DialogPopup from '../../components/Modals/DialogPopup'
+import ProvidersDialog from '../../components/Modals/ProvidersDialog'
 import { Bonus, Producer, Slot, ThemeSlot } from '../../lib/schemas'
 import FreeBonusList from '../../components/FreeBonusList'
 import { getBonuses } from '../../lib/graphql/queries/bonuses'
@@ -219,7 +219,7 @@ const GiochiPage: FunctionComponent<PageProps> = (props) => {
 
                 <Article/>
 
-                <DialogPopup open={openDialog} setOpen={setOpenDialog} data={producersData} setSelected={handleProducerSelected}/>
+                <ProvidersDialog open={openDialog} setOpen={setOpenDialog} data={producersData} setSelected={handleProducerSelected}/>
             </div>
         </Layout>
     ) 

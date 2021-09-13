@@ -4,12 +4,18 @@ import AquaClient from '../aquaClient'
 const aquaClient = new AquaClient()
 
 const PRODUCERS = `
-    query producers($countryCode: String, $start: Int, $sort: String) {
+    query producers(
+        $countryCode: String,
+        $start: Int, 
+        $sort: String, 
+        $slug: String
+        ) {
         producers(
             start: $start,
             sort: $sort,
             where : { 
-                country : {code : $countryCode},
+                country : {code : $countryCode}, 
+                slug: $slug
             },
             ) {
             id

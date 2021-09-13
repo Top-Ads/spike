@@ -4,8 +4,8 @@ import { BonusProps } from './bonuses'
 
 const aquaClient = new AquaClient()
 
-export const SlotsProps = `
-  fragment SlotsProps on Slot {
+export const SlotProps = `
+  fragment SlotProps on Slot {
     id
     created_at
     updated_at
@@ -57,7 +57,7 @@ const SLOTS = `
             start: $start,
             sort: $sort
             ) {
-              ...SlotsProps
+              ...SlotProps
               mainBonus {
                 id
               }
@@ -65,14 +65,14 @@ const SLOTS = `
                 ...BonusProps
               }
               relatedSlots {
-                ...SlotsProps
+                ...SlotProps
             }
       }
   }
-  ${BonusProps}, ${SlotsProps}
-` 
+  ${BonusProps}, ${SlotProps}
+`
 
-export const getSlots = async (params: Object): Promise<Slot[]> => {
+export const getSlots = async (params: Object): Promise<Slot[]> => {  
   const request = await aquaClient.query({ 
     query: SLOTS,
     variables: params
