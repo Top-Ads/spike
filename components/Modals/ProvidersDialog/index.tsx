@@ -28,7 +28,7 @@ const StyledDialogActions = withStyles(() =>
   })
 )(DialogActions)
 
-const DialogPopup: FunctionComponent<Props> = ({open, setOpen, data, setSelected}) => {
+const ProvidersDialog: FunctionComponent<Props> = ({open, setOpen, data, setSelected}) => {
 
   let categoryIndex = data && data[0]?.name.charAt(0).toUpperCase()
 
@@ -71,28 +71,28 @@ const DialogPopup: FunctionComponent<Props> = ({open, setOpen, data, setSelected
           <b>Providers ({data.length})</b>
         </DialogTitle>
         
-        <DialogContent dividers={true}>
-        <Main>
-          <CategoryList>
-            <h4>[0-9]</h4>
-            <Divider/>
-          </CategoryList>
+        <DialogContent dividers={true} className="custom-scroll">
+          <Main>
+            <CategoryList>
+              <h4>[0-9]</h4>
+              <Divider/>
+            </CategoryList>
 
-          { data?.map( (producer: Producer, index: number) => 
+            { data?.map( (producer: Producer, index: number) => 
 
-            <Fragment key={index}>
-              { producer.name.charAt(0).toUpperCase() ===  categoryIndex ?  '' :
-                <CategoryList>
-                  <h4>{ categoryIndex = producer.name.charAt(0).toUpperCase() && producer.name.charAt(0).toUpperCase()}</h4>
-                  <Divider/>
-                </CategoryList>
-              }
-              <Card>
-                <ProducerCard data={producer} setSelected={handleSelected}/>
-              </Card>
-            </Fragment>
-          
-          )}
+              <Fragment key={index}>
+                { producer.name.charAt(0).toUpperCase() ===  categoryIndex ?  '' :
+                  <CategoryList>
+                    <h4>{ categoryIndex = producer.name.charAt(0).toUpperCase() && producer.name.charAt(0).toUpperCase()}</h4>
+                    <Divider/>
+                  </CategoryList>
+                }
+                <Card>
+                  <ProducerCard data={producer} setSelected={handleSelected}/>
+                </Card>
+              </Fragment>
+            
+            )}
           </Main>
         </DialogContent>
       </Dialog>
@@ -118,5 +118,4 @@ const Card = styled.div `
   }
 `
 
-
-export default DialogPopup
+export default ProvidersDialog

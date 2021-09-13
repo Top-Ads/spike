@@ -7,7 +7,8 @@ module.exports = withWorkbox({
       'spike-images.s3.eu-central-1.amazonaws.com',
       'casino-squad.b-cdn.net',
       'casino-squad.com',
-      'images.spikeslot.com'
+      'images.spikeslot.com',
+      'spikeapi.eu'
     ],
   },
   workbox: {
