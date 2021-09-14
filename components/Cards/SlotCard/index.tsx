@@ -53,7 +53,7 @@ const SlotCard: FunctionComponent<Props> = ({data, type}) => {
 
         const dayDiff = (Date.now() - new Date(data.created_at).getTime()) / 86400000
     
-        if (dayDiff <= 1)
+        if (dayDiff <= 2)
             setShowNewSlot(true)
 
     }, [])
