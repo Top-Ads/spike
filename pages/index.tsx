@@ -1,4 +1,5 @@
 import React, { FunctionComponent } from 'react'
+import Image from 'next/image'
 import { useRouter } from 'next/router'
 import styled from 'styled-components'
 import { device } from '../lib/utils/device'
@@ -13,15 +14,23 @@ import Article from '../components/Article'
 import { Bonus, ThemeSlot, Slot } from '../lib/schemas'
 import { getBonuses } from '../lib/graphql/queries/bonuses'
 import { getSlots } from '../lib/graphql/queries/slots'
+import { CDN } from '../public/environment'
+import CasinoCounter from '../components/CasinoCounter'
+import { getTotalSlots, getTotalBonuses, getTotalProducers } from '../lib/api'
 
 type PageProps = {
-  slotsData: ThemeSlot,
-  freeBonusData: Bonus [],
-  topBonusData: Bonus [],
+  slotsData: ThemeSlot
+  freeBonusData: Bonus []
+  topBonusData: Bonus []
   allBonusData: Bonus []
+  totalSlots: number
+  totalBonuses: number
+  totalProducers: number
 }
 
-const IndexPage: FunctionComponent<PageProps> = ({slotsData, freeBonusData, topBonusData, allBonusData}) => {
+const IndexPage: FunctionComponent<PageProps> = (props) => {
+
+  const {slotsData, freeBonusData, topBonusData, allBonusData, totalSlots, totalBonuses, totalProducers} = props
 
   const router = useRouter()
 
@@ -46,6 +55,24 @@ const IndexPage: FunctionComponent<PageProps> = ({slotsData, freeBonusData, topB
                   <span>lista completa delle slot</span>
             </Button>
           </div>
+
+          <CasinoInfo>
+              <div className="poster">
+                <Image
+                  alt="Slots - Bonuses - Casino"
+                  src={`${CDN}/png/casino_poster.png`}
+                  layout="responsive"
+                  priority={true}
+                  width={1500}
+                  height={780}
+                />
+              </div>
+
+              <div className={"casino-counter"}>
+                <CasinoCounter totalSlots={totalSlots} totalBonuses={totalBonuses} totalProducers={totalProducers}/>
+              </div>
+          </CasinoInfo>
+
       </HeaderContainer>
 
       <div className="layout-container">
@@ -160,9 +187,12 @@ const HeaderContainer = styled.div`
   ul, p { color: white }
 
   @media ${device.mobileL} {
-    h1 { text-align: center; }
+    flex-direction: column;
     align-items: center;
     flex-grow: 1;
+
+    h1 { text-align: center; }
+   
   } 
 `
 
@@ -217,6 +247,40 @@ const Section = styled.section`
   flex-grow: 2;
 `
 
+const CasinoInfo = styled.div`
+  width: 45%;
+  height: min-content;
+  margin: auto;
+  position: relative;
+
+  @media ${device.mobileL} {
+    width: 80%;
+    margin-top: 30px;
+    overflow: hidden;
+  } 
+
+  .poster {
+    @media ${device.mobileL} {
+      width: 500px;
+    } 
+  }
+
+  .casino-counter {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    @media ${device.mobileL} {
+      height: 100%;
+     } 
+  }
+`
+
 export async function getStaticProps() {
   return {
     props: {
@@ -226,7 +290,10 @@ export async function getStaticProps() {
       },
       topBonusData:  await getBonuses({ countryCode: 'it', limit: 3, start: 0, sort: "rating:desc" }),
       freeBonusData: await getBonuses({ countryCode: 'it', limit: 10, start: 0, sort: "updated_at:desc" }),
-      allBonusData: await getBonuses({ countryCode: 'it', limit: 15, start: 3 })
+      allBonusData: await getBonuses({ countryCode: 'it', limit: 15, start: 3 }),
+      totalSlots: await getTotalSlots(),
+      totalBonuses: await getTotalBonuses(),
+      totalProducers: await getTotalProducers()
     }
   }
 }

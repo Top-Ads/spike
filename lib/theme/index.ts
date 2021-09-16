@@ -40,6 +40,14 @@ export const GlobalStyle = createGlobalStyle`
         font-display: swap;
     }
 
+    @font-face {
+        font-family: 'Montserrat-ExtraBold';
+        src: 
+            url(https://casino-squad.b-cdn.net/fonts/Montserrat/Montserrat-ExtraBold.ttf) format('ttf'),
+            url(https://casino-squad.b-cdn.net/fonts/Montserrat/Montserrat-ExtraBold.ttf) format('truetype');
+        font-display: swap;
+    }
+
     html {
         /* Firefox */
         scrollbar-width: thin;

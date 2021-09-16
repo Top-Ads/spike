@@ -25,17 +25,19 @@ import { getProducers } from '../../lib/graphql/queries/producers'
 import { getSlots } from '../../lib/graphql/queries/slots'
 import { debounce } from "lodash"
 import { format } from 'date-fns'
+import { getTotalSlots } from '../../lib/api'
 
 type PageProps = {
     giochiSlotsData: Slot [],
     slotsData: ThemeSlot,
     producersData: Producer [],
-    freeBonusData: Bonus []
+    freeBonusData: Bonus [],
+    totalSlots: number
 }
 
 const GiochiPage: FunctionComponent<PageProps> = (props) => { 
 
-    const { slotsData, giochiSlotsData, producersData, freeBonusData } = props
+    const { slotsData, giochiSlotsData, producersData, freeBonusData, totalSlots } = props
     const { newest, popular } = slotsData
 
     const listItems:string[] = [SlotFilterList.RTP, SlotFilterList.LIKES, SlotFilterList.UPDATED_AT, SlotFilterList.CREATED_AT, SlotFilterList.ALPHABETIC]
@@ -160,7 +162,7 @@ const GiochiPage: FunctionComponent<PageProps> = (props) => {
 
                     <Container>
                         <Aside>
-                            <SlotsCounter total={1528}/>
+                            <SlotsCounter total={totalSlots}/>
                             <ProducersTable data={producersData.slice(0,10)} setSelected={handleProducerSelected} setOpenDialog={setOpenDialog}/>
                             <FreeBonusList data={freeBonusData} label="I MIGLIORI CASINÒ CON GIRI GRATIS"/>
                         </Aside>
@@ -423,6 +425,7 @@ export async function getStaticProps() {
             giochiSlotsData: await getSlots({ countryCode: 'it', limit: 32, start: 0, sort: 'name:asc' }),
             producersData: await getProducers({ countryCode: 'it', start: 0, sort: 'name:asc' }),
             freeBonusData: await getBonuses({ countryCode: 'it', limit: 5, start: 5, sort: "updated_at:desc" }),
+            totalSlots: await getTotalSlots()
         }
     }
 }
