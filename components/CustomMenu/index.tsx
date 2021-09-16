@@ -12,7 +12,6 @@ import { ListItemIcon, ListItemText } from '@material-ui/core'
 import SortByAlphaIcon from '@material-ui/icons/SortByAlpha'
 import DateRangeIcon from '@material-ui/icons/DateRange'
 import ScheduleIcon from '@material-ui/icons/Schedule'
-import ThumbUpAltIcon from '@material-ui/icons/ThumbUpAlt'
 import EqualizerIcon from '@material-ui/icons/Equalizer'
 import ExpandLessIcon from '@material-ui/icons/ExpandLess'
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore'
@@ -81,8 +80,6 @@ const CustomMenu: FunctionComponent<Props> = ({itemSelected, setItemSelected, li
         switch(value) {
             case SlotFilterList.RTP :
                 return  <EqualizerIcon fontSize="small" />
-            case SlotFilterList.LIKES :
-                return  <ThumbUpAltIcon fontSize="small" />
             case SlotFilterList.UPDATED_AT :
                 return  <ScheduleIcon fontSize="small" />
             case SlotFilterList.CREATED_AT :

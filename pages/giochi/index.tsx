@@ -40,7 +40,7 @@ const GiochiPage: FunctionComponent<PageProps> = (props) => {
     const { slotsData, giochiSlotsData, producersData, freeBonusData, totalSlots } = props
     const { newest, popular } = slotsData
 
-    const listItems:string[] = [SlotFilterList.RTP, SlotFilterList.LIKES, SlotFilterList.UPDATED_AT, SlotFilterList.CREATED_AT, SlotFilterList.ALPHABETIC]
+    const listItems:string[] = [SlotFilterList.RTP, SlotFilterList.UPDATED_AT, SlotFilterList.CREATED_AT, SlotFilterList.ALPHABETIC]
 
     const [giochiSlots, setGiochiSlots] = useState<Slot[]>(giochiSlotsData)
     const [itemSelected, setItemSelected] = useState<string>(SlotFilterList.ALPHABETIC)
@@ -194,7 +194,6 @@ const GiochiPage: FunctionComponent<PageProps> = (props) => {
                                     <Fragment>
                                         <SlotInfo>
                                             {itemSelected === SlotFilterList.RTP ? slot.rtp ? `RTP: ${slot.rtp}%` : 'NA' : ''}
-                                            {itemSelected === SlotFilterList.LIKES ? slot.likes ? `${slot.likes} likes`: 'NA' : ''}
                                             {itemSelected === SlotFilterList.CREATED_AT ? slot.created_at ?
                                                 `${format(new Date(slot.created_at), 'dd MMM yyyy').toString()}` : 'NA' : ''}
                                             { itemSelected === SlotFilterList.UPDATED_AT ? slot.created_at ?
@@ -216,7 +215,7 @@ const GiochiPage: FunctionComponent<PageProps> = (props) => {
 
                     </Container> 
 
-                    <GiochiFooter totalSlots={1528}/>
+                    <GiochiFooter totalSlots={totalSlots}/>
                 </Main>
 
                 <Article/>
@@ -422,7 +421,7 @@ export async function getStaticProps() {
                 newest: await getSlots({ countryCode: 'it', limit: 6, start: 0, sort: 'created_at:desc' }),
                 popular: await getSlots({ countryCode: 'it', limit: 6, start: 0, sort: 'updated_at:desc' })
             },
-            giochiSlotsData: await getSlots({ countryCode: 'it', limit: 32, start: 0, sort: 'name:asc' }),
+            giochiSlotsData: await getSlots({ countryCode: 'it', limit: 28, start: 0, sort: 'name:asc' }),
             producersData: await getProducers({ countryCode: 'it', start: 0, sort: 'name:asc' }),
             freeBonusData: await getBonuses({ countryCode: 'it', limit: 5, start: 5, sort: "updated_at:desc" }),
             totalSlots: await getTotalSlots()

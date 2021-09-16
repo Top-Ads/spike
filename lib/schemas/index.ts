@@ -90,7 +90,6 @@ export interface Slot {
     rating: number
     tips: string
     slug: string
-    likes: number
     type: SlotType
     producer: Producer
     mainBonus: Bonus

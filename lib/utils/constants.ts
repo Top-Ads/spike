@@ -22,7 +22,6 @@ export enum SlotType {
 
 export enum SlotFilterList {
   RTP = 'RTP',
-  LIKES = 'likes',
   UPDATED_AT = 'updated_at',
   CREATED_AT = 'created_at',
   ALPHABETIC = 'name',

@@ -5,7 +5,7 @@ export const styledTheme: StyledTheme = {
 
     palette: {
         background: 'rgba(226, 185, 109, 1)',
-        backgroundImage: 'linear-gradient(180deg, rgb(224 198 133) 0%, rgba(226, 185, 109, 0.8) 50%)',
+        backgroundImage: 'linear-gradient(180deg, rgb(224 198 133) 0%, rgb(217 187 106 / 92%)  50%)',
         gradient: 'rgb(224 198 133)'
     },
     text: {

@@ -19,7 +19,7 @@ const Rating = styled.div`
     width: max-content;
 
     .star-icon {
-        font-size: 15px;
+        font-size: 1.1rem;
         color: ${({theme}) => theme.palette.background};
     }
 `

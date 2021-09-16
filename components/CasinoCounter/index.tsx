@@ -51,7 +51,6 @@ const Main = styled.div`
         list-style-type: none;
         padding: 0;
         text-align: center;
-        color: inherit;
 
         li { 
             display: flex;
@@ -59,6 +58,7 @@ const Main = styled.div`
 
             span.type {
                 font-style: italic;
+                color: ${({theme}) => theme.text.color.black};
             }
 
             span.total{

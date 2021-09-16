@@ -51,8 +51,6 @@ const FavoriteCard: FunctionComponent<Props> = ({data, deleteItem}) => {
                         <Rating><RatingStars rating={data.rating}/></Rating>
                         <Producer>
                             { data.producer.name }
-                            <span className="card-likes" > { data.likes > 0 &&  ` • ${data.likes} likes` } </span>
-                    
                         </Producer>
                     </Info>
                 </Container>

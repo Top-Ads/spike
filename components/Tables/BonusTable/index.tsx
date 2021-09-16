@@ -64,12 +64,15 @@ const useStyles = makeStyles({
   },
   tooltip: {
     maxWidth: '200px',
-    padding: '5px'
+    padding: '5px',
   },
   icon: {
     fontSize: '1.2rem',
     cursor: 'pointer',
-    color: '#e2b96d'
+    color: '#e2b96d',
+    position: 'absolute',
+    right: 0,
+    top: '5px'
   }
 })
 

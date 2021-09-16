@@ -145,9 +145,6 @@ const SlotCard: FunctionComponent<Props> = ({data, type}) => {
                     { type === SlotType.NEW  && 
                         <span className="card-date" > • { formatDistance(new Date(data.created_at), new Date(), { addSuffix: true })} </span>
                     }
-                    { type === SlotType.ONLINE  && 
-                        <span className="card-likes" > { data.likes > 0 &&  ` • ${data.likes} likes` } </span>
-                    }
                 </div>
             </Description>
 

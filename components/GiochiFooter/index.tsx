@@ -1,4 +1,4 @@
-import React, { FunctionComponent, Fragment } from 'react'
+import React, { FunctionComponent } from 'react'
 import styled from 'styled-components'
 import { device } from '../../lib/utils/device'
 
@@ -6,40 +6,37 @@ type Props = {
    totalSlots?: number
 };
 
-const GiochiFooter: FunctionComponent<Props> = () => {
+const GiochiFooter: FunctionComponent<Props> = ({totalSlots}) => {
     return (
-        <Fragment>
-              <Main>
-                    <Banner>
-                        <span className="banner-name">Slot disponibili</span>
-                        <div className="banner-info">1528+</div> 
-                    </Banner>
-                    <Banner>
-                        <span className="banner-name">Migliori fornitori</span>
-                        <div className="banner-info">
-                            <a>WMG </a>|
-                            <a> Novomatic </a>|
-                            <a> WMS</a>
-                        </div>  
-                    </Banner>
-                    <Banner>
-                        <span className="banner-name">Disponibile su</span>
-                        <div className="banner-info">
-                            <a>888 </a>|
-                            <a> Casino </a>|
-                            <a> Leovegas </a>|
-                            <a> Starcasino</a>
-                        </div> 
-                    </Banner>	
-                    <Banner>
-                        <span className="banner-name">Tipo di gioco</span>
-                        <div className="banner-info">
-                            <a>Gioco gratis</a>
-                        </div> 
-                    </Banner>
-                </Main> 
-            
-        </Fragment>
+        <Main>
+            <Banner>
+                <span className="banner-name">Slot disponibili</span>
+                <div className="banner-info">{totalSlots}+</div> 
+            </Banner>
+            <Banner>
+                <span className="banner-name">Migliori fornitori</span>
+                <div className="banner-info">
+                    <a>WMG </a>|
+                    <a> Novomatic </a>|
+                    <a> WMS</a>
+                </div>  
+            </Banner>
+            <Banner>
+                <span className="banner-name">Disponibile su</span>
+                <div className="banner-info">
+                    <a>888 </a>|
+                    <a> Casino </a>|
+                    <a> Leovegas </a>|
+                    <a> Starcasino</a>
+                </div> 
+            </Banner>	
+            <Banner>
+                <span className="banner-name">Tipo di gioco</span>
+                <div className="banner-info">
+                    <a>Gioco gratis</a>
+                </div> 
+            </Banner>
+        </Main> 
     )
 } 
 
