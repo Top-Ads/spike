@@ -18,7 +18,7 @@ const EmailSubcription = () => {
             <CustomCheckbox 
               label={`Dichiaro di aver compiuto 18 anni e di dare il mio consenso per
                     ricevere aggiornamenti ed antecipazioni su video ed offerte promozionali
-                    via email da Spikeslot.com.`}/>
+                    via email da casinosquad.com.`}/>
 
             <br/>
 
