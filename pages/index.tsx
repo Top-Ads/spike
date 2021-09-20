@@ -44,7 +44,7 @@ const IndexPage: FunctionComponent<PageProps> = (props) => {
             <h1>BENVENUTO SU CASINÓ SQUAD!</h1>
 
               <p>Siamo felici di accoglierti e di darti il benvenuto su CASINÓ SQUAD:<br/> 
-              regolato da regolare licenza e’uno dei migliori siti di casino’ online:</p>
+              regolato da regolare licenza è uno dei migliori siti di casinò online:</p>
               <ul>
                 <li>Esplora migliori <b>piattaforme di gioco online</b>.</li>
                 <li>Avere la possibilità di ricevere ogni offerta e i <b>bonus esclusivi</b>.</li>
