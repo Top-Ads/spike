@@ -44,9 +44,9 @@ const StatsCard: FunctionComponent<Props> = ({data, timeFrame, type}) => {
                     </LazyLoad>
                 </Thumbnail>
                 <Main>
-                    <li className="live-result">Total Spins: <span>{data.spinSince}</span></li>
-                    <li className="live-result">In the last {timeFrame}: <span>{`${Math.round(data.percentage * 100) / 100}%`}</span></li>
-                    <li className="live-result">Total Draws: <span>{data.lands}</span></li>
+                    <li className="live-result">Non esce da: <span>{data.spinSince}</span></li>
+                    <li className="live-result">Nelle ultime {timeFrame}: <span>{`${Math.round(data.percentage * 100) / 100}%`}</span></li>
+                    <li className="live-result">Estrazioni Totali: <span>{data.lands}</span></li>
                     <li className="live-result">{getProbabilty(type)}</li>
                 </Main>
             </Container>
