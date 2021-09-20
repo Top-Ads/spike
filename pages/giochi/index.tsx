@@ -72,7 +72,7 @@ const GiochiPage: FunctionComponent<PageProps> = (props) => {
         clear()
         
         if (text.length >= 2) {
-            setGiochiSlots(await getSlots({name_contains: text}))
+            setGiochiSlots(await getSlots({countryCode: 'it', name_contains: text}))
         } else 
             setGiochiSlots(giochiSlotsData)
     },500)
@@ -92,7 +92,7 @@ const GiochiPage: FunctionComponent<PageProps> = (props) => {
     const handleProducerSelected = async (producerSelected: string) => {
         const sortItem = itemSelected.toLowerCase() === SlotFilterList.SHUFFLE ? SlotFilterList.ALPHABETIC : itemSelected.toLowerCase()
 
-        const data = await getSlots({limit:36, start: 0, sort: sortItem, producer: producerSelected})
+        const data = await getSlots({countryCode: "it", limit:36, start: 0, sort: sortItem, producer: producerSelected})
             
         setGiochiSlots(data)
         setProducerSelected(producerSelected)
@@ -418,12 +418,12 @@ export async function getStaticProps() {
     return {
         props: {
                 slotsData: { 
-                newest: await getSlots({ countryCode: 'it', limit: 6, start: 0, sort: 'created_at:desc' }),
-                popular: await getSlots({ countryCode: 'it', limit: 6, start: 0, sort: 'updated_at:desc' })
+                newest: await getSlots({ limit: 6, start: 0, sort: 'created_at:desc' }),
+                popular: await getSlots({ limit: 6, start: 0, sort: 'updated_at:desc' })
             },
-            giochiSlotsData: await getSlots({ countryCode: 'it', limit: 28, start: 0, sort: 'name:asc' }),
-            producersData: await getProducers({ countryCode: 'it', start: 0, sort: 'name:asc' }),
-            freeBonusData: await getBonuses({ countryCode: 'it', limit: 5, start: 5, sort: "updated_at:desc" }),
+            giochiSlotsData: await getSlots({ limit: 28, start: 0, sort: 'name:asc' }),
+            producersData: await getProducers({ start: 0, sort: 'name:asc' }),
+            freeBonusData: await getBonuses({ limit: 5, start: 5, sort: "updated_at:desc" }),
             totalSlots: await getTotalSlots()
         }
     }

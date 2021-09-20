@@ -33,7 +33,6 @@ export const SlotProps = `
 
 const SLOTS = `
   query slots(
-      $countryCode: String,
       $limit: Int,
       $start: Int, 
       $name_contains: String,
@@ -44,7 +43,7 @@ const SLOTS = `
       ) {
       slots( 
             where : { 
-              country : {code : $countryCode},
+              country : {code : "it"},
               name_contains: $name_contains,
               type_contains: $type_contains,
               slug: $slug,

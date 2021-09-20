@@ -25,11 +25,11 @@ const SearchHitReview: FunctionComponent<Props> = ({data}) => {
 
     const getHitInfo = async (slug: string, type: string) => {
         if(type === 'slot')
-            setDescription((await getSlots({ countryCode: 'it', slug: slug }))[0]?.description)
+            setDescription((await getSlots({ slug: slug }))[0]?.description)
         else if (type === 'bonus')
-            setDescription((await getBonuses({ countryCode: 'it', name: slug }))[0]?.description)
+            setDescription((await getBonuses({ name: slug }))[0]?.description)
         else if (type === 'producer')
-            setDescription((await getProducers({ countryCode: 'it', slug: slug }))[0]?.description)
+            setDescription((await getProducers({ slug: slug }))[0]?.description)
     }
 
     useEffect( () => {

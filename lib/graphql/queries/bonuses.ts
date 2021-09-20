@@ -29,7 +29,6 @@ export const BonusProps = `
 
 const BONUSES = `
   query bonuses(
-      $countryCode: String, 
       $limit: Int,
       $start: Int, 
       $names: [String], 
@@ -39,7 +38,7 @@ const BONUSES = `
       ) {
       bonuses( 
             where : { 
-              country : {code : $countryCode}, 
+              country : {code : "it"}, 
               name_in: $names, 
               id: $id, 
               slug: $slug 

@@ -106,7 +106,7 @@ const SlotPage: FunctionComponent<PageProps> = ({data}) => {
 
     const handleScreenChange = () => document.fullscreenElement ? setFullscreen(true) : setFullscreen(false)
     
-    const getMainBonus = async (id: string) => setMainBonus((await getBonuses({ countryCode: 'it', id: id }))[0]) 
+    const getMainBonus = async (id: string) => setMainBonus((await getBonuses({ id: id }))[0]) 
    
     useEffect( () => {
 
@@ -294,7 +294,7 @@ export async function getServerSideProps(context : NextPageContext) {
 
     return {
         props: {
-            data: (await getSlots({ countryCode: 'it', slug: slug }))[0]
+            data: (await getSlots({ slug: slug }))[0]
         }
     }
 }

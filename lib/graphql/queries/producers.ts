@@ -5,7 +5,6 @@ const aquaClient = new AquaClient()
 
 const PRODUCERS = `
     query producers(
-        $countryCode: String,
         $start: Int, 
         $sort: String, 
         $slug: String
@@ -14,7 +13,7 @@ const PRODUCERS = `
             start: $start,
             sort: $sort,
             where : { 
-                country : {code : $countryCode}, 
+                country : {code : "it"}, 
                 slug: $slug
             },
             ) {

@@ -285,12 +285,12 @@ export async function getStaticProps() {
   return {
     props: {
       slotsData: {
-        newest: await getSlots({ countryCode: 'it', limit: 9, start: 0, sort: 'created_at:desc' }),
-        online: await getSlots({ countryCode: 'it', limit: 9, start: 0, type_contain: "online", sort: 'updated_at:desc' })
+        newest: await getSlots({ limit: 9, start: 0, sort: 'created_at:desc' }),
+        online: await getSlots({ limit: 9, start: 0, type_contain: "online", sort: 'updated_at:desc' })
       },
-      topBonusData:  await getBonuses({ countryCode: 'it', limit: 3, start: 0, sort: "rating:desc" }),
-      freeBonusData: await getBonuses({ countryCode: 'it', limit: 10, start: 0, sort: "updated_at:desc" }),
-      allBonusData: await getBonuses({ countryCode: 'it', limit: 15, start: 3 }),
+      topBonusData:  await getBonuses({ limit: 3, start: 0, sort: "rating:desc" }),
+      freeBonusData: await getBonuses({ limit: 10, start: 0, sort: "updated_at:desc" }),
+      allBonusData: await getBonuses({ limit: 15, start: 3 }),
       totalSlots: await getTotalSlots(),
       totalBonuses: await getTotalBonuses(),
       totalProducers: await getTotalProducers()

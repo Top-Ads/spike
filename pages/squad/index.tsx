@@ -338,8 +338,8 @@ const Section = styled.section`
 export async function getStaticProps() {
     return {
       props: {
-        freeBonusData: await getBonuses({ countryCode: 'it', limit: 10, start: 0, sort: "updated_at:desc" }),
-        topBonusData: await getBonuses({ countryCode: 'it', limit: 3, start: 0, sort: "rating:desc" })
+        freeBonusData: await getBonuses({ limit: 10, start: 0, sort: "updated_at:desc" }),
+        topBonusData: await getBonuses({ limit: 3, start: 0, sort: "rating:desc" })
       }
     }
 }
