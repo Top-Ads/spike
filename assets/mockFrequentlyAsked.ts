@@ -1,7 +1,7 @@
 export const frequentlyAsked: any [] = [
     { 
         question: "Dove posso giocare alle slot machine gratis?", 
-        answer: "Puoi giocare alle slot gratis proprio qui, su casinosquad.it! Abbiamo centinaia di giochi disponibili, forniti da decine di provider differenti. Lavoriamo con impegno per rendere il gambling raggiungibile e comprensibile per ciascun utente, perciò tutte le slot gratuite sul nostro sito sono raggruppate per categorie come tipo, tema e funzioni speciali. Ciò significa che puoi cercare qualsiasi slot che ti piace e giocare per divertimento!" 
+        answer: "Puoi giocare alle slot gratis proprio qui, su casinosquad.com! Abbiamo centinaia di giochi disponibili, forniti da decine di provider differenti. Lavoriamo con impegno per rendere il gambling raggiungibile e comprensibile per ciascun utente, perciò tutte le slot gratuite sul nostro sito sono raggruppate per categorie come tipo, tema e funzioni speciali. Ciò significa che puoi cercare qualsiasi slot che ti piace e giocare per divertimento!" 
     },
     { 
         question: "Come funzionano i requisiti di scommessa?", 

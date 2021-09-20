@@ -43,7 +43,7 @@ const Footer: FunctionComponent = () => {
                     </List>
                     <List>
                     <strong>contacts</strong>
-                    <a>info@casino-squad.com</a>
+                    <a>info@casinosquad.com</a>
                 </List>
                 </Container>
                 

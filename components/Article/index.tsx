@@ -39,13 +39,13 @@ const Article: FunctionComponent<Props> = ({data}) => {
                     <p>
                     Ti piacciono le slot machine online? Vorresti esplorare tutte le dimensioni di questi giochi, senza rischiare di perderci nulla? 
                     Bene: sei nel posto giusto.<br/>
-                    Infatti su casinosquad.it hai una vasta scelta di <b>slot online gratis</b> e non solo. Potrai provare tante dimensioni del <b>gioco d’azzardo</b>, 
+                    Infatti su casinosquad.com hai una vasta scelta di <b>slot online gratis</b> e non solo. Potrai provare tante dimensioni del <b>gioco d’azzardo</b>, 
                     sperimentando altri <b>giochi da casinò</b>.<br/>
                     Potrai giocarci quanto vuoi, senza limiti di tempo e senza pagare niente. Non dovrai registrarti al sito, né scaricare software.<br/>
                     Sì, hai capito bene: avrai la possibilità di giocare e basta, allenarti alle <b>slot machine gratis online</b>, in modo da esplorarle e 
                     imparare a conoscere le loro caratteristiche peculiari.<br/>
                     In effetti, osservare come si comportano, provare i bonus e scoprire come e quanto pagano, è davvero importante prima di scommettere soldi veri.<br/>
-                    Su casinosquad.it potrai individuare in anteprima, ogni segreto delle nuove slot rilasciate sul mercato, ma anche provarle personalmente e scegliere 
+                    Su casinosquad.com potrai individuare in anteprima, ogni segreto delle nuove slot rilasciate sul mercato, ma anche provarle personalmente e scegliere 
                     quali salvare o mettere tra le tue preferite
                     </p>
                 
@@ -80,10 +80,10 @@ const Article: FunctionComponent<Props> = ({data}) => {
                     <h3><strong>Giocare alle Slot senza download e senza registrazione</strong></h3>
                     <div
                     ><p>
-                    Devi sapere che su casinosquad.it potrai giocare subito, senza limiti o perdite di tempo. Sì, infatti, non dovrai iscriverti o fare registrazioni. 
-                    Tanti casinò, invece, ti obbligano a fare il download dei loro software di gioco. Questo togliendo tempo che potrebbe essere prezioso per te, fra download e installazione. 
-                    Su casinosquad.it potrai giocare subito senza alcun obbligo.<br/>
-                    Facendo un esempio, se decidi di giocare su Slotjava, non dovrai riempire complicati moduli con i tuoi dati sensibili, poiché offriamo un’anteprima completamente gratuita. 
+                    Devi sapere che su casinosquad.com potrai giocare subito, senza limiti o perdite di tempo. Sì, infatti, non dovrai iscriverti o fare registrazioni. 
+                    Tanti casinò online, invece, ti obbligano a fare il download dei loro software di gioco. Questo togliendo tempo che potrebbe essere prezioso per te, fra download e installazione. 
+                    Su casinosquad.com potrai giocare subito senza alcun obbligo.<br/>
+                    Facendo un esempio, se decidi di giocare su Casino Squad, non dovrai riempire complicati moduli con i tuoi dati sensibili, poiché offriamo un’anteprima completamente gratuita. 
                     Infatti, per provare una slot, dovrai semplicemente selezionarla, cliccando sulla sua anteprima.<br/>
                     Insomma, ti basterà accedere del browser per provare a giocare.<br/>
                     Com’è possibile? Dobbiamo ringraziare i passi da gigante fatti dalla tecnologia HTML5 e dei browser negli ultimi anni, sia per desktop che per dispositivo mobile.<br/>
@@ -113,11 +113,11 @@ const Article: FunctionComponent<Props> = ({data}) => {
                     Infatti, i <b>casinò di gioco online</b> possono operare se hanno una licenza rilasciata dalle autorità italiane. <br/>
                     In effetti, dal 3 dicembre 2012 le slot online AAMS-ADM sono disponibili.<br/>
                     Ciò significa la possibilità di giocare legalmente e in serenità, alle <b>slot machine online</b> almeno sui siti certificati.<br/>
-                    Stiamo parlando dei <b>casinò online</b>autorizzati dall'Agenzia delle Dogane e dei Monopoli.<br/>
+                    Stiamo parlando dei <b>casinò online</b> autorizzati dall'Agenzia delle Dogane e dei Monopoli.<br/>
                     Questo, affinché gli amanti delle <b>slot online</b>, abbiano la possibilità di giocare da desktop, ma anche da mobile, grazie alla varietà dell’offerta 
                     dei titoli che sono continuamente aggiornati.<br/>
                     Il pubblico appassionato del gioco online, è variegato - dai principianti ai professionisti. 
-                    Forse non sai che le slot machine nei <b>casinò online</b> italiani AAMS-ADM hanno una posizione di pregio. Infatti, sono al primo posto al mondo, per qualità, 
+                    Forse non sai che le slot machine nei <b>casinò online</b> italiani AAMS-ADM hanno una posizione di prestigio. Infatti, sono al primo posto al mondo, per qualità, 
                     generosità e il livello di intrattenimento. <br/>
                     Vuoi scoprire i migliori casino legali con slot machine AAMS? Ecco qui un confronto.
                     </p>
@@ -136,12 +136,12 @@ const Article: FunctionComponent<Props> = ({data}) => {
                 </section>
                 
                 <section>
-                    <h3><strong>In che modo casinosquad.it realizza le recensioni delle slot online?</strong></h3>
+                    <h3><strong>In che modo casinosquad.com realizza le recensioni delle slot online?</strong></h3>
                     <div>
                     <p>
                     Abbiamo a disposizione un team di esperti che valuta ogni <b>slot online</b>, facendo un capillare percorso di verifica, rigoroso ed efficace.<br/>
                     L’obiettivo è una missione del nostro team, ovvero la garanzia di un’esperienza di gioco avvincente e divertente.<br/>
-                    <b>casinosquad.it</b> è qui per svelarti ogni dettaglio e per offrirti le recensioni dei migliori giochi di slot online.<br/>
+                    <b>casinosquad.com</b> è qui per svelarti ogni dettaglio e per offrirti le recensioni dei migliori giochi di slot online.<br/>
                     Si tratta di recensioni preparate con serietà e professionalità, in considerazione di 5 requisiti di base, vediamoli assieme:
 
                     </p>
@@ -151,7 +151,7 @@ const Article: FunctionComponent<Props> = ({data}) => {
                             <p>
                             Abbiamo a disposizione un team di esperti che valuta ogni slot online, facendo un capillare percorso di verifica, rigoroso ed efficace.
                             L’obiettivo è una missione del nostro team, ovvero la garanzia di un’esperienza di gioco avvincente e divertente. 
-                            casinosquad.it è qui per svelarti ogni dettaglio e per offrirti le recensioni dei migliori giochi di slot online.
+                            casinosquad.com è qui per svelarti ogni dettaglio e per offrirti le recensioni dei migliori giochi di slot online.
                             Si tratta di recensioni preparate con serietà e professionalità, in considerazione di 5 requisiti di base, vediamoli assieme:
                             </p>
                         </li>
@@ -268,21 +268,21 @@ const Article: FunctionComponent<Props> = ({data}) => {
                     <h3><strong>Provare le slot online con soldi veri</strong></h3>
                     <div>
                     <p>
-                    Come hai capito, sul sito casinosquad.it puoi provare tutte le slot che vuoi senza rischiare nulla.
+                    Come hai capito, sul sito casinosquad.com puoi provare tutte le slot che vuoi senza rischiare nulla.
                     Tuttavia, se avessi voglia di provare le slot soldi veri, hai diverse opportunità.<br/>
                     Nel momento in cui provi la versione demo di una slot sul nostro sito, troverai appena al di sotto, una finestra di gioco con l’indicazione di alcuni casinò in cui potrai provarla con soldi veri. 
                     Ricapitolando:
                     </p>
 
                     <ol type="1">
-                        <li>Scegli una slot che t’ispira su casinosquad.it.</li>
+                        <li>Scegli una slot che t’ispira su casinosquad.com.</li>
                         <li>Fai clic sull’anteprima della slot.</li>
                         <li>Controlla la finestra di gioco sotto la slot: qui troverai l’elenco dei <b>casinò per giocare con soldi veri.</b></li>
                     </ol>
                     <p>
                     Concediti però del tempo per fare la tua scelta. Considera che ogni casinò ha le sue particolarità e può garantirti diverse promozioni in termini di bonus, marchi, etc.<br/>
                     Sai quale sarà la cosa più importante? Scegliere un <b>casinò italiano</b> che soddisfi i requisiti di sicurezza, legalità e affidabilità.<br/>
-                    Su casinosquad.it troverai una selezione dei <b>migliori casinò</b> del panorama italiano che vantano popolarità e affidabilità grazie ad una licenza AAMS. <br/>
+                    Su casinosquad.com troverai una selezione dei <b>migliori casinò</b> del panorama italiano che vantano popolarità e affidabilità grazie ad una licenza AAMS. <br/>
                     Se ti preoccupa il fatto di non avere mai provato un casinò online, puoi sempre consultare la <b>nostra sezione casinò</b>.<br/>
                     Qui potrai trovare tutte le informazioni e utili consigli per fare la tua scelta migliore.
                     Importante: se stai consultando il nostro sito da smartphone o pc, ricorda che se non hai Flash Player installato, per giocare con soldi veri, dovrai 
