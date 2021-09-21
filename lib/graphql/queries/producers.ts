@@ -7,7 +7,7 @@ const PRODUCERS = `
     query producers(
         $start: Int, 
         $sort: String, 
-        $slug: String
+        $slug: String,
         ) {
         producers(
             start: $start,

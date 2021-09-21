@@ -38,7 +38,13 @@ type PageProps = {
 const GiochiPage: FunctionComponent<PageProps> = (props) => { 
 
     const { slotsData, giochiSlotsData, producersData, freeBonusData, totalSlots } = props
+    
     const { newest, popular } = slotsData
+
+    const famousProducersList = producersData.filter((producer: Producer) => {
+        if( ['Novomatic', 'NetEnt', 'BTG', 'Thunderkick', 'iSoftBet', 'Pragmatic Play', "Play'n GO"].includes(producer.name))
+            return producer
+    })
 
     const listItems:string[] = [SlotFilterList.RTP, SlotFilterList.UPDATED_AT, SlotFilterList.CREATED_AT, SlotFilterList.ALPHABETIC]
 
@@ -46,6 +52,8 @@ const GiochiPage: FunctionComponent<PageProps> = (props) => {
     const [itemSelected, setItemSelected] = useState<string>(SlotFilterList.ALPHABETIC)
     const [, setProducerSelected] = useState<string>('')
     const [openDialog, setOpenDialog] = useState<boolean>(false)
+
+   
 
     function getRandomInt(min: number, max: number) {
         min = Math.ceil(min);
@@ -163,7 +171,7 @@ const GiochiPage: FunctionComponent<PageProps> = (props) => {
                     <Container>
                         <Aside>
                             <SlotsCounter total={totalSlots}/>
-                            <ProducersTable data={producersData.slice(0,10)} setSelected={handleProducerSelected} setOpenDialog={setOpenDialog}/>
+                            <ProducersTable data={famousProducersList} setSelected={handleProducerSelected} setOpenDialog={setOpenDialog}/>
                             <FreeBonusList data={freeBonusData} label="I MIGLIORI CASINÒ CON GIRI GRATIS"/>
                         </Aside>
 
@@ -415,6 +423,7 @@ const LoadMoreButton = styled.div`
 `
 
 export async function getStaticProps() {
+
     return {
         props: {
                 slotsData: { 
