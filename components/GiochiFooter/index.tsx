@@ -24,9 +24,9 @@ const GiochiFooter: FunctionComponent<Props> = ({totalSlots}) => {
             <Banner>
                 <span className="banner-name">Disponibile su</span>
                 <div className="banner-info">
-                    <a> 888 Casino </a>|
-                    <a> Leovegas </a>|
-                    <a> Starcasino</a>
+                    <a target="_blank" rel="noopener noreferrer" href="http://record.affiliatelounge.com/_SEA3QA6bJTNajD9O5s8HwmNd7ZgqdRLk/50/"> Starcasino </a>|
+                    <a target="_blank" rel="noopener noreferrer" href="https://spikeslot.com/visita/leo_vegas"> Leovegas </a>|
+                    <a target="_blank" rel="noopener noreferrer" href="https://mediaserver.entainpartners.com/renderBanner.do?zoneId=2000318"> Gioco Digitale </a>
                 </div> 
             </Banner>	
             <Banner>

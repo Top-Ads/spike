@@ -14,37 +14,43 @@ const Footer: FunctionComponent = () => {
                         <Link href={'/giochi'}>
                             <a>Giochi</a>
                         </Link>
+                    </List>
+
+                    <List>
+                        <strong>bonuses</strong>
                         <Link href={'/comparator'}>
                             <a>Comparator</a>
                         </Link>
-                        <a href={'https://casino-squad.com/shop/'}>Shop</a>
                     </List>
+
                     <List>
-                        <strong>bonuses</strong>
+                        <strong>casino</strong>
                         <a>Nuovi Casinò Online</a>
                         <a>Casinò in Italia</a>
-                        <a>Casinò AAMS – ADM</a>
-                        <a>Casinò Sicuri</a>
-                        <a>Casinò Online Italiani</a>
                     </List>
+                   
                     <List>
-                        <strong>casino games</strong>
-                        <a>Roulette</a>
-                        <a>Blackjack</a>
-                        <a>Live – Dal Vivoò</a>
+                        <strong>rete sociale</strong>
+                        <a target="_blank" rel="noopener noreferrer" href="https://discord.gg/eXxhPXWHmY">Discord</a>
+                        <a target="_blank" rel="noopener noreferrer" href="https://www.facebook.com/casinosquad">Facebook</a>
+                        <a target="_blank" rel="noopener noreferrer" href="https://www.instagram.com/casino.squad.team/">Instagram</a>
+                        <a target="_blank" rel="noopener noreferrer" href="https://t.me/casino_squad">Telegram</a>
+                        <a target="_blank" rel="noopener noreferrer" href="https://www.youtube.com/channel/UClcCLY3FE_pGY20jlxjc8gw">YouTube</a>
                     </List>
+
                     <List>
-                        <strong>Social Networks</strong>
-                        <a href="https://discord.gg/eXxhPXWHmY">Discord</a>
-                        <a href="https://www.facebook.com/casinosquad">Facebook</a>
-                        <a href="https://www.instagram.com/casino.squad.team/">Instagram</a>
-                        <a href="https://t.me/casino_squad">Telegram</a>
-                        <a href="https://www.youtube.com/channel/UClcCLY3FE_pGY20jlxjc8gw">YouTube</a>
+                        <strong>informazioni</strong>
+                        <a>About</a>
+                        <Link href={'/squad'}>
+                            <a>Team</a>
+                        </Link>
+                        <Link href={'/shop'}>
+                            <a>Shop</a>
+                        </Link>
+                        <a>Politica Della Privatezza</a>
+                        <a>Sitemap</a>
+                        <a href="mailto: info@casinosquad.com">Email</a>
                     </List>
-                    <List>
-                    <strong>contacts</strong>
-                    <a>info@casinosquad.com</a>
-                </List>
                 </Container>
                 
                 <Divider color="#f2f2f2"/>
