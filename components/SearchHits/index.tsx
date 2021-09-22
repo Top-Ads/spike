@@ -20,6 +20,7 @@ type ThumbnailProp = {
 
 type ContainerProp = {
     highlight: boolean
+    hasLink: boolean
 }
 
 const SearchHits: FunctionComponent<Props> = ({data, mouseOnHit, searchReviewName}) => {
@@ -55,7 +56,7 @@ const SearchHits: FunctionComponent<Props> = ({data, mouseOnHit, searchReviewNam
                             { (index === slotTypeIndex ||  index === bonusTypeIndex ||  index === producerTypeIndex)  ?  
                                 <SearchType> <b>{item.type}</b> </SearchType> : '' }  
 
-                            <Container highlight={searchReviewName === item.name} onClick={() => handleRedirection(item)} onMouseOver={() => mouseOnHit(item)}>
+                            <Container hasLink={item.link ? true : false} highlight={searchReviewName === item.name} onClick={() => handleRedirection(item)} onMouseOver={() => mouseOnHit(item)}>
                                 <Thumbnail type={item.type}>
                                     <Image
                                         alt={item.name}
@@ -111,7 +112,7 @@ const Container = styled.div<ContainerProp>`
     align-items: center;
     padding: 10px 5px;
     border-top: 1px solid ${({theme}) => theme.palette.background};
-    cursor: pointer;
+    cursor: ${({hasLink}) => hasLink ? 'pointer' : 'not-allowed' };
     background-color: ${({highlight}) => highlight ? 'rgba(0, 0, 0, 0.1)' : 'none' };
 
     &:hover {
@@ -131,7 +132,7 @@ const Info = styled.div`
     align-self: flex-start;
     flex-grow: 2;
     width: min-content;
-    margin: auto 15px
+    margin: auto 15px;
 `
 
 const Name = styled.div`

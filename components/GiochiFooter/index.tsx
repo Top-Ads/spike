@@ -24,8 +24,7 @@ const GiochiFooter: FunctionComponent<Props> = ({totalSlots}) => {
             <Banner>
                 <span className="banner-name">Disponibile su</span>
                 <div className="banner-info">
-                    <a>888 </a>|
-                    <a> Casino </a>|
+                    <a> 888 Casino </a>|
                     <a> Leovegas </a>|
                     <a> Starcasino</a>
                 </div> 
