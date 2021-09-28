@@ -102,8 +102,12 @@ const SquadPage: FunctionComponent<PageProps> = ({freeBonusData, topBonusData}) 
                         </Profile>
 
                         <SocialNetwork>
-                            <a href={'https://www.facebook.com/chilyslotinstagram'}><FacebookIcon fontSize={'large'}/></a>
-                            <a href={'https://www.instagram.com/chilyslot'}><InstagramIcon fontSize={'large'}/></a>
+                            <a target="_blank" rel="noopener noreferrer" href={'https://www.facebook.com/chilyslotinstagram'}>
+                                <FacebookIcon fontSize={'large'}/>
+                            </a>
+                            <a target="_blank" rel="noopener noreferrer" href={'https://www.instagram.com/chilyslot'}>
+                                <InstagramIcon fontSize={'large'}/>
+                            </a>
                         </SocialNetwork>
                     </Container>
 
@@ -145,7 +149,9 @@ const SquadPage: FunctionComponent<PageProps> = ({freeBonusData, topBonusData}) 
                         </Profile>
 
                         <SocialNetwork>
-                            <a href={'https://www.instagram.com/mister.j_17/'}><InstagramIcon fontSize={'large'}/></a>
+                            <a target="_blank" rel="noopener noreferrer" href={'https://www.instagram.com/mister.j_17/'}>
+                                <InstagramIcon fontSize={'large'}/>
+                            </a>
                         </SocialNetwork>
                     </Container>
 
@@ -183,8 +189,12 @@ const SquadPage: FunctionComponent<PageProps> = ({freeBonusData, topBonusData}) 
                         </Profile>
 
                         <SocialNetwork>
-                            <a href={'https://www.facebook.com/pitbullslot'}><FacebookIcon fontSize={'large'}/></a>
-                            <a href={'https://www.instagram.com/pitbullslot/'}><InstagramIcon fontSize={'large'}/></a>
+                            <a target="_blank" rel="noopener noreferrer" href={'https://www.facebook.com/pitbullslot'}>
+                                <FacebookIcon fontSize={'large'}/>
+                            </a>
+                            <a target="_blank" rel="noopener noreferrer" href={'https://www.instagram.com/pitbullslot/'}>
+                                <InstagramIcon fontSize={'large'}/>
+                            </a>
                         </SocialNetwork>
 
                     </Container>
@@ -223,7 +233,9 @@ const SquadPage: FunctionComponent<PageProps> = ({freeBonusData, topBonusData}) 
                             </div> 
                         </Profile>
                         <SocialNetwork>
-                            <a href={'https://www.instagram.com/mr_value_bet/'}><InstagramIcon fontSize={'large'}/></a>
+                            <a target="_blank" rel="noopener noreferrer" href={'https://www.instagram.com/mr_value_bet/'}>
+                                <InstagramIcon fontSize={'large'}/>
+                            </a>
                         </SocialNetwork>
                     </Container>
                 </Main>
