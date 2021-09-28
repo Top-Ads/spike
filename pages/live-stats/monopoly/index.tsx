@@ -315,7 +315,7 @@ export async function getStaticProps() {
         props: {
           statsData: dataStatsResponse.data.stats.stats,
           spinsData: dataSpinsResponse.data.latestSpins,
-          bonusData: await getBonuses({ limit: PAGE_BONUSES.length, start: 0, names: PAGE_BONUSES }),
+          bonusData: await getBonuses({ names: PAGE_BONUSES, sort: 'rating:desc' }),
           tablesData: dataStatsResponse.data.tables[0]
         }
       }

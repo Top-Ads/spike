@@ -353,7 +353,7 @@ export async function getStaticProps() {
             r.timeOfSpin = r.timeOfSpin - 1000 * 60 * 60 * 2
             return r
           }),
-          bonusData: await getBonuses({ limit: PAGE_BONUSES.length, start: 0, names: PAGE_BONUSES })
+          bonusData: await getBonuses({ names: PAGE_BONUSES, sort: 'rating:desc' })
 
         }
       }

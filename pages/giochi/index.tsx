@@ -426,6 +426,8 @@ const LoadMoreButton = styled.div`
 
 export async function getStaticProps() {
 
+    const PAGE_BONUSES = ["LeoVegas", "StarCasinò", "WinCasino", "NetBet", "King Casino"]
+
     return {
         props: {
                 slotsData: { 
@@ -434,7 +436,7 @@ export async function getStaticProps() {
             },
             giochiSlotsData: await getSlots({ limit: 28, start: 0, sort: 'name:asc' }),
             producersData: await getProducers({ start: 0, sort: 'name:asc' }),
-            freeBonusData: await getBonuses({ limit: 5, start: 5, sort: "updated_at:desc" }),
+            freeBonusData: await getBonuses({ names: PAGE_BONUSES, sort: 'rating:desc'}),
             totalSlots: await getTotalSlots()
         }
     }

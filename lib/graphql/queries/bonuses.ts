@@ -31,7 +31,7 @@ const BONUSES = `
   query bonuses(
       $limit: Int,
       $start: Int, 
-      $names: [String], 
+      $names: [String],
       $sort: String,
       $id: String,
       $slug: String
