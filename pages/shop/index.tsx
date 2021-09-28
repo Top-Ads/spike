@@ -7,7 +7,13 @@ const ShopPage = () => {
     return (
         <Layout title="Shop">
             <Main>
-             Shop Page (still in development)
+                <Iframe 
+                    loading="lazy" 
+                    src="https://casino-squad.com/shop/"
+                    width="1290"
+                    height="2600"
+                    allow="fullscreen"
+                />
             </Main>
         </Layout>
     ) 
@@ -16,8 +22,14 @@ const ShopPage = () => {
 const Main = styled.div`
     display: flex;
     justify-content: center;
-    font-size: xx-large;
-    padding: 30px;
+    width: 100%;
+    background-color: #2B2B2B;
+`
+
+const Iframe = styled.iframe`
+    border: 0;
+    margin: 0;
+    padding: 0;
 `
 
 export default ShopPage

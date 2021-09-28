@@ -47,9 +47,9 @@ const Routes: FunctionComponent = () => {
                 <a><Button className={router.pathname === '/squad' ? 'active' : ''}>Squad</Button></a>
             </Link>
 
-            <a href={'https://casino-squad.com/shop/'}>
-                <Button className={router.pathname === '/shop' ? 'active' : ''}>Shop</Button>
-            </a>
+            <Link href={'/shop'}>
+                <a><Button className={router.pathname === '/shop' ? 'active' : ''}>Shop</Button></a>
+            </Link>
             
             <div className="dropdown" onMouseEnter={() => setShow(true)} onMouseLeave={() => setShow(false)}>
                 <a><Button 
