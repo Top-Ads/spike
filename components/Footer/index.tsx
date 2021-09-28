@@ -35,7 +35,7 @@ const Footer: FunctionComponent = () => {
                     </List>
                     <List>
                         <strong>Social Networks</strong>
-                        <a href="https://discord.gg/eXxhPXWHmY">Dicord</a>
+                        <a href="https://discord.gg/eXxhPXWHmY">Discord</a>
                         <a href="https://www.facebook.com/casinosquad">Facebook</a>
                         <a href="https://www.instagram.com/casino.squad.team/">Instagram</a>
                         <a href="https://t.me/casino_squad">Telegram</a>
