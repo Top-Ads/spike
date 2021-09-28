@@ -49,7 +49,7 @@ const GiochiPage: FunctionComponent<PageProps> = (props) => {
     const listItems:string[] = [SlotFilterList.RTP, SlotFilterList.UPDATED_AT, SlotFilterList.CREATED_AT, SlotFilterList.ALPHABETIC]
 
     const [giochiSlots, setGiochiSlots] = useState<Slot[]>(giochiSlotsData)
-    const [itemSelected, setItemSelected] = useState<string>(SlotFilterList.ALPHABETIC)
+    const [itemSelected, setItemSelected] = useState<string>(SlotFilterList.SHUFFLE)
     const [, setProducerSelected] = useState<string>('')
     const [openDialog, setOpenDialog] = useState<boolean>(false)
 
@@ -340,7 +340,8 @@ const Actions = styled.div`
         flex-grow: 2;
         border: 1px solid ${({theme}) => theme.palette.background};
         border-radius: 5px;
-       
+        height: 35px;
+
         @media ${device.mobileL} {
             margin-bottom: 10px;
         }
@@ -379,7 +380,8 @@ const Actions = styled.div`
         justify-content: flex-end;
         flex-grow: 1;
         z-index: 99;
-        
+        height: 35px;
+
         @media ${device.mobileL} {
             justify-content: space-between;
         }
@@ -390,11 +392,11 @@ const Actions = styled.div`
             align-items: center;
             justify-content: center;
             flex-grow: 0;
-            border-radius: 5px;
-           
+            border-radius: 0px 5px 5px 0px;
             color: #212530;
             background-color: #fff;
             width: 45px;
+            height: inherit;
             cursor: pointer;
     
             &:hover {

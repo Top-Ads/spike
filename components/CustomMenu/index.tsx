@@ -18,19 +18,34 @@ import ExpandMoreIcon from '@material-ui/icons/ExpandMore'
 import ShuffleIcon from '@material-ui/icons/Shuffle'
 import { SlotFilterList } from '../../lib/utils/constants'
 
+
 const useStyles = makeStyles( () =>
   createStyles({
     root: {
       display: 'flex',
+      height: 'inherit',
+      width: '230px'
     },
     itemText: {
         width: '145px',
         color: '#e2b96d'
     },
+    listItemText: {
+      '& span': {
+        fontSize: '0.95rem'
+      }
+    },
     itemIcon: {
         minWidth: '30px',
-        color: '#e2b96d'
+        color: '#e2b96d',
     },
+    menuItem: {
+      height: '40px',
+    },
+    menuList: {
+      width: '230px',
+      marginTop: '1px'
+    }
   }),
 );
 
@@ -101,14 +116,13 @@ const CustomMenu: FunctionComponent<Props> = ({itemSelected, setItemSelected, li
 
   return (
     <div className={classes.root}>
-      <div>
         <Button
           ref={anchorRef}
           aria-controls={open ? 'menu-list-grow' : undefined}
           aria-haspopup="true"
           onClick={handleToggle}
         >
-            <MenuItem>
+            <MenuItem className={classes.menuItem}>
                 <ListItemIcon className={classes.itemIcon}>
                 {renderIconForItem(itemSelected)}
                 </ListItemIcon>
@@ -118,23 +132,23 @@ const CustomMenu: FunctionComponent<Props> = ({itemSelected, setItemSelected, li
             {open ?  <ExpandMoreIcon/> : <ExpandLessIcon/> } 
         </Button>
 
-        <Popper open={open} anchorEl={anchorRef.current} role={undefined} transition disablePortal>
+        <Popper open={open} anchorEl={anchorRef.current} role={undefined} transition disablePortal placement="bottom-start">
           {({ TransitionProps, placement }) => (
             <Grow
               {...TransitionProps}
-              style={{ transformOrigin: placement === 'bottom' ? 'center top' : 'center bottom' }}
+              style={{ transformOrigin: placement === 'bottom' ? 'center top' : 'bottom left' }}
             >
               <Paper>
                 <ClickAwayListener onClickAway={handleClose}>
-                  <MenuList autoFocusItem={open} id="menu-list-grow" onKeyDown={handleListKeyDown}>
+                  <MenuList className={classes.menuList} autoFocusItem={open} id="menu-list-grow" onKeyDown={handleListKeyDown}>
                       
                       {listItems.map( (item, index) => 
-                        <MenuItem key={index} onClick={() => handleSelectedItem(item)}>
-                           <ListItemIcon>
-                               {renderIconForItem(item)}
-                           </ListItemIcon>
-                           <ListItemText primary={`${item.charAt(0).toUpperCase()}${item.slice(1)}`} />
-                       </MenuItem>
+                      <MenuItem key={index} onClick={() => handleSelectedItem(item)}>
+                          <ListItemIcon className={classes.itemIcon}>
+                              {renderIconForItem(item)}
+                          </ListItemIcon>
+                          <ListItemText className={classes.listItemText} primary={`${item.charAt(0).toUpperCase()}${item.slice(1)}`} />
+                      </MenuItem>    
                       )}
 
                   </MenuList>
@@ -144,7 +158,6 @@ const CustomMenu: FunctionComponent<Props> = ({itemSelected, setItemSelected, li
           )}
         </Popper>
       </div>
-    </div>
   );
 }
 
@@ -152,13 +165,14 @@ const Button = styled.div`
     background-color: #fff;
     border: 1px solid ${({theme}) => theme.palette.background};
     color: ${({theme}) => theme.text.color.black};
-    border-radius: ${({theme}) => theme.button.borderRadius};
+    border-radius: 5px 0px 0px 5px;
     font-weight: normal;
     cursor: pointer;
     text-transform: uppercase;
     margin: auto 0;
     display: flex;
     align-items: center;
+    height: inherit;
 `
 
 export default CustomMenu
