@@ -14,13 +14,16 @@ export const SlotProps = `
     winningSpinFrequency
     volatility
     playLink
+    theme
+    type
+    maxLines
+    gameMode
     linkYoutube
     videoDescription
     name
     rating
     tips
     slug
-    type
     producer {
       id
       name
