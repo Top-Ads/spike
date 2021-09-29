@@ -10,7 +10,7 @@ const ShopPage = () => {
                 <Iframe 
                     loading="lazy" 
                     src="https://casino-squad.com/shop/"
-                    width="1290"
+                    width="100%"
                     height="2600"
                     allow="fullscreen"
                 />
