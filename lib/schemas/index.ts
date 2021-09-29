@@ -81,8 +81,10 @@ export interface Slot {
     updated_at: Date
     description: string
     rtp: number
+    maxLines: number
     winningSpinFrequency: number
     volatility: string
+    gameMode: string
     playLink: string
     linkYoutube: string
     videoDescription: string
@@ -91,6 +93,7 @@ export interface Slot {
     tips: string
     slug: string
     type: SlotType
+    theme: string
     producer: Producer
     mainBonus: Bonus
     bonuses: [Bonus]

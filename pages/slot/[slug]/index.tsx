@@ -234,7 +234,23 @@ const SlotPage: FunctionComponent<PageProps> = ({data}) => {
                                                 </div>
                                             }
                                         </td>
+
+                                        <td>
+                                            { data?.maxLines && 
+                                                <div>
+                                                    <span className="label">MAXLINES
+                                                        <Tooltip 
+                                                            title={'Maximum Lines'} 
+                                                            classes={{ tooltip: classes.tooltip }} 
+                                                            TransitionComponent={Zoom}
+                                                            children={<InfoIcon className={classes.icon}/> }/>
+                                                    </span>
+                                                    <span className="value">{data.maxLines}</span> 
+                                                </div>
+                                            }
+                                        </td>
                                     </tr> 
+
                                 </tbody>  
                                 </InfoTable>
 
@@ -253,7 +269,7 @@ const SlotPage: FunctionComponent<PageProps> = ({data}) => {
                                 { mainBonus && <MainBonusCard data={mainBonus}/> }
                             
                                 <RelatedBonuses>
-                                    { data.bonuses && (data.bonuses.slice(0,2)).map( (bonus: Bonus) => <FreeBonusCard data={bonus}/> ) }
+                                    { data.bonuses && (data.bonuses.slice(0,2)).map( (bonus: Bonus, index: number) => <FreeBonusCard key={index} data={bonus}/> ) }
                                 </RelatedBonuses>
                             </div>
 
