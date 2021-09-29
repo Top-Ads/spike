@@ -22,7 +22,7 @@ type PageProps = {
   slotsData: ThemeSlot
   freeBonusData: Bonus []
   topBonusData: Bonus []
-  allBonusData: Bonus []
+  mainBonusData: Bonus []
   totalSlots: number
   totalBonuses: number
   totalProducers: number
@@ -30,7 +30,7 @@ type PageProps = {
 
 const IndexPage: FunctionComponent<PageProps> = (props) => {
 
-  const {slotsData, freeBonusData, topBonusData, allBonusData, totalSlots, totalBonuses, totalProducers} = props
+  const {slotsData, freeBonusData, topBonusData, mainBonusData, totalSlots, totalBonuses, totalProducers} = props
 
   const router = useRouter()
 
@@ -131,13 +131,13 @@ const IndexPage: FunctionComponent<PageProps> = (props) => {
               un'occhiata a questa comparazione dei migliori Bonus disponibili al momento:</p>
 
             <div className="bonus-table">
-              <BonusTable data={allBonusData}/>
+              <BonusTable data={mainBonusData}/>
             </div>
 
             <div className="bonus-cards">
               <GridLayout
                 gridType={GridType.BONUS}
-                content={ allBonusData.map( (bonus) => 
+                content={ mainBonusData.map( (bonus) => 
                     <BonusCard key={bonus.id} data={bonus}/>
                    )}
                 AlignItem={"center"}
@@ -282,6 +282,21 @@ const CasinoInfo = styled.div`
 `
 
 export async function getStaticProps() {
+
+  const PAGE_BONUSES =  [
+    "LeoVegas",
+    "StarCasinò",
+    "WinCasino",
+    "NetBet",
+    "GoldBet",
+    "888 Casino",
+    "King Casino",
+    "Eurobet",
+    "Betway",
+    "Gioco Digitale",
+    "Bwin",
+    "Slot Yes"]
+
   return {
     props: {
       slotsData: {
@@ -290,7 +305,7 @@ export async function getStaticProps() {
       },
       topBonusData:  await getBonuses({ limit: 3, start: 0, sort: "rating:desc" }),
       freeBonusData: await getBonuses({ limit: 10, start: 0, sort: "updated_at:desc" }),
-      allBonusData: await getBonuses({ limit: 15, start: 3 }),
+      mainBonusData: await getBonuses({ names: PAGE_BONUSES, sort: "updated_at:desc" }),
       totalSlots: await getTotalSlots(),
       totalBonuses: await getTotalBonuses(),
       totalProducers: await getTotalProducers()
