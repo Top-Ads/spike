@@ -40,14 +40,13 @@ const Footer: FunctionComponent = () => {
 
                     <List>
                         <strong>informazioni</strong>
-                        <a>About</a>
                         <Link href={'/squad'}>
                             <a>Team</a>
                         </Link>
                         <Link href={'/shop'}>
                             <a>Shop</a>
                         </Link>
-                        <a>Politica Della Privatezza</a>
+                        <a>Informativa sulla privacy</a>
                         <a>Sitemap</a>
                         <a href="mailto: info@casinosquad.com">Email</a>
                     </List>
