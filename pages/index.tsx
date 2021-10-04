@@ -11,7 +11,7 @@ import SlotCard from '../components/Cards/SlotCard'
 import BonusCard from '../components/Cards/BonusCard'
 import BonusTable from '../components/Tables/BonusTable'
 import { GridType, SlotType } from '../lib/utils/constants'
-import Article from '../components/Article'
+import HomeArticle from '../components/Articles/Home'
 import { Bonus, ThemeSlot, Slot } from '../lib/schemas'
 import { getBonuses } from '../lib/graphql/queries/bonuses'
 import { getSlots } from '../lib/graphql/queries/slots'
@@ -165,7 +165,7 @@ const IndexPage: FunctionComponent<PageProps> = (props) => {
 
       <div className="layout-container">
         <Section>
-          <Article data={freeBonusData}/>
+          <HomeArticle data={freeBonusData}/>
         </Section>
       </div>
 

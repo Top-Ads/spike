@@ -8,7 +8,7 @@ import { GridType } from '../../lib/utils/constants'
 import BonusCard from '../../components/Cards/BonusCard'
 import FreqentlyAsked from '../../components/FrequentlyAsked'
 import { device } from '../../lib/utils/device'
-import Article from '../../components/Article'
+import HomeArticle from '../../components/Articles/Home'
 import LazyLoad from 'react-lazyload'
 import { Bonus } from '../../lib/schemas'
 import FacebookIcon from '@material-ui/icons/Facebook'
@@ -266,7 +266,7 @@ const SquadPage: FunctionComponent<PageProps> = ({freeBonusData, topBonusData}) 
 
             <div className="layout-container">
                 <Section>
-                    <Article data={freeBonusData}/>
+                    <HomeArticle data={freeBonusData}/>
                 </Section>
              </div>
 

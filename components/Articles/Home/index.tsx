@@ -2,16 +2,17 @@ import React, { FunctionComponent, Fragment} from 'react'
 import LazyLoad from 'react-lazyload'
 import styled from 'styled-components'
 import Image from 'next/image'
-import { device } from '../../lib/utils/device'
-import { CDN } from '../../public/environment'
-import FreeBonusList from '../FreeBonusList'
-import { Bonus } from '../../lib/schemas'
+import { Bonus } from '../../../lib/schemas'
+import { device } from '../../../lib/utils/device'
+import { CDN } from '../../../public/environment'
+import FreeBonusList from '../../FreeBonusList'
+
 
 type Props = {
     data?: Bonus[]
 }
 
-const Article: FunctionComponent<Props> = ({data}) => {
+const HomeArticle: FunctionComponent<Props> = ({data}) => {
     return (
         <Fragment>
             <Main>
@@ -501,4 +502,4 @@ const FreeBonusSection = styled.div`
     }
 `
 
-export default React.memo(Article)
+export default React.memo(HomeArticle)
