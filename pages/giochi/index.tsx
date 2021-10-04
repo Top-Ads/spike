@@ -26,6 +26,7 @@ import { getSlots } from '../../lib/graphql/queries/slots'
 import { debounce } from "lodash"
 import { format } from 'date-fns'
 import { getTotalSlots } from '../../lib/api'
+import Head from 'next/head'
 
 type PageProps = {
     giochiSlotsData: Slot [],
@@ -109,8 +110,13 @@ const GiochiPage: FunctionComponent<PageProps> = (props) => {
     const clear = () => setProducerSelected('')
 
     return (
-        <Layout title="Giochi">
-
+        <Layout title="I migliori Casinò e Slot Machine Online con le nuove offerte Casino Bonus">
+            <Head>
+                <meta 
+                property="og:description" 
+                content="Gioca alle slot machine gratis online reali su Casino Squad! Prova le migliori slot online senza soldi veri e senza scaricare app." 
+                key="description"/>
+            </Head>
             <Header>
                 <Intro>
                     <h2>

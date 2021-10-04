@@ -1,3 +1,4 @@
+import Head from 'next/head'
 import React from 'react'
 import styled from 'styled-components'
 import Layout from '../../components/Layout'
@@ -5,7 +6,13 @@ import Layout from '../../components/Layout'
 const ShopPage = () => { 
     
     return (
-        <Layout title="Shop">
+        <Layout title="Acquista nello shop online i gadget di Casino Squad">
+             <Head>
+                <meta 
+                property="og:description" 
+                content="Compra gli autentici gadget di Casino Squad nello shop dedicato in tutta sicurezza al miglior prezzo. Magliette, borse, felpe, porta chiavi: tutto griffato CASINO SQUAD! Consegna a domicilio garantita!" 
+                key="description"/>
+            </Head>
             <Main>
                 <Iframe 
                     loading="lazy" 

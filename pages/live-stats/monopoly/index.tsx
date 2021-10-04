@@ -19,6 +19,7 @@ import { device } from '../../../lib/utils/device'
 import DiceRollTable from '../../../components/Tables/DiceRollTable'
 import { getBonuses } from '../../../lib/graphql/queries/bonuses'
 import { format } from 'date-fns'
+import Head from 'next/head'
 
 type PageProps = {
     statsData: Stat[],
@@ -66,7 +67,15 @@ const MonopolyPage: FunctionComponent<PageProps> = ({statsData, spinsData, bonus
     }, [selected])
 
     return (
-        <Layout title="LiveStats - Monopoly">
+        <Layout title="Statistiche Live Monopoly! scopri qui cosa succede nel Live Game Show">
+
+            <Head>
+                <meta 
+                property="og:description" 
+                content="Trova le Statistiche di MONOPOLY LIVE in tempo reale! Impara come giocare online ed esplora uno dei Giochi Online più popolari del momento!" 
+                key="description"/>
+            </Head>
+
              <div className="layout-container">
 
                 <Header className="intro-header">

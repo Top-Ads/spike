@@ -1,3 +1,4 @@
+import Head from 'next/head'
 import React from 'react'
 import styled from 'styled-components'
 import Layout from '../../components/Layout'
@@ -5,7 +6,13 @@ import Layout from '../../components/Layout'
 const ComparatorPage = () => { 
     
     return (
-        <Layout title="Comparator">
+        <Layout title="I migliori Casinò e Slot Machine Online con le nuove offerte Casino Bonus">
+            <Head>
+                <meta 
+                property="og:description" 
+                content="Scegli tra i migliori giochi online, confronta Bonus di Benvenuto Senza Deposito, promozioni e altre funzionalità utili per vincere. Bonus per i Nuovi Giocatori." 
+                key="description"/>
+            </Head>
             <Main>
                 <Iframe 
                     loading="lazy" 

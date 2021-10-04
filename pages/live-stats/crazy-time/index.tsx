@@ -19,6 +19,7 @@ import { device } from '../../../lib/utils/device'
 import { mergeWithUpdate } from '../../../lib/utils/mergeWithUpdate'
 import { getBonuses } from '../../../lib/graphql/queries/bonuses'
 import { format } from 'date-fns'
+import Head from 'next/head'
 
 type PageProps = {
     statsData: Stat[],
@@ -69,7 +70,15 @@ const CrazyTimePage: FunctionComponent<PageProps> = ({statsData, spinsData, bonu
     }, [timeFrame])
 
     return (
-        <Layout title="LiveStats - Crazy Time">
+        <Layout title="Statistiche Crazy Time live online game show interattivo e divertente">
+
+            <Head>
+                <meta 
+                property="og:description" 
+                content="Segui in tempo reale le statistiche della ruota di Crazy Time: controlla tutte le statistiche live, per scegliere i tuoi numeri vincenti e scopri gli incredibili BONUS!" 
+                key="description"/>
+            </Head>
+
              <div className="layout-container">
 
                 <Header className="intro-header">

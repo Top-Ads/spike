@@ -19,6 +19,7 @@ import { mergeWithUpdate } from '../../../lib/utils/mergeWithUpdate'
 import LazyLoad from 'react-lazyload'
 import { getBonuses } from '../../../lib/graphql/queries/bonuses'
 import { format } from 'date-fns'
+import Head from 'next/head'
 
 type PageProps = {
     statsData: Stat[],
@@ -71,7 +72,14 @@ const DreamCatcherPage: FunctionComponent<PageProps> = ({statsData, spinsData, b
     }, [selected])
 
     return (
-        <Layout title="LiveStats - Dream Catcher">
+        <Layout title="Risultati live della ruota di Dream Catcher | Estrazioni gioco casino">
+            <Head>
+                <meta 
+                property="og:description" 
+                content="Scegli la puntata migliore, analizzando i dati e risultati della ruota di Dream Catcher. Esplora il gioco Live online e divertiti con la ruota della fortuna: puoi giocare anche con soldi veri." 
+                key="description"/>
+            </Head>
+
              <div className="layout-container">
 
                 <Header className="intro-header">

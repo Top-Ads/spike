@@ -1,4 +1,5 @@
 import React, { FunctionComponent } from 'react'
+import Head from 'next/head'
 import Image from 'next/image'
 import { useRouter } from 'next/router'
 import styled from 'styled-components'
@@ -37,7 +38,14 @@ const IndexPage: FunctionComponent<PageProps> = (props) => {
   const { newest, online } = slotsData
  
   return (
-    <Layout title="Home">
+    <Layout title="Gioca alle Slot Machine Online, Casino con Bonus di Benvenuto">
+
+      <Head>
+        <meta 
+        property="og:description" 
+        content="Su Casino Squad puoi scommettere ai migliori giochi di Casinò Online sfruttando le nostre promozioni e i Bonus di Benvenuto Esclusive. Prova Ora Gratis" 
+        key="description"/>
+      </Head>
 
       <HeaderContainer>
           <div className="welcome">

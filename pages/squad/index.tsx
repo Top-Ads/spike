@@ -23,7 +23,7 @@ type PageProps = {
 const SquadPage: FunctionComponent<PageProps> = ({freeBonusData, topBonusData}) => {
         
     return (
-        <Layout title="Squad">
+        <Layout title="Team Squad">
             <div className="layout-container">
                 <Main>
                     <Container>
