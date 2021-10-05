@@ -55,8 +55,8 @@ const BonusCard: FunctionComponent<Props> = ({data}) => {
         
                 <BonusBody>
                     <div className="bonus"> 
-                        <div className="label">BONUS DI BENVENUTO</div>
-                        <div className="info" dangerouslySetInnerHTML={{__html: String(data.description.replace("+", "<br/>"))}}/> 
+                        <div className="label">BONUS CON DEPOSITO</div>
+                        <div className="info" dangerouslySetInnerHTML={{__html: String(data.withDeposit.replace("+", "<br/>"))}}/> 
                     </div>
 
                     <div className="bonus">

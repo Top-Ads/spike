@@ -94,8 +94,8 @@ const BonusTable: FunctionComponent<Props> = ({data}) => {
             <StyledTableCell align="center">#</StyledTableCell>
             <StyledTableCell align="left">Casinò</StyledTableCell>
             <StyledTableCell align="left">Valutazione</StyledTableCell>
+            <StyledTableCell align="left">Bonus Con Deposito</StyledTableCell>
             <StyledTableCell align="left">Bonus Senza Deposito</StyledTableCell>
-            <StyledTableCell align="left">Bonus di Benvenuto</StyledTableCell>
             <StyledTableCell align="center">Licenza</StyledTableCell>
             <StyledTableCell align="left"></StyledTableCell>
           </TableRow>
@@ -129,24 +129,23 @@ const BonusTable: FunctionComponent<Props> = ({data}) => {
                   
                 </StyledTableCell>
 
-                <StyledTableCell align="left" dangerouslySetInnerHTML={{__html: String(replaceAll(row.noDeposit, "+", "<br/>"))}}/>
+                <StyledTableCell align="left" dangerouslySetInnerHTML={{__html: String(replaceAll(row.withDeposit, "+", "<br/>"))}}/>
 
                 <StyledTableCell align="left">
                   <div className="cell-description">
-                    <div dangerouslySetInnerHTML={{__html: String(replaceAll(row.description, "+", "<br/>"))}}/>
+                    <div dangerouslySetInnerHTML={{__html: String(replaceAll(row.noDeposit, "+", "<br/>"))}}/>
 
                     { row.tips && 
                       <Tooltip 
                         title={row.tips} 
                         classes={{ tooltip: classes.tooltip }} 
                         TransitionComponent={Zoom}
-                        children={<InfoIcon className={classes.icon}/> }/>
+                        children={<InfoIcon className={classes.icon}/>}/>
                     }
                     
                   </div>
                 </StyledTableCell>
 
-                
                 <StyledTableCell align="center">
                   <LicenceContainer>
                       <div className="licence-icon">
