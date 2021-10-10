@@ -23,7 +23,7 @@ const CasinoCounter: FunctionComponent<Props> = ({totalSlots, totalBonuses}) => 
                 </li> */}
 
                 <li>
-                    <span className="type">Offerte di Benvenuto</span>
+                    <span className="type">Bonus di Benvenuto</span>
                     <span className="total">{totalBonuses}</span>
                 </li>
             </ul>

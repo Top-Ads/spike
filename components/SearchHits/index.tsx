@@ -35,6 +35,8 @@ const SearchHits: FunctionComponent<Props> = ({data, mouseOnHit, searchReviewNam
 
         if (type === 'slot') 
             router.push({ pathname: '/slot/[slug]', query: { slug: slug } })
+        else if (type === 'producer') 
+            router.push({ pathname: '/software/[slug]', query: { slug: slug } })
         else 
             link && router.push(link)
     }
@@ -112,7 +114,7 @@ const Container = styled.div<ContainerProp>`
     align-items: center;
     padding: 10px 5px;
     border-top: 1px solid ${({theme}) => theme.palette.background};
-    cursor: ${({hasLink}) => hasLink ? 'pointer' : 'not-allowed' };
+    cursor: pointer;
     background-color: ${({highlight}) => highlight ? 'rgba(0, 0, 0, 0.1)' : 'none' };
 
     &:hover {

@@ -62,7 +62,9 @@ export interface Producer {
     name: string
     website: string
     description: string
-    image: [any]
+    image: [{
+        url: string
+    }]
     slug: string
     bottomArticle?: string
 }
