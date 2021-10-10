@@ -8,7 +8,7 @@ type Props = {
    totalProducers: number
 };
 
-const CasinoCounter: FunctionComponent<Props> = ({totalSlots, totalBonuses, totalProducers}) => {
+const CasinoCounter: FunctionComponent<Props> = ({totalSlots, totalBonuses}) => {
     return (
         <Main>
             <ul>
@@ -17,13 +17,13 @@ const CasinoCounter: FunctionComponent<Props> = ({totalSlots, totalBonuses, tota
                     <span className="total">{totalSlots}</span>
                 </li>
 
-                <li>
-                    <span className="type">Casinos</span>
+                {/* <li>
+                    <span className="type">Casinos in Fornitori</span>
                     <span className="total">{totalProducers}</span>
-                </li>
+                </li> */}
 
                 <li>
-                    <span className="type">Bonuses</span>
+                    <span className="type">Offerte di Benvenuto</span>
                     <span className="total">{totalBonuses}</span>
                 </li>
             </ul>

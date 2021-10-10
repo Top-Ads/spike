@@ -18,7 +18,7 @@ const StartGame: FunctionComponent<Props> = ({data, triggerGame}) => {
             <h3>by {data.producer.name}</h3>
 
             <LegalText>
-                By clicking on Start the Game, you confirm that you are at least 18 years old.
+                Cliccando su Avvia il Gioco, confermi di avere almeno 18 anni.
             </LegalText>
 
             <Button onClick={ () => triggerGame()}>
