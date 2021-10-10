@@ -44,21 +44,18 @@ const SquadPage: FunctionComponent<PageProps> = ({freeBonusData, topBonusData}) 
                                 </Thumbnail> 
 
                                 <p>
-                                    Ciao ragazzi, io sono Lucky e da qualche tempo ho guadagnato il soprannome di Lucky il fortunato,
-                                    o meglio ancora il fortu-dado. Nella vita sono un autista di bus e lavoro nel settore del turismo,
-                                    come hobby sono un ballerino da più di 10 anni e m occupo anche di videomaking. Vado d’accordo con tutto
-                                    il resto della Squad, tranne che con Chily… scherzi a parte, siamo molto amici, solo che lui è un tipo
-                                    molto scaramantico mentre io mi affido totalmente alla fortuna. Adoro i dadi e qualunque gioco li comprenda;
-                                    mi piace il <strong>Monopoly Live</strong>ed il Crazy Time, ho un feeling particolare con le slots a tema egizio.
-                                    Le mie vincite più interessanti sono state alla <strong>Sweet Bonanza</strong>, al <strong>Monopoly Live</strong>e alla
-                                    <strong>Lightning Dice</strong>;
-                                    sul canale YouTube trovate il resto.
-                                    <br/><br/>
-                                    Il mio: “<strong>Sono veramente egizio</strong>” è diventato un detto conosciuto ai più, ed inserito anche dalla
-                                    Crusca in tutti i dizionari della lingua italiana.
-                                    <br/><br/>
-                                    Sono un tipo pazzerello e non mi tiro mai indietro se mi viene chiesto dai followers di cantare o ballare.
-                                    Bella raga, ci si vede in live.
+                                Ciao ragazzi! Io sono Lucky e vi dirò di più: da qualche tempo ho guadagnato il soprannome di Lucky il fortunato - o meglio ancora il fortu-dado!
+                                Nella vita di tutti i giorni sono un autista di bus e lavoro nel settore del turismo. Fra i miei hobby ci sono ballare e il videomaking, del quale mi occupo da più di 10 anni.
+                                Sono un tipo pacifico e vado d’accordo con tutto il resto della Squad - a parte Chily!
+                                Ovviamente scherzo, siamo un buon team e tutti davvero amici. 
+                                Tuttavia, lui è un tipo molto scaramantico, mentre io mi affido totalmente alla fortuna! Come forse avrete capito, adoro i dadi e qualunque gioco li comprenda.
+                                Fra i miei giochi da casinò preferiti ci sono i live game Show come Monopoly Live e Crazy Time.
+                                Ma sono anche appassionato di slot digitali, infatti ho un feeling particolare con le slot machine a tema egizio.
+                                In effetti, ho realizzato le mie vincite più interessanti alla slot online Sweet Bonanza; al Monopoly Live ed alla slot machine Lightning Dice. 
+                                La mia frase: “Sono veramente egizio” è diventato celebre fra il pubblico di videogiocatori e inserito anche dall’Accademia della Crusca in tutti i dizionari della lingua italiana!
+                                Venite a trovarmi sul canale YouTube: troverete tanti video interessanti!
+                                Sono un tipo pazzerello e non mi tiro mai indietro davanti alle richieste dei follower: che sia ballare o cantare, io ci sono! Bella raga! ci si vede in live.
+
                                 </p>
                             </div>   
                         </Profile>
@@ -83,19 +80,19 @@ const SquadPage: FunctionComponent<PageProps> = ({freeBonusData, topBonusData}) 
                                 </Thumbnail> 
 
                                 <p>
-                                    Avete mai sentito parlare di un peperoncino rosso che gioca alle slots? Ebbene sì,
-                                    esiste e si chiama Chily. Le mie giornate sono in parte occupate dalla mia impresa di produzione
-                                    di marmi e da divertentissime lezioni di fisica agli studenti, ma trovo del tempo per divertirvi 
-                                    insieme a voi col casinò online. Quando sono live, faccio sempre un salto alla Honey Rush, Legacy of Dead, 
-                                    ed ultimamente ho scoperto di essermi innamorato alla follia della Pillars of Asgard… chissà perché!
-                                    <br/><br/>
-                                    Le vincite più belle in assoluto sono state durante le sessioni alla <strong><strong>Rise of the Mountain King</strong></strong>e alla
-                                    <strong>Pillars of Asgard</strong>. Non avendo la fortuna di Lucky, posso dire di lottare sempre contro la sfortuna.
-                                    <br/><br/>
-                                    Per alimentare le mie chance di vittoria, mangio sempre qualche peperoncino piccantissimo (ci sono clip che lo testimoniano). 
-                                    Ogni volta che sento dire: “Esci che non paga” risponderò con un amplificato: “<strong>Chi ha detto di uscire da qua?</strong>”.
-                                    <br/><br/>
-                                    Ad ogni pagata, tra sedie che volano e signore che sbattono la scopa sono certo che non potrete fare a meno di me. Vi aspetto!
+                                Ciao a tutti! Avete mai sentito parlare di un peperoncino rosso che gioca alle slot machine? 
+                                No? Esiste eccome e sono io: mi chiamo Chily!
+                                Passo le giornate occupando il tempo fra la mia impresa di produzione di marmi e divertentissime lezioni di fisica agli studenti, ma trovo sempre il modo per divertirmi insieme a voi!
+                                Amo giocare e provare i tanti giochi dei casinò online. 
+                                Durante le mie live, mi piace provare le migliori slot in modalità online e giocare alla slot digitale Honey Rush e alla slot online Legacy of Dead. 
+                                Dimenticavo: ultimamente ho scoperto di essermi innamorato alla follia della slot online Pillars of Asgard della SG Gaming con il mitico Odino: chissà perché!
+                                Durante le sessioni di gioco alla slot online Pillars of Asgard e alla slot digitale Rise of the Mountain King, ho ottenuto le vincite più gloriose in assoluto!
+                                Purtroppo non ho la fortuna di Lucky, anzi, devo sempre lottare contro la sfortuna e ho un mio metodo personale!
+                                Infatti, per incrementare le mie chance di vittoria, mangio sempre qualche peperoncino piccantissimo. 
+                                Non ci credete? Ebbene, ci sono clip che lo testimoniano!
+                                Ogni volta che mi sento dire: “Esci che non paga” risponderò con la mia tenacia, dicendo: “Chi ha detto di uscire da qua”?
+                                Ad ogni pagata, tra sedie che volano e signore che sbattono la scopa, sono certo che non potrete fare a meno di me. Vi aspetto!
+
                                 </p>
                             </div>
 
@@ -113,7 +110,7 @@ const SquadPage: FunctionComponent<PageProps> = ({freeBonusData, topBonusData}) 
 
                     <Container>
                         <Profile>
-                            <Name>MR J</Name>
+                            <Name>Squad MR J</Name>
 
                             <div>
                                 <Thumbnail>
@@ -129,21 +126,21 @@ const SquadPage: FunctionComponent<PageProps> = ({freeBonusData, topBonusData}) 
                                 </Thumbnail>
 
                                 <p>
-                                    Fra di voi ci sarà sicuramente qualche appassionato de “La casa de Papel”… ecco Mister J
-                                    è un punto di riferimento per Chily & co. così come El Profesor lo è per i vari Tokyo, Rio, ecc.
-                                    <br/><br/>
-                                    Molti lo accostano anche ad Alan di “2 uomini e 1/2”
-                                    <br/><br/>
-                                    Mi occupo della gestione e cura degli eventi, di qualsiasi tipo (discoteche, concerti… quando si poteva fare). 
-                                    Posseggo vari e-commerce e ho lanciato vari brand da prodotti per la prima infanzia a ritratti realistici e stilizzati.
-                                    <br/><br/>
-                                    Non ho una slot preferita, ma se dovessi scegliere, vi direi Vinci la Gallina, sfidare il lupo mi dà una carica
-                                    di adrenalina pazzesca. Fra le mie sessioni di gioco, ricordo con piacere i 100.000€ PRESI a <strong>Vinci la gallina</strong>, 
-                                    altre vincite con Pitbull alla <strong>Legacy of Dead</strong>, con Lucky alla <strong>Sweet Bonanza</strong> ed insieme a Chily… sono sicuro che presto sbancherò con Mr. Value.
-                                    <br/><br/>
-                                    Sono stato accostato alla figura centrale della serie tv spagnola, non è un caso che anche io abbia sempre pronto un piano, 
-                                    in questo caso una telefonata in diretta, per far sbancare il resto della Squad. Quando qualcuno ha da dire sulle mie giocate, 
-                                    io risponderò con un secco: “<strong>I’m mister J, shhh</strong>”. E non imitatemi… non fatelo a casa!
+                                Fra di voi ci sarà sicuramente qualche appassionato de “La casa de Papel”: ebbene, io sono il “Professore” del team Squad.  
+
+                                Infatti, Mister J sta alla Squad come el Profesor sta a Tokyo, Berlino, Rio, etc. e sono in molti ad accostarmi anche ad Alan di “2 uomini e 1/2”!
+
+                                Nella vita mi occupo della gestione e della cura degli eventi di qualsiasi tipo: dalle discoteche ai concerti. Ovviamente, questo periodo è stato un po’ complesso a causa della pandemia.
+                                Posseggo vari e-commerce e ho lanciato diversi brand: da prodotti per la prima infanzia, a ritratti realistici e stilizzati.
+                                Sinceramente, non ho una slot machine preferita. Diciamo che se dovessi scegliere, opterei per Vinci la Gallina: un gioco online che mi ha fatto ottenere la cospicua vincita di 100.000€!
+                                In più, sfidare il lupo mi dà una carica di adrenalina pazzesca!
+                                Altre vincite da menzionare, le ho realizzate assieme a Pitbull alla slot machine Legacy of Dead; ma anche con Lucky e Chily alla slot digitale Sweet Bonanza.
+                                Sono sicuro che presto sbancherò con Mr. Value!
+                                Come vi dicevo, sono stato accostato piacevolmente alla figura centrale della serie tv spagnola.
+                                In effetti, non è un caso che anche io abbia sempre pronto un piano - in questo caso una telefonata in diretta - per far sbancare il resto della Squad!
+                                Quando qualcuno ha da dire sulle mie giocate, io risponderò con un secco: “I am mister J, shhh”. 
+                                E non imitatemi… non fatelo a casa!
+
                                 </p>
                             </div> 
                         </Profile>
@@ -173,16 +170,17 @@ const SquadPage: FunctionComponent<PageProps> = ({freeBonusData, topBonusData}) 
                                 </Thumbnail> 
 
                                 <p>
-                                    Attenti a non farmi arrabbiare perché … io sono Pitbull! Il mio nome deriva dal fatto che possiedo le
-                                    dell’omonimo cane. La forza, insieme alla tenacia mi hanno permesso di ottenere un sacco di
-                                    soddisfazioni in ambito lavorativo, infatti, sono occupato su più fronti fra cui il turismo,
-                                    il settore dell’abbigliamento e… vorrei coronare il sogno di diventare pilota d’aereo. Gioco spesso a
-                                    qualsiasi tipo di Book, alla Reactoonz ed al Monopoly Live e al Blackjack. Ho dei bellissimi ricordi anche
-                                    con la <strong>White Rabbit</strong>, la <strong>Moon Princess</strong> ecc… fortunato sì, ma so gestire maniacalmente il bet.
-                                    <br/><br/>
-                                    Si narra che le mie numerose vincite siano stato accompagnate dalla turbochiappa, che è candidata
-                                    a diventare patrimonio dell’UNESCO. Ogni volta che sento dire: “E che cos’è….” prontamente rispondo: “<strong>LA SCOTECAAA</strong>”.
-                                    Durante le mie migliori vincite sentirete sempre: “<strong>VAMONOOOS</strong>”
+                                Ciao sono Pitbull! State attenti a non farmi arrabbiare! 
+                                Perché mi chiamo così? Dovete sapere che ho tutte le caratteristiche di questo meraviglioso cane.
+                                Infatti, la forza assieme alla tenacia, mi hanno permesso di ottenere un sacco di soddisfazioni in ambito lavorativo.
+                                Sono occupato su più fronti fra cui il turismo ed il settore dell’abbigliamento, ma uno dei miei sogni più grandi è diventare pilota d’aereo!
+                                Mi piace scoprire tutte le novità dei casinò digitali, sono appassionato della slot online Reactoonz e amo particolarmente il Monopoly Live e il Blackjack. 
+                                Fra i miei ricordi, ce ne sono di bellissimi che hanno come protagonista la slot machine White Rabbit, così come la Moon Princess di Play ‘n Go e altre.
+                                Sono fortunato, ma so gestire scrupolosamente bet e bankroll.
+                                Si narra che le mie numerose vincite siano stato accompagnate dalla “turbochiappa” – una vera e propria candidata a diventare Patrimonio dell’UNESCO. 
+                                Ogni volta che sento dire: “E che cos’è?” prontamente rispondo: “LA SCOTECAAA”. 
+                                Durante le mie migliori vincite sentirete sempre: “VAMONOOOS”
+
                                 </p>
                             </div>
 
@@ -218,17 +216,11 @@ const SquadPage: FunctionComponent<PageProps> = ({freeBonusData, topBonusData}) 
                                 </Thumbnail> 
                                 
                                 <p>
-                                    Salve a tutti, mi presento, sono Mr. Value e mi occupo di forniture di arredo scolastico ed
-                                    urbano in giro per il Mondo. Insieme agli altri ragazzi della Squad, vi farò compagnia quotidianamente
-                                    fra una slot ed un gioco di casinò live. La mia slot preferita è la Book of Dead, anche se preferisco
-                                    di gran lunga i giochi live come Blackjack e Roulette. Personalmente sono ancora alla ricerca della grande
-                                    sbancata, per ora posso ritenermi soddisfatto delle vincite alla <strong>Book of Dead</strong> e al <strong>Monopoly Live</strong>.
-                                    <br/><br/>
-                                    Ogni volta che decido di entrare al Monopoly Live becco sempre il momento in cui sono appena usciti i 4 rolls,
-                                    infatti, è celebre la frase :”Dovevo entrare 2 minuti prima!”
-                                    <br/><br/>
-                                    <strong>Sono un abitante della Papuasia </strong>e gioco al BJ come scusa per cimentare le dealer… ops di più non posso dirvi,
-                                    vi aspetto in live!
+                                Salve a tutti, mi presento: sono Mr. Value!
+                                Mi occupo di forniture di arredo scolastico ed urbano in giro per il mondo. 
+                                Insieme agli altri ragazzi della Squad, vi farò compagnia quotidianamente, fra una slot digitale ed un gioco di casinò live. 
+                                La mia slot machine preferita è la Book of Dead. Tuttavia, preferisco di gran lunga i giochi live come Blackjack e Roulette. 
+                                Personalmente sono ancora alla ricerca della grande sbancata, ma per ora posso ritenermi soddisfatto delle vincite alla slot online Book of Dead e al Monopoly Live.
                                 </p>
                             </div> 
                         </Profile>
