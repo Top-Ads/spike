@@ -24,7 +24,7 @@ const ProducerPage: FunctionComponent<PageProps> = ({producerData, slotsData}) =
 
     return (
         <Layout title={producerData.name}> 
-            <div className="layout-container">
+            <div className="layout-container" style={{ overflowX: 'hidden', width: 'fill-available'}}>
           
                 <Title>SLOT MACHINE E CASINÒ CON SOFTWARE { producerData.name } </Title>
                 
@@ -65,14 +65,14 @@ const ProducerPage: FunctionComponent<PageProps> = ({producerData, slotsData}) =
 
                     <GridContainer>
                         <GridLayout 
-                            gridType={GridType.SLOTS} 
+                            gridType={GridType.GIOCHISLOTS} 
                             content={ slotsData.map( (slot: Slot) => 
                             <Fragment>
                                 <SlotCard key={slot.name} data={slot}/>
                             </Fragment>
                             )}
-                            width={'100%'}
-                            xs={12} sm={3} md={2}
+                            width={'fill-available'}
+                            xs={6} sm={3} md={2}
                         />
                     </GridContainer>
                 </div>
@@ -146,7 +146,13 @@ const GridContainer = styled.div`
     display: flex;
     flex-wrap: wrap;
     color: ${({theme}) => theme.palette.background};
-    width: 95%;
+
+    @media ${device.tablet} {
+        flex-direction: column;
+        flex-wrap: nowrap;
+        overflow-x: scroll;
+        overflow-y: hidden;
+    }
 `
 
 export default ProducerPage
