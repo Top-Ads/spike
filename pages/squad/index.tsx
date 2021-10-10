@@ -18,9 +18,10 @@ import { getBonuses } from '../../lib/graphql/queries/bonuses'
 type PageProps = {
     freeBonusData: Bonus [],
     topBonusData: Bonus [],
+    mainBonusData: Bonus []
   }
   
-const SquadPage: FunctionComponent<PageProps> = ({freeBonusData, topBonusData}) => {
+const SquadPage: FunctionComponent<PageProps> = ({freeBonusData, mainBonusData, topBonusData}) => {
         
     return (
         <Layout title="Team Squad">
@@ -272,7 +273,7 @@ const SquadPage: FunctionComponent<PageProps> = ({freeBonusData, topBonusData}) 
 
             <div className="layout-container">
                 <Section>
-                    <HomeArticle data={freeBonusData}/>
+                    <HomeArticle mainBonuses={mainBonusData} freeBonuses={freeBonusData}/>
                 </Section>
              </div>
 
@@ -354,9 +355,27 @@ const Section = styled.section`
 `
 
 export async function getStaticProps() {
+
+    const MAIN_BONUSES =  [
+        "LeoVegas",
+        "StarCasinò",
+        "WinCasino",
+        "NetBet",
+        "GoldBet",
+    ]
+
+    const FREE_BONUSES =  [
+        "LeoVegas",
+        "StarCasinò",
+        "Starvegas",
+        "Betway",
+        "Slot Yes",
+        "Gioco Digitale"]
+
     return {
       props: {
-        freeBonusData: await getBonuses({ limit: 10, start: 0, sort: "updated_at:desc" }),
+        mainBonusData: await getBonuses({ names: MAIN_BONUSES, sort: "rating:desc" }),
+        freeBonusData: await getBonuses({ names: FREE_BONUSES, sort: "rating:desc" }),
         topBonusData: await getBonuses({ limit: 3, start: 0, sort: "rating:desc" })
       }
     }

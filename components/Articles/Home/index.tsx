@@ -9,17 +9,18 @@ import FreeBonusList from '../../FreeBonusList'
 
 
 type Props = {
-    data?: Bonus[]
+    mainBonuses?: Bonus[]
+    freeBonuses?: Bonus[]
 }
 
-const HomeArticle: FunctionComponent<Props> = ({data}) => {
+const HomeArticle: FunctionComponent<Props> = ({mainBonuses, freeBonuses}) => {
     return (
         <Fragment>
             <Main>
-                {data && 
+                {mainBonuses && freeBonuses && 
                     <FreeBonusSection>
-                        <FreeBonusList data={data.slice(0,5)} label="I MIGLIORI CASINÒ"/>
-                        <FreeBonusList data={data.slice(5,10)} label="I MIGLIORI CASINÒ CON GIRI GRATIS"/>
+                        <FreeBonusList data={mainBonuses} label="I MIGLIORI CASINÒ"/>
+                        <FreeBonusList data={freeBonuses} label="I MIGLIORI CASINÒ CON GIRI GRATIS"/>
                     </FreeBonusSection>
                 }
 
