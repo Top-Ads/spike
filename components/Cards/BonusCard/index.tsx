@@ -75,8 +75,8 @@ const BonusCard: FunctionComponent<Props> = ({data}) => {
                             layout="responsive"
                             quality={50}
                             priority={true}
-                            width={'1141'}
-                            height={'760'}/>
+                            width={1141}
+                            height={760}/>
                     </div>
 
                     <span> Licenza ADM</span>

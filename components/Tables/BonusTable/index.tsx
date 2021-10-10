@@ -117,7 +117,7 @@ const BonusTable: FunctionComponent<Props> = ({data}) => {
                           layout="responsive"
                           priority={true}
                           width={100}
-                          height={'auto'}/>
+                          height={100}/>
                     </LazyLoad>
                   </Thumbnail>
                 </StyledTableCell>
@@ -155,8 +155,8 @@ const BonusTable: FunctionComponent<Props> = ({data}) => {
                               layout="responsive"
                               quality={50}
                               priority={true}
-                              width={'1141'}
-                              height={'760'}/>
+                              width={1141}
+                              height={760}/>
                       </div>
 
                       <span> Licenza ADM</span>

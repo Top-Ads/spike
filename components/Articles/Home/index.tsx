@@ -34,7 +34,7 @@ const HomeArticle: FunctionComponent<Props> = ({data}) => {
                                 layout="responsive"
                                 priority={true}
                                 width={200}
-                                height={'auto'}/>
+                                height={200}/>
                         </LazyLoad>
                     </Thumbnail>
                     <p>
@@ -105,7 +105,7 @@ const HomeArticle: FunctionComponent<Props> = ({data}) => {
                                 priority={true}
                                 quality={50}
                                 width={200}
-                                height={'auto'}/>
+                                height={200}/>
                         </LazyLoad>
                     </Thumbnail>
                     <p>
