@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import React, { FunctionComponent } from 'react'
 import styled from 'styled-components'
 import { device } from '../../lib/utils/device'
@@ -16,16 +17,16 @@ const GiochiFooter: FunctionComponent<Props> = ({totalSlots}) => {
             <Banner>
                 <span className="banner-name">Migliori fornitori</span>
                 <div className="banner-info">
-                    <a>WMG </a>|
-                    <a> Novomatic </a>|
-                    <a> WMS</a>
+                    <Link href={'/producer/wmg'}><a>WMG</a></Link> | 
+                    <Link href={'/producer/novomatic'}><a> Novomatic</a></Link> |
+                    <Link href={'/producer/netent'}><a> NetEnt</a></Link>
                 </div>  
             </Banner>
             <Banner>
                 <span className="banner-name">Disponibile su</span>
                 <div className="banner-info">
-                    <a target="_blank" rel="noopener noreferrer" href="http://record.affiliatelounge.com/_SEA3QA6bJTNajD9O5s8HwmNd7ZgqdRLk/50/"> Starcasino </a>|
-                    <a target="_blank" rel="noopener noreferrer" href="https://spikeslot.com/visita/leo_vegas"> Leovegas </a>|
+                    <a target="_blank" rel="noopener noreferrer" href="http://record.affiliatelounge.com/_SEA3QA6bJTNajD9O5s8HwmNd7ZgqdRLk/50/"> Starcasino </a> |
+                    <a target="_blank" rel="noopener noreferrer" href="https://spikeslot.com/visita/leo_vegas"> Leovegas </a> |
                     <a target="_blank" rel="noopener noreferrer" href="https://mediaserver.entainpartners.com/renderBanner.do?zoneId=2000318"> Gioco Digitale </a>
                 </div> 
             </Banner>	

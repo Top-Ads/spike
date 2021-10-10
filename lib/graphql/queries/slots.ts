@@ -51,7 +51,7 @@ const SLOTS = `
               type_contains: $type_contains,
               slug: $slug,
               producer: {
-                name: $producer
+                slug: $producer
               }
             },
             limit: $limit,

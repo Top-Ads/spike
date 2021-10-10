@@ -93,7 +93,6 @@ const GiochiPage: FunctionComponent<PageProps> = (props) => {
         `${itemSelected.toLowerCase()}:asc` : `${itemSelected.toLowerCase()}:desc`
         
         const data = await getSlots({countryCode: "it", limit:36, start: 0, sort: sortItem})
-        console.log(data) 
         setGiochiSlots(data)
         setItemSelected(itemSelected)
     }

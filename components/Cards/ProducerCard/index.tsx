@@ -18,7 +18,7 @@ const ProducerCard: FunctionComponent<Props> = ({data, setSelected}) => {
     return (
         <Fragment>
             <Main 
-            onClick={() => setSelected(data.name)}
+            onClick={() => setSelected(data.slug)}
             onMouseEnter={() => setShow(true)}
             onMouseLeave={() => setShow(false)}
             onTouchEnd={() => setShow(false)}
