@@ -8,7 +8,7 @@ export const frequentlyAsked: any [] = [
         answer: "Il requisito di scommessa o rollover è il numero di volte per le quali occorre giocare un bonus per farlo diventare bonus reale o denaro reale. Ad esempio, un requisito di scommessa pari a 10x significa che occorre giocare l'importo del bonus per 10 volte prima di poterlo trasformare in denaro reale o ottenere vincite reali giocandolo." 
     },
     { 
-        question: "Cos’è un bonus free spins?", 
+        question: "Cosa è un bonus senza deposito?", 
         answer: "E' un bonus che si ottiene senza il bisogno di depositare. Non tutti i casinò offrono un bonus senza deposito. Il bonus ottenuto non è immediatamente prelevabile, bensì va giocato. Una volta raggiunto il requisito di scommesse richiesto, il bonus senza deposito consente di vincere anche denaro reale, scommettendo ai giochi del casinò." 
     },
     { 
