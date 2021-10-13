@@ -83,9 +83,14 @@ const DreamCatcherPage: FunctionComponent<PageProps> = ({statsData, spinsData, b
              <div className="layout-container">
 
                 <Header className="intro-header">
-                    <h2>Dream Catcher Stat Live: Tutte le Estrazioni in Tempo Reale</h2>
+                    <h2>LiveStats Dream Catcher: Tutte le Estrazioni in Tempo Reale. </h2>
 
                     <Intro>
+                        <p>
+                        Dream Catcher significa “acchiappasogni” e ricorda il famoso amuleto dei nativi americani <br/>
+                        Si tratta di una ruota della fortuna di Evolution Gaming, gioco digitale uscito nel 2017.
+
+                        </p>
                         <Thumbnail>
                                 <LazyLoad height={548} offset={300}>
                                     <Image
@@ -166,108 +171,103 @@ const DreamCatcherPage: FunctionComponent<PageProps> = ({statsData, spinsData, b
                 </Main>
 
                 <Footer>
-                    <p>
-                    <b>Dream Catcher</b> è una sorta di "ruota della fortuna", un gioco uscito nel 2017, progetto di Evolution Gaming,
-                    casa produttrice di successi come <b>Monopoly Live e Crazy Time</b>.
-                    Il suo nome significa "acchiappasogni", rievocando alla mente il famoso amuleto dei nativi americani. E un po' fa sognare, 
-                    bisogna dirlo!
-                    Ci sono modi differenti in cui puoi avvicinarti a questo gioco.
-                    Magari ti piace l'idea di sfruttare i segmenti del moltiplicatore, oppure ami un approccio più cauto.
-                    Di seguito troverai riassunte le migliori strategie per vincere a <b><b>Dream Catcher</b>, guide giochi online</b>, alcuni consigli e le <b>statistiche Dream Catcher</b>.
-                    </p>
-
                     <section>
                         <h3>Cosa è Dream Catcher?</h3>
                         <p>
-                        La <b>Money Wheel</b> di <b>Dream Catcher</b> è un game show che si avvale di un croupier dal vivo.
-                        La regia con l'installazione da studio multi-camera, vanta effetti luminosi e sonori che sottolineano l'azione di gioco.
-                        I giocatori possono così provare un'esperienza di <b>gioco virtuale</b> coinvolgente, 
-                        in cui il l'adrenalina sale, grazie alle riprese da diverse angolazioni dinamiche della telecamera e dei primi piani.
+                        Dream Catcher è una Money Wheel, un game show che si avvale della presenza di un croupier dal vivo.
+                        Vanta una regia da studio multi-camera, con effetti luminosi e sonori a sottolineare l'azione di gioco.
+                        L’esperienza di gioco virtuale è coinvolgente, grazie a riprese da diverse angolazioni in movimento della telecamera e dei primi piani.
+                        Il marchio Evolution Gaming è garanzia di qualità e divertimento, se consideri giochi Live Game Show come Monopoly Live e Crazy Time. 
+                        Puoi approcciarti a questo gioco live in modi differenti: sfruttando i segmenti del moltiplicatore, oppure adottando un approccio più prudente. 
+                        In questa sezione, puoi consultare le migliori strategie per vincere a Dream Catcher. Inoltre, avrai a disposizione un po’ di consigli e le statistiche in tempo reale di Dream Catcher.
+                        Puoi scegliere la puntata migliore, analizzando i dati della ruota di Dream Catcher, così come giocare anche con soldi veri.
+
                         </p>
                     </section>
 
                     <section>
-                        <h3>Strategia per vincere a Dream Catcher sfruttando i segmenti del moltiplicatore</h3>
+                        <h3>Vincere a Dream Catcher utilizzando i segmenti del moltiplicatore</h3>
                         <p>
-                        Si tratta di un metodo per sfruttare i segmenti del moltiplicatore 2x e 7x.
-                        Ad ogni giro, devi piazzare le tue scommesse solo sui segmenti 5, 10, 20 e 40.
-                        In questo modo si riescono a coprire gli spazi più remunerativi.
-                        E se capita un moltiplicatore, avrai una copertura della ruota che ti farà avere potenzialmente grandi vincite.
-                        Una scommessa di 1 euro sulla ruota 40 è di 40 euro da sola. Ma se otterrai il moltiplicatore 7x, 
-                        quel 40x si trasforma in un grande 280x.
-                        Tuttavia, è una strategia un po' rischiosa e non adatta a tutti i giocatori. 
-                        Infatti, chi cerca una strategia di gioco più sicura, apprezzerà di più la seguente strategia.
+                        Una strategia di Dream Catcher è quella di sfruttare i segmenti del moltiplicatore 2x e 7x. 
+                        Ad ogni giro, bisogna puntare solo sui segmenti 5, 10, 20 e 40: così si possono coprire gli spazi più remunerativi. <br/>
+                        Se capita un moltiplicatore, avrai una copertura della ruota che farà avere potenzialmente grandi vincite. <br/>
+                        Per esempio, una puntata di 1 euro sulla ruota 40 è di 40 euro da sola. <br/>
+                        Tuttavia, se ottieni il moltiplicatore 7x, quel 40x si trasforma in un grande 280x. <br/>
+                        La strategia è rischiosa, ma non adatta a tutti i giocatori. Ad ogni modo, ne esistono di più sicure.
+
                         </p>
                     </section>
 
                     <section>
-                        <h3>Strategia per vincere a Dream Catcher Game Show per ottimizzare il bankroll</h3>
+                        <h3>Strategia di ottimizzazione del bankroll a Dream Catcher Game Show </h3>
                         <p>
-                        Nel caso avessi voglia di provare una strategia meno rischiosa per vincere a <b>Dream Catcher Game Show</b>, 
-                        ricorda di scommettere sui segmenti 1, 2 e 20. Considera che ci sono un totale di 54 segmenti sulla ruota del gioco Dream Catcher.
-                        In effetti, questi numeri offrono una maggior copertura della ruota, corrispondente alla possibilità del 74% di vincere ad ogni giro.
-                        È anche una semplice tattica per ottimizzare il tuo bankroll. In effetti, è probabile che il tuo saldo duri molto più a lungo impostando 
-                        il tuo gioco sui segmenti 1, 2, 20.
-                        Tuttavia, non dovrai però aspettarti vincite elevate, a meno che non ottenga una rara vincita di 20.
+                        Vuoi provare una strategia meno rischiosa per vincere a Dream Catcher Game Show?
+                        Allora ricordati di scommettere sui segmenti 1, 2 e 20. <br/>
+                        Infatti, hai un totale di 54 segmenti sulla ruota del gioco Dream Catcher.<br/>
+                        I numeri sopracitati, offrono un’ampia copertura della ruota, ovvero, il 74% di probabilità di vincita ad ogni giro. <br/>
+                        Si tratta di un modo davvero semplice per ottimizzare il tuo bankroll. 
+                        Insomma, è probabile che il tuo saldo duri molto più a lungo, se imposti il tuo gioco sui segmenti 1, 2, 20. 
+
                         </p>
                     </section>
 
                     <section>
-                        <h3>Vuoi vincere alla grande a Dream Catcher?</h3>
+                        <h3>Come realizzare vincite interessanti a Dream Catcher?</h3>
                         <p>
-                        La migliore strategia per vincere cifre interessanti a <b>Dream Catcher</b> è scommettere esclusivamente sul segmento 40.
-                        Infatti, questo segmento ti consentirà di vincere un premio totale di 40 volte.
-                        E questo si accumulerà con il moltiplicatore 7x e 2x per un potenziale redditizio di vincita.
-                        Considera però che il numero 40, ha solo una probabilità dell'1,85% di apparire. Quindi dovrai avere pazienza.
+                        Per provare a realizzare vincite interessanti a Dream Catcher, 
+                        devi scommettere esclusivamente sul segmento 40: è la porzione che ti consentirà di vincere un premio totale di 40 volte. <br/>
+                        Accumulandosi con il moltiplicatore 7x e 2x, potrai ambire ad un potenziale redditizio di vincita. <br/>
+                        Considera che il numero 40, ha la probabilità dell'1,85% di manifestarsi, quindi ci vuole pazienza.
+
                         </p>
                     </section> 
                     
                     <section> 
-                        <h3>E il numero con la più alta probabilità di vincita in Dream Catcher Game Show?</h3>
+                        <h3>Qual è il numero con la più alta probabilità di vincita in Dream Catcher Game Show?</h3>
                         <p>
-                        Devi sapere che il numero con la più alta probabilità di vincita in Dream Catcher è il segmento 1. 
-                        Infatti, il numero 1 ha una probabilità del 42,59% di apparire in qualsiasi giro di gioco.
-                        Puoi anche scegliere di giocare esclusivamente sul numero 1 e vedrai che vincerai molto spesso. Tuttavia, 
-                        non si tratta della miglior opzione per sfruttare i segmenti del moltiplicatore; ma offre comunque un – seppur basso - potenziale di premio.
+                        Il numero con la più elevata probabilità di vincita in Dream Catcher è il segmento 1. <br/>
+                        Infatti, l’1 ha la probabilità del 42,59% di comparire in qualsiasi giro di gioco. <br/>
+                        Se scegli di giocare solo sul numero 1, avrai la possibilità di vincere abbastanza spesso.<br/>
+                        Occorre dire che non si tratta della miglior opzione per sfruttare i segmenti del moltiplicatore, anche se offre un potenziale di premio, seppur ridotto.
+
                         </p>
                     </section>
 
                     <section>
-                        <h3>Riassumendo: qual è il miglior consiglio per giocare a Dream Catcher?</h3>
+                        <h3>Il miglior consiglio di Casino Squad per giocare a Dream Catcher</h3>
                         <p>
-                            Ti consigliamo di provare una strategia che si adatti allo stile di gioco che ti contraddistingue e sia conciliabile con il tuo bankroll.
-                            Se desideri vincere spesso, dovrai scegliere una strategia a basso rischio.
-                            Invece, se giochi per una vincita più rara ma elevata, scommetti tutto sul segmento 40.
+                        Casino Squad ti consiglia di provare una strategia adatta al tuo personale stile di gioco che
+                        sia conciliabile con il tuo bankroll. <br/>
+                        Insomma, se vuoi la possibilità di vincere spesso, dovrai optare per una strategia a basso rischio. <br/>
+                        Invece, se desideri una vincita più rara ma d’importo elevato, punta sul segmento 40.<br/>
+
                         </p>
                     </section>
 
                     <section>
-                        <h3>Qual è la migliore strategia di Dream Catcher?</h3>
+                        <h3>La migliore strategia di Dream Catcher</h3>
                         <p>
-                        Onestamente, la migliore strategia da utilizzare a <b>Dream Catcher</b>, dipende molto dal tuo stile di gioco.
-                        Ricorda che non c'è mai la garanzia di vincere a questo gioco, ma indipendentemente dalla strategia tieni presente 
-                        che è sempre importante giocare prima di tutto per divertirsi e non per vincere.
-                        Quindi cerca di provare un approccio equilibrato che possa sfruttare al meglio, 
-                        tutto ciò che il format di gioco basato sulla ruota della fortuna, Dream Catcher ha da offrire.
+                        Ribadiamo che la migliore strategia da utilizzare a Dream Catcher deve essere in accordo con il tuo stile di gioco. <br/>
+                        La garanzia di vincere a Dream Catcher non è scontata, indipendentemente dalla strategia.<br/>
+                        Tieni presente che il gioco digitale è prima di tutto un divertimento, non un modo per arricchirsi.<br/>
+                        Quindi prova un approccio equilibrato che possa darti al meglio di Dream Catcher!
+
                         </p>
                     </section>
 
                     <section>
-                        <h3>Dove provare il gioco da casinò Dream Catcher?</h3>
+                        <h3>Dove posso giocare a Dream Catcher?</h3>
                         <p>
-                        Per provare in tutta sicurezza Dream Catcher puoi consultare i siti di gioco più sicuri e affidabili in Italia. Qualche esempio?
-                        Prova Dream Catcher su 888 Casino, StarCasino, PokerStars o NetBet.
-                        Si tratta di <b>casinò online</b> che si differenziano perché offrono la possibilità di giocare nuovamente i <b>Bonus di Benvenuto</b> nella sezione Live Casino.
-                        Per questo motivo, si tratta di bonus in maggior misura ottimizzabili, che consentono di giocare più a lungo al tuo live game preferito.
-                        Inoltre, questi <b>casinò online</b>, vantano software maggiormente affidabili e sicuri.
-                        Quindi si tratta di <b>siti di gioco</b> da frequentare con tranquillità, essendo conformi alle normative vigenti.
+                        Puoi provare il gioco live Dream Catcher sui migliori casinò digitali italiani come Dream Catcher su 888 Casino, StarCasino, PokerStars o NetBet. <br/>
+                        Questi casinò online si differenziano perché propongono l’opportunità di giocare nuovamente i Bonus di Benvenuto nella sezione Live Casino. <br/>
+                        Quindi, si tratta di Bonus ottimizzabili, con la possibilità di giocare più a lungo a Dream Catcher.
+                        I migliori casinò digitali offrono software affidabili e sicuri.<br/><br/>
+                        
+                        Ricorda che il gioco da casinò è riservato ad un pubblico maggiorenne e sono predisposti limiti di gioco, sugli importi che puoi gestire. 
+                        Inoltre, ogni tipo di gioco da casinò può causare dipendenza patologica e per questo ti consigliamo di giocare in modo consapevole e responsabile.
+
                         </p>
                     </section>
-
-                    <p>
-                    Ricorda inoltre, che per giocare devi essere maggiorenne ed esistono limiti di gioco sugli importi che puoi movimentare.
-                    Il <b>gioco da casinò</b> può portare alla dipendenza patologica, 
-                    perciò gioca in modo consapevole e responsabile e non giocare mai per recuperare eventuali perdite.</p>
   
                 </Footer>
 

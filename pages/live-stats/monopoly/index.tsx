@@ -79,13 +79,17 @@ const MonopolyPage: FunctionComponent<PageProps> = ({statsData, spinsData, bonus
              <div className="layout-container">
 
                 <Header className="intro-header">
-                    <h2>Monopoly Stat Live: Tutte le Estrazioni in Tempo Reale</h2>
+                    <h2>Monopoly Statistiche Live: Tutte le Estrazioni in Tempo Reale</h2>
 
                     <Intro>
                         <p>
-                            Sono disponibili qui tutte le informazioni e i dati relativi alle estrazioni in tempo reale della ruota del game show di Evolution Gaming.
-                            In questo modo potrai comparare le <strong>probabilità teoriche con i numeri che sono realmente stati estratti,</strong>,
-                            sulla ruota e definire al meglio la tua strategia di gioco, con l'aiuto dei vari dati forniti da tale pagina.
+                        In questa sezione hai a tua disposizione tutte le informazioni e i dati relativi alle 
+                        estrazioni in tempo reale della ruota di Monopoly Live di Evolution Gaming.<br/>
+                        Così, hai la possibilità di confrontare le probabilità teoriche con i valori estratti 
+                        effettivamente nel gioco e predisporre positivamente la tua strategia di gioco.<br/>
+                        Impara a giocare online ed a esplorare uno dei giochi digitali più popolari del momento. 
+                        E scopri le Statistiche di Monopoly Live in tempo reale.
+
                         </p>
 
                         <Thumbnail>
@@ -175,57 +179,47 @@ const MonopolyPage: FunctionComponent<PageProps> = ({statsData, spinsData, bonus
 
                 <Footer>
                     <section>
-                        <h3>Scopri gli ultimi numeri usciti al Monopoly Live</h3>
+                        <h3>Controlla gli ultimi numeri usciti al Monopoly Live</h3>
                         <p>
-                            La famosa ruota ormai presente in molti Casinò Online è uno dei giochi dal vivo più amati dai giocatori,
-                            in quanto rappresenta la versione online del classico gioco da tavolo. <b>Scoprire quindi quali sono gli ultimi numeri usciti</b>, 
-                            può aiutare il giocatore ad essere sempre aggiornato in tempo reale.
-                            Nella parte superiore dello schermo, sulla destra, sarà possibile <b>selezionare l'arco temporale su cui calcolare le statistiche</b>.
-                            Ogni singola casella specifica la probabilità di uscita che viene sempre aggiornata <b>in diretta</b> e il numero di giri 
-                            che intercorre dall'ultima estrazione di ciascun numero oppure 2 rolls, 4 rolls e chance.
-                            Con questo strumento di <b>live tracker Monopoly Live</b> è inoltre possibile visionare il numero 
-                            di volte in cui ciascun numero o roll è stato estratto, insieme al valore correlato dato dalla previsione teorica.
-                            Nella parte inferiore della pagina, invece, è possibile visualizzare informazioni specifiche relative ad ogni singolo
-                            Spin tra cui il numero di giocatori vincenti, il montepremi totale distribuito e il moltiplicatore nel caso della chance,
-                            del 2 rolls o del 4 rolls.
+                        Monopoly Live è uno dei giochi live più amati dal pubblico perché rappresenta la versione digitale del classico gioco da tavolo.
+                        Le informazioni sugli ultimi numeri usciti, aiuta il giocatore ad essere sempre aggiornato in tempo reale! <br/>
+                        In ogni casella puoi visionare la probabilità di uscita, sempre aggiornata in diretta, nonché il numero di giri che passa dall'ultima estrazione di ogni numero, 
+                        oppure 2 rolls, 4 rolls e chance. 
+                        Questo strumento – il live tracker Monopoly Live – consente di visionare il numero di volte in cui ciascun numero o roll è stato estratto, 
+                        assieme al valore correlato dato dalle previsioni teoriche. 
+
                         </p>
                     </section>
 
                     <section>
-                        <h3>Quali sono i vantaggi dei dati mostrati tramite Monopoly Live Stat?</h3>
+                        <h3>Quali vantaggi consentono ai giocatori i dati mostrati nella sezione Monopoly Statistiche Live?</h3>
                         <p>
-                            L'utilità dei dati forniti da tale pagina sta nella possibilità di <b>vedere la differenza</b> tra le previsioni date dalla probabilità teorica
-                            all’andamento effettivo che sta avendo la ruota.
-                            Ogni produttore dichiara il valore medio delle probabilità di uscita di ciascun settore presente sulla ruota ma, qualora uno o più valori
-                            dovessero essere lontani da tale valore medio, <b>sarà molto probabile assistere ad estrazioni che ristabiliranno le probabilità teoriche</b>.
-                            Pur ricordando che<b> non ci sono correlazioni matematiche tra uno spin e l'altro</b>, sarà possibile utilizzare le statistiche qui presenti
-                            per poter definire una propria strategia con la speranza che funzioni sul breve periodo.
-                            Consideriamo un esempio pratico: se stiamo puntando sul 2 rolls, ma ci rendiamo conto che è uscito con la giusta frequenza,
-                            mentre il 4 rolls non esce da vari giri, sarà conveniente considerare di puntare il 4 rolls.
-                            I numeri che non escono da vari giri oppure i rolls potrebbero permette al giocatore di recuperare il proprio Budget, 
-                            anche se bisogna tenere in considerazione che il successo delle scommesse non è mai assicurato.
+                        Questi dati sono vantaggiosi per il giocatore: 
+                        offrono la possibilità di osservare la differenza tra previsioni teoriche e andamento effettivo della ruota Monopoly Live.
+                        In effetti, ciascun produttore esprime il valore medio delle probabilità di uscita di ciascun settore della ruota. <br/>
+                        Tuttavia, se uno o più valori sono lontani dal valore medio, probabilmente assisteremo ad estrazioni in grado di ristabilire le probabilità teoriche. <br/>
+                        Ricordiamo sempre, che non esiste correlazione matematica tra uno spin e l'altro.
+                        Nondimeno, le statistiche possono essere utilizzate per definire la propria personale strategia con la fiducia che possa funzionare, 
+                        almeno sul breve periodo.  <br/>
+                        Facciamo un esempio: se stiamo puntando sul 2 rolls, ma questo è uscito alla giusta frequenza, mentre il 4 rolls non esce da diversi spin, 
+                        conviene considerare di puntare il 4 rolls.  <br/>
+                        Infatti, i numeri che non escono da vari spin, oppure i rolls potrebbero consentire al giocatore di recuperare il Budget. 
+                        Ma ricorda che il successo delle scommesse non è mai certo.
                         </p>
                     </section>
 
                     <section>
-                        <h3>Basta poco per divertirsi a questo classico dei Live Casinò</h3>
+                        <h3>Divertiti con il meglio del Live Casinò</h3>
                         <p>
-                            Tutti gli utenti del sito SPIKE Slot possono <b>usufruire di questo servizio in modo totalmente gratuito</b>, avendo quindi la possibilità di
-                            consultare questa pagina in modo semplice e veloce.
-                            Seguendo il gioco in tempo reale si avrà sempre la possibilità di modificare eventualmente la propria strategia e di provare ad ottimizzare
-                            l'uso del Budget a disposizione.
-                            Bisogna sempre ricordare però che, a lungo termine, qualsiasi tipo di giocata porterà ad una perdita del credito, 
-                            come è possibile intuire dall'RTP di<b> 96.23%</b>.
-                            Per avere ulteriori informazioni potete consultare la nostra <strong> Guida a Monopoly Live</strong>.
-                            Buon divertimento a tutti.
+                        Tutti gli utenti del sito Casino Squad possono sfruttare gratis questo servizio, consultando la sezione dedicata in modo semplice e veloce. <br/>
+                        Con la possibilità di seguire in tempo reale il gioco, potrai sempre modificare la strategia ed – eventualmente - ottimizzare l'uso del Budget a disposizione.<br/> 
+                        Ricordiamo inoltre che – sul lungo termine - qualsiasi tipo di giocata porta a perdere il credito, considerando l'RTP di 96.23%. <br/>
+                        Per tutte le informazioni puoi dare un’occhiata alla nostra Guida di Monopoly Live.<br/><br/>
+
+                        Divertiti con il meglio dei Game Show e ricorda che il gioco è vietato ai minori di 18 anni e può creare dipendenza patologica.
                         </p>
                     </section>
 
-                    <p>  Per avere ulteriori informazioni potete consultare la nostra <strong> Guida a Monopoly Live</strong>.
-                        Buon divertimento a tutti.
-                    </p>
-
-                    <p>Ricordo di giocare responsabilmente, in quanto il gioco è vietato ai minori di 18 anni e può creare dipendenza patologica.</p>
   
                 </Footer>
              </div>

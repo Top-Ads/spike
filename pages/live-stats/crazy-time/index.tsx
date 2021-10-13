@@ -82,16 +82,20 @@ const CrazyTimePage: FunctionComponent<PageProps> = ({statsData, spinsData, bonu
              <div className="layout-container">
 
                 <Header className="intro-header">
-                    <h2>Crazy Time Stat Live: Tutte le Estrazioni in Tempo Reale</h2>
+                    <h2>Statistiche Crazy Time Live: Tutte le Estrazioni in Tempo Reale</h2>
 
                     <Intro>
 
                         <p>
-                            In questa pagina si trovano tutti i <strong>dati sulle estrazioni in diretta live alla ruota della Crazy Time</strong>.
-                            Si possono confrontare le probabilità teoriche rispetto ai valori usciti effettivamente sulla ruota.
-                            Sarà possibile <strong>trovare i numeri ritardatari che rappresentano le migliori opportunità per variare
-                            la strategia di gioco</strong>,
-                            insieme a tanti altri comodi dati che raccontano l'evoluzione della ruota nel tempo.
+                        Benvenuto sulla pagina dedicata alle Statistiche Live di Crazy Time.
+                        Qui puoi seguire in tempo reale le statistiche della ruota di Crazy Time.
+                        Esamina le statistiche live per selezionare i numeri vincenti e scoprire Bonus incredibili”<br/><br/>
+
+                        Hai a disposizione i dati sulle estrazioni in diretta alla ruota della Crazy Time. 
+                        In questa sezione puoi confrontare le probabilità teoriche rispetto ai numeri usciti realmente a questi Game Show.<br/>
+                        Inoltre, hai a disposizione i dati sui numeri ritardatari – la migliore occasione per elaborare la tua strategia di gioco,
+                        oltre a informazioni che raccontano la storia di questo gioco digitale.
+
                         </p>
 
                         <Thumbnail>
@@ -177,68 +181,46 @@ const CrazyTimePage: FunctionComponent<PageProps> = ({statsData, spinsData, bonu
 
                 <Footer>
                     <section>
-                        <h3>Confronta i numeri in ritardo alla Crazy Time</h3>
-                        <p>Crazy Time è il gioco live online che ha spopolato tra i Live Casino Game Show.
-                            In questa pagina si può controllare cosa sta succedendo in diretta nel gioco.
+                        <h3>Consulta i numeri ritardatari della Crazy Time</h3>
+                        <p>
+                        Fra i Live Casino Game Show, la ruota della Crazy Time è di certo il gioco più popolare.
+                        In questa parte puoi dare un’occhiata a ciò che accade in diretta nel gioco. <br/>
+                        In più, è possibile anche visionare il numero di volte in cui si è verificata l’estrazione 
+                        – in considerazione dell’intervallo di tempo scelto del valore della previsione teorica.
 
-                            Cliccando in alto a destra è possibile scegliere l’<b>intervallo di tempo</b> su cui calcolare le statistiche.
-
-                            Su ciascuna casella è indicata la <b>probabilità di uscita</b> che si aggiorna in tempo reale e il 
-                            <b>numero di giri dall’ultima estrazione</b>di quel particolare numero o gioco Bonus. Inoltre, 
-                            sono anche visibili il <b>numero di volte in cui si è verificata l’estrazione (in base all’intervallo di tempo scelto) 
-                            e il valore dato dalla previsione teorica.</b>
-
-                            Nella tabella inferiore è riassunta la storia dettagliata di ciascuno Spin e ci sono disponibili 
-                            anche gli eventuali <b>moltiplicatori</b>, il <b>numero dei giocatori vincenti</b> e il <b>montepremi totale distribuito</b>.
                         </p>
                     </section>
 
                     <section>
-                    <h3>Come avvantaggiarsi dei dati mostrati</h3>
-                        <p>Questi dati possono essere utili perchè comunicano <b>la differenza tra le previsioni
-                            statistiche e l'andamento reale</b>. Sappiamo che i produttori dichiarano il valore medio
-                            delle probabilità di uscita di ciascun settore o feature, ma nelle estrazioni reali sono
-                            contemplati dei discostamenti variabili attorno ai valori attesi.
+                    <h3>Perché questi dati sono utili?</h3>
+                        <p>
+                        Questi dati possono aiutarti perché rivelano la differenza tra previsioni statistiche e ciò che accade nel gioco reale.<br/><br/>
+                        Devi sapere che i produttori dichiarano il valore medio delle probabilità di uscita, 
+                        tuttavia nelle estrazioni reali, si contemplano discostamenti che possono variare intorno ai valori attesi. <br/>
+                        Quindi, se alcuni valori sono particolarmente distanti dal valore medio atteso, 
+                        si può ipotizzare che ci saranno estrazioni tendenti a ristabilire le possibilità teoriche. <br/>
+                        Come abbiamo spesso detto, devi comunque considerare che “la probabilità non ha memoria”. 
+                        Ciò significa che un giro della ruota è indipendente dell’altro.<br/>
+                        Però è possibile utilizzare le informazioni proposte per predisporre le puntate, rispetto alle dinamiche del gioco stesso.
 
-
-                            Come si può immaginare con il giusto buon senso, se alcuni valori sono particolarmente lontanti
-                            dal loro valore medio, sarà plausibile che ci saranno estrazioni che andranno a ristabilire le probabilità teoriche.
-
-                            Anche se bisogna sempre stare <b>attenti perché matematicamente non c'è alcuna correlazione tra un giro
-                            della ruota e l'altro</b>, si possono sfruttare le informazioni riportate per ottimizzare le proprie puntate
-                            in base alle dinamiche del gioco.
-
-                            Facendo un esempio pratico: se stiamo puntando sul Pachinko Bonus, ma ci accorgiamo che è
-                            uscito con la giusta frequenza, mentre il Cash Hunt non è stato estratto da vari giri, 
-                            <b>sarà utile valutare lo spostamento della puntata</b> verso quest'ultimo.
-
-                            I numeri in ritardo o le funzioni, come il Coin Flip Bonus, sono i candidati più appetibili 
-                            che potenzialmente fanno conseguire un recupero del Budget, tenendo sempre a mente che il successo 
-                            delle scommesse non sarà mai garantito.
                         </p>
                     </section>
                     <section>
-                        <h3>Il divertimento alla Crazy Time non è mai stato così semplice</h3>
+                        <h3>Crazy Time: divertimento assicurato!</h3>
 
                         <div>
-                            
-
-                            <p><b>Qualsiasi utente del sito SPIKE Slot può avvantaggiarsi di questo servizio esclusivo
-                                in modo totalmente gratuito</b>. La consultazione è comoda, facile e veloce tramite questa pagina.
-                                Con la valutazione delle probabilità in tempo reale si potrà modificare la propria strategia
-                                di gioco e tentare di <b>ottimizzare l’uso del Budget</b> a disposizione.
-
-                                Si ribadisce ancora una volta, però, che nel lungo periodo qualsiasi tipo di giocata porterà
-                                a una perdita del credito come ci si aspetta dall’RTP pari a <b>96,08%</b>.
-                                Informazioni approfondite in dettaglio su tutte le caratteristiche della 
-                                Crazy Time sono disponibili nella nostra<strong> guida a Crazy Time</strong>.
-
-                                Buon divertimento a tutti alla Crazy Time.
+                            <p>
+                            Qualsiasi utente di Casino Squad, può sfruttare questo servizio esclusivo e totalmente gratis.
+                            La ricerca attraverso questa sezione è immediata, semplice e comoda.<br/>
+                            Avendo la possibilità di valutare in tempo reale le probabilità, 
+                            puoi adattare la tua strategia di gioco e provare l’ottimizzazione del Budget a disposizione. 
+                            Dobbiamo sottolineare che sul lungo periodo, ogni tipo di giocata porta alla perdita del credito, se si considera l’RTP pari a 96,08%. <br/>
+                            Per tutte le informazioni dettagliate e per scoprire tutte le caratteristiche della Crazy Time, consulta la guida al Live Game Show Crazy Time. 
+                            Buon divertimento con la celeberrima ruota della Crazy Time!<br/>
+                            Ricorda di giocare con coscienza e responsabilità, nella consapevolezza che il gioco da casinò può causare dipendenza patologica.
                             </p>
                         </div>
                     </section>
-
-                    <p>Giocate solo <b>responsabilmente</b> sapendo che il gioco d’azzardo può causare <b>dipendenza patologica</b>.</p>
   
                 </Footer>
              </div>
