@@ -279,7 +279,7 @@ const SlotPage: FunctionComponent<PageProps> = ({data}) => {
                 </Main>
 
                 <div className="layout-container">
-                    <h2 style={{textTransform: 'uppercase'}}>ALTRE SLOT {data.producer.name}</h2>
+                    <h2 style={{textTransform: 'uppercase'}}>PLAYNGO {data.producer.name}</h2>
                     <Divider/>
 
                     <GridContainer>
