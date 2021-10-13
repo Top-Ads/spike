@@ -66,6 +66,15 @@ const SquadPage: FunctionComponent<PageProps> = ({freeBonusData, mainBonusData, 
                             </div>   
                         </Profile>
 
+                        <SocialNetwork>
+                            <a target="_blank" rel="noopener noreferrer" href={'https://www.facebook.com/luckyilfortunato'}>
+                                <FacebookIcon fontSize={'large'}/>
+                            </a>
+                            <a target="_blank" rel="noopener noreferrer" href={'https://www.instagram.com/lucky_ilfortunato/'}>
+                                <InstagramIcon fontSize={'large'}/>
+                            </a>
+                        </SocialNetwork>
+
                     </Container>
 
                     <Container>
@@ -109,7 +118,7 @@ const SquadPage: FunctionComponent<PageProps> = ({freeBonusData, mainBonusData, 
                         </Profile>
 
                         <SocialNetwork>
-                            <a target="_blank" rel="noopener noreferrer" href={'https://www.facebook.com/chilyslotinstagram'}>
+                            <a target="_blank" rel="noopener noreferrer" href={'https://www.facebook.com/chilyslot'}>
                                 <FacebookIcon fontSize={'large'}/>
                             </a>
                             <a target="_blank" rel="noopener noreferrer" href={'https://www.instagram.com/chilyslot'}>
