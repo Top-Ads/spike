@@ -49,14 +49,13 @@ const IndexPage: FunctionComponent<PageProps> = (props) => {
 
       <HeaderContainer>
           <div className="welcome">
-            <h1>BENVENUTO SU CASINÓ SQUAD!</h1>
+            <h1>Ti diamo il benvenuto su Casino Squad!</h1>
 
-              <p>Siamo felici di accoglierti e di darti il benvenuto su CASINÓ SQUAD:<br/> 
-              regolato da regolare licenza è uno dei migliori siti di casinò online:</p>
+              <p>Esplora il nostro sito per scoprire:</p>
               <ul>
-                <li>Esplora migliori <b>piattaforme di gioco online</b>.</li>
-                <li>Avere la possibilità di ricevere ogni offerta e i <b>bonus esclusivi</b>.</li>
-                <li>Provare gratis ogni tipo di <b>slot machine.</b></li>
+                <li>Le migliori piattaforme di gioco online;</li>
+                <li>La possibilità di ricevere ogni offerta e i bonus esclusivi;</li>
+                <li>Provare gratis ogni tipo di slot machine.</li>
               </ul>
             <br/>
             <Button onClick={ () => router.push('/giochi')}>
@@ -87,14 +86,18 @@ const IndexPage: FunctionComponent<PageProps> = (props) => {
 
         <Intro>
           <p>
-          Siamo lieti di accoglierti su CASINÓ SQUAD. Siamo un sito in cui troverai consigli e dritte su ogni tipo di slot esistente.<br/>
-          Puoi scegliere la tua <b>slot online</b> preferita, ma anche apprendere i consigli degli esperti ed avere aggiornamenti sulle leggi e norme del settore.<br/>
-          Non hai bisogno di fare alcuna registrazione, né fare download: ti basta consultare il sito e ottenere tantissime info sul <b>gioco d’azzardo</b>, basta
-          consultare le nostre <b>guide video bonus</b>.
-          Ti invitiamo a guardare i video di CASINÓ SQUAD per familiarizzare con il meraviglio mondo dell’intrattenimento del <b>gioco online</b>: 
-          troverai infatti confronti approfonditi fra <b>siti di casinò e piattaforme di scommesse</b>.<br/>
-          In più, se stai cercando informazioni su quale sia il sito più conveniente per giocare alle <b>slot machine online</b>, ti invitiamo a consultare la tabella seguente. 
-          Così tu stesso, potrai fare valutazioni ed essere sempre aggiornato su i <b>migliori bonus disponibili.</b>
+          Siamo lieti di accoglierti su Casino Squad, un casino digitale sul quale troverai consigli e dritte su un’ampia gamma di slot machine e giochi da casinò.
+          Qui potrai esplorare e scegliere la tua slot online preferita, ma anche apprendere consigli e avere aggiornamenti sulle leggi e norme del settore.
+          <br/> <br/>
+          Non avrai bisogno di registrarti o di fare download. Puoi consultare Casino Squad per familiarizzare con il meraviglioso mondo dell’intrattenimento del gioco digitale.
+          Infatti, qui troverai confronti approfonditi fra i diversi casinò online e le migliori piattaforme di scommesse.
+          Ti offriamo la possibilità di essere informato sulle migliori comparazioni fra i diversi casinò digitali. In più, se sei appassionato di Live Casinò e degli ormai celebri Game Show, puoi anche consultare il nostro servizio esclusivo.
+          <br/> <br/>
+          Infatti, su Casino Squad hai la possibilità di avere informazioni in tempo reale delle Statistiche Crazy Time Live, delle Monopoly Statistiche Live, ma anche delle LiveStats di Dream Catcher.
+          <br/> <br/>
+          Inoltre, potrai fare valutazioni ed essere sempre aggiornato su i migliori bonus disponibili. 
+          Ti consigliamo inoltre di dare un'occhiata alle offerte di Benvenuto sulle slot online che trovi sul sito. 
+          Se stai cercando informazioni su quale sia il sito più conveniente per giocare alle slot digitali, ti invitiamo a consultare la tabella seguente.
           </p>
 
         </Intro>
