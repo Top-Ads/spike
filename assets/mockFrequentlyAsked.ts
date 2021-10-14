@@ -1,26 +1,42 @@
 export const frequentlyAsked: any [] = [
     { 
         question: "Dove posso giocare alle slot machine gratis?", 
-        answer: "Puoi giocare alle slot gratis proprio qui, su casinosquad.com! Abbiamo centinaia di giochi disponibili, forniti da decine di provider differenti. Lavoriamo con impegno per rendere il gambling raggiungibile e comprensibile per ciascun utente, perciò tutte le slot gratuite sul nostro sito sono raggruppate per categorie come tipo, tema e funzioni speciali. Ciò significa che puoi cercare qualsiasi slot che ti piace e giocare per divertimento!" 
+        answer: `Puoi giocare alle slot digitali gratis proprio qui su casinosquad.com! 
+        Su Casino Squad puoi trovare centinaia di giochi digitali diversi, forniti dai migliori provider.
+        Ci impegniamo affinché il gambling diventi più facile e comprensibile per neofiti e appassionati.
+        Tutte le slot gratuite sul Casino Squad sono suddivise per categorie come tipo, tematica e funzioni speciali. 
+        Potrai giocarci quanto vuoi, senza limiti di tempo e senza pagare niente. Non dovrai registrarti al sito, né scaricare software.
+        `
     },
     { 
-        question: "Come funzionano i requisiti di scommessa?", 
-        answer: "Il requisito di scommessa o rollover è il numero di volte per le quali occorre giocare un bonus per farlo diventare bonus reale o denaro reale. Ad esempio, un requisito di scommessa pari a 10x significa che occorre giocare l'importo del bonus per 10 volte prima di poterlo trasformare in denaro reale o ottenere vincite reali giocandolo." 
+        question: "Qual è in funzionamento dei requisiti di scommessa?", 
+        answer: `Il rollover – ovvero, requisito di scommessa - corrisponde al numero di volte a cui deve essere giocato un bonus per farlo diventare Bonus reale o soldi veri. 
+        Facendo un esempio, con un requisito di scommessa di 10x, occorre giocare l'importo del Bonus per 10 volte se vogliamo trasformarlo in soldi veri oppure ottenere vincite reali, puntandolo.
+        ` 
     },
     { 
-        question: "Cosa è un bonus senza deposito?", 
-        answer: "E' un bonus che si ottiene senza il bisogno di depositare. Non tutti i casinò offrono un bonus senza deposito. Il bonus ottenuto non è immediatamente prelevabile, bensì va giocato. Una volta raggiunto il requisito di scommesse richiesto, il bonus senza deposito consente di vincere anche denaro reale, scommettendo ai giochi del casinò." 
+        question: "Cosa è un Bonus free spins?", 
+        answer: `Il Bonus freespin è sostanzialmente un bonus giri gratuiti. Si tratta di uno dei migliori Bonus che un giocatore possa ottenere. 
+        Quando ricevi dei giri gratuiti, puoi fare sessioni di gioco appunto gratuitamente.
+        ` 
+    },
+    { 
+        question: "Cosa è un Bonus senza Deposito?", 
+        answer: `Un Bonus senza Deposito è una certa quantità di credito, accreditata sul conto gioco in forma appunto di premio.
+        Questo credito gratuito non è però immediatamente prelevabile. Per avere la possibilità di incassare il Bonus, deve essere giocato. 
+        Solamente quando sarà raggiunto il requisito di scommesse richiesto, il Bonus senza Deposito concede la possibilità di vincere soldi veri, scommettendo ai giochi del casinò.
+        ` 
     },
     { 
         question: "Qual è il miglior casinò online?", 
-        answer: "Uno dei migliori casinò è certamente Starvegas, che oltre ad un'ampia offerta di slot offre un alto bonus senza deposito. Tuttavia, la scelta è soggettiva: alcuni casinò sono migliori per le slot, mentre altri per il gioco live (come ad esempio Starcasinò). Altri casinò, invece, offrono centinaia di slot machine e numerosi provider, come Snai Casinò." 
+        answer: `Dipende anche dai gusti personali. Tuttavia, se parliamo del panorama italiano, i migliori casinò digitali sono Starvegas - sito che spesso offre speciali Bonus senza Deposito - ma anche piattaforme di gioco come Starcasinò. 
+        Snai Casinò per esempio, è ideale per gli appassionati di slot machine, perché nel suo parco ce ne sono centinaia. Altri casinò di qualità sono: Slot Yes, Lottomatica, LeoVegas, 888 Casino e Wincasino.
+        ` 
     },
     { 
-        question: "Cos’è un bonus free spins?", 
-        answer: "Si tratta di un bonus che si compone di giri gratis (free spin, per l'appunto). A volte, i casinò offrono dei giri gratuiti alle slot machine in aggiunta o in alternativa ai bonus senza deposito. Molto spesso, inoltre, vengono offerti bonus free spin in promozioni valide per tutti i clienti." 
-    },
-    { 
-        question: "Quali sono le migliori slot machines?", 
-        answer: "Le migliori slot machine sono quelle che hanno il più alto payout, ovvero che pagano maggiormente. Certo, la grafica e le animazioni sono necessarie per divertirsi, ma occorre sempre equilibrare l'aspetto estetico con quello pratico. Esempi sono Book of Ra Deluxe, Starburst, Age of The Gods." 
+        question: "Quali sono le migliori slot machine?", 
+        answer: `Dipende da tanti fattori ed anche dai tuoi gusti. Ovviamente tema, grafica e animazioni sono una parte importante per il divertimento, ma la migliore slot digitale ha il giusto equilibrio fra aspetto estetico e pratico. 
+        Le migliori slot machine sono quelle che pagano in misura maggiore, ovvero con il payout più elevato. Alcuni esempi sono: Age of The Gods, Book of Ra Deluxe e Starburst.
+        `
     }
 ];
