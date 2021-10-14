@@ -34,7 +34,7 @@ const ProducersTable: FunctionComponent<Props> = ({data, setSelected, setOpenDia
 
                             { index === data.length-1 ? 
                             <Button id="more-provider" onClick={ () => setOpenDialog(true)} style={{borderBottomWidth: 'thick'}} >
-                                <span>MORE PROVIDER +</span>   
+                                <span>MOSTRA ALTRI +</span>   
                             </Button> : '' }
 
                         </LazyLoad>     

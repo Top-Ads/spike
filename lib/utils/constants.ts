@@ -1,6 +1,5 @@
 export enum Category {
-    FAVORITES = 'favorites',
-    SHOPPINGCART = 'shopping cart'
+    FAVORITES = 'favorites'
 }
   
 export enum GridType {
@@ -25,7 +24,7 @@ export enum SlotFilterList {
   UPDATED_AT = 'updated_at',
   CREATED_AT = 'created_at',
   ALPHABETIC = 'name',
-  SHUFFLE = 'shuffle'
+  SHUFFLE = 'Ordina'
 }
 
 export enum LiveStats {

@@ -7,7 +7,6 @@ import Link from 'next/link'
 import { device } from '../../lib/utils/device'
 import SearchIcon from '@material-ui/icons/Search'
 import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder'
-import ShoppingCartOutlinedIcon from '@material-ui/icons/ShoppingCartOutlined'
 import { Category } from '../../lib/utils/constants'
 import FavoriteCard from '../Cards/FavoriteCard'
 import ShoppingCard from '../Cards/ShoppingCard'
@@ -78,10 +77,6 @@ const Header: FunctionComponent<Props> = ({isBrowserView}) => {
           setContentSlider(JSON.parse(currentItem))
         }
       }
-      
-      if (category === Category.SHOPPINGCART) {
-         setContentSlider([])
-      }
     }
   }, [openDialogSlider, category])
 
@@ -106,8 +101,6 @@ const Header: FunctionComponent<Props> = ({isBrowserView}) => {
             <Actions>
               <SearchIcon className="search-icon icons" onClick={() => setOpenSearchDialog(true) }/> 
           
-              <ShoppingCartOutlinedIcon className='icons' onClick={ () => handleDialogSlider(Category.SHOPPINGCART)} />
-
               <FavoriteBorderIcon className='icons' onClick={ () => handleDialogSlider(Category.FAVORITES)} />
               { showNav ? 
                 <CloseIcon className='icons' onClick={handleMenu}/> 
