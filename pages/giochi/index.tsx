@@ -27,6 +27,7 @@ import { debounce } from "lodash"
 import { format } from 'date-fns'
 import { getTotalSlots } from '../../lib/api'
 import Head from 'next/head'
+import { getRandomInt } from '../../lib/utils/getRandomInt'
 
 type PageProps = {
     giochiSlotsData: Slot [],
@@ -47,20 +48,12 @@ const GiochiPage: FunctionComponent<PageProps> = (props) => {
             return producer
     })
 
-    const listItems:string[] = [SlotFilterList.RTP, SlotFilterList.UPDATED_AT, SlotFilterList.CREATED_AT, SlotFilterList.ALPHABETIC]
+    const listItems:string[] = [SlotFilterList.RTP, SlotFilterList.UPDATED_AT, SlotFilterList.CREATED_AT, SlotFilterList.NAME]
 
     const [giochiSlots, setGiochiSlots] = useState<Slot[]>(giochiSlotsData)
     const [itemSelected, setItemSelected] = useState<string>(SlotFilterList.SHUFFLE)
     const [, setProducerSelected] = useState<string>('')
     const [openDialog, setOpenDialog] = useState<boolean>(false)
-
-   
-
-    function getRandomInt(min: number, max: number) {
-        min = Math.ceil(min);
-        max = Math.floor(max);
-        return Math.floor(Math.random() * (max - min) + min); //The maximum is exclusive and the minimum is inclusive
-    }
 
     const loadMore = async () => {
         const moreFreeSlots = await getSlots({countryCode: 'it', limit: 12, start: giochiSlots.length})
@@ -77,7 +70,7 @@ const GiochiPage: FunctionComponent<PageProps> = (props) => {
         setGiochiSlots(shuffleFreeSlots)    
     }
 
-    const handleSearch = debounce( async(text: string) => {
+    const searchSlot = debounce( async(text: string) => {
         clear()
         
         if (text.length >= 2) {
@@ -86,19 +79,21 @@ const GiochiPage: FunctionComponent<PageProps> = (props) => {
             setGiochiSlots(giochiSlotsData)
     },500)
  
-    const handleItemSelected = async (itemSelected: string) => {
+    const filterListSlot = async (itemSelected: SlotFilterList) => {
         clear()
 
-        const sortItem = itemSelected === SlotFilterList.ALPHABETIC ? 
-        `${itemSelected.toLowerCase()}:asc` : `${itemSelected.toLowerCase()}:desc`
+        const keyFilter = Object.keys(SlotFilterList)[Object.values(SlotFilterList).indexOf(itemSelected)]
+
+        const sortItem = keyFilter === "NAME" ? 
+        `${keyFilter.toLowerCase()}:asc` : `${keyFilter.toLowerCase()}:desc`
         
         const data = await getSlots({countryCode: "it", limit:36, start: 0, sort: sortItem})
         setGiochiSlots(data)
         setItemSelected(itemSelected)
     }
 
-    const handleProducerSelected = async (producerSelected: string) => {
-        const sortItem = itemSelected.toLowerCase() === SlotFilterList.SHUFFLE ? SlotFilterList.ALPHABETIC : itemSelected.toLowerCase()
+    const filterByProducerName = async (producerSelected: string) => {
+        const sortItem = itemSelected.toLowerCase() === SlotFilterList.SHUFFLE ? SlotFilterList.NAME : itemSelected.toLowerCase()
 
         const data = await getSlots({countryCode: "it", limit:36, start: 0, sort: sortItem, producer: producerSelected})
             
@@ -176,7 +171,7 @@ const GiochiPage: FunctionComponent<PageProps> = (props) => {
                     <Container>
                         <Aside>
                             <SlotsCounter total={totalSlots}/>
-                            <ProducersTable data={famousProducersList} setSelected={handleProducerSelected} setOpenDialog={setOpenDialog}/>
+                            <ProducersTable data={famousProducersList} setSelected={filterByProducerName} setOpenDialog={setOpenDialog}/>
                             <FreeBonusList data={freeBonusData} label="I MIGLIORI CASINÒ CON GIRI GRATIS"/>
                         </Aside>
 
@@ -184,7 +179,7 @@ const GiochiPage: FunctionComponent<PageProps> = (props) => {
                             <Actions>
                                 <div id="search-input">
                                     <CustomTextField
-                                        onChange={handleSearch}
+                                        onChange={searchSlot}
                                         size={'small'}
                                         borderRadius={'5px'}
                                         searchIcon
@@ -192,7 +187,7 @@ const GiochiPage: FunctionComponent<PageProps> = (props) => {
                                 </div>
 
                                 <div id='filter-slots'>
-                                        <CustomMenu listItems={listItems} itemSelected={itemSelected} setItemSelected={handleItemSelected}/>
+                                        <CustomMenu listItems={listItems} itemSelected={itemSelected} setItemSelected={filterListSlot}/>
 
                                         <div id="shuffle"><ShuffleIcon fontSize={'large'} onClick={shuffle}/></div>                                    
                                 </div>
@@ -233,7 +228,7 @@ const GiochiPage: FunctionComponent<PageProps> = (props) => {
 
                 <GiochiArticle/>
 
-                <ProvidersDialog open={openDialog} setOpen={setOpenDialog} data={producersData} setSelected={handleProducerSelected}/>
+                <ProvidersDialog open={openDialog} setOpen={setOpenDialog} data={producersData} setSelected={filterByProducerName}/>
             </div>
         </Layout>
     ) 
@@ -439,7 +434,7 @@ export async function getStaticProps() {
                 newest: await getSlots({ limit: 6, start: 0, sort: 'created_at:desc' }),
                 popular: await getSlots({ limit: 6, start: 0, sort: 'updated_at:desc' })
             },
-            giochiSlotsData: await getSlots({ limit: 28, start: 0, sort: 'name:asc' }),
+            giochiSlotsData: await await getSlots({countryCode: 'it', limit: 36, start: getRandomInt(0, 500)}),
             producersData: await getProducers({ start: 0, sort: 'name:asc' }),
             freeBonusData: await getBonuses({ names: PAGE_BONUSES, sort: 'rating:desc'}),
             totalSlots: await getTotalSlots()

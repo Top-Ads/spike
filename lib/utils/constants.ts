@@ -21,9 +21,9 @@ export enum SlotType {
 
 export enum SlotFilterList {
   RTP = 'RTP',
-  UPDATED_AT = 'updated_at',
-  CREATED_AT = 'created_at',
-  ALPHABETIC = 'name',
+  UPDATED_AT = 'Data Aggiornamento',
+  CREATED_AT = 'Data pubblicazione',
+  NAME = 'Nome',
   SHUFFLE = 'Ordina'
 }
 

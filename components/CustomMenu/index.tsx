@@ -24,7 +24,7 @@ const useStyles = makeStyles( () =>
     root: {
       display: 'flex',
       height: 'inherit',
-      width: '230px'
+      width: '270px'
     },
     itemText: {
         width: '145px',
@@ -41,9 +41,10 @@ const useStyles = makeStyles( () =>
     },
     menuItem: {
       height: '40px',
+      width: 'inherit'
     },
     menuList: {
-      width: '230px',
+      width: '270px',
       marginTop: '1px'
     }
   }),
@@ -99,7 +100,7 @@ const CustomMenu: FunctionComponent<Props> = ({itemSelected, setItemSelected, li
                 return  <ScheduleIcon fontSize="small" />
             case SlotFilterList.CREATED_AT :
                 return  <DateRangeIcon fontSize="small" />
-            case SlotFilterList.ALPHABETIC :
+            case SlotFilterList.NAME :
                 return  <SortByAlphaIcon fontSize="small" />
             case SlotFilterList.SHUFFLE :
               return  <ShuffleIcon fontSize="small" />
@@ -147,7 +148,7 @@ const CustomMenu: FunctionComponent<Props> = ({itemSelected, setItemSelected, li
                           <ListItemIcon className={classes.itemIcon}>
                               {renderIconForItem(item)}
                           </ListItemIcon>
-                          <ListItemText className={classes.listItemText} primary={`${item.charAt(0).toUpperCase()}${item.slice(1)}`} />
+                          <ListItemText className={classes.listItemText} primary={`${item}`} />
                       </MenuItem>    
                       )}
 
@@ -173,6 +174,7 @@ const Button = styled.div`
     display: flex;
     align-items: center;
     height: inherit;
+    width: 270px;
 `
 
 export default CustomMenu
