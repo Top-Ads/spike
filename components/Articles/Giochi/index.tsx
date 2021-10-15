@@ -11,11 +11,11 @@ const GiochiArticle: FunctionComponent = () => {
                     <div>
                     
                         <p>
-                        Benvenuto nella pagina dedicata ai giochi online di <b>slots machine gratis</b> di Casino Squad.<br/>
-                        Qui provi la versione gratis di tutte le <b>slot online</b> più popolari del momento.<br/>
-                        Divertiti a provare la nostra collezione delle <b>migliori slot machines online legali</b> senza dover usare soldi, 
+                        Benvenuto nella pagina dedicata ai giochi online di slots machine gratis di Casino Squad.<br/>
+                        Qui provi la versione gratis di tutte le slot online più popolari del momento.<br/>
+                        Divertiti a provare la nostra collezione delle migliori slot machines online legali senza dover usare soldi, 
                         registrarti o scaricare app sul tuo smartphone.<br/>
-                        Le <b>slot gratis</b> che puoi giocare su Casino Squad, 
+                        Le slot gratis che puoi giocare su Casino Squad, 
                         sono le stesse che troverai nei migliori casinò online.<br/>
                         Quali sono i migliori casinò? 
                         Sostanzialmente sono quelli che vantano regolare licenza AAMS/ADM.<br/>
@@ -30,7 +30,7 @@ const GiochiArticle: FunctionComponent = () => {
                         senza doverti registrare o scaricare software!<br/>
                         Anche la tecnologia alla base del gioco è importante: 
                         per cui il nostro team valuta se il gioco da casinò online in questione è ottimizzato ed aggiornato per smartphone e tablet.
-                        I migliori fornitori di <b>giochi di slots</b>, creano prodotti dalle alte prestazioni consentite dalla tecnologia HTML5.<br/>
+                        I migliori fornitori di giochi di slots, creano prodotti dalle alte prestazioni consentite dalla tecnologia HTML5.<br/>
                         Una slot machine online di qualità, è sicuramente mobile friendly. 
                         Quindi puoi giocare in digitale gratis alle slot machine anche dal tuo mobile o pc desktop, 
                         senza sacrificare nulla dell’esperienza di gioco.<br/>
@@ -51,14 +51,14 @@ const GiochiArticle: FunctionComponent = () => {
                         siamo qui per spiegarti tutto. Le slot online sono giochi da casinò, giocabili ovunque.Negli ultimi vent’anni, 
                         le slot machine online sono diventate straordinariamente popolari, non solo nel nostro paese, 
                         ma anche in tutto il mondo.<br/>
-                        In effetti, anche grazie alle nuove tecnologie, buona parte delle attività di <b>gioco da casinò</b>, 
+                        In effetti, anche grazie alle nuove tecnologie, buona parte delle attività di gioco da casinò, 
                         si sono spostate dai casinò tradizionali, al mondo del digitale, aumentando la personalizzazione del gioco. 
-                        Il successo delle <b>slot machine online</b> fra il grande pubblico, deriva dalla facilità del gioco e dalla capacità di sapere divertire e intrattenere. 
+                        Il successo delle slot machine online fra il grande pubblico, deriva dalla facilità del gioco e dalla capacità di sapere divertire e intrattenere. 
                         Questo è possibile grazie ad un’interfaccia sempre più divertente e innovativa, con tanto di colonne sonore originali e accattivanti. <br/>
-                        Su Casino Squad accedi gratuitamente alle <b>Slot da bar gratis</b> senza scaricare software
+                        Su Casino Squad accedi gratuitamente alle Slot da bar gratis senza scaricare software
                         - come ad esempio la celebre Slot Gallina o Follow Play Gold 
                         - passando per slot online esclusive che esistono solamente online (come Reactoonz),
-                        ma anche le più sofisticate <b>Slot VLT</b>, come Book Of Ra Deluxe.
+                        ma anche le più sofisticate Slot VLT, come Book Of Ra Deluxe.
                         </p>
                     
                     </div>
@@ -70,10 +70,10 @@ const GiochiArticle: FunctionComponent = () => {
                     
                         <p>
                         Se arrivi ad avere abbastanza dimestichezza con il tuo gioco di slot online preferito, 
-                        puoi anche tentare la fortuna giocando alle <b>slot machine online con soldi veri</b>.<br/>
+                        puoi anche tentare la fortuna giocando alle slot machine online con soldi veri.<br/>
                         Ribadiamo che in Italia i casinò online sono legali, 
                         ma devono avere una regolare licenza di gioco rilasciata dall’ADM che è l’autorità di vigilanza e monitoraggio del gioco da casinò online nel nostro paese. <br/>
-                        Quindi se le <b>slot machine</b> ed il gioco da casinò sono la tua passione, su Casino Squad avrai un’ampia scelta, 
+                        Quindi se le slot machine ed il gioco da casinò sono la tua passione, su Casino Squad avrai un’ampia scelta, 
                         grazie all’offerta della lista dei titoli, continuamente aggiornata dal nostri esperti.Infatti, 
                         il nostro staff di professionisti si occupa di provare, aggiornare e verificare ogni slot machine online, 
                         con l’obiettivo di garantire al giocatore un’esperienza di gioco avvincente, sicura e divertente. 
@@ -87,12 +87,12 @@ const GiochiArticle: FunctionComponent = () => {
                     <div>
                     
                         <p>
-                        Su Casino Squad potrai conoscere i migliori <b>Bonus di Benvenuto</b> offerto dai casinò più autorevoli, mettono a disposizione per i nuovi giocatori. <br/>
-                        Molti di questi <b>Casino Bonus</b> saranno esclusivi: ovvero, si potranno ottenere accedendo al tuo casinò preferito, 
+                        Su Casino Squad potrai conoscere i migliori Bonus di Benvenuto offerto dai casinò più autorevoli, mettono a disposizione per i nuovi giocatori. <br/>
+                        Molti di questi Casino Bonus saranno esclusivi: ovvero, si potranno ottenere accedendo al tuo casinò preferito, 
                         semplicemente, tramite i link all'interno del sito.<br/>
-                        Alcuni siti di gioco propongono <b>Casino Bonus Senza Deposito</b> senza deposito immediato: 
+                        Alcuni siti di gioco propongono Casino Bonus Senza Deposito senza deposito immediato: 
                         questo significa che si può giocare senza prima dovere effettuare un versamento sul conto gioco. 
-                        Spesso i <b>crediti Casino Bonus</b> sono assegnati in particolare alle slot machine online senza deposito. 
+                        Spesso i crediti Casino Bonus sono assegnati in particolare alle slot machine online senza deposito. 
                         Altri siti, invece, offrono Bonus Casino ad ogni deposito, per incrementare le possibilità di vincita.
                         </p>
                     
@@ -104,7 +104,7 @@ const GiochiArticle: FunctionComponent = () => {
                     <div>
                     
                         <p>
-                        Come avrai capito, il <b>mondo delle slot machine</b> è davvero ampio: per questo possiamo dirti che su Casino Squad, 
+                        Come avrai capito, il mondo delle slot machine è davvero ampio: per questo possiamo dirti che su Casino Squad, 
                         troverai diverse varianti di giochi online. <br/>
                         su Casino Squad puoi giocare a diversi tipi di slot machine online: slot con Jackpot progressivo, slot Megaways, slot senza classiche paylines (SuperPlay), etc. <br/>
                         Ti basta solo cercare il tuo gioco di slot preferito!<br/>
@@ -113,7 +113,7 @@ const GiochiArticle: FunctionComponent = () => {
 
                         <ul>
                             <li>Slot con classiche linee di pagamento. Si tratta delle slot tradizionali, dove per ottenere punti vincenti, 
-                                occorre che i simboli si allineino in determinate posizioni per consentire la vincita. Alcuni <b>giochi classici di slot</b>, 
+                                occorre che i simboli si allineino in determinate posizioni per consentire la vincita. Alcuni giochi classici di slot, 
                                 consentono la selezione di linee paganti, mentre altre hanno un numero fissato di linee.
                             </li>
                             <li>Slot SuperPlay. Queste slot machine, non prevedono linee specifiche, ma occorre che i simboli compaiano su rulli adiacenti 
@@ -136,11 +136,11 @@ const GiochiArticle: FunctionComponent = () => {
                     
                         <p>
                         In prima battuta, possiamo dire che le slot machine online sono sostanzialmente differenti dalle slot machine da bar che si trovano negli esercizi commerciali o tabaccherie. 
-                        Infatti, le slot online somigliano maggiormente alle <b>VLT o Videolottery</b>. Funzionano secondo un particolare algoritmo chiamato RNG, ovvero il Generatore di Numeri Casuali. 
+                        Infatti, le slot online somigliano maggiormente alle VLT o Videolottery. Funzionano secondo un particolare algoritmo chiamato RNG, ovvero il Generatore di Numeri Casuali. 
                         Le VLT offrono i pagamenti in base al calcolo del ciclo di payout stabilito dal concessionario su base sia di sala, che di circuito, che nazionale. 
                         Le slot machine tradizionali invece pagano in base al coin in singolo (totale monete inserite nella singola macchina) <br/>
                         Nelle slot da bar, invece, entrano in gioco anche altre componenti oltre alla fortuna, come l’abilità del giocatore. <br/>
-                        In più, solitamente il payout - percentuale di Ritorno al Giocatore <b>(RTP) </b>- è più vantaggioso nelle slot machine online. <br/>
+                        In più, solitamente il payout - percentuale di Ritorno al Giocatore (RTP) - è più vantaggioso nelle slot machine online. <br/>
                         Insomma, il gioco online consente una scelta maggiore per varietà dell’offerta, ma anche di decidere il Bet di gioco più liberamente.
                         </p>
                     
@@ -154,7 +154,7 @@ const GiochiArticle: FunctionComponent = () => {
                         <p>
                         In questo periodo, in moltissimi si sono avvicinati al gioco da casinò online, specialmente a causa dei vari lockdown. <br/>
                         Il gioco online è affidabile e sicuro, se ci si rivolge a piattaforme di gioco certificate e legali.Infatti, 
-                        ogni transazione è salvata nei server in modo automatico e tutto è tracciabile.Tutti i movimenti sui <b>Casinò online ADM</b> sono appunto 
+                        ogni transazione è salvata nei server in modo automatico e tutto è tracciabile.Tutti i movimenti sui Casinò online ADM sono appunto 
                         salvati e non si rischierà di perdere il conto sia delle proprie scommesse, che dei propri Bonus Casino, sempre visibili sul conto gioco.Come abbiamo già ricordato, 
                         i Casinò italiani online sono sottoposti regolarmente a rigidi controlli da parte dell'ADM (Agenzia Dogane e Monopoli). <br/>
                         Quest’organo è preposto sia alla certificazione che alla vigilanza delle slot machine da bar e delle slot machine online, 
@@ -177,7 +177,7 @@ const GiochiArticle: FunctionComponent = () => {
                         Anche sui casinò certificati, è fondamentale impostare i limiti di gioco in maniera responsabile, 
                         definire il bankroll e soprattutto, mai giocare per recuperare soldi persi.<br/>
                         Alcune persone a rischio ludopatia non dovrebbero approcciarsi neanche alla versione demo gratis delle slot machine. <br/>
-                        Questo perché se per alcuni giocatori provare una <b>slot machine gratis</b>, modera la voglia di giocare alle slot con soldi veri; per altri, 
+                        Questo perché se per alcuni giocatori provare una slot machine gratis, modera la voglia di giocare alle slot con soldi veri; per altri, 
                         fa aumentare la voglia di scommettere denaro.<br/>
                         Insomma, il mondo del casinò è un bel divertimento ed è importante non farlo diventare un problema.
                         </p>
@@ -192,7 +192,7 @@ const GiochiArticle: FunctionComponent = () => {
                     
                         <p>
                         No, su Casino Squad non è necessario scaricare software o fare il download di App, 
-                        perché tutte le slot machine online sono disponibili in <b>versione slot demo gratis</b>, giocabili direttamente sul sito.
+                        perché tutte le slot machine online sono disponibili in versione slot demo gratis, giocabili direttamente sul sito.
                         Quindi, mettiti comodo e gioca dove vuoi e quando vuoi. 
                         Inoltre, ti offriamo la compatibilità con ogni tipo di piattaforma. <br/>
                         Se poi vuoi provare a giocare con soldi veri, devi solo scegliere la slot che fa al caso tuo sul nostro sito. 
@@ -208,7 +208,7 @@ const GiochiArticle: FunctionComponent = () => {
                     <div>
                     
                         <p>
-                        La dinamica alla base della slot machine online è un algoritmo detto generatore di numeri casuale <b>(RNG)</b>. 
+                        La dinamica alla base della slot machine online è un algoritmo detto generatore di numeri casuale (RNG). 
                         Questo garantisce il rispetto delle probabilità di vincita, ogni volta che si piazza una scommessa. <br/>
                         Se si gioca non esagerando, puoi sperare in un po’ di fortuna e magari realizzare una vincita.
                         </p>
@@ -234,11 +234,11 @@ const GiochiArticle: FunctionComponent = () => {
                     <div>
                     
                         <p>
-                        Le classiche <b>macchinette slot</b>, hanno per definizione differenti modalità di vincita. 
+                        Le classiche macchinette slot, hanno per definizione differenti modalità di vincita. 
                         In pratica, si diversificano in base alle meccaniche di gioco con cui sono progettate. <br/>
-                        Per fare qualche esempio, abbiamo i classici giochi con linee di pagamento, slot Super Play, slot Cluster Pay, oppure le innovative slot a tecnologia <b>Megaways</b>, e tanto altro.<br/>
+                        Per fare qualche esempio, abbiamo i classici giochi con linee di pagamento, slot Super Play, slot Cluster Pay, oppure le innovative slot a tecnologia Megaways, e tanto altro.<br/>
                         Sostanzialmente, la base è sempre la collezione di simboli uguali vicini. <br/>
-                        In più, ci sono funzioni speciali e <b>Casino Bonus</b> – ad esempio Freespin - con l’assegnazione di premi speciali al videogiocatore.
+                        In più, ci sono funzioni speciali e Casino Bonus – ad esempio Freespin - con l’assegnazione di premi speciali al videogiocatore.
                         </p>
                     
                     </div>
@@ -249,7 +249,7 @@ const GiochiArticle: FunctionComponent = () => {
                     <div>
                     
                         <p>
-                        Dobbiamo sottolineare che le <b>slot machine online</b> sono sostanzialmente un gioco di fortuna, 
+                        Dobbiamo sottolineare che le slot machine online sono sostanzialmente un gioco di fortuna, 
                         per cui non è contemplata la fattività di trucchi. <br/>
                         I maggiori provider di gioco realizzano giochi con i requisiti di conformità e ciò garantisce trasparenza sia per il giocatore che per gli operatori dei casinò.
                         </p>
@@ -263,7 +263,7 @@ const GiochiArticle: FunctionComponent = () => {
                     
                         <p>
                         Per giocare con soldi veri alle slot machine online, consigliamo i casinò certificati con regolare licenza ADM. 
-                        Su Casino Squad puoi provare le migliori <b>slot digitali</b> e fare un confronto delle migliori offerte di benvenuto dei migliori casinò online italiani. 
+                        Su Casino Squad puoi provare le migliori slot digitali e fare un confronto delle migliori offerte di benvenuto dei migliori casinò online italiani. 
                         Sono la nostra selezione, che soddisfa i requisiti di sicurezza e affidabilità.
                         </p>
                     
@@ -279,8 +279,11 @@ const Main = styled.div`
 
     section { 
         margin: 30px 0px; 
-        p {
+        p, li {
             font-family: 'Montserrat-Medium';
+        }
+        li {
+            margin-bottom: 15px;
         }
     }
 

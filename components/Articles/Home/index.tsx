@@ -304,7 +304,7 @@ const HomeArticle: FunctionComponent<Props> = ({mainBonuses, freeBonuses}) => {
                     <ul>
                         <li>
                             <p>
-                            <b>Bonus con deposito:</b> <br/><br/>
+                            <b>Bonus con deposito:</b> <br/>
                             Si tratta di un Bonus ottenibile al primo deposito effettuato, derivante dal deposito stesso. <br/>
                             Quindi, se il casinò digitale offre un bonus del 100%, significa che se depositi 50 euro, riceverai un bonus di 50 euro) che potrai usare giocando (quindi ben 100 euro).<br/>
                             I requisiti di scommessa, sono espressi con il simbolo “X”. <br/>
@@ -313,13 +313,13 @@ const HomeArticle: FunctionComponent<Props> = ({mainBonuses, freeBonuses}) => {
                         </li>
                         <li>
                             <p>
-                            <b>Bonus senza deposito:</b> <br/><br/>
+                            <b>Bonus senza deposito:</b> <br/>
                             Si tratta di bonus che non hanno il vincolo del deposito.
                             </p>
                         </li>
                         <li>
                             <p>
-                            <b>Giri gratis</b><br/><br/>
+                            <b>Giri gratis:</b><br/>
                             <b> I giri gratis</b> (free spins), rappresentano la possibilità di fare sessioni di gioco usufruendo 
                             di credito gratuito. Variano a seconda delle slot.<br/><br/>
                             Se vuoi, puoi consultare la pagina bonus dedicata per scoprire tutte le promozioni e le regole per l’incasso.<br/>
@@ -443,7 +443,7 @@ const Main = styled.div`
 
     section { 
         margin: 30px 0px; 
-        p {
+        p, li {
             font-family: 'Montserrat-Medium';
         }
     }
