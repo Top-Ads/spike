@@ -6,6 +6,7 @@ import Footer from '../Footer'
 import ScrollButton from '../ScrollButton'
 import StickyBanner from '../StickyBanner'
 import Header from '../Header'
+import CustomBreadcrumbs from '../Breadcrumbs'
 
 type Props = {
   children?: ReactNode
@@ -13,7 +14,7 @@ type Props = {
 }
 
 const Layout = ( {children, title}: Props) => { 
-    
+  
   return (
     <Fragment>
       <Head>
@@ -38,6 +39,8 @@ const Layout = ( {children, title}: Props) => {
       <MarginHeader/>
 
       <Main>
+        <div className="layout-container breadcrumb-container"><CustomBreadcrumbs /></div>
+        
         {children}
       </Main>
 
@@ -62,7 +65,10 @@ const Main = styled.div`
       padding: 0px 2% 5px;
     }
   }
-  
+  .breadcrumb-container {
+    background-image: linear-gradient(180deg,rgb(217 187 106 / 92%) 0%, rgb(224 198 133) 95%);
+  } 
+
   .topBonus {
     background-image: ${({theme}) => theme.palette.backgroundImage};
     color: #fff;

@@ -111,7 +111,7 @@ const Header: FunctionComponent<Props> = ({isBrowserView}) => {
 
           { isBrowserView ? <NavBrowserProvider showNav={showNav} setShowNav={setShowNav}/> : 
           <NavMobileProvider showNav={showNav} setShowNav={setShowNav}/>}
-            
+           
           <DialogSlider
             category={category} 
             open={openDialogSlider} 
