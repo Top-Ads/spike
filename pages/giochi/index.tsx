@@ -51,7 +51,7 @@ const GiochiPage: FunctionComponent<PageProps> = (props) => {
     const listItems:string[] = [SlotFilterList.RTP, SlotFilterList.UPDATED_AT, SlotFilterList.CREATED_AT, SlotFilterList.NAME]
 
     const [giochiSlots, setGiochiSlots] = useState<Slot[]>(giochiSlotsData)
-    const [itemSelected, setItemSelected] = useState<string>(SlotFilterList.SHUFFLE)
+    const [itemSelected, setItemSelected] = useState<SlotFilterList>(SlotFilterList.SHUFFLE)
     const [, setProducerSelected] = useState<string>('')
     const [openDialog, setOpenDialog] = useState<boolean>(false)
 
@@ -93,12 +93,31 @@ const GiochiPage: FunctionComponent<PageProps> = (props) => {
     }
 
     const filterByProducerName = async (producerSelected: string) => {
-        const sortItem = itemSelected.toLowerCase() === SlotFilterList.SHUFFLE ? SlotFilterList.NAME : itemSelected.toLowerCase()
 
-        const data = await getSlots({countryCode: "it", limit:36, start: 0, sort: sortItem, producer: producerSelected})
-            
-        setGiochiSlots(data)
-        setProducerSelected(producerSelected)
+        let  keyFilter = Object.keys(SlotFilterList)[Object.values(SlotFilterList).indexOf(itemSelected)].toLowerCase()
+
+        let response
+        
+        if (keyFilter ===  'shuffle') {
+            response = await getSlots({
+                countryCode: "it", 
+                limit:36, 
+                start: 0,
+                producer: producerSelected
+            })
+        } else {
+            response = await getSlots({
+                countryCode: "it", 
+                limit:36, 
+                start: 0,
+                producer: producerSelected,
+                sort: keyFilter
+            })
+        }
+
+        setGiochiSlots(response)
+
+        setProducerSelected(producerSelected) 
     }
 
     const clear = () => setProducerSelected('')
