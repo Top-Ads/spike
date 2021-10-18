@@ -3,6 +3,7 @@ import { ThemeProvider } from "styled-components"
 import { Workbox } from "workbox-window"
 import { removeLikeSlotContext } from "../lib/contexts"
 import { GlobalStyle, styledTheme } from "../lib/theme"
+import { Category } from "../lib/utils/constants"
 
 interface IProps {
     Component: FunctionComponent
@@ -12,8 +13,8 @@ interface IProps {
 export default function App( {Component, pageProps}: IProps) {
     
     useEffect(()=> {
-        if ( localStorage.getItem('favorites') === null ) 
-            localStorage.setItem('favorites', '[]')
+        if ( localStorage.getItem(Category.FAVORITES) === null ) 
+            localStorage.setItem(Category.FAVORITES, '[]')
         
         if("serviceWorker" in navigator || process.env.NODE_ENV === "production") {
             window.addEventListener("load", function () {

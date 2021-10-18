@@ -194,7 +194,7 @@ const SlotPage: FunctionComponent<PageProps> = ({data}) => {
                                                 <span className="label">
                                                     RTP  
                                                     <Tooltip 
-                                                        title={'The porcentage of the casino to describe how much of the money wagered on a given slot machine return to players over time'} 
+                                                        title={"L'RTP indica il ritorno al giocatore in percentuale che il gioco eroga sottoforma di pagamenti.'"} 
                                                         classes={{ tooltip: classes.tooltip }} 
                                                         TransitionComponent={Zoom}
                                                         children={<InfoIcon className={classes.icon}/> }/>
@@ -208,7 +208,7 @@ const SlotPage: FunctionComponent<PageProps> = ({data}) => {
                                                 <div>
                                                     <span className="label">Volatilità
                                                         <Tooltip 
-                                                            title={'It describes how often you can expect to win at particular slot machine'} 
+                                                            title={'La volatilità indica la frequenza con cui un gioco eroga vincita. Bassa = vincite frequenti ma basse. Alta = vincite rare ma di moltiplicatore elevato.'} 
                                                             classes={{ tooltip: classes.tooltip }} 
                                                             TransitionComponent={Zoom}
                                                             children={<InfoIcon className={classes.icon}/> }/>
@@ -225,7 +225,7 @@ const SlotPage: FunctionComponent<PageProps> = ({data}) => {
                                                 <div>
                                                     <span className="label">WSF
                                                         <Tooltip 
-                                                            title={'Winning Spin Frequency'} 
+                                                            title={'Questo numero da 1 a 5 indica la frequenza di spin in cui si ottengono vincite. Più è basso e più è probabile che molti spin vadano a vuoto.'} 
                                                             classes={{ tooltip: classes.tooltip }} 
                                                             TransitionComponent={Zoom}
                                                             children={<InfoIcon className={classes.icon}/> }/>
@@ -240,7 +240,7 @@ const SlotPage: FunctionComponent<PageProps> = ({data}) => {
                                                 <div>
                                                     <span className="label">MAXLINES
                                                         <Tooltip 
-                                                            title={'Maximum Lines'} 
+                                                            title={'Il numero massimo di linee di pagamento utilizzabili nel gioco.'} 
                                                             classes={{ tooltip: classes.tooltip }} 
                                                             TransitionComponent={Zoom}
                                                             children={<InfoIcon className={classes.icon}/> }/>

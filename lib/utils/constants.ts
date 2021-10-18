@@ -1,5 +1,5 @@
 export enum Category {
-    FAVORITES = 'favorites'
+    FAVORITES = 'preferiti'
 }
   
 export enum GridType {

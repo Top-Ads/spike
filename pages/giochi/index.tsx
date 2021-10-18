@@ -25,6 +25,7 @@ import { getProducers } from '../../lib/graphql/queries/producers'
 import { getSlots } from '../../lib/graphql/queries/slots'
 import { debounce } from "lodash"
 import { format } from 'date-fns'
+import italianLocale  from 'date-fns/locale/it'
 import { getTotalSlots } from '../../lib/api'
 import Head from 'next/head'
 import { getRandomInt } from '../../lib/utils/getRandomInt'
@@ -135,7 +136,10 @@ const GiochiPage: FunctionComponent<PageProps> = (props) => {
                     <h2>
                         SLOT GRATIS – GIOCA ALLE SLOT MACHINE GRATIS ONLINE IN ITALIANO
                     </h2>
-                    <span>Pubblicato: 31 Jul 2021 • Ultimo aggiornamento { format(new Date(Date.now()), 'dd MMM yyyy').toString()} </span> 
+
+                    <span>Pubblicato: 31 lug 2021 • Ultimo aggiornamento 
+                        <span style={{textTransform: 'capitalize'}}> { format(new Date(Date.now()), 'dd MMM yyyy', { locale: italianLocale }).toString() } </span> 
+                    </span> 
  
                     <p>
                         Prima di tutto, benvenuto! Sappiamo che ti piace giocare alle slot machine

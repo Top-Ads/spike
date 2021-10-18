@@ -19,6 +19,7 @@ import { device } from '../../../lib/utils/device'
 import { mergeWithUpdate } from '../../../lib/utils/mergeWithUpdate'
 import { getBonuses } from '../../../lib/graphql/queries/bonuses'
 import { format } from 'date-fns'
+import italianLocale  from 'date-fns/locale/it'
 import Head from 'next/head'
 
 type PageProps = {
@@ -124,7 +125,9 @@ const CrazyTimePage: FunctionComponent<PageProps> = ({statsData, spinsData, bonu
                         <Header className="stats-card-header">
                             <div>
                                 <h3>Statistiche Crazy Time</h3>
-                                <span suppressHydrationWarning>Last Updated: {format(new Date(lastUpdate), 'dd MMM yyyy • HH:mm').toString()}</span>
+                                <span style={{textTransform: 'capitalize'}} suppressHydrationWarning>
+                                    Ultimo Aggiornamento: {format(new Date(lastUpdate), 'dd MMM yyyy • HH:mm', { locale: italianLocale }).toString()}
+                                </span>
                             </div>
                            
                             <CustumSelect setSelected={seTimeFrame}/>

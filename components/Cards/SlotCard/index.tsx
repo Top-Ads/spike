@@ -10,6 +10,7 @@ import { Slot } from '../../../lib/schemas'
 import SpinnerLoader from '../../SpinnerLoader'
 import LikeButton from '../../LikeButton'
 import { formatDistance } from 'date-fns'
+import italianLocale  from 'date-fns/locale/it'
 
 type Props = {
    data: Slot,
@@ -126,10 +127,10 @@ const SlotCard: FunctionComponent<Props> = ({data, type}) => {
                 { showBanner &&  
                     <Banner>
                         <Button> 
-                            <span>PLAY FREE</span>
+                            <span>PROVA GRATIS</span>
                         </Button>
                         <Button> 
-                            <span>REAL MONEY</span>
+                            <span>SOLDI REALI</span>
                         </Button>
                     </Banner>
                 } 
@@ -143,7 +144,7 @@ const SlotCard: FunctionComponent<Props> = ({data, type}) => {
                 <div className="card-info">
                     { data.producer && data.producer.name && <span className="card-producer"> {data.producer.name} </span> }
                     { type === SlotType.NEW  && 
-                        <span className="card-date" > • { formatDistance(new Date(data.created_at), new Date(), { addSuffix: true })} </span>
+                        <span className="card-date" > • { formatDistance(new Date(data.created_at), new Date(), { addSuffix: true, locale: italianLocale })} </span>
                     }
                 </div>
             </Description>

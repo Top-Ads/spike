@@ -22,7 +22,7 @@ const StartGame: FunctionComponent<Props> = ({data, triggerGame}) => {
             </LegalText>
 
             <Button onClick={ () => triggerGame()}>
-                <span>START THE GAME</span>
+                <span>AVVIA IL GIOCO</span>
             </Button>
 
         </Main>
@@ -64,7 +64,8 @@ const Button = styled.div`
     padding: 20px;
     width: fit-content;
     text-transform: uppercase;
-    margin: 10px 0px;
+    margin: 20px 0px;
+    border: 2px solid white;
 `
   
 export default StartGame

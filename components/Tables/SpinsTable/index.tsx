@@ -19,6 +19,7 @@ import PlayCircleOutlineIcon from '@material-ui/icons/PlayCircleOutline'
 import { LiveStats, SymbolLayout } from '../../../lib/utils/constants'
 import { format } from 'date-fns'
 import { utcToZonedTime } from 'date-fns-tz'
+import italianLocale  from 'date-fns/locale/it'
 
 type Props = {
     data: Spin[],
@@ -195,7 +196,7 @@ const SpinsTable: FunctionComponent<Props> = ({data=[], gameType}) => {
                 <StyledTableRow key={index}>
 
                   <StyledTableCell align="center" scope="row" suppressHydrationWarning>
-                    <div>{ format(new Date(row.date), 'dd MMM yyyy').toString() }</div>
+                    <div style={{textTransform: 'capitalize'}}>{ format(new Date(row.date), 'dd MMM yyyy', { locale: italianLocale }).toString() }</div>
                     <div>{ format(utcToZonedTime(new Date(row.date), "UTC"), 'HH:mm').toString() }</div>
                   </StyledTableCell>
 

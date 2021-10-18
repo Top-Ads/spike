@@ -19,6 +19,7 @@ import { device } from '../../../lib/utils/device'
 import DiceRollTable from '../../../components/Tables/DiceRollTable'
 import { getBonuses } from '../../../lib/graphql/queries/bonuses'
 import { format } from 'date-fns'
+import italianLocale  from 'date-fns/locale/it'
 import Head from 'next/head'
 
 type PageProps = {
@@ -115,7 +116,9 @@ const MonopolyPage: FunctionComponent<PageProps> = ({statsData, spinsData, bonus
                         <Header className="stats-card-header">
                             <div>
                                 <h3>Statistiche Monopoly</h3>
-                                <span suppressHydrationWarning>Last Updated: { format(new Date(lastUpdate), 'dd MMM yyyy • HH:mm').toString() }</span>
+                                <span style={{textTransform: 'capitalize'}} suppressHydrationWarning>
+                                    Ultimo Aggiornamento: { format(new Date(lastUpdate), 'dd MMM yyyy • HH:mm', { locale: italianLocale }).toString() }
+                                </span>
                             </div>
                         
                             <CustumSelect setSelected={setSelected}/>

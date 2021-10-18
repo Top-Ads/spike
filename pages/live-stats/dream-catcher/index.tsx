@@ -19,6 +19,7 @@ import { mergeWithUpdate } from '../../../lib/utils/mergeWithUpdate'
 import LazyLoad from 'react-lazyload'
 import { getBonuses } from '../../../lib/graphql/queries/bonuses'
 import { format } from 'date-fns'
+import italianLocale  from 'date-fns/locale/it'
 import Head from 'next/head'
 
 type PageProps = {
@@ -114,7 +115,9 @@ const DreamCatcherPage: FunctionComponent<PageProps> = ({statsData, spinsData, b
                         <Header className="stats-card-header">
                             <div>
                                 <h3>Statistiche Dream Catcher</h3>
-                                <span suppressHydrationWarning>Last Updated: {format(new Date(lastUpdate), 'dd MMM yyyy • HH:mm').toString()}</span>
+                                <span style={{textTransform: 'capitalize'}} suppressHydrationWarning>
+                                    Ultimo Aggiornamento: {format(new Date(lastUpdate), 'dd MMM yyyy • HH:mm', { locale: italianLocale }).toString()}
+                                </span>
                             </div>
                         
                             <CustumSelect setSelected={setSelected}/>
