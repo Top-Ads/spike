@@ -61,7 +61,7 @@ const HomeArticle: FunctionComponent<Props> = ({mainBonuses, freeBonuses}) => {
                     Qualche esempio?
 
                     </p>
-                    <ul>
+                    <ul >
                         <li>Il gioco della Roulette;</li>
                         <li>il celebre Videopoker;</li>
                         <li>Il classico Blackjack;</li>
@@ -213,7 +213,7 @@ const HomeArticle: FunctionComponent<Props> = ({mainBonuses, freeBonuses}) => {
                     <ol type="1">
                         <li>
                             <p>
-                            <b>Random Number Generator</b><br/><br/>
+                            <b>Random Number Generator</b><br/>
                             I livelli meccanici presenti nelle slot machine dei casinò tradizionali, sono sostituiti nelle slot online, da un meccanismo davvero sofisticato, chiamato Random Number Generator (RNG).<br/>
                             Si tratta di un software che fungendo da generatore di combinazioni, porta il risultato di ogni giro ad essere davvero casuale. <br/>
                             Si tratta di un software certificato per il fairplay: in questo modo RNG ti garantisce la trasparenza del gioco.
@@ -222,9 +222,9 @@ const HomeArticle: FunctionComponent<Props> = ({mainBonuses, freeBonuses}) => {
                         </li>
                         <li>
                             <p>
-                            <b>Return to Player (RTP)</b><br/><br/>
+                            <b>Return to Player (RTP)</b><br/>
                             Le slot online assicurano un maggior Ritorno al Giocatore (RTP), ovvero un payback più elevato.<br/>
-                            In effetti - gli esperti di casinò - sostengono che l’RTP in medio, nelle slot online è molto più elevato. <br/><br/>
+                            In effetti - gli esperti di casinò - sostengono che l’RTP in medio, nelle slot online è molto più elevato. <br/>
                             Facciamo un esempio: se ho una slot digitale con un RTP DEL 97%, e faccio 1 x 100 scommesse, posso aspettarmi all’incirca 97 euro di vincita.
                             Bisogna sottolineare che la maggior parte delle slot online ha valori di RTP pari al 92% o più.
                             Inoltre, in tantissimi casi, diversi casinò online possono rimborsare fino al 95% e più.
@@ -232,13 +232,13 @@ const HomeArticle: FunctionComponent<Props> = ({mainBonuses, freeBonuses}) => {
                             </p>
                         </li>
                         <li>
-                            <p><b>Il Bonus deposito e il Bonus Ricarica</b><br/><br/>
+                            <p><b>Il Bonus deposito e il Bonus Ricarica</b><br/>
                             La stragrande maggioranza dei casinò digitali, proponeB onus sul primo deposito e sulla ricarica. <br/>
                             Attraverso il Bonus, il rendimento aggiunto sul primo deposito è circa il 5%.
                             </p>
                         </li>
                         <li>
-                            <p><b>Ampia varietà nella selezione dei giochi</b><br/><br/>
+                            <p><b>Ampia varietà nella selezione dei giochi</b><br/>
                             La grande varietà dei giochi disponibili, è un altro dei vantaggi di scegliere le slot online.<br/>
                             Solitamente, le migliori piattaforme di gioco, propongo oltre 300 fra le migliori slot online.<br/>
                             Marchi come Microgaming, NetEnt, Real Time Gaming, Playtech, sono una garanzia di affidabilità e successo.
@@ -445,6 +445,12 @@ const Main = styled.div`
         margin: 30px 0px; 
         p, li {
             font-family: 'Montserrat-Medium';
+            
+        }
+
+        li {
+            margin-bottom: 15px;
+            width: 80%;
         }
     }
 

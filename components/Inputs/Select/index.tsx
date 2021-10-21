@@ -36,7 +36,7 @@ const CustumSelect: FunctionComponent<Props> = ({setSelected}) => {
     <div>  
       <FormControl className={classes.formControl}>
         <InputLabel shrink id="demo-simple-select-placeholder-label-label">
-          Time
+          Ore
         </InputLabel>
         <Select
           labelId="simple-select"

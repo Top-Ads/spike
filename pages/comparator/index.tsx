@@ -15,6 +15,7 @@ import SlotCard from '../../components/Cards/SlotCard'
 import { format } from 'date-fns'
 import italianLocale  from 'date-fns/locale/it'
 import LazyLoad from 'react-lazyload'
+import { CDN } from '../../public/environment'
 
 type PageProps = {
     topSlotsData: Slot []
@@ -39,12 +40,12 @@ const ComparatorPage: FunctionComponent<PageProps>= ({topSlotsData, tableBonusDa
 
                 <Thumbnail>
                     <Image
-                        alt="Casino Squad"
-                        src={`https://images.spikeslot.com/migliori-10-bonus-benvenuto-casino_3037a7efb4.jpeg`}
+                        alt="Casino Squad Bonus"
+                        src={`${CDN}/jpeg/casinosquad_banner_bonus.jpg`}
                         layout="responsive"
                         priority={true}
-                        width={1174}
-                        height={522}/>
+                        width={1920}
+                        height={853}/>
                 </Thumbnail>
 
                 <p>
@@ -64,13 +65,12 @@ const ComparatorPage: FunctionComponent<PageProps>= ({topSlotsData, tableBonusDa
                     <li>promozioni offerte periodicamente sia per nuovi giocatori che già iscritti</li>
                     <li>affidabilità e qualità dell'assistenza</li>
                 </ul>
-                </p>
 
-                <p>
                 Nella seguente lista di casinò, potrete scegliere il più congeniale ai vostri gusti, 
                 ricordando che i TOP in alto sono quelli dove gioco alle slot con soldi veri personalmente più spesso, 
                 e che hanno a mio parere i migliori Bonus Senza Deposito Immediato:
-                </p>
+            </p>
+
             </Main>
                
             <div className="layout-container topBonus">
@@ -82,7 +82,7 @@ const ComparatorPage: FunctionComponent<PageProps>= ({topSlotsData, tableBonusDa
                         )}
                         label="Migliori Casino Italiani per servizi offerti"
                         AlignItem={"center"}
-                        xs={12} sm={3} md={3}
+                        xs={12} sm={4} md={3}
                         showBoxShadow
                         bgColor="#fff"
                         spacing={2}
@@ -376,17 +376,26 @@ const Main = styled.div`
     display: flex;
     flex-direction: column;
     justify-content: center;
+
+    li {
+        margin-bottom: 15px;
+        width: 80%;
+    }
 `
 
 const Thumbnail = styled.div`
-    width: 100%;
+    width: 90%;
+
+    @media ${device.tablet} {
+        width: 100%;
+    }
 `
 const GridContainer = styled.div`
   display: flex;
   margin: 10px 0px;
   color: ${({theme}) => theme.palette.background};
 
-  &#grid-topBonus, &#grid-topSlot {
+   &#grid-topSlot {
     color: #fff;
     background-color: ${({theme}) => theme.palette.background};
   }
@@ -394,7 +403,7 @@ const GridContainer = styled.div`
   &#grid-topSlot { 
     padding: 10px 0px;
    
-    @media ${device.mobileL} {
+    @media ${device.tablet} {
         width: 100%;
         overflow-x: scroll;
     }

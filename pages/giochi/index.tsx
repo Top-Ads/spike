@@ -131,7 +131,7 @@ const GiochiPage: FunctionComponent<PageProps> = (props) => {
                 content="Gioca alle slot machine gratis online reali su Casino Squad! Prova le migliori slot online senza soldi veri e senza scaricare app." 
                 key="description"/>
             </Head>
-            <Header>
+            <Header className='layout-container'>
                 <Intro>
                     <h2>
                         SLOT GRATIS – GIOCA ALLE SLOT MACHINE GRATIS ONLINE IN ITALIANO
@@ -259,7 +259,6 @@ const GiochiPage: FunctionComponent<PageProps> = (props) => {
 
 const Header = styled.div`
     background-image: linear-gradient(0deg, ${({theme}) => theme.palette.background} 0%, ${({theme}) => theme.palette.gradient} 50%);
-    padding: 0px 7%;
     color: #fff;
     display: flex;
     flex-direction: row;

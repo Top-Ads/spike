@@ -1,5 +1,6 @@
 import { createGlobalStyle } from "styled-components"
 import { StyledTheme } from "../schemas"
+import { device } from "../utils/device"
 
 export const styledTheme: StyledTheme = {
 
@@ -91,9 +92,19 @@ export const GlobalStyle = createGlobalStyle`
 
     p { 
         color: ${styledTheme.text.color.black}; 
-        line-height: 1.5em; word-spacing: normal; 
+        line-height: 1.7em; word-spacing: normal; 
         font-family: 'Montserrat-Medium';
     }
+    
+    @media ${device.mobileL} {  
+        ul, ol {
+            padding: 0 20px; 
+        }
+        li {
+            width: auto;
+        }
+    }
+  
 
     .custom-scroll {
         scrollbar-width: thin;

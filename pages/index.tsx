@@ -131,7 +131,7 @@ const IndexPage: FunctionComponent<PageProps> = (props) => {
             showIndex
             showBoxShadow
             bgColor="#fff"
-            spacing={2}
+            spacing={4}
           />
         </GridContainer>
       </div>
@@ -187,7 +187,7 @@ const Intro = styled.div`
 const HeaderContainer = styled.div`
   display: flex;
   flex-direction: row;
-  padding: 25px 7%;
+  padding: 25px 10%;
   background-image: linear-gradient(0deg,#e2b96d 0%,#e0c685 50%);
   
   h1 { 
@@ -197,6 +197,10 @@ const HeaderContainer = styled.div`
 
   ul, p { color: white }
 
+  li {
+    margin-bottom: 5px;
+  }
+  
   @media ${device.mobileL} {
     flex-direction: column;
     align-items: center;

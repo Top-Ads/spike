@@ -59,10 +59,14 @@ export default Layout
 const Main = styled.div`
 
   .layout-container {
-    padding: 0px 7%;
+    padding: 0px 10%;
 
     @media ${device.tablet} {
-      padding: 0px 2% 5px;
+      padding: 5px 3% 0px;
+    }
+
+    @media ${device.mobileL} {
+      padding: 0px 3% 0px;
     }
   }
   .breadcrumb-container {

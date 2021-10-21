@@ -282,15 +282,17 @@ const Main = styled.div`
         p, li {
             font-family: 'Montserrat-Medium';
         }
+
         li {
-            margin-bottom: 15px;
+            margin-bottom: 25px;
+            width: 80%;
         }
     }
+    
+    li { text-align: left;  }
 
-    @media ${device.mobileL} { padding: 5px; }
-
-    li { 
-        text-align: left; 
+    @media ${device.mobileL} { 
+        padding: 5px; 
     }
 `
 

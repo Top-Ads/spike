@@ -137,7 +137,7 @@ const Main = styled.div`
   flex-wrap: wrap;
   background-image: ${({theme}) => theme.palette.backgroundImage};;
   color: ${({theme}) => theme.text.color.white};
-  padding: 5px 7%;
+  padding: 5px 10%;
   overflow: hidden;
   
   @media ${device.tablet} {

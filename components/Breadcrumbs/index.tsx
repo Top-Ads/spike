@@ -16,7 +16,7 @@ const useStyles = makeStyles(() =>
           },
         },
         '& .MuiBreadcrumbs-separator': {
-          marginBottom: '5px'
+          marginBottom: '2px'
         },
         '& .links': {
           color: '#fff',
