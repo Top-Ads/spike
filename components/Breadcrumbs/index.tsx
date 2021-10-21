@@ -9,7 +9,6 @@ const useStyles = makeStyles(() =>
   createStyles({
     root: {
        '& .MuiBreadcrumbs-li': {
-          marginBottom: '5px',
           fontSize: '0.9rem',
           lineHeight: '1.3',
           '& >p': {
