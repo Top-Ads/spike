@@ -73,7 +73,7 @@ const SlotReview: FunctionComponent<Props> = ({data}) => {
                         <h2>Tips</h2> <Markdown>{String(data?.tips)}</Markdown>
                     </MarkDownContainer>
 
-                    { data?.linkYoutube && 
+                   {/*  { data?.linkYoutube && 
                         <Fragment>
                             <h2>Video</h2>
                             <iframe 
@@ -86,7 +86,7 @@ const SlotReview: FunctionComponent<Props> = ({data}) => {
                                 allowFullScreen>
                             </iframe>
                         </Fragment>
-                    }
+                    } */}
                 </Article>
 
             </Main>
@@ -160,6 +160,7 @@ const Article = styled.article`
 `
 
 const MarkDownContainer = styled.div`
+    display: none;
 `
 
 export default SlotReview
