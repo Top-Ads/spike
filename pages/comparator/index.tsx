@@ -41,11 +41,11 @@ const ComparatorPage: FunctionComponent<PageProps>= ({topSlotsData, tableBonusDa
                 <Thumbnail>
                     <Image
                         alt="Casino Squad Bonus"
-                        src={`${CDN}/jpeg/casinosquad_banner_bonus.jpg`}
+                        src={`${CDN}/jpeg/casinosquad_poster_bonus.jpg`}
                         layout="responsive"
                         priority={true}
                         width={1920}
-                        height={853}/>
+                        height={600}/>
                 </Thumbnail>
 
                 <p>
@@ -174,11 +174,11 @@ const ComparatorPage: FunctionComponent<PageProps>= ({topSlotsData, tableBonusDa
                     <LazyLoad  height={400} offset={300}>
                         <Image
                             alt="Casino Squad"
-                            src={`https://images.spikeslot.com/migliori-bonus-casino-online-gratis_78d4071b7b.jpeg`}
+                            src={`${CDN}/jpeg/casinosquad_poster_bigwin.jpg`}
                             layout="responsive"
                             priority={false}
-                            width={900}
-                            height={400}/>
+                            width={1920}
+                            height={600}/>
                     </LazyLoad>
                 </Thumbnail>
 
@@ -384,11 +384,7 @@ const Main = styled.div`
 `
 
 const Thumbnail = styled.div`
-    width: 90%;
-
-    @media ${device.tablet} {
-        width: 100%;
-    }
+    width: 100%;
 `
 const GridContainer = styled.div`
   display: flex;

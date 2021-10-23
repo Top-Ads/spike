@@ -8,7 +8,6 @@ import { CDN } from '../../public/environment'
 import Divider from '../Divider'
 import { device } from '../../lib/utils/device'
 import Markdown from 'markdown-to-jsx'
-import { youtubeGetId } from '../../lib/utils/youTubeGetID'
 
 type Props = {
    data: Slot
