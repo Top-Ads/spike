@@ -462,7 +462,7 @@ export async function getStaticProps() {
         props: {
                 slotsData: { 
                 newest: await getSlots({ limit: 6, start: 0, sort: 'created_at:desc' }),
-                popular: await getSlots({ limit: 6, start: 0, sort: 'updated_at:desc' })
+                popular: await getSlots({ limit: 6, start: 0, sort: 'rating:desc' })
             },
             giochiSlotsData: await await getSlots({countryCode: 'it', limit: 36, start: getRandomInt(0, 500)}),
             producersData: await getProducers({ start: 0, sort: 'name:asc' }),

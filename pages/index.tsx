@@ -360,7 +360,7 @@ export async function getStaticProps() {
     props: {
       slotsData: {
         newest: await getSlots({ limit: 9, start: 0, sort: 'created_at:desc' }),
-        online: await getSlots({ limit: 9, start: 0, type_contain: "online", sort: 'updated_at:desc' })
+        online: await getSlots({ limit: 9, start: 0, type_contain: "online", sort: "rating:desc" })
       },
       topBonusData:  (await getBonuses({ names: TOP_BONUSES, sort: "rating:desc" })).map((b) => {
         b.link = topBonusRemapping[b.name]
