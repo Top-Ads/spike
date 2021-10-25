@@ -312,6 +312,11 @@ export async function getStaticProps() {
     "Bwin",
     "Slot Yes"]
 
+    const TOP_BONUSES =  [
+      "LeoVegas",
+      "StarCasinò",
+      "Starvegas"]
+
     const FREE_BONUSES =  [
       "LeoVegas",
       "StarCasinò",
@@ -319,6 +324,13 @@ export async function getStaticProps() {
       "Betway",
       "Slot Yes",
       "Gioco Digitale"]
+
+
+    const topBonusRemapping: any = {
+      LeoVegas: "https://ads.leovegas.com/redirect.aspx?pid=3704489&bid=14965",
+      StarCasinò: "https://record.starcasino.it/_SEA3QA6bJTNXl890vMAfUGNd7ZgqdRLk/131/",
+      Starvegas: "https://www.starvegas.it/nrgs/it/landing?refererId=89182&lang=it",
+    }
 
     const mainBonusRemapping: any = {
       LeoVegas: "https://ads.leovegas.com/redirect.aspx?pid=3704489&bid=14965",
@@ -335,20 +347,33 @@ export async function getStaticProps() {
       "Slot Yes": "http://wladmiralinteractive.adsrv.eacdn.com/wl/clk/?btag=a_999b_177&aid="
     }
 
+    const freeBonusRemapping: any = {
+      LeoVegas: "https://ads.leovegas.com/redirect.aspx?pid=3704489&bid=14965",
+      StarCasinò: "https://record.starcasino.it/_SEA3QA6bJTNXl890vMAfUGNd7ZgqdRLk/131/",
+      Starvegas: "https://www.starvegas.it/nrgs/it/landing?refererId=89182&lang=it",
+      Betway: "https://betway.it/bwp/welcome-5gratis/it-it/?s=bw210475&a=AFF3009702735911860&utm_source=210475&utm_medium=Affiliate&utm_campaign=AFF3009702735911860",
+      "Slot Yes": "http://wladmiralinteractive.adsrv.eacdn.com/wl/clk/?btag=a_999b_177&aid=",
+      "Gioco Digitale": "",
+    }
+
   return {
     props: {
       slotsData: {
         newest: await getSlots({ limit: 9, start: 0, sort: 'created_at:desc' }),
         online: await getSlots({ limit: 9, start: 0, type_contain: "online", sort: 'updated_at:desc' })
       },
-      topBonusData:  await getBonuses({ limit: 3, start: 0, sort: "rating:desc" }),
+      topBonusData:  (await getBonuses({ names: TOP_BONUSES, sort: "rating:desc" })).map((b) => {
+        b.link = topBonusRemapping[b.name]
+        return b
+      }),
       mainBonusData: (await getBonuses({ names: MAIN_BONUSES, sort: "rating:desc" })).map((b) => {
-        /* TODO Fix rammaping*/
         b.link = mainBonusRemapping[b.name]
         return b
-        /* END TODO*/
       }),
-      freeBonusData: await getBonuses({ names: FREE_BONUSES, sort: "rating:desc" }),
+      freeBonusData: (await getBonuses({ names: FREE_BONUSES, sort: "rating:desc" })).map((b) => {
+        b.link = freeBonusRemapping[b.name]
+        return b
+      }),
       totalSlots: await getTotalSlots(),
       totalBonuses: await getTotalBonuses(),
       totalProducers: await getTotalProducers()

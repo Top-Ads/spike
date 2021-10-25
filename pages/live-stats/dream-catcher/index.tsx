@@ -357,6 +357,15 @@ export async function getStaticProps() {
 
     const PAGE_BONUSES = ["BetFlag", "LeoVegas", "888 Casino", "StarCasinò", "Unibet", "PokerStars Casino"]
 
+    const pageBonusRemapping: any = {
+        BetFlag: "",
+        LeoVegas: "https://ads.leovegas.com/redirect.aspx?pid=3704489&bid=14965",
+        "888 Casino": "https://ic.aff-handler.com/c/43431?sr=1868828",
+        StarCasinò: "https://record.starcasino.it/_SEA3QA6bJTNXl890vMAfUGNd7ZgqdRLk/131/",
+        Unibet: "",
+        "PokerStars Casino": "",
+    }
+    
     return {
         props: {
           statsData: dataResponse.data.stats.stats,
@@ -364,8 +373,10 @@ export async function getStaticProps() {
             r.timeOfSpin = r.timeOfSpin - 1000 * 60 * 60 * 2
             return r
           }),
-          bonusData: await getBonuses({ names: PAGE_BONUSES, sort: 'rating:desc' })
-
+          bonusData: (await getBonuses({ names: PAGE_BONUSES, sort: 'rating:desc' })).map((b) => {
+            b.link = pageBonusRemapping[b.name]
+            return b
+            }),
         }
       }
 }

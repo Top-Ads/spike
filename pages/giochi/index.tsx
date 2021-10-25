@@ -450,6 +450,14 @@ export async function getStaticProps() {
 
     const PAGE_BONUSES = ["LeoVegas", "StarCasinò", "WinCasino", "NetBet", "King Casino"]
 
+    const pageBonusRemapping: any = {
+        LeoVegas: "https://ads.leovegas.com/redirect.aspx?pid=3704489&bid=14965",
+        StarCasinò: "https://record.starcasino.it/_SEA3QA6bJTNXl890vMAfUGNd7ZgqdRLk/131/",
+        WinCasino: "https://vincipromo.it/wincasino/?mp=42794b32-7604-49d2-92d0-8adf67a6b173",
+        NetBet: "https://banners.livepartners.com/view.php?z=139080",
+        "King Casino": "https://spikeslot.kingcasino.it",
+    }
+
     return {
         props: {
                 slotsData: { 
@@ -458,7 +466,10 @@ export async function getStaticProps() {
             },
             giochiSlotsData: await await getSlots({countryCode: 'it', limit: 36, start: getRandomInt(0, 500)}),
             producersData: await getProducers({ start: 0, sort: 'name:asc' }),
-            freeBonusData: await getBonuses({ names: PAGE_BONUSES, sort: 'rating:desc'}),
+            freeBonusData: (await getBonuses({ names: PAGE_BONUSES, sort: 'rating:desc'})).map((b) => {
+                b.link = pageBonusRemapping[b.name]
+                return b
+            }),
             totalSlots: await getTotalSlots()
         }
     }

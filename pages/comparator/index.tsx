@@ -59,6 +59,8 @@ const ComparatorPage: FunctionComponent<PageProps>= ({topSlotsData, tableBonusDa
                 <p>
                 I casino che andrò a consigliarvi sono innanzitutto tutti legali e certificati, e questo è un primo step. 
                 Poi le mie valutazioni sono basate su questi criteri:
+                </p>
+
                 <ul>
                     <li>velocità nei pagamenti</li>
                     <li>quantità di giochi slot disponibili</li>
@@ -66,6 +68,7 @@ const ComparatorPage: FunctionComponent<PageProps>= ({topSlotsData, tableBonusDa
                     <li>affidabilità e qualità dell'assistenza</li>
                 </ul>
 
+                <p>
                 Nella seguente lista di casinò, potrete scegliere il più congeniale ai vostri gusti, 
                 ricordando che i TOP in alto sono quelli dove gioco alle slot con soldi veri personalmente più spesso, 
                 e che hanno a mio parere i migliori Bonus Senza Deposito Immediato:
@@ -161,14 +164,14 @@ const ComparatorPage: FunctionComponent<PageProps>= ({topSlotsData, tableBonusDa
                 Quindi riepilogando, se ti piacerebbe provare il brivido di una giocata d'azzardo con soldi reali, 
                 ma su piattaforme legali, la procedura da seguire è questa:
 
+                </p>
+
                 <ul>
                     <li>scegli il casinò AAMS col bonus deposito che ti ispira di più;</li>
                     <li>scegli il casinò AAMS col bonus deposito che ti ispira di più;</li>
                     <li>effettua un primo deposito;</li>
                     <li>una volta effettuato il versamento, riceverai il casinò bonus direttamente sul conto di gioco.</li>
                 </ul>
-
-                </p>
 
                 <Thumbnail>
                     <LazyLoad  height={400} offset={300}>
@@ -433,7 +436,7 @@ export async function getStaticProps() {
     const PAGE_BONUSES =  [
         "LeoVegas",
         "StarCasinò",
-        "StarVegas",
+        "Starvegas",
         "WinCasino",
         "NetBet",
         "GoldBet",
@@ -451,11 +454,54 @@ export async function getStaticProps() {
         "Unibet"
     ]
 
+
+    const tableBonusRemapping: any = {
+        LeoVegas: "https://ads.leovegas.com/redirect.aspx?pid=3704489&bid=14965",
+        StarCasinò: "https://record.starcasino.it/_SEA3QA6bJTNXl890vMAfUGNd7ZgqdRLk/131/",
+        Starvegas: "https://www.starvegas.it/nrgs/it/landing?refererId=89182&lang=it",
+        WinCasino: "https://vincipromo.it/wincasino/?mp=42794b32-7604-49d2-92d0-8adf67a6b173",
+        NetBet: "https://banners.livepartners.com/view.php?z=139080",
+        GoldBet: "https://media.goldbetpartners.it/redirect.aspx?pid=3185&bid=1495",
+        "888 Casino": "https://ic.aff-handler.com/c/43431?sr=1868828",
+        "King Casino": "https://spikeslot.kingcasino.it",
+        Eurobet: "https://record.betpartners.it/_E_C7XwxgprAZV93hC2dJ_GNd7ZgqdRLk/108/",
+        Betway: "https://betway.it/bwp/welcome-5gratis/it-it/?s=bw210475&a=AFF3009702735911860&utm_source=210475&utm_medium=Affiliate&utm_campaign=AFF3009702735911860",
+        Betfair: "",
+        Betflag: "",
+        "Gioco Digitale": "",
+        Bwin: "https://mediaserver.entainpartners.com/renderBanner.do?zoneId=2000655",
+        "Slot Yes": "http://wladmiralinteractive.adsrv.eacdn.com/wl/clk/?btag=a_999b_177&aid=",
+        "PokerStars Casino": "",
+        "Snai": "",
+        "Unibet": ""
+    }
+
+    const TOP_BONUSES =  [
+        "888 Casino",
+        "StarCasinò",
+        "LeoVegas",
+        "WinCasino"
+    ]
+
+    const topBonusRemapping: any = {
+        "888 Casino": "https://ic.aff-handler.com/c/43431?sr=1868828",
+        StarCasinò: "https://record.starcasino.it/_SEA3QA6bJTNXl890vMAfUGNd7ZgqdRLk/131/",
+        LeoVegas: "https://ads.leovegas.com/redirect.aspx?pid=3704489&bid=14965",
+        WinCasino: "https://vincipromo.it/wincasino/?mp=42794b32-7604-49d2-92d0-8adf67a6b173"
+    }
+
+      
     return {
         props: {
             topSlotsData: await getSlots({ limit: 8, start: 0, sort: 'updated_at:desc' }),
-            tableBonusData: await getBonuses({ names: PAGE_BONUSES, sort: 'rating:desc'}),
-            topBonusData: await getBonuses({ limit: 4, start: 0, sort: 'rating:desc'})
+            tableBonusData: (await getBonuses({ names: PAGE_BONUSES, sort: 'rating:desc'})).map((b) => {
+                b.link = tableBonusRemapping[b.name]
+                return b
+            }),
+            topBonusData: (await getBonuses({ names: TOP_BONUSES, sort: 'rating:desc'})).map((b) => {
+                b.link = topBonusRemapping[b.name]
+                return b
+            }),
         }, 
     }
 }
