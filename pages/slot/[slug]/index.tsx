@@ -4,6 +4,7 @@ import Image from 'next/image'
 import styled from 'styled-components'
 import { makeStyles } from '@material-ui/core/styles'
 import FullscreenIcon from '@material-ui/icons/Fullscreen'
+import FullscreenExitIcon from '@material-ui/icons//FullscreenExit'
 import Layout from '../../../components/Layout'
 import { CDN } from '../../../public/environment'
 import { device } from '../../../lib/utils/device'
@@ -177,7 +178,10 @@ const SlotPage: FunctionComponent<PageProps> = ({data}) => {
                             {isFullscreen && <CloseIcon fontSize={'large'} className='closeGame-icon' onClick={exitFullScreen}/>}
 
                             <Actions className={'slot-actions'}>
-                                <FullscreenIcon className="fullscreen-icon" onClick={goFullScreen}/>
+                                
+                                { isFullscreen ? <FullscreenExitIcon className="fullscreen-icon" onClick={exitFullScreen}/> : 
+                                <FullscreenIcon className="fullscreen-icon" onClick={goFullScreen}/> }
+
                                 <LikeButton setActive={() => setLikedSlot(!likedSlot)} active={likedSlot}/>
                             </Actions> 
 
