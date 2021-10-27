@@ -53,8 +53,8 @@ const IndexPage: FunctionComponent<PageProps> = (props) => {
 
               <p>Esplora il nostro sito per scoprire:</p>
               <ul>
-                <li>Le migliori piattaforme di gioco online;</li>
-                <li>La possibilità di ricevere ogni offerta e i bonus esclusivi;</li>
+                <li>Le migliori piattaforme di gioco online.</li>
+                <li>La possibilità di ricevere ogni offerta e i bonus esclusivi.</li>
                 <li>Provare gratis ogni tipo di slot machine.</li>
               </ul>
             <br/>

@@ -12,142 +12,145 @@ const PrivacyPolicyPage = () => {
             <h2><strong>Privacy Policy</strong></h2>
 
             <p>
-            This policy discloses the privacy practices for this website, which are in compliance with The Data Protection Act, Chapter 440 of the Laws of Malta, and with the European Union Directive 2002/58/EC on the processing of personal data and the protection of privacy in the electronic communications sector.
+
+            According to The Data Protection Act, specifically Chapter 440 of the Laws of Malta, 
+            and with the European Union Directive 2002/58/EC which concerns processing 
+            personal data and safeguarding privacy in electronic communications sector, it is possible to highlight the privacy practices used in this website.
             <br/> <br/>
-            These guidelines serve as the basis for our registered users and visitors, and have been developed with the recognition 
-            that Internet technologies are rapidly evolving, and that underlying business models are still not established. 
-            Accordingly, guidelines are subject to change. Any such changes will be posted on this page. Please check the website regularly for any changes. 
-            If the changes represent a material departure from our current practices with respect to the use of personal information, 
-            the changes will be posted on this page thirty days prior to taking effect and registered users will be notified via email.
-            We are not responsible for the content or the privacy policies of websites to which we may link.
+            Precisely, these ground rules are used as a basis for our users and visitors, and they have been matured because of the continuous 
+            evolution of the Internet technologies, which are rapidly changing, as well as the guidelines taken into consideration. 
+            Every change will be certainly published and explained in this page. So, we suggest you to often check on the website, 
+            in order to see if there have been any changes. If the changes taken into account concern a material departure from our 
+            actual guidelines with respect to personal information, it will be our commitment to post them in this page thirty days prior to taking effect and to send 
+            them via email to all of our registered users. However, we are not liable for the content or private policies of webpages to which we might link. 
             </p>
 
-            <h3><strong>Information Gathered</strong></h3>        
+            <h3><strong>Information acquired </strong></h3>        
+            <ul>
+                <li>Registration : During the registration process, prior to activating your account, you are required to supply a unique email address.</li>
+                <li>IP Addresses : We also log IP addresses, or the location of your computer on the Internet, for systems administration and 
+                troubleshooting purposes. We do not use IP address logs to track your session or your behavior on our site.</li>
+                <li>Cookies : When one visits our website, a cookie may be sent to this person. A cookie is a small piece of data sent from a 
+                website and stored in a user's web browser while the user is browsing our website. Every time the user loads the website, 
+                the browser sends the cookie back to the server to notify the website of the user's previous activity. Your browser sends 
+                these cookies back to the website every time you visit the site again, so it can recognize you and can customize what you 
+                see on the screen according to your registered preferences. You are not obliged to accept cookies and most browsers allow you to turn off cookies. 
+                However, certain cookies are essential for the functioning of the website, thus disabling them may hinder the full functioning of the website.</li>
+            </ul>
+
+            <h3><strong>For what purpose are the informations acquired used?</strong></h3>        
+            
+            <ul>
+                <li> Statistical Analysis :
+                We may perform statistical analyses of user behavior. In this statistical analyses, we will disclose information to third parties 
+                only in aggregate form, meaning any process in which information is gathered and expressed in a summary form, for purposes such as 
+                statistical analysis. Personal information about you as an individual will not be provided to any third party without your consent.</li>
+
+                <li>Google Analytics : Through Google Analytics we determine how often users visit our site, what pages they visit when they do so, 
+                and what other sites they used prior to coming to this site. We use the information we get from Google Analytics only to improve this site. 
+                Google Analytics collects only the IP address assigned to you on the date you visit this site, rather than your name or other identifying information. 
+                We do not combine the information collected through the use of Google Analytics with personally identifiable information. 
+                Although Google Analytics plants a permanent cookie on your web browser to identify you as a unique user the next time you visit this site, 
+                the cookie cannot be used by anyone but Google. Google’s ability to use and share information collected by Google Analytics about your 
+                visits to this site is restricted by the Google Analytics Terms of Use and the Google Privacy Policy. You can prevent Google Analytics from 
+                recognizing you on return visits to this site by disabling cookies on your browser.</li>
+
+                <li>Email : We use email links located in our contact us page to allow you to contact us directly with any questions or comments you may have. 
+                We will use your email address to respond directly to these questions or comments.</li>
+
+                <li>Information Security : We use email links located in our contact us page to allow you to contact us directly with any questions or comments you may have. 
+                To prevent unauthorized access, maintain data accuracy, and ensure the appropriate use of information, we have put in 
+                place appropriate physical, electronic, and managerial procedures to protect the information we collect online.</li>
+
+                <li>Requirements for Processing.</li>
+            </ul>
+           
             <p>
-                <ul>
-                    <li>Registration : During the registration process, prior to activating your account, you are required to supply a unique email address.</li>
-                    <li>IP Addresses : We also log IP addresses, or the location of your computer on the Internet, for systems administration and 
-                    troubleshooting purposes. We do not use IP address logs to track your session or your behavior on our site.</li>
-                    <li>Cookies : When one visits our website, a cookie may be sent to this person. A cookie is a small piece of data sent from a 
-                    website and stored in a user's web browser while the user is browsing our website. Every time the user loads the website, 
-                    the browser sends the cookie back to the server to notify the website of the user's previous activity. Your browser sends 
-                    these cookies back to the website every time you visit the site again, so it can recognize you and can customize what you 
-                    see on the screen according to your registered preferences. You are not obliged to accept cookies and most browsers allow you to turn off cookies. 
-                    However, certain cookies are essential for the functioning of the website, thus disabling them may hinder the full functioning of the website.</li>
-                </ul>
+            It’s our responsibility to ensure that:
             </p>
-
-            <h3><strong>What do we do with the Information</strong></h3>        
-            <p>
-                <ul>
-                    <li> Statistical Analysis :
-                    We may perform statistical analyses of user behavior. In this statistical analyses, we will disclose information to third parties 
-                    only in aggregate form, meaning any process in which information is gathered and expressed in a summary form, for purposes such as 
-                    statistical analysis. Personal information about you as an individual will not be provided to any third party without your consent.</li>
-
-                    <li>Google Analytics : Through Google Analytics we determine how often users visit our site, what pages they visit when they do so, 
-                    and what other sites they used prior to coming to this site. We use the information we get from Google Analytics only to improve this site. 
-                    Google Analytics collects only the IP address assigned to you on the date you visit this site, rather than your name or other identifying information. 
-                    We do not combine the information collected through the use of Google Analytics with personally identifiable information. 
-                    Although Google Analytics plants a permanent cookie on your web browser to identify you as a unique user the next time you visit this site, 
-                    the cookie cannot be used by anyone but Google. Google’s ability to use and share information collected by Google Analytics about your 
-                    visits to this site is restricted by the Google Analytics Terms of Use and the Google Privacy Policy. You can prevent Google Analytics from 
-                    recognizing you on return visits to this site by disabling cookies on your browser.</li>
-
-                    <li>Email : We use email links located in our contact us page to allow you to contact us directly with any questions or comments you may have. 
-                    We will use your email address to respond directly to these questions or comments.</li>
-
-                    <li>Information Security : We use email links located in our contact us page to allow you to contact us directly with any questions or comments you may have. 
-                    To prevent unauthorized access, maintain data accuracy, and ensure the appropriate use of information, we have put in 
-                    place appropriate physical, electronic, and managerial procedures to protect the information we collect online.</li>
-
-                    <li>Requirements for Processing</li>
-                </ul>
-           
-           
-            We will ensure that: 
 
             <ul>
-                <li>Personal data is processed fairly and lawfully;</li>
-                <li>Personal data is always processed in accordance with good practice;</li>
-                <li>Personal data is only collected for specific, explicitly stated and legitimate purposes;</li>
-                <li>Personal data is not processed for any purpose that is incompatible with the purpose for which the information is collected. </li>
-                <li>The processing of personal data for historical, statistical or scientific - Purposes shall not be regarded as incompatible 
-                    with the purposes for which the information was collected;</li>
-                <li>Personal data that is processed is adequate and relevant to the purposes of the processing;No more personal 
-                    data is processed than what is necessary for the purposes of the processing;</li>
-                <li>Personal data that is processed is correct and up to date; All reasonable measures are taken to complete, correct, 
-                    block or erase incomplete or incorrect data;</li>
-                <li>Personal data is not kept for a period longer than is necessary;</li>
+                <li>Personal data is processed adequately and in accordance to law.</li>
+                <li>Personal data is always handled according to group practice.</li>
+                <li>Personal data is only gathered for specific, explicitly stated and lawful purposes.</li>
+                <li>Personal data is not handled for any aim that is not consistent with the aim for which the information is gathered.</li>
+                <li>Personal data is not handled for any aim that is not consistent with the aim for which the information is gathered.</li>
+                <li>The collection of personal data for historical, statistical or scientific aims should not be observed as incompatible with
+                     the aims for which the information was collected.</li>
+                <li>Personal data that is handled is acceptable and admissible to the purposes of the processing; no more personal data than 
+                    the ones absolute necessary for the purposes of processing are processed.</li>
+                <li>Personal data is collected precisely and up to date; All reasonable measures are adopted to complete, revise, block or delete incomplete or incorrect data.</li>
+                <li>No personal data is kept in the database for a period longer than necessary.</li>
                 <li>Personal data is not lost.</li>
             </ul>
+
+            <p>
         
-            We will only process personal data if the consent of the data subject is given unless the law requires otherwise. 
-            Explicit consent must be given in order for us to process sensitive personal data.
-
-            As a safeguard to your personal data, we do not sell any personal data without the explicit written permission 
-            of the data subject being the person to whom the data relates. Disclaimer: Top Ads Ltd., our partners and sponsors 
-            shall not be held liable for any data errors in transmission not occasioned by itself, or for any unauthorized acts of third parties. 
+            In cases where the law does not require otherwise, we will only collect personal information after having received your consent. 
+            It is requested that explicit consent is given in order to allow us to process your data. 
+            In order to secure your personal data, we will never sell personal data without the explicit written approval of the person to whom the data relates. 
+            Our partners and sponsors should never be held responsible for any unauthorized deeds of third parties or for data errors in transmission not occasioned by itself. 
             </p>
 
-            <h3><strong>Sharing of Data</strong></h3>        
+            <h3><strong>Data exchange</strong></h3>        
             <p>
-            We do share the information we gather, in any form, with advertisers and other partners. We will not release 
-            personal information about you as an individual to third parties, except under the circumstances described in Compliance 
-            with Legal Process below. Upon request, we will provide you with all of your personal information associated with your 
-            subscription and information will only be sent to the email address on file associated with it.
+            All the informations gathered are shared, in any form, with partners and advertisers. 
+            Except under specific circumstances explained in Compliance with Legal Process below,
+            we won’t discharge your personal information as single individual with third parties. 
+            Only on request, we will send to you all your personal information related to your subscription on the email address associated with the file taken into account. 
             <br/> <br/>
 
-
-            In compliance with the provisions of the Data Protection Act, Chapter 440 of the Laws of Malta, personal data may 
-            not be processed for purposes concerning direct marketing, if the data subject notifies the data controller that s/he opposes such processing. 
-            The controller shall appropriately inform the data subject of his right to oppose such processing, at no cost.
+            In case in which the data subject reveals the data controller that he or she is not allowed to gather information regarding direct marketing, 
+            this should be respected, according to the arrangements of the Data Protection Act, Chapter 440 of the Laws of Malta. 
+            It is duty of the controller to appropriately inform the subject about his or her right to oppose such processing, without any additional cost. 
             </p>
 
-            <h3><strong>Compliance with legal Process</strong></h3>        
+            <h3><strong>Conformity with legal Process</strong></h3>        
             <p>
-            We may disclose personal information if we are required and permitted to do so by law, in accordance with the Data Protection Act, 
-            or we in good faith believe that such action is necessary to:
+            Taken into account the Data Protection Act, we might reveal personal information if we are allowed to do so by law or if we believe that such action is fundamental 
+
+            </p>
+
             <ol>
-                <li>comply with the law or with legal process; </li>
-                <li>protect and defend our rights and property; </li>
-                <li>protect against misuse or unauthorized use of our web site and content;</li>
-                <li>protect the personal safety or property of our users or the public</li>
+                <li>to observe the law and the legal process.</li>
+                <li>preserve and defend our rights and property.</li>
+                <li>secure our website against any unauthorized use of its content.</li>
+                <li>protect user’s personal security and property or the public (this basically means that if you reveal fake information.</li>
+                <li>you try to affect someone else, your personal information may be disclosed in order to be able to investigate your actions).</li>
             </ol>
-            (among other things, this means that if you provide false information or attempt to pose as someone else, 
-            information about you may be disclosed as part of any investigation into your actions).
-            <br/> <br/>
-
-
-            Data may be disclosed in relation to the prevention, investigation, detection and prosecution of criminal offences, 
-            or of breaches of ethics for regulated professions through abusing the functions of the website in which illegal acts are performed, 
-            including, but not limited to threats which give rise to a criminal offence and other offences which give rise to criminal liability.
-            <br/> <br/>
-
-
-            Personal data may also be processed without the data subject’s consent if: The processing is necessary 
-            for the performance of a contract to which the data subject is party or in order to take steps at the request of the data subject prior to entering into a contract;
-            <br/> <br/>
-
-
-            Processing is necessary for the performance of an activity that is carried out in the public interest or 
-            in the exercise of official authority vested in the controller or in a third party to whom the data is disclosed;
-            <br/> <br/>
-
-
-            Processing is necessary for a purpose that concerns a legitimate interest of the controller or of such a third party 
-            to whom personal data is provided, except where such interest is overridden by the interest to protect the fundamental 
-            rights and freedoms of the data subject and in particular the right to privacy.
-            </p>
-
-            <h3><strong>Corrections and Cancellations</strong></h3>        
+        
             <p>
-            Upon request, we will:
-                <ul>
-                    <li>Remove you and your personal information, from our database, thereby cancelling your registration;</li>
-                    <li>Correct personal information that you state is erroneous;</li>
-                </ul>
+            <br/> 
+
+            Data may be released to prevent, investigate, detect, and prosecute criminal offences or breaches of ethics 
+            for regulated professions by abusing the functions of the website to commit illegal acts, such as, but not restricted to threats that result in criminal liability and other offenses that lead to criminal liability.
+            <br/> <br/>
+
+            The processing of personal data may also be carried out without the consent of the data subject in the following circumstances: 
+            The processing is necessary for the performance of a contract to which the data subject is a party or to take steps 
+            at the request of the data subject before entering into a contract;
+            <br/> <br/>
+
+            Processing is necessary for the performance of a task that is in the public interest or for the exercise of 
+            official authority vested in the controller or in a third party whom the data is disclosed to;
+            <br/> <br/>
+
+            The processing is necessary for a purpose that relates to the legitimate interests of the controller or such a 
+            third party to whom personal data is provided, unless this interest is outweighed by the need to safeguard the rights 
+            and freedoms of the data subject, and in particular the right to privacy.
+
             </p>
+
+            <h3><strong>Modifications and cancellations</strong></h3>        
+            <p>
+            If you request it, we will:
+            </p>
+
+            <ul>
+                <li>Remove you and your personal information from our database</li>
+                <li>Cancelling your registration</li>
+                <li>Correct any personal information you claim is inaccurate</li>
+            </ul>
 
             </Main>
         </Layout>

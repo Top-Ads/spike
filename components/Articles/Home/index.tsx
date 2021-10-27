@@ -62,10 +62,10 @@ const HomeArticle: FunctionComponent<Props> = ({mainBonuses, freeBonuses}) => {
 
                     </p>
                     <ul >
-                        <li>Il gioco della Roulette;</li>
-                        <li>il celebre Videopoker;</li>
-                        <li>Il classico Blackjack;</li>
-                        <li>l’elegante Baccarat;</li>
+                        <li>Il gioco della Roulette.</li>
+                        <li>il celebre Videopoker.</li>
+                        <li>Il classico Blackjack.</li>
+                        <li>l’elegante Baccarat.</li>
                         <li>il popolare Bingo.</li>
                     </ul>
                     <p>
@@ -80,9 +80,9 @@ const HomeArticle: FunctionComponent<Props> = ({mainBonuses, freeBonuses}) => {
                     <h3><strong>Giocare alle Slot senza download e senza registrazione</strong></h3>
                     <div
                     ><p>
-                    Devi sapere che su casinosquad.it potrai giocare subito, senza limiti o perdite di tempo. Sì, infatti, non dovrai iscriverti o fare registrazioni. <br/>
+                    Devi sapere che su Casinosquad.it potrai giocare subito, senza limiti o perdite di tempo. Sì, infatti, non dovrai iscriverti o fare registrazioni. <br/>
                     Tanti casinò, invece, ti obbligano a fare il download dei loro software di gioco. Questo togliendo tempo che potrebbe essere prezioso. <br/>
-                    Su casinosquad.it potrai giocare subito senza alcun obbligo.<br/>
+                    Su Casinosquad.it potrai giocare subito senza alcun obbligo.<br/>
                     Facendo un esempio, se decidi di giocare su Casino Squad, non dovrai riempire complicati moduli con i tuoi dati sensibili, poiché offriamo un’anteprima completamente gratuita. 
                     Infatti, per provare una slot digitale, dovrai semplicemente selezionarla, cliccando sulla sua anteprima. <br/>
                     Insomma, ti basterà accedere del browser per provare a giocare.<br/>
@@ -138,7 +138,7 @@ const HomeArticle: FunctionComponent<Props> = ({mainBonuses, freeBonuses}) => {
                 </section>
                 
                 <section>
-                    <h3><strong>In che modo casinosquad.it realizza le recensioni delle slot online?</strong></h3>
+                    <h3><strong>In che modo Casinosquad.it realizza le recensioni delle slot online?</strong></h3>
                     <div>
                     <p>
                     Abbiamo a disposizione un team di esperti che valuta ogni slot online, facendo un capillare percorso di verifica, rigoroso ed efficace.<br/>
@@ -276,8 +276,8 @@ const HomeArticle: FunctionComponent<Props> = ({mainBonuses, freeBonuses}) => {
                     </p>
 
                     <ol type="1">
-                        <li>Scegli una slot machine che t’ispira su casinosquad.com;</li>
-                        <li>Fai clic sull’anteprima della slot digitale;</li>
+                        <li>Scegli una slot machine che t’ispira su Casinosquad.com.</li>
+                        <li>Fai clic sull’anteprima della slot digitale.</li>
                         <li>Controlla la finestra di gioco sotto la slot online: qui troverai l’elenco dei casinò per giocare con soldi veri.</li>
                     </ol>
                     <p>

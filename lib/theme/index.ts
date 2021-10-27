@@ -90,8 +90,7 @@ export const GlobalStyle = createGlobalStyle`
 
     strong, h1 { color: ${styledTheme.palette.background}; }
 
-    p { 
-        color: ${styledTheme.text.color.black}; 
+    p, li { 
         line-height: 1.7em; word-spacing: normal; 
         font-family: 'Montserrat-Medium';
     }
