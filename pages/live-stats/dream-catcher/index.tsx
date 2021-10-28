@@ -93,7 +93,7 @@ const DreamCatcherPage: FunctionComponent<PageProps> = ({statsData, spinsData, b
 
                         </p>
                         <Thumbnail>
-                                <LazyLoad height={548} offset={300}>
+                                <LazyLoad height={548}>
                                     <Image
                                         alt={'crazy time live stats'}
                                         src={`https://images.spikeslot.com/statistiche-live-dream-catcher_f2cbe49cd8.jpeg`}

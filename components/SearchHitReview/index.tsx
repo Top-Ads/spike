@@ -103,6 +103,7 @@ const Title = styled.h2`
 `
     
 const Article = styled.article`
+    display: none;
     font-size: 0.85rem;
     margin-top: 20px;
 `

@@ -184,7 +184,7 @@ const ComparatorPage: FunctionComponent<PageProps>= ({topSlotsData, tableBonusDa
                             alt="Oferte bonus"
                             src={`${CDN}/jpeg/casinosquad_poster_bigwin.jpg`}
                             layout="responsive"
-                            priority={false}
+                            priority={true}
                             width={1920}
                             height={600}/>
                     </LazyLoad>

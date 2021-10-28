@@ -100,7 +100,7 @@ const CrazyTimePage: FunctionComponent<PageProps> = ({statsData, spinsData, bonu
                         </p>
 
                         <Thumbnail>
-                            <LazyLoad height={548} offset={300}>
+                            <LazyLoad height={548}>
                                 <Image
                                     alt={'crazy time live stats'}
                                     src={`https://spike-images.s3.eu-central-1.amazonaws.com/crazy-time-stats_1c1293a185.jpeg`}

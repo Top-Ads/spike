@@ -94,7 +94,7 @@ const MonopolyPage: FunctionComponent<PageProps> = ({statsData, spinsData, bonus
                         </p>
 
                         <Thumbnail>
-                                <LazyLoad height={548} offset={300}>
+                                <LazyLoad height={548}>
                                     <Image
                                         alt={'monopoly live stats'}
                                         src={`https://images.spikeslot.com/monopoly-live-stats_3f844ffed7.jpeg`}
