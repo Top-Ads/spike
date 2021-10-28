@@ -7,6 +7,7 @@ import { device } from '../../lib/utils/device'
 import { useRouter } from 'next/router'
 import { AlgoliaSearchData } from '../../lib/schemas'
 import NavigateNextOutlinedIcon from '@material-ui/icons/NavigateNextOutlined'
+import { injectCDN } from '../../lib/utils/injectCDN'
 
 type Props = {
    data: AlgoliaSearchData[]
@@ -62,7 +63,7 @@ const SearchHits: FunctionComponent<Props> = ({data, mouseOnHit, searchReviewNam
                                 <Thumbnail type={item.type}>
                                     <Image
                                         alt={item.name}
-                                        src={item.image ? item.image : `${CDN}/svg/no_img_available.svg`} 
+                                        src={item.image ? injectCDN(item.image) : `${CDN}/svg/no_img_available.svg`} 
                                         layout="responsive"
                                         priority={true}
                                         width={item.type === 'slot' ? 1200 : 150}

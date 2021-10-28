@@ -11,6 +11,7 @@ import SpinnerLoader from '../../SpinnerLoader'
 import LikeButton from '../../LikeButton'
 import { formatDistance } from 'date-fns'
 import italianLocale  from 'date-fns/locale/it'
+import { injectCDN } from '../../../lib/utils/injectCDN'
 
 type Props = {
    data: Slot,
@@ -115,7 +116,7 @@ const SlotCard: FunctionComponent<Props> = ({data, type}) => {
                     <LazyLoad key={data.id} height={85} offset={200}>
                         <Image
                             alt={data.name}
-                            src={data.image && data.image.url ? data.image.url : `${CDN}/svg/no_img_available.svg`} 
+                            src={data.image && data.image.url ? injectCDN(data.image.url) : `${CDN}/svg/no_img_available.svg`} 
                             layout="responsive"
                             priority={true}
                             width={1295}

@@ -21,6 +21,7 @@ import InfoIcon from '@material-ui/icons/Info'
 import Tooltip from '@material-ui/core/Tooltip'
 import { Zoom } from '@material-ui/core'
 import { device } from '../../../lib/utils/device'
+import { injectCDN } from '../../../lib/utils/injectCDN'
 
 type Props = {
     data: Bonus[]
@@ -113,7 +114,7 @@ const BonusTable: FunctionComponent<Props> = ({data}) => {
                     <LazyLoad key={index} height={50} offset={200}>
                       <Image
                           alt={row.name}
-                          src={row.circular_image.url}
+                          src={injectCDN(row.circular_image.url)}
                           layout="responsive"
                           priority={true}
                           width={100}

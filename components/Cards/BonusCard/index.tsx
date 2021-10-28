@@ -8,6 +8,7 @@ import LazyLoad from 'react-lazyload'
 import { Bonus } from '../../../lib/schemas'
 import RatingStars from '../../RatingStars'
 import { device } from '../../../lib/utils/device'
+import { injectCDN } from '../../../lib/utils/injectCDN'
 
 type Props = {
    data: Bonus 
@@ -39,7 +40,7 @@ const BonusCard: FunctionComponent<Props> = ({data}) => {
                         <LazyLoad key={data.id} height={100} offset={200}>
                             <Image
                                 alt={data.name}
-                                src={data.circular_image.url}
+                                src={injectCDN(data.circular_image.url)}
                                 layout="responsive"
                                 priority={true}
                                 width={150}

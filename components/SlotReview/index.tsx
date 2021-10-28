@@ -8,6 +8,7 @@ import { CDN } from '../../public/environment'
 import Divider from '../Divider'
 import { device } from '../../lib/utils/device'
 import Markdown from 'markdown-to-jsx'
+import { injectCDN } from '../../lib/utils/injectCDN'
 
 type Props = {
    data: Slot
@@ -30,7 +31,7 @@ const SlotReview: FunctionComponent<Props> = ({data}) => {
                             <LazyLoad key={data.id} height={85} offset={200}>
                                 <Image
                                     alt={data.name}
-                                    src={data.image && data.image.url ? data.image.url : `${CDN}/svg/no_img_available.svg`} 
+                                    src={data.image && data.image.url ? injectCDN(data.image.url) : `${CDN}/svg/no_img_available.svg`} 
                                     layout="responsive"
                                     priority={true}
                                     width={1295}

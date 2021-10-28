@@ -10,6 +10,7 @@ import { getBonuses } from '../../lib/graphql/queries/bonuses'
 import { getProducers } from '../../lib/graphql/queries/producers'
 import { animateScroll as scroll } from "react-scroll"
 import { device } from '../../lib/utils/device'
+import { injectCDN } from '../../lib/utils/injectCDN'
 
 type Props = {
    data?: AlgoliaSearchData
@@ -51,7 +52,7 @@ const SearchHitReview: FunctionComponent<Props> = ({data}) => {
                         <Thumbnail type={data?.type}>
                             <Image
                                 alt={data?.name}
-                                src={data?.image ? data?.image : `${CDN}/svg/no_img_available.svg`} 
+                                src={data?.image ? injectCDN(data?.image) : `${CDN}/svg/no_img_available.svg`} 
                                 layout="responsive"
                                 priority={true}
                                 width={data?.type === 'slot' ? 1200 : 150}

@@ -5,6 +5,7 @@ import styled from 'styled-components'
 import { Producer } from '../../../lib/schemas'
 import { CDN } from '../../../public/environment'
 import FilterListIcon from '@material-ui/icons/FilterList'
+import { injectCDN } from '../../../lib/utils/injectCDN'
 
 type Props = {
     data: Producer,
@@ -26,7 +27,7 @@ const ProducerCard: FunctionComponent<Props> = ({data, setSelected}) => {
                 <Thumbnail>
                     <Image
                         alt={data.name}
-                        src={data.image[0] ? data.image[0].url : `${CDN}/svg/no_img_available.svg`}
+                        src={data.image[0] ? injectCDN(data.image[0].url) : `${CDN}/svg/no_img_available.svg`}
                         layout="responsive"
                         priority={true}
                         width={195}

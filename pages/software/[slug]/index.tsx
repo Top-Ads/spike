@@ -14,6 +14,7 @@ import { getSlots } from '../../../lib/graphql/queries/slots'
 import { GridType } from '../../../lib/utils/constants'
 import GridLayout from '../../../components/GridLayout'
 import SlotCard from '../../../components/Cards/SlotCard'
+import { injectCDN } from '../../../lib/utils/injectCDN'
 
 type PageProps = {
     producerData: Producer
@@ -39,7 +40,7 @@ const SoftwarePage: FunctionComponent<PageProps> = ({producerData, slotsData}) =
                                 <LazyLoad key={producerData.id} height={85} offset={200}>
                                     <Image
                                         alt={producerData.name}
-                                        src={producerData.image && producerData.image[0].url ? producerData.image[0].url : `${CDN}/svg/no_img_available.svg`} 
+                                        src={producerData.image && producerData.image[0].url ? injectCDN(producerData.image[0].url) : `${CDN}/svg/no_img_available.svg`} 
                                         layout="responsive"
                                         priority={true}
                                         width={1145}

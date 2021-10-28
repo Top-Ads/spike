@@ -9,6 +9,7 @@ import Button from '@material-ui/core/Button'
 import { CDN } from '../../../public/environment'
 import { Slot } from '../../../lib/schemas'
 import SpinnerLoader from '../../SpinnerLoader'
+import { injectCDN } from '../../../lib/utils/injectCDN'
 
 type Props = {
    data: Slot,
@@ -38,7 +39,7 @@ const FavoriteCard: FunctionComponent<Props> = ({data, deleteItem}) => {
                         <SpinnerLoader show={loading}/>
                         <Image
                             alt={data.name}
-                            src={data.image && data.image.url ? data.image.url : `${CDN}/svg/no_img_available.svg`} 
+                            src={data.image && data.image.url ? injectCDN(data.image.url) : `${CDN}/svg/no_img_available.svg`} 
                             layout="responsive"
                             priority={true}
                             width={1200}

@@ -459,7 +459,9 @@ const DiceRollTable: FunctionComponent<Props> = ({data, type}) => {
     return (
         <Paper className={classes.root}>
             <h1 style={{margin: '10px auto', fontSize : '2rem'}}>{typeToHeader()}</h1>
+            
             <Divider />
+            
             <RowContainer>
                 <div style={{marginLeft: '20px'}}><h6>Results</h6></div>
                 <Container> 
@@ -469,8 +471,9 @@ const DiceRollTable: FunctionComponent<Props> = ({data, type}) => {
                 <Container>
                     <h6>Lands</h6>
                 </Container>
-                        </RowContainer>
-            {data.map((r : MonopolyTableRow, index : number) => renderRow(index, r))}
+            </RowContainer>
+
+            { data.map((r : MonopolyTableRow, index : number) => renderRow(index, r)) }
         </Paper>
     )
 }
