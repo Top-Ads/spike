@@ -26,12 +26,11 @@ type PageProps = {
 const ComparatorPage: FunctionComponent<PageProps>= ({topSlotsData, tableBonusData, topBonusData}) => { 
     
     return (
-        <Layout title="I migliori Casinò e Slot Machine Online con le nuove offerte Casino Bonus">
+        <Layout title="Casino Squad - Offerte Attuali Bonus Casino e Promo Aggiornate">
             <Head>
                 <meta 
                 property="og:description" 
-                content="Scegli tra i migliori giochi online, confronta Bonus di Benvenuto Senza Deposito, 
-                promozioni e altre funzionalità utili per vincere. Bonus per i Nuovi Giocatori." 
+                content="Tutte le Offerte Attuali ed i Bonus Casino e Promo Aggiornate" 
                 key="description"/>
             </Head>
             
@@ -40,7 +39,7 @@ const ComparatorPage: FunctionComponent<PageProps>= ({topSlotsData, tableBonusDa
 
                 <Thumbnail>
                     <Image
-                        alt="Casino Squad Bonus"
+                        alt="Oferte bonus"
                         src={`${CDN}/jpeg/casinosquad_poster_bonus.jpg`}
                         layout="responsive"
                         priority={true}
@@ -182,7 +181,7 @@ const ComparatorPage: FunctionComponent<PageProps>= ({topSlotsData, tableBonusDa
                 <Thumbnail>
                     <LazyLoad  height={400} offset={300}>
                         <Image
-                            alt="Casino Squad"
+                            alt="Oferte bonus"
                             src={`${CDN}/jpeg/casinosquad_poster_bigwin.jpg`}
                             layout="responsive"
                             priority={false}
