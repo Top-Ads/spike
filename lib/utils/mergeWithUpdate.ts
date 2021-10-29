@@ -1,6 +1,6 @@
 import { Spin } from "../schemas"
 
-export const mergeWithUpdate = (current : Spin[], update : Spin[]) => {
+export const mergeWithUpdate = (current : Spin[] | [], update : Spin[]) => {
     // the latest row in the table
     const lastFromCurrent = current[0]
     // slicing up the update array to the last known row based on the _id

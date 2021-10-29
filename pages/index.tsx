@@ -69,6 +69,7 @@ const IndexPage: FunctionComponent<PageProps> = (props) => {
                   alt="Slots - Bonuses - Casino"
                   src={`${CDN}/png/casino_poster.png`}
                   layout="responsive"
+                  sizes={"50vw"}
                   priority={true}
                   width={1500}
                   height={780}
@@ -107,7 +108,7 @@ const IndexPage: FunctionComponent<PageProps> = (props) => {
             gridType={GridType.SLOTS} 
             content={ newest.map( (slot: Slot) => <SlotCard key={slot.name} data={slot} type={SlotType.NEW}/> )}
             label="NUOVE SLOT"
-            xs={12} sm={12} md={4}
+            xs={12} sm={4} md={4}
           />
           <GridLayout
             gridType={GridType.SLOTS}
@@ -181,7 +182,6 @@ const Intro = styled.div`
   flex-direction: row;
   flex-wrap: wrap;
   margin: 10px 0px;
-  font-family: 'Montserrat-Medium';
 `
 
 const HeaderContainer = styled.div`

@@ -488,7 +488,6 @@ const RowContainer = styled.div`
     display: flex;
     align-items: center;
     justify-content: space-around;
-    font-family: 'Montserrat' !important;
     margin: 5px 0px;
     span { font-size: 1rem; }
 

@@ -64,7 +64,7 @@ const Main = styled.div`
             span.total{
                 color: ${({theme}) => theme.palette.background};
                 font-size: 2.5rem;
-                font-family: 'Montserrat-ExtraBold';
+                font-weight: 800;
             }
         }
     }

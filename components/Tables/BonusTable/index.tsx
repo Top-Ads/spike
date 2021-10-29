@@ -35,7 +35,7 @@ const StyledTableCell = withStyles((theme: Theme) =>
   createStyles({
     root: {
       fontFamily: 'inherit',
-      fontWeight: 500
+      fontWeight: 600
     },
     head: {
       backgroundColor: '#e2b96d',
@@ -116,6 +116,7 @@ const BonusTable: FunctionComponent<Props> = ({data}) => {
                           alt={row.name}
                           src={injectCDN(row.circular_image.url)}
                           layout="responsive"
+                          sizes={"50vw"}
                           priority={true}
                           width={100}
                           height={100}/>

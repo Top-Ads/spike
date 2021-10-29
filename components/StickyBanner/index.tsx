@@ -15,6 +15,7 @@ const StickyBanner: FunctionComponent = () =>
                     alt="Casino Legal Information"
                     src={`${CDN}/png/it_legal_logos.png`}
                     layout="responsive"
+                    sizes={"50vw"}
                     priority={true}
                     width={295}
                     height={56}
@@ -33,7 +34,7 @@ const Main = styled.div`
     position: fixed;
     bottom: 0px;
     width: 100%;
-    max-width: 1600px;
+    max-width: 1920px;
     height: auto;
     background-color: ${({theme}) => theme.palette.background};
     display: flex;

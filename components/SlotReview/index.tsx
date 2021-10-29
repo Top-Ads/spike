@@ -34,6 +34,7 @@ const SlotReview: FunctionComponent<Props> = ({data}) => {
                                     src={data.image && data.image.url ? injectCDN(data.image.url) : `${CDN}/svg/no_img_available.svg`} 
                                     layout="responsive"
                                     priority={true}
+                                    sizes={"50vw"}
                                     width={1295}
                                     height={728}
                                     quality={80}

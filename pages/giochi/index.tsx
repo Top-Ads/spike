@@ -66,7 +66,7 @@ const GiochiPage: FunctionComponent<PageProps> = (props) => {
         clear()
 
         setItemSelected(SlotFilterList.SHUFFLE)
-        const shuffleFreeSlots = await getSlots({countryCode: 'it', limit: 36, start: getRandomInt(giochiSlots.length, 500)})
+        const shuffleFreeSlots = await getSlots({countryCode: 'it', limit: 36, start: getRandomInt(giochiSlots.length, totalSlots)})
 
         setGiochiSlots(shuffleFreeSlots)    
     }

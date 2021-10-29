@@ -88,8 +88,8 @@ const Main = styled.div`
     }
 
     a {
-        font-size: 13px;
-        margin: 3px;
+        font-size: 14px;
+        padding: 4px;
         text-align: left;
         color: inherit;
     }

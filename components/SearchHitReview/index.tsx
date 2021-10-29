@@ -55,6 +55,7 @@ const SearchHitReview: FunctionComponent<Props> = ({data}) => {
                                 src={data?.image ? injectCDN(data?.image) : `${CDN}/svg/no_img_available.svg`} 
                                 layout="responsive"
                                 priority={true}
+                                sizes={"50vw"}
                                 width={data?.type === 'slot' ? 1200 : 150}
                                 height={data?.type === 'slot' ? 675 : 150}
                             />

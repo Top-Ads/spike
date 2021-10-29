@@ -43,6 +43,7 @@ const ComparatorPage: FunctionComponent<PageProps>= ({topSlotsData, tableBonusDa
                         src={`${CDN}/jpeg/casinosquad_poster_bonus.jpg`}
                         layout="responsive"
                         priority={true}
+                        sizes={"50vw"}
                         width={1920}
                         height={600}/>
                 </Thumbnail>
@@ -185,6 +186,7 @@ const ComparatorPage: FunctionComponent<PageProps>= ({topSlotsData, tableBonusDa
                             src={`${CDN}/jpeg/casinosquad_poster_bigwin.jpg`}
                             layout="responsive"
                             priority={true}
+                            sizes={"50vw"}
                             width={1920}
                             height={600}/>
                     </LazyLoad>

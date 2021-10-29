@@ -25,30 +25,6 @@ export const styledTheme: StyledTheme = {
 
 export const GlobalStyle = createGlobalStyle`
 
-    @font-face {
-        font-family: 'Montserrat-Medium';
-        src: 
-            url(https://casino-squad.b-cdn.net/fonts/Montserrat/Montserrat-Medium.ttf) format('ttf'),
-            url(https://casino-squad.b-cdn.net/fonts/Montserrat/Montserrat-Medium.ttf) format('truetype');
-        font-display: swap;
-    }
-
-    @font-face {
-        font-family: 'Montserrat-SemiBold';
-        src: 
-            url(https://casino-squad.b-cdn.net/fonts/Montserrat/Montserrat-SemiBold.ttf) format('ttf'),
-            url(https://casino-squad.b-cdn.net/fonts/Montserrat/Montserrat-SemiBold.ttf) format('truetype');
-        font-display: swap;
-    }
-
-    @font-face {
-        font-family: 'Montserrat-ExtraBold';
-        src: 
-            url(https://casino-squad.b-cdn.net/fonts/Montserrat/Montserrat-ExtraBold.ttf) format('ttf'),
-            url(https://casino-squad.b-cdn.net/fonts/Montserrat/Montserrat-ExtraBold.ttf) format('truetype');
-        font-display: swap;
-    }
-
     html {
         /* Firefox */
         scrollbar-width: thin;
@@ -73,8 +49,8 @@ export const GlobalStyle = createGlobalStyle`
     body {
         height: 100%;
         width: 100%;
-        max-width: 1600px;
-        font-family: "Montserrat-SemiBold", sans-serif;
+        max-width: 1920px;
+        font-family: "Montserrat", sans-serif;
         background-color: #f2f2f2;
         margin: 0 auto;
         padding: 0;
@@ -82,7 +58,7 @@ export const GlobalStyle = createGlobalStyle`
         overflow-y: auto !important;
     }
 
-    a { text-decoration : none; text-align: center; color: inherit; font-family: 'Montserrat-Medium'}
+    a { text-decoration : none; text-align: center; color: inherit; }
 
     * { box-sizing: borderRadius-box; }
 
@@ -91,8 +67,8 @@ export const GlobalStyle = createGlobalStyle`
     strong, h1 { color: ${styledTheme.palette.background}; }
 
     p, li { 
-        line-height: 1.7em; word-spacing: normal; 
-        font-family: 'Montserrat-Medium';
+        line-height: 1.7em; 
+        word-spacing: normal; 
     }
     
     @media ${device.mobileL} {  

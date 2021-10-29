@@ -41,10 +41,17 @@ export default class MyDocument extends Document {
             <Head>
               <link rel="preconnect" href={`${CDN}`}/>
               <link rel="dns-prefetch" href={`${CDN}`}/>
+              
              {/*  <link rel="apple-touch-icon" sizes="192x192" href={`${CDN}/png/touch_icon_iphone`}/>
               <link rel="apple-touch-icon" sizes="152x152" href={`${CDN}/png/touch_icon_ipad`}/>
               <link rel="apple-touch-startup-image" sizes="640x1136" href="/apple-spash_640.png"/> 
               <meta name="apple-mobile-web-app-status-bar-style" content="#e2b96d"/>*/}
+
+              <link
+                href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap"
+                rel="stylesheet"
+              />
+              
             </Head>
 
             <body>

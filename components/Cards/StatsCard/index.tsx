@@ -39,6 +39,7 @@ const StatsCard: FunctionComponent<Props> = ({data, timeFrame, type}) => {
                             src={injectSymbolImage(data.symbol, type, SymbolLayout.CARD).url}
                             layout="responsive"
                             priority={true}
+                            sizes={"50vw"}
                             width={injectSymbolImage(data.symbol, type, SymbolLayout.CARD).width}
                             height={injectSymbolImage(data.symbol, type, SymbolLayout.CARD).height}/> 
                     </LazyLoad>

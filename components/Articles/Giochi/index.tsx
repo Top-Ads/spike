@@ -279,10 +279,7 @@ const Main = styled.div`
 
     section { 
         margin: 30px 0px; 
-        p, li {
-            font-family: 'Montserrat-Medium';
-        }
-
+      
         li {
             margin-bottom: 25px;
             width: 80%;
