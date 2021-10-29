@@ -147,7 +147,7 @@ const SquadPage: FunctionComponent<PageProps> = ({freeBonusData, mainBonusData, 
                                 <p>
                                 Fra di voi ci sarà sicuramente qualche appassionato de “La casa de Papel”: ebbene, io sono il “Professore” del team Squad.  <br/><br/>
 
-                                Infatti, Mister J sta alla Squad come el Profesor sta a Tokyo, Berlino, Rio, etc. e sono in molti ad accostarmi anche ad Alan di “2 uomini e 1/2”!<br/><br/>
+                                Infatti, Mister J sta alla Squad come el Profesor sta a Tokyo, Berlino, Rio, etc. e sono in molti ad accostarmi anche ad Charlie di “2 uomini e 1/2”!<br/><br/>
 
                                 Nella vita mi occupo della gestione e della cura degli eventi di qualsiasi tipo: dalle discoteche ai concerti. Ovviamente, questo periodo è stato un po’ complesso a causa della pandemia.
                                 Posseggo vari e-commerce e ho lanciato diversi brand: da prodotti per la prima infanzia, a ritratti realistici e stilizzati.<br/><br/>
@@ -374,11 +374,11 @@ export async function getStaticProps() {
     ]
     
     const mainBonusRemapping: any = {
-        LeoVegas: "https://ads.leovegas.com/redirect.aspx?pid=3704489&bid=14965",
-        StarCasinò: "https://record.starcasino.it/_SEA3QA6bJTNXl890vMAfUGNd7ZgqdRLk/131/",
+        LeoVegas: "https://ads.leovegas.com/redirect.aspx?pid=3708703&bid=14965",
+        StarCasinò: "http://record.affiliatelounge.com/_SEA3QA6bJTMP_fzV1idzxmNd7ZgqdRLk/135/",
         WinCasino: "https://vincipromo.it/wincasino/?mp=42794b32-7604-49d2-92d0-8adf67a6b173",
-        NetBet: "https://banners.livepartners.com/view.php?z=139080",
-        GoldBet: "https://media.goldbetpartners.it/redirect.aspx?pid=3185&bid=1495",
+        NetBet: "https://banners.livepartners.com/view.php?z=357155",
+        GoldBet: "https://media.goldbetpartners.it/redirect.aspx?pid=5116&bid=1495",
     }
 
     const FREE_BONUSES =  [
@@ -386,16 +386,14 @@ export async function getStaticProps() {
         "StarCasinò",
         "Starvegas",
         "Betway",
-        "Slot Yes",
         "Gioco Digitale"]
 
     const freeBonusRemapping: any = {
-        LeoVegas: "https://ads.leovegas.com/redirect.aspx?pid=3704489&bid=14965",
-        StarCasinò: "https://record.starcasino.it/_SEA3QA6bJTNXl890vMAfUGNd7ZgqdRLk/131/",
-        Starvegas: "https://www.starvegas.it/nrgs/it/landing?refererId=89182&lang=it",
-        Betway: "https://betway.it/bwp/welcome-5gratis/it-it/?s=bw210475&a=AFF3009702735911860&utm_source=210475&utm_medium=Affiliate&utm_campaign=AFF3009702735911860",
-        "Slot Yes": "http://wladmiralinteractive.adsrv.eacdn.com/wl/clk/?btag=a_999b_177&aid=",
-        "Gioco Digitale": "",
+        LeoVegas: "https://ads.leovegas.com/redirect.aspx?pid=3708703&bid=14965",
+        StarCasinò: "http://record.affiliatelounge.com/_SEA3QA6bJTMP_fzV1idzxmNd7ZgqdRLk/135/",
+        Starvegas: "https://www.starvegas.it/gmg/refer/61782b177358340001a18ac7",
+        Betway: "https://betway.it/bwp/welcome-5gratis/it-it/?s=bw210475&a=AFF3379473685189866&utm_source=210475&utm_medium=Affiliate&utm_campaign=AFF3379473685189866",
+        "Gioco Digitale": "https://mediaserver.entainpartners.com/renderBanner.do?zoneId=2031706",
     }
 
     const TOP_BONUSES =  [
@@ -405,9 +403,9 @@ export async function getStaticProps() {
     ]
 
     const topBonusRemapping: any = {
-        StarCasinò: "https://record.starcasino.it/_SEA3QA6bJTNXl890vMAfUGNd7ZgqdRLk/131/",
-        Starvegas: "https://www.starvegas.it/nrgs/it/landing?refererId=89182&lang=it",
-        LeoVegas: "https://ads.leovegas.com/redirect.aspx?pid=3704489&bid=14965",
+        StarCasinò: "http://record.affiliatelounge.com/_SEA3QA6bJTMP_fzV1idzxmNd7ZgqdRLk/135/",
+        Starvegas: "https://www.starvegas.it/gmg/refer/61782b177358340001a18ac7",
+        LeoVegas: "https://ads.leovegas.com/redirect.aspx?pid=3708703&bid=14965",
     }
     
     return {

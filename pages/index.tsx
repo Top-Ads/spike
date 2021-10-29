@@ -308,9 +308,7 @@ export async function getStaticProps() {
     "King Casino",
     "Eurobet",
     "Betway",
-    "Gioco Digitale",
-    "Bwin",
-    "Slot Yes"]
+    "Gioco Digitale"]
 
     const TOP_BONUSES =  [
       "LeoVegas",
@@ -322,38 +320,34 @@ export async function getStaticProps() {
       "StarCasinò",
       "Starvegas",
       "Betway",
-      "Slot Yes",
       "Gioco Digitale"]
 
 
     const topBonusRemapping: any = {
-      LeoVegas: "https://ads.leovegas.com/redirect.aspx?pid=3704489&bid=14965",
-      StarCasinò: "https://record.starcasino.it/_SEA3QA6bJTNXl890vMAfUGNd7ZgqdRLk/131/",
-      Starvegas: "https://www.starvegas.it/nrgs/it/landing?refererId=89182&lang=it",
+      LeoVegas: "https://ads.leovegas.com/redirect.aspx?pid=3708703&bid=14965",
+      StarCasinò: "http://record.affiliatelounge.com/_SEA3QA6bJTMP_fzV1idzxmNd7ZgqdRLk/135/",
+      Starvegas: "https://www.starvegas.it/gmg/refer/61782b177358340001a18ac7",
     }
 
     const mainBonusRemapping: any = {
-      LeoVegas: "https://ads.leovegas.com/redirect.aspx?pid=3704489&bid=14965",
-      StarCasinò: "https://record.starcasino.it/_SEA3QA6bJTNXl890vMAfUGNd7ZgqdRLk/131/",
-      GoldBet: "https://media.goldbetpartners.it/redirect.aspx?pid=3185&bid=1495",
+      LeoVegas: "https://ads.leovegas.com/redirect.aspx?pid=3708703&bid=14965",
+      StarCasinò: "http://record.affiliatelounge.com/_SEA3QA6bJTMP_fzV1idzxmNd7ZgqdRLk/135/",
+      GoldBet: "https://media.goldbetpartners.it/redirect.aspx?pid=5116&bid=1495",
       WinCasino: "https://vincipromo.it/wincasino/?mp=42794b32-7604-49d2-92d0-8adf67a6b173",
-      NetBet: "https://banners.livepartners.com/view.php?z=139080",
-      "888 Casino": "https://ic.aff-handler.com/c/43431?sr=1868828",
-      "King Casino": "https://spikeslot.kingcasino.it",
-      Eurobet: "https://record.betpartners.it/_E_C7XwxgprAZV93hC2dJ_GNd7ZgqdRLk/108/",
-      Betway: "https://betway.it/bwp/welcome-5gratis/it-it/?s=bw210475&a=AFF3009702735911860&utm_source=210475&utm_medium=Affiliate&utm_campaign=AFF3009702735911860",
-      "Gioco Digitale": "",
-      Bwin: "https://mediaserver.entainpartners.com/renderBanner.do?zoneId=2000655",
-      "Slot Yes": "http://wladmiralinteractive.adsrv.eacdn.com/wl/clk/?btag=a_999b_177&aid="
+      NetBet: "https://banners.livepartners.com/view.php?z=357155",
+      "888 Casino": "https://ic.aff-handler.com/c/43431?sr=1864253",
+      "King Casino": "http://cs.kingcasino.it/",
+      Eurobet: "https://record.betpartners.it/_E_C7XwxgprAZV93hC2dJ_GNd7ZgqdRLk/113/",
+      Betway: "https://betway.it/bwp/welcome-5gratis/it-it/?s=bw210475&a=AFF3379473685189866&utm_source=210475&utm_medium=Affiliate&utm_campaign=AFF3379473685189866",
+      "Gioco Digitale": "https://mediaserver.entainpartners.com/renderBanner.do?zoneId=2031706",
     }
 
     const freeBonusRemapping: any = {
-      LeoVegas: "https://ads.leovegas.com/redirect.aspx?pid=3704489&bid=14965",
-      StarCasinò: "https://record.starcasino.it/_SEA3QA6bJTNXl890vMAfUGNd7ZgqdRLk/131/",
-      Starvegas: "https://www.starvegas.it/nrgs/it/landing?refererId=89182&lang=it",
-      Betway: "https://betway.it/bwp/welcome-5gratis/it-it/?s=bw210475&a=AFF3009702735911860&utm_source=210475&utm_medium=Affiliate&utm_campaign=AFF3009702735911860",
-      "Slot Yes": "http://wladmiralinteractive.adsrv.eacdn.com/wl/clk/?btag=a_999b_177&aid=",
-      "Gioco Digitale": "",
+      LeoVegas: "https://ads.leovegas.com/redirect.aspx?pid=3708703&bid=14965",
+      StarCasinò: "http://record.affiliatelounge.com/_SEA3QA6bJTMP_fzV1idzxmNd7ZgqdRLk/135/",
+      Starvegas: "https://www.starvegas.it/gmg/refer/61782b177358340001a18ac7",
+      Betway: "https://betway.it/bwp/welcome-5gratis/it-it/?s=bw210475&a=AFF3379473685189866&utm_source=210475&utm_medium=Affiliate&utm_campaign=AFF3379473685189866",
+      "Gioco Digitale": "https://mediaserver.entainpartners.com/renderBanner.do?zoneId=2031706",
     }
 
   return {

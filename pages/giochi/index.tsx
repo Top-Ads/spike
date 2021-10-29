@@ -451,11 +451,11 @@ export async function getStaticProps() {
     const PAGE_BONUSES = ["LeoVegas", "StarCasinò", "WinCasino", "NetBet", "King Casino"]
 
     const pageBonusRemapping: any = {
-        LeoVegas: "https://ads.leovegas.com/redirect.aspx?pid=3704489&bid=14965",
-        StarCasinò: "https://record.starcasino.it/_SEA3QA6bJTNXl890vMAfUGNd7ZgqdRLk/131/",
+        LeoVegas: "https://ads.leovegas.com/redirect.aspx?pid=3708703&bid=14965",
+        StarCasinò: "http://record.affiliatelounge.com/_SEA3QA6bJTMP_fzV1idzxmNd7ZgqdRLk/135/",
         WinCasino: "https://vincipromo.it/wincasino/?mp=42794b32-7604-49d2-92d0-8adf67a6b173",
-        NetBet: "https://banners.livepartners.com/view.php?z=139080",
-        "King Casino": "https://spikeslot.kingcasino.it",
+        NetBet: "https://banners.livepartners.com/view.php?z=357155",
+        "King Casino": "http://cs.kingcasino.it/",
     }
 
     return {
