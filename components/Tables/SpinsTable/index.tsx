@@ -36,7 +36,7 @@ const StyledTableCell = withStyles((theme: Theme) =>
   createStyles({
     root: {
       fontFamily: 'inherit',
-      fontWeight: 500,
+      fontWeight: 600,
       '& .table-head': {
         display: 'flex',
         alignItems: 'center'

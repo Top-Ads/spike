@@ -34,6 +34,7 @@ const HomeArticle: FunctionComponent<Props> = ({mainBonuses, freeBonuses}) => {
                                 src={"https://spike-images.s3.eu-central-1.amazonaws.com/gold-volcano-logo_3aa1e358a3.png"} 
                                 layout="responsive"
                                 priority={true}
+                                sizes="50vw"
                                 width={200}
                                 height={200}/>
                         </LazyLoad>
@@ -103,6 +104,7 @@ const HomeArticle: FunctionComponent<Props> = ({mainBonuses, freeBonuses}) => {
                                 src={`${CDN}/svg/adm.svg`}
                                 layout="responsive"
                                 priority={true}
+                                sizes="50vw"
                                 quality={50}
                                 width={200}
                                 height={200}/>
@@ -443,11 +445,7 @@ const Main = styled.div`
 
     section { 
         margin: 30px 0px; 
-        p, li {
-            font-family: 'Montserrat-Medium';
-            
-        }
-
+      
         li {
             margin-bottom: 15px;
             width: 80%;

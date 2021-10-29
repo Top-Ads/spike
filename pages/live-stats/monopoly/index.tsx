@@ -100,6 +100,7 @@ const MonopolyPage: FunctionComponent<PageProps> = ({statsData, spinsData, bonus
                                         src={`https://images.spikeslot.com/monopoly-live-stats_3f844ffed7.jpeg`}
                                         layout="responsive"
                                         priority={true}
+                                        sizes={"50vw"}
                                         quality={70}
                                         width={892}
                                         height={501}/> 
@@ -310,7 +311,7 @@ const Thumbnail = styled.div`
     @media ${device.mobileL} {  width: 100%; }
 `
 
-export async function getStaticProps() {
+export async function getServerSideProps() {
     
     const dataStatsResponse  = await axios.get(`${APISOCKET.MONOPOLY}/api/data-for-the-last-hours/24h`)
     const dataSpinsResponse  = await axios.get(`${APISOCKET.MONOPOLY}/api/get-latest/15`)

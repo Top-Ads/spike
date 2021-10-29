@@ -42,6 +42,7 @@ const FavoriteCard: FunctionComponent<Props> = ({data, deleteItem}) => {
                             src={data.image && data.image.url ? injectCDN(data.image.url) : `${CDN}/svg/no_img_available.svg`} 
                             layout="responsive"
                             priority={true}
+                            sizes={"50vw"}
                             width={1200}
                             height={675}
                             onLoad={()=> setLoading(false)}/>
@@ -114,7 +115,6 @@ const Name = styled.div`
 
 const Producer = styled.div`
     font-size: 0.67rem;
-    font-family: "Montserrat-Medium";
 `
 
 const Rating = styled.div `

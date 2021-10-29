@@ -99,6 +99,7 @@ const DreamCatcherPage: FunctionComponent<PageProps> = ({statsData, spinsData, b
                                         src={`https://images.spikeslot.com/statistiche-live-dream-catcher_f2cbe49cd8.jpeg`}
                                         layout="responsive"
                                         priority={true}
+                                        sizes={"50vw"}
                                         quality={70}
                                         width={1186}
                                         height={667}/> 
@@ -351,7 +352,7 @@ const Thumbnail = styled.div`
     @media ${device.mobileL} {  width: 100%; }
 `
 
-export async function getStaticProps() {
+export async function getServerSideProps() {
     
     const dataResponse  = await axios.get(`${APISOCKET.DREAMCATCHER}/api/data-for-the-last-hours/24h`)
 

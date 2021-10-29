@@ -39,6 +39,7 @@ const SquadPage: FunctionComponent<PageProps> = ({freeBonusData, mainBonusData, 
                                             src={`${CDN}/jpeg/squad/lucky.jpeg`}
                                             layout="responsive"
                                             priority={true}
+                                            sizes={"50vw"}
                                             width={550}
                                             height={550}/> 
                                     </LazyLoad>
@@ -89,6 +90,7 @@ const SquadPage: FunctionComponent<PageProps> = ({freeBonusData, mainBonusData, 
                                             src={`${CDN}/jpeg/squad/chily.jpeg`}
                                             layout="responsive"
                                             priority={true}
+                                            sizes={"50vw"}
                                             width={550}
                                             height={550}/> 
                                     </LazyLoad>
@@ -139,6 +141,7 @@ const SquadPage: FunctionComponent<PageProps> = ({freeBonusData, mainBonusData, 
                                             src={`${CDN}/jpeg/squad/mrj.jpeg`}
                                             layout="responsive"
                                             priority={true}
+                                            sizes={"50vw"}
                                             width={550}
                                             height={550}/> 
                                     </LazyLoad>
@@ -186,6 +189,7 @@ const SquadPage: FunctionComponent<PageProps> = ({freeBonusData, mainBonusData, 
                                             src={`${CDN}/jpeg/squad/pitbull.jpeg`}
                                             layout="responsive"
                                             priority={true}
+                                            sizes={"50vw"}
                                             width={550}
                                             height={550}/> 
                                     </LazyLoad>
@@ -233,6 +237,7 @@ const SquadPage: FunctionComponent<PageProps> = ({freeBonusData, mainBonusData, 
                                             src={`${CDN}/jpeg/squad/value.jpeg`}
                                             layout="responsive"
                                             priority={true}
+                                            sizes={"50vw"}
                                             width={550}
                                             height={550}/> 
                                     </LazyLoad>

@@ -106,6 +106,7 @@ const CrazyTimePage: FunctionComponent<PageProps> = ({statsData, spinsData, bonu
                                     src={`https://spike-images.s3.eu-central-1.amazonaws.com/crazy-time-stats_1c1293a185.jpeg`}
                                     layout="responsive"
                                     priority={true}
+                                    sizes={"50vw"}
                                     quality={70}
                                     width={975}
                                     height={548}/> 
@@ -302,7 +303,7 @@ const Thumbnail = styled.div`
     @media ${device.mobileL} {  width: 100%; }
 `
 
-export async function getStaticProps() {
+export async function getServerSideProps() {
     
     const dataResponse  = await axios.get(`${APISOCKET.CRAZYTIME}/api/data-for-the-last-hours/24h`)
 

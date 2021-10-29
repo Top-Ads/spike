@@ -44,7 +44,8 @@ const BonusCard: FunctionComponent<Props> = ({data}) => {
                                 layout="responsive"
                                 priority={true}
                                 width={150}
-                                height={150}/>
+                                height={150}
+                                sizes={"50vw"}/>
                         </LazyLoad>
                     </Thumbnail>
                     <div style={{textAlign: 'left' }}>
@@ -76,6 +77,7 @@ const BonusCard: FunctionComponent<Props> = ({data}) => {
                             layout="responsive"
                             quality={50}
                             priority={true}
+                            sizes={"50vw"}
                             width={1141}
                             height={760}/>
                     </div>
@@ -93,6 +95,7 @@ const BonusCard: FunctionComponent<Props> = ({data}) => {
                                     alt={provider}
                                     src={`${CDN}/svg/${provider}.svg`} 
                                     layout="responsive"
+                                    sizes={"50vw"}
                                     width={30}
                                     height={30}/>
                       </Provider>
@@ -131,7 +134,7 @@ const BonusBody = styled.div `
         color: ${({theme}) => theme.text.color.black};
         text-align: left;
         font-size: 13px;
-        font-weight: 500;
+        font-weight: 600;
     }
     .label {
         height: 20px;

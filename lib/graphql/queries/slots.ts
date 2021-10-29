@@ -52,7 +52,8 @@ const SLOTS = `
               slug: $slug,
               producer: {
                 slug: $producer
-              }
+              },
+              type: "online"
             },
             limit: $limit,
             start: $start,

@@ -30,6 +30,7 @@ const ProducerCard: FunctionComponent<Props> = ({data, setSelected}) => {
                         src={data.image[0] ? injectCDN(data.image[0].url) : `${CDN}/svg/no_img_available.svg`}
                         layout="responsive"
                         priority={true}
+                        sizes={"50vw"}
                         width={195}
                         height={109}/>
                 </Thumbnail>

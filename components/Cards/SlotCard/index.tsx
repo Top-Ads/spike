@@ -122,6 +122,7 @@ const SlotCard: FunctionComponent<Props> = ({data, type}) => {
                             width={1295}
                             height={728}
                             quality={80}
+                            sizes={"50vw"}
                             onLoad={()=> setLoading(false)}/>
                     </LazyLoad>
                 </Thumbnail>
@@ -182,7 +183,6 @@ const Description = styled.span`
     span {
         margin: 0 2px;
         text-align: left;
-        font-family: "Montserrat-Medium";
     }
 
     span.card-name {

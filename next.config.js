@@ -1,6 +1,4 @@
-const withWorkbox = require("next-with-workbox");
-
-module.exports = withWorkbox({
+module.exports = {
   images: {
     domains: [
       'images.ctfassets.net',
@@ -10,13 +8,8 @@ module.exports = withWorkbox({
       'images.spikeslot.com',
       'spikeapi.eu'
     ],
-  },
-  workbox: {
-    dest: "public",
-    swDest: "sw.js",
-    swSrc: "public/worker.js",
-    force: false,
-    maximumFileSizeToCacheInBytes: 5000000 /* 5MB */
+    imageSizes: [16, 32, 48, 64, 96, 128, 256, 384],
+    deviceSizes: [640, 750, 828, 1080, 1200, 1920, 2048, 3840],
   },
   swcMinify: true
-});
+};
