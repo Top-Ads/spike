@@ -19,12 +19,42 @@ import { CDN } from '../../public/environment'
 
 type PageProps = {
     topSlotsData: Slot []
-    tableBonusData: Bonus []
-    topBonusData: Bonus []
+    pagesBonusesData: Bonus []
 }
 
-const ComparatorPage: FunctionComponent<PageProps>= ({topSlotsData, tableBonusData, topBonusData}) => { 
+const ComparatorPage: FunctionComponent<PageProps>= ({topSlotsData, pagesBonusesData}) => { 
     
+    const TOP_BONUSES =  [
+        "888 Casino",
+        "StarCasinò",
+        "LeoVegas",
+        "WinCasino"
+    ]
+    
+    const MAIN_BONUSES =  [
+    "LeoVegas",
+    "StarCasinò",
+    "WinCasino",
+    "NetBet",
+    "GoldBet",
+    "888 Casino",
+    "King Casino",
+    "Eurobet",
+    "Betway",
+    "Gioco Digitale"]
+    
+    const topBonusesData = pagesBonusesData.filter( bonus => {
+        if ( TOP_BONUSES.includes( bonus.name ) ) {
+            return bonus
+        }
+    })
+    
+    const mainBonusesData = pagesBonusesData.filter( bonus => {
+        if ( MAIN_BONUSES.includes( bonus.name ) ) {
+            return bonus
+        }
+    })
+
     return (
         <Layout title="Casino Squad - Offerte Attuali Bonus Casino e Promo Aggiornate">
             <Head>
@@ -85,7 +115,7 @@ const ComparatorPage: FunctionComponent<PageProps>= ({topSlotsData, tableBonusDa
                 <GridContainer id="grid-topBonus">
                     <GridLayout
                         gridType={GridType.TOPBONUS} 
-                        content={ topBonusData.map( (bonus) => 
+                        content={ topBonusesData.map( (bonus) => 
                             <BonusCard key={bonus.id} data={bonus}/>
                         )}
                         label="Migliori Casino Italiani per servizi offerti"
@@ -103,13 +133,13 @@ const ComparatorPage: FunctionComponent<PageProps>= ({topSlotsData, tableBonusDa
                 <GridContainer id="grid-bonuses">
 
                     <div className="bonus-table">
-                    <BonusTable data={tableBonusData}/>
+                    <BonusTable data={mainBonusesData}/>
                     </div>
 
                     <div className="bonus-cards">
                         <GridLayout
                             gridType={GridType.BONUS}
-                            content={ tableBonusData.map( (bonus) => 
+                            content={ mainBonusesData.map( (bonus) => 
                                 <BonusCard key={bonus.id} data={bonus}/>
                             )}
                             AlignItem={"center"}
@@ -423,8 +453,7 @@ export async function getStaticProps() {
         "Unibet"
     ]
 
-
-    const tableBonusRemapping: any = {
+    const pageBonusesRemapping: any = {
         LeoVegas: "https://ads.leovegas.com/redirect.aspx?pid=3708703&bid=14965",
         StarCasinò: "http://record.affiliatelounge.com/_SEA3QA6bJTMP_fzV1idzxmNd7ZgqdRLk/135/",
         Starvegas: "https://www.starvegas.it/gmg/refer/61782b177358340001a18ac7",
@@ -440,33 +469,14 @@ export async function getStaticProps() {
         "Snai": "https://affiliazioniads.snai.it/redirect.aspx?pid=29923&bid=2479",
         "Unibet": "https://b1.trickyrock.com/redirect.aspx?pid=74444446&bid=27508"
     }
-
-    const TOP_BONUSES =  [
-        "888 Casino",
-        "StarCasinò",
-        "LeoVegas",
-        "WinCasino"
-    ]
-
-    const topBonusRemapping: any = {
-        "888 Casino": "https://ic.aff-handler.com/c/43431?sr=1864253",
-        StarCasinò: "http://record.affiliatelounge.com/_SEA3QA6bJTMP_fzV1idzxmNd7ZgqdRLk/135/",
-        LeoVegas: "https://ads.leovegas.com/redirect.aspx?pid=3708703&bid=14965",
-        WinCasino: "https://www.vincipromo.it/wincasino/?mp=7f1d8788-3f9e-4111-b205-e49d29661715",
-    }
-
       
     return {
         props: {
             topSlotsData: await getSlots({ limit: 8, start: 0, sort: 'updated_at:desc' }),
-            tableBonusData: (await getBonuses({ names: PAGE_BONUSES, sort: 'rating:desc'})).map((b) => {
-                b.link = tableBonusRemapping[b.name]
+            pagesBonusesData: (await getBonuses({ names: PAGE_BONUSES, sort: 'rating:desc'})).map((b) => {
+                b.link = pageBonusesRemapping[b.name]
                 return b
-            }),
-            topBonusData: (await getBonuses({ names: TOP_BONUSES, sort: 'rating:desc'})).map((b) => {
-                b.link = topBonusRemapping[b.name]
-                return b
-            }),
+            })
         }, 
     }
 }

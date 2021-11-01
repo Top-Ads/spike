@@ -25,10 +25,10 @@ import Head from 'next/head'
 type PageProps = {
     statsData: Stat[],
     spinsData: Spin[],
-    bonusData: Bonus[]
+    bonusesData: Bonus[]
 };
 
-const CrazyTimePage: FunctionComponent<PageProps> = ({statsData, spinsData, bonusData}) => {
+const CrazyTimePage: FunctionComponent<PageProps> = ({statsData, spinsData, bonusesData}) => {
 
     const [stats, setStats] = useState<Stat[]>(statsData)
     const [spins, setSpins] = useState<Spin[]>(spinsData)
@@ -155,13 +155,13 @@ const CrazyTimePage: FunctionComponent<PageProps> = ({statsData, spinsData, bonu
                     <BonusContainer>
                         <h3>Puoi giocare alla CRAZY TIME QUI</h3>
                         <div className="bonus-table">
-                            <BonusTable data={bonusData}/>
+                            <BonusTable data={bonusesData}/>
                         </div>
                         
                         <GridContainer className={"bonus-cards"}>
                             <GridLayout
                                 gridType={GridType.BONUS}
-                                content={ bonusData.map( (bonus) => 
+                                content={ bonusesData.map( (bonus) => 
                                     <BonusCard key={bonus.id} data={bonus}/>
                                 )}
                                 AlignItem={"center"}
@@ -309,7 +309,7 @@ export async function getServerSideProps() {
 
     const PAGE_BONUSES = ["BetFlag", "LeoVegas", "888 Casino", "StarCasinò", "Unibet"]
 
-    const pageBonusRemapping: any = {
+    const pageBonusesRemapping: any = {
         BetFlag: "https://adv.betflag.com/redirect.aspx?pid=5326&bid=2680",
         LeoVegas: "https://ads.leovegas.com/redirect.aspx?pid=3708703&bid=14965",
         "888 Casino": "https://ic.aff-handler.com/c/43431?sr=1864253",
@@ -325,8 +325,8 @@ export async function getServerSideProps() {
             r.timeOfSpin = r.timeOfSpin - 1000 * 60 * 60 * 2
             return r
           }),
-          bonusData: (await getBonuses({ names: PAGE_BONUSES, sort: 'rating:desc' })).map((b) => {
-                b.link = pageBonusRemapping[b.name]
+          bonusesData: (await getBonuses({ names: PAGE_BONUSES, sort: 'rating:desc' })).map((b) => {
+                b.link = pageBonusesRemapping[b.name]
                 return b
             }),
         }

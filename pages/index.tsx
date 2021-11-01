@@ -10,7 +10,7 @@ import FreqentlyAsked from '../components/FrequentlyAsked'
 import SlotCard from '../components/Cards/SlotCard'
 import BonusCard from '../components/Cards/BonusCard'
 import BonusTable from '../components/Tables/BonusTable'
-import { GridType, SlotType } from '../lib/utils/constants'
+import { GridType, pageBonusesRemapping, PAGE_BONUSES, SlotType } from '../lib/utils/constants'
 import HomeArticle from '../components/Articles/Home'
 import { Bonus, ThemeSlot, Slot } from '../lib/schemas'
 import { getBonuses } from '../lib/graphql/queries/bonuses'
@@ -21,9 +21,7 @@ import { getTotalSlots, getTotalBonuses, getTotalProducers } from '../lib/api'
 
 type PageProps = {
   slotsData: ThemeSlot
-  freeBonusData: Bonus []
-  topBonusData: Bonus []
-  mainBonusData: Bonus []
+  pageBonusesData: Bonus []
   totalSlots: number
   totalBonuses: number
   totalProducers: number
@@ -31,7 +29,50 @@ type PageProps = {
 
 const IndexPage: FunctionComponent<PageProps> = (props) => {
 
-  const {slotsData, freeBonusData, topBonusData, mainBonusData, totalSlots, totalBonuses, totalProducers} = props
+  const {slotsData, pageBonusesData, totalSlots, totalBonuses, totalProducers} = props
+
+  const TOP_BONUSES =  [
+    "LeoVegas",
+    "StarCasinò",
+    "Starvegas"]
+
+  const MAIN_BONUSES =  [
+    "LeoVegas",
+    "StarCasinò",
+    "WinCasino",
+    "NetBet",
+    "GoldBet",
+    "888 Casino",
+    "King Casino",
+    "Eurobet",
+    "Betway",
+    "Gioco Digitale"]
+
+  const FREE_BONUSES =  [
+      "LeoVegas",
+      "StarCasinò",
+      "Starvegas",
+      "Betway",
+      "Gioco Digitale"]
+
+
+  const topBonusesData = pageBonusesData.filter( bonus => {
+    if ( TOP_BONUSES.includes( bonus.name ) ) {
+      return bonus
+    }
+  })
+
+  const mainBonusesData = pageBonusesData.filter( bonus => {
+    if ( MAIN_BONUSES.includes( bonus.name ) ) {
+      return bonus
+    }
+  })
+
+  const freeBonusesData = pageBonusesData.filter( bonus => {
+    if ( FREE_BONUSES.includes( bonus.name ) ) {
+      return bonus
+    }
+  })
 
   const router = useRouter()
 
@@ -123,7 +164,7 @@ const IndexPage: FunctionComponent<PageProps> = (props) => {
         <GridContainer id="grid-topBonus">
           <GridLayout
             gridType={GridType.TOPBONUS} 
-            content={ topBonusData.map( (bonus) => 
+            content={ topBonusesData.map( (bonus) => 
                 <BonusCard key={bonus.id} data={bonus}/>
               )}
             label="I top bonus dei casinò online in Italia"
@@ -143,13 +184,13 @@ const IndexPage: FunctionComponent<PageProps> = (props) => {
               un'occhiata a questa comparazione dei migliori Bonus disponibili al momento:</p>
 
             <div className="bonus-table">
-              <BonusTable data={mainBonusData}/>
+              <BonusTable data={mainBonusesData}/>
             </div>
 
             <div className="bonus-cards">
               <GridLayout
                 gridType={GridType.BONUS}
-                content={ mainBonusData.map( (bonus) => 
+                content={ mainBonusesData.map( (bonus) => 
                     <BonusCard key={bonus.id} data={bonus}/>
                    )}
                 AlignItem={"center"}
@@ -169,7 +210,7 @@ const IndexPage: FunctionComponent<PageProps> = (props) => {
 
       <div className="layout-container">
         <Section>
-          <HomeArticle mainBonuses={mainBonusData.slice(0,5)} freeBonuses={freeBonusData}/>
+          <HomeArticle mainBonuses={mainBonusesData.slice(0,5)} freeBonuses={freeBonusesData}/>
         </Section>
       </div>
 
@@ -298,74 +339,14 @@ const CasinoInfo = styled.div`
 
 export async function getStaticProps() {
 
-  const MAIN_BONUSES =  [
-    "LeoVegas",
-    "StarCasinò",
-    "WinCasino",
-    "NetBet",
-    "GoldBet",
-    "888 Casino",
-    "King Casino",
-    "Eurobet",
-    "Betway",
-    "Gioco Digitale"]
-
-    const TOP_BONUSES =  [
-      "LeoVegas",
-      "StarCasinò",
-      "Starvegas"]
-
-    const FREE_BONUSES =  [
-      "LeoVegas",
-      "StarCasinò",
-      "Starvegas",
-      "Betway",
-      "Gioco Digitale"]
-
-
-    const topBonusRemapping: any = {
-      LeoVegas: "https://ads.leovegas.com/redirect.aspx?pid=3708703&bid=14965",
-      StarCasinò: "http://record.affiliatelounge.com/_SEA3QA6bJTMP_fzV1idzxmNd7ZgqdRLk/135/",
-      Starvegas: "https://www.starvegas.it/gmg/refer/61782b177358340001a18ac7",
-    }
-
-    const mainBonusRemapping: any = {
-      LeoVegas: "https://ads.leovegas.com/redirect.aspx?pid=3708703&bid=14965",
-      StarCasinò: "http://record.affiliatelounge.com/_SEA3QA6bJTMP_fzV1idzxmNd7ZgqdRLk/135/",
-      GoldBet: "https://media.goldbetpartners.it/redirect.aspx?pid=5116&bid=1495",
-      WinCasino: "https://vincipromo.it/wincasino/?mp=42794b32-7604-49d2-92d0-8adf67a6b173",
-      NetBet: "https://banners.livepartners.com/view.php?z=357155",
-      "888 Casino": "https://ic.aff-handler.com/c/43431?sr=1864253",
-      "King Casino": "http://cs.kingcasino.it/",
-      Eurobet: "https://record.betpartners.it/_E_C7XwxgprAZV93hC2dJ_GNd7ZgqdRLk/113/",
-      Betway: "https://betway.it/bwp/welcome-5gratis/it-it/?s=bw210475&a=AFF3379473685189866&utm_source=210475&utm_medium=Affiliate&utm_campaign=AFF3379473685189866",
-      "Gioco Digitale": "https://mediaserver.entainpartners.com/renderBanner.do?zoneId=2031706",
-    }
-
-    const freeBonusRemapping: any = {
-      LeoVegas: "https://ads.leovegas.com/redirect.aspx?pid=3708703&bid=14965",
-      StarCasinò: "http://record.affiliatelounge.com/_SEA3QA6bJTMP_fzV1idzxmNd7ZgqdRLk/135/",
-      Starvegas: "https://www.starvegas.it/gmg/refer/61782b177358340001a18ac7",
-      Betway: "https://betway.it/bwp/welcome-5gratis/it-it/?s=bw210475&a=AFF3379473685189866&utm_source=210475&utm_medium=Affiliate&utm_campaign=AFF3379473685189866",
-      "Gioco Digitale": "https://mediaserver.entainpartners.com/renderBanner.do?zoneId=2031706",
-    }
-
   return {
     props: {
       slotsData: {
         newest: await getSlots({ limit: 9, start: 0, sort: 'created_at:desc' }),
         online: await getSlots({ limit: 9, start: 0, type_contain: "online", sort: "rating:desc" })
       },
-      topBonusData:  (await getBonuses({ names: TOP_BONUSES, sort: "rating:desc" })).map((b) => {
-        b.link = topBonusRemapping[b.name]
-        return b
-      }),
-      mainBonusData: (await getBonuses({ names: MAIN_BONUSES, sort: "rating:desc" })).map((b) => {
-        b.link = mainBonusRemapping[b.name]
-        return b
-      }),
-      freeBonusData: (await getBonuses({ names: FREE_BONUSES, sort: "rating:desc" })).map((b) => {
-        b.link = freeBonusRemapping[b.name]
+      pageBonusesData:  (await getBonuses({ names: PAGE_BONUSES, sort: "rating:desc" })).map((b) => {
+        b.link = pageBonusesRemapping[b.name]
         return b
       }),
       totalSlots: await getTotalSlots(),

@@ -4,7 +4,7 @@ import styled from 'styled-components'
 import Layout from '../../components/Layout'
 import { CDN } from '../../public/environment'
 import GridLayout from '../../components/GridLayout'
-import { GridType } from '../../lib/utils/constants'
+import { GridType, pageBonusesRemapping, PAGE_BONUSES } from '../../lib/utils/constants'
 import BonusCard from '../../components/Cards/BonusCard'
 import FreqentlyAsked from '../../components/FrequentlyAsked'
 import { device } from '../../lib/utils/device'
@@ -16,13 +16,51 @@ import InstagramIcon from '@material-ui/icons/Instagram'
 import { getBonuses } from '../../lib/graphql/queries/bonuses'
 
 type PageProps = {
-    freeBonusData: Bonus [],
-    topBonusData: Bonus [],
-    mainBonusData: Bonus []
+    pageBonusesData: Bonus[]
   }
   
-const SquadPage: FunctionComponent<PageProps> = ({freeBonusData, mainBonusData, topBonusData}) => {
-        
+const SquadPage: FunctionComponent<PageProps> = ({pageBonusesData}) => {
+    
+    const MAIN_BONUSES =  [
+        "LeoVegas",
+        "StarCasinò",
+        "WinCasino",
+        "NetBet",
+        "GoldBet",
+    ]
+    
+    const TOP_BONUSES =  [
+        "StarCasinò",
+        "Starvegas",
+        "LeoVegas",
+    ]
+
+    const FREE_BONUSES =  [
+        "LeoVegas",
+        "StarCasinò",
+        "Starvegas",
+        "Betway",
+        "Gioco Digitale"]
+
+    const topBonusData = pageBonusesData.filter( bonus => {
+        if ( TOP_BONUSES.includes( bonus.name ) ) {
+          return bonus
+        }
+    })
+
+    const mainBonusData = pageBonusesData.filter( bonus => {
+    if ( MAIN_BONUSES.includes( bonus.name ) ) {
+        return bonus
+    }
+    })
+
+    const freeBonusData = pageBonusesData.filter( bonus => {
+    if ( FREE_BONUSES.includes( bonus.name ) ) {
+        return bonus
+    }
+    })
+    
+   
     return (
         <Layout title="Team Squad">
             <div className="layout-container">
@@ -370,63 +408,12 @@ const Section = styled.section`
 
 export async function getStaticProps() {
 
-    const MAIN_BONUSES =  [
-        "LeoVegas",
-        "StarCasinò",
-        "WinCasino",
-        "NetBet",
-        "GoldBet",
-    ]
-    
-    const mainBonusRemapping: any = {
-        LeoVegas: "https://ads.leovegas.com/redirect.aspx?pid=3708703&bid=14965",
-        StarCasinò: "http://record.affiliatelounge.com/_SEA3QA6bJTMP_fzV1idzxmNd7ZgqdRLk/135/",
-        WinCasino: "https://vincipromo.it/wincasino/?mp=42794b32-7604-49d2-92d0-8adf67a6b173",
-        NetBet: "https://banners.livepartners.com/view.php?z=357155",
-        GoldBet: "https://media.goldbetpartners.it/redirect.aspx?pid=5116&bid=1495",
-    }
-
-    const FREE_BONUSES =  [
-        "LeoVegas",
-        "StarCasinò",
-        "Starvegas",
-        "Betway",
-        "Gioco Digitale"]
-
-    const freeBonusRemapping: any = {
-        LeoVegas: "https://ads.leovegas.com/redirect.aspx?pid=3708703&bid=14965",
-        StarCasinò: "http://record.affiliatelounge.com/_SEA3QA6bJTMP_fzV1idzxmNd7ZgqdRLk/135/",
-        Starvegas: "https://www.starvegas.it/gmg/refer/61782b177358340001a18ac7",
-        Betway: "https://betway.it/bwp/welcome-5gratis/it-it/?s=bw210475&a=AFF3379473685189866&utm_source=210475&utm_medium=Affiliate&utm_campaign=AFF3379473685189866",
-        "Gioco Digitale": "https://mediaserver.entainpartners.com/renderBanner.do?zoneId=2031706",
-    }
-
-    const TOP_BONUSES =  [
-        "StarCasinò",
-        "Starvegas",
-        "LeoVegas",
-    ]
-
-    const topBonusRemapping: any = {
-        StarCasinò: "http://record.affiliatelounge.com/_SEA3QA6bJTMP_fzV1idzxmNd7ZgqdRLk/135/",
-        Starvegas: "https://www.starvegas.it/gmg/refer/61782b177358340001a18ac7",
-        LeoVegas: "https://ads.leovegas.com/redirect.aspx?pid=3708703&bid=14965",
-    }
-    
     return {
       props: {
-        mainBonusData: (await getBonuses({ names: MAIN_BONUSES, sort: "rating:desc" })).map((b) => {
-            b.link = mainBonusRemapping[b.name]
+        pageBonusesData: (await getBonuses({ names: PAGE_BONUSES, sort: "rating:desc" })).map((b) => {
+            b.link = pageBonusesRemapping[b.name]
             return b
-        }),
-        freeBonusData: (await getBonuses({ names: FREE_BONUSES, sort: "rating:desc" })).map((b) => {
-            b.link = freeBonusRemapping[b.name]
-            return b
-        }),
-        topBonusData: (await getBonuses({ names: TOP_BONUSES, sort: "rating:desc" })).map((b) => {
-            b.link = topBonusRemapping[b.name]
-            return b
-        }),
+        })
       }
     }
 }

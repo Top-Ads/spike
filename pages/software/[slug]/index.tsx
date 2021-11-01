@@ -9,12 +9,12 @@ import { Producer, Slot } from '../../../lib/schemas'
 import { getProducers } from '../../../lib/graphql/queries/producers'
 import { CDN } from '../../../public/environment'
 import Divider from '../../../components/Divider'
-import Markdown from 'markdown-to-jsx'
 import { getSlots } from '../../../lib/graphql/queries/slots'
 import { GridType } from '../../../lib/utils/constants'
 import GridLayout from '../../../components/GridLayout'
 import SlotCard from '../../../components/Cards/SlotCard'
 import { injectCDN } from '../../../lib/utils/injectCDN'
+import Markdown from 'markdown-to-jsx'
 
 type PageProps = {
     producerData: Producer
