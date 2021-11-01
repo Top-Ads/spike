@@ -242,7 +242,7 @@ const SlotPage: FunctionComponent<PageProps> = ({data}) => {
                                         <td>
                                             { data?.maxLines && 
                                                 <div>
-                                                    <span className="label">MAXLINES
+                                                    <span className="label">Linee di gioco
                                                         <Tooltip 
                                                             title={'Il numero massimo di linee di pagamento utilizzabili nel gioco.'} 
                                                             classes={{ tooltip: classes.tooltip }} 
