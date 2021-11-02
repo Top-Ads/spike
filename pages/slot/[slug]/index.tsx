@@ -155,7 +155,7 @@ const SlotPage: FunctionComponent<PageProps> = ({data}) => {
     }, [likedSlot])
     
     return (
-        <Layout title={data.name}> 
+        <Layout title={`Slot Machine - ${data.name}`}> 
             <Fragment>
                 <Main>
                     <GameContainer>

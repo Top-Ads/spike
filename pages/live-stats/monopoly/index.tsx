@@ -68,12 +68,12 @@ const MonopolyPage: FunctionComponent<PageProps> = ({statsData, spinsData, bonus
     }, [selected])
 
     return (
-        <Layout title="Statistiche Live Monopoly! scopri qui cosa succede nel Live Game Show">
+        <Layout title="Casino Squad |Gioco Monopoly Statistiche Live">
 
             <Head>
                 <meta 
                 property="og:description" 
-                content="Trova le Statistiche di MONOPOLY LIVE in tempo reale! Impara come giocare online ed esplora uno dei Giochi Online più popolari del momento!" 
+                content="Estrazioni online in tempo reale della Ruota di Monopoly" 
                 key="description"/>
             </Head>
 
@@ -96,7 +96,7 @@ const MonopolyPage: FunctionComponent<PageProps> = ({statsData, spinsData, bonus
                         <Thumbnail>
                                 <LazyLoad height={548}>
                                     <Image
-                                        alt={'monopoly live stats'}
+                                        alt={'Monopoly Statistiche live'}
                                         src={`https://images.spikeslot.com/monopoly-live-stats_3f844ffed7.jpeg`}
                                         layout="responsive"
                                         priority={true}

@@ -22,7 +22,7 @@ const EmailSubcription = () => {
 
             <br/>
 
-            <Button>ISCRIVTI</Button>
+            <Button>ISCRIVITI</Button>
           </Main>
         </Fragment>
     ) 
@@ -52,7 +52,7 @@ const Button = styled.div`
     background-color: wheat;
     border: 2px solid #fff;
     border-radius: ${({theme}) => theme.button.borderRadius};
-    color: red;
+    color: #4ECA5C;
     cursor: pointer;
     font-weight: bold;
 `

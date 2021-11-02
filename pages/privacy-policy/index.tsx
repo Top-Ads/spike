@@ -1,3 +1,4 @@
+import Head from 'next/head'
 import React from 'react'
 import styled from 'styled-components'
 import Layout from '../../components/Layout'
@@ -6,7 +7,14 @@ import { device } from '../../lib/utils/device'
 const PrivacyPolicyPage = () => { 
     
     return (
-        <Layout title="Informativa sulla privacy">  
+        <Layout title="Casino Squad | Privacy">  
+            <Head>
+                <meta 
+                property="og:description" 
+                content="Informativa sulla privacy" 
+                key="description"/>
+            </Head>
+
             <Main className="layout-container">
 
             <h2><strong>Privacy Policy</strong></h2>

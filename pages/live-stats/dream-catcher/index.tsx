@@ -73,11 +73,11 @@ const DreamCatcherPage: FunctionComponent<PageProps> = ({statsData, spinsData, b
     }, [selected])
 
     return (
-        <Layout title="Risultati live della ruota di Dream Catcher | Estrazioni gioco casino">
+        <Layout title="Casino Squad | LiveStats Dream Catcher: Tutte le Estrazioni in Tempo Reale">
             <Head>
                 <meta 
                 property="og:description" 
-                content="Scegli la puntata migliore, analizzando i dati e risultati della ruota di Dream Catcher. Esplora il gioco Live online e divertiti con la ruota della fortuna: puoi giocare anche con soldi veri." 
+                content="Gioca ora alla Dream Catcher, statistiche, classifiche ed estrazione dal vivo " 
                 key="description"/>
             </Head>
 
@@ -95,7 +95,7 @@ const DreamCatcherPage: FunctionComponent<PageProps> = ({statsData, spinsData, b
                         <Thumbnail>
                                 <LazyLoad height={548}>
                                     <Image
-                                        alt={'crazy time live stats'}
+                                        alt={'LiveStats Dream Catcher'}
                                         src={`https://images.spikeslot.com/statistiche-live-dream-catcher_f2cbe49cd8.jpeg`}
                                         layout="responsive"
                                         priority={true}

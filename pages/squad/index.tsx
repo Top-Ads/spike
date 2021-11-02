@@ -14,6 +14,7 @@ import { Bonus } from '../../lib/schemas'
 import FacebookIcon from '@material-ui/icons/Facebook'
 import InstagramIcon from '@material-ui/icons/Instagram'
 import { getBonuses } from '../../lib/graphql/queries/bonuses'
+import Head from 'next/head'
 
 type PageProps = {
     pageBonusesData: Bonus[]
@@ -62,7 +63,14 @@ const SquadPage: FunctionComponent<PageProps> = ({pageBonusesData}) => {
     
    
     return (
-        <Layout title="Team Squad">
+        <Layout title="Casino Squad | Il Team Squad vi da il benvenuto">
+            <Head>
+                <meta 
+                property="og:description" 
+                content="Le migliori selezioni di slot machine sclete da: Lucky, Chily, Squad MRJ, Pitbull e Value" 
+                key="description"/>
+            </Head>
+            
             <div className="layout-container">
                 <Main>
                     <Container>
@@ -73,7 +81,7 @@ const SquadPage: FunctionComponent<PageProps> = ({pageBonusesData}) => {
                                 <Thumbnail>
                                     <LazyLoad height={200} offset={200}>
                                         <Image
-                                            alt={'SQUAD LUCKY'}
+                                            alt={'Casino Squad Team | SQUAD LUCKY'}
                                             src={`${CDN}/jpeg/squad/lucky.jpeg`}
                                             layout="responsive"
                                             priority={true}
@@ -124,7 +132,7 @@ const SquadPage: FunctionComponent<PageProps> = ({pageBonusesData}) => {
                                 <Thumbnail>
                                     <LazyLoad height={200} offset={200}>
                                         <Image
-                                            alt={'SQUAD CHILY'}
+                                            alt={'Casino Squad Team | SQUAD CHILY'}
                                             src={`${CDN}/jpeg/squad/chily.jpeg`}
                                             layout="responsive"
                                             priority={true}
@@ -175,7 +183,7 @@ const SquadPage: FunctionComponent<PageProps> = ({pageBonusesData}) => {
                                 <Thumbnail>
                                     <LazyLoad height={200} offset={200}>
                                         <Image
-                                            alt={'SQUAD MR J'}
+                                            alt={'Casino Squad Team | SQUAD MR J'}
                                             src={`${CDN}/jpeg/squad/mrj.jpeg`}
                                             layout="responsive"
                                             priority={true}
@@ -223,7 +231,7 @@ const SquadPage: FunctionComponent<PageProps> = ({pageBonusesData}) => {
                                 <Thumbnail>
                                     <LazyLoad height={200} offset={200}>
                                         <Image
-                                            alt={'SQUAD PITBULL'}
+                                            alt={'Casino Squad Team | SQUAD PITBULL'}
                                             src={`${CDN}/jpeg/squad/pitbull.jpeg`}
                                             layout="responsive"
                                             priority={true}
@@ -271,7 +279,7 @@ const SquadPage: FunctionComponent<PageProps> = ({pageBonusesData}) => {
                                 <Thumbnail>
                                     <LazyLoad height={200} offset={200}>
                                         <Image
-                                            alt={'SQUAD VALUE'}
+                                            alt={'Casino Squad Team | SQUAD VALUE'}
                                             src={`${CDN}/jpeg/squad/value.jpeg`}
                                             layout="responsive"
                                             priority={true}

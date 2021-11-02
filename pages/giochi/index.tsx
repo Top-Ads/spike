@@ -124,11 +124,11 @@ const GiochiPage: FunctionComponent<PageProps> = (props) => {
     const clear = () => setProducerSelected('')
 
     return (
-        <Layout title="I migliori Casinò e Slot Machine Online con le nuove offerte Casino Bonus">
+        <Layout title="Casino Squad | Giochi di Slot Gratis , Slot Machine Online Senza Scaricare">
             <Head>
                 <meta 
                 property="og:description" 
-                content="Gioca alle slot machine gratis online reali su Casino Squad! Prova le migliori slot online senza soldi veri e senza scaricare app." 
+                content="Prova tutte le slot machine gratis in modalita’ demo senza pagare, bonus e giri gratis alla registrazione" 
                 key="description"/>
             </Head>
             <Header className='layout-container'>

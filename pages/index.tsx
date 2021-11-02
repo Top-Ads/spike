@@ -79,12 +79,12 @@ const IndexPage: FunctionComponent<PageProps> = (props) => {
   const { newest, online } = slotsData
  
   return (
-    <Layout title="Gioca alle Slot Machine Online, Casino con Bonus di Benvenuto">
+    <Layout title="Casino Squad | Gioca ora con le Slot Machine Online in Italiano">
 
       <Head>
         <meta 
         property="og:description" 
-        content="Su Casino Squad puoi scommettere ai migliori giochi di Casinò Online sfruttando le nostre promozioni e i Bonus di Benvenuto Esclusive. Prova Ora Gratis" 
+        content="Gioca con tutte le slot machine piu’ popolari senza registarzione e senza deposito: video slot online,slot VTL, slot da bar con bonus senza deposito" 
         key="description"/>
       </Head>
 

@@ -6,11 +6,11 @@ import Layout from '../../components/Layout'
 const ShopPage = () => { 
     
     return (
-        <Layout title="Acquista nello shop online i gadget di Casino Squad">
+        <Layout title="Casino Squad | Shop Online">
              <Head>
                 <meta 
                 property="og:description" 
-                content="Compra gli autentici gadget di Casino Squad nello shop dedicato in tutta sicurezza al miglior prezzo. Magliette, borse, felpe, porta chiavi: tutto griffato CASINO SQUAD! Consegna a domicilio garantita!" 
+                content="Scegli tra gli sfiziosi gadget di Casino Squad shop online" 
                 key="description"/>
             </Head>
             <Main>

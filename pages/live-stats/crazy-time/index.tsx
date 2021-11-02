@@ -71,12 +71,12 @@ const CrazyTimePage: FunctionComponent<PageProps> = ({statsData, spinsData, bonu
     }, [timeFrame])
 
     return (
-        <Layout title="Statistiche Crazy Time live online game show interattivo e divertente">
+        <Layout title="Casino Squad | Statistiche Crazy Time Live , Verifica le Vincite">
 
             <Head>
                 <meta 
                 property="og:description" 
-                content="Segui in tempo reale le statistiche della ruota di Crazy Time: controlla tutte le statistiche live, per scegliere i tuoi numeri vincenti e scopri gli incredibili BONUS!" 
+                content="Gira la ruota di Crazy Time in real time i risultati recenti più vincenti" 
                 key="description"/>
             </Head>
 
@@ -102,7 +102,7 @@ const CrazyTimePage: FunctionComponent<PageProps> = ({statsData, spinsData, bonu
                         <Thumbnail>
                             <LazyLoad height={548}>
                                 <Image
-                                    alt={'crazy time live stats'}
+                                    alt={'Crazy Time statistiche'}
                                     src={`https://spike-images.s3.eu-central-1.amazonaws.com/crazy-time-stats_1c1293a185.jpeg`}
                                     layout="responsive"
                                     priority={true}
