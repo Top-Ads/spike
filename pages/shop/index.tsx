@@ -16,9 +16,9 @@ const ShopPage = () => {
             <Main>
                 <Iframe 
                     loading="lazy" 
-                    src="https://casino-squad.com/shop/"
+                    src="https://casinosquad.myspreadshop.it/"
                     width="100%"
-                    height="2600"
+                    height="3000"
                     allow="fullscreen"
                 />
             </Main>
@@ -29,8 +29,8 @@ const ShopPage = () => {
 const Main = styled.div`
     display: flex;
     justify-content: center;
-    width: 100%;
     background-color: #2B2B2B;
+    padding: 0 10%;
 `
 
 const Iframe = styled.iframe`
