@@ -142,6 +142,7 @@ const Article = styled.article`
 `
 
 const MarkDownContainer = styled.div`
+    display: none;
 `
 
 const GridContainer = styled.div`
