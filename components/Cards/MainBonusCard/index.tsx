@@ -47,10 +47,23 @@ const MainBonusCard: FunctionComponent<Props> = ({data}) => {
                     <span>{data.name}</span>
                 </BonusHeader>
         
-                <BonusInfo>
+                <BonusInfo bgColor={data.backgroundColor} onClick={linkToBonus}>
                     <div dangerouslySetInnerHTML={{__html: String(replaceAll(data.description, "+", "<br/>"))}}/> 
                    
-                    <Button bgColor={data.backgroundColor} onClick={linkToBonus}>SITO WEB</Button>
+                    <div className="table-bonus">
+                        { data.noDeposit !== '- - -' &&
+                            <div className="row">
+                            <div className="deposito">Senza Deposito</div>
+                            <div className="value">{data.noDeposit}</div>
+                        </div> }
+                        { data.withDeposit !== '- - -' &&
+                        <div className="row">
+                            <div className="deposito">Con Deposito</div>
+                            <div className="value">{data.withDeposit}</div>
+                        </div> }
+                    </div>
+                    
+                    <Button bgColor={data.backgroundColor}>SITO WEB</Button>
 
                 </BonusInfo>
 
@@ -70,19 +83,32 @@ const Main = styled.div<BonusType>`
     margin: auto;
 `
 
-const BonusInfo = styled.div `
+const BonusInfo = styled.div<BonusType>`
     display: flex;
-    flex-direction: row;
-    align-items: center;
+    flex-direction: column;
     justify-content: space-between;
     width: 100%;
     color: #fff;
     font-size: 0.75rem;
-
+    
     div { 
-        padding: 5px;
+        padding: 5px 0px;
     }
 
+    .table-bonus {
+        display: flex;
+        justify-content: space-between;
+        
+        .row {
+            width: 49%;
+        }
+
+        .deposito {
+            color: #fff;
+            background-color: ${({bgColor}) => bgColor ? bgColor : 'inherit'};
+            text-align: center;
+        }
+    }
 `
 
 const BonusHeader = styled.div<BonusType> `
@@ -106,7 +132,7 @@ const Button = styled.div<BonusType>`
     border-radius: ${({theme}) => theme.button.borderRadius};
     font-weight: bold;
     cursor: pointer;
-    width: max-content;
+    width: 100%;
     padding: 10px;
     text-align: center;
 `

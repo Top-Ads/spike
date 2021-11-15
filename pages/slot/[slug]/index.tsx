@@ -25,6 +25,7 @@ import FreeBonusCard from '../../../components/Cards/FreeBonusCard'
 import SlotCard from '../../../components/Cards/SlotCard'
 import GridLayout from '../../../components/GridLayout'
 import Divider from '../../../components/Divider'
+import { styledTheme } from '../../../lib/theme'
 
 type PageProps = {
     data: Slot
@@ -48,6 +49,7 @@ const useStyles = makeStyles({
 
 const SlotPage: FunctionComponent<PageProps> = ({data}) => {
 
+    console.log(data)
     const classes = useStyles()
 
     const [showIframe, setShowIframe] = useState<boolean>(false)
@@ -217,7 +219,14 @@ const SlotPage: FunctionComponent<PageProps> = ({data}) => {
                                                             TransitionComponent={Zoom}
                                                             children={<InfoIcon className={classes.icon}/> }/>
                                                     </span>
-                                                    <span className="value">{data.volatility}</span> 
+                                                    
+                                                    <span className="value">
+                                                        {data.volatility === 'high' && 'ALTA'}
+                                                        {data.volatility === 'mediumHigh' && 'MEDIO-ALTA'}
+                                                        {data.volatility === 'medium' && 'MEDIA'}
+                                                        {data.volatility === 'mediumLow' && 'MEDIO-BASSO'}
+                                                        {data.volatility === 'low' && 'BASSO'}
+                                                     </span>
                                                 </div>
                                             }
                                         </td>
@@ -269,11 +278,11 @@ const SlotPage: FunctionComponent<PageProps> = ({data}) => {
                                 </Thumbnail>
                             </div>
 
-                            <div style={{width: '90%', margin: 'auto'}}>
+                            <div className="bonus-container" style={{width: '90%', margin: 'auto'}}>
                                 { mainBonus && <MainBonusCard data={mainBonus}/> }
                             
                                 <RelatedBonuses>
-                                    { data.bonuses && (data.bonuses.slice(0,2)).map( (bonus: Bonus, index: number) => <FreeBonusCard key={index} data={bonus}/> ) }
+                                    { data.bonuses && (data.bonuses).map( (bonus: Bonus, index: number) => <FreeBonusCard key={index} data={bonus}/> ) }
                                 </RelatedBonuses>
                             </div>
 
@@ -395,6 +404,33 @@ const Section = styled.div`
     font-size: 1rem;
     background-color: ${({theme}) => theme.text.color.black};
     color: #fff;
+    height: 540px;
+
+    .bonus-container {
+        height: 70%;
+        overflow-y: scroll;
+        overflow-x: hidden;
+        padding-right: 3px;
+    }
+    .bonus-container::-webkit-scrollbar {
+        width: 120px;
+    }
+
+    .bonus-container::-webkit-scrollbar {
+        width: 8px;
+    }
+
+    .bonus-container::-webkit-scrollbar-track {
+        background-color: ${({theme}) => theme.text.color.black};
+
+    }
+    
+    .bonus-container::-webkit-scrollbar-thumb {
+        background-color: ${styledTheme.palette.background};
+        border-radius: 10px;
+        border: 2px solid #ffffff;
+    }
+
 
     @media ${device.tablet} {  
         flex-grow: 1;

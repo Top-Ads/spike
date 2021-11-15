@@ -24,7 +24,7 @@ const FreeBonusCard: FunctionComponent<Props> = ({data}) => {
 
     return (
         <Fragment>
-            <Main>
+            <Main onClick={linkToBonus}>
                 <Thumbnail>
                     <LazyLoad key={data.id} height={60} offset={200}>
                         <Image
@@ -43,7 +43,7 @@ const FreeBonusCard: FunctionComponent<Props> = ({data}) => {
                     <Info dangerouslySetInnerHTML={{__html: String(replaceAll(data.description, "+", "<br/>"))}}/> 
                 </Container>
 
-                <Button bgColor={data.backgroundColor} onClick={linkToBonus}>SITO WEB</Button>
+                <Button bgColor={data.backgroundColor}>SITO WEB</Button>
             </Main>
         </Fragment>
     ) 
@@ -97,6 +97,7 @@ const Button = styled.div<BonusType>`
     cursor: pointer;
     padding: 10px;
     width: min-content;
+    margin: 0px 5px;
 `
 
 export default FreeBonusCard

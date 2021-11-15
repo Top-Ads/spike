@@ -85,7 +85,7 @@ export interface Slot {
     rtp: number
     maxLines: number
     winningSpinFrequency: number
-    volatility: string
+    volatility: 'high' | 'mediumHigh' | 'medium' | 'mediumLow'| 'low'
     gameMode: string
     playLink: string
     linkYoutube: string

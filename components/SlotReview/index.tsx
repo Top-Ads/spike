@@ -55,7 +55,13 @@ const SlotReview: FunctionComponent<Props> = ({data}) => {
                             <Divider width={'99%'}/>
                             <div className="row">
                                 <div className="label">Volatilità</div>
-                                <span>{data.volatility}</span>
+                                <span>
+                                    {data.volatility === 'high' && 'ALTA'}
+                                    {data.volatility === 'mediumHigh' && 'MEDIO-ALTA'}
+                                    {data.volatility === 'medium' && 'MEDIA'}
+                                    {data.volatility === 'mediumLow' && 'MEDIO-BASSO'}
+                                    {data.volatility === 'low' && 'BASSO'}
+                                </span>
                             </div>
                             
                             <Divider width={'99%'}/>
