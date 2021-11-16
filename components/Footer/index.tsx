@@ -49,7 +49,10 @@ const Footer: FunctionComponent = () => {
                         <Link href={'/privacy-policy'}>
                             <a>Informativa sulla privacy</a>
                         </Link>
-                        <a>Sitemap</a>
+                        <Link href={'/sitemap'}>
+                            <a>Sitemap</a>
+                        </Link>
+                      
                         <a href="mailto: info@casinosquad.com">Email</a>
                     </List>
                 </Container>
