@@ -53,9 +53,9 @@ const BONUSES = `
   ${BonusProps}
 ` 
 
-export const getBonuses = async (params: Object): Promise<Bonus[]> => {
+export const getBonuses = async (params: Object, query: string = BONUSES): Promise<Bonus[]> => {
   const request = await aquaClient.query({ 
-    query: BONUSES,
+    query,
     variables: params,
   })
 

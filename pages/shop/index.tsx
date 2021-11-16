@@ -13,7 +13,7 @@ const ShopPage = () => {
                 content="Scegli tra gli sfiziosi gadget di Casino Squad shop online" 
                 key="description"/>
             </Head>
-            <Main>
+            <Main className="layout-container">
                 <Iframe 
                     loading="lazy" 
                     src="https://casinosquad.myspreadshop.it/"
@@ -30,7 +30,6 @@ const Main = styled.div`
     display: flex;
     justify-content: center;
     background-color: #2B2B2B;
-    padding: 0 10%;
 `
 
 const Iframe = styled.iframe`

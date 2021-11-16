@@ -57,7 +57,7 @@ const GiochiPage: FunctionComponent<PageProps> = (props) => {
     const [openDialog, setOpenDialog] = useState<boolean>(false)
 
     const loadMore = async () => {
-        const moreFreeSlots = await getSlots({countryCode: 'it', limit: 12, start: giochiSlots.length})
+        const moreFreeSlots = await getSlots({limit: 12, start: giochiSlots.length})
 
         setGiochiSlots([...giochiSlots, ...moreFreeSlots])    
     }
@@ -66,7 +66,7 @@ const GiochiPage: FunctionComponent<PageProps> = (props) => {
         clear()
 
         setItemSelected(SlotFilterList.SHUFFLE)
-        const shuffleFreeSlots = await getSlots({countryCode: 'it', limit: 36, start: getRandomInt(giochiSlots.length, totalSlots)})
+        const shuffleFreeSlots = await getSlots({limit: 36, start: getRandomInt(giochiSlots.length, totalSlots)})
 
         setGiochiSlots(shuffleFreeSlots)    
     }
@@ -75,7 +75,7 @@ const GiochiPage: FunctionComponent<PageProps> = (props) => {
         clear()
         
         if (text.length >= 2) {
-            setGiochiSlots(await getSlots({countryCode: 'it', name_contains: text}))
+            setGiochiSlots(await getSlots({name_contains: text}))
         } else 
             setGiochiSlots(giochiSlotsData)
     },500)
@@ -464,7 +464,7 @@ export async function getStaticProps() {
                 newest: await getSlots({ limit: 6, start: 0, sort: 'created_at:desc' }),
                 popular: await getSlots({ limit: 6, start: 0, sort: 'rating:desc' })
             },
-            giochiSlotsData: await await getSlots({countryCode: 'it', limit: 36, start: getRandomInt(0, 500)}),
+            giochiSlotsData: await await getSlots({limit: 36, start: getRandomInt(0, 500)}),
             producersData: await getProducers({ start: 0, sort: 'name:asc' }),
             freeBonusData: (await getBonuses({ names: PAGE_BONUSES, sort: 'rating:desc'})).map((b) => {
                 b.link = pageBonusesRemapping[b.name]

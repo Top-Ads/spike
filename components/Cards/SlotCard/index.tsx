@@ -31,7 +31,7 @@ const SlotCard: FunctionComponent<Props> = ({data, type}) => {
 
     const {removeLikeSlotId, setRemoveLikeSlotId}  = useContext(removeLikeSlotContext)
 
-    const playSlot = () => {
+    const goToSlot = () => {
         router.push({
             pathname: '/slot/[slug]',
             query: { slug: data.slug }
@@ -101,7 +101,7 @@ const SlotCard: FunctionComponent<Props> = ({data, type}) => {
             
             <Main 
                 ref={ref} 
-                onClick={playSlot}
+                onClick={goToSlot}
                 onMouseEnter={ () => setShowBanner(true)}
                 onMouseLeave={ () => setShowBanner(false)}
                 onTouchStart={ () => setShowBanner(!showBanner)}>

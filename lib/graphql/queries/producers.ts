@@ -30,9 +30,9 @@ const PRODUCERS = `
     }
 `
 
-export const getProducers = async (params: Object): Promise<Producer[]> => {
+export const getProducers = async (params: Object, query: string = PRODUCERS): Promise<Producer[]> => {
     const request = await aquaClient.query({ 
-      query: PRODUCERS,
+      query,
       variables: params,
     })
     
