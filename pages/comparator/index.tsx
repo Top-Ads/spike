@@ -323,7 +323,7 @@ const ComparatorPage: FunctionComponent<PageProps>= ({topSlotsData, pagesBonuses
                         </Fragment>
                         )}
                         width={'100%'}
-                        xs={12} sm={4} md={3}
+                        xs={12} sm={4} md={2}
                     />
                 </div>
             </GridContainer>
@@ -472,7 +472,7 @@ export async function getStaticProps() {
       
     return {
         props: {
-            topSlotsData: await getSlots({ limit: 8, start: 0, sort: 'updated_at:desc' }),
+            topSlotsData: await getSlots({ limit: 18, start: 0, sort: 'updated_at:desc' }),
             pagesBonusesData: (await getBonuses({ names: PAGE_BONUSES, sort: 'rating:desc'})).map((b) => {
                 b.link = pageBonusesRemapping[b.name]
                 return b
