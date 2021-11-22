@@ -345,7 +345,7 @@ const GameContainer = styled.div`
     position: relative;
     
     @media ${device.mobileL} {
-        flex-wrap: wrap-reverse;
+        flex-wrap: wrap;
         width: 100%;
     }
 `
@@ -380,7 +380,7 @@ const IframeContainer = styled.div<ThumbnailProps>`
             z-index: 999;        
         }
     }
-
+    
     @media ${device.mobileL} {        
         height: auto;
     }    
@@ -411,6 +411,11 @@ const Section = styled.div`
         overflow-y: scroll;
         overflow-x: hidden;
         padding-right: 3px;
+
+        @media ${device.mobileL} {        
+            overflow-y: unset;
+            overflow-x: unset;
+        }    
     }
     .bonus-container::-webkit-scrollbar {
         width: 120px;
@@ -435,6 +440,10 @@ const Section = styled.div`
     @media ${device.tablet} {  
         flex-grow: 1;
     }
+
+    @media ${device.mobileL} {        
+        height: auto;
+    }    
 `
 
 const Thumbnail = styled.div`
