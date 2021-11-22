@@ -35,8 +35,8 @@ const Routes: FunctionComponent = () => {
                 <a><Button className={router.pathname === '/' ? 'active' : ''}>Home</Button></a>
             </Link>
 
-            <Link href={'/comparator'}>
-                <a><Button className={router.pathname === '/comparator' ? 'active' : ''}>Comparator</Button></a>
+            <Link href={'/offerte-bonus-casino'}>
+                <a><Button className={router.pathname === '/offerte-bonus-casino' ? 'active' : ''}>Offerte Bonus Casino</Button></a>
             </Link>
 
             <Link href={'/giochi'}>

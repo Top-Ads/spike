@@ -18,8 +18,8 @@ const Footer: FunctionComponent = () => {
 
                     <List>
                         <strong>bonuses</strong>
-                        <Link href={'/comparator'}>
-                            <a>Comparator</a>
+                        <Link href={'/offerte-bonus-casino'}>
+                            <a>Offerte Bonus Casino</a>
                         </Link>
                     </List>
 

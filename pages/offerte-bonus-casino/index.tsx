@@ -22,7 +22,7 @@ type PageProps = {
     pagesBonusesData: Bonus []
 }
 
-const ComparatorPage: FunctionComponent<PageProps>= ({topSlotsData, pagesBonusesData}) => { 
+const BonusCasinoPage: FunctionComponent<PageProps>= ({topSlotsData, pagesBonusesData}) => { 
     
     const TOP_BONUSES =  [
         "888 Casino",
@@ -186,7 +186,7 @@ const ComparatorPage: FunctionComponent<PageProps>= ({topSlotsData, pagesBonuses
 
                 <br/><br/>
                 Una volta conclusa la procedura di registrazione, il giocatore dovrà effettuare un deposito, 
-                per poter in seguito usufruire del cosiddetto Welcome Bonus con Deposito. 
+                per poter in seguito usufruire del cosiddetto Welcome <b>Bonus con Deposito</b>. 
                 Come già accennato in precedenza, le migliori industrie di casino digitali mettono a disposizione dei propri utenti i migliori metodi di pagamento da poter utilizzare 
                 per effettuare depositi e prelievi; tra questi possiamo infatti considerare le carte di credito o di debito, i portafogli elettronici come Skrill o Neteller, 
                 e la PostePay. 
@@ -332,36 +332,36 @@ const ComparatorPage: FunctionComponent<PageProps>= ({topSlotsData, pagesBonuses
                 <h2><strong>FAQ - Domande Frequenti</strong></h2>
                 <h3><strong>Cosa si intende per Bonus di Benvenuto Senza Deposito?</strong></h3>
                 <p>
-                Questa offerta è riservata ai nuovi iscritti di un casino online, 
-                e può variare in base alla piattaforma considerata. Generalmente consiste in giri gratuiti o in un importo di soldi. <br/>
-                Per usufruire di tale Bonus non vi è la necessità di effettuare un deposito.  <br/>
+                Questa offerta è riservata ai nuovi iscritti di un <b>casino online</b>, 
+                e può variare in base alla piattaforma considerata. Generalmente consiste in <b>Giri Gratuiti</b> o in un importo di soldi. 
+                Per usufruire di tale <b>Bonus</b> non vi è la necessità di effettuare un deposito.  <br/>
                 Anzi, questo viene spesso utilizzato come un incentivo per invogliare i giocatori ad effettuare la procedura di registrazione che, una volta completata, 
                 ti permette di usufruire dell’offerta considerata.
                 </p>
 
                 <h3><strong>Dove posso consultare l’elenco dei Migliori Casino Italiani con Bonus Senza Deposito?</strong></h3>
                 <p>
-                L’elenco dei migliori casino online viene sempre aggiornato, tenendo anche in considerazione le offerte periodiche delle diverse piattaforme. 
+                L’elenco dei <b>migliori casino online</b>viene sempre aggiornato, tenendo anche in considerazione le offerte periodiche delle diverse piattaforme. 
                 Qui, puoi avere un’idea completa su tutti i migliori casino online, accessibili tramite un semplice link inserito all’interno della guida di ogni singolo sito. 
                 </p>
 
                 <h3><strong>Esistono altri tipi di Bonus?</strong></h3>
                 <p>
-                Oltre ai Bonus Senza Deposito, possiamo trovare i Bonus Con Deposito, 
+                Oltre ai <b>Bonus Senza Deposito</b>, possiamo trovare i Bonus Con Deposito, 
                 i quali vengono generalmente distribuiti su più depositi, piuttosto che su uno solo. Anche in questo caso, 
-                l’offerta può consistere in giri gratuiti o Free Spin, così come in importi che variano a seconda della piattaforma. 
+                l’offerta può consistere in giri gratuiti o <b>Free Spin</b>, così come in importi che variano a seconda della piattaforma. 
                 </p>
 
                 <h3><strong>Si può definire un Bonus di Benvenuto più conveniente?</strong></h3>
                 <p>
-                I Bonus di Benvenuto vengono sempre scelti tenendo in considerazione le preferenze del giocatore. Infatti, non è possibile definire un solo Bonus più conveniente.  <br/>
+                I <b>Bonus di Benvenuto</b> vengono sempre scelti tenendo in considerazione le preferenze del giocatore. Infatti, non è possibile definire un solo Bonus più conveniente.  <br/>
                 Tuttavia, ciò che li accomuna sono termini e condizioni previsti dalla piattaforma, che devono sempre essere consultati prima di effettuare una determinata scelta. 
                 </p>
 
                 <h3><strong>Il Bonus di Benvenuto può essere utilizzato una tantum?</strong></h3>
                 <p>
                 Essendo un’offerta riservata ai nuovi clienti, il Bonus di Benvenuto può essere utilizzato soltanto al momento della registrazione, e quindi una volta sola.<br/> <br/>
-                In realtà però, tutte le piattaforme di casino digitali offrono promozioni periodiche volte a rendere l’esperienza di gioco tutti gli appassionati sempre dinamica. <br/><br/>
+                In realtà però, tutte le piattaforme di <b>casinò digitali</b> offrono <b>promozioni periodiche</b> volte a rendere l’esperienza di gioco tutti gli appassionati sempre dinamica. <br/><br/>
                 Sui migliori casino online il divertimento è sempre assicurato!
 
                 </p>
@@ -481,4 +481,4 @@ export async function getStaticProps() {
     }
 }
 
-export default ComparatorPage
+export default BonusCasinoPage
