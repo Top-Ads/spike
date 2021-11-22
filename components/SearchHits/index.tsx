@@ -65,7 +65,7 @@ const SearchHits: FunctionComponent<Props> = ({data, mouseOnHit, searchReviewNam
                                         alt={item.name}
                                         src={item.image ? injectCDN(item.image) : `${CDN}/svg/no_img_available.svg`} 
                                         layout="responsive"
-                                        sizes={"50vw"}
+                                        sizes={"30vw"}
                                         priority={true}
                                         width={item.type === 'slot' ? 1200 : 150}
                                         height={item.type === 'slot' ? 675 : 150}/>

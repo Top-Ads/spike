@@ -32,7 +32,7 @@ const FreeBonusCard: FunctionComponent<Props> = ({data}) => {
                             src={injectCDN(data.circular_image.url)}
                             layout="responsive"
                             priority={true}
-                            sizes={"50vw"}
+                            sizes={"30vw"}
                             width={150}
                             height={150}/>
                     </LazyLoad>

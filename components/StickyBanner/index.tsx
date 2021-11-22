@@ -15,7 +15,7 @@ const StickyBanner: FunctionComponent = () =>
                     alt="Casino Legal Information"
                     src={`${CDN}/png/it_legal_logos.png`}
                     layout="responsive"
-                    sizes={"50vw"}
+                    sizes={"30vw"}
                     priority={true}
                     width={295}
                     height={56}

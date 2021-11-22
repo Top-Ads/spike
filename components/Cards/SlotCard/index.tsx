@@ -122,7 +122,7 @@ const SlotCard: FunctionComponent<Props> = ({data, type}) => {
                             width={1295}
                             height={728}
                             quality={80}
-                            sizes={"50vw"}
+                            sizes={"30vw"}
                             onLoad={()=> setLoading(false)}/>
                     </LazyLoad>
                 </Thumbnail>

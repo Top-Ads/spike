@@ -110,7 +110,7 @@ const IndexPage: FunctionComponent<PageProps> = (props) => {
                   alt="Slots - Bonuses - Casino"
                   src={`${CDN}/png/casino_poster.png`}
                   layout="responsive"
-                  sizes={"50vw"}
+                  sizes={"30vw"}
                   priority={true}
                   width={1500}
                   height={780}

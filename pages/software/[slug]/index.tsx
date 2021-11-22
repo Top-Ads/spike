@@ -50,7 +50,7 @@ const SoftwarePage: FunctionComponent<PageProps> = ({producerData, slotsData}) =
                                         src={producerData.image && producerData.image[0].url ? injectCDN(producerData.image[0].url) : `${CDN}/svg/no_img_available.svg`} 
                                         layout="responsive"
                                         priority={true}
-                                        sizes={"50vw"}
+                                        sizes={"30vw"}
                                         width={1145}
                                         height={644}
                                         quality={80}

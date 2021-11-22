@@ -42,7 +42,7 @@ const FavoriteCard: FunctionComponent<Props> = ({data, deleteItem}) => {
                             src={data.image && data.image.url ? injectCDN(data.image.url) : `${CDN}/svg/no_img_available.svg`} 
                             layout="responsive"
                             priority={true}
-                            sizes={"50vw"}
+                            sizes={"30vw"}
                             width={1200}
                             height={675}
                             onLoad={()=> setLoading(false)}/>
