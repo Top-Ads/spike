@@ -489,7 +489,8 @@ const RowContainer = styled.div`
     align-items: center;
     justify-content: space-around;
     margin: 5px 0px;
-    span { font-size: 1rem; }
+
+    span { font-size: 1rem; min-width: 50px; }
 
     h6 {
         color: tomato;

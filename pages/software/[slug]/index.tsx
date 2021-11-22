@@ -17,24 +17,24 @@ import { injectCDN } from '../../../lib/utils/injectCDN'
 import Markdown from 'markdown-to-jsx'
 
 type PageProps = {
-    _producerData: Producer
-    _slotsData: Slot[]
+    producerData: Producer
+    slotsData: Slot[]
 }
 
-const SoftwarePage: FunctionComponent<PageProps> = ({_producerData, _slotsData}) => {
-    const [slotsData, setSlotsData] = useState<Slot[]>(_slotsData)
+const SoftwarePage: FunctionComponent<PageProps> = ({producerData, slotsData}) => {
+    const [slots, setSlots] = useState<Slot[]>(slotsData)
 
     const loadMore = async () => {
-        const moreFreeSlots = await getSlots({limit: 12, start: slotsData.length})
+        const moreFreeSlots = await getSlots({limit: 12, start: slots.length})
         
-        setSlotsData([...slotsData, ...moreFreeSlots])    
+        setSlots([...slots, ...moreFreeSlots])    
     }
 
     return (
-        <Layout title={_producerData.name}> 
+        <Layout title={producerData.name}> 
             <div className="layout-container" style={{ width: 'fill-available'}}>
           
-                <Title>SLOT MACHINE E CASINÒ CON SOFTWARE { _producerData.name } </Title>
+                <Title>SLOT MACHINE E CASINÒ CON SOFTWARE { producerData.name } </Title>
                 
                 <Divider/>
                 
@@ -44,10 +44,10 @@ const SoftwarePage: FunctionComponent<PageProps> = ({_producerData, _slotsData})
                     <Section>
                         <div style={{position: "sticky", top: "20px"}}>
                             <Thumbnail>
-                                <LazyLoad key={_producerData.id} height={85} offset={200}>
+                                <LazyLoad key={producerData.id} height={85} offset={200}>
                                     <Image
-                                        alt={_producerData.name}
-                                        src={_producerData.image && _producerData.image[0].url ? injectCDN(_producerData.image[0].url) : `${CDN}/svg/no_img_available.svg`} 
+                                        alt={producerData.name}
+                                        src={producerData.image && producerData.image[0].url ? injectCDN(producerData.image[0].url) : `${CDN}/svg/no_img_available.svg`} 
                                         layout="responsive"
                                         priority={true}
                                         sizes={"50vw"}
@@ -61,21 +61,21 @@ const SoftwarePage: FunctionComponent<PageProps> = ({_producerData, _slotsData})
                     </Section>
 
                     <Article>
-                        <h2>{_producerData.name}</h2>
+                        <h2>{producerData.name}</h2>
                         <MarkDownContainer>
-                            <Markdown>{String(_producerData?.description)}</Markdown>
+                            <Markdown>{String(producerData?.description)}</Markdown>
                         </MarkDownContainer>
 
                     </Article>
 
                 <div style={{width: '100%'}}>
-                    <h2 style={{textTransform: 'uppercase'}}>TUTTE LE NOSTRE SLOT {_producerData.name}</h2>
+                    <h2 style={{textTransform: 'uppercase'}}>TUTTE LE NOSTRE SLOT {producerData.name}</h2>
                     <Divider/>
 
                     <GridContainer>
                         <GridLayout 
                             gridType={GridType.GIOCHISLOTS} 
-                            content={ slotsData.map( (slot: Slot) => 
+                            content={ slots.map( (slot: Slot) => 
                             <Fragment>
                                 <SlotCard key={slot.name} data={slot}/>
                             </Fragment>
@@ -103,8 +103,8 @@ export async function getServerSideProps(context : NextPageContext) {
 
     return {
         props: {
-            _producerData: (await getProducers({ slug: slug }))[0],
-            _slotsData: await getSlots({countryCode: "it", limit: 24, start: 0, producer: slug, sort: 'created_at:desc'})
+            producerData: (await getProducers({ slug: slug }))[0],
+            slotsData: await getSlots({countryCode: "it", limit: 24, start: 0, producer: slug, sort: 'created_at:desc'})
         }
     }
 }
