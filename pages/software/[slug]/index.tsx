@@ -98,7 +98,6 @@ export async function getServerSideProps(context : NextPageContext) {
 }
 
 const Title = styled.h2`
-    margin-bottom: 0px;
 `
 
 const Main = styled.div`
