@@ -41,7 +41,8 @@ const BonusCasinoPage: FunctionComponent<PageProps>= ({topSlotsData, pagesBonuse
     "King Casino",
     "Eurobet",
     "Betway",
-    "Gioco Digitale"]
+    "Gioco Digitale",
+    "BetFlag"]
     
     const topBonusesData = pagesBonusesData.filter( bonus => {
         if ( TOP_BONUSES.includes( bonus.name ) ) {
@@ -341,7 +342,7 @@ const BonusCasinoPage: FunctionComponent<PageProps>= ({topSlotsData, pagesBonuse
 
                 <h3><strong>Dove posso consultare l’elenco dei Migliori Casino Italiani con Bonus Senza Deposito?</strong></h3>
                 <p>
-                L’elenco dei <b>migliori casino online</b>viene sempre aggiornato, tenendo anche in considerazione le offerte periodiche delle diverse piattaforme. 
+                L’elenco dei <b>migliori casino online</b> viene sempre aggiornato, tenendo anche in considerazione le offerte periodiche delle diverse piattaforme. 
                 Qui, puoi avere un’idea completa su tutti i migliori casino online, accessibili tramite un semplice link inserito all’interno della guida di ogni singolo sito. 
                 </p>
 
@@ -354,14 +355,14 @@ const BonusCasinoPage: FunctionComponent<PageProps>= ({topSlotsData, pagesBonuse
 
                 <h3><strong>Si può definire un Bonus di Benvenuto più conveniente?</strong></h3>
                 <p>
-                I <b>Bonus di Benvenuto</b> vengono sempre scelti tenendo in considerazione le preferenze del giocatore. Infatti, non è possibile definire un solo Bonus più conveniente.  <br/>
+                I <b>Bonus di Benvenuto</b> vengono sempre scelti tenendo in considerazione le preferenze del giocatore. Infatti, non è possibile definire un solo Bonus più conveniente.  
                 Tuttavia, ciò che li accomuna sono termini e condizioni previsti dalla piattaforma, che devono sempre essere consultati prima di effettuare una determinata scelta. 
                 </p>
 
                 <h3><strong>Il Bonus di Benvenuto può essere utilizzato una tantum?</strong></h3>
                 <p>
-                Essendo un’offerta riservata ai nuovi clienti, il Bonus di Benvenuto può essere utilizzato soltanto al momento della registrazione, e quindi una volta sola.<br/> <br/>
-                In realtà però, tutte le piattaforme di <b>casinò digitali</b> offrono <b>promozioni periodiche</b> volte a rendere l’esperienza di gioco tutti gli appassionati sempre dinamica. <br/><br/>
+                Essendo un’offerta riservata ai nuovi clienti, il Bonus di Benvenuto può essere utilizzato soltanto al momento della registrazione, e quindi una volta sola.
+                In realtà però, tutte le piattaforme di <b>casinò digitali</b> offrono <b>promozioni periodiche</b> volte a rendere l’esperienza di gioco tutti gli appassionati sempre dinamica. <br/>
                 Sui migliori casino online il divertimento è sempre assicurato!
 
                 </p>
@@ -447,7 +448,7 @@ export async function getStaticProps() {
         "King Casino",
         "Eurobet",
         "Betway",
-        "Betflag",
+        "BetFlag",
         "Gioco Digitale",
         "Snai",
         "Unibet"
@@ -464,7 +465,7 @@ export async function getStaticProps() {
         "King Casino": "https://spikeslot.kingcasino.it",
         Eurobet: "https://record.betpartners.it/_E_C7XwxgprAZV93hC2dJ_GNd7ZgqdRLk/113/",
         Betway: "https://betway.it/bwp/welcome-5gratis/it-it/?s=bw210475&a=AFF3009702735911860&utm_source=210475&utm_medium=Affiliate&utm_campaign=AFF3009702735911860",
-        Betflag: "https://adv.betflag.com/redirect.aspx?pid=5326&bid=2680",
+        BetFlag: "https://info.betflag.it/promozioni-e-bonus/promo-casino/welcome-bonus_slot/?pvr=99&source=1EEBF2249CDF4044A2BA2DE9FE31D9E5",
         "Gioco Digitale": "https://mediaserver.entainpartners.com/renderBanner.do?zoneId=2031706",
         "Snai": "https://affiliazioniads.snai.it/redirect.aspx?pid=29923&bid=2479",
         "Unibet": "https://b1.trickyrock.com/redirect.aspx?pid=74444446&bid=27508"

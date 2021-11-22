@@ -310,7 +310,7 @@ export async function getServerSideProps() {
     const PAGE_BONUSES = ["BetFlag", "LeoVegas", "888 Casino", "StarCasinò", "Unibet"]
 
     const pageBonusesRemapping: any = {
-        BetFlag: "https://adv.betflag.com/redirect.aspx?pid=5326&bid=2680",
+        BetFlag: "https://info.betflag.it/promozioni-e-bonus/promo-casino/welcome-bonus_slot/?pvr=99&source=1EEBF2249CDF4044A2BA2DE9FE31D9E5",
         LeoVegas: "https://ads.leovegas.com/redirect.aspx?pid=3708703&bid=14965",
         "888 Casino": "https://ic.aff-handler.com/c/43431?sr=1864253",
         StarCasinò: "http://record.affiliatelounge.com/_SEA3QA6bJTMP_fzV1idzxmNd7ZgqdRLk/135/",
