@@ -9,6 +9,7 @@ import { getSlots } from '../../lib/graphql/queries/slots'
 import { Slot, Producer, Bonus } from '../../lib/schemas'
 import { useRouter } from 'next/router'
 import { useState } from 'react'
+import { device } from '../../lib/utils/device'
 
 const SLOTS = `
     query slots(
@@ -137,9 +138,9 @@ const SiteMap:FunctionComponent<PageProps> = (props) => {
                 <h2>SITEMAP</h2>
                 <h4>Trova ciò che stai cercando su casinosquad.com</h4>
                 <div className="menu-map">
-                    <a href="#fornitori"><div>FORNITORI</div></a>
-                    <a href="#casino"><div>CASINÒ</div></a>
-                    <a href="#slot"><div>SLOT</div></a>
+                    <a className="item-map" href="#fornitori"><div>FORNITORI</div></a>
+                    <a className="item-map" href="#casino"><div>CASINÒ</div></a>
+                    <a className="item-map" href="#slot"><div>SLOT</div></a>
                 </div>
                 <br/>
             </Header>
@@ -197,18 +198,33 @@ const Header = styled.div`
         margin: 10px 0px;
     }
 
-   .menu-map {
-       display: flex;
-       text-align: center;
+    @media ${device.mobileL} {
+        h4 {
+            text-align: center;
+        }
+    }
+   
 
-       div {
-           border: 3px solid #fff;
-           width: 100px;
-           padding: 5px;
-           margin: 0px 5px;
-           font-weight: 600;
-           cursor: pointer;
-       }
+   .menu-map {
+        display: flex;
+        text-align: center;
+
+        @media ${device.mobileL} {
+            flex-direction: column;
+
+            a.item-map {
+                margin-bottom: 10px;
+            }
+        }
+
+        div {
+            border: 3px solid #fff;
+            width: 100px;
+            padding: 5px;
+            margin: 0px 5px;
+            font-weight: 600;
+            cursor: pointer;
+        }
    }
 `
 
@@ -221,21 +237,25 @@ const Label = styled.span`
 `
 
 const Section = styled.section`
-   display: flex;
-   flex-direction: column;
-   margin: 20px 0px;
-
-   ul.list-name{
     display: flex;
-    flex-wrap: wrap;
+    flex-direction: column;
+    margin: 20px 0px;
+
+
+    ul.list-name{
+        display: flex;
+        flex-wrap: wrap;
 
     li { 
         width: 30%; 
         cursor: pointer;
 
-        .more-data {
-            color: red;
+        @media ${device.mobileL} {
+            margin-right: 20px;
+            flex-grow: 1;
         }
+
+        .more-data { color: red; }
     }
 
     li span:hover { 
