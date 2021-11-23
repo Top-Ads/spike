@@ -74,7 +74,7 @@ const BonusCasinoPage: FunctionComponent<PageProps>= ({topSlotsData, pagesBonuse
                         src={`${CDN}/jpeg/casinosquad_poster_bonus.jpg`}
                         layout="responsive"
                         priority={true}
-                        sizes={"30vw"}
+                        sizes={"50vw"}
                         width={1920}
                         height={600}/>
                 </Thumbnail>
@@ -217,7 +217,7 @@ const BonusCasinoPage: FunctionComponent<PageProps>= ({topSlotsData, pagesBonuse
                             src={`${CDN}/jpeg/casinosquad_poster_bigwin.jpg`}
                             layout="responsive"
                             priority={true}
-                            sizes={"30vw"}
+                            sizes={"50vw"}
                             width={1920}
                             height={600}/>
                     </LazyLoad>
