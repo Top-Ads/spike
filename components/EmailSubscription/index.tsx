@@ -9,7 +9,7 @@ const EmailSubcription = () => {
     return (
         <Fragment>
           <Main>
-            <p>Ricevi aggiornamenti ed anticipazioni sui nuovi video e su bonus e promozio.</p>
+            <p>Ricevi aggiornamenti ed anticipazioni sui nuovi video e su bonus e <b>promozio.</b></p>
 
             <CustomTextField /* onChange={(text: string) => console.log('onchange', text)} */ placeholder="Email" size={'small'}/>
 
