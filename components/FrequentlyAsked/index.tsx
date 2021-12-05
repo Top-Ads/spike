@@ -3,7 +3,7 @@ import styled from 'styled-components'
 import { GridType } from '../../lib/utils/constants'
 import QuestionCard from '../Cards/QuestionCard'
 import EmailSubcription from '../EmailSubscription'
-import GridLayout from '../GridLayout'
+import GridLayout from '../Commons/GridLayout'
 import { frequentlyAsked } from '../../assets/mockFrequentlyAsked'
 
 const FreqentlyAsked = () => { 

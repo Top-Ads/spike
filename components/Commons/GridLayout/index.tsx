@@ -3,9 +3,9 @@ import { makeStyles, createStyles, Theme } from '@material-ui/core/styles'
 import Paper from '@material-ui/core/Paper'
 import Grid, { GridSize, GridSpacing } from '@material-ui/core/Grid'
 import styled from 'styled-components'
-import RankingCard from '../Cards/RankingCard'
-import { GridType } from '../../lib/utils/constants'
-import { device } from '../../lib/utils/device'
+import RankingCard from '../../Cards/RankingCard'
+import { GridType } from '../../../lib/utils/constants'
+import { device } from '../../../lib/utils/device'
 
 const useStyles = makeStyles<Theme, Props>(() =>
   createStyles({

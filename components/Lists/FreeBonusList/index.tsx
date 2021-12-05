@@ -1,11 +1,11 @@
 import React, { Fragment } from 'react'
 import { FunctionComponent } from 'react'
 import styled from 'styled-components'
-import { GridType } from '../../lib/utils/constants'
-import FreeBonusCard from '../Cards/FreeBonusCard'
-import GridLayout from '../GridLayout'
+import { GridType } from '../../../lib/utils/constants'
+import FreeBonusCard from '../../Cards/FreeBonusCard'
+import GridLayout from '../../Commons/GridLayout'
 import LazyLoad from 'react-lazyload'
-import { Bonus } from '../../lib/schemas'
+import { Bonus } from '../../../lib/schemas'
 
 type Props = {
   data: Bonus [],

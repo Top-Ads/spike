@@ -2,24 +2,24 @@ import React, { FunctionComponent, useState } from 'react'
 import LazyLoad from 'react-lazyload'
 import styled from 'styled-components'
 import SlotCard from '../../components/Cards/SlotCard'
-import Divider from '../../components/Divider'
-import GridLayout from '../../components/GridLayout'
+import Divider from '../../components/Commons/Divider'
+import GridLayout from '../../components/Commons/GridLayout'
 import Layout from '../../components/Layout'
 import SlotsCounter from '../../components/SlotsCounter'
 import { GridType, SlotFilterList, SlotType } from '../../lib/utils/constants'
 import { device } from '../../lib/utils/device'
-import CustomTextField from '../../components/Inputs/Textfield'
+import CustomTextField from '../../components/Commons/Inputs/Textfield'
 import CustomMenu from '../../components/CustomMenu'
 import ShuffleIcon from '@material-ui/icons/Shuffle'
 import { Fragment } from 'react'
-import ProducersTable from '../../components/Tables/ProducersTable'
+import ProducersTable from '../../components/Commons/Tables/ProducersTable'
 import Image from 'next/image'
 import { CDN } from '../../public/environment'
 import GiochiFooter from '../../components/GiochiFooter'
-import GiochiArticle from '../../components/Articles/Giochi'
+import GiochiArticle from '../../components/Commons/Articles/Giochi'
 import ProvidersDialog from '../../components/Modals/ProvidersDialog'
 import { Bonus, Producer, Slot, ThemeSlot } from '../../lib/schemas'
-import FreeBonusList from '../../components/FreeBonusList'
+import FreeBonusList from '../../components/Lists/FreeBonusList'
 import { getBonuses } from '../../lib/graphql/queries/bonuses'
 import { getProducers } from '../../lib/graphql/queries/producers'
 import { getSlots } from '../../lib/graphql/queries/slots'
@@ -124,7 +124,7 @@ const GiochiPage: FunctionComponent<PageProps> = (props) => {
     const clear = () => setProducerSelected('')
 
     return (
-        <Layout title="Casino Squad | Giochi di Slot Gratis , Slot Machine Online Senza Scaricare">
+        <Layout title="Casino Squad | Giochi di Slot Gratis, Slot Machine Online Senza Scaricare">
             <Head>
                 <meta 
                 property="og:description" 

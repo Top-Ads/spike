@@ -1,6 +1,6 @@
 import React, { FunctionComponent, Fragment} from 'react'
 import styled from 'styled-components'
-import { device } from '../../../lib/utils/device'
+import { device } from '../../../../lib/utils/device'
 
 const GiochiArticle: FunctionComponent = () => {
     return (

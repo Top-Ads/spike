@@ -2,10 +2,10 @@ import React, { FunctionComponent, Fragment} from 'react'
 import LazyLoad from 'react-lazyload'
 import styled from 'styled-components'
 import Image from 'next/image'
-import { Bonus } from '../../../lib/schemas'
-import { device } from '../../../lib/utils/device'
-import { CDN } from '../../../public/environment'
-import FreeBonusList from '../../FreeBonusList'
+import { Bonus } from '../../../../lib/schemas'
+import { device } from '../../../../lib/utils/device'
+import { CDN } from '../../../../public/environment'
+import FreeBonusList from '../../../Lists/FreeBonusList'
 
 
 type Props = {

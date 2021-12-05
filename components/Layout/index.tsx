@@ -2,11 +2,11 @@ import React, { Fragment, ReactNode } from 'react'
 import styled from 'styled-components'
 import Head from 'next/head'
 import { device } from '../../lib/utils/device'
-import Footer from '../Footer'
+import Footer from '../Commons/Footer'
 import ScrollButton from '../ScrollButton'
 import StickyBanner from '../StickyBanner'
-import Header from '../Header'
-import CustomBreadcrumbs from '../Breadcrumbs'
+import Header from '../Commons/Header'
+import CustomBreadcrumbs from '../Commons/Breadcrumbs'
 
 type Props = {
   children?: ReactNode

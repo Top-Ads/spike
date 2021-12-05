@@ -23,8 +23,8 @@ import { getSlots } from '../../../lib/graphql/queries/slots'
 import { getBonuses } from '../../../lib/graphql/queries/bonuses'
 import FreeBonusCard from '../../../components/Cards/FreeBonusCard'
 import SlotCard from '../../../components/Cards/SlotCard'
-import GridLayout from '../../../components/GridLayout'
-import Divider from '../../../components/Divider'
+import GridLayout from '../../../components/Commons/GridLayout'
+import Divider from '../../../components/Commons/Divider'
 import { styledTheme } from '../../../lib/theme'
 
 type PageProps = {

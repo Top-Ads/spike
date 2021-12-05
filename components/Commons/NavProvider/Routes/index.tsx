@@ -3,7 +3,7 @@ import React, { FunctionComponent, Fragment } from 'react'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 import styled from 'styled-components'
-import { device } from '../../../lib/utils/device'
+import { device } from '../../../../lib/utils/device'
 import { useState } from 'react'
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore'
 import { useEffect } from 'react'
@@ -74,6 +74,10 @@ const Routes: FunctionComponent = () => {
                         </Link>
                 </DropDownMenu>
             </div>
+
+            <Link href={'/blog'}>
+                <a><Button className={router.pathname === '/blog' ? 'active' : ''}>Blog</Button></a>
+            </Link>
            
         </Fragment>
     )
