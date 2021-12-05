@@ -167,3 +167,55 @@ export interface MonopolyTableRow {
   lands : number
   total : number
 }
+
+export interface StrapiImage {
+    url: string
+    alternativeText?: string
+}
+
+export interface MainArgument {
+    name: string
+    slug: string
+    secondaryArguments: SecondaryArgument[]
+}
+
+export interface SecondaryArgument {
+    name: string
+    slug: string
+    mainArgument: MainArgument
+}
+
+export interface Article {
+    id?: string
+    title: string
+    description: string
+    content: any
+    slug: string
+    image: StrapiImage
+    main_argument: MainArgument
+    secondaryArgument: SecondaryArgument
+    published_at?: string
+}
+
+export interface HomeData {
+    mainArticle: Article
+    secondArticle: Article
+    thirdArticle: Article
+}
+
+export interface Banner {
+    link: string
+    image: StrapiImage
+}
+
+export interface NavbarData {
+    logo: StrapiImage
+    items: { mainArgument: MainArgument }[]
+    externalLinks: ExternalLink[]
+}
+
+export interface ExternalLink {
+    label: string
+    link: string
+    rel: 'dofollow' | 'nofollow'
+}

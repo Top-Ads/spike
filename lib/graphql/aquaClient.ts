@@ -1,10 +1,10 @@
 import axios, { AxiosInstance } from 'axios'
-import { API } from '../../public/environment'
+import { SPIKE_API } from '../../public/environment'
 
 class AquaClient {
     axios: AxiosInstance;
 
-    constructor(public baseURL: string = API, public headers?: string) {
+    constructor(public baseURL: string = SPIKE_API, public headers?: string) {
         this.axios = axios.create({ baseURL })
     }
 

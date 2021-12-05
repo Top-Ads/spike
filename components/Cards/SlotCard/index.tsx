@@ -121,7 +121,7 @@ const SlotCard: FunctionComponent<Props> = ({data, type}) => {
                             priority={true}
                             width={1295}
                             height={728}
-                            quality={80}
+                            quality={100}
                             sizes={"30vw"}
                             onLoad={()=> setLoading(false)}/>
                     </LazyLoad>

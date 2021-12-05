@@ -64,7 +64,7 @@ export const GlobalStyle = createGlobalStyle`
 
     h1, strong { font-weight: bold; }
 
-    strong, h1 { color: ${styledTheme.palette.background}; }
+    strong { color: ${styledTheme.palette.background}; }
 
     p, li { 
         line-height: 1.7em; 
