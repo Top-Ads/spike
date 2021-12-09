@@ -55,7 +55,7 @@ export const LatestArticles: FunctionComponent<{ last: Article[] }> = ({
 export const LatestArticleContainer = styled.div`
     margin-top: 1rem;
     background: ${({ theme }) => theme.palette.background};
-    padding: 0.7rem;
+    padding: 0 0.7rem;
     border-radius: 6px;
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 
@@ -63,7 +63,7 @@ export const LatestArticleContainer = styled.div`
         font-weight: 700;
         font-size: 1.5rem;
         color: white;
-        margin-bottom: 0.8rem;
+        margin: 10px 0;
     }
 
     .card-container {
@@ -73,12 +73,11 @@ export const LatestArticleContainer = styled.div`
         margin-bottom: 0.4rem;
         padding: 0.4rem;
         border-radius: 6px;
-        align-items: center;
+        align-items: flex-start;
 
         p {
             color: grey;
             font-size: 14px;
-            padding: 0.3rem 0rem;
         }
 
         .title {
@@ -101,6 +100,7 @@ export const LatestArticleContainer = styled.div`
 
             p {
                 font-size: 0.8rem;
+                margin: 0;
             }
         }
     }

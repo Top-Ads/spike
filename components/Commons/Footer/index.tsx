@@ -27,6 +27,9 @@ const Footer: FunctionComponent = () => {
                         <strong>casino</strong>
                         <a>Nuovi Casinò Online</a>
                         <a>Casinò in Italia</a>
+                        <Link href={'/blog'}>
+                            <a>Blog</a>
+                        </Link>
                     </List>
                    
                     <List>

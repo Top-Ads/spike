@@ -40,7 +40,7 @@ const Layout = ( {children, title}: Props) => {
 
       <Main>
         <div className="layout-container breadcrumb-container"><CustomBreadcrumbs /></div>
-        
+
         {children}
       </Main>
 

@@ -31,9 +31,8 @@ export const MainArticleCardSmall: FunctionComponent<{
 export const SmallArticleCardContainer = styled.div`
     cursor: pointer;
     display: inline-flex;
-    width: 100%;
+    width: 48%;
     border-radius: 4px;
-    margin-bottom: 1rem;
     overflow: auto;
 
     .text-container {
@@ -44,12 +43,11 @@ export const SmallArticleCardContainer = styled.div`
         padding: 0.5rem;
         box-sizing: border-box;
         background: ${({ theme }) => theme.palette.background};
-        max-width: 50%;
+        width: 60%;
 
         h1 {
             font-weight: 700;
             font-size: 18px;
-            margin-bottom: 1rem;
         }
 
         p {

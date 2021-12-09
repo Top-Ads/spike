@@ -45,13 +45,15 @@ export const MainArticleCard: FunctionComponent<{ data: Article }> = ({
 export const ArticleCardContainer = styled.div`
     cursor: pointer;
     display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
     margin-bottom: 1.5rem;
     border-radius: 4px;
     overflow: hidden;
 
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: flex-start;
+    height: ${cardHeight}px;
+    
     .wave {
         transform: rotate(-90deg);
         position: absolute;
@@ -74,11 +76,12 @@ export const ArticleCardContainer = styled.div`
         position: relative;
         display: flex;
         flex-direction: column;
+        overflow: hidden;
+        height: ${cardHeight}px;
 
         h1 {
             font-weight: 700;
             font-size: 22px;
-            padding: 1rem 0rem;
         }
 
         p {
@@ -97,31 +100,8 @@ export const ArticleCardContainer = styled.div`
         }
     }
 
-    flex-direction: row;
-        align-items: flex-start;
-        justify-content: flex-start;
-        height: ${cardHeight}px;
+    img {
+        object-fit: cover;
+    }
 
-        img {
-            object-fit: cover;
-        }
-
-        .text-container {
-            color: white;
-            padding: 1rem;
-            box-sizing: border-box;
-            background: ${({ theme }) => theme.palette.background};
-            overflow: hidden;
-            height: ${cardHeight}px;
-
-            h1 {
-                font-weight: 700;
-                font-size: 22px;
-                padding: 1rem 0rem;
-            }
-
-            p {
-                line-height: 1.5rem;
-            }
-        }
 `

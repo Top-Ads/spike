@@ -5,23 +5,19 @@ import { useRouter } from 'next/router'
 import styled from 'styled-components'
 import { device } from '../../../../lib/utils/device'
 import { useState } from 'react'
-import ExpandMoreIcon from '@material-ui/icons/ExpandMore'
 import { useEffect } from 'react'
 import {isMobile} from 'react-device-detect'
+import DropDown from '../DropDown'
 
 type ButtonProps = {
     active?: boolean
 }
 
-type MenuProps = {
-    show?: boolean
-}
-
-const Routes: FunctionComponent = () => {
+export const Routes: FunctionComponent = () => {
     
     const router = useRouter()
 
-    const [show, setShow] = useState<boolean>(false)
+    const [,setShow] = useState<boolean>(false)
     const [activeRoute, setActiveRoute] = useState<boolean>(false)
 
     useEffect( () => {
@@ -31,54 +27,69 @@ const Routes: FunctionComponent = () => {
 
     return (
         <Fragment>
-            <Link href={'/'}>
+            <Link passHref href={'/'}>
                 <a><Button className={router.pathname === '/' ? 'active' : ''}>Home</Button></a>
             </Link>
 
-            <Link href={'/offerte-bonus-casino'}>
+            <Link passHref href={'/offerte-bonus-casino'}>
                 <a><Button className={router.pathname === '/offerte-bonus-casino' ? 'active' : ''}>Offerte Bonus Casino</Button></a>
             </Link>
 
-            <Link href={'/giochi'}>
+            <Link passHref href={'/giochi'}>
                 <a><Button className={router.pathname === '/giochi' ? 'active' : ''}>Giochi</Button></a>
             </Link>
 
-            <Link href={'/squad'}>
+            <Link passHref href={'/squad'}>
                 <a><Button className={router.pathname === '/squad' ? 'active' : ''}>Squad</Button></a>
             </Link>
 
-            <Link href={'/shop'}>
+            <Link passHref href={'/shop'}>
                 <a><Button className={router.pathname === '/shop' ? 'active' : ''}>Shop</Button></a>
             </Link>
             
-            <div className="dropdown" onMouseEnter={() => setShow(true)} onMouseLeave={() => setShow(false)}>
-                <a><Button 
-                    onClick={() => setShow(!show)} 
-                    id="dropdown-menu" 
-                    className={activeRoute || show ? 'active' : ''}>
-                            Live Stats
-                            <ExpandMoreIcon fontSize={'small'} />
-                </Button></a>
-                
-                <DropDownMenu show={show}>
-                        <Link href={'/live-stats/crazy-time'}>
-                            <a><Button active={activeRoute} className={`dropdown-link ${router.pathname === '/live-stats/crazy-time' ? 'active' : ''}`} >CrazyTime</Button></a>
-                        </Link>
+            <DropDown header="Live Stats" slug={'live-stats'}>
+                <Fragment>
+                    <Link passHref href={'/live-stats/crazy-time'}>
+                        <a><Button active={activeRoute} className={`dropdown-link ${router.pathname === '/live-stats/crazy-time' ? 'active' : ''}`} >CrazyTime</Button></a>
+                    </Link>
 
-                        <Link href={'/live-stats/monopoly'}>
-                            <a><Button active={activeRoute} className={`dropdown-link ${router.pathname === '/live-stats/monopoly' ? 'active' : ''}`}>Monopoly</Button></a>
-                        </Link>
+                    <Link passHref href={'/live-stats/monopoly'}>
+                        <a><Button active={activeRoute} className={`dropdown-link ${router.pathname === '/live-stats/monopoly' ? 'active' : ''}`}>Monopoly</Button></a>
+                    </Link>
 
-                        <Link href={'/live-stats/dream-catcher'}>
-                            <a><Button active={activeRoute} className={`dropdown-link ${router.pathname === '/live-stats/dream-catcher' ? 'active' : ''}`}>Dream Catcher</Button></a>
-                        </Link>
-                </DropDownMenu>
-            </div>
+                    <Link passHref href={'/live-stats/dream-catcher'}>
+                        <a><Button active={activeRoute} className={`dropdown-link ${router.pathname === '/live-stats/dream-catcher' ? 'active' : ''}`}>Dream Catcher</Button></a>
+                    </Link>
+                </Fragment>
+            </DropDown>
 
-            <Link href={'/blog'}>
-                <a><Button className={router.pathname === '/blog' ? 'active' : ''}>Blog</Button></a>
-            </Link>
-           
+            <DropDown header="Blog" slug={'blog'}>
+                <Fragment>
+                    <Link passHref href={'/blog/info-giochi'}>
+                        <a><Button active={activeRoute} className={`dropdown-link ${router.pathname === '/blog/info-giochi' ? 'active' : ''}`} >Info Giochi</Button></a>
+                    </Link>
+
+                    <Link passHref href={'/blog/strategie-di-gioco'}>
+                        <a><Button active={activeRoute} className={`dropdown-link ${router.pathname === '/blog/strategie-di-gioco' ? 'active' : ''}`}>Strategie di Gioco</Button></a>
+                    </Link>
+
+                    <Link passHref href={'/blog/ultima-ora'}>
+                        <a><Button active={activeRoute} className={`dropdown-link ${router.pathname === '/blog/ultima-ora' ? 'active' : ''}`}>Ultima Ora</Button></a>
+                    </Link>
+
+                    <Link passHref href={'/blog/comparazione-casino'}>
+                        <a><Button active={activeRoute} className={`dropdown-link ${router.pathname === '/blog/comparazione-casino' ? 'active' : ''}`}>Comparazione Casino</Button></a>
+                    </Link>
+
+                    <Link passHref href={'/blog/dicci-la-tua'}>
+                        <a><Button active={activeRoute} className={`dropdown-link ${router.pathname === '/blog/dicci-la-tua' ? 'active' : ''}`}>Dicci la tua</Button></a>
+                    </Link>
+
+                    <Link passHref href={'/blog/guide'}>
+                        <a><Button active={activeRoute} className={`dropdown-link ${router.pathname === '/blog/guide' ? 'active' : ''}`}>Guide</Button></a>
+                    </Link>
+                </Fragment>
+            </DropDown>
         </Fragment>
     )
 } 
@@ -103,8 +114,8 @@ const Button = styled.div<ButtonProps>`
         }
     }
 
-    &#dropdown-menu {
-        width: 100px;
+    &.dropdown-menu {
+        width: auto;
         display: flex;
         align-items: center;
         flex-direction: row;
@@ -123,7 +134,8 @@ const Button = styled.div<ButtonProps>`
     }
 
     &.dropdown-link {
-        width: 100px;
+        width: auto;
+        text-align: left;
         color: #fff; 
         background-color: ${({theme}) => theme.palette.background};
 
@@ -165,15 +177,4 @@ const Button = styled.div<ButtonProps>`
     }
 `
 
-const DropDownMenu = styled.div<MenuProps>`
-    position: absolute;
-    z-index: 999;
-    height: auto; 
-    max-height: ${({show}) => show ?  '300px' : 0};
-    transition: max-height 0.2s ease-in-out;
-    overflow: hidden;
-`
-
 export default Routes
-
-

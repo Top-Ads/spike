@@ -1,4 +1,4 @@
-import React, { FunctionComponent } from 'react'
+import React, { Fragment, FunctionComponent } from 'react'
 import styled from 'styled-components'
 import { MainArticleCard } from '../../components/Cards/BlogCard/MainArticleCard'
 import { MainArticleCardSmall } from '../../components/Cards/BlogCard/SmallArticleCard'
@@ -31,67 +31,67 @@ const Blog: FunctionComponent<Iindex> = ({
 }) => { 
     return (
         <Layout title="Casino Squad | Blog">
-            <HomeContentContainer className="layout-container">
-                <div className='main-column'>
-                    <p className='intro'>
-                        Benvenuto nel nostro blog! WinCasino è uno dei casinò
-                        digitali più amati in Italia! In questa sezione trovi i
-                        migliori contenuti relativi al{' '}
-                        <strong>gioco da casinò online</strong>. Rimani sempre
-                        aggiornato sul fantastico mondo delle{' '}
-                        <strong>slot online</strong>, della{' '}
-                        <strong>Roulette</strong> ma anche di{' '}
-                        <strong>Poker</strong>, <strong>Baccarat</strong> e{' '}
-                        <strong>Blackjack</strong>. Inoltre, qui puoi anche
-                        leggere le ultime news sul mondo dei{' '}
-                        <strong>Casinò Live</strong>.
-                    </p>
+                <HomeContentContainer className="layout-container">
+                    <div className='main-column'>
+                        <p className='intro'>
+                            Benvenuto nel nostro blog! WinCasino è uno dei casinò
+                            digitali più amati in Italia! In questa sezione trovi i
+                            migliori contenuti relativi al{' '}
+                            <strong>gioco da casinò online</strong>. Rimani sempre
+                            aggiornato sul fantastico mondo delle{' '}
+                            <strong>slot online</strong>, della{' '}
+                            <strong>Roulette</strong> ma anche di{' '}
+                            <strong>Poker</strong>, <strong>Baccarat</strong> e{' '}
+                            <strong>Blackjack</strong>. Inoltre, qui puoi anche
+                            leggere le ultime news sul mondo dei{' '}
+                            <strong>Casinò Live</strong>.
+                        </p>
 
-                    <HighlightArticlesContainer>
-                        <MainArticleCard data={homeData.mainArticle} />
-                        <div className='two-three-container'>
-                            <MainArticleCardSmall
-                                data={homeData.secondArticle}
+                        <HighlightArticlesContainer>
+                            <MainArticleCard data={homeData.mainArticle} />
+                            <div className='two-three-container'>
+                                <MainArticleCardSmall
+                                    data={homeData.secondArticle}
+                                />
+                                <MainArticleCardSmall
+                                    data={homeData.thirdArticle}
+                                />
+                            </div>
+                        </HighlightArticlesContainer>
+
+                        <Fragment>
+                            <ArgumentList
+                                argumentName='Nuove Slot'
+                                partialSlug='/info-giochi/slot-machine-online'
+                                articles={slotMachineOnlineArticles}
                             />
-                            <MainArticleCardSmall
-                                data={homeData.thirdArticle}
+
+                            <ArgumentList
+                                argumentName='Scommesse'
+                                partialSlug='/info-giochi/scommesse'
+                                articles={betsArticles}
                             />
-                        </div>
-                    </HighlightArticlesContainer>
 
-                    <div>
-                        <ArgumentList
-                            argumentName='Nuove Slot'
-                            partialSlug='/info-giochi/slot-machine-online'
-                            articles={slotMachineOnlineArticles}
-                        />
+                            <ArgumentList
+                                argumentName='Casino Live'
+                                partialSlug='/info-giochi/casino-live'
+                                articles={casinoLiveArticles}
+                            />
 
-                        <ArgumentList
-                            argumentName='Scommesse'
-                            partialSlug='/info-giochi/scommesse'
-                            articles={betsArticles}
-                        />
-
-                        <ArgumentList
-                            argumentName='Casino Live'
-                            partialSlug='/info-giochi/casino-live'
-                            articles={casinoLiveArticles}
-                        />
-
-                        <ArgumentList
-                            argumentName='Black Jack'
-                            partialSlug='/info-giochi/slot-machine-online'
-                            articles={blackJackArticles}
-                        />
+                            <ArgumentList
+                                argumentName='Black Jack'
+                                partialSlug='/info-giochi/slot-machine-online'
+                                articles={blackJackArticles}
+                            />
+                        </Fragment>
+                        
                     </div>
-                    
-                </div>
 
-                <div className='side-column'>
-                    <SideBanners />
-                    <LatestArticles last={lastFive} />
-                </div>
-            </HomeContentContainer>
+                    <div className='side-column'>
+                        <SideBanners />
+                        <LatestArticles last={lastFive} />
+                    </div>
+                </HomeContentContainer>
         </Layout>
     ) 
 }
@@ -118,12 +118,9 @@ export const HomeContentContainer = styled.div`
         }
     }
 
-    margin: 2rem auto;
-
     .main-column {
-        width: 80%;
+        width: 75%;
         padding: 0rem 1rem;
-        margin-bottom: 3rem;
         flex-direction: column;
     }
 
@@ -131,9 +128,7 @@ export const HomeContentContainer = styled.div`
         display: flex;
         flex-direction: column;
         align-items: center;
-        margin-top: 1rem;
-
-        width: 20%;
+        width: 25%;
         margin-top: 0rem;
     }
 `

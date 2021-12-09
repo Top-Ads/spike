@@ -4,6 +4,7 @@ import Link from 'next/link'
 import styled from 'styled-components'
 import { Article } from '../../../lib/schemas'
 import format from 'date-fns/format'
+import { buildLink } from '../../../lib/utils/buildLink'
 
 interface Props {
     argumentName: string
@@ -18,7 +19,7 @@ const ArgumentList: FunctionComponent<Props> = ({
     return (
         <Container>
             <h3 className='section-header'>{argumentName}</h3>
-            <ArgumentListContainer>
+            <ArgumentListContainer className="custom-scroll">
                 {articles.map((article) => (
                     <ArticleCard key={article.title} article={article} />
                 ))}
@@ -28,7 +29,10 @@ const ArgumentList: FunctionComponent<Props> = ({
 }
 
 const Container = styled.div`
-    margin-top: 2rem;
+    
+    &:first-child h3 {
+        margin-top: 0;
+    }
 
     .section-header {
         padding: 1rem;
@@ -37,8 +41,6 @@ const Container = styled.div`
         border-radius: 6px;
         background: ${({ theme }) => theme.palette.backgroundImage};
     }
-
-    overflow: auto;
 `
 
 export const ArticleCard: FunctionComponent<{
@@ -48,7 +50,7 @@ export const ArticleCard: FunctionComponent<{
     return (
         <Link
             passHref
-            href={`/${article.main_argument.slug}/${article.secondaryArgument.slug}/${article.slug}`}
+            href={buildLink(article)}
         >
             <a>
                 <ArticleCardContainer style={style}>
@@ -108,7 +110,10 @@ const ArticleCardContainer = styled.div`
     border-radius: 4px;
     width: 270px;
     height: 245px;
-
+    background: white;
+    
+    overflow: hidden;
+    
     .wave {
         left: 0;
         position: absolute;
@@ -158,9 +163,15 @@ const ArticleCardContainer = styled.div`
 `
 
 const ArgumentListContainer = styled.div`
-    padding: 1rem 0rem;
     background-color: white;
     display: flex;
+    overflow: auto;
+    padding: 5px;
+
+    a:last-child div {
+        margin-right: 0;
+    }
+
 `
 
 export default ArgumentList

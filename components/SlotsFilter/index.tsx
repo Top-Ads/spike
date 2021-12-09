@@ -56,7 +56,7 @@ type Props = {
   listItems: string []
 }
 
-const CustomMenu: FunctionComponent<Props> = ({itemSelected, setItemSelected, listItems}) => {
+const SlotsFilter: FunctionComponent<Props> = ({itemSelected, setItemSelected, listItems}) => {
 
   const classes = useStyles()
 
@@ -177,4 +177,4 @@ const Button = styled.div`
     width: 270px;
 `
 
-export default CustomMenu
+export default SlotsFilter

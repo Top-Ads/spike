@@ -9,7 +9,7 @@ import SlotsCounter from '../../components/SlotsCounter'
 import { GridType, SlotFilterList, SlotType } from '../../lib/utils/constants'
 import { device } from '../../lib/utils/device'
 import CustomTextField from '../../components/Commons/Inputs/Textfield'
-import CustomMenu from '../../components/CustomMenu'
+import SlotsFilter from '../../components/SlotsFilter'
 import ShuffleIcon from '@material-ui/icons/Shuffle'
 import { Fragment } from 'react'
 import ProducersTable from '../../components/Commons/Tables/ProducersTable'
@@ -210,7 +210,7 @@ const GiochiPage: FunctionComponent<PageProps> = (props) => {
                                 </div>
 
                                 <div id='filter-slots'>
-                                        <CustomMenu listItems={listItems} itemSelected={itemSelected} setItemSelected={filterListSlot}/>
+                                        <SlotsFilter listItems={listItems} itemSelected={itemSelected} setItemSelected={filterListSlot}/>
 
                                         <div id="shuffle"><ShuffleIcon fontSize={'large'} onClick={shuffle}/></div>                                    
                                 </div>
