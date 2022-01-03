@@ -113,7 +113,7 @@ export const HighlightArticlesContainer = styled.div`
 
 export const HomeContentContainer = styled.div`
     display: flex;
-    flex-direction: row;
+    flex-direction: row-reverse;
     margin: 1rem 1rem;
 
     @media ${device.mobileL} {

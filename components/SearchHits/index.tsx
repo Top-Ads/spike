@@ -5,12 +5,12 @@ import { CDN } from '../../public/environment'
 import RatingStars from '../RatingStars'
 import { device } from '../../lib/utils/device'
 import { useRouter } from 'next/router'
-import { AlgoliaSearchData } from '../../lib/schemas'
+import { AlgoliaBlogType, AlgoliaSpikeType } from '../../lib/schemas'
 import NavigateNextOutlinedIcon from '@material-ui/icons/NavigateNextOutlined'
 import { injectCDN } from '../../lib/utils/injectCDN'
 
 type Props = {
-   data: AlgoliaSearchData[]
+   data: (AlgoliaBlogType & AlgoliaSpikeType)[]
    mouseOnHit: Function
    searchReviewName?: string
 };
@@ -31,13 +31,16 @@ const SearchHits: FunctionComponent<Props> = ({data, mouseOnHit, searchReviewNam
     const [slotTypeIndex, setSlotTypeIndex] = useState<number>(-1)
     const [bonusTypeIndex, setBonusTypeIndex] = useState<number>(-1)
     const [producerTypeIndex, setProducerTypeIndex] = useState<number>(-1)
-
-    const handleRedirection = ({link, slug, type}: AlgoliaSearchData) => {
+    const [articleTypeIndex, setBlogTypeIndex] = useState<number>(-1)
+    
+    const handleRedirection = ({link, slug, type}: AlgoliaSpikeType) => {
 
         if (type === 'slot') 
             router.push({ pathname: '/slot/[slug]', query: { slug: slug } })
         else if (type === 'producer') 
             router.push({ pathname: '/software/[slug]', query: { slug: slug } })
+        else if (type === 'blog') 
+            router.push({ pathname: `/blog/${link}` })
         else 
             link && router.push(link)
     }
@@ -46,24 +49,25 @@ const SearchHits: FunctionComponent<Props> = ({data, mouseOnHit, searchReviewNam
         setSlotTypeIndex(data.findIndex( (item) => item.type === 'slot'))
         setBonusTypeIndex(data.findIndex( (item) => item.type === 'bonus'))
         setProducerTypeIndex(data.findIndex( (item) => item.type === 'producer'))
+        setBlogTypeIndex(data.findIndex( (item) => item.type === 'blog'))
     }, [data])
-
 
     return (
         <Fragment>
              <Main className="custom-scroll"> 
                 {data.length > 0 &&  
-                    data.map((item: AlgoliaSearchData, index: number) => 
+                    data.map((item: AlgoliaSpikeType & AlgoliaBlogType, index: number) => 
                         <Fragment key={index}>
                             
-                            { (index === slotTypeIndex ||  index === bonusTypeIndex ||  index === producerTypeIndex)  ?  
+                            { (index === slotTypeIndex ||  index === bonusTypeIndex ||  index === producerTypeIndex  || index === articleTypeIndex)  ?  
                                 <SearchType> <b>{item.type}</b> </SearchType> : '' }  
 
                             <Container hasLink={item.link ? true : false} highlight={searchReviewName === item.name} onClick={() => handleRedirection(item)} onMouseOver={() => mouseOnHit(item)}>
                                 <Thumbnail type={item.type}>
                                     <Image
-                                        alt={item.name}
-                                        src={item.image ? injectCDN(item.image) : `${CDN}/svg/no_img_available.svg`} 
+                                        alt={item.name || item.title}
+                                        src={item.image ? injectCDN(item.image) :  (item.imageUrl ?
+                                                 `https://wincasinoblogassets.b-cdn.net${item.imageUrl}` : `${CDN}/svg/no_img_available.svg`) } 
                                         layout="responsive"
                                         sizes={"30vw"}
                                         priority={true}
@@ -72,8 +76,8 @@ const SearchHits: FunctionComponent<Props> = ({data, mouseOnHit, searchReviewNam
                                 </Thumbnail>
 
                                 <Info>
-                                    <Name><b>{item.name}</b></Name>
-                                    <Rating><RatingStars rating={item.rating}/></Rating>   
+                                    <Name><b>{item.name || item.title}</b></Name>
+                                    { item.rating && <Rating><RatingStars rating={item.rating}/></Rating> }
                                 </Info>
 
                                 { searchReviewName === item.name && <NavigateNextOutlinedIcon fontSize="small"/> }
@@ -125,7 +129,7 @@ const Container = styled.div<ContainerProp>`
 `
 
 const Thumbnail = styled.div<ThumbnailProp>`
-    width: ${({type}) => type === 'slot' ? '90px' : '60px;'};
+    width: ${({type}) => type === 'slot' ? '90px' : type === 'blog' ? '80px' : '60px;'};
     border-radius: ${({theme}) => theme.button.borderRadius};
     overflow: hidden;
 `

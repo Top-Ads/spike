@@ -10,8 +10,8 @@ import CloseIcon from '@material-ui/icons/Close'
 import Typography from '@material-ui/core/Typography'
 import CustomTextField from '../../Commons/Inputs/Textfield'
 import { SearchIndex } from 'algoliasearch/lite'
-import { AlgoliaSearchData } from '../../../lib/schemas'
-import { APPLICATIONID, APIKEY, CDN } from '../../../public/environment'
+import { AlgoliaBlogType, AlgoliaSpikeType } from '../../../lib/schemas'
+import { APPLICATIONID, SPIKE_APIKEY, BLOG_APIKEY, CDN } from '../../../public/environment'
 import SearchHits from '../../SearchHits'
 import SearchHitReview from '../../SearchHitReview'
 import { styledTheme } from '../../../lib/theme'
@@ -100,9 +100,10 @@ type Props = {
 
 const SearchDialog: FunctionComponent<Props> = ({open, setOpen}) => {
 
-    const [searchResult, setSearchResult] = useState<AlgoliaSearchData[]>([])
-    const [algoliaIndex, setAlgoliaIndex] = useState<SearchIndex | undefined>(undefined)
-    const [searchReview, setSearchReview] = useState<AlgoliaSearchData>()
+    const [searchResult, setSearchResult] = useState<any>([])
+    const [algoliaSpikeIndex, setAlgoliaSpikeIndex] = useState<SearchIndex | undefined>(undefined)
+    const [algoliaBlogIndex, setAlgoliaBlogIndex] = useState<SearchIndex | undefined>(undefined)
+    const [searchReview, setSearchReview] = useState<any>()
     const [showSearchResult, setShowSearchResult] = useState<boolean>(false)
 
     const classes = useStyles(showSearchResult)
@@ -120,13 +121,18 @@ const SearchDialog: FunctionComponent<Props> = ({open, setOpen}) => {
 
         } else {
 
-          const results = await algoliaIndex!.search<AlgoliaSearchData[] | undefined>(searchItem, { 
+          const spikeData = await algoliaSpikeIndex!.search<AlgoliaSpikeType[] | undefined>(searchItem, { 
               filters: `country: it`
           }).then((resp) => {
               return resp.hits
           })
 
-          setSearchResult(results.map((obj: any) => {
+
+          const blogData = await algoliaBlogIndex!.search<AlgoliaBlogType[] | undefined>(searchItem).then((resp) => {
+            return resp.hits
+          })
+
+          const spikeSearchFormat = spikeData.map((obj: any) => {
             return {
                   name: obj.name,
                   type: obj.type,
@@ -137,26 +143,43 @@ const SearchDialog: FunctionComponent<Props> = ({open, setOpen}) => {
                   rating: obj.rating,
                   objectID: obj.objectID
               }
-          }))
+          })
+
+          const blogSearchFormat = blogData.map((obj: any) => {
+            return {
+                  imageUrl: obj.imageUrl,
+                  link: obj.link,
+                  title: obj.title,
+                  _highlightResult: obj._highlightResult,
+                  objectID: obj.objectID,
+                  type: 'blog'
+              }
+          })
+
+          setSearchResult([...spikeSearchFormat,...blogSearchFormat])
 
           setShowSearchResult(true)
         }
     }
 
-    const handleMouseOnHit = (hit: AlgoliaSearchData) => {
+    const handleMouseOnHit = (hit: AlgoliaSpikeType) => {
       setSearchReview(hit)
     }
 
     useEffect(() => {
+      console.log('searchResult', searchResult)
       setSearchReview(searchResult[0])
   }, [searchResult])
 
     useEffect(() => {
-        if (algoliaIndex === undefined) {
+        if ((algoliaSpikeIndex === undefined) || (algoliaBlogIndex === undefined)) {
           import('algoliasearch').then().then(algoliasearch => {
-              const client = algoliasearch.default(APPLICATIONID, APIKEY)
-              const index = client.initIndex('entities')
-              setAlgoliaIndex(index)
+              const spikeIndex = algoliasearch.default(APPLICATIONID, SPIKE_APIKEY).initIndex('entities')
+
+              const blogIndex = algoliasearch.default(APPLICATIONID, BLOG_APIKEY).initIndex('wincasino-articles')
+
+              setAlgoliaSpikeIndex(spikeIndex)
+              setAlgoliaBlogIndex(blogIndex)
           })
         }
     }, [])

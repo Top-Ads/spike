@@ -115,7 +115,7 @@ export const Breadcrumbs = styled.div`
 `
 
 const ArticleContainer = styled.div`
-    margin: 1rem 6rem;
+    margin: 1rem 2rem;
 
     @media ${device.mobileL} {
         margin: auto;

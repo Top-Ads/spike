@@ -1,7 +1,7 @@
 import React, { FunctionComponent, useEffect, useState } from 'react'
 import { Fragment } from 'react'
 import styled from 'styled-components'
-import { AlgoliaSearchData } from '../../lib/schemas'
+import { AlgoliaBlogType, AlgoliaSpikeType } from '../../lib/schemas'
 import Image from 'next/image'
 import { CDN } from '../../public/environment'
 import { getSlots } from '../../lib/graphql/queries/slots'
@@ -13,7 +13,7 @@ import { device } from '../../lib/utils/device'
 import { injectCDN } from '../../lib/utils/injectCDN'
 
 type Props = {
-   data?: AlgoliaSearchData
+   data: AlgoliaBlogType & AlgoliaSpikeType
 };
 
 type ThumbnailProp = {
@@ -43,24 +43,41 @@ const SearchHitReview: FunctionComponent<Props> = ({data}) => {
             setDescription('')
     }, [data])
 
+    const getImgWidth = (type: 'slot' | 'bonus' | 'producer' | 'blog'): number => {
+        if(type === 'slot')
+            return 1200
+        else if(type === 'blog')
+            return 1079
+        else  return 150
+    }
+
+    const getImgHeight = (type: 'slot' | 'bonus' | 'producer' | 'blog'): number => {
+        if(type === 'slot')
+            return 675
+        else if(type === 'blog')
+            return 607
+        else  return 150
+    }
+
     return (
         <Fragment>
             <Main id="review-container" className="custom-scroll">
                 {
                     data?.type !== 'producer' && 
                     <Header> 
-                        <Thumbnail type={data?.type}>
+                        <Thumbnail type={data.type}>
                             <Image
-                                alt={data?.name}
-                                src={data?.image ? injectCDN(data?.image) : `${CDN}/svg/no_img_available.svg`} 
+                                alt={data.name || data.title}
+                                src={data.image ? injectCDN(data.image) :  (data.imageUrl ?
+                                    `https://wincasinoblogassets.b-cdn.net${data.imageUrl}` : `${CDN}/svg/no_img_available.svg`)} 
                                 layout="responsive"
                                 priority={true}
                                 sizes={"30vw"}
-                                width={data?.type === 'slot' ? 1200 : 150}
-                                height={data?.type === 'slot' ? 675 : 150}
+                                width={getImgWidth(data.type)}
+                                height={getImgHeight(data.type)}
                             />
                         </Thumbnail>
-                        <Title>{data?.name}</Title>
+                        <Title>{data.name || data.title}</Title>
                     </Header>
                 }
                 <Article>
@@ -90,7 +107,13 @@ const Header = styled.div`
 `
 
 const Thumbnail = styled.div<ThumbnailProp>`
-    width: ${({type}) => type === 'slot' ? '220px' : '140px;'};
+    width: ${({type}) => {
+        if(type === 'slot')
+            return '220px'
+        else if(type === 'blog')
+            return '220px'
+        else  return '140px'
+    }};
     height: min-content;
     border-radius: ${({theme}) => theme.button.borderRadius};
     overflow: hidden;

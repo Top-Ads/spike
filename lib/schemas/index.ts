@@ -22,9 +22,10 @@ export interface StyledTheme {
     }
 }
 
-export interface AlgoliaSearchData {
+
+export interface AlgoliaSpikeType {
     name: string
-    type: 'slot' | 'bonus' | 'producer'
+    type: 'slot' | 'bonus' | 'producer' | 'blog'
     slug: string
     country: string
     image: string 
@@ -34,6 +35,26 @@ export interface AlgoliaSearchData {
         id: number
     }
     objectID?: string
+}
+
+export interface AlgoliaBlogType {
+    imageUrl: string
+    link: string
+    objectID: string
+    title: string 
+    _highlightResult: {
+        imageUrl: highlightType
+        link: highlightType
+        title: highlightType
+    }
+    type: string
+}
+
+export interface highlightType {
+    fullyHighlighted: string
+    matchLevel: string
+    matchedWords: string[]
+    value: string
 }
 
 export interface Bonus {

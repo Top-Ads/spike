@@ -14,7 +14,6 @@ export const MainArticleCard: FunctionComponent<{ data: Article }> = ({
     data,
 }) => {
 
-    console.log(data.published_at)
     return (
         <Link href={buildLink(data)}>
             <ArticleCardContainer>
