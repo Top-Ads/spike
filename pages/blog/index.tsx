@@ -8,6 +8,7 @@ import Layout from '../../components/Layout'
 import ArgumentList from '../../components/Lists/ArgumentList'
 import AquaClient from '../../lib/graphql/aquaClient'
 import { NavbarData, HomeData, Article, Banner } from '../../lib/schemas'
+import { device } from '../../lib/utils/device'
 import { BLOG_API } from '../../public/environment'
 
 interface Iindex {
@@ -48,7 +49,9 @@ const Blog: FunctionComponent<Iindex> = ({
                         </p>
 
                         <HighlightArticlesContainer>
+
                             <MainArticleCard data={homeData.mainArticle} />
+
                             <div className='two-three-container'>
                                 <MainArticleCardSmall
                                     data={homeData.secondArticle}
@@ -101,6 +104,10 @@ export const HighlightArticlesContainer = styled.div`
     .two-three-container {
         display: flex;
         justify-content: space-between;
+
+        @media ${device.mobileL} {
+           flex-direction: column;
+        }
     }
 `
 
@@ -109,6 +116,12 @@ export const HomeContentContainer = styled.div`
     flex-direction: row;
     margin: 1rem 1rem;
 
+    @media ${device.mobileL} {
+        &.layout-container {
+            padding: 5px 0% 0px;
+        }
+    }
+    
     .intro {
         margin-bottom: 2rem;
         line-height: 1.2rem;
@@ -122,6 +135,7 @@ export const HomeContentContainer = styled.div`
         width: 75%;
         padding: 0rem 1rem;
         flex-direction: column;
+        flex-grow: 1;
     }
 
     .side-column {
@@ -130,6 +144,10 @@ export const HomeContentContainer = styled.div`
         align-items: center;
         width: 25%;
         margin-top: 0rem;
+
+        @media ${device.mobileL} {
+            display: none;
+        }
     }
 `
 

@@ -16,6 +16,8 @@ import AquaClient from '../../../../lib/graphql/aquaClient'
 import { Article, NavbarData } from '../../../../lib/schemas'
 import { BLOG_API } from '../../../../public/environment'
 import { styledTheme } from '../../../../lib/theme'
+import styled from 'styled-components'
+import { device } from '../../../../lib/utils/device'
 
 interface Iindex {
     firstLevel: string
@@ -60,14 +62,7 @@ const SecondLevel: FunctionComponent<Iindex> = ({
     return (
         <Layout>
             <HomeContentContainer className="layout-container">
-                <div className='main-column'>
-                    <div
-                        style={{
-                            display: 'flex',
-                            flexWrap: 'wrap',
-                            justifyContent: 'flex-start',
-                        }}
-                    >
+                <MainColumn>
                         {args[0].articles.map((article: any, index: any) => (
                             <ArticleCard
                                 style={{ marginBottom: '1rem' }}
@@ -75,8 +70,7 @@ const SecondLevel: FunctionComponent<Iindex> = ({
                                 article={article}
                             />
                         ))}
-                    </div>
-                </div>
+                </MainColumn>
                 <div className='side-column'>
                     <SideBanners />
                     <LatestArticles last={lastFive} />
@@ -85,6 +79,20 @@ const SecondLevel: FunctionComponent<Iindex> = ({
         </Layout>
     )
 }
+
+const MainColumn = styled.div `
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+
+   
+
+    @media ${device.mobileL} {
+        margin: auto;
+        justify-content: center;
+    }
+
+`
 
 export const getStaticPaths = () => {
     return {

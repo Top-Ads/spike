@@ -6,6 +6,7 @@ import styled from 'styled-components'
 import { Article } from '../../../lib/schemas'
 import { buildLink } from '../../../lib/utils/buildLink'
 import { ellipsize } from '../../../lib/utils/ellipsize'
+import { device } from '../../../lib/utils/device'
 
 const cardHeight = 285
 
@@ -54,6 +55,12 @@ export const ArticleCardContainer = styled.div`
     justify-content: flex-start;
     height: ${cardHeight}px;
     
+    @media ${device.mobileL} {
+        flex-direction: column;
+        height: 100%;
+    }
+
+
     .wave {
         transform: rotate(-90deg);
         position: absolute;
@@ -82,10 +89,19 @@ export const ArticleCardContainer = styled.div`
         h1 {
             font-weight: 700;
             font-size: 22px;
+
+            @media ${device.mobileL} {
+                font-size: 16px;
+            }
         }
 
         p {
             line-height: 1.5rem;
+
+            @media ${device.mobileL} {
+                line-height: 1.3rem;
+
+            }
         }
 
         .divider {

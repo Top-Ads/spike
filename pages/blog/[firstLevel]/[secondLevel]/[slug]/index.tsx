@@ -13,6 +13,7 @@ import { Article, NavbarData } from '../../../../../lib/schemas'
 import { GetStaticPropsContext } from 'next'
 import { BLOG_API } from '../../../../../public/environment'
 import { styledTheme } from '../../../../../lib/theme'
+import { device } from '../../../../../lib/utils/device'
 
 // @ts-ignore
 // const ReactMarkdown = dynamic(() => import('react-markdown'))
@@ -115,6 +116,10 @@ export const Breadcrumbs = styled.div`
 
 const ArticleContainer = styled.div`
     margin: 1rem 6rem;
+
+    @media ${device.mobileL} {
+        margin: auto;
+    }
 
     img {
         border-radius: 4px;

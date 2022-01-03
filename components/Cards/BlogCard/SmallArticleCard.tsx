@@ -5,6 +5,7 @@ import Image from 'next/image'
 import { Article } from '../../../lib/schemas'
 import { buildLink } from '../../../lib/utils/buildLink'
 import { ellipsize } from '../../../lib/utils/ellipsize'
+import { device } from '../../../lib/utils/device'
 
 export const MainArticleCardSmall: FunctionComponent<{
     data: Article
@@ -34,7 +35,14 @@ export const SmallArticleCardContainer = styled.div`
     width: 48%;
     border-radius: 4px;
     overflow: auto;
+    flex-grow: 1;
 
+    @media ${device.mobileL} {
+           flex-direction: column-reverse;
+           width: auto;
+           margin-bottom: 20px;
+    }
+        
     .text-container {
         display: flex;
         flex-direction: column;
@@ -44,6 +52,10 @@ export const SmallArticleCardContainer = styled.div`
         box-sizing: border-box;
         background: ${({ theme }) => theme.palette.background};
         width: 60%;
+
+        @media ${device.mobileL} {
+            width: auto;
+        }
 
         h1 {
             font-weight: 700;
