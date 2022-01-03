@@ -11,8 +11,7 @@ import { Category } from '../../../lib/utils/constants'
 import FavoriteCard from '../../Cards/FavoriteCard'
 import ShoppingCard from '../../Cards/ShoppingCard'
 import { removeLikeSlotContext } from '../../../lib/contexts'
-import { APIKEY, APPLICATIONID, CDN } from '../../../public/environment'
-import { SearchIndex } from 'algoliasearch/lite'
+import { CDN } from '../../../public/environment'
 import DialogSlider from '../../Modals/SliderDialog'
 import NavBrowserProvider from '../NavProvider/BrowserView'
 import NavMobileProvider from '../NavProvider/MobileView'
@@ -30,7 +29,6 @@ const Header: FunctionComponent<Props> = ({isBrowserView}) => {
   const [openDialogSlider, setOpenDialogSlider] = useState<boolean>(false)
   const [category, setCategory] = useState<string>('')
   const [contentSlider, setContentSlider] = useState<any[]>([])
-  const [algoliaIndex, setAlgoliaIndex] = useState<SearchIndex | undefined>(undefined)
 
   const {setRemoveLikeSlotId} = useContext(removeLikeSlotContext)
 
@@ -58,16 +56,6 @@ const Header: FunctionComponent<Props> = ({isBrowserView}) => {
       localStorage.setItem(Category.FAVORITES, JSON.stringify(newContent))
     }
   }
-
-  useEffect(() => {
-    if (algoliaIndex === undefined) {
-      import('algoliasearch').then().then(algoliasearch => {
-          const client = algoliasearch.default(APPLICATIONID, APIKEY)
-          const index = client.initIndex('entities')
-          setAlgoliaIndex(index)
-      })
-    }
-  }, [])
 
   useEffect(() => {
     if (openDialogSlider) {
