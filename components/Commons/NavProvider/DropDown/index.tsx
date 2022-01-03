@@ -30,7 +30,7 @@ const DropDown: FunctionComponent<Props> = ({header, children, slug}) => {
 
     useEffect( () => {
         setActiveRoute(router.pathname.includes(`/${slug}/`))
-        isMobile && setShow(router.pathname.includes(`/${slug}/`))
+        isMobile && setShow(router.pathname.includes(`/${slug}/`)) 
     }, [])
 
     return (
@@ -38,7 +38,14 @@ const DropDown: FunctionComponent<Props> = ({header, children, slug}) => {
             <div className="dropdown" onMouseEnter={() => setShow(true)} onMouseLeave={() => setShow(false)}>
                 <Link passHref href={`/${slug}`}>
                     <a><Button 
-                        onClick={() => setShow(!show)} 
+                        onClick={(event: React.SyntheticEvent) => {
+                            if (slug === 'live-stats') {
+                                event.preventDefault()
+                            }   
+                            setShow(!show)
+                            isMobile && event.preventDefault()
+                           
+                        }} 
                         className={activeRoute || show ? 'dropdown-menu active' : 'dropdown-menu'}>
                                 {header}
                                 <ExpandMoreIcon fontSize={'small'} />
@@ -143,6 +150,10 @@ const DropDownMenu = styled.div<MenuProps>`
     max-height: ${({show}) => show ?  '300px' : 0};
     transition: max-height 0.2s ease-in-out;
     overflow: hidden;
+
+    @media ${device.mobileL} { 
+        position: relative;
+    }
 `
 
 export default DropDown

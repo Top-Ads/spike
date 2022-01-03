@@ -136,10 +136,11 @@ export const HomeContentContainer = styled.div`
 
     .main-column {
         width: 75%;
-        padding: 0rem 1rem;
+        padding: 0rem 2rem;
 
         @media ${device.mobileL} {
             width: fill-available;
+            padding: 0rem;
         }
     }
 
