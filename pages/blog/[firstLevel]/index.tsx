@@ -16,6 +16,8 @@ import { Article, NavbarData } from '../../../lib/schemas'
 import Loader from 'react-loader-spinner'
 import { BLOG_API } from '../../../public/environment'
 import { styledTheme } from '../../../lib/theme'
+import styled from 'styled-components'
+import { device } from '../../../lib/utils/device'
 
 interface Iindex {
     firstLevel: string
@@ -69,7 +71,7 @@ const FirstLevel: FunctionComponent<Iindex> = ({
                             />
                         ))
                     ) : (
-                        <div style={{ display: 'flex', flexWrap: 'wrap' }}>
+                        <CardsContainer>
                             {args[0].articles.map((article: any, index: number) => (
                                 <ArticleCard
                                     key={index}
@@ -77,7 +79,7 @@ const FirstLevel: FunctionComponent<Iindex> = ({
                                     article={article}
                                 />
                             ))}
-                        </div>
+                        </CardsContainer>
                     )}
                 </div>
                 <div className='side-column'>
@@ -88,6 +90,16 @@ const FirstLevel: FunctionComponent<Iindex> = ({
         </Layout>
     )
 }
+
+const CardsContainer = styled.div`
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+
+    @media ${device.mobileL} {
+        justify-content: center;
+    }
+`
 
 export const getStaticPaths = () => {
     return {
