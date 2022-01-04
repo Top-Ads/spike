@@ -40,11 +40,9 @@ const DropDown: FunctionComponent<Props> = ({header, children, slug}) => {
                             if (slug === 'live-stats') {
                                 event.preventDefault()
                             }   
-                            setShow(!show)
-                           
-                           
+                            setShow(!show)  
                         }} 
-                        className={'dropdown-menu'}>
+                        className={`dropdown-menu ${show ? 'active' : ''}`}>
                             {header}
                             <ExpandMoreIcon fontSize={'small'} />
                     </Button></a>

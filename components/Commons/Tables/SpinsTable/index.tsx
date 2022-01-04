@@ -20,6 +20,7 @@ import { LiveStats, SymbolLayout } from '../../../../lib/utils/constants'
 import { format } from 'date-fns'
 import { utcToZonedTime } from 'date-fns-tz'
 import italianLocale  from 'date-fns/locale/it'
+import MultiplierTableCell from '../MultiplierTableCell'
 
 type Props = {
     data: Spin[],
@@ -230,7 +231,7 @@ const SpinsTable: FunctionComponent<Props> = ({data=[], gameType}) => {
                     </StyledTableCell>
                   }
 
-                  <StyledTableCell align="left">{row.multiplier}</StyledTableCell>
+                  <MultiplierTableCell spin={row as unknown as Spin} />
 
                   { gameType === LiveStats.MONOPOLY && 
                     <Fragment>
@@ -238,6 +239,7 @@ const SpinsTable: FunctionComponent<Props> = ({data=[], gameType}) => {
                       <StyledTableCell align="left">{row.chanceMultiplier}</StyledTableCell>
                     </Fragment>
                   }
+
 
                   <StyledTableCell align="left">{row.totalWinners}</StyledTableCell>
                   

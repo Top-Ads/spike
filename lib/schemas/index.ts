@@ -137,7 +137,7 @@ export interface Spin {
     _id: string,
     date: string
     multiplier: string
-    multiplierInfo: string
+    multiplierInfo: 'heads' | 'tails' | 'ct' | 'none'
     rawTime: string
     sameSlotAndSpinResult: boolean
     slotResult: string

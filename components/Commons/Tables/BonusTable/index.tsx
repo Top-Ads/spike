@@ -17,9 +17,6 @@ import { CDN } from '../../../../public/environment'
 import LazyLoad from 'react-lazyload'
 import { Bonus } from '../../../../lib/schemas'
 import { replaceAll } from '../../../../lib/utils/replaceAll'
-import InfoIcon from '@material-ui/icons/Info'
-import Tooltip from '@material-ui/core/Tooltip'
-import { Zoom } from '@material-ui/core'
 import { device } from '../../../../lib/utils/device'
 import { injectCDN } from '../../../../lib/utils/injectCDN'
 
@@ -136,15 +133,6 @@ const BonusTable: FunctionComponent<Props> = ({data}) => {
                 <StyledTableCell align="left">
                   <div className="cell-description">
                     <div dangerouslySetInnerHTML={{__html: String(replaceAll(row.noDeposit, "+", "<br/>"))}}/>
-
-                    { row.tips && 
-                      <Tooltip 
-                        title={row.tips} 
-                        classes={{ tooltip: classes.tooltip }} 
-                        TransitionComponent={Zoom}
-                        children={<InfoIcon className={classes.icon}/>}/>
-                    }
-                    
                   </div>
                 </StyledTableCell>
 
