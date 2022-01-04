@@ -23,6 +23,12 @@ export const Routes: FunctionComponent = () => {
     useEffect( () => {
         setActiveRoute(router.pathname.includes('/live-stats/'))
         isMobile && setShow(router.pathname.includes('/live-stats/'))
+
+
+        setActiveRoute(router.pathname.includes('/blog/'))
+        isMobile && setShow(router.pathname.includes('/blog/'))
+
+        console.log(router.query.firstLevel)
     }, [])
 
     return (
@@ -66,27 +72,27 @@ export const Routes: FunctionComponent = () => {
             <DropDown header="Blog" slug={'blog'}>
                 <Fragment>
                     <Link passHref href={'/blog/info-giochi'}>
-                        <a><Button active={activeRoute} className={`dropdown-link ${router.pathname === '/blog/info-giochi' ? 'active' : ''}`} >Info Giochi</Button></a>
+                        <a><Button active={activeRoute} className={`dropdown-link ${router.query.firstLevel === 'info-giochi' ? 'active' : ''}`} >Info Giochi</Button></a>
                     </Link>
 
                     <Link passHref href={'/blog/strategie-di-gioco'}>
-                        <a><Button active={activeRoute} className={`dropdown-link ${router.pathname === '/blog/strategie-di-gioco' ? 'active' : ''}`}>Strategie di Gioco</Button></a>
+                        <a><Button active={activeRoute} className={`dropdown-link ${router.query.firstLevel === 'strategie-di-gioco' ? 'active' : ''}`}>Strategie di Gioco</Button></a>
                     </Link>
 
                     <Link passHref href={'/blog/ultima-ora'}>
-                        <a><Button active={activeRoute} className={`dropdown-link ${router.pathname === '/blog/ultima-ora' ? 'active' : ''}`}>Ultima Ora</Button></a>
+                        <a><Button active={activeRoute} className={`dropdown-link ${router.query.firstLevel === 'ultima-ora' ? 'active' : ''}`}>Ultima Ora</Button></a>
                     </Link>
 
                     <Link passHref href={'/blog/comparazione-casino'}>
-                        <a><Button active={activeRoute} className={`dropdown-link ${router.pathname === '/blog/comparazione-casino' ? 'active' : ''}`}>Comparazione Casino</Button></a>
+                        <a><Button active={activeRoute} className={`dropdown-link ${router.query.firstLevel === 'comparazione-casino' ? 'active' : ''}`}>Comparazione Casino</Button></a>
                     </Link>
 
                     <Link passHref href={'/blog/dicci-la-tua'}>
-                        <a><Button active={activeRoute} className={`dropdown-link ${router.pathname === '/blog/dicci-la-tua' ? 'active' : ''}`}>Dicci la tua</Button></a>
+                        <a><Button active={activeRoute} className={`dropdown-link ${router.query.firstLevel === 'dicci-la-tua' ? 'active' : ''}`}>Dicci la tua</Button></a>
                     </Link>
 
                     <Link passHref href={'/blog/guide'}>
-                        <a><Button active={activeRoute} className={`dropdown-link ${router.pathname === '/blog/guide' ? 'active' : ''}`}>Guide</Button></a>
+                        <a><Button active={activeRoute} className={`dropdown-link ${router.query.firstLevel === 'guide' ? 'active' : ''}`}>Guide</Button></a>
                     </Link>
                 </Fragment>
             </DropDown>

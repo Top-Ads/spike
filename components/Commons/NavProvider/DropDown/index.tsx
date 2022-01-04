@@ -26,11 +26,9 @@ const DropDown: FunctionComponent<Props> = ({header, children, slug}) => {
     const router = useRouter()
 
     const [show, setShow] = useState<boolean>(false)
-    const [activeRoute, setActiveRoute] = useState<boolean>(false)
 
     useEffect( () => {
-        setActiveRoute(router.pathname.includes(`/${slug}/`))
-        isMobile && setShow(router.pathname.includes(`/${slug}/`)) 
+        isMobile && setShow(router.pathname.includes(`${slug}`)) 
     }, [])
 
     return (
@@ -43,12 +41,12 @@ const DropDown: FunctionComponent<Props> = ({header, children, slug}) => {
                                 event.preventDefault()
                             }   
                             setShow(!show)
-                            isMobile && event.preventDefault()
+                           
                            
                         }} 
-                        className={activeRoute || show ? 'dropdown-menu active' : 'dropdown-menu'}>
-                                {header}
-                                <ExpandMoreIcon fontSize={'small'} />
+                        className={'dropdown-menu'}>
+                            {header}
+                            <ExpandMoreIcon fontSize={'small'} />
                     </Button></a>
                 </Link>
 

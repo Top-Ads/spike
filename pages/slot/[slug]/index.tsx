@@ -49,7 +49,6 @@ const useStyles = makeStyles({
 
 const SlotPage: FunctionComponent<PageProps> = ({data}) => {
 
-    console.log(data)
     const classes = useStyles()
 
     const [showIframe, setShowIframe] = useState<boolean>(false)
