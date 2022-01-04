@@ -35,7 +35,6 @@ export const SmallArticleCardContainer = styled.div`
     width: 48%;
     border-radius: 4px;
     overflow: auto;
-    flex-grow: 1;
 
     @media ${device.mobileL} {
         width: 100%;
