@@ -50,29 +50,33 @@ const MultiplierTableCell : FunctionComponent<Props>= ({spin}) => {
             return (
                 <TableCell 
                     style={{
-                        display : 'flex',
-                        alignItems : 'center',
                         fontFamily : 'Montserrat',
                         fontWeight : spin.sameSlotAndSpinResult ? 'bold' : 'normal', 
                         fontSize : spin.sameSlotAndSpinResult ? '1.1rem' : ''
                     }} 
                     align="left">
 
-                    <TriangleImage src='/images/icons/crazy-time/green_triangle.svg'/>
+                   
 
-                    <span>
-                        {first}
-                    </span>
+                    <div style={{ display : 'flex', alignItems : 'center'}}>
 
-                    <TriangleImage src='/images/icons/crazy-time/blue_triangle.svg'/>
-                    <span>
-                        {second}
-                    </span>
+                        <TriangleImage src='/images/icons/crazy-time/green_triangle.svg'/>
 
-                    <TriangleImage src='/images/icons/crazy-time/yellow_triangle.svg'/>
-                    <span>
-                        {third}
-                    </span>
+                        <span>
+                            {first}
+                        </span>
+
+                        <TriangleImage src='/images/icons/crazy-time/blue_triangle.svg'/>
+                        <span>
+                            {second}
+                        </span>
+
+                        <TriangleImage src='/images/icons/crazy-time/yellow_triangle.svg'/>
+                        <span>
+                            {third}
+                        </span>
+                    </div>
+                    
                     
                 </TableCell>
             )

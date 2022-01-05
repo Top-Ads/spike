@@ -2,9 +2,11 @@ import React, { FunctionComponent } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 import styled from 'styled-components'
-import { Article } from '../../../lib/schemas'
-import { buildLink } from '../../../lib/utils/buildLink'
+import { Article } from '../../../../../lib/schemas'
+import { buildLink } from '../../../../../lib/utils/buildLink'
 import format from 'date-fns/format'
+import { device } from '../../../../../lib/utils/device'
+import italianLocale  from 'date-fns/locale/it'
 
 export const LatestArticles: FunctionComponent<{ last: Article[] }> = ({
     last,
@@ -30,11 +32,11 @@ export const LatestArticles: FunctionComponent<{ last: Article[] }> = ({
 
                             <div className='card-info-container'>
                                 <p className='title'>{article.title}</p>
-                                <p>
-                                    {article.published_at && format(
-                                        new Date(article.published_at),
-                                        'dd/M/yyyy',
-                                    )}
+                                <p className='published_at'>
+                                    Pubblicato il
+                                    <div style={{textTransform: 'capitalize', marginLeft: '5px'}}>
+                                        { article.published_at && format(new Date(article.published_at), 'dd MMM yyyy', { locale: italianLocale }).toString()} 
+                                    </div>
                                 </p>
                             </div>
                         </div>
@@ -58,7 +60,12 @@ export const LatestArticleContainer = styled.div`
     padding: 0 0.7rem;
     border-radius: 6px;
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    width: 275px;
 
+    @media ${device.mobileL} {
+            width: 100%;
+    }
+        
     h3 {
         font-weight: 700;
         font-size: 1.5rem;
@@ -71,13 +78,20 @@ export const LatestArticleContainer = styled.div`
         display: flex;
         background: white;
         margin-bottom: 0.4rem;
-        padding: 0.4rem;
+        padding: 0.4rem 0.4rem 0rem 0.4rem;
         border-radius: 6px;
         align-items: flex-start;
+        position: relative;
+        height: 70px;
+
+        &:hover {
+            background-color: rgba(255, 255, 255, 0.9);
+        }
 
         p {
             color: grey;
             font-size: 14px;
+            line-height: initial;
         }
 
         .title {
@@ -99,8 +113,22 @@ export const LatestArticleContainer = styled.div`
             justify-content: center;
 
             p {
-                font-size: 0.8rem;
+                font-size: 0.85rem;
                 margin: 0;
+                
+                @media ${device.mobileL} {
+                    font-size: 0.95em;
+                }
+
+                &.published_at {
+                    font-size: 0.7rem;
+                    color: ${({ theme }) => theme.palette.background};
+                   
+                    display: flex;
+                    position: absolute;
+                    bottom: 2px;
+                    right: 5px;
+                }
             }
         }
     }

@@ -48,7 +48,6 @@ export const SmallArticleCardContainer = styled.div`
     .text-container {
         display: flex;
         flex-direction: column;
-        justify-content: center;
         color: white;
         padding: 0.5rem;
         box-sizing: border-box;
@@ -62,6 +61,7 @@ export const SmallArticleCardContainer = styled.div`
         h1 {
             font-weight: 700;
             font-size: 18px;
+            margin: 0;
         }
 
         p {

@@ -7,7 +7,7 @@ import {
     LAST_FIVE_BY_SECONDARY_ARGUMENT,
 } from '..'
 import { useRouter } from 'next/dist/client/router'
-import { LatestArticles } from '../../../components/Commons/LatestArticles'
+import { LatestArticles } from '../../../components/Commons/Articles/Blog/LatestArticles'
 import { SideBanners } from '../../../components/Commons/SideBanners'
 import Layout from '../../../components/Layout'
 import ArgumentList, { ArticleCard } from '../../../components/Lists/ArgumentList'

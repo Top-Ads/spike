@@ -1,4 +1,4 @@
-import React, { FunctionComponent } from 'react'
+import React, { Fragment, FunctionComponent } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 import format from 'date-fns/format'
@@ -7,8 +7,9 @@ import { Article } from '../../../lib/schemas'
 import { buildLink } from '../../../lib/utils/buildLink'
 import { ellipsize } from '../../../lib/utils/ellipsize'
 import { device } from '../../../lib/utils/device'
+import italianLocale  from 'date-fns/locale/it'
 
-const cardHeight = 285
+const cardHeight = 250
 
 export const MainArticleCard: FunctionComponent<{ data: Article }> = ({
     data,
@@ -29,12 +30,18 @@ export const MainArticleCard: FunctionComponent<{ data: Article }> = ({
                 <div className='text-container'>
                     <h1>{data.title}</h1>
                     <p>{ellipsize(data.description, 150)}</p>
-                    <div style={{ marginTop: 'auto' }}>
+                    <div className='published-section'>
                         <div className='divider' />
-                        <p className='date'>{ data.published_at && `Pubblicato il ${format(
-                            new Date(data.published_at),
-                            'dd/MM/yyyy',
-                        ).toString()}`}</p>
+                        <p className='published_at'>
+                         {data.published_at && 
+                            <Fragment>
+                                Pubblicato il
+                                <div style={{textTransform: 'capitalize', marginLeft: '5px'}}>
+                                    { format(new Date(data.published_at), 'dd MMM yyyy', { locale: italianLocale }).toString()} 
+                                </div>
+                            </Fragment>
+                        }
+                        </p>
                     </div>
                 </div>
             </ArticleCardContainer>
@@ -71,6 +78,7 @@ export const ArticleCardContainer = styled.div`
         width: 100%;
         height: 100%;
         background: ${({ theme }) => theme.palette.background};
+        display: flex;
     }
 
     .text-container {
@@ -83,8 +91,8 @@ export const ArticleCardContainer = styled.div`
         display: flex;
         flex-direction: column;
         overflow: hidden;
-        height: ${cardHeight}px;
-
+        height: inherit;
+        
         @media ${device.mobileL} {
             height: auto;
         }
@@ -92,7 +100,7 @@ export const ArticleCardContainer = styled.div`
         h1 {
             font-weight: 700;
             font-size: 22px;
-
+            margin: 0px;
             @media ${device.mobileL} {
                 font-size: 16px;
             }
@@ -103,20 +111,34 @@ export const ArticleCardContainer = styled.div`
 
             @media ${device.mobileL} {
                 line-height: 1.3rem;
-
+                margin-bottom: 2rem;
             }
         }
 
-        .divider {
-            width: 100%;
-            height: 1px;
-            margin: 0.5rem auto;
-            background: white;
-        }
+        .published-section {
+            position: absolute;
+            bottom: 0;
+            right: 10px;
+            width: 95%;
+            text-align: right;
+            height: 50px;
+            
+            .divider {
+                width: 100%;
+                height: 1px;
+                margin: 0.5rem auto;
+                background: white;
+            }
 
-        .date {
-            margin-top: auto;
+            .published_at {
+                margin-top: auto;
+                color: ${({ theme }) => theme.text.color.white};
+                font-size: 0.8rem;
+                display: flex;
+                justify-content: flex-end;
+            }
         }
+       
     }
 
     img {

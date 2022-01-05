@@ -2,7 +2,7 @@ import React, { Fragment, FunctionComponent } from 'react'
 import styled from 'styled-components'
 import { MainArticleCard } from '../../components/Cards/BlogCard/MainArticleCard'
 import { MainArticleCardSmall } from '../../components/Cards/BlogCard/SmallArticleCard'
-import { LatestArticles } from '../../components/Commons/LatestArticles'
+import { LatestArticles } from '../../components/Commons/Articles/Blog/LatestArticles'
 import { SideBanners } from '../../components/Commons/SideBanners'
 import Layout from '../../components/Layout'
 import ArgumentList from '../../components/Lists/ArgumentList'
@@ -135,8 +135,8 @@ export const HomeContentContainer = styled.div`
     }
 
     .main-column {
-        width: 75%;
-        padding: 0rem 2rem;
+        width: 70%;
+        padding: 0rem 3rem;
 
         @media ${device.mobileL} {
             width: fill-available;
@@ -149,11 +149,10 @@ export const HomeContentContainer = styled.div`
         flex-direction: column;
         align-items: center;
         width: 25%;
-        margin-top: 0rem;
+        margin-top: 1rem;
 
         @media ${device.mobileL} {
             width: 100%;
-            margin-top: 2rem;
         }
     }
 `

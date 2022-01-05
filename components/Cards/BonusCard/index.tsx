@@ -55,7 +55,7 @@ const BonusCard: FunctionComponent<Props> = ({data}) => {
                    
                 </BonusHeader>
         
-                <BonusBody>
+                <BonusBody bgColor={data.backgroundColor}>
                     <div className="bonus"> 
                         <div className="label">BONUS CON DEPOSITO</div>
                         <div className="info" dangerouslySetInnerHTML={{__html: String(data.withDeposit.replace("+", "<br/>"))}}/> 
@@ -115,7 +115,7 @@ const Main = styled.div<BonusType>`
     height: 100%;
 `
 
-const BonusBody = styled.div `
+const BonusBody = styled.div<BonusType>`
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -137,12 +137,17 @@ const BonusBody = styled.div `
         font-weight: 600;
     }
     .label {
-        height: 20px;
-        width: fit-content;
+        height: 35px;
+        width: fill-available;
         margin-bottom: 20px;
         font-size: 12px;
-        color:  ${({theme}) => theme.palette.background};
-        text-align: left;
+        color:  ${({theme}) => theme.text.color.white};
+        background-color: ${({bgColor}) => bgColor ? bgColor : 'inherit'};
+        text-align: center;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0 0.5rem;
     }
 `
 

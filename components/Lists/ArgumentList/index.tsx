@@ -1,10 +1,11 @@
-import React, { CSSProperties, FunctionComponent } from 'react'
+import React, { CSSProperties, Fragment, FunctionComponent } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 import styled from 'styled-components'
 import { Article } from '../../../lib/schemas'
 import format from 'date-fns/format'
 import { buildLink } from '../../../lib/utils/buildLink'
+import italianLocale  from 'date-fns/locale/it'
 
 interface Props {
     argumentName: string
@@ -72,27 +73,21 @@ export const ArticleCard: FunctionComponent<{
                             background: 'white',
                         }}
                     >
-                        <svg
-                            xmlns='http://www.w3.org/2000/svg'
-                            viewBox='0 0 1440 320'
-                            className='wave'
-                        >
-                            <path
-                                fill='#ffffff'
-                                fillOpacity='1'
-                                d='M0,160L48,138.7C96,117,192,75,288,74.7C384,75,480,117,576,144C672,171,768,181,864,186.7C960,192,1056,192,1152,170.7C1248,149,1344,107,1392,85.3L1440,64L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z'
-                            ></path>
-                        </svg>
+                      
                         <div className='article-title'>{article.title}</div>
                     </div>
 
                     <div className='divider' />
 
-                    <p className='date'>
-                        {`Pubblicato il ${article.published_at && format(
-                            new Date(article.published_at),
-                            'dd/MM/yyyy',
-                        )}`}
+                    <p className='published_at'>
+                         {article.published_at && 
+                            <Fragment>
+                                Pubblicato il 
+                                <div style={{textTransform: 'capitalize', marginLeft: '5px'}}>
+                                    { format(new Date(article.published_at), 'dd MMM yyyy', { locale: italianLocale }).toString()} 
+                                </div>
+                            </Fragment>
+                        }
                     </p>
                 </ArticleCardContainer>
             </a>
@@ -109,9 +104,8 @@ const ArticleCardContainer = styled.div`
         rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
     border-radius: 4px;
     width: 270px;
-    height: 245px;
     background: white;
-    
+    height: fit-content;
     overflow: hidden;
     
     .wave {
@@ -129,16 +123,19 @@ const ArticleCardContainer = styled.div`
 
     :hover {
         img {
-            transform: scale(1.3);
+            transform: scale(1.1);
         }
     }
 
-    .date {
+    .published_at {
         font-size: 0.7rem;
         text-align: right !important;
-        letter-spacing: 0.1rem;
-        margin-top: auto;
-        padding: 0.4rem;
+        letter-spacing: 0.03rem;
+        margin: 0;
+        padding: 0 0.4rem;
+        color: ${({ theme }) => theme.palette.background};
+        display: flex;
+        justify-content: flex-end;
     }
 
     .article-title {
@@ -149,7 +146,7 @@ const ArticleCardContainer = styled.div`
         -webkit-box-orient: vertical;
         word-wrap: break-word;
         background: white;
-
+        height: 55px;
         font-weight: 700;
         color: ${({ theme }) => theme.palette.background};
     }

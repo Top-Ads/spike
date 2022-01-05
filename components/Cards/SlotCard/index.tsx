@@ -18,6 +18,10 @@ type Props = {
    type?: SlotType
 };
 
+type ThumbnailProps = {
+    onHover?: boolean
+}
+
 const SlotCard: FunctionComponent<Props> = ({data, type}) => { 
     const router = useRouter()
 
@@ -111,7 +115,7 @@ const SlotCard: FunctionComponent<Props> = ({data, type}) => {
                     <LikeButton setActive={() => setLikedSlot(!likedSlot)} active={likedSlot}/>
                 </Icon> : '' } 
                
-                <Thumbnail>
+                <Thumbnail onHover={showBanner}>
                     <SpinnerLoader show={loading}/>
                     <LazyLoad key={data.id} height={85} offset={200}>
                         <Image
@@ -218,11 +222,15 @@ const Icon = styled.div`
     z-index: 3;
 `
 
-const Thumbnail = styled.div` 
+const Thumbnail = styled.div<ThumbnailProps>` 
     position: relative;
     z-index: 1;
 
-    img { border-radius: 5px; }
+    img { 
+        border-radius: 5px;
+        transition: transform 0.3s ease;
+        transform: ${({onHover}) => onHover  ? 'scale(1.1)' : 'scale(1)'};
+    }
 `
 
 const Button = styled.div`

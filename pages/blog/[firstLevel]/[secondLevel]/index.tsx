@@ -9,7 +9,7 @@ import {
 
 import Loader from 'react-loader-spinner'
 import Layout from '../../../../components/Layout'
-import { LatestArticles } from '../../../../components/Commons/LatestArticles'
+import { LatestArticles } from '../../../../components/Commons/Articles/Blog/LatestArticles'
 import { SideBanners } from '../../../../components/Commons/SideBanners'
 import { ArticleCard } from '../../../../components/Lists/ArgumentList'
 import AquaClient from '../../../../lib/graphql/aquaClient'
@@ -84,9 +84,14 @@ const MainColumn = styled.div `
     display: flex;
     flex-wrap: wrap;
     justify-content: flex-start;
-
-   
-
+    width: 70%;
+    height: min-content;
+    padding: 0rem 2rem;
+    
+    a {
+        margin-bottom: 1rem;
+    }
+    
     @media ${device.mobileL} {
         margin: auto;
         justify-content: center;
