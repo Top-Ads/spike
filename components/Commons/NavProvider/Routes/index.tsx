@@ -27,8 +27,6 @@ export const Routes: FunctionComponent = () => {
 
         setActiveRoute(router.pathname.includes('/blog/'))
         isMobile && setShow(router.pathname.includes('/blog/'))
-
-        console.log(router.query.firstLevel)
     }, [])
 
     return (

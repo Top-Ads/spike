@@ -10,8 +10,6 @@ interface Props {
 
 const MultiplierTableCell : FunctionComponent<Props>= ({spin}) => {
 
-    console.log(spin.multiplierInfo)
-
     // helper render method for the multiplier column (Might be refactored in it's own component)
     const renderMultiplierCell = (spin : Spin) => {
         if(spin.multiplierInfo === 'none') return (
@@ -51,24 +49,30 @@ const MultiplierTableCell : FunctionComponent<Props>= ({spin}) => {
 
             return (
                 <TableCell 
-                    style={{fontFamily : 'Montserrat', fontWeight : spin.sameSlotAndSpinResult ? 'bold' : 'normal', fontSize : spin.sameSlotAndSpinResult ? '1.1rem' : ''}} 
+                    style={{
+                        display : 'flex',
+                        alignItems : 'center',
+                        fontFamily : 'Montserrat',
+                        fontWeight : spin.sameSlotAndSpinResult ? 'bold' : 'normal', 
+                        fontSize : spin.sameSlotAndSpinResult ? '1.1rem' : ''
+                    }} 
                     align="left">
-                    <div style={{display : 'flex', alignItems : 'center'}}>
-                        <TriangleImage src='/images/icons/crazy-time/green_triangle.svg'/>
-                        <span>
-                            {first}
-                        </span>
 
-                        <TriangleImage src='/images/icons/crazy-time/blue_triangle.svg'/>
-                        <span>
-                            {second}
-                        </span>
+                    <TriangleImage src='/images/icons/crazy-time/green_triangle.svg'/>
 
-                        <TriangleImage src='/images/icons/crazy-time/yellow_triangle.svg'/>
-                        <span>
-                            {third}
-                        </span>
-                    </div>
+                    <span>
+                        {first}
+                    </span>
+
+                    <TriangleImage src='/images/icons/crazy-time/blue_triangle.svg'/>
+                    <span>
+                        {second}
+                    </span>
+
+                    <TriangleImage src='/images/icons/crazy-time/yellow_triangle.svg'/>
+                    <span>
+                        {third}
+                    </span>
                     
                 </TableCell>
             )

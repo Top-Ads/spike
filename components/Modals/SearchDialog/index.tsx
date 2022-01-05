@@ -167,7 +167,6 @@ const SearchDialog: FunctionComponent<Props> = ({open, setOpen}) => {
     }
 
     useEffect(() => {
-      console.log('searchResult', searchResult)
       setSearchReview(searchResult[0])
   }, [searchResult])
 

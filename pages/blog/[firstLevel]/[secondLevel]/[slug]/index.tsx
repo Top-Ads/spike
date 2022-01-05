@@ -92,7 +92,6 @@ const MarkdownImage: FunctionComponent<{ src: string }> = ({
     src,
     ...props
 }) => {
-    console.log(props)
     return (
         <Image
             width='100%'
@@ -247,9 +246,6 @@ export const getStaticProps = async (ctx: GetStaticPropsContext) => {
             articleSlug: slug,
         },
     })
-
-    // console.log(firstLevel, secondLevel, slug)
-    // console.log(article.data.data.articles[0].title)
 
     return {
         props: {
