@@ -41,8 +41,7 @@ const BonusCasinoPage: FunctionComponent<PageProps>= ({topSlotsData, pagesBonuse
     "King Casino",
     "Eurobet",
     "Betway",
-    "Gioco Digitale",
-    "BetFlag"]
+    "Gioco Digitale"]
     
     const topBonusesData = pagesBonusesData.filter( bonus => {
         if ( TOP_BONUSES.includes( bonus.name ) ) {
@@ -448,7 +447,6 @@ export async function getStaticProps() {
         "King Casino",
         "Eurobet",
         "Betway",
-        "BetFlag",
         "Gioco Digitale",
         "Snai",
         "Unibet"
@@ -465,7 +463,6 @@ export async function getStaticProps() {
         "King Casino": "https://spikeslot.kingcasino.it",
         Eurobet: "https://record.betpartners.it/_E_C7XwxgprAZV93hC2dJ_GNd7ZgqdRLk/113/",
         Betway: "https://betway.it/bwp/welcome-5gratis/it-it/?s=bw210475&a=AFF3009702735911860&utm_source=210475&utm_medium=Affiliate&utm_campaign=AFF3009702735911860",
-        BetFlag: "https://info.betflag.it/promozioni-e-bonus/promo-casino/welcome-bonus_slot/?pvr=99&source=1EEBF2249CDF4044A2BA2DE9FE31D9E5",
         "Gioco Digitale": "https://mediaserver.entainpartners.com/renderBanner.do?zoneId=2031706",
         "Snai": "https://affiliazioniads.snai.it/redirect.aspx?pid=29923&bid=2479",
         "Unibet": "https://b1.trickyrock.com/redirect.aspx?pid=74444446&bid=27508"

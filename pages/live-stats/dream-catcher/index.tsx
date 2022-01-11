@@ -356,10 +356,9 @@ export async function getServerSideProps() {
     
     const dataResponse  = await axios.get(`${APISOCKET.DREAMCATCHER}/api/data-for-the-last-hours/24h`)
 
-    const PAGE_BONUSES = ["BetFlag", "LeoVegas", "888 Casino", "StarCasinò", "Unibet"]
+    const PAGE_BONUSES = ["LeoVegas", "888 Casino", "StarCasinò", "Unibet"]
 
     const pageBonusesRemapping: any = {
-       BetFlag: "https://info.betflag.it/promozioni-e-bonus/promo-casino/welcome-bonus_slot/?pvr=99&source=1EEBF2249CDF4044A2BA2DE9FE31D9E5",
         LeoVegas: "https://ads.leovegas.com/redirect.aspx?pid=3708703&bid=14965",
         "888 Casino": "https://ic.aff-handler.com/c/43431?sr=1864253",
         StarCasinò: "http://record.affiliatelounge.com/_SEA3QA6bJTMP_fzV1idzxmNd7ZgqdRLk/135/",
