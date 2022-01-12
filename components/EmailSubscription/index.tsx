@@ -3,16 +3,38 @@ import styled from 'styled-components'
 import CustomTextField from '../Commons/Inputs/Textfield'
 import CustomCheckbox from '../Commons/Inputs/Checkbox'
 import { device } from '../../lib/utils/device'
+import { useState } from 'react'
+import { SMTP_APIKEY } from '../../public/environment'
+import axios from "axios"
 
 const EmailSubcription = () => { 
+  
+  const [email, setEmail] = useState<string>()
+
+  const onSubmit = async () => {
+
+    const options = {
+      method: 'POST',
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+        'api-key': SMTP_APIKEY
+      },
+      body: JSON.stringify({updateEnabled: false, email: email})
+    };
     
+    const response = await axios.post('https://api.sendinblue.com/v3/contacts', options)
+
+    console.log(response)
+ 
+  }
+
     return (
         <Fragment>
           <Main>
             <p>Ricevi aggiornamenti ed anticipazioni sui nuovi video e su bonus e <b>promozio.</b></p>
 
-            <CustomTextField /* onChange={(text: string) => console.log('onchange', text)} */ placeholder="Email" size={'small'}/>
-
+            <CustomTextField  onChange={setEmail}  placeholder="Email" size={'small'}/>        
             <br/>
 
             <CustomCheckbox 
@@ -22,7 +44,7 @@ const EmailSubcription = () => {
 
             <br/>
 
-            <Button>ISCRIVITI</Button>
+            <Button onClick={onSubmit}>ISCRIVITI</Button>
           </Main>
         </Fragment>
     ) 
