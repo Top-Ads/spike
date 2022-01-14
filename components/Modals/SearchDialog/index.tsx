@@ -194,7 +194,7 @@ const SearchDialog: FunctionComponent<Props> = ({open, setOpen}) => {
                     size={'small'}
                     searchIcon
                     placeholder="Cerca una slot, un casino..."
-                    clearSearchField={true}
+                    clearField={true}
                 />
             </DialogTitle>
 

@@ -1,5 +1,5 @@
 import { createStyles, InputAdornment, makeStyles, TextField, Theme } from '@material-ui/core'
-import React, { Fragment, FunctionComponent, useEffect, useRef, useState } from 'react'
+import React, { Fragment, FunctionComponent, useEffect, useRef } from 'react'
 import SearchIcon from '@material-ui/icons/Search'
 import ClearIcon from '@material-ui/icons/Clear'
 import { BaseTextFieldProps } from '@material-ui/core/TextField'
@@ -44,51 +44,44 @@ const useStyles = makeStyles<Theme, Props>(() =>
 
 type Props = {
   size?: BaseTextFieldProps['size'],
-  searchIcon?: boolean,
-  placeholder?: string,
-  handleOnFocus?: Function,
-  handleOnBlur?: Function,
-  width?: string,
-  autoFocus?: boolean,
-  zIndex? :number,
-  borderRadius?: string,
-  onChange?: Function,
-  clearSearchField?: boolean
+  searchIcon?: boolean
+  placeholder?: string
+  handleOnFocus?: Function
+  handleOnBlur?: Function
+  width?: string
+  autoFocus?: boolean
+  zIndex? :number
+  borderRadius?: string
+  onChange: Function
+  value?: string
+  clearField?: boolean
 
 }
 
 const CustomTextField: FunctionComponent<Props> = (props) => {
 
-    const {size='medium', searchIcon=false, placeholder, handleOnFocus, handleOnBlur, autoFocus=false, onChange, clearSearchField=false} = props
+    const {size='medium', searchIcon=false, placeholder, handleOnFocus, handleOnBlur, autoFocus=false, onChange, clearField, value=''} = props
 
     const classes = useStyles(props)
     
-    const [text, setText] = useState<string>('')
-
     const inputRef = useRef<HTMLInputElement>(null)
 
     const handleChange =  (event: React.ChangeEvent<HTMLInputElement>) => {
       event.preventDefault()
-
-      setText(event.target.value)
+      onChange(event.target.value)
     }
 
     const handleClearField = () => {
       if (inputRef.current !== null && onChange) {
         inputRef.current.value = ''
-        setText('')
+        onChange('')
       }
     }
 
     useEffect( () => {
-      if (onChange)
-        onChange(text)
-    }, [text])
-
-    useEffect( () => {
-      if (clearSearchField)
+      if (clearField)
         handleClearField()
-    }, [clearSearchField])
+    }, [clearField])
 
     return (
         <Fragment>
@@ -100,6 +93,7 @@ const CustomTextField: FunctionComponent<Props> = (props) => {
                     size={size}
                     variant="outlined"
                     placeholder={placeholder ? placeholder : '' }
+                    value={value}
                     onChange={handleChange}
                     onFocus={ () => handleOnFocus ? handleOnFocus() : ''}
                     onBlur={ () => handleOnBlur ? handleOnBlur() : ''}
@@ -111,7 +105,7 @@ const CustomTextField: FunctionComponent<Props> = (props) => {
                         ),
                         endAdornment: (
                           <InputAdornment position="end">
-                            <ClearIcon onClick={handleClearField} fontSize={'default'} color='inherit' style={{cursor: 'pointer', visibility: text.length > 0 ? 'visible' : 'hidden'}}/> 
+                            <ClearIcon onClick={handleClearField} fontSize={'default'} color='inherit' style={{cursor: 'pointer', visibility: value.length > 0 ? 'visible' : 'hidden'}}/> 
                           </InputAdornment>
                         )
                     } : undefined }

@@ -4,40 +4,65 @@ import CustomTextField from '../Commons/Inputs/Textfield'
 import CustomCheckbox from '../Commons/Inputs/Checkbox'
 import { device } from '../../lib/utils/device'
 import { useState } from 'react'
-import { SMTP_APIKEY } from '../../public/environment'
-import axios from "axios"
+import { subscribeToChannel } from '../../lib/api'
+import { useEffect } from 'react'
+import { delay } from "lodash"
+
+type MainProps = {
+  showLog: boolean
+}
 
 const EmailSubcription = () => { 
   
-  const [email, setEmail] = useState<string>()
-
-  const onSubmit = async () => {
-
-    const options = {
-      method: 'POST',
-      headers: {
-        Accept: 'application/json',
-        'Content-Type': 'application/json',
-        'api-key': SMTP_APIKEY
-      },
-      body: JSON.stringify({updateEnabled: false, email: email})
-    };
+    const [email, setEmail] = useState<string>('')
+    const [showLog, setShowLog] = useState<boolean>(false)
+    const [log, setLog] = useState<string>('')
+    const [isChecked, setChecked] = useState<boolean>(false)
     
-    const response = await axios.post('https://api.sendinblue.com/v3/contacts', options)
+    const onSubmit = () => {
 
-    console.log(response)
- 
-  }
+      const body = JSON.stringify({updateEnabled: false, email: email})
 
+      if (!isChecked){ 
+        setLog('please tick policy message')
+        setShowLog(true)
+        return 
+      }
+      else {
+        subscribeToChannel(body)
+        .then(() => {
+          setLog('Successfully subscribed')
+          delay(() => {
+            setEmail('')
+            setChecked(false)
+          }, 1000)
+        })
+        .catch( (error: any) => {
+          if (error.response) setLog(error.response.data.message)
+        })
+  
+        setShowLog(true)
+      }
+    }
+
+    useEffect( () => {
+        if(!email) setShowLog(false)
+    }, [email])
+
+    const handleOnCheck = (event: React.ChangeEvent<HTMLInputElement>) => {
+      setChecked(event.target.checked)
+    }
     return (
         <Fragment>
-          <Main>
+          <Main showLog={showLog}>
             <p>Ricevi aggiornamenti ed anticipazioni sui nuovi video e su bonus e <b>promozio.</b></p>
 
-            <CustomTextField  onChange={setEmail}  placeholder="Email" size={'small'}/>        
+            <CustomTextField onChange={setEmail} value={email} placeholder="Email" size={'small'}/>        
             <br/>
 
             <CustomCheckbox 
+              isChecked={isChecked}
+              handleOnCheck={handleOnCheck}
               label={`Dichiaro di aver compiuto 18 anni e di dare il mio consenso per
                     ricevere aggiornamenti ed antecipazioni su video ed offerte promozionali
                     via email da casinosquad.com.`}/>
@@ -45,16 +70,20 @@ const EmailSubcription = () => {
             <br/>
 
             <Button onClick={onSubmit}>ISCRIVITI</Button>
+
+            <div className='log-msg'> {log} </div>
+
           </Main>
         </Fragment>
     ) 
 }
 
-const Main = styled.div`
+const Main = styled.div<MainProps>`
     background-color: ${({theme}) => theme.palette.background};
     border: 2px solid #fff;
     border-radius: 10px;
     max-width: 270px;
+    position: relative;
 
     @media ${device.mobileS} {
       max-width: 235px;
@@ -67,6 +96,15 @@ const Main = styled.div`
     padding: 10px;
 
     p { color: ${({theme}) => theme.text.color.white}; }
+
+    .log-msg {
+      opacity: ${({showLog}) => showLog ? 1 : 0 };
+      transition: opacity 0.5s ease-in-out;
+      color: #4ECA5C;
+      font-size: 0.8rem;
+      font-weight: 600;
+      margin-top: 5px;
+    }
 `
 
 const Button = styled.div`

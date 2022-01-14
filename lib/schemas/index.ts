@@ -240,3 +240,8 @@ export interface ExternalLink {
     link: string
     rel: 'dofollow' | 'nofollow'
 }
+
+export interface SubscriptionResponse {
+    code: string
+    message: string
+}

@@ -4,9 +4,7 @@ import FormControlLabel from '@material-ui/core/FormControlLabel'
 import { FunctionComponent } from 'react'
 import { createStyles, makeStyles, Theme } from '@material-ui/core'
 
-type Props = {
-  label?: string
-}
+
 
 const useStyles = makeStyles<Theme>(() =>
   createStyles({
@@ -24,7 +22,13 @@ const useStyles = makeStyles<Theme>(() =>
   }),
 );
 
-const CustomCheckbox: FunctionComponent<Props> = ({label}) => {
+type Props = {
+  label?: string
+  handleOnCheck: Function
+  isChecked: boolean
+}
+
+const CustomCheckbox: FunctionComponent<Props> = ({label, handleOnCheck, isChecked}) => {
 
   const classes = useStyles()
 
@@ -32,7 +36,7 @@ const CustomCheckbox: FunctionComponent<Props> = ({label}) => {
     <div className={classes.root}>
       <FormControlLabel
         value="end"
-        control={<Checkbox color="secondary" />}
+        control={<Checkbox color="secondary" onChange={(e) => handleOnCheck(e)} checked={isChecked}/>}
         label={label}
         labelPlacement="end"
       />
