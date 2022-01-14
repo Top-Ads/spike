@@ -19,7 +19,7 @@ type Props = {
 };
 
 type ThumbnailProps = {
-    onHover?: boolean
+    mouseHover?: boolean
 }
 
 const SlotCard: FunctionComponent<Props> = ({data, type}) => { 
@@ -115,7 +115,7 @@ const SlotCard: FunctionComponent<Props> = ({data, type}) => {
                     <LikeButton setActive={() => setLikedSlot(!likedSlot)} active={likedSlot}/>
                 </Icon> : '' } 
                
-                <Thumbnail onHover={showBanner}>
+                <Thumbnail mouseHover={showBanner}>
                     <SpinnerLoader show={loading}/>
                     <LazyLoad key={data.id} height={85} offset={200}>
                         <Image
@@ -229,7 +229,7 @@ const Thumbnail = styled.div<ThumbnailProps>`
     img { 
         border-radius: 5px;
         transition: transform 0.3s ease;
-        transform: ${({onHover}) => onHover  ? 'scale(1.1)' : 'scale(1)'};
+        transform: ${({mouseHover}) => mouseHover  ? 'scale(1.1)' : 'scale(1)'};
     }
 `
 
