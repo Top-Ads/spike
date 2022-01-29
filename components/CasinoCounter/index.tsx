@@ -1,4 +1,5 @@
 import React, { FunctionComponent } from 'react'
+import { useTranslation } from 'react-i18next';
 import styled from 'styled-components'
 import { device } from '../../lib/utils/device'
 
@@ -9,6 +10,9 @@ type Props = {
 };
 
 const CasinoCounter: FunctionComponent<Props> = ({totalSlots, totalBonuses}) => {
+
+    const { t } = useTranslation()
+
     return (
         <Main>
             <ul>
@@ -23,7 +27,7 @@ const CasinoCounter: FunctionComponent<Props> = ({totalSlots, totalBonuses}) => 
                 </li> */}
 
                 <li>
-                    <span className="type">Bonus di Benvenuto</span>
+                    <span className="type">{t("Bonus di Benvenuto")}</span>
                     <span className="total">{totalBonuses}</span>
                 </li>
             </ul>

@@ -3,6 +3,9 @@ import { ThemeProvider } from "styled-components"
 import { removeLikeSlotContext } from "../lib/contexts"
 import { GlobalStyle, styledTheme } from "../lib/theme"
 import { Category } from "../lib/utils/constants"
+import { I18nextProvider } from 'react-i18next'
+import i18n from '../lib/i18n'
+
 
 interface IProps {
     Component: FunctionComponent
@@ -33,8 +36,10 @@ export default function App( {Component, pageProps}: IProps) {
     return (
         <ContextProvider>
                 <ThemeProvider theme={styledTheme}>
-                    <GlobalStyle />
-                    <Component {...pageProps} />
+                    <I18nextProvider i18n={i18n}>
+                        <GlobalStyle />
+                        <Component {...pageProps} />
+                    </I18nextProvider> 
                 </ThemeProvider>
         </ContextProvider>
     )

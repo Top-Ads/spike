@@ -18,6 +18,7 @@ import { getSlots } from '../lib/graphql/queries/slots'
 import { CDN } from '../public/environment'
 import CasinoCounter from '../components/CasinoCounter'
 import { getTotalSlots, getTotalBonuses, getTotalProducers } from '../lib/api'
+import { useTranslation } from 'react-i18next'
 
 type PageProps = {
   slotsData: ThemeSlot
@@ -78,6 +79,8 @@ const IndexPage: FunctionComponent<PageProps> = (props) => {
 
   const { newest, online } = slotsData
  
+  const { t } = useTranslation()
+  
   return (
     <Layout title="Casino Squad | Gioca ora con le Slot Machine Online in Italiano">
 
@@ -90,17 +93,17 @@ const IndexPage: FunctionComponent<PageProps> = (props) => {
 
       <HeaderContainer>
           <div className="welcome">
-            <h1>Ti diamo il benvenuto su Casino Squad!</h1>
+            <h1>{t("Ti diamo il benvenuto su Casino Squad!")}</h1>
 
-              <p>Esplora il nostro sito per scoprire:</p>
+              <p>{t("Esplora il nostro sito per scoprire:")}</p>
               <ul>
-                <li>Le migliori piattaforme di gioco online.</li>
-                <li>La possibilità di ricevere ogni offerta e i bonus esclusivi.</li>
-                <li>Provare gratis ogni tipo di slot machine.</li>
+                <li>{t("Le migliori piattaforme di gioco online.")}</li>
+                <li>{t("La possibilità di ricevere ogni offerta e i bonus esclusivi.")}</li>
+                <li>{t("Provare gratis ogni tipo di slot machine.")}</li>
               </ul>
             <br/>
             <Button onClick={ () => router.push('/giochi')}>
-                  <span>lista completa delle slot</span>
+                  <span>{t("lista completa delle slot")}</span>
             </Button>
           </div>
 
@@ -128,18 +131,24 @@ const IndexPage: FunctionComponent<PageProps> = (props) => {
 
         <Intro>
           <p>
-          Siamo lieti di accoglierti su Casino Squad, un casino digitale sul quale troverai consigli e dritte su un’ampia gamma di slot machine e giochi da casinò.
-          Qui potrai esplorare e scegliere la tua slot online preferita, ma anche apprendere consigli e avere aggiornamenti sulle leggi e norme del settore.
+          {t("Siamo lieti di accoglierti su Casino Squad, ")}
+          {t("un casino digitale sul quale troverai consigli e dritte su un’ampia gamma di slot machine e giochi da casinò.")}
+          {t("Qui potrai esplorare e scegliere la tua slot online preferita, ")}
+          {t("ma anche apprendere consigli e avere aggiornamenti sulle leggi e norme del settore.")}
           <br/> <br/>
-          Non avrai bisogno di registrarti o di fare download. Puoi consultare Casino Squad per familiarizzare con il meraviglioso mondo dell’intrattenimento del gioco digitale.
-          Infatti, qui troverai confronti approfonditi fra i diversi casinò online e le migliori piattaforme di scommesse.
-          Ti offriamo la possibilità di essere informato sulle migliori comparazioni fra i diversi casinò digitali. In più, se sei appassionato di Live Casinò e degli ormai celebri Game Show, puoi anche consultare il nostro servizio esclusivo.
+          {t("Non avrai bisogno di registrarti o di fare download.")} 
+          {t("Puoi consultare Casino Squad per familiarizzare con il meraviglioso mondo dell’intrattenimento del gioco digitale.")}
+          {t("Infatti, qui troverai confronti approfonditi fra i diversi casinò online e le migliori piattaforme di scommesse.")} 
+          {t("Ti offriamo la possibilità di essere informato sulle migliori comparazioni fra i diversi casinò digitali.")} 
+          {t("In più, se sei appassionato di Live Casinò e degli ormai celebri Game Show, ")} 
+          {t("puoi anche consultare il nostro servizio esclusivo.")}
           <br/> <br/>
-          Infatti, su Casino Squad hai la possibilità di avere informazioni in tempo reale delle Statistiche Crazy Time Live, delle Monopoly Statistiche Live, ma anche delle LiveStats di Dream Catcher.
+          {t("Infatti, su Casino Squad hai la possibilità di avere informazioni in tempo reale delle Statistiche Crazy Time Live, ")} 
+          {t("delle Monopoly Statistiche Live, ma anche delle LiveStats di Dream Catcher.")}
           <br/> <br/>
-          Inoltre, potrai fare valutazioni ed essere sempre aggiornato su i migliori bonus disponibili. 
-          Ti consigliamo inoltre di dare un'occhiata alle offerte di Benvenuto sulle slot online che trovi sul sito. 
-          Se stai cercando informazioni su quale sia il sito più conveniente per giocare alle slot digitali, ti invitiamo a consultare la tabella seguente.
+          {t("Inoltre, potrai fare valutazioni ed essere sempre aggiornato su i migliori bonus disponibili.")}
+          {t("Ti consigliamo inoltre di dare un'occhiata alle offerte di Benvenuto sulle slot online che trovi sul sito.")} 
+          {t("Se stai cercando informazioni su quale sia il sito più conveniente per giocare alle slot digitali, ti invitiamo a consultare la tabella seguente.")}
           </p>
 
         </Intro>
@@ -180,8 +189,8 @@ const IndexPage: FunctionComponent<PageProps> = (props) => {
 
       <div className="layout-container">
         <GridContainer id="grid-bonuses">
-            <p>Se ti interessa sapere dove conviene maggiormente giocare alle slot machine online puoi dare
-              un'occhiata a questa comparazione dei migliori Bonus disponibili al momento:</p>
+            <p>{t("Se ti interessa sapere dove conviene maggiormente giocare alle slot machine online puoi dare")}
+              {t("un'occhiata a questa comparazione dei migliori Bonus disponibili al momento:")}</p>
 
             <div className="bonus-table">
               <BonusTable data={mainBonusesData}/>
