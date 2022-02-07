@@ -1,6 +1,6 @@
 import i18n from "i18next"
 import { initReactI18next } from "react-i18next"
-import { dictionary } from "./dictionary"
+import * as home  from "./dictionary/home.json"
 import LanguageDetector from 'i18next-browser-languagedetector'
 
 // the translations
@@ -12,7 +12,11 @@ i18n
   .use(LanguageDetector)
   .use(initReactI18next) // passes i18n down to react-i18next
   .init({
-    resources: dictionary,
+    resources: {
+      en: {
+        translation: home
+      }
+    },
     fallbackLng: "it", // use en if detected lng is not available
     saveMissing: true, // send not translated keys to endpoint
     interpolation: {

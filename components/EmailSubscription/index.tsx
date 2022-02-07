@@ -7,6 +7,7 @@ import { useState } from 'react'
 import { subscribeToChannel } from '../../lib/api'
 import { useEffect } from 'react'
 import { delay } from "lodash"
+import { useTranslation } from 'react-i18next'
 
 type MainProps = {
   showLog: boolean
@@ -14,6 +15,8 @@ type MainProps = {
 
 const EmailSubcription = () => { 
   
+    const { t } = useTranslation()
+
     const [email, setEmail] = useState<string>('')
     const [showLog, setShowLog] = useState<boolean>(false)
     const [log, setLog] = useState<string>('')
@@ -55,7 +58,7 @@ const EmailSubcription = () => {
     return (
         <Fragment>
           <Main showLog={showLog}>
-            <p>Ricevi aggiornamenti ed anticipazioni sui nuovi video e su bonus e <b>promozio.</b></p>
+            <p>{t("Ricevi aggiornamenti ed anticipazioni sui nuovi video e su bonus e")} <b>{t("promozio.")}</b></p>
 
             <CustomTextField onChange={setEmail} value={email} placeholder="Email" size={'small'}/>        
             <br/>
@@ -63,13 +66,13 @@ const EmailSubcription = () => {
             <CustomCheckbox 
               isChecked={isChecked}
               handleOnCheck={handleOnCheck}
-              label={`Dichiaro di aver compiuto 18 anni e di dare il mio consenso per
-                    ricevere aggiornamenti ed antecipazioni su video ed offerte promozionali
-                    via email da casinosquad.com.`}/>
+              label={t("Dichiaro di aver compiuto 18 anni e di dare il mio consenso per") +
+                    t("ricevere aggiornamenti ed antecipazioni su video ed offerte promozionali") +
+                    t("via email da casinosquad.com.")}/>
 
             <br/>
 
-            <Button onClick={onSubmit}>ISCRIVITI</Button>
+            <Button onClick={onSubmit}>{t("ISCRIVITI")}</Button>
 
             <div className='log-msg'> {log} </div>
 

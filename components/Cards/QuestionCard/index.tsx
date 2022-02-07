@@ -1,4 +1,5 @@
 import React, { Fragment, FunctionComponent, useEffect, useState } from 'react'
+import { useTranslation } from 'react-i18next';
 import styled from 'styled-components'
 
 type Props = {
@@ -11,6 +12,8 @@ type AnswerType = {
     show: boolean
 }
 const QuestionCard: FunctionComponent<Props> = ({data, triggerCollpase, collapse}) => { 
+    
+    const { t } = useTranslation()
     
     const [ show, setShow] = useState<boolean>(false)
     const [ clicked, setClicked] = useState<boolean>(false)
@@ -38,9 +41,9 @@ const QuestionCard: FunctionComponent<Props> = ({data, triggerCollpase, collapse
         <Fragment>
             <Main onClick={handleClick}>
 
-                <Question>{data.question}</Question>
+                <Question>{t(data.question)}</Question>
 
-                <Answer show={show}><p>{data.answer}</p></Answer>
+                <Answer show={show}><p>{t(data.answer)}</p></Answer>
 
             </Main>
         </Fragment>

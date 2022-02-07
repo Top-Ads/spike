@@ -6,6 +6,7 @@ import { Bonus } from '../../../../lib/schemas'
 import { device } from '../../../../lib/utils/device'
 import { CDN } from '../../../../public/environment'
 import FreeBonusList from '../../../Lists/FreeBonusList'
+import { useTranslation } from 'react-i18next'
 
 
 type Props = {
@@ -14,6 +15,9 @@ type Props = {
 }
 
 const HomeArticle: FunctionComponent<Props> = ({mainBonuses, freeBonuses}) => {
+
+    const { t } = useTranslation()
+    
     return (
         <Fragment>
             <Main>
@@ -25,7 +29,7 @@ const HomeArticle: FunctionComponent<Props> = ({mainBonuses, freeBonuses}) => {
                 }
 
                 <section>
-                <h3><strong>Giocare gratis alle slot online</strong></h3>
+                <h3><strong>{t("Giocare gratis alle slot online")}</strong></h3>
                 <div>
                     <Thumbnail id={'volcano'} style={{float: 'right', marginLeft: '30px'}}>
                         <LazyLoad  height={85} offset={300}>
@@ -40,45 +44,45 @@ const HomeArticle: FunctionComponent<Props> = ({mainBonuses, freeBonuses}) => {
                         </LazyLoad>
                     </Thumbnail>
                     <p>
-                    Ti piacciono le slot machine online? Vorresti esplorare tutte le dimensioni di questi giochi, senza rischiare di perderci nulla? Bene: sei nel posto giusto.<br/>
-                    Infatti su casinosquad.com hai una vasta scelta di slot online gratis e non solo. Potrai provare tante dimensioni del gioco digitale, sperimentando vari giochi da casinò.<br/>
-                    Abbiamo a disposizione centinaia di giochi, forniti dai migliori provider.<br/>
-                    Sì, hai capito bene: avrai la possibilità di giocare e basta, allenarti alle slot machine gratis online, in modo da esplorarle e imparare a conoscere le loro caratteristiche peculiari.
-                    In effetti, osservare come si comportano, provare i bonus e scoprire come e quanto pagano, è davvero importante prima di scommettere soldi veri.<br/>
-                    Su Casino Squad potrai individuare in anteprima, ogni segreto delle nuove slot rilasciate sul mercato, 
-                    ma anche provarle personalmente e scegliere quali salvare o mettere tra le tue preferite.
+                    {t("Ti piacciono le slot machine online? Vorresti esplorare tutte le dimensioni di questi giochi, senza rischiare di perderci nulla? Bene: sei nel posto giusto.")}<br/>
+                    {t("Infatti su casinosquad.com hai una vasta scelta di slot online gratis e non solo. Potrai provare tante dimensioni del gioco digitale, sperimentando vari giochi da casinò.")}<br/>
+                    {t("Abbiamo a disposizione centinaia di giochi, forniti dai migliori provider.")}<br/>
+                    {t("Sì, hai capito bene: avrai la possibilità di giocare e basta, allenarti alle slot machine gratis online, in modo da esplorarle e imparare a conoscere le loro caratteristiche peculiari.")}
+                    {t("In effetti, osservare come si comportano, provare i bonus e scoprire come e quanto pagano, è davvero importante prima di scommettere soldi veri.")}<br/>
+                    {t("Su Casino Squad potrai individuare in anteprima, ogni segreto delle nuove slot rilasciate sul mercato,")} 
+                    {t("ma anche provarle personalmente e scegliere quali salvare o mettere tra le tue preferite.")}
                     </p>
                 
                 </div>
                 </section>
 
                 <section>
-                    <h3><strong>Quali sono gli altri giochi da casinò disponibili sul nostro sito?</strong></h3>
+                    <h3><strong>{t("Quali sono gli altri giochi da casinò disponibili sul nostro sito?")}</strong></h3>
                     <div>
                     <p>
-                    Devi sapere che il nostro forte – lo avrai capito – sono le slot machine.<br/>
-                    Questo poiché attualmente, le slot rappresentano il gioco da casinò online più diffuso e di successo.<br/>
-                    Però sul nostro sito, potrai trovare anche giochi, che sono fra i più classici e conosciuti. <br/>
-                    Qualche esempio?
+                    {t("Devi sapere che il nostro forte – lo avrai capito – sono le slot machine.")}<br/>
+                    {t("Questo poiché attualmente, le slot rappresentano il gioco da casinò online più diffuso e di successo.")}<br/>
+                    {t("Però sul nostro sito, potrai trovare anche giochi, che sono fra i più classici e conosciuti.")} <br/>
+                    {t("Qualche esempio?")}
 
                     </p>
                     <ul >
-                        <li>Il gioco della Roulette.</li>
-                        <li>il celebre Videopoker.</li>
-                        <li>Il classico Blackjack.</li>
-                        <li>l’elegante Baccarat.</li>
-                        <li>il popolare Bingo.</li>
+                        <li>{t("Il gioco della Roulette.")}</li>
+                        <li>{t("il celebre Videopoker.")}</li>
+                        <li>{t("Il classico Blackjack.")}</li>
+                        <li>{t("l’elegante Baccarat.")}</li>
+                        <li>{t("il popolare Bingo.")}</li>
                     </ul>
                     <p>
-                    Stai forse cercando degli specifici casinò? Se la risposta è sì, dovrai semplicemente visitare la nostra pagina dedicata: 
-                    qui potrai selezionare il tipo di gioco che desideri provare.
-                    Infatti, nella parte dedicata, troverai filtri da impostare e utilizzare per individuare in modo semplice il gioco che cerchi.
+                    {t("Stai forse cercando degli specifici casinò? Se la risposta è sì, dovrai semplicemente visitare la nostra pagina dedicata:")}
+                    {t("qui potrai selezionare il tipo di gioco che desideri provare.")}
+                    {t("Infatti, nella parte dedicata, troverai filtri da impostare e utilizzare per individuare in modo semplice il gioco che cerchi.")}
                     </p>
                </div>
                 </section>
 
                 <section>
-                    <h3><strong>Giocare alle Slot senza download e senza registrazione</strong></h3>
+                    <h3><strong>{t("Giocare alle Slot senza download e senza registrazione")}</strong></h3>
                     <div
                     ><p>
                     Devi sapere che su Casinosquad.it potrai giocare subito, senza limiti o perdite di tempo. Sì, infatti, non dovrai iscriverti o fare registrazioni. <br/>
