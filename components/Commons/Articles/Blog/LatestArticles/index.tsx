@@ -32,12 +32,12 @@ export const LatestArticles: FunctionComponent<{ last: Article[] }> = ({
 
                             <div className='card-info-container'>
                                 <p className='title'>{article.title}</p>
-                                <p className='published_at'>
+                                <div className='published_at'>
                                     Pubblicato il
                                     <div style={{textTransform: 'capitalize', marginLeft: '5px'}}>
                                         { article.published_at && format(new Date(article.published_at), 'dd MMM yyyy', { locale: italianLocale }).toString()} 
                                     </div>
-                                </p>
+                                </div>
                             </div>
                         </div>
                     </Link>
@@ -82,7 +82,7 @@ export const LatestArticleContainer = styled.div`
         border-radius: 6px;
         align-items: flex-start;
         position: relative;
-        height: 70px;
+        padding-bottom: 10px;
 
         &:hover {
             background-color: rgba(255, 255, 255, 0.9);
@@ -112,7 +112,7 @@ export const LatestArticleContainer = styled.div`
             flex-direction: column;
             justify-content: center;
 
-            p {
+            div {
                 font-size: 0.85rem;
                 margin: 0;
                 

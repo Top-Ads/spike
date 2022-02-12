@@ -211,14 +211,14 @@ export const getStaticProps = async () => {
     return {
         props: {
             navbarData: navbarData.data.data.navbar,
-            lastFive: lastFive.data.data.articles,
+            lastFive: lastFive.data.data.casinoSquadBlogArticles,
             homeData: home.data.data.homepage,
             banner: global.data.data.global.banner,
             slotMachineOnlineArticles:
-                slotMachineOnlineArticles.data.data.articles,
-            betsArticles: betsArticles.data.data.articles,
-            casinoLiveArticles: casinoLiveArticles.data.data.articles,
-            blackJackArticles: blackJackArticles.data.data.articles,
+                slotMachineOnlineArticles.data.data.casinoSquadBlogArticles,
+            betsArticles: betsArticles.data.data.casinoSquadBlogArticles,
+            casinoLiveArticles: casinoLiveArticles.data.data.casinoSquadBlogArticles,
+            blackJackArticles: blackJackArticles.data.data.casinoSquadBlogArticles,
         },
         revalidate: 60,
     }
@@ -226,7 +226,7 @@ export const getStaticProps = async () => {
 
 export const LAST_FIVE_BY_SECONDARY_ARGUMENT = /* GraphQL */ `
     query ($name: String) {
-        articles(
+        casinoSquadBlogArticles(
             sort: "published_at:desc"
             limit: 4
             where: { secondaryArgument: { name: $name } }
@@ -265,7 +265,7 @@ const GLOBAL_QUERY = /* GraphQL */ `
 
 export const LAST_FIVE_QUERY = /* GraphQL */ `
     query {
-        articles(sort: "published_at:desc", limit: 5) {
+        casinoSquadBlogArticles(sort: "published_at:desc", limit: 5) {
             title
             published_at
             slug
