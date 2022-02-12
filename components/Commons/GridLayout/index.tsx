@@ -106,6 +106,7 @@ const GridLayout: FunctionComponent<Props> = (props) => {
                       <RankingCard index={index+1} />
                     </div> 
                   }
+                  
                   {child}
 
                 </Paper>

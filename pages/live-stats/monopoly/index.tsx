@@ -21,6 +21,7 @@ import { getBonuses } from '../../../lib/graphql/queries/bonuses'
 import { format } from 'date-fns'
 import italianLocale  from 'date-fns/locale/it'
 import Head from 'next/head'
+import { useTranslation } from 'react-i18next'
 
 type PageProps = {
     statsData: Stat[],
@@ -30,6 +31,9 @@ type PageProps = {
 };
 
 const MonopolyPage: FunctionComponent<PageProps> = ({statsData, spinsData, bonusesData, tablesData}) => {
+
+    const { t } = useTranslation()
+
     const [stats, setStats] = useState<Stat[]>(statsData)
     const [spins, setSpins] = useState<Spin[]>(spinsData)
     const [tables, setTables] = useState<MonopolyTables>(tablesData)
@@ -80,16 +84,16 @@ const MonopolyPage: FunctionComponent<PageProps> = ({statsData, spinsData, bonus
              <div className="layout-container">
 
                 <Header className="intro-header">
-                    <h2>Monopoly Statistiche Live: Tutte le Estrazioni in Tempo Reale</h2>
+                    <h2>{t("Monopoly Statistiche Live: Tutte le Estrazioni in Tempo Reale")}</h2>
 
                     <Intro>
                         <p>
-                        In questa sezione hai a tua disposizione tutte le informazioni e i dati relativi alle 
-                        estrazioni in tempo reale della ruota di Monopoly Live di Evolution Gaming.<br/>
-                        Così, hai la possibilità di confrontare le probabilità teoriche con i valori estratti 
-                        effettivamente nel gioco e predisporre positivamente la tua strategia di gioco.<br/>
-                        Impara a giocare online ed a esplorare uno dei giochi digitali più popolari del momento. 
-                        E scopri le Statistiche di Monopoly Live in tempo reale.
+                        {t("In questa sezione hai a tua disposizione tutte le informazioni e i dati relativi alle")} 
+                        {t("estrazioni in tempo reale della ruota di Monopoly Live di Evolution Gaming. ")}<br/>
+                        {t("Così, hai la possibilità di confrontare le probabilità teoriche con i valori estratti")} 
+                        {t("effettivamente nel gioco e predisporre positivamente la tua strategia di gioco. ")}<br/>
+                        {t("Impara a giocare online ed a esplorare uno dei giochi digitali più popolari del momento. ")} 
+                        {t("E scopri le Statistiche di Monopoly Live in tempo reale. ")}
 
                         </p>
 
@@ -116,9 +120,9 @@ const MonopolyPage: FunctionComponent<PageProps> = ({statsData, spinsData, bonus
                     <StatsContainer>
                         <Header className="stats-card-header">
                             <div>
-                                <h3>Statistiche Monopoly</h3>
+                                <h3>{t("Statistiche Monopoly")}</h3>
                                 <span style={{textTransform: 'capitalize'}} suppressHydrationWarning>
-                                    Ultimo Aggiornamento: { format(new Date(lastUpdate), 'dd MMM yyyy • HH:mm', { locale: italianLocale }).toString() }
+                                    {t("Ultimo Aggiornamento:")} { format(new Date(lastUpdate), 'dd MMM yyyy • HH:mm', { locale: italianLocale }).toString() }
                                 </span>
                             </div>
                         
@@ -143,7 +147,7 @@ const MonopolyPage: FunctionComponent<PageProps> = ({statsData, spinsData, bonus
                     <br/>
 
                     <BonusContainer>
-                        <h3>Puoi giocare alla MONOPOLY QUI</h3>
+                        <h3>{t("Puoi giocare alla MONOPOLY QUI")}</h3>
                         <div className="bonus-table">
                             <BonusTable data={bonusesData}/>
                         </div>
@@ -167,7 +171,7 @@ const MonopolyPage: FunctionComponent<PageProps> = ({statsData, spinsData, bonus
                     <br/>
 
                     <SpinsContainer>
-                        <h3>Storico degli Spin</h3>
+                        <h3>{t("Storico degli Spin")}</h3>
                         <SpinsTable data={spins} gameType={LiveStats.MONOPOLY}/>
                     </SpinsContainer>
 
@@ -183,44 +187,44 @@ const MonopolyPage: FunctionComponent<PageProps> = ({statsData, spinsData, bonus
 
                 <Footer>
                     <section>
-                        <h3>Controlla gli ultimi numeri usciti al Monopoly Live</h3>
+                        <h3>{t("Controlla gli ultimi numeri usciti al Monopoly Live")}</h3>
                         <p>
-                        Monopoly Live è uno dei giochi live più amati dal pubblico perché rappresenta la versione digitale del classico gioco da tavolo.
-                        Le informazioni sugli ultimi numeri usciti, aiuta il giocatore ad essere sempre aggiornato in tempo reale! <br/>
-                        In ogni casella puoi visionare la probabilità di uscita, sempre aggiornata in diretta, nonché il numero di giri che passa dall'ultima estrazione di ogni numero, 
-                        oppure 2 rolls, 4 rolls e chance. 
-                        Questo strumento – il live tracker Monopoly Live – consente di visionare il numero di volte in cui ciascun numero o roll è stato estratto, 
-                        assieme al valore correlato dato dalle previsioni teoriche. 
+                        {t("Monopoly Live è uno dei giochi live più amati dal pubblico perché rappresenta la versione digitale del classico gioco da tavolo. ")}
+                        {t("Le informazioni sugli ultimi numeri usciti, aiuta il giocatore ad essere sempre aggiornato in tempo reale!")} <br/>
+                        {t("In ogni casella puoi visionare la probabilità di uscita, sempre aggiornata in diretta, nonché il numero di giri che passa dall'ultima estrazione di ogni numero,")} 
+                        {t("oppure 2 rolls, 4 rolls e chance. ")} 
+                        {t("Questo strumento – il live tracker Monopoly Live – consente di visionare il numero di volte in cui ciascun numero o roll è stato estratto,")} 
+                        {t("assieme al valore correlato dato dalle previsioni teoriche. ")} 
 
                         </p>
                     </section>
 
                     <section>
-                        <h3>Quali vantaggi consentono ai giocatori i dati mostrati nella sezione Monopoly Statistiche Live?</h3>
+                        <h3>{t("Quali vantaggi consentono ai giocatori i dati mostrati nella sezione Monopoly Statistiche Live?")}</h3>
                         <p>
-                        Questi dati sono vantaggiosi per il giocatore: 
-                        offrono la possibilità di osservare la differenza tra previsioni teoriche e andamento effettivo della ruota Monopoly Live.
-                        In effetti, ciascun produttore esprime il valore medio delle probabilità di uscita di ciascun settore della ruota. <br/>
-                        Tuttavia, se uno o più valori sono lontani dal valore medio, probabilmente assisteremo ad estrazioni in grado di ristabilire le probabilità teoriche. <br/>
-                        Ricordiamo sempre, che non esiste correlazione matematica tra uno spin e l'altro.
-                        Nondimeno, le statistiche possono essere utilizzate per definire la propria personale strategia con la fiducia che possa funzionare, 
-                        almeno sul breve periodo.  <br/>
-                        Facciamo un esempio: se stiamo puntando sul 2 rolls, ma questo è uscito alla giusta frequenza, mentre il 4 rolls non esce da diversi spin, 
-                        conviene considerare di puntare il 4 rolls.  <br/>
-                        Infatti, i numeri che non escono da vari spin, oppure i rolls potrebbero consentire al giocatore di recuperare il Budget. 
-                        Ma ricorda che il successo delle scommesse non è mai certo.
+                        {t("Questi dati sono vantaggiosi per il giocatore:")} 
+                        {t("offrono la possibilità di osservare la differenza tra previsioni teoriche e andamento effettivo della ruota Monopoly Live. ")}
+                        {t("In effetti, ciascun produttore esprime il valore medio delle probabilità di uscita di ciascun settore della ruota. ")} <br/>
+                        {t("Tuttavia, se uno o più valori sono lontani dal valore medio, probabilmente assisteremo ad estrazioni in grado di ristabilire le probabilità teoriche. ")} <br/>
+                        {t("Ricordiamo sempre, che non esiste correlazione matematica tra uno spin e l'altro. ")}
+                        {t("Nondimeno, le statistiche possono essere utilizzate per definire la propria personale strategia con la fiducia che possa funzionare,")} 
+                        {t("almeno sul breve periodo. ")}  <br/>
+                        {t("Facciamo un esempio: se stiamo puntando sul 2 rolls, ma questo è uscito alla giusta frequenza, mentre il 4 rolls non esce da diversi spin,")} 
+                        {t("conviene considerare di puntare il 4 rolls. ")}  <br/>
+                        {t("Infatti, i numeri che non escono da vari spin, oppure i rolls potrebbero consentire al giocatore di recuperare il Budget. ")} 
+                        {t("Ma ricorda che il successo delle scommesse non è mai certo. ")}
                         </p>
                     </section>
 
                     <section>
-                        <h3>Divertiti con il meglio del Live Casinò</h3>
+                        <h3>{t("Divertiti con il meglio del Live Casinò")}</h3>
                         <p>
-                        Tutti gli utenti del sito Casino Squad possono sfruttare gratis questo servizio, consultando la sezione dedicata in modo semplice e veloce. <br/>
-                        Con la possibilità di seguire in tempo reale il gioco, potrai sempre modificare la strategia ed – eventualmente - ottimizzare l'uso del Budget a disposizione.<br/> 
-                        Ricordiamo inoltre che – sul lungo termine - qualsiasi tipo di giocata porta a perdere il credito, considerando l'RTP di 96.23%. <br/>
-                        Per tutte le informazioni puoi dare un’occhiata alla nostra Guida di Monopoly Live.<br/><br/>
+                        {t("Tutti gli utenti del sito Casino Squad possono sfruttare gratis questo servizio, consultando la sezione dedicata in modo semplice e veloce. ")} <br/>
+                        {t("Con la possibilità di seguire in tempo reale il gioco, potrai sempre modificare la strategia ed – eventualmente - ottimizzare l'uso del Budget a disposizione. ")}<br/> 
+                        {t("Ricordiamo inoltre che – sul lungo termine - qualsiasi tipo di giocata porta a perdere il credito, considerando l'RTP di 96.23%. ")} <br/>
+                        {t("Per tutte le informazioni puoi dare un’occhiata alla nostra Guida di Monopoly Live. ")}<br/><br/>
 
-                        Divertiti con il meglio dei Game Show e ricorda che il gioco è vietato ai minori di 18 anni e può creare dipendenza patologica.
+                        {t("Divertiti con il meglio dei Game Show e ricorda che il gioco è vietato ai minori di 18 anni e può creare dipendenza patologica. ")}
                         </p>
                     </section>
 

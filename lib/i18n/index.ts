@@ -1,6 +1,6 @@
 import i18n from "i18next"
 import { initReactI18next } from "react-i18next"
-import * as home  from "./dictionary/home.json"
+import * as en  from "./dictionary/en.json"
 import LanguageDetector from 'i18next-browser-languagedetector'
 
 // the translations
@@ -14,10 +14,10 @@ i18n
   .init({
     resources: {
       en: {
-        translation: home
+        translation: en
       }
     },
-    fallbackLng: "it", // use en if detected lng is not available
+    fallbackLng: "en", // use en if detected lng is not available
     saveMissing: true, // send not translated keys to endpoint
     interpolation: {
         escapeValue: false // react already safes from xss

@@ -11,6 +11,7 @@ import { Fragment } from 'react'
 import { createStyles, withStyles } from '@material-ui/core'
 import CloseIcon from '@material-ui/icons/Close'
 import styled from 'styled-components'
+import { useTranslation } from 'react-i18next'
 
 const Transition = React.forwardRef(function Transition(
   props: TransitionProps & { children?: React.ReactElement<any, any> },
@@ -61,30 +62,37 @@ type Props = {
   content: JSX.Element[]
 };
 
-const SliderDialog: FunctionComponent<Props> = ({open, setOpen, category, content}) => 
-  <Fragment>
-    <StyledDialog 
-      open={open}
-      TransitionComponent={Transition}
-      keepMounted
-      onClose={() => setOpen(false)}>
+const SliderDialog: FunctionComponent<Props> = ({open, setOpen, category, content}) => {
 
-      <StyledDialogActions>
-        <Button onClick={() => setOpen(false)} color="default">
-          <CloseIcon/>
-        </Button>
-      </StyledDialogActions>
+  const { t } = useTranslation()
 
-      <StyledDialogTitle>{category} {content.length ? '(' + content.length + ')' : '' }</StyledDialogTitle>
-      
-      <DialogContent>
-        { content.length ? 
-          content.map( (child: JSX.Element, index: number) => <Fragment key={index}>{child}</Fragment> ) 
-          : <EmtyContent><p> No card have been added to {category} yet.</p></EmtyContent>
-        }
-      </DialogContent>
-    </StyledDialog>
-  </Fragment>
+  return (
+ 
+    <Fragment>
+      <StyledDialog 
+        open={open}
+        TransitionComponent={Transition}
+        keepMounted
+        onClose={() => setOpen(false)}>
+
+        <StyledDialogActions>
+          <Button onClick={() => setOpen(false)} color="default">
+            <CloseIcon/>
+          </Button>
+        </StyledDialogActions>
+
+        <StyledDialogTitle>{t(category)} {content.length ? '(' + content.length + ')' : '' }</StyledDialogTitle>
+        
+        <DialogContent>
+          { content.length ? 
+            content.map( (child: JSX.Element, index: number) => <Fragment key={index}>{child}</Fragment> ) 
+            : <EmtyContent><p> {t(`No card have been added to ${category} yet.`)}</p></EmtyContent>
+          }
+        </DialogContent>
+      </StyledDialog>
+    </Fragment>
+    )
+  }
 
 export default SliderDialog
 

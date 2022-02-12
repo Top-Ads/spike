@@ -7,11 +7,16 @@ import { buildLink } from '../../../../../lib/utils/buildLink'
 import format from 'date-fns/format'
 import { device } from '../../../../../lib/utils/device'
 import italianLocale  from 'date-fns/locale/it'
+import { useTranslation } from 'react-i18next'
 
 export const LatestArticles: FunctionComponent<{ last: Article[] }> = ({
     last,
 }) => {
+
+    const { t } = useTranslation()
+
     const LastPostsMapping: FunctionComponent = () => {
+
         return (
             <div>
                 {last.map((article, i) => (
@@ -33,10 +38,10 @@ export const LatestArticles: FunctionComponent<{ last: Article[] }> = ({
                             <div className='card-info-container'>
                                 <p className='title'>{article.title}</p>
                                 <div className='published_at'>
-                                    Pubblicato il
-                                    <div style={{textTransform: 'capitalize', marginLeft: '5px'}}>
-                                        { article.published_at && format(new Date(article.published_at), 'dd MMM yyyy', { locale: italianLocale }).toString()} 
-                                    </div>
+                                    {t("Pubblicato il")}
+                                        <div style={{textTransform: 'capitalize', marginLeft: '5px'}}>
+                                            { article.published_at && format(new Date(article.published_at), 'dd MMM yyyy', { locale: italianLocale }).toString()} 
+                                        </div>
                                 </div>
                             </div>
                         </div>
@@ -48,7 +53,7 @@ export const LatestArticles: FunctionComponent<{ last: Article[] }> = ({
 
     return (
         <LatestArticleContainer>
-            <h3>Ultimi Articoli</h3>
+            <h3>{t("Ultimi Articoli")}</h3>
             <LastPostsMapping />
         </LatestArticleContainer>
     )

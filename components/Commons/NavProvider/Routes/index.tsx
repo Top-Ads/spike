@@ -8,6 +8,7 @@ import { useState } from 'react'
 import { useEffect } from 'react'
 import {isMobile} from 'react-device-detect'
 import DropDown from '../DropDown'
+import { useTranslation } from 'react-i18next'
 
 type ButtonProps = {
     active?: boolean
@@ -15,6 +16,8 @@ type ButtonProps = {
 
 export const Routes: FunctionComponent = () => {
     
+    const { t } = useTranslation()
+
     const router = useRouter()
 
     const [,setShow] = useState<boolean>(false)
@@ -32,23 +35,23 @@ export const Routes: FunctionComponent = () => {
     return (
         <Fragment>
             <Link passHref href={'/'}>
-                <a><Button className={router.pathname === '/' ? 'active' : ''}>Home</Button></a>
+                <a><Button className={router.pathname === '/' ? 'active' : ''}>{t("Home")}</Button></a>
             </Link>
 
             <Link passHref href={'/offerte-bonus-casino'}>
-                <a><Button className={router.pathname === '/offerte-bonus-casino' ? 'active' : ''}>Offerte Bonus Casino</Button></a>
+                <a><Button className={router.pathname === '/offerte-bonus-casino' ? 'active' : ''}>{t("Offerte Bonus Casino")}</Button></a>
             </Link>
 
             <Link passHref href={'/giochi'}>
-                <a><Button className={router.pathname === '/giochi' ? 'active' : ''}>Giochi</Button></a>
+                <a><Button className={router.pathname === '/giochi' ? 'active' : ''}>{t("Giochi")}</Button></a>
             </Link>
 
             <Link passHref href={'/squad'}>
-                <a><Button className={router.pathname === '/squad' ? 'active' : ''}>Squad</Button></a>
+                <a><Button className={router.pathname === '/squad' ? 'active' : ''}>{t("Squad")}</Button></a>
             </Link>
 
             <Link passHref href={'/shop'}>
-                <a><Button className={router.pathname === '/shop' ? 'active' : ''}>Shop</Button></a>
+                <a><Button className={router.pathname === '/shop' ? 'active' : ''}>{t("Shop")}</Button></a>
             </Link>
             
             <DropDown header="Live Stats" slug={'live-stats'}>
@@ -70,27 +73,27 @@ export const Routes: FunctionComponent = () => {
             <DropDown header="Blog" slug={'blog'}>
                 <Fragment>
                     <Link passHref href={'/blog/info-giochi'}>
-                        <a><Button active={activeRoute} className={`dropdown-link ${router.query.firstLevel === 'info-giochi' ? 'active' : ''}`} >Info Giochi</Button></a>
+                        <a><Button active={activeRoute} className={`dropdown-link ${router.query.firstLevel === 'info-giochi' ? 'active' : ''}`} >{t("Info Giochi")}</Button></a>
                     </Link>
 
                     <Link passHref href={'/blog/strategie-di-gioco'}>
-                        <a><Button active={activeRoute} className={`dropdown-link ${router.query.firstLevel === 'strategie-di-gioco' ? 'active' : ''}`}>Strategie di Gioco</Button></a>
+                        <a><Button active={activeRoute} className={`dropdown-link ${router.query.firstLevel === 'strategie-di-gioco' ? 'active' : ''}`}>{t("Strategie di Gioco")}</Button></a>
                     </Link>
 
                     <Link passHref href={'/blog/ultima-ora'}>
-                        <a><Button active={activeRoute} className={`dropdown-link ${router.query.firstLevel === 'ultima-ora' ? 'active' : ''}`}>Ultima Ora</Button></a>
+                        <a><Button active={activeRoute} className={`dropdown-link ${router.query.firstLevel === 'ultima-ora' ? 'active' : ''}`}>{t("Ultima Ora")}</Button></a>
                     </Link>
 
                     <Link passHref href={'/blog/comparazione-casino'}>
-                        <a><Button active={activeRoute} className={`dropdown-link ${router.query.firstLevel === 'comparazione-casino' ? 'active' : ''}`}>Comparazione Casino</Button></a>
+                        <a><Button active={activeRoute} className={`dropdown-link ${router.query.firstLevel === 'comparazione-casino' ? 'active' : ''}`}>{t("Comparazione Casino")}</Button></a>
                     </Link>
 
                     <Link passHref href={'/blog/dicci-la-tua'}>
-                        <a><Button active={activeRoute} className={`dropdown-link ${router.query.firstLevel === 'dicci-la-tua' ? 'active' : ''}`}>Dicci la tua</Button></a>
+                        <a><Button active={activeRoute} className={`dropdown-link ${router.query.firstLevel === 'dicci-la-tua' ? 'active' : ''}`}>{t("Dicci la tua")}</Button></a>
                     </Link>
 
                     <Link passHref href={'/blog/guide'}>
-                        <a><Button active={activeRoute} className={`dropdown-link ${router.query.firstLevel === 'guide' ? 'active' : ''}`}>Guide</Button></a>
+                        <a><Button active={activeRoute} className={`dropdown-link ${router.query.firstLevel === 'guide' ? 'active' : ''}`}>{t("Guide")}</Button></a>
                     </Link>
                 </Fragment>
             </DropDown>

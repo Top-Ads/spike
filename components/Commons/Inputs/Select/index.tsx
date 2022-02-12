@@ -5,6 +5,7 @@ import MenuItem from '@material-ui/core/MenuItem'
 import FormControl from '@material-ui/core/FormControl'
 import Select from '@material-ui/core/Select'
 import { FunctionComponent } from 'react'
+import { useTranslation } from 'react-i18next'
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -20,6 +21,9 @@ type Props = {
 }
 
 const CustumSelect: FunctionComponent<Props> = ({setSelected}) => {
+
+  const { t } = useTranslation()
+
   const classes = useStyles();
 
   const intervalTime: string[] = ['1h', '12h', '24h']
@@ -36,7 +40,7 @@ const CustumSelect: FunctionComponent<Props> = ({setSelected}) => {
     <div>  
       <FormControl className={classes.formControl}>
         <InputLabel shrink id="demo-simple-select-placeholder-label-label">
-          Ore
+          {t("Ore")}
         </InputLabel>
         <Select
           labelId="simple-select"

@@ -3,37 +3,41 @@ import styled from 'styled-components'
 import Divider from '../Divider'
 import { device } from '../../../lib/utils/device'
 import Link from 'next/link'
+import { useTranslation } from 'react-i18next'
 
 const Footer: FunctionComponent = () => {
+
+    const { t } = useTranslation()
+
     return (
         <Fragment>
             <Main>
                 <Container>
                     <List>
-                        <strong>slots</strong>
+                        <strong>{("slots")}</strong>
                         <Link href={'/giochi'}>
-                            <a>Giochi</a>
+                            <a>{t("Giochi")}</a>
                         </Link>
                     </List>
 
                     <List>
-                        <strong>bonuses</strong>
+                        <strong>{t("bonuses")}</strong>
                         <Link href={'/offerte-bonus-casino'}>
-                            <a>Offerte Bonus Casino</a>
+                            <a>{t("Offerte Bonus Casino")}</a>
                         </Link>
                     </List>
 
                     <List>
-                        <strong>casino</strong>
-                        <a>Nuovi Casinò Online</a>
-                        <a>Casinò in Italia</a>
+                        <strong>{t("casino")}</strong>
+                        <a>{t("Nuovi Casinò Online")}</a>
+                        <a>{t("Casinò in Italia")}</a>
                         <Link href={'/blog'}>
-                            <a>Blog</a>
+                            <a>{t("Blog")}</a>
                         </Link>
                     </List>
                    
                     <List>
-                        <strong>rete sociale</strong>
+                        <strong>{("rete sociale")}</strong>
                         <a target="_blank" rel="noopener noreferrer" href="https://discord.gg/eXxhPXWHmY">Discord</a>
                         <a target="_blank" rel="noopener noreferrer" href="https://www.facebook.com/casinosquad">Facebook</a>
                         <a target="_blank" rel="noopener noreferrer" href="https://www.instagram.com/casino.squad.team/">Instagram</a>
@@ -42,21 +46,21 @@ const Footer: FunctionComponent = () => {
                     </List>
 
                     <List>
-                        <strong>informazioni</strong>
+                        <strong>{("informazioni")}</strong>
                         <Link href={'/squad'}>
-                            <a>Team</a>
+                            <a>{t("Team")}</a>
                         </Link>
                         <Link href={'/shop'}>
-                            <a>Shop</a>
+                            <a>{t("Shop")}</a>
                         </Link>
                         <Link href={'/privacy-policy'}>
-                            <a>Informativa sulla privacy</a>
+                            <a>{t("Informativa sulla privacy")}</a>
                         </Link>
                         <Link href={'/sitemap'}>
-                            <a>Sitemap</a>
+                            <a>{t("Sitemap")}</a>
                         </Link>
                       
-                        <a href="mailto: info@casinosquad.com">Email</a>
+                        <a href="mailto: info@casinosquad.com">{t("Email")}</a>
                     </List>
                 </Container>
                 

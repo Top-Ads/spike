@@ -5,17 +5,20 @@ import QuestionCard from '../Cards/QuestionCard'
 import EmailSubcription from '../EmailSubscription'
 import GridLayout from '../Commons/GridLayout'
 import { frequentlyAsked } from '../../assets/mockFrequentlyAsked'
+import { useTranslation } from 'react-i18next'
 
 const FreqentlyAsked = () => { 
 
     const [collapse, setCollapse] = useState<boolean>(true)
+
+    const { t } = useTranslation()
 
     return (
         <Fragment>
             <Main>
 
                 <Questions>
-                    <Header>DOMANDE FREQUENTI</Header>
+                    <Header>{t("DOMANDE FREQUENTI")}</Header>
                     <GridLayout 
                         gridType={GridType.QUESTIONS}
                         content={ frequentlyAsked.map( (data: any) => 

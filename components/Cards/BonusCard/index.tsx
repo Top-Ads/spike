@@ -9,6 +9,7 @@ import { Bonus } from '../../../lib/schemas'
 import RatingStars from '../../RatingStars'
 import { device } from '../../../lib/utils/device'
 import { injectCDN } from '../../../lib/utils/injectCDN'
+import { useTranslation } from 'react-i18next'
 
 type Props = {
    data: Bonus 
@@ -31,6 +32,8 @@ const BonusCard: FunctionComponent<Props> = ({data}) => {
     }
 
     const paymentProviders = ['visa', 'mastercard', 'paypal', 'postepay']
+
+    const { t } = useTranslation()
 
     return (
         <Fragment>
@@ -57,12 +60,12 @@ const BonusCard: FunctionComponent<Props> = ({data}) => {
         
                 <BonusBody bgColor={data.backgroundColor}>
                     <div className="bonus"> 
-                        <div className="label">BONUS CON DEPOSITO</div>
+                    <div className="label">{t("BONUS CON DEPOSITO")}</div>
                         <div className="info" dangerouslySetInnerHTML={{__html: String(data.withDeposit.replace("+", "<br/>"))}}/> 
                     </div>
 
                     <div className="bonus">
-                        <div className="label">BONUS SENZA DEPOSITO</div>
+                        <div className="label">{t("BONUS SENZA DEPOSITO")}</div>
                         <div className="info" dangerouslySetInnerHTML={{__html: String(data.noDeposit.replace("+", "<br/>"))}}/> 
                     </div>
                 </BonusBody>
@@ -82,11 +85,11 @@ const BonusCard: FunctionComponent<Props> = ({data}) => {
                             height={760}/>
                     </div>
 
-                    <span> Licenza ADM</span>
+                    <span>{t("Licenza ADM")}</span>
 
                 </LicenceContainer>
                 
-                <Button bgColor={data.backgroundColor} onClick={linkToBonus}>ACCEDI AL BONUS</Button>
+                <Button bgColor={data.backgroundColor} onClick={linkToBonus}>{t("ACCEDI AL BONUS")}</Button>
 
                 <PaymentProviders>
                     {paymentProviders. map( (provider, index) => 

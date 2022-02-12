@@ -97,9 +97,9 @@ const IndexPage: FunctionComponent<PageProps> = (props) => {
 
               <p>{t("Esplora il nostro sito per scoprire:")}</p>
               <ul>
-                <li>{t("Le migliori piattaforme di gioco online.")}</li>
-                <li>{t("La possibilità di ricevere ogni offerta e i bonus esclusivi.")}</li>
-                <li>{t("Provare gratis ogni tipo di slot machine.")}</li>
+                <li>{t("Le migliori piattaforme di gioco online. ")}</li>
+                <li>{t("La possibilità di ricevere ogni offerta e i bonus esclusivi. ")}</li>
+                <li>{t("Provare gratis ogni tipo di slot machine. ")}</li>
               </ul>
             <br/>
             <Button onClick={ () => router.push('/giochi')}>
@@ -132,23 +132,23 @@ const IndexPage: FunctionComponent<PageProps> = (props) => {
         <Intro>
           <p>
           {t("Siamo lieti di accoglierti su Casino Squad, ")}
-          {t("un casino digitale sul quale troverai consigli e dritte su un’ampia gamma di slot machine e giochi da casinò.")}
+          {t("un casino digitale sul quale troverai consigli e dritte su un’ampia gamma di slot machine e giochi da casinò. ")}
           {t("Qui potrai esplorare e scegliere la tua slot online preferita, ")}
-          {t("ma anche apprendere consigli e avere aggiornamenti sulle leggi e norme del settore.")}
+          {t("ma anche apprendere consigli e avere aggiornamenti sulle leggi e norme del settore. ")}
           <br/> <br/>
-          {t("Non avrai bisogno di registrarti o di fare download.")} 
-          {t("Puoi consultare Casino Squad per familiarizzare con il meraviglioso mondo dell’intrattenimento del gioco digitale.")}
-          {t("Infatti, qui troverai confronti approfonditi fra i diversi casinò online e le migliori piattaforme di scommesse.")} 
-          {t("Ti offriamo la possibilità di essere informato sulle migliori comparazioni fra i diversi casinò digitali.")} 
+          {t("Non avrai bisogno di registrarti o di fare download. ")} 
+          {t("Puoi consultare Casino Squad per familiarizzare con il meraviglioso mondo dell’intrattenimento del gioco digitale. ")}
+          {t("Infatti, qui troverai confronti approfonditi fra i diversi casinò online e le migliori piattaforme di scommesse. ")} 
+          {t("Ti offriamo la possibilità di essere informato sulle migliori comparazioni fra i diversi casinò digitali. ")} 
           {t("In più, se sei appassionato di Live Casinò e degli ormai celebri Game Show, ")} 
-          {t("puoi anche consultare il nostro servizio esclusivo.")}
+          {t("puoi anche consultare il nostro servizio esclusivo. ")}
           <br/> <br/>
           {t("Infatti, su Casino Squad hai la possibilità di avere informazioni in tempo reale delle Statistiche Crazy Time Live, ")} 
-          {t("delle Monopoly Statistiche Live, ma anche delle LiveStats di Dream Catcher.")}
+          {t("delle Monopoly Statistiche Live, ma anche delle LiveStats di Dream Catcher. ")}
           <br/> <br/>
-          {t("Inoltre, potrai fare valutazioni ed essere sempre aggiornato su i migliori bonus disponibili.")}
-          {t("Ti consigliamo inoltre di dare un'occhiata alle offerte di Benvenuto sulle slot online che trovi sul sito.")} 
-          {t("Se stai cercando informazioni su quale sia il sito più conveniente per giocare alle slot digitali, ti invitiamo a consultare la tabella seguente.")}
+          {t("Inoltre, potrai fare valutazioni ed essere sempre aggiornato su i migliori bonus disponibili. ")}
+          {t("Ti consigliamo inoltre di dare un'occhiata alle offerte di Benvenuto sulle slot online che trovi sul sito. ")} 
+          {t("Se stai cercando informazioni su quale sia il sito più conveniente per giocare alle slot digitali, ti invitiamo a consultare la tabella seguente. ")}
           </p>
 
         </Intro>
@@ -157,13 +157,13 @@ const IndexPage: FunctionComponent<PageProps> = (props) => {
           <GridLayout
             gridType={GridType.SLOTS} 
             content={ newest.map( (slot: Slot) => <SlotCard key={slot.name} data={slot} type={SlotType.NEW}/> )}
-            label="NUOVE SLOT"
+            label={t("NUOVE SLOT")}
             xs={12} sm={4} md={4}
           />
           <GridLayout
             gridType={GridType.SLOTS}
             content={ online.map( (slot: Slot) => <SlotCard key={slot.id} data={slot} type={SlotType.ONLINE}/> )}
-            label="LE SLOT ONLINE PIÙ POPOLARI"
+            label={t("LE SLOT ONLINE PIÙ POPOLARI")}
             xs={12} sm={4} md={4}
           />
         </GridContainer>
@@ -176,7 +176,7 @@ const IndexPage: FunctionComponent<PageProps> = (props) => {
             content={ topBonusesData.map( (bonus) => 
                 <BonusCard key={bonus.id} data={bonus}/>
               )}
-            label="I top bonus dei casinò online in Italia"
+            label={t("I top bonus dei casinò online in Italia")}
             AlignItem={"center"}
             xs={12} sm={4} md={4}
             showIndex

@@ -21,6 +21,7 @@ import { getBonuses } from '../../../lib/graphql/queries/bonuses'
 import { format } from 'date-fns'
 import italianLocale  from 'date-fns/locale/it'
 import Head from 'next/head'
+import { useTranslation } from 'react-i18next'
 
 type PageProps = {
     statsData: Stat[],
@@ -29,6 +30,8 @@ type PageProps = {
 };
 
 const CrazyTimePage: FunctionComponent<PageProps> = ({statsData, spinsData, bonusesData}) => {
+
+    const { t } = useTranslation()
 
     const [stats, setStats] = useState<Stat[]>(statsData)
     const [spins, setSpins] = useState<Spin[]>(spinsData)
@@ -83,19 +86,19 @@ const CrazyTimePage: FunctionComponent<PageProps> = ({statsData, spinsData, bonu
              <div className="layout-container">
 
                 <Header className="intro-header">
-                    <h2>Statistiche Crazy Time Live: Tutte le Estrazioni in Tempo Reale</h2>
+                    <h2>{t("Statistiche Crazy Time Live: Tutte le Estrazioni in Tempo Reale")}</h2>
 
                     <Intro>
 
                         <p>
-                        Benvenuto sulla pagina dedicata alle Statistiche Live di Crazy Time.
-                        Qui puoi seguire in tempo reale le statistiche della ruota di Crazy Time.
-                        Esamina le statistiche live per selezionare i numeri vincenti e scoprire Bonus incredibili”<br/><br/>
+                        {t("Benvenuto sulla pagina dedicata alle Statistiche Live di Crazy Time. ")}
+                        {t("Qui puoi seguire in tempo reale le statistiche della ruota di Crazy Time. ")}
+                        {t("Esamina le statistiche live per selezionare i numeri vincenti e scoprire Bonus incredibili”")}<br/><br/>
 
-                        Hai a disposizione i dati sulle estrazioni in diretta alla ruota della Crazy Time. 
-                        In questa sezione puoi confrontare le probabilità teoriche rispetto ai numeri usciti realmente a questi Game Show.<br/>
-                        Inoltre, hai a disposizione i dati sui numeri ritardatari – la migliore occasione per elaborare la tua strategia di gioco,
-                        oltre a informazioni che raccontano la storia di questo gioco digitale.
+                        {t("Hai a disposizione i dati sulle estrazioni in diretta alla ruota della Crazy Time. ")} 
+                        {t("In questa sezione puoi confrontare le probabilità teoriche rispetto ai numeri usciti realmente a questi Game Show. ")}<br/>
+                        {t("Inoltre, hai a disposizione i dati sui numeri ritardatari – la migliore occasione per elaborare la tua strategia di gioco,")}
+                        {t("oltre a informazioni che raccontano la storia di questo gioco digitale. ")}
 
                         </p>
 
@@ -125,9 +128,9 @@ const CrazyTimePage: FunctionComponent<PageProps> = ({statsData, spinsData, bonu
 
                         <Header className="stats-card-header">
                             <div>
-                                <h3>Statistiche Crazy Time</h3>
+                                <h3>{t("Statistiche Crazy Time")}</h3>
                                 <span style={{textTransform: 'capitalize'}} suppressHydrationWarning>
-                                    Ultimo Aggiornamento: {format(new Date(lastUpdate), 'dd MMM yyyy • HH:mm', { locale: italianLocale }).toString()}
+                                    {t("Ultimo Aggiornamento")}: {format(new Date(lastUpdate), 'dd MMM yyyy • HH:mm', { locale: italianLocale }).toString()}
                                 </span>
                             </div>
                            
@@ -153,7 +156,7 @@ const CrazyTimePage: FunctionComponent<PageProps> = ({statsData, spinsData, bonu
                     <br/>
 
                     <BonusContainer>
-                        <h3>Puoi giocare alla CRAZY TIME QUI</h3>
+                        <h3>{t("Puoi giocare alla CRAZY TIME QUI")}</h3>
                         <div className="bonus-table">
                             <BonusTable data={bonusesData}/>
                         </div>
@@ -177,7 +180,7 @@ const CrazyTimePage: FunctionComponent<PageProps> = ({statsData, spinsData, bonu
                     <br/>
 
                     <SpinsContainer>
-                        <h3>Storico degli Spin</h3>
+                        <h3>{t("Storico degli Spin")}</h3>
                         <SpinsTable data={spins} gameType={LiveStats.CRAZYTIME}/>
                     </SpinsContainer>
  
@@ -185,43 +188,43 @@ const CrazyTimePage: FunctionComponent<PageProps> = ({statsData, spinsData, bonu
 
                 <Footer>
                     <section>
-                        <h3>Consulta i numeri ritardatari della Crazy Time</h3>
+                        <h3>{t("Consulta i numeri ritardatari della Crazy Time")}</h3>
                         <p>
-                        Fra i Live Casino Game Show, la ruota della Crazy Time è di certo il gioco più popolare.
-                        In questa parte puoi dare un’occhiata a ciò che accade in diretta nel gioco. <br/>
-                        In più, è possibile anche visionare il numero di volte in cui si è verificata l’estrazione 
-                        – in considerazione dell’intervallo di tempo scelto del valore della previsione teorica.
+                        {t("Fra i Live Casino Game Show, la ruota della Crazy Time è di certo il gioco più popolare. ")}
+                        {t("In questa parte puoi dare un’occhiata a ciò che accade in diretta nel gioco. ")} <br/>
+                        {t("In più, è possibile anche visionare il numero di volte in cui si è verificata l’estrazione")} 
+                        – {t("in considerazione dell’intervallo di tempo scelto del valore della previsione teorica. ")}
 
                         </p>
                     </section>
 
                     <section>
-                    <h3>Perché questi dati sono utili?</h3>
+                    <h3>{t("Perché questi dati sono utili?")}</h3>
                         <p>
-                        Questi dati possono aiutarti perché rivelano la differenza tra previsioni statistiche e ciò che accade nel gioco reale.<br/><br/>
-                        Devi sapere che i produttori dichiarano il valore medio delle probabilità di uscita, 
-                        tuttavia nelle estrazioni reali, si contemplano discostamenti che possono variare intorno ai valori attesi. <br/>
-                        Quindi, se alcuni valori sono particolarmente distanti dal valore medio atteso, 
-                        si può ipotizzare che ci saranno estrazioni tendenti a ristabilire le possibilità teoriche. <br/>
-                        Come abbiamo spesso detto, devi comunque considerare che “la probabilità non ha memoria”. 
-                        Ciò significa che un giro della ruota è indipendente dell’altro.<br/>
-                        Però è possibile utilizzare le informazioni proposte per predisporre le puntate, rispetto alle dinamiche del gioco stesso.
+                        {t("Questi dati possono aiutarti perché rivelano la differenza tra previsioni statistiche e ciò che accade nel gioco reale. ")}<br/><br/>
+                        {t("Devi sapere che i produttori dichiarano il valore medio delle probabilità di uscita,")} 
+                        {t("tuttavia nelle estrazioni reali, si contemplano discostamenti che possono variare intorno ai valori attesi. ")} <br/>
+                        {t("Quindi, se alcuni valori sono particolarmente distanti dal valore medio atteso,")} 
+                        {t("si può ipotizzare che ci saranno estrazioni tendenti a ristabilire le possibilità teoriche. ")} <br/>
+                        {t("Come abbiamo spesso detto, devi comunque considerare che “la probabilità non ha memoria”. ")} 
+                        {t("Ciò significa che un giro della ruota è indipendente dell’altro. ")}<br/>
+                        {t("Però è possibile utilizzare le informazioni proposte per predisporre le puntate, rispetto alle dinamiche del gioco stesso. ")}
 
                         </p>
                     </section>
                     <section>
-                        <h3>Crazy Time: divertimento assicurato!</h3>
+                        <h3>{t("Crazy Time: divertimento assicurato!")}</h3>
 
                         <div>
                             <p>
-                            Qualsiasi utente di Casino Squad, può sfruttare questo servizio esclusivo e totalmente gratis.
-                            La ricerca attraverso questa sezione è immediata, semplice e comoda.<br/>
-                            Avendo la possibilità di valutare in tempo reale le probabilità, 
-                            puoi adattare la tua strategia di gioco e provare l’ottimizzazione del Budget a disposizione. 
-                            Dobbiamo sottolineare che sul lungo periodo, ogni tipo di giocata porta alla perdita del credito, se si considera l’RTP pari a 96,08%. <br/>
-                            Per tutte le informazioni dettagliate e per scoprire tutte le caratteristiche della Crazy Time, consulta la guida al Live Game Show Crazy Time. 
-                            Buon divertimento con la celeberrima ruota della Crazy Time!<br/>
-                            Ricorda di giocare con coscienza e responsabilità, nella consapevolezza che il gioco da casinò può causare dipendenza patologica.
+                            {t("Qualsiasi utente di Casino Squad, può sfruttare questo servizio esclusivo e totalmente gratis. ")}
+                            {t("La ricerca attraverso questa sezione è immediata, semplice e comoda. ")}<br/>
+                            {t("Avendo la possibilità di valutare in tempo reale le probabilità,")} 
+                            {t("puoi adattare la tua strategia di gioco e provare l’ottimizzazione del Budget a disposizione. ")}
+                            {t("Dobbiamo sottolineare che sul lungo periodo, ogni tipo di giocata porta alla perdita del credito, se si considera l’RTP pari a 96,08%. ")} <br/>
+                            {t("Per tutte le informazioni dettagliate e per scoprire tutte le caratteristiche della Crazy Time, consulta la guida al Live Game Show Crazy Time. ")} 
+                            {t("Buon divertimento con la celeberrima ruota della Crazy Time!")}<br/>
+                            {t("Ricorda di giocare con coscienza e responsabilità, nella consapevolezza che il gioco da casinò può causare dipendenza patologica. ")}
                             </p>
                         </div>
                     </section>

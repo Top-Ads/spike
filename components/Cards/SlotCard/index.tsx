@@ -12,6 +12,7 @@ import LikeButton from '../../LikeButton'
 import { formatDistance } from 'date-fns'
 import italianLocale  from 'date-fns/locale/it'
 import { injectCDN } from '../../../lib/utils/injectCDN'
+import { useTranslation } from 'react-i18next'
 
 type Props = {
    data: Slot,
@@ -34,6 +35,8 @@ const SlotCard: FunctionComponent<Props> = ({data, type}) => {
     const [loading, setLoading] = useState<boolean>(true)
 
     const {removeLikeSlotId, setRemoveLikeSlotId}  = useContext(removeLikeSlotContext)
+
+    const { t } = useTranslation()
 
     const goToSlot = () => {
         router.push({
@@ -133,15 +136,15 @@ const SlotCard: FunctionComponent<Props> = ({data, type}) => {
                 { showBanner &&  
                     <Banner>
                         <Button> 
-                            <span>PROVA GRATIS</span>
+                            <span>{t("PROVA GRATIS")}</span>
                         </Button>
                         <Button> 
-                            <span>SOLDI REALI</span>
+                            <span>{t("SOLDI REALI")}</span>
                         </Button>
                     </Banner>
                 } 
 
-                { showNewSlot && <NewSlot>NUOVA</NewSlot> }
+                { showNewSlot && <NewSlot>{t("NUOVA")}</NewSlot> }
 
             </Main>
           

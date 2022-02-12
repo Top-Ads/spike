@@ -10,6 +10,7 @@ import { Slot, Producer, Bonus } from '../../lib/schemas'
 import { useRouter } from 'next/router'
 import { useState } from 'react'
 import { device } from '../../lib/utils/device'
+import { useTranslation } from 'react-i18next'
 
 const SLOTS = `
     query slots(
@@ -90,6 +91,8 @@ enum MapMenu  {
 
 const SiteMap:FunctionComponent<PageProps> = (props) => { 
     
+    const { t } = useTranslation()
+
     const {slotsData, producersData, bonusesData, totalSlots, totalBonuses, totalProducers} = props
 
     const router = useRouter()
@@ -135,50 +138,50 @@ const SiteMap:FunctionComponent<PageProps> = (props) => {
         <Layout title="Casino Squad | Site Map">
              
             <Header>
-                <h2>SITEMAP</h2>
-                <h4>Trova ciò che stai cercando su casinosquad.com</h4>
+                <h2>{t("SITEMAP")}</h2>
+                <h4>{t("Trova ciò che stai cercando su casinosquad.com")}</h4>
                 <div className="menu-map">
-                    <a className="item-map" href="#fornitori"><div>FORNITORI</div></a>
-                    <a className="item-map" href="#casino"><div>CASINÒ</div></a>
-                    <a className="item-map" href="#slot"><div>SLOT</div></a>
+                    <a className="item-map" href="#fornitori"><div>{t("FORNITORI")}</div></a>
+                    <a className="item-map" href="#casino"><div>{t("CASINÒ")}</div></a>
+                    <a className="item-map" href="#slot"><div>{t("SLOT")}</div></a>
                 </div>
                 <br/>
             </Header>
            
             <Main className="layout-container">
                     <Section id="fornitori">
-                        <Label>FORNITORI</Label>
+                        <Label>{t("FORNITORI")}</Label>
                         <ul className="list-name">
                             { producers.map((producer: Producer) => 
                                 <li>
                                     <span onClick={() => goToSoftware(producer.slug)}>{producer.name}</span>
                                 </li>
                             )}
-                            <li onClick={() => loadMore(MapMenu.FORNITORI)}><span className="more-data">Mostra tutti i {totalProducers - producers.length} fornitori di giochi</span></li>
+                            <li onClick={() => loadMore(MapMenu.FORNITORI)}><span className="more-data">{t("Mostra tutti i")} {totalProducers - producers.length} {t("fornitori di giochi")}</span></li>
                         </ul>
                     </Section>
 
                     <Section id="casino">
-                        <Label>CASINÒ</Label>
+                        <Label>{t("CASINÒ")}</Label>
                         <ul className="list-name">
                         { bonuses.map((bonus: Bonus) => 
                             <li>
                                 <span><a href={bonus.link}>{bonus.name}</a></span>
                             </li>
                         )}
-                            <li onClick={() => loadMore(MapMenu.CASINO)}><span className="more-data">+ Mostra tutti i {totalBonuses - bonuses.length} casinò</span></li>
+                            <li onClick={() => loadMore(MapMenu.CASINO)}><span className="more-data">+ {t("Mostra tutti i")} {totalBonuses - bonuses.length} {t("casinò")}</span></li>
                          </ul>
                     </Section>
 
                     <Section id="slot">
-                        <Label>SLOT</Label>
+                        <Label>{t("SLOT")}</Label>
                         <ul className="list-name">
                         { slots.map((slot: Slot) => 
                             <li onClick={() => goToSlot(slot.slug)}>
                                 <span>{slot.name}</span>
                             </li>
                         )}
-                            <li onClick={() => loadMore(MapMenu.SLOT)}><span className="more-data">+ Mostra tutti i {totalSlots - slots.length} slot</span></li>
+                            <li onClick={() => loadMore(MapMenu.SLOT)}><span className="more-data">+ {t("Mostra tutti i")} {totalSlots - slots.length} {t("slot")}</span></li>
                          </ul>
                     </Section>
                 </Main>

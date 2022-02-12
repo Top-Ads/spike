@@ -15,6 +15,7 @@ import GridLayout from '../../../components/Commons/GridLayout'
 import SlotCard from '../../../components/Cards/SlotCard'
 import { injectCDN } from '../../../lib/utils/injectCDN'
 import Markdown from 'markdown-to-jsx'
+import { useTranslation } from 'react-i18next'
 
 type PageProps = {
     producerData: Producer
@@ -22,6 +23,9 @@ type PageProps = {
 }
 
 const SoftwarePage: FunctionComponent<PageProps> = ({producerData, slotsData}) => {
+
+    const { t } = useTranslation()
+
     const [slots, setSlots] = useState<Slot[]>(slotsData)
 
     const loadMore = async () => {
@@ -34,7 +38,7 @@ const SoftwarePage: FunctionComponent<PageProps> = ({producerData, slotsData}) =
         <Layout title={producerData.name}> 
             <div className="layout-container" style={{ width: 'fill-available'}}>
           
-                <Title>SLOT MACHINE E CASINÒ CON SOFTWARE { producerData.name } </Title>
+                <Title>{t("SLOT MACHINE E CASINÒ CON SOFTWARE")} { producerData.name } </Title>
                 
                 <Divider/>
                 
@@ -69,7 +73,7 @@ const SoftwarePage: FunctionComponent<PageProps> = ({producerData, slotsData}) =
                     </Article>
 
                 <div style={{width: '100%'}}>
-                    <h2 style={{textTransform: 'uppercase'}}>TUTTE LE NOSTRE SLOT {producerData.name}</h2>
+                    <h2 style={{textTransform: 'uppercase'}}>{t("TUTTE LE NOSTRE SLOT")} {producerData.name}</h2>
                     <Divider/>
 
                     <GridContainer>
@@ -86,7 +90,7 @@ const SoftwarePage: FunctionComponent<PageProps> = ({producerData, slotsData}) =
                     </GridContainer>
 
                     <LoadMoreButton onClick={loadMore}>
-                        <span>CARICA ALTRO</span>
+                        <span>{t("CARICA ALTRO")}</span>
                     </LoadMoreButton>
 
                 </div>

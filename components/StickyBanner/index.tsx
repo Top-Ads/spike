@@ -3,9 +3,14 @@ import styled from 'styled-components'
 import Image from 'next/image'
 import { device } from '../../lib/utils/device'
 import { CDN } from '../../public/environment'
+import { useTranslation } from 'react-i18next'
 
-const StickyBanner: FunctionComponent = () =>   
-    <Fragment>
+const StickyBanner: FunctionComponent = () =>   {
+    
+    const { t } = useTranslation()
+    
+    return (
+        <Fragment>
         <Main>
             <div className="keywords left">
                 <span>Casino online</span>
@@ -22,13 +27,16 @@ const StickyBanner: FunctionComponent = () =>
                 />
             </div>
             <div className="legal-text">
-                <p>Il gioco e vietato ai minori e puo causare dipendenza patologica - probabilita di vincita </p>
+                <p>{t("Il gioco e vietato ai minori e puo causare dipendenza patologica - probabilita di vincita")} </p>
             </div>
             <div className="keywords right">
-                <span>Slot online</span>
+                <span>{t("Slot online")}</span>
             </div>
         </Main>
     </Fragment>
+    )
+}
+  
 
 const Main = styled.div`
     position: fixed;

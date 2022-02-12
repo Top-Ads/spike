@@ -58,7 +58,7 @@ const EmailSubcription = () => {
     return (
         <Fragment>
           <Main showLog={showLog}>
-            <p>{t("Ricevi aggiornamenti ed anticipazioni sui nuovi video e su bonus e")} <b>{t("promozio.")}</b></p>
+            <p>{t("Ricevi aggiornamenti ed anticipazioni sui nuovi video e su bonus e")} <b>{t("promozio. ")}</b></p>
 
             <CustomTextField onChange={setEmail} value={email} placeholder="Email" size={'small'}/>        
             <br/>
@@ -68,7 +68,7 @@ const EmailSubcription = () => {
               handleOnCheck={handleOnCheck}
               label={t("Dichiaro di aver compiuto 18 anni e di dare il mio consenso per") +
                     t("ricevere aggiornamenti ed antecipazioni su video ed offerte promozionali") +
-                    t("via email da casinosquad.com.")}/>
+                    t("via email da casinosquad.com. ")}/>
 
             <br/>
 

@@ -5,6 +5,9 @@ import { GlobalStyle, styledTheme } from "../lib/theme"
 import { Category } from "../lib/utils/constants"
 import { I18nextProvider } from 'react-i18next'
 import i18n from '../lib/i18n'
+import { showTranslations } from "translation-check"
+import i18next from "i18next"
+import { useRouter } from "next/router"
 
 
 interface IProps {
@@ -14,10 +17,16 @@ interface IProps {
 
 export default function App( {Component, pageProps}: IProps) {
     
+    const router = useRouter()
+
+    const translationUIPath = '/?showtranslations'
+
     useEffect(()=> {
         if ( localStorage.getItem(Category.FAVORITES) === null ) 
             localStorage.setItem(Category.FAVORITES, '[]')
-        
+
+        if (router.asPath === translationUIPath)
+            showTranslations(i18next)
     }, [])
 
     const ContextProvider: FunctionComponent = ({ children }) => {

@@ -6,6 +6,7 @@ import LazyLoad from 'react-lazyload'
 import { Bonus } from '../../../lib/schemas'
 import { replaceAll } from '../../../lib/utils/replaceAll'
 import { injectCDN } from '../../../lib/utils/injectCDN'
+import { useTranslation } from 'react-i18next'
 
 type Props = {
     data: Bonus 
@@ -16,6 +17,9 @@ type Props = {
 }
 
 const FreeBonusCard: FunctionComponent<Props> = ({data}) => { 
+
+    const { t } = useTranslation()
+
     const router = useRouter()
 
     const linkToBonus = () => {
@@ -43,7 +47,7 @@ const FreeBonusCard: FunctionComponent<Props> = ({data}) => {
                     <Info dangerouslySetInnerHTML={{__html: String(replaceAll(data.description, "+", "<br/>"))}}/> 
                 </Container>
 
-                <Button bgColor={data.backgroundColor}>SITO WEB</Button>
+                <Button bgColor={data.backgroundColor}>{t("SITO WEB")}</Button>
             </Main>
         </Fragment>
     ) 

@@ -26,6 +26,7 @@ import SlotCard from '../../../components/Cards/SlotCard'
 import GridLayout from '../../../components/Commons/GridLayout'
 import Divider from '../../../components/Commons/Divider'
 import { styledTheme } from '../../../lib/theme'
+import { useTranslation } from 'react-i18next'
 
 type PageProps = {
     data: Slot
@@ -48,6 +49,8 @@ const useStyles = makeStyles({
   })
 
 const SlotPage: FunctionComponent<PageProps> = ({data}) => {
+
+    const { t } = useTranslation()
 
     const classes = useStyles()
 
@@ -211,7 +214,7 @@ const SlotPage: FunctionComponent<PageProps> = ({data}) => {
                                         <td>
                                             { data?.volatility && 
                                                 <div>
-                                                    <span className="label">Volatilità
+                                                    <span className="label">{t("Volatilità")}
                                                         <Tooltip 
                                                             title={'La volatilità indica la frequenza con cui un gioco eroga vincita. Bassa = vincite frequenti ma basse. Alta = vincite rare ma di moltiplicatore elevato.'} 
                                                             classes={{ tooltip: classes.tooltip }} 
@@ -250,9 +253,9 @@ const SlotPage: FunctionComponent<PageProps> = ({data}) => {
                                         <td>
                                             { data?.maxLines && 
                                                 <div>
-                                                    <span className="label">Linee di gioco
+                                                    <span className="label">{t("Linee di gioco")}
                                                         <Tooltip 
-                                                            title={'Il numero massimo di linee di pagamento utilizzabili nel gioco.'} 
+                                                            title={('Il numero massimo di linee di pagamento utilizzabili nel gioco.')} 
                                                             classes={{ tooltip: classes.tooltip }} 
                                                             TransitionComponent={Zoom}
                                                             children={<InfoIcon className={classes.icon}/> }/>
@@ -291,7 +294,7 @@ const SlotPage: FunctionComponent<PageProps> = ({data}) => {
                 </Main>
 
                 <div className="layout-container">
-                    <h2 style={{textTransform: 'uppercase'}}> SLOT SIMILI A QUELLA CHE STAI GUARDANDO </h2>
+                    <h2 style={{textTransform: 'uppercase'}}> {("SLOT SIMILI A QUELLA CHE STAI GUARDANDO")} </h2>
                     <Divider/>
 
                     <GridContainer>

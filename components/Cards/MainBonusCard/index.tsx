@@ -7,6 +7,7 @@ import LazyLoad from 'react-lazyload'
 import { Bonus } from '../../../lib/schemas'
 import { replaceAll } from '../../../lib/utils/replaceAll'
 import { injectCDN } from '../../../lib/utils/injectCDN'
+import { useTranslation } from 'react-i18next'
 
 type Props = {
    data: Bonus 
@@ -22,6 +23,8 @@ type ThumbnailProps = {
 
 const MainBonusCard: FunctionComponent<Props> = ({data}) => { 
     
+    const { t } = useTranslation()
+
     const router = useRouter()
 
     const linkToBonus = () => {
@@ -53,17 +56,17 @@ const MainBonusCard: FunctionComponent<Props> = ({data}) => {
                     <div className="table-bonus">
                         { data.noDeposit !== '- - -' &&
                             <div className="row">
-                            <div className="deposito">Senza Deposito</div>
+                            <div className="deposito">{t("Senza Deposito")}</div>
                             <div className="value">{data.noDeposit}</div>
                         </div> }
                         { data.withDeposit !== '- - -' &&
                         <div className="row">
-                            <div className="deposito">Con Deposito</div>
+                            <div className="deposito">{t("Con Deposito")}</div>
                             <div className="value">{data.withDeposit}</div>
                         </div> }
                     </div>
                     
-                    <Button bgColor={data.backgroundColor}>SITO WEB</Button>
+                    <Button bgColor={data.backgroundColor}>{t("SITO WEB")}</Button>
 
                 </BonusInfo>
 
