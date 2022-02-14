@@ -63,7 +63,7 @@ const SearchHitReview: FunctionComponent<Props> = ({data}) => {
         <Fragment>
             <Main id="review-container" className="custom-scroll">
                 {
-                    data?.type !== 'producer' && 
+                    data && data?.type !== 'producer' && 
                     <Header> 
                         <Thumbnail type={data.type}>
                             <Image
