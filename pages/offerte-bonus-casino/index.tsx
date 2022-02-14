@@ -457,7 +457,7 @@ export async function getStaticProps() {
         StarCasinò: "http://record.affiliatelounge.com/_SEA3QA6bJTMP_fzV1idzxmNd7ZgqdRLk/135/",
         Starvegas: "https://www.starvegas.it/gmg/refer/61782b177358340001a18ac7",
         WinCasino: "https://www.vincipromo.it/wincasino/?mp=7f1d8788-3f9e-4111-b205-e49d29661715",
-        NetBet: "https://banners.livepartners.com/view.php?z=357155",
+        NetBet: "https://banners.livepartners.com/view.php?z=151484",
         GoldBet: "https://media.goldbetpartners.it/redirect.aspx?pid=5116&bid=1495",
         "888 Casino": "https://ic.aff-handler.com/c/43431?sr=1864253",
         "King Casino": "https://spikeslot.kingcasino.it",

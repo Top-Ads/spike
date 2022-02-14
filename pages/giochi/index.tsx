@@ -454,7 +454,7 @@ export async function getStaticProps() {
         LeoVegas: "https://ads.leovegas.com/redirect.aspx?pid=3708703&bid=14965",
         StarCasinò: "http://record.affiliatelounge.com/_SEA3QA6bJTMP_fzV1idzxmNd7ZgqdRLk/135/",
         WinCasino: "https://vincipromo.it/wincasino/?mp=42794b32-7604-49d2-92d0-8adf67a6b173",
-        NetBet: "https://banners.livepartners.com/view.php?z=357155",
+        NetBet: "https://banners.livepartners.com/view.php?z=151484",
         "King Casino": "http://cs.kingcasino.it/",
     }
 

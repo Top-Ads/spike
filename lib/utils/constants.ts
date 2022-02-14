@@ -57,7 +57,7 @@ export const PAGE_BONUSES = [
   Starvegas: "https://www.starvegas.it/gmg/refer/61782b177358340001a18ac7",
   WinCasino: "https://vincipromo.it/wincasino/?mp=42794b32-7604-49d2-92d0-8adf67a6b173",
   GoldBet: "https://media.goldbetpartners.it/redirect.aspx?pid=5116&bid=1495",
-  NetBet: "https://banners.livepartners.com/view.php?z=357155",
+  NetBet: "https://banners.livepartners.com/view.php?z=151484",
   "888 Casino": "https://ic.aff-handler.com/c/43431?sr=1864253",
   "King Casino": "http://cs.kingcasino.it/",
   Eurobet: "https://record.betpartners.it/_E_C7XwxgprAZV93hC2dJ_GNd7ZgqdRLk/113/",
