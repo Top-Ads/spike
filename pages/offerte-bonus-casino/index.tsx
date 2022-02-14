@@ -464,7 +464,7 @@ export async function getStaticProps() {
         Eurobet: "https://record.betpartners.it/_E_C7XwxgprAZV93hC2dJ_GNd7ZgqdRLk/113/",
         Betway: "https://betway.it/bwp/welcome-5gratis/it-it/?s=bw210475&a=AFF3009702735911860&utm_source=210475&utm_medium=Affiliate&utm_campaign=AFF3009702735911860",
         "Gioco Digitale": "https://mediaserver.entainpartners.com/renderBanner.do?zoneId=2031706",
-        "Snai": "https://affiliazioniads.snai.it/redirect.aspx?pid=29923&bid=2479",
+        "Snai": "https://informatoriads.snai.it/redirect.aspx?pid=30830&bid=2194",
         "Unibet": "https://b1.trickyrock.com/redirect.aspx?pid=74444446&bid=27508"
     }
       

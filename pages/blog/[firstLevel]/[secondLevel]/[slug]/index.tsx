@@ -189,7 +189,7 @@ export const getStaticPaths = async () => {
 
     const articlesQuery = /* GraphQL */ `
         query {
-            articles {
+            casinoSquadBlogArticles {
                 slug
                 main_argument {
                     slug
@@ -206,7 +206,7 @@ export const getStaticPaths = async () => {
         variables: {},
     })
 
-    const paths = articlesRequest.data.data.articles.map(
+    const paths = articlesRequest.data.data.casinoSquadBlogArticles.map(
         (article: Article) => ({
             params: {
                 firstLevel: article.main_argument.slug,
