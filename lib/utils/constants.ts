@@ -3,7 +3,7 @@ export enum Category {
 }
   
 export enum GridType {
-  SLOTS ,
+  SLOTS,
   GIOCHISLOTS,
   TOPBONUS,
   BONUS,

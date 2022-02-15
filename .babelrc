@@ -1,6 +1,6 @@
 {
     "presets": ["next/babel"],
     "plugins": [
-      ["styled-components", { "ssr": true }, "i18next-extract"]
+      ["styled-components", { "ssr": true }]
     ]
   }
