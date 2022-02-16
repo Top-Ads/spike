@@ -180,7 +180,7 @@ const SquadPage: FunctionComponent<PageProps> = ({pageBonusesData}) => {
 
                     <Container>
                         <Profile>
-                            <Name>Squad MR J</Name>
+                            <Name>MISTER J</Name>
 
                             <div>
                                 <Thumbnail>
@@ -197,23 +197,22 @@ const SquadPage: FunctionComponent<PageProps> = ({pageBonusesData}) => {
                                 </Thumbnail>
 
                                 <p>
-                                {t("Fra di voi ci sarà sicuramente qualche appassionato de “La casa de Papel”: ebbene, io sono il “Professore” del team Squad. ")}  <br/><br/>
+                                Tra tutti voi ci saranno sicuramente dei fan di “La Casa di Carta": beh, io sono il "Professor" della Squad.<br/>
 
-                                {t("Infatti, Mister J sta alla Squad come el Profesor sta a Tokyo, Berlino, Rio, etc. e sono in molti ad accostarmi anche ad Charlie di “2 uomini e 1/2”!")}<br/><br/>
+                                In effetti, Mister J è importante per la Squad, così come il Professore è importante per Tokyo, Berlino, Rio etc,<br/> <br/>
+                                e ci sono molte persone che mi considerano Charlie di "2 uomini e mezzo"!<br/><br/>
 
-                                {t("Nella vita mi occupo della gestione e della cura degli eventi di qualsiasi tipo: dalle discoteche ai concerti. Ovviamente, questo periodo è stato un po’ complesso a causa della pandemia. ")}
-                                {t("Posseggo vari e-commerce e ho lanciato diversi brand: da prodotti per la prima infanzia, a ritratti realistici e stilizzati. ")}<br/><br/>
-                                {t("Sinceramente, non ho una slot machine preferita. ")} 
-                                {t("Diciamo che se dovessi scegliere,")} 
-                                {t("opterei per")} <strong>{t("Vinci la gallina")}</strong>: {t("un gioco online che mi ha fatto ottenere la cospicua vincita di 100.000€!")}
-                                {t("In più, sfidare il lupo mi dà una carica di adrenalina pazzesca!")}
-                                {t(" Altre vincite da menzionare, le ho realizzate assieme a Pitbull alla slot machine")} <strong>Legacy of Dead</strong>; 
-                                {t("ma anche con Lucky e Chily alla slot digitale")} <strong>Sweet Bonanza</strong>.
-                                {t("Sono sicuro che presto sbancherò con Mr. Value!")}<br/><br/>
-                                {t("Come vi dicevo, sono stato accostato piacevolmente alla figura centrale della serie tv spagnola. ")}
-                                {t("In effetti, non è un caso che anche io abbia sempre pronto un piano - in questo caso una telefonata in diretta - per far sbancare il resto della Squad!")}<br/>
-                                {t("Quando qualcuno ha da dire sulle mie giocate, io risponderò con un secco: “I am mister J, shhh”. ")} 
-                                {t("E non imitatemi… non fatelo a casa!")}
+                                Nella mia vita mi occupo della gestione e della cura di ogni tipo di evento: dalle discoteche ai concerti. <br/>
+                                Tuttavia, ovviamente, questo periodo è stato un po' complicato a causa della pandemia.<br/>
+                                Possiedo vari e-commerce e ho lanciato diversi brand: dai prodotti per l'infanzia, ai ritratti realistici e stilizzati.<br/><br/>
+
+                                Ogni tanto faccio live streaming e tornei di poker con i miei amici del canale inglese; <br/>
+                                Mi piace passare del tempo con loro, così come con Pitbull e compagni, e adorano quando mi vesto da Capitan Canada o Batman perché è pura e sana "follia", <br/>
+                                ed è ancora meglio se quei momenti sono accompagnati da temi televisivi e molte belle canzoni!<br/>
+                                Direi che non ho proprio un gioco preferito, ma ricordo con piacere le mie vincite alla Big Bass Bonanza e al Crazy Time... <br/>
+                                Di solito cerco di regalare un po' di divertimento ai nostri followers e a Chily il gufo durante i nostri Bonus Hunt!<br/><br/>
+
+                                Anche se qualcuno ha qualcosa da dire sulle mie giocate, io risponderò con: "I’m Mister J, shhh". E non imitarmi, non farlo a casa!
 
                                 </p>
                             </div> 
@@ -308,6 +307,122 @@ const SquadPage: FunctionComponent<PageProps> = ({pageBonusesData}) => {
                             </a>
                         </SocialNetwork>
                     </Container>
+
+                    <Container>
+                        <Profile>
+                            <Name>TONYTNY</Name>
+
+                            <div>
+                                <Thumbnail>
+                                    <LazyLoad height={200} offset={200}>
+                                        <Image
+                                            alt={'Casino Squad Team | SQUAD MR J'}
+                                            src={`${CDN}/svg/no_img_available.svg`}
+                                            layout="responsive"
+                                            priority={true}
+                                            sizes={"30vw"}
+                                            width={550}
+                                            height={550}/> 
+                                    </LazyLoad>
+                                </Thumbnail>
+
+                                <p>
+                                Prepararsi per la detonazione....
+
+                                Yeeeeeaa... BOOM!!!! Mi chiamano Tony TNT per via della mia personalità esplosiva e dell'energia amplificata dal mio slogan "BOOM BAM!!!!" 
+                                Che è energia sufficiente per potenziare tutti e fare boom!<br/>
+
+                                Consiglio per il 2022: (Di' "BOOM BAM" non appena ti svegli per avere la massima energia per la giornata!)<br/><br/>
+
+
+                                Essendo stato coinvolto nel mondo dell'intrattenimento e della creazione di contenuti per molti anni, 
+                                amo lo streaming e il contatto con persone di tutto il mondo. <br/>
+                                Mi piace rappare e fare musica ed è per questo che è stato creato il nome Tony TNT e potresti ottenere il freestyle se fai un salto in streaming!<br/>
+
+                                In precedenza ero uno streamer su The Late Night Slots, Tony TNT era già conosciuto da Mr J ed è stato inserito nella Squad per aiutare a far saltare in aria il Canale Inglese! <br/><br/>
+
+                                Presentato al resto della Squad nel mio ambiente naturale, una festa, 
+                                Tony TNT ha suonato con la Squad e si è unito allo streaming di Live Casino Malta prima di unirsi ufficialmente alla Squad.<br/>
+
+                                Uno dei miei giochi preferiti deve essere "Dead Mans Trail" poiché credo che abbia una delle funzioni bonus più interessanti. <br/>
+                                Detiene una delle mie vincite più grandi che è di € 18,5k a 12300x. La mia vincita più grande alla slot va comunque a 'Evil Goblins', vincendo €20k a 20000x. <br/>
+                                La mia vittoria più grande in assoluto va a "Crazy Time" dove ho ottenuto una vincita di 2000 volte Pachinko € 50.000. 
+                                Tutte queste vittorie e molte altre sono arrivate in un breve lasso di tempo, entro 2 mesi spero di vincerne molte altre qui con Casino Squad!<br/>
+
+                                ...BOOM!!!!
+
+
+                                </p>
+                            </div> 
+                        </Profile>
+
+                        <SocialNetwork>
+                            <a target="_blank" rel="noopener noreferrer" href={'https://www.instagram.com/mister.j_17/'}>
+                                <InstagramIcon fontSize={'large'}/>
+                            </a>
+                        </SocialNetwork>
+                    </Container>
+
+                    <Container>
+                        <Profile>
+                            <Name>GARGAKEV</Name>
+
+                            <div>
+                                <Thumbnail>
+                                    <LazyLoad height={200} offset={200}>
+                                        <Image
+                                            alt={'Casino Squad Team | SQUAD MR J'}
+                                            src={`${CDN}/svg/no_img_available.svg`}
+                                            layout="responsive"
+                                            priority={true}
+                                            sizes={"30vw"}
+                                            width={550}
+                                            height={550}/> 
+                                    </LazyLoad>
+                                </Thumbnail>
+
+                                <p>
+                             
+                                {t("Ciao a tutti!")}<br/><br/>
+
+                                {t("Molti di voi mi conoscono come GargaKev, Reactoonz è sempre stato una slot che mi è stata a cuore..")} <br/>
+                                {t("Mi ha dato molti buoni successi negli ultimi 4 anni")}<br/>
+                                {t("Non è stato in grado di fornirmi le vincite del Garga che mi aspettavo, quindi sono stato in agguato ad aspettare e ora arriva Gigantoons (Reactoonz 3!)")} <br/>
+                                {t("Il nuovo garga e torneremo a sbancare di nuovo a Gargaland! Non ho giocato molto a Reactoonz")}<br/>
+                                {t("come volevo anche io perché è stato deludente.")}<br/><br/>
+
+                                {t("In questo momento sto concentrando la maggior parte della mia attenzione sullo streaming, ma faccio una varietà di cose sul lato dello streaming.")} <br/>
+                                {t("La mia prima volta che mi unisco alla Squad è arrivata tramite Tropix che è un amico e siamo andati al Casinò alcune volte e mi ha raccontato tutto ed è stato incredibile finora,")} 
+                                {t("la migliore community, emozioni positive. Ho incontrato il resto della Squad poco dopo alla settimana di Casino Malta, è stato molto divertente. ")} <br/>
+                                {t("Chily è un bravo Chef in cucina fa la miglior carbonara che abbia mai mangiato.")} <br/>
+                                {t(" Noi abbiamo la “turbo-sedia” in ufficio (Non c'è da stupirsi che abbiamo avuto la nostra più grande vittoria da novembre,")} 
+                                {t("quando Pitbull si è seduto sulla sedia. Fortunati con le fantastiche canzoni della Squad & Value con i migliori consigli sportivi.")}<br/><br/>
+
+                                {t("Ho avuto molti pazzi Bonus Hunt con Mister J, è eccitante e rischioso, e di sicuro sono stato vicino a un attacco di cuore diverse volte.")}<br/>
+                                {t("Ricompensa ad alto rischio, non puoi fare la storia se non osi.")}<br/><br/>
+
+                                {t("Alcuni dei miei più grandi successi 16020x in Mental e 100k Crazytime vinti con Mister J.")}<br/><br/>
+
+                                {t("Gioco alle slot da molto tempo e non ci sono molte persone là fuori che sanno tanto di slot quanto me.")}<br/>
+                                {t("Alcuni dei miei punti di forza sono scommettere bonus poiché sono molto bravo a sapere come battere una scommessa al meglio e quali sono le slot su cui giocare in quel momento.")} <br/><br/>
+
+                                {t("Il mio provider preferito è No Limit City, anche se è molto rischioso.")} 
+                                {t("Ma dal momento che ho giocato così tante slot sono molto entusiasta di provare le nuove versioni e ho alcuni giochi a cui torno ma mi piace")} 
+                                {t("cambiare il mio provider di settimana in settimana per provare diverse slot, ma cambio sempre con un po' di giochi dal vivo qua e là.")}<br/>
+
+                                {t("Unisciti a me nello stream :)")}
+
+                                </p>
+                            </div> 
+                        </Profile>
+
+                        <SocialNetwork>
+                            <a target="_blank" rel="noopener noreferrer" href={'https://www.instagram.com/mister.j_17/'}>
+                                <InstagramIcon fontSize={'large'}/>
+                            </a>
+                        </SocialNetwork>
+                    </Container>
+
                 </Main>
 
             </div>
