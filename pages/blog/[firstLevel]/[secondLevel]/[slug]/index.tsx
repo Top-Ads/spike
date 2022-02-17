@@ -187,6 +187,7 @@ const MarkdownStyleProvider = styled.div`
 export const getStaticPaths = async () => {
     const aquaClient = new AquaClient(BLOG_API)
 
+    //TODO: Change content articles to casinoSquadBlogArticles when graphql response fixed
     const articlesQuery = /* GraphQL */ `
         query {
             articles {
@@ -249,9 +250,9 @@ export const getStaticProps = async (ctx: GetStaticPropsContext) => {
 
     return {
         props: {
-            article: article.data.data.articles[0],
+            article: article.data.data.casinoSquadBlogArticles[0],
             navbarData: navbarData.data.data.navbar,
-            lastFive: lastFive.data.data.articles,
+            lastFive: lastFive.data.data.casinoSquadBlogArticles,
         },
         revalidate: 60,
     }
@@ -263,7 +264,7 @@ const ARTICLE_QUERY = /* GraphQL */ `
         $secondaryArgumentSlug: String
         $articleSlug: String
     ) {
-        articles(
+        casinoSquadBlogArticles(
             where: {
                 main_argument: { slug: $mainArgumentSlug }
                 secondaryArgument: { slug: $secondaryArgumentSlug }

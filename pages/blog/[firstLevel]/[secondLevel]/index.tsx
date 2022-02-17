@@ -125,7 +125,7 @@ export const getStaticProps = async (ctx: GetStaticPropsContext) => {
 
     const r = await aquaClient.query({
         query: `query($mainArgumentSlug: String, $secondArgumentSlug : String){
-             articles(
+            casinoSquadBlogArticles(
                     sort: "published_at:desc"
                     where: {
                         main_argument: {
@@ -162,7 +162,7 @@ export const getStaticProps = async (ctx: GetStaticPropsContext) => {
         {
             argumentName: '',
             argumentSlug: '',
-            articles: r.data.data.articles,
+            articles: r.data.data.casinoSquadBlogArticles,
         },
     ]
 
@@ -251,7 +251,7 @@ export const getStaticProps = async (ctx: GetStaticPropsContext) => {
             secondLevelName,
             secondLevelSlug: secondLevel,
             navbarData: navbarData.data.data.navbar,
-            lastFive: lastFive.data.data.articles,
+            lastFive: lastFive.data.data.casinoSquadBlogArticles,
             args,
         },
         revalidate: 60,
