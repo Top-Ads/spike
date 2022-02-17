@@ -93,7 +93,6 @@ const CustomTextField: FunctionComponent<Props> = (props) => {
                     size={size}
                     variant="outlined"
                     placeholder={placeholder ? placeholder : '' }
-                    value={value}
                     onChange={handleChange}
                     onFocus={ () => handleOnFocus ? handleOnFocus() : ''}
                     onBlur={ () => handleOnBlur ? handleOnBlur() : ''}
