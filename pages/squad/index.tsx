@@ -310,19 +310,19 @@ const SquadPage: FunctionComponent<PageProps> = ({pageBonusesData}) => {
 
                     <Container>
                         <Profile>
-                            <Name>TONYTNY</Name>
+                            <Name>TONYTNT</Name>
 
                             <div>
                                 <Thumbnail>
                                     <LazyLoad height={200} offset={200}>
                                         <Image
                                             alt={'Casino Squad Team | SQUAD MR J'}
-                                            src={`${CDN}/svg/no_img_available.svg`}
+                                            src={`${CDN}/jpeg/squad/tonytnt_.jpg`}
                                             layout="responsive"
                                             priority={true}
                                             sizes={"30vw"}
-                                            width={550}
-                                            height={550}/> 
+                                            width={318}
+                                            height={324}/> 
                                     </LazyLoad>
                                 </Thumbnail>
 
@@ -357,7 +357,7 @@ const SquadPage: FunctionComponent<PageProps> = ({pageBonusesData}) => {
                         </Profile>
 
                         <SocialNetwork>
-                            <a target="_blank" rel="noopener noreferrer" href={'https://www.instagram.com/mister.j_17/'}>
+                            <a target="_blank" rel="noopener noreferrer" href={'https://www.instagram.com/tonytnt9/?utm_medium=copy_link'}>
                                 <InstagramIcon fontSize={'large'}/>
                             </a>
                         </SocialNetwork>
@@ -372,12 +372,12 @@ const SquadPage: FunctionComponent<PageProps> = ({pageBonusesData}) => {
                                     <LazyLoad height={200} offset={200}>
                                         <Image
                                             alt={'Casino Squad Team | SQUAD MR J'}
-                                            src={`${CDN}/svg/no_img_available.svg`}
-                                            layout="responsive"
+                                            src={`${CDN}/jpeg/squad/gargakev_.jpg`}
+                                            layout="intrinsic"
                                             priority={true}
                                             sizes={"30vw"}
-                                            width={550}
-                                            height={550}/> 
+                                            width={585}
+                                            height={648}/> 
                                     </LazyLoad>
                                 </Thumbnail>
 
@@ -417,7 +417,7 @@ const SquadPage: FunctionComponent<PageProps> = ({pageBonusesData}) => {
                         </Profile>
 
                         <SocialNetwork>
-                            <a target="_blank" rel="noopener noreferrer" href={'https://www.instagram.com/mister.j_17/'}>
+                            <a target="_blank" rel="noopener noreferrer" href={'https://instagram.com/gargakev?utm_medium=copy_link'}>
                                 <InstagramIcon fontSize={'large'}/>
                             </a>
                         </SocialNetwork>
