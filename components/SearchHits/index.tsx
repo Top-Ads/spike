@@ -45,6 +45,22 @@ const SearchHits: FunctionComponent<Props> = ({data, mouseOnHit, searchReviewNam
             link && router.push(link)
     }
 
+    const getImgWidth = (type: 'slot' | 'bonus' | 'producer' | 'blog'): number => {
+        if(type === 'slot')
+            return 1200
+        else if(type === 'blog')
+            return 1079
+        else  return 150
+    }
+
+    const getImgHeight = (type: 'slot' | 'bonus' | 'producer' | 'blog'): number => {
+        if(type === 'slot')
+            return 675
+        else if(type === 'blog')
+            return 607
+        else  return 150
+    }
+    
     useEffect(() => {
         setSlotTypeIndex(data.findIndex( (item) => item.type === 'slot'))
         setBonusTypeIndex(data.findIndex( (item) => item.type === 'bonus'))
@@ -71,8 +87,8 @@ const SearchHits: FunctionComponent<Props> = ({data, mouseOnHit, searchReviewNam
                                         layout="responsive"
                                         sizes={"30vw"}
                                         priority={true}
-                                        width={item.type === 'slot' ? 1200 : 150}
-                                        height={item.type === 'slot' ? 675 : 150}/>
+                                        width={getImgWidth(item.type)}
+                                        height={getImgHeight(item.type)}/>
                                 </Thumbnail>
 
                                 <Info>
@@ -80,7 +96,7 @@ const SearchHits: FunctionComponent<Props> = ({data, mouseOnHit, searchReviewNam
                                     { item.rating && <Rating><RatingStars rating={item.rating}/></Rating> }
                                 </Info>
 
-                                { searchReviewName === item.name && <NavigateNextOutlinedIcon fontSize="small"/> }
+                                {(searchReviewName === item.name || searchReviewName === item.title) && <NavigateNextOutlinedIcon fontSize="small"/> }
                             </Container>
                         
                         </Fragment>
@@ -121,7 +137,7 @@ const Container = styled.div<ContainerProp>`
     padding: 10px 5px;
     border-top: 1px solid ${({theme}) => theme.palette.background};
     cursor: pointer;
-    background-color: ${({highlight}) => highlight ? 'rgba(0, 0, 0, 0.1)' : 'none' };
+    
 
     &:hover {
         background-color: rgba(0, 0, 0, 0.1);
@@ -129,7 +145,7 @@ const Container = styled.div<ContainerProp>`
 `
 
 const Thumbnail = styled.div<ThumbnailProp>`
-    width: ${({type}) => type === 'slot' ? '90px' : type === 'blog' ? '80px' : '60px;'};
+    width: ${({type}) => type === 'slot' ? '90px' : type === 'blog' ? '100px' : '60px;'};
     border-radius: ${({theme}) => theme.button.borderRadius};
     overflow: hidden;
 `
@@ -147,7 +163,7 @@ const Name = styled.div`
    text-transform: uppercase;
    color: ${({theme}) => theme.text.color.black};
    font-size: 12px;
-   width: 75%;
+   width: 230px;
 `
 
 const Rating = styled.div `

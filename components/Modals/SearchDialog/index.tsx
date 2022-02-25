@@ -200,7 +200,7 @@ const SearchDialog: FunctionComponent<Props> = ({open, setOpen}) => {
 
             { showSearchResult && 
               <DialogContent dividers>
-                <SearchHits data={searchResult} mouseOnHit={handleMouseOnHit} searchReviewName={searchReview?.name}/>
+                <SearchHits data={searchResult} mouseOnHit={handleMouseOnHit} searchReviewName={searchReview?.name || searchReview?.title}/>
                 <SearchHitReview data={searchReview}/>
               </DialogContent>
             }
