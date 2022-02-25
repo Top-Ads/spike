@@ -17,7 +17,7 @@ i18n
         translation: en
       }
     },
-    fallbackLng: "en", // use en if detected lng is not available
+    fallbackLng: "it", // use en if detected lng is not available
     saveMissing: true, // send not translated keys to endpoint
     interpolation: {
         escapeValue: false // react already safes from xss

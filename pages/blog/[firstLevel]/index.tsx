@@ -223,62 +223,62 @@ export const getStaticProps = async (ctx: GetStaticPropsContext) => {
                     return {
                         argumentName: 'Nuove Slot',
                         argumentSlug: 'nuove-slot',
-                        articles: response.data.data.articles,
+                        articles: response.data.data.casinoSquadBlogArticles,
                     }
                 if (i === 1)
                     return {
                         argumentName: 'Slot Machine Online',
                         argumentSlug: 'slot-machine-online',
-                        articles: response.data.data.articles,
+                        articles: response.data.data.casinoSquadBlogArticles,
                     }
                 if (i === 2)
                     return {
                         argumentName: 'Casino Live',
                         argumentSlug: 'casino-live',
-                        articles: response.data.data.articles,
+                        articles: response.data.data.casinoSquadBlogArticles,
                     }
                 if (i === 3)
                     return {
                         argumentName: 'Scommesse',
                         argumentSlug: 'scommesse',
-                        articles: response.data.data.articles,
+                        articles: response.data.data.casinoSquadBlogArticles,
                     }
                 if (i === 4)
                     return {
                         argumentName: 'Black Jack',
                         argumentSlug: 'black-jack',
-                        articles: response.data.data.articles,
+                        articles: response.data.data.casinoSquadBlogArticles,
                     }
                 if (i === 5)
                     return {
                         argumentName: 'Roulette',
                         argumentSlug: 'roulette',
-                        articles: response.data.data.articles,
+                        articles: response.data.data.casinoSquadBlogArticles,
                     }
                 if (i === 6)
                     return {
                         argumentName: 'Bingo',
                         argumentSlug: 'bingo',
-                        articles: response.data.data.articles,
+                        articles: response.data.data.casinoSquadBlogArticles,
                     }
                 if (i === 7)
                     return {
                         argumentName: 'Gratta e vinci',
                         argumentSlug: 'gratta-e-vinci',
-                        articles: response.data.data.articles,
+                        articles: response.data.data.casinoSquadBlogArticles,
                     }
                 if (i === 8)
                     return {
                         argumentName: 'Scommesse Virtuali',
                         argumentSlug: 'scommesse-virtuali',
-                        articles: response.data.data.articles,
+                        articles: response.data.data.casinoSquadBlogArticles,
                     }
 
                 if (i === 9)
                     return {
                         argumentName: 'Poker',
                         argumentSlug: 'poker',
-                        articles: response.data.data.articles,
+                        articles: response.data.data.casinoSquadBlogArticles,
                     }
 
                 return undefined
@@ -287,7 +287,7 @@ export const getStaticProps = async (ctx: GetStaticPropsContext) => {
     } else {
         const r = await aquaClient.query({
             query: `query($mainArgumentSlug: String){
-                articles(
+                casinoSquadBlogArticles(
                     sort: "published_at:desc" 
                     where: {
                     main_argument: {
@@ -320,7 +320,7 @@ export const getStaticProps = async (ctx: GetStaticPropsContext) => {
             {
                 argumentName: '',
                 argumentSlug: '',
-                articles: r.data.data.articles,
+                articles: r.data.data.casinoSquadBlogArticles,
             },
         ]
     }
@@ -360,7 +360,7 @@ export const getStaticProps = async (ctx: GetStaticPropsContext) => {
             firstLevel,
             firstLevelName,
             navbarData: navbarData.data.data.navbar,
-            lastFive: lastFive.data.data.articles,
+            lastFive: lastFive.data.data.casinoSquadBlogArticles,
             args,
         },
         revalidate: 180,

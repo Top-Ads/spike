@@ -189,7 +189,7 @@ export const getStaticPaths = async () => {
 
     const articlesQuery = /* GraphQL */ `
         query {
-            articles {
+            casinoSquadBlogArticles {
                 slug
                 main_argument {
                     slug
@@ -206,7 +206,7 @@ export const getStaticPaths = async () => {
         variables: {},
     })
 
-    const paths = articlesRequest.data.data.articles.map(
+    const paths = articlesRequest.data.data.casinoSquadBlogArticles.map(
         (article: Article) => ({
             params: {
                 firstLevel: article.main_argument.slug,
@@ -249,9 +249,9 @@ export const getStaticProps = async (ctx: GetStaticPropsContext) => {
 
     return {
         props: {
-            article: article.data.data.articles[0],
+            article: article.data.data.casinoSquadBlogArticles[0],
             navbarData: navbarData.data.data.navbar,
-            lastFive: lastFive.data.data.articles,
+            lastFive: lastFive.data.data.casinoSquadBlogArticles,
         },
         revalidate: 60,
     }
@@ -263,7 +263,7 @@ const ARTICLE_QUERY = /* GraphQL */ `
         $secondaryArgumentSlug: String
         $articleSlug: String
     ) {
-        articles(
+        casinoSquadBlogArticles(
             where: {
                 main_argument: { slug: $mainArgumentSlug }
                 secondaryArgument: { slug: $secondaryArgumentSlug }
