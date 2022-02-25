@@ -11,7 +11,7 @@ const useStyles = makeStyles<Theme, Props>(() =>
   createStyles({
     root: {
       flexGrow: 1,
-      margin: '10px',
+      margin: ({gridType}) => gridType === GridType.PRODUCER ? '10px 0px' : '10px',
       width: ({width, gridType}) => width ? width : gridType === GridType.SLOTS ? '45%': 'fill-available',
 
       [`@media ${device.tablet}`]: {
