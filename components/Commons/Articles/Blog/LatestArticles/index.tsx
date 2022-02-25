@@ -39,9 +39,9 @@ export const LatestArticles: FunctionComponent<{ last: Article[] }> = ({
                                 <p className='title'>{article.title}</p>
                                 <div className='published_at'>
                                     {t("Pubblicato il")}
-                                        <div style={{textTransform: 'capitalize', marginLeft: '5px'}}>
+                                        <span style={{textTransform: 'capitalize', marginLeft: '5px'}}>
                                             { article.published_at && format(new Date(article.published_at), 'dd MMM yyyy', { locale: italianLocale }).toString()} 
-                                        </div>
+                                        </span>
                                 </div>
                             </div>
                         </div>

@@ -32,7 +32,7 @@ export const MainArticleCard: FunctionComponent<{ data: Article }> = ({
                     <p>{ellipsize(data.description, 150)}</p>
                     <div className='published-section'>
                         <div className='divider' />
-                        <p className='published_at'>
+                        <div className='published_at'>
                          {data.published_at && 
                             <Fragment>
                                 Pubblicato il
@@ -41,7 +41,7 @@ export const MainArticleCard: FunctionComponent<{ data: Article }> = ({
                                 </div>
                             </Fragment>
                         }
-                        </p>
+                        </div>
                     </div>
                 </div>
             </ArticleCardContainer>
@@ -121,7 +121,7 @@ export const ArticleCardContainer = styled.div`
             right: 10px;
             width: 95%;
             text-align: right;
-            height: 50px;
+            height: 40px;
             
             .divider {
                 width: 100%;

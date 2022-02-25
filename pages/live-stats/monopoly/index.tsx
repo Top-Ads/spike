@@ -320,12 +320,13 @@ export async function getServerSideProps() {
     const dataStatsResponse  = await axios.get(`${APISOCKET.MONOPOLY}/api/data-for-the-last-hours/24h`)
     const dataSpinsResponse  = await axios.get(`${APISOCKET.MONOPOLY}/api/get-latest/15`)
 
-    const PAGE_BONUSES = ["LeoVegas", "888 Casino", "StarCasinò", "Unibet"]
+    const PAGE_BONUSES = ["LeoVegas", "888 Casino", "StarCasinò", "WinCasino", "Unibet"]
 
     const pageBonusesRemapping: any = {
         LeoVegas: "https://ads.leovegas.com/redirect.aspx?pid=3708703&bid=14965",
         "888 Casino": "https://ic.aff-handler.com/c/43431?sr=1864253",
         StarCasinò: "http://record.affiliatelounge.com/_SEA3QA6bJTMP_fzV1idzxmNd7ZgqdRLk/135/",
+        WinCasino: "https://vincipromo.it/wincasino/?mp=42794b32-7604-49d2-92d0-8adf67a6b173",
         Unibet: "https://b1.trickyrock.com/redirect.aspx?pid=74444446&bid=27508"
     }
 
