@@ -349,7 +349,7 @@ const GridContainer = styled.div`
 `
 
 const Thumbnail = styled.div`
-    width: 350px;
+    width: 450px;
     margin: auto;
 
     @media ${device.mobileL} {  width: 100%; }
