@@ -164,11 +164,6 @@ const ArgumentListContainer = styled.div`
     display: flex;
     overflow: auto;
     padding: 5px;
-
-    a:last-child div {
-        margin-right: 0;
-    }
-
 `
 
 export default ArgumentList

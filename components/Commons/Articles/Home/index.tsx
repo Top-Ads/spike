@@ -104,7 +104,7 @@ const HomeArticle: FunctionComponent<Props> = ({mainBonuses, freeBonuses}) => {
                     <Thumbnail id="adm" style={{float: 'left', marginRight: '30px'}}>
                         <LazyLoad height={85} offset={300}>
                             <Image
-                                alt="image not available"
+                                alt="adm"
                                 src={`${CDN}/svg/adm.svg`}
                                 layout="responsive"
                                 priority={true}

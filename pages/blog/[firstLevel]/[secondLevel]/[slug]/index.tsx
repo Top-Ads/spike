@@ -14,6 +14,7 @@ import { GetStaticPropsContext } from 'next'
 import { BLOG_API } from '../../../../../public/environment'
 import { styledTheme } from '../../../../../lib/theme'
 import { device } from '../../../../../lib/utils/device'
+import AuthorCard from '../../../../../components/Cards/AuthorCard'
 
 // @ts-ignore
 // const ReactMarkdown = dynamic(() => import('react-markdown'))
@@ -77,7 +78,13 @@ const index: FunctionComponent<Iindex> = ({
                                 {article.content}
                             </Markdown>
                         </MarkdownStyleProvider>
+
+                        { article.author && <AuthorCard author={article.author}/> }
+
                     </ArticleContainer>
+                    
+                    
+
                 </div>
                 <div className='side-column'>
                     <SideBanners />
@@ -282,10 +289,17 @@ const ARTICLE_QUERY = /* GraphQL */ `
                 slug
                 name
             }
-
             secondaryArgument {
                 slug
                 name
+            }
+            author {
+                id
+                name
+                picture {
+                  id
+                }
+                email
             }
         }
     }
