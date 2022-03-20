@@ -7,8 +7,8 @@ export const SideBanners: FunctionComponent = () => {
         <SideBannersContainer>
             <div className='first-banner-wrapper'>
                 <Image
-                    width={290}
-                    height={170}
+                    width={350}
+                    height={210}
                     quality={100}
                     src='/images/banners/wc-banner-1.jpg'
                     alt='wincasino candyland banner'
@@ -16,8 +16,8 @@ export const SideBanners: FunctionComponent = () => {
             </div>
             <Image
                 onClick={() => window.open('https://www.wincasino.it/')}
-                width={290}
-                height={170}
+                width={350}
+                height={210}
                 quality={100}
                 src='/images/banners/wc-banner-2.jpg'
                 alt='wincasino register banner'

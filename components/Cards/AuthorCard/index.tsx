@@ -15,26 +15,31 @@ const AuthorCard: FunctionComponent<Props> = ({author}) => {
         <Fragment>
             <Main>
 
-                <div className='title'>About Me</div>
 
-                <div className="divider"></div>
-
-                <div className='profile'>
-                    <div className='picture'>
-                        <Image
-                            src={author.picture.url ? author.picture.url : `${CDN}/svg/no_img_available.svg`}
-                            alt={author.name}
-                            width={author.picture.width ? author.picture.width : '100px'}
-                            height={author.picture.height ? author.picture.height : '100px'}
-                        />
-                    </div>
-
-                    <div className='info'>
-                        <span>{author.name}</span>
-                        <span>{author.email}</span>
-                        <span className='more-article'>more articles</span>
-                    </div>
+            <div className='header'>
+                <div className='logo'>
+                    <Image
+                        src={author.picture.url ? author.picture.url : `${CDN}/png/logo_white.png`}
+                        alt={author.name}
+                        width={'1000px'}
+                        height={'1000px'}/>
                 </div>
+
+                <div className='author-name'>About {author.name}</div>
+
+            
+            </div>
+
+
+            <div className='author-info'>
+              
+                <span>Title: Blogger</span>
+                <span>Email: {author.email}</span>
+                <span className='more-article'>more articles from this author</span>
+                <ul>
+                    
+                </ul>
+            </div>
                
             </Main>
         </Fragment>
@@ -42,19 +47,32 @@ const AuthorCard: FunctionComponent<Props> = ({author}) => {
 } 
 
 const Main = styled.div`
-    margin-top: 1rem;
+    margin-top: 2rem;
     background: rgba(226,185,109,1);
     padding: 0 0.7rem;
     border-radius: 6px;
     display: flex;
     flex-direction: column;
-    width: fit-content;
     color: #fff;
+    width: 100%;
+    position: sticky;
+    top: 20px;
 
-    .title {
-        margin: auto 1rem;
-        padding: 3px 0px 0px;
-        font-weight: bold;
+    .header {
+        display: flex;
+        height: 45px;
+        align-items: center;
+
+        .logo {
+            width: 45px;
+            height: inherit;
+        }
+
+        .author-name {
+            margin: auto 1rem;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
     }
 
     .divider {
@@ -64,30 +82,17 @@ const Main = styled.div`
         height: 1px;
     }
 
-    .profile {
+    .author-info {
         display: flex;
+        flex-direction: column;
+        margin: 1rem;
+        position: relative;
 
-        .picture {
-            width: 100px;
-            height: 100px;
-            background: #fff;
-            margin: 1rem;
-            border: 2px solid #fff;
-        }
-
-        .info {
-            display: flex;
-            flex-direction: column;
-            margin: 1rem;
-            position: relative;
-
-            .more-article {
-                position: absolute;
-                bottom: 0;
-                right: 0;
-                border-bottom: 1px solid;
-                cursor: pointer;
-            }
+        .more-article {
+            width: fit-content;
+            margin-top: 1rem;
+            border-bottom: 1px solid;
+            cursor: pointer;
         }
     }
 `

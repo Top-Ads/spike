@@ -56,7 +56,6 @@ const index: FunctionComponent<Iindex> = ({
         <Layout >
             <HomeContentContainer className="layout-container">
                 <div className='main-column'>
-
                     <ArticleContainer>
                         <Image
                             width={400}
@@ -79,16 +78,15 @@ const index: FunctionComponent<Iindex> = ({
                             </Markdown>
                         </MarkdownStyleProvider>
 
-                        { article.author && <AuthorCard author={article.author}/> }
-
                     </ArticleContainer>
-                    
-                    
-
                 </div>
+
                 <div className='side-column'>
                     <SideBanners />
+
                     <LatestArticles last={lastFive} />
+
+                    { article.author && <AuthorCard author={article.author}/> }
                 </div>
             </HomeContentContainer>
         </Layout>
@@ -300,6 +298,11 @@ const ARTICLE_QUERY = /* GraphQL */ `
                   id
                 }
                 email
+                casino_squad_blog_articles {
+                    title
+                    slug
+                    published_at
+                }
             }
         }
     }
