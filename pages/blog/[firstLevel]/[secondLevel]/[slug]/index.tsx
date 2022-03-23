@@ -299,9 +299,27 @@ const ARTICLE_QUERY = /* GraphQL */ `
                 }
                 email
                 casino_squad_blog_articles {
+                    id
                     title
+                    description
+                    content
                     slug
+                    image {
+                        url
+                        alternativeText
+                    }
+                    main_argument {
+                        name
+                        slug
+                    }
+                    secondaryArgument {
+                        name
+                        slug
+                    }
                     published_at
+                    author {
+                        id
+                    }
                 }
             }
         }

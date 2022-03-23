@@ -224,6 +224,7 @@ export interface Writer {
   name: string
   picture: UploadFile
   email: string
+  casino_squad_blog_articles: Article[]
 }
 
 export interface UploadFile { 
