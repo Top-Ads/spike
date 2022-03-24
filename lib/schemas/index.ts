@@ -236,12 +236,6 @@ export interface UploadFile {
     url: string
 }
 
-export interface HomeData {
-    mainArticle: Article
-    secondArticle: Article
-    thirdArticle: Article
-}
-
 export interface Banner {
     link: string
     image: StrapiImage
