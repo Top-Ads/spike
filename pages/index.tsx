@@ -102,9 +102,17 @@ const IndexPage: FunctionComponent<PageProps> = (props) => {
                 <li>{t("Provare gratis ogni tipo di slot machine. ")}</li>
               </ul>
             <br/>
-            <Button onClick={ () => router.push('/giochi')}>
-                  <span>{t("lista completa delle slot")}</span>
-            </Button>
+
+            <div className='header-buttons'>
+              <Button onClick={ () => router.push('/giochi')}>
+                    <span>{t("lista completa delle slot")}</span>
+              </Button>
+
+              <Button onClick={ () => router.push('/offerte-bonus-casino')}>
+                    <span>{t("lista delle bonus")}</span>
+              </Button>
+            </div>
+
           </div>
 
           <CasinoInfo>
@@ -240,6 +248,11 @@ const HeaderContainer = styled.div`
   padding: 25px 10%;
   background-image: linear-gradient(0deg,#e2b96d 0%,#e0c685 50%);
   
+  .header-buttons {
+    display: flex;
+    justify-content: space-evenly;
+  }
+
   h1 { 
     color: #fff;
     margin-top: 0;
