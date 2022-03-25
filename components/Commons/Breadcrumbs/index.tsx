@@ -60,7 +60,7 @@ const CustomBreadcrumbs: FunctionComponent = ({}) => {
   const [crumbs, setCrumbs] = useState<[Crumb]>()
   const [show, setShow] = useState<boolean>(true)
 
-  const inactiveLinks = ['slot', 'live-stats', 'software']
+  const inactiveLinks = ['slot', 'software']
 
   useEffect(() => {
     const segmentsPath = router.asPath.split("/")
