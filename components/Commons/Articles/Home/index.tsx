@@ -44,13 +44,20 @@ const HomeArticle: FunctionComponent<Props> = ({mainBonuses, freeBonuses}) => {
                         </LazyLoad>
                     </Thumbnail>
                     <p>
-                    {t("Ti piacciono le slot machine online? Vorresti esplorare tutte le dimensioni di questi giochi, senza rischiare di perderci nulla? Bene: sei nel posto giusto. ")}<br/>
-                    {t("Infatti su casinosquad.com hai una vasta scelta di slot online gratis e non solo. Potrai provare tante dimensioni del gioco digitale, sperimentando vari giochi da casinò. ")}<br/>
-                    {t("Abbiamo a disposizione centinaia di giochi, forniti dai migliori provider. ")}<br/>
-                    {t("Sì, hai capito bene: avrai la possibilità di giocare e basta, allenarti alle slot machine gratis online, in modo da esplorarle e imparare a conoscere le loro caratteristiche peculiari. ")}
-                    {t("In effetti, osservare come si comportano, provare i bonus e scoprire come e quanto pagano, è davvero importante prima di scommettere soldi veri. ")}<br/>
-                    {t("Su Casino Squad potrai individuare in anteprima, ogni segreto delle nuove slot rilasciate sul mercato,")} 
-                    {t("ma anche provarle personalmente e scegliere quali salvare o mettere tra le tue preferite. ")}
+                    Ti piacciono le slot machine online? Vorresti esplorare tutte le dimensioni di questi giochi, senza rischiare di perdere? Bene: sei nel posto giusto.
+                    <br/>
+                    Infatti su casinosquad.it hai una vasta scelta di slot online gratis e non solo. 
+                    <br/>
+                    Potrai provare tante dimensioni del gioco digitale, sperimentando vari giochi da casinò.
+                    Abbiamo a disposizione centinaia di giochi, forniti dai migliori provider.
+                    <br/>
+                    Sì, hai capito bene: avrai la possibilità di giocare e allenarti alle slot machine gratis online, 
+                    in modo da esplorarle e imparare a conoscere le loro caratteristiche peculiari. 
+                    <br/>
+                    In effetti, osservare come si comportano, provare i bonus e scoprire come e quanto pagano, è davvero importante prima di scommettere soldi veri.
+                    Su Casino Squad potrai individuare, in anteprima, ogni segreto delle nuove slot rilasciate sul mercato, 
+                    ma anche provarle personalmente e scegliere quali salvare o mettere tra le tue preferite.
+
                     </p>
                 
                 </div>
@@ -115,18 +122,23 @@ const HomeArticle: FunctionComponent<Props> = ({mainBonuses, freeBonuses}) => {
                         </LazyLoad>
                     </Thumbnail>
                     <p>
-                    {t("Stai tranquillo, puoi giocare serenamente perché il gioco da casinò è legale in Italia, ma bisogna fare delle precisazioni. ")}<br/>
-                    {t("Anche se il concetto di legalità, include i casinò digitali, bisogna fare attenzione al fatto che la piattaforma di gioco abbia la licenza. ")}<br/>
-                    {t("Infatti, i casinò di gioco online possono operare se hanno una licenza rilasciata dalle autorità italiane. ")} <br/>
-                    {t("In effetti, dal 3 dicembre 2012 le slot online AAMS-ADM sono disponibili. ")}
-                    {t("Ciò significa la possibilità di giocare legalmente e in serenità, alle slot machine online almeno sui siti certificati. ")}<br/>
-                    {t("Stiamo parlando dei casinò online autorizzati dall'Agenzia delle Dogane e dei Monopoli. ")}<br/>
-                    {t("Questo, affinché gli amanti delle slot digitali, abbiano la possibilità di giocare da desktop, ma anche da mobile, grazie alla varietà dell’offerta dei titoli che sono continuamente aggiornati. ")}
-                    {t("Il pubblico appassionato del gioco online, è variegato - dai principianti ai professionisti. ")} <br/>
-                    {t("Forse non sai che le slot machine nei casinò online italiani AAMS-ADM hanno una posizione di pregio. Infatti, sono al primo posto al mondo, per qualità, generosità e il livello di intrattenimento. ")} 
-                    <br/><br/>
-                    {t("Vuoi scoprire i migliori casino legali con slot machine AAMS-ADM? Ecco qui un confronto. ")}
-
+                    Stai tranquillo, puoi giocare serenamente perché il gioco da casinò è legale in Italia, ma bisogna fare delle precisazioni.
+                    <br/>
+                    Anche se il concetto di legalità include i casinò digitali, bisogna verificare che la piattaforma di gioco abbia la licenza.
+                    <br/>
+                    Infatti, i casinò di gioco online possono operare se hanno una licenza rilasciata dalle autorità italiane.
+                    <br/>
+                    In effetti, dal 3 dicembre 2012 le slot online AAMS-ADM sono disponibili. Ciò comporta la possibilità di giocare, legalmente e in serenità, alle slot machine online almeno sui siti certificati.
+                    Stiamo parlando dei casinò online autorizzati dall'Agenzia delle Dogane e dei Monopoli.
+                    <br/>
+                    Questo, affinché gli amanti delle slot digitali abbiano la possibilità di giocare da desktop, ma anche da mobile, grazie alla varietà dell’offerta dei titoli che sono continuamente aggiornati. 
+                    <br/>
+                    Il pubblico appassionato del gioco online è variegato - dai principianti ai professionisti.
+                    Forse non sai che le slot machine nei casinò online italiani AAMS-ADM hanno una posizione di pregio.
+                    <br/> 
+                    Infatti, sono al primo posto al mondo, per qualità, generosità e il livello di intrattenimento.
+                    <br/>
+                    Vuoi scoprire i migliori casinò legali con slot machine AAMS-ADM? Ecco qui un confronto.   
                     </p>
                 </div>
                 </section>
@@ -134,11 +146,11 @@ const HomeArticle: FunctionComponent<Props> = ({mainBonuses, freeBonuses}) => {
                 <section>
                     <h3><strong>{t("Il valore della tecnologia e l’impegno dietro le quinte nel mondo delle slot digitali e dei giochi da casinò")}</strong></h3>
                     <div><p>
-                    {t("Attualmente, siamo abituati ad una determinata raffinatezza visiva e amiamo standard grafici visivi e audio di un certo livello. ")}<br/>
-                    {t("Ecco perché in tempi recenti, sia slot che altri prodotti dei casinò online sono sviluppati in HTML5. ")}
-                    {t("Infatti, la tecnologia HTML5 è ottimale anche e soprattutto per i dispositivi mobili, quelli più utilizzati per interfacciarsi alla rete. ")}<br/>
-                    {t("La tecnologia HTML5 è veloce, e leggera. Ottima per chi ha uno smartphone e quindi può voler giocare ovunque si trovi:")} 
-                    {t("un’eventualità di cui i maggiori provider hanno tenuto conto. ")}
+                    Attualmente, siamo abituati ad una grafica elaborata e vogliamo effetti visivi e audio di un certo livello.
+                    Ecco perché, sia slot che altri prodotti dei casinò online sono sviluppati in HTML5. 
+                    Infatti, la tecnologia HTML5 è ottimale anche e soprattutto per i dispositivi mobili, quelli più utilizzati per interfacciarsi alla rete.
+                    La tecnologia HTML5 è veloce e leggera. Ottima per chi ha uno smartphone e quindi può voler giocare ovunque si trovi: un’eventualità di cui i maggiori provider hanno tenuto conto.
+
 
                 </p></div>
                 </section>
@@ -147,48 +159,49 @@ const HomeArticle: FunctionComponent<Props> = ({mainBonuses, freeBonuses}) => {
                     <h3><strong>{t("In che modo Casinosquad.it realizza le recensioni delle slot online?")}</strong></h3>
                     <div>
                     <p>
-                    {t("Abbiamo a disposizione un team di esperti che valuta ogni slot online, facendo un capillare percorso di verifica, rigoroso ed efficace. ")}<br/>
-                    {t("L’obiettivo è una missione del nostro team, ovvero la garanzia di un’esperienza di gioco avvincente e divertente. ")} <br/>
-                    {t("casinosquad.com è qui per svelarti ogni dettaglio e per offrirti le recensioni dei migliori giochi di slot online. ")}<br/>
-                    {t("Si tratta di recensioni preparate con serietà e professionalità, in considerazione di 5 requisiti di base, vediamoli assieme:")}
+                    Abbiamo a disposizione una squadra di esperti che valuta ogni slot online, facendo un percorso di verifica rigoroso ed efficace.
+                    L’obiettivo e la missione del nostro team è garantire un’esperienza di gioco avvincente e divertente.<br/>
+                    casinosquad.it è qui per svelarti ogni dettaglio e per offrirti le recensioni dei migliori giochi di slot online.<br/>
+                    Si tratta di recensioni preparate con serietà e professionalità, sulla base di 5 requisiti fondamentali. Vediamo insieme quali sono:
+
                     </p>
 
                     <ul>
                         <li>
                             <p>
-                            {t("In primis, l’esperienza di gioco. Su Casino Squad non desideriamo proporre giochi di slot noiosi. ")} 
-                            {t("Il nostro team di giocatori cerca principalmente l’intrattenimento e il coinvolgimento. Per questi motivi")}, 
-                            {t("una slot machine deve avere una buona qualità grafica, un bel tema originale e garantire un’esperienza di gioco divertente. ")} 
+                            In primis, l’esperienza di gioco. 
+                            Su Casino Squad non proponiamo giochi di slot noiosi perché il nostro team di streamer cerca principalmente l’intrattenimento e il coinvolgimento. 
+                            Per questi motivi, una slot machine deve avere una buona qualità grafica, un tema originale e garantire un’esperienza di gioco divertente.
                             </p>
                         </li>
 
                         <li>
                             <p>
-                            {t("Il gioco online è ottimizzato per mobile? Un posto di rilievo nella valutazione è ricoperto anche dalla valutazione di quanto i giochi di slot siano mobile-friendly. ")} 
-                            {t("I nostri giocatori valutano infatti – nell’introdurre un nuovo gioco nella libreria del sito – se sia o meno ottimizzato per il gioco mobile, in modo da non sacrificare l’esperienza ludica. ")}
+                            Il gioco online è ottimizzato per mobile? Un posto di rilievo nella valutazione è occupato da quanto i giochi di slot siano mobile-friendly. 
+                            I nostri streamer valutano, infatti, se un gioco di slot sia o meno ottimizzato per mobile, in modo da non sacrificare l’esperienza ludica.
                             </p>
                         </li>
 
                         <li>
                             <p>
-                            {t("Il gioco online è ottimizzato per mobile? Un posto di rilievo nella valutazione è ricoperto anche dalla valutazione di quanto i giochi di slot siano mobile-friendly. ")} 
-                            {t("I nostri giocatori valutano infatti – nell’introdurre un nuovo gioco nella libreria del sito – se sia o meno ottimizzato per il gioco mobile, in modo da non sacrificare l’esperienza ludica. ")}
+                            Il gioco online è ottimizzato per mobile? Un posto di rilievo nella valutazione è ricoperto anche dalla valutazione di quanto i giochi di slot siano mobile-friendly. 
+                            I nostri streamer valutano se il gioco sia o meno ottimizzato per il gioco mobile, in modo da non sacrificare l’esperienza ludica.
                             </p>
                         </li>
 
                         <li>
                             <p>
-                            {t("Nello scegliere un gioco di slot, è essenziale conoscere sia i valori di RTP che di Varianza. Come forse sai,")} 
-                            {t("la stessa vincita stessa, è definita in parte dall'RTP, ma anche dalla varianza di un gioco di slot. ")} 
-                            {t("Il nostro team si impegna a trovare i giochi con gli RTP più alti, testando il livello di varianza, in modo da facilitare tutti i giocatori. ")}
+                            Nello scegliere un gioco di slot, è essenziale conoscere sia i valori di RTP che di Varianza. 
+                            Come forse sai, la stessa vincita stessa, è definita in parte dall'RTP, ma anche dalla varianza di un gioco di slot. 
+                            Il nostro team si impegna a trovare i giochi con gli RTP più alti, testando il livello di varianza, in modo da facilitare tutti i giocatori.
                             </p>
                         </li>
 
                         <li>
                             <p>
-                            {t("E infine, nel testare una slot online, è anche importante considerate il valore del Jackpot. ")} 
-                            {t("In effetti, è il sogno di un giocatore, quello di vincere un Jackpot cospicuo. Anche scoprire il valore massimo che puoi sognare di vincere ad una slot machine, assume rilevanza. ")} <br/>
-                            {t("Offriamo perciò ai nostri lettori, i dati sulle vincite potenziali di una slot machine e come ottenerle. ")} 
+                            Infine, nel testare una slot online, è anche importante considerate il valore del Jackpot. In effetti, è il sogno di qualsiasi giocatore vincere un Jackpot elevato.
+                            Anche scoprire il valore massimo che puoi sognare di vincere ad una slot machine assume rilevanza.
+                            Offriamo perciò, ai nostri lettori, i dati sulle vincite potenziali di una slot machine e come ottenerle.
                             </p>
                         </li>
                         
@@ -201,14 +214,11 @@ const HomeArticle: FunctionComponent<Props> = ({mainBonuses, freeBonuses}) => {
                     <h3><strong>{t("Esistono differenze fra slot online dei casinò digitali e i giochi di slots dei casinò tradizionali?")}</strong></h3>
                     <div>
                     <p>
-                    {t("Bisogna sottolineare che – almeno in apparenza - le slot che puoi trovare nei casinò di Las Vegas, vantano alcune somiglianze con i giochi online. ")}
-                    {t("Infatti, la versione online, è molto simile alla controparte meccanica che puoi facilmente trovare all’interno dei casinò fisici tradizionali. ")}
-                    {t("Le slot machine classiche, hanno una serie di tre o più rulli, che girano dopo aver azionato una leva. ")} <br/>
-                    {t("Così, mentre i rulli girano, puoi vincere o perdere in base alle combinazioni ed alla validità dei simboli che appaiono sui rulli stessi. ")}
-                    <br/><br/>
-                    {t("Ma è la stessa cosa anche con le slot online?")} 
-                    {t("Intanto, ti ricordiamo che anziché tirare una leva, nelle slot digitali, dovrai premere un pulsante per azionare i rulli. ")}
-
+                    Bisogna sottolineare che – almeno in apparenza - le slot che puoi trovare nei casinò di Las Vegas, vantano alcune somiglianze con i giochi online. 
+                    Infatti, la versione online è molto simile alla controparte meccanica che puoi facilmente trovare all’interno dei casinò fisici tradizionali. 
+                    Le slot machine classiche hanno una serie di tre o più rulli, che girano dopo aver azionato una leva.
+                    Così, mentre i rulli girano, puoi vincere o perdere in base alle combinazioni ed alla validità dei simboli che appaiono sui rulli stessi.
+                    Ma è la stessa cosa anche con le slot online? Intanto, ti ricordiamo che anziché tirare una leva, nelle slot digitali, dovrai premere un pulsante per azionare i rulli.
                     </p>
                 </div>
                 </section>
@@ -245,9 +255,10 @@ const HomeArticle: FunctionComponent<Props> = ({mainBonuses, freeBonuses}) => {
                         </li>
                         <li>
                             <p><b>{t("Ampia varietà nella selezione dei giochi")}</b><br/>
-                            {t("La grande varietà dei giochi disponibili, è un altro dei vantaggi di scegliere le slot online. ")}<br/>
-                            {t("Solitamente, le migliori piattaforme di gioco, propongo oltre 300 fra le migliori slot online. ")}<br/>
-                            {t("Marchi come Microgaming, NetEnt, Real Time Gaming, Playtech, sono una garanzia di affidabilità e successo. ")}
+                            La grande varietà dei giochi disponibili è un altro dei vantaggi di scegliere le slot online.
+                            Solitamente, le migliori piattaforme di gioco propongo oltre 300 fra le migliori slot online.
+                            Marchi come Microgaming, NetEnt, Real Time Gaming, Playtech, sono una garanzia di affidabilità e successo.
+
                             </p>
                         </li>
                     </ol> 
@@ -258,14 +269,13 @@ const HomeArticle: FunctionComponent<Props> = ({mainBonuses, freeBonuses}) => {
                     <h3><strong>{t("Chi sono provider delle slot machine?")}</strong></h3>
                     <div>
                     <p>
-                    {t("Come potrai immaginare, i giochi dei casinò online, sono sviluppati da aziende specifiche. ")}
-                    {t("Esistono infatti dei provider - fornitori ufficiali dei giochi - che troverai sulle piattaforme di gioco. ")}
-                    {t("Devi sapere che i provider sono molto diversi fra loro, per stile, particolarità e caratteristiche. ")}
-                    {t("I giocatori abituali, con il passare del tempo, sanno distinguere le differenze e persino riconoscere ad una prima occhiata, quale fornitore abbia realizzato una determinata slot. ")}<br/>
-                    {t("Forse non lo sai, ma sul nostro sito, avrai anche l’opzione di usare un filtro per visualizzare solo i giochi di un determinato provider. ")} <br/>
-                    {t("In più, potrai usare i filtri anche per trovare i prodotti con le caratteristiche che ami di più, come i giri gratis o un particolare tema. ")}<br/>
-                    {t("Possiamo già dirti, che alcuni fra i migliori fornitori di giochi, sono IGT, Pragmatic Play, NetEnt e Novomatic: sono tutti davvero celebri in Italia. ")}
-
+                    Come potrai immaginare, i giochi dei casinò online sono sviluppati da aziende specifiche. 
+                    Esistono infatti dei provider - fornitori ufficiali dei giochi - che troverai sulle piattaforme di gioco.
+                    Devi sapere che i provider sono molto diversi fra loro per stile, particolarità e caratteristiche. 
+                    I giocatori abituali, con il passare del tempo, sanno distinguere le differenze e persino riconoscere, ad una prima occhiata, quale fornitore abbia realizzato una determinata slot.
+                    Forse non lo sai, ma sul nostro sito avrai anche l’opzione di usare un filtro per visualizzare solo i giochi di un determinato provider.
+                    In più, potrai usare i filtri anche per trovare i prodotti con le caratteristiche che ami di più, come i giri gratis o un particolare tema.
+                    Possiamo già dirti, che alcuni fra i migliori fornitori di giochi sono IGT, Pragmatic Play, NetEnt e Novomatic: sono tutti davvero celebri in Italia.
                     </p>
                 </div>
                 </section>

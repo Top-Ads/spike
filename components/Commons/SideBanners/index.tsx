@@ -1,11 +1,11 @@
 import React, { FunctionComponent } from 'react'
-import Image from 'next/image'
+// import Image from 'next/image'
 import styled from 'styled-components'
 
 export const SideBanners: FunctionComponent = () => {
     return (
         <SideBannersContainer>
-            <div className='first-banner-wrapper'>
+            {/* <div className='first-banner-wrapper'>
                 <Image
                     width={350}
                     height={210}
@@ -21,7 +21,7 @@ export const SideBanners: FunctionComponent = () => {
                 quality={100}
                 src='/images/banners/wc-banner-2.jpg'
                 alt='wincasino register banner'
-            />
+            /> */}
         </SideBannersContainer>
     )
 }
