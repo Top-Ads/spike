@@ -9,7 +9,8 @@ export enum GridType {
   BONUS,
   QUESTIONS,
   FREE,
-  STATS 
+  STATS,
+  PRODUCER
 }
 
 export enum SlotType {

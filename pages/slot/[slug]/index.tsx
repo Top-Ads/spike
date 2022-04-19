@@ -359,7 +359,7 @@ const IframeContainer = styled.div<ThumbnailProps>`
     cursor: pointer;
     background-color: #000;
     width: 100%;
-    height: 540px;
+    height: 600px;
     
     .fullscreen {
         position: relative;
@@ -406,7 +406,7 @@ const Section = styled.div`
     font-size: 1rem;
     background-color: ${({theme}) => theme.text.color.black};
     color: #fff;
-    height: 540px;
+    height: 600px;
 
     .bonus-container {
         height: 70%;

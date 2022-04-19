@@ -216,12 +216,24 @@ export interface Article {
     main_argument: MainArgument
     secondaryArgument: SecondaryArgument
     published_at?: string
+    author: Writer
 }
 
-export interface HomeData {
-    mainArticle: Article
-    secondArticle: Article
-    thirdArticle: Article
+export interface Writer {
+  id?: string
+  name: string
+  picture: UploadFile
+  email: string
+  casino_squad_blog_articles: Article[]
+}
+
+export interface UploadFile { 
+    id?: string
+    name: string
+    caption: string
+    width: number
+    height: number
+    url: string
 }
 
 export interface Banner {

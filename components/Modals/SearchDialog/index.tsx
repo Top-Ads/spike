@@ -175,7 +175,7 @@ const SearchDialog: FunctionComponent<Props> = ({open, setOpen}) => {
           import('algoliasearch').then().then(algoliasearch => {
               const spikeIndex = algoliasearch.default(APPLICATIONID, SPIKE_APIKEY).initIndex('entities')
 
-              const blogIndex = algoliasearch.default(APPLICATIONID, BLOG_APIKEY).initIndex('wincasino-articles')
+              const blogIndex = algoliasearch.default(APPLICATIONID, BLOG_APIKEY).initIndex('casinosquad-articles')
 
               setAlgoliaSpikeIndex(spikeIndex)
               setAlgoliaBlogIndex(blogIndex)
@@ -200,7 +200,7 @@ const SearchDialog: FunctionComponent<Props> = ({open, setOpen}) => {
 
             { showSearchResult && 
               <DialogContent dividers>
-                <SearchHits data={searchResult} mouseOnHit={handleMouseOnHit} searchReviewName={searchReview?.name}/>
+                <SearchHits data={searchResult} mouseOnHit={handleMouseOnHit} searchReviewName={searchReview?.name || searchReview?.title}/>
                 <SearchHitReview data={searchReview}/>
               </DialogContent>
             }

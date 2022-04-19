@@ -36,12 +36,7 @@ const DropDown: FunctionComponent<Props> = ({header, children, slug}) => {
             <div className="dropdown" onMouseEnter={() => setShow(true)} onMouseLeave={() => setShow(false)}>
                 <Link passHref href={`/${slug}`}>
                     <a><Button 
-                        onClick={(event: React.SyntheticEvent) => {
-                            if (slug === 'live-stats') {
-                                event.preventDefault()
-                            }   
-                            setShow(!show)  
-                        }} 
+                        onClick={ () => setShow(!show) } 
                         className={`dropdown-menu ${show ? 'active' : ''}`}>
                             {header}
                             <ExpandMoreIcon fontSize={'small'} />

@@ -16,8 +16,7 @@ const SlotsCounter: FunctionComponent<Props> = ({total}) => {
 } 
 
 const Main = styled.div`
-    width: inherit;
-    height: 80px;
+    height: 70px;
     display: flex;
     flex-direction: row;
     align-items: center;

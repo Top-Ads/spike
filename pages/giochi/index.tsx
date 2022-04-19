@@ -338,7 +338,7 @@ const Aside = styled.div`
     display: inherit;  
     flex-direction: column;
     margin-right: 20px;
-    width: 280px;
+    width: 400px;
     height: min-content;
     
     @media ${device.tablet} {

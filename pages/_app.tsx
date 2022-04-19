@@ -8,7 +8,7 @@ import i18n from '../lib/i18n'
 import { showTranslations } from "translation-check"
 import i18next from "i18next"
 import { useRouter } from "next/router"
-
+import Head from "next/head"
 
 interface IProps {
     Component: FunctionComponent
@@ -45,10 +45,25 @@ export default function App( {Component, pageProps}: IProps) {
     return (
         <ContextProvider>
                 <ThemeProvider theme={styledTheme}>
-                    <I18nextProvider i18n={i18n}>
-                        <GlobalStyle />
-                        <Component {...pageProps} />
-                    </I18nextProvider> 
+                <Head>
+                    {/* <!-- Global site tag (gtag.js) - Google Analytics --> */}
+                    <script async src="https://www.googletagmanager.com/gtag/js?id=G-046QNHB3VY"></script>
+                    <script
+                        dangerouslySetInnerHTML={{
+                            __html: `
+                            window.dataLayer = window.dataLayer || [];
+                            function gtag(){dataLayer.push(arguments);}
+                            gtag('js', new Date());
+                            gtag('config', 'G-046QNHB3VY');
+                        `,
+                        }}
+                    />
+                    {/* <!-- END - Google Analytics --> */}
+                </Head>
+                <I18nextProvider i18n={i18n}>
+                    <GlobalStyle />
+                    <Component {...pageProps} />
+                </I18nextProvider> 
                 </ThemeProvider>
         </ContextProvider>
     )

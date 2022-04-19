@@ -7,13 +7,13 @@ import { SideBanners } from '../../components/Commons/SideBanners'
 import Layout from '../../components/Layout'
 import ArgumentList from '../../components/Lists/ArgumentList'
 import AquaClient from '../../lib/graphql/aquaClient'
-import { NavbarData, HomeData, Article, Banner } from '../../lib/schemas'
+import { NavbarData, Article, Banner } from '../../lib/schemas'
 import { device } from '../../lib/utils/device'
 import { BLOG_API } from '../../public/environment'
 
 interface Iindex {
     navbarData: NavbarData
-    homeData: HomeData
+    homeData: Article[]
     lastFive: Article[]
     banners: Banner[]
     slotMachineOnlineArticles: Article[]
@@ -30,6 +30,7 @@ const Blog: FunctionComponent<Iindex> = ({
     casinoLiveArticles,
     blackJackArticles,
 }) => { 
+
     return (
         <Layout title="Casino Squad | Blog">
                 <HomeContentContainer className="layout-container">
@@ -50,14 +51,14 @@ const Blog: FunctionComponent<Iindex> = ({
 
                         <HighlightArticlesContainer>
 
-                            <MainArticleCard data={homeData.mainArticle} />
+                            <MainArticleCard data={homeData[0]} />
 
                             <div className='two-three-container'>
                                 <MainArticleCardSmall
-                                    data={homeData.secondArticle}
+                                    data={homeData[1]}
                                 />
                                 <MainArticleCardSmall
-                                    data={homeData.thirdArticle}
+                                    data={homeData[2]}
                                 />
                             </div>
                         </HighlightArticlesContainer>
@@ -166,7 +167,7 @@ export const getStaticProps = async () => {
     })
 
     const home = await aquaClient.query({
-        query: HOME_QUERY,
+        query: HOME_QUERY_CASINO,
         variables: {},
     })
 
@@ -212,7 +213,7 @@ export const getStaticProps = async () => {
         props: {
             navbarData: navbarData.data.data.navbar,
             lastFive: lastFive.data.data.casinoSquadBlogArticles,
-            homeData: home.data.data.homepage,
+            homeData: home.data.data.casinoSquadBlogArticles,
             banner: global.data.data.global.banner,
             slotMachineOnlineArticles:
                 slotMachineOnlineArticles.data.data.casinoSquadBlogArticles,
@@ -313,32 +314,15 @@ export const NAVBAR_QUERY = /* GraphQL */ `
     }
 `
 
-const HOME_QUERY = /* GraphQL */ `
+const HOME_QUERY_CASINO = /* GraphQL */ `
     query {
-        homepage {
-            mainArticle {
+        casinoSquadBlogArticles(
+            sort: "published_at:desc"
+            limit: 3
+        ) 
+            {
                 title
-                description
-                slug
                 published_at
-                image {
-                    url
-                    alternativeText
-                }
-                main_argument {
-                    name
-                    slug
-                }
-                secondaryArgument {
-                    name
-                    slug
-                    mainArgument {
-                        slug
-                    }
-                }
-            }
-            secondArticle {
-                title
                 description
                 slug
                 image {
@@ -346,38 +330,12 @@ const HOME_QUERY = /* GraphQL */ `
                     alternativeText
                 }
                 main_argument {
-                    name
                     slug
                 }
                 secondaryArgument {
-                    name
                     slug
-                    mainArgument {
-                        slug
-                    }
                 }
             }
-            thirdArticle {
-                title
-                description
-                slug
-                image {
-                    url
-                    alternativeText
-                }
-                main_argument {
-                    name
-                    slug
-                }
-                secondaryArgument {
-                    name
-                    slug
-                    mainArgument {
-                        slug
-                    }
-                }
-            }
-        }
     }
 `
 

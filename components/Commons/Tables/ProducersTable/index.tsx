@@ -20,7 +20,7 @@ const ProducersTable: FunctionComponent<Props> = ({data, setSelected, setOpenDia
         <Fragment>
            <GridContainer>
                 <GridLayout
-                    gridType={GridType.SLOTS}
+                    gridType={GridType.PRODUCER}
                     content={ 
                         data.map( (producer, index) =>
                         <LazyLoad offset={100}>

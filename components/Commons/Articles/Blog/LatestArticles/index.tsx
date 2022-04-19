@@ -39,9 +39,9 @@ export const LatestArticles: FunctionComponent<{ last: Article[] }> = ({
                                 <p className='title'>{article.title}</p>
                                 <div className='published_at'>
                                     {t("Pubblicato il")}
-                                        <div style={{textTransform: 'capitalize', marginLeft: '5px'}}>
+                                        <span style={{textTransform: 'capitalize', marginLeft: '5px'}}>
                                             { article.published_at && format(new Date(article.published_at), 'dd MMM yyyy', { locale: italianLocale }).toString()} 
-                                        </div>
+                                        </span>
                                 </div>
                             </div>
                         </div>
@@ -60,12 +60,12 @@ export const LatestArticles: FunctionComponent<{ last: Article[] }> = ({
 }
 
 export const LatestArticleContainer = styled.div`
-    margin-top: 1rem;
+    margin-top: 2rem;
     background: ${({ theme }) => theme.palette.background};
     padding: 0 0.7rem;
     border-radius: 6px;
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-    width: 275px;
+    width: 100%;
 
     @media ${device.mobileL} {
             width: 100%;

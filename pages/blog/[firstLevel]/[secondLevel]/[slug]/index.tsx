@@ -14,6 +14,7 @@ import { GetStaticPropsContext } from 'next'
 import { BLOG_API } from '../../../../../public/environment'
 import { styledTheme } from '../../../../../lib/theme'
 import { device } from '../../../../../lib/utils/device'
+import AuthorCard from '../../../../../components/Cards/AuthorCard'
 
 // @ts-ignore
 // const ReactMarkdown = dynamic(() => import('react-markdown'))
@@ -55,7 +56,6 @@ const index: FunctionComponent<Iindex> = ({
         <Layout >
             <HomeContentContainer className="layout-container">
                 <div className='main-column'>
-
                     <ArticleContainer>
                         <Image
                             width={400}
@@ -77,11 +77,16 @@ const index: FunctionComponent<Iindex> = ({
                                 {article.content}
                             </Markdown>
                         </MarkdownStyleProvider>
+
                     </ArticleContainer>
                 </div>
+
                 <div className='side-column'>
                     <SideBanners />
+
                     <LatestArticles last={lastFive} />
+
+                    { article.author && <AuthorCard author={article.author}/> }
                 </div>
             </HomeContentContainer>
         </Layout>
@@ -282,10 +287,40 @@ const ARTICLE_QUERY = /* GraphQL */ `
                 slug
                 name
             }
-
             secondaryArgument {
                 slug
                 name
+            }
+            author {
+                id
+                name
+                picture {
+                  id
+                }
+                email
+                casino_squad_blog_articles {
+                    id
+                    title
+                    description
+                    content
+                    slug
+                    image {
+                        url
+                        alternativeText
+                    }
+                    main_argument {
+                        name
+                        slug
+                    }
+                    secondaryArgument {
+                        name
+                        slug
+                    }
+                    published_at
+                    author {
+                        id
+                    }
+                }
             }
         }
     }
