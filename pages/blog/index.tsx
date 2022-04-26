@@ -36,13 +36,14 @@ const Blog: FunctionComponent<Iindex> = ({
 				<div className='main-column'>
 					<p className='intro'>
 						Benvenuto nel nostro blog! La missione della{' '}
-						<strong>SQUAD</strong> e' quella di intrattenere i
-						nostri followers ma anche di aggiornarli sulle ultime
-						notizie sul mondo dei <strong>casino online</strong>.
-						Nel nostro blog troverai news e cuorisità per rimanere
-						sempre aggiornato su <strong>slot online</strong>,{' '}
+						<strong>SQUAD</strong> è quella di intrattenere i nostri
+						followers ma anche di aggiornarli sulle ultime notizie
+						sul mondo dei <strong>casinò online</strong>. Nel nostro
+						blog troverai news e curiosità per rimanere sempre
+						aggiornato su <strong>slot online</strong>,{' '}
 						<strong>poker</strong> e <strong>giochi live</strong>.
 					</p>
+					<p>Casinò Squad ti augura una buona lettura!</p>
 
 					<HighlightArticlesContainer>
 						<MainArticleCard data={homeData[0]} />
@@ -114,7 +115,7 @@ export const HomeContentContainer = styled.div`
 	}
 
 	.intro {
-		margin-bottom: 2rem;
+		margin-bottom: 1rem;
 		line-height: 1.2rem;
 
 		strong {

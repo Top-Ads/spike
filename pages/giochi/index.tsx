@@ -23,456 +23,617 @@ import FreeBonusList from '../../components/Lists/FreeBonusList'
 import { getBonuses } from '../../lib/graphql/queries/bonuses'
 import { getProducers } from '../../lib/graphql/queries/producers'
 import { getSlots } from '../../lib/graphql/queries/slots'
-import { debounce } from "lodash"
+import { debounce } from 'lodash'
 import { format } from 'date-fns'
-import italianLocale  from 'date-fns/locale/it'
+import italianLocale from 'date-fns/locale/it'
 import { getTotalSlots } from '../../lib/api'
 import Head from 'next/head'
 import { getRandomInt } from '../../lib/utils/getRandomInt'
 
 type PageProps = {
-    giochiSlotsData: Slot [],
-    slotsData: ThemeSlot,
-    producersData: Producer [],
-    freeBonusData: Bonus [],
-    totalSlots: number
+	giochiSlotsData: Slot[]
+	slotsData: ThemeSlot
+	producersData: Producer[]
+	freeBonusData: Bonus[]
+	totalSlots: number
 }
 
-const GiochiPage: FunctionComponent<PageProps> = (props) => { 
+const GiochiPage: FunctionComponent<PageProps> = props => {
+	const {
+		slotsData,
+		giochiSlotsData,
+		producersData,
+		freeBonusData,
+		totalSlots,
+	} = props
 
-    const { slotsData, giochiSlotsData, producersData, freeBonusData, totalSlots } = props
-    
-    const { newest, popular } = slotsData
+	const { newest, popular } = slotsData
 
-    const famousProducersList = producersData.filter((producer: Producer) => {
-        if( ['Novomatic', 'NetEnt', 'BTG', 'Thunderkick', 'iSoftBet', 'Pragmatic Play', "Play'n GO"].includes(producer.name))
-            return producer
-    })
+	const famousProducersList = producersData.filter((producer: Producer) => {
+		if (
+			[
+				'Novomatic',
+				'NetEnt',
+				'BTG',
+				'Thunderkick',
+				'iSoftBet',
+				'Pragmatic Play',
+				"Play'n GO",
+			].includes(producer.name)
+		)
+			return producer
+	})
 
-    const listItems:string[] = [SlotFilterList.RTP, SlotFilterList.UPDATED_AT, SlotFilterList.CREATED_AT, SlotFilterList.NAME]
+	const listItems: string[] = [
+		SlotFilterList.RTP,
+		SlotFilterList.UPDATED_AT,
+		SlotFilterList.CREATED_AT,
+		SlotFilterList.NAME,
+	]
 
-    const [giochiSlots, setGiochiSlots] = useState<Slot[]>(giochiSlotsData)
-    const [itemSelected, setItemSelected] = useState<SlotFilterList>(SlotFilterList.SHUFFLE)
-    const [, setProducerSelected] = useState<string>('')
-    const [openDialog, setOpenDialog] = useState<boolean>(false)
+	const [giochiSlots, setGiochiSlots] = useState<Slot[]>(giochiSlotsData)
+	const [itemSelected, setItemSelected] = useState<SlotFilterList>(
+		SlotFilterList.SHUFFLE
+	)
+	const [, setProducerSelected] = useState<string>('')
+	const [openDialog, setOpenDialog] = useState<boolean>(false)
 
-    const loadMore = async () => {
-        const moreFreeSlots = await getSlots({limit: 12, start: giochiSlots.length})
+	const loadMore = async () => {
+		const moreFreeSlots = await getSlots({
+			limit: 12,
+			start: giochiSlots.length,
+		})
 
-        setGiochiSlots([...giochiSlots, ...moreFreeSlots])    
-    }
+		setGiochiSlots([...giochiSlots, ...moreFreeSlots])
+	}
 
-    const shuffle = async () => {
-        clear()
+	const shuffle = async () => {
+		clear()
 
-        setItemSelected(SlotFilterList.SHUFFLE)
-        const shuffleFreeSlots = await getSlots({limit: 36, start: getRandomInt(giochiSlots.length, totalSlots)})
+		setItemSelected(SlotFilterList.SHUFFLE)
+		const shuffleFreeSlots = await getSlots({
+			limit: 36,
+			start: getRandomInt(giochiSlots.length, totalSlots),
+		})
 
-        setGiochiSlots(shuffleFreeSlots)    
-    }
+		setGiochiSlots(shuffleFreeSlots)
+	}
 
-    const searchSlot = debounce( async(text: string) => {
-        clear()
-        
-        if (text.length >= 2) {
-            setGiochiSlots(await getSlots({name_contains: text}))
-        } else 
-            setGiochiSlots(giochiSlotsData)
-    },500)
- 
-    const filterListSlot = async (itemSelected: SlotFilterList) => {
-        clear()
+	const searchSlot = debounce(async (text: string) => {
+		clear()
 
-        const keyFilter = Object.keys(SlotFilterList)[Object.values(SlotFilterList).indexOf(itemSelected)]
+		if (text.length >= 2) {
+			setGiochiSlots(await getSlots({ name_contains: text }))
+		} else setGiochiSlots(giochiSlotsData)
+	}, 500)
 
-        const sortItem = keyFilter === "NAME" ? 
-        `${keyFilter.toLowerCase()}:asc` : `${keyFilter.toLowerCase()}:desc`
-        
-        const data = await getSlots({countryCode: "it", limit:36, start: 0, sort: sortItem})
-        setGiochiSlots(data)
-        setItemSelected(itemSelected)
-    }
+	const filterListSlot = async (itemSelected: SlotFilterList) => {
+		clear()
 
-    const filterByProducerName = async (producerSelected: string) => {
+		const keyFilter =
+			Object.keys(SlotFilterList)[
+				Object.values(SlotFilterList).indexOf(itemSelected)
+			]
 
-        let  keyFilter = Object.keys(SlotFilterList)[Object.values(SlotFilterList).indexOf(itemSelected)].toLowerCase()
+		const sortItem =
+			keyFilter === 'NAME'
+				? `${keyFilter.toLowerCase()}:asc`
+				: `${keyFilter.toLowerCase()}:desc`
 
-        let response
-        
-        if (keyFilter ===  'shuffle') {
-            response = await getSlots({
-                countryCode: "it", 
-                limit:36, 
-                start: 0,
-                producer: producerSelected
-            })
-        } else {
-            response = await getSlots({
-                countryCode: "it", 
-                limit:36, 
-                start: 0,
-                producer: producerSelected,
-                sort: keyFilter
-            })
-        }
+		const data = await getSlots({
+			countryCode: 'it',
+			limit: 36,
+			start: 0,
+			sort: sortItem,
+		})
+		setGiochiSlots(data)
+		setItemSelected(itemSelected)
+	}
 
-        setGiochiSlots(response)
+	const filterByProducerName = async (producerSelected: string) => {
+		let keyFilter =
+			Object.keys(SlotFilterList)[
+				Object.values(SlotFilterList).indexOf(itemSelected)
+			].toLowerCase()
 
-        setProducerSelected(producerSelected) 
-    }
+		let response
 
-    const clear = () => setProducerSelected('')
+		if (keyFilter === 'shuffle') {
+			response = await getSlots({
+				countryCode: 'it',
+				limit: 36,
+				start: 0,
+				producer: producerSelected,
+			})
+		} else {
+			response = await getSlots({
+				countryCode: 'it',
+				limit: 36,
+				start: 0,
+				producer: producerSelected,
+				sort: keyFilter,
+			})
+		}
 
-    return (
-        <Layout title="Casino Squad | Giochi di Slot Gratis, Slot Machine Online Senza Scaricare">
-            <Head>
-                <meta 
-                property="og:description" 
-                content="Prova tutte le slot machine gratis in modalita’ demo senza pagare, bonus e giri gratis alla registrazione" 
-                key="description"/>
-            </Head>
-            <Header className='layout-container'>
-                <Intro>
-                    <h2>
-                        SLOT GRATIS – GIOCA ALLE SLOT MACHINE GRATIS ONLINE IN ITALIANO
-                    </h2>
+		setGiochiSlots(response)
 
-                    <span>Pubblicato: 31 lug 2021 • Ultimo aggiornamento 
-                        <span style={{textTransform: 'capitalize'}}> { format(new Date(Date.now()), 'dd MMM yyyy', { locale: italianLocale }).toString() } </span> 
-                    </span> 
- 
-                    <p>
-                        Prima di tutto, benvenuto! Sappiamo che ti piace giocare alle slot machine
-                        gratis online: è per quello che sei qui! La buona notizia e che anche noi 
-                        piacciono molto le slot machine e abbiamo una grande collezione di giochi 
-                        disponibile. Sfoglia la nostra selezione delle migliori slot machines, scegli 
-                        una che ti piace e divertiti. Senza download o registrazione.
-                    </p>
-                </Intro>
-                
-                <Thumbnail>
-                    <Image
-                        alt="Casino Squad"
-                        src={`${CDN}/png/logo_white.png`}
-                        layout="intrinsic"
-                        priority={true}
-                        width={200}
-                        height={200}/>
-                </Thumbnail>
-            </Header>
+		setProducerSelected(producerSelected)
+	}
 
-            <br/>
+	const clear = () => setProducerSelected('')
 
-            <div className="layout-container">
-                <GridContainer id='ads-slots'>
-                    <GridLayout
-                        gridType={GridType.SLOTS} 
-                        content={ newest.map( (slot: Slot) => 
-                        <LazyLoad once key={slot.id} height={400} offset={300}>
-                            <SlotCard key={slot.name} data={slot} type={SlotType.NEW}/>
-                        </LazyLoad> )}
-                        label="Nuove slot"
-                        xs={12} sm={4} md={4}
-                    />
-                    <GridLayout
-                        gridType={GridType.SLOTS}
-                        content={ popular.map( (slot: Slot) =>  
-                        <LazyLoad once key={slot.id} height={400} offset={300} >
-                            <SlotCard key={slot.id} data={slot} type={SlotType.ONLINE}/>
-                        </LazyLoad> )}
-                        label="Le slot piu popolari"
-                        xs={12} sm={4} md={4}
-                    />
-                </GridContainer>
+	return (
+		<Layout title='Casino Squad | Giochi di Slot Gratis, Slot Machine Online Senza Scaricare'>
+			<Head>
+				<meta
+					property='og:description'
+					content='Prova tutte le slot machine gratis in modalita’ demo senza pagare, bonus e giri gratis alla registrazione'
+					key='description'
+				/>
+			</Head>
+			<Header className='layout-container'>
+				<Intro>
+					<h2>
+						SLOT GRATIS – GIOCA ALLE SLOT MACHINE GRATIS ONLINE IN
+						ITALIANO
+					</h2>
 
-                <Main>
-                    <Title>
-                        <h3>LA NOSTRA LIBRERIA DI SLOT - TUTTE DA GIOCARE GRATIS!</h3>
-                        <Divider/>
-                    </Title>
+					<span>
+						Pubblicato: 31 lug 2021 • Ultimo aggiornamento
+						<span style={{ textTransform: 'capitalize' }}>
+							{' '}
+							{format(new Date(Date.now()), 'dd MMM yyyy', {
+								locale: italianLocale,
+							}).toString()}{' '}
+						</span>
+					</span>
 
-                    <Container>
-                        <Aside>
-                            <SlotsCounter total={totalSlots}/>
-                            <ProducersTable data={famousProducersList} setSelected={filterByProducerName} setOpenDialog={setOpenDialog}/>
-                            <FreeBonusList data={freeBonusData} label="I MIGLIORI CASINÒ CON GIRI GRATIS"/>
-                        </Aside>
+					<p>
+						Prima di tutto, benvenuto! Sappiamo che ti piace giocare
+						alle slot machine gratis online: è per quello che sei
+						qui! La buona notizia e che anche noi piacciono molto le
+						slot machine e abbiamo una grande collezione di giochi
+						disponibile. Sfoglia la nostra selezione delle migliori
+						slot machines, scegli una che ti piace e divertiti.
+						Senza download o registrazione.
+					</p>
+				</Intro>
 
-                        <Section>
-                            <Actions>
-                                <div id="search-input">
-                                    <CustomTextField
-                                        onChange={searchSlot}
-                                        size={'small'}
-                                        borderRadius={'5px'}
-                                        searchIcon
-                                        placeholder="Cerca una slot..."/>
-                                </div>
+				<Thumbnail>
+					<Image
+						alt='Casino Squad'
+						src={`${CDN}/png/logo_white.png`}
+						layout='intrinsic'
+						priority={true}
+						width={200}
+						height={200}
+					/>
+				</Thumbnail>
+			</Header>
 
-                                <div id='filter-slots'>
-                                        <SlotsFilter listItems={listItems} itemSelected={itemSelected} setItemSelected={filterListSlot}/>
+			<br />
 
-                                        <div id="shuffle"><ShuffleIcon fontSize={'large'} onClick={shuffle}/></div>                                    
-                                </div>
-                                
-                                <div id="filter-providers" onClick={() => setOpenDialog(true)}><span>LIST PROVIDERS</span></div>
-                            </Actions>
-                            
-                            <GridContainer id='free-slots'>
-                                <GridLayout 
-                                    gridType={GridType.GIOCHISLOTS} 
-                                    content={ giochiSlots.map( (slot: Slot) => 
-                                    <Fragment>
-                                        <SlotInfo>
-                                            {itemSelected === SlotFilterList.RTP ? slot.rtp ? `RTP: ${slot.rtp}%` : 'NA' : ''}
-                                            {itemSelected === SlotFilterList.CREATED_AT ? slot.created_at ?
-                                                `${format(new Date(slot.created_at), 'dd MMM yyyy').toString()}` : 'NA' : ''}
-                                            { itemSelected === SlotFilterList.UPDATED_AT ? slot.created_at ?
-                                                `${format(new Date(slot.updated_at), 'dd MMM yyyy').toString()}` : 'NA' : ''}
-                                        </SlotInfo>
-                                        <SlotCard key={slot.name} data={slot}/>
-                                    </Fragment>
-                                    )}
-                                    width={'100%'}
-                                    xs={6} sm={4} md={3}
-                                />
-                            </GridContainer>
+			<div className='layout-container'>
+				<GridContainer id='ads-slots'>
+					<GridLayout
+						gridType={GridType.SLOTS}
+						content={newest.map((slot: Slot) => (
+							<LazyLoad
+								once
+								key={slot.id}
+								height={400}
+								offset={300}
+							>
+								<SlotCard
+									key={slot.name}
+									data={slot}
+									type={SlotType.NEW}
+								/>
+							</LazyLoad>
+						))}
+						label='Nuove slot'
+						xs={12}
+						sm={4}
+						md={4}
+					/>
+					<GridLayout
+						gridType={GridType.SLOTS}
+						content={popular.map((slot: Slot) => (
+							<LazyLoad
+								once
+								key={slot.id}
+								height={400}
+								offset={300}
+							>
+								<SlotCard
+									key={slot.id}
+									data={slot}
+									type={SlotType.ONLINE}
+								/>
+							</LazyLoad>
+						))}
+						label='Le slot piu popolari'
+						xs={12}
+						sm={4}
+						md={4}
+					/>
+				</GridContainer>
 
-                            <LoadMoreButton onClick={loadMore}>
-                                <span>CARICA ALTRO</span>
-                            </LoadMoreButton>
+				<Main>
+					<Title>
+						<h3>
+							LA NOSTRA LIBRERIA DI SLOT - TUTTE DA GIOCARE
+							GRATIS!
+						</h3>
+						<Divider />
+					</Title>
 
-                        </Section>
+					<Container>
+						<Aside>
+							<SlotsCounter total={totalSlots} />
+							<ProducersTable
+								data={famousProducersList}
+								setSelected={filterByProducerName}
+								setOpenDialog={setOpenDialog}
+							/>
+							<FreeBonusList
+								data={freeBonusData}
+								label='I MIGLIORI CASINÒ CON GIRI GRATIS'
+							/>
+						</Aside>
 
-                    </Container> 
+						<Section>
+							<Actions>
+								<div id='search-input'>
+									<CustomTextField
+										onChange={searchSlot}
+										size={'small'}
+										borderRadius={'5px'}
+										searchIcon
+										placeholder='Cerca una slot...'
+									/>
+								</div>
 
-                    <GiochiFooter totalSlots={totalSlots}/>
-                </Main>
+								<div id='filter-slots'>
+									<SlotsFilter
+										listItems={listItems}
+										itemSelected={itemSelected}
+										setItemSelected={filterListSlot}
+									/>
 
-                <GiochiArticle/>
+									<div id='shuffle'>
+										<ShuffleIcon
+											fontSize={'large'}
+											onClick={shuffle}
+										/>
+									</div>
+								</div>
 
-                <ProvidersDialog open={openDialog} setOpen={setOpenDialog} data={producersData} setSelected={filterByProducerName}/>
-            </div>
-        </Layout>
-    ) 
+								<div
+									id='filter-providers'
+									onClick={() => setOpenDialog(true)}
+								>
+									<span>LIST PROVIDERS</span>
+								</div>
+							</Actions>
+
+							<GridContainer id='free-slots'>
+								<GridLayout
+									gridType={GridType.GIOCHISLOTS}
+									content={giochiSlots.map((slot: Slot) => (
+										<Fragment>
+											<SlotInfo>
+												{itemSelected ===
+												SlotFilterList.RTP
+													? slot.rtp
+														? `RTP: ${slot.rtp}%`
+														: 'NA'
+													: ''}
+												{itemSelected ===
+												SlotFilterList.CREATED_AT
+													? slot.created_at
+														? `${format(
+																new Date(
+																	slot.created_at
+																),
+																'dd MMM yyyy'
+														  ).toString()}`
+														: 'NA'
+													: ''}
+												{itemSelected ===
+												SlotFilterList.UPDATED_AT
+													? slot.created_at
+														? `${format(
+																new Date(
+																	slot.updated_at
+																),
+																'dd MMM yyyy'
+														  ).toString()}`
+														: 'NA'
+													: ''}
+											</SlotInfo>
+											<SlotCard
+												key={slot.name}
+												data={slot}
+											/>
+										</Fragment>
+									))}
+									width={'100%'}
+									xs={6}
+									sm={4}
+									md={3}
+								/>
+							</GridContainer>
+
+							<LoadMoreButton onClick={loadMore}>
+								<span>CARICA ALTRO</span>
+							</LoadMoreButton>
+						</Section>
+					</Container>
+
+					<GiochiFooter totalSlots={totalSlots} />
+				</Main>
+
+				<GiochiArticle />
+
+				<ProvidersDialog
+					open={openDialog}
+					setOpen={setOpenDialog}
+					data={producersData}
+					setSelected={filterByProducerName}
+				/>
+			</div>
+		</Layout>
+	)
 }
 
 const Header = styled.div`
-    background-image: linear-gradient(0deg, ${({theme}) => theme.palette.background} 0%, ${({theme}) => theme.palette.gradient} 50%);
-    color: #fff;
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    
-    span { font-size: small; }
+	background-image: linear-gradient(
+		0deg,
+		${({ theme }) => theme.palette.background} 0%,
+		${({ theme }) => theme.palette.gradient} 50%
+	);
+	color: #fff;
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
 
-    p { color: #fff; }
+	span {
+		font-size: small;
+	}
+
+	p {
+		color: #fff;
+	}
 `
 
 const Intro = styled.div`
-    width: 70%;
-   
-    @media ${device.mobileL} {
-        flex-grow: 1;
-    }
+	width: 70%;
+
+	@media ${device.mobileL} {
+		flex-grow: 1;
+	}
 `
 
 const Thumbnail = styled.div`
-    margin: auto;
+	margin: auto;
 
-    @media ${device.tablet} {
-        display: none;
-    }
+	@media ${device.tablet} {
+		display: none;
+	}
 `
 
-const SlotInfo = styled.div` 
-    display: flex;
-    justify-content: flex-end;
-    font-weight: normal;
-    font-size: 10px;
-    padding: 5px;
-    height: auto;
+const SlotInfo = styled.div`
+	display: flex;
+	justify-content: flex-end;
+	font-weight: normal;
+	font-size: 10px;
+	padding: 5px;
+	height: auto;
 
-    .producer {
-        display: inherit;
-        flex-direction: row;
-        flex-grow: 1;
-    }
+	.producer {
+		display: inherit;
+		flex-direction: row;
+		flex-grow: 1;
+	}
 `
 
 const GridContainer = styled.div`
-    display: flex;
-    flex-wrap: wrap;
-    color: ${({theme}) => theme.palette.background};
+	display: flex;
+	flex-wrap: wrap;
+	color: ${({ theme }) => theme.palette.background};
 
-    @media ${device.tablet} {
-        &#ads-slots {
-            flex-direction: column;
-            flex-wrap: nowrap;
-            overflow-x: scroll;
-            overflow-y: hidden;
-        }
-    }
+	@media ${device.tablet} {
+		&#ads-slots {
+			flex-direction: column;
+			flex-wrap: nowrap;
+			overflow-x: scroll;
+			overflow-y: hidden;
+		}
+	}
 `
 
 const Main = styled.div`
-    display: flex;
-    flex-direction: column;
-    overflow: hidden;
+	display: flex;
+	flex-direction: column;
+	overflow: hidden;
 `
 
 const Title = styled.div`
-    color: ${({theme}) => theme.palette.background};
-    flex-grow: 1;
-    h3 { margin-bottom: 0; }
+	color: ${({ theme }) => theme.palette.background};
+	flex-grow: 1;
+	h3 {
+		margin-bottom: 0;
+	}
 `
 
 const Container = styled.div`
-    display: flex;
-    flex-direction: row;
-    flex-grow: 1;
-    margin: 10px 0px;
+	display: flex;
+	flex-direction: row;
+	flex-grow: 1;
+	margin: 10px 0px;
 `
 
 const Aside = styled.div`
-    display: inherit;  
-    flex-direction: column;
-    margin-right: 20px;
-    width: 400px;
-    height: min-content;
-    
-    @media ${device.tablet} {
-       display: none;
-    }
+	display: inherit;
+	flex-direction: column;
+	margin-right: 20px;
+	width: 400px;
+	height: min-content;
+
+	@media ${device.tablet} {
+		display: none;
+	}
 `
 
 const Section = styled.div`
-    display: inherit;
-    flex-direction: column;
-    flex-grow: 2;
+	display: inherit;
+	flex-direction: column;
+	flex-grow: 2;
 `
 
 const Actions = styled.div`
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
 
-    #search-input {
-        display: inherit;
-        flex-grow: 2;
-        border: 1px solid ${({theme}) => theme.palette.background};
-        border-radius: 5px;
-        height: 35px;
+	#search-input {
+		display: inherit;
+		flex-grow: 2;
+		border: 1px solid ${({ theme }) => theme.palette.background};
+		border-radius: 5px;
+		height: 35px;
 
-        @media ${device.mobileL} {
-            margin-bottom: 10px;
-        }
-    }
+		@media ${device.mobileL} {
+			margin-bottom: 10px;
+		}
+	}
 
-    #filter-providers {
-        display: none;
-        justify-content: center;
-        border: 1px solid ${({theme}) => theme.palette.background};
-        border-radius: 5px;
-        padding: 12px;
-        margin-top: 10px;
-        color: #212530;
-        background-color: #fff;
-        cursor: pointer;
-        flex-grow: 0;
+	#filter-providers {
+		display: none;
+		justify-content: center;
+		border: 1px solid ${({ theme }) => theme.palette.background};
+		border-radius: 5px;
+		padding: 12px;
+		margin-top: 10px;
+		color: #212530;
+		background-color: #fff;
+		cursor: pointer;
+		flex-grow: 0;
 
-        @media ${device.tablet} {
-            display: flex;
-            padding: 10px 25px;
-        }
+		@media ${device.tablet} {
+			display: flex;
+			padding: 10px 25px;
+		}
 
-        @media ${device.mobileL} {
-            flex-grow: 1;
-            padding: 10px 0px;
-        }
+		@media ${device.mobileL} {
+			flex-grow: 1;
+			padding: 10px 0px;
+		}
 
-        &:hover {
-            color: ${({theme}) => theme.palette.background};
-        }
-    }
+		&:hover {
+			color: ${({ theme }) => theme.palette.background};
+		}
+	}
 
-    #filter-slots {
-        display: inherit;
-        flex-direction: row;
-        justify-content: flex-end;
-        flex-grow: 1;
-        z-index: 99;
-        height: 35px;
+	#filter-slots {
+		display: inherit;
+		flex-direction: row;
+		justify-content: flex-end;
+		flex-grow: 1;
+		z-index: 99;
+		height: 35px;
 
-        @media ${device.mobileL} {
-            justify-content: space-between;
-        }
+		@media ${device.mobileL} {
+			justify-content: space-between;
+		}
 
-        #shuffle {
-            border: 1px solid #e2b96d;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-grow: 0;
-            border-radius: 0px 5px 5px 0px;
-            color: #212530;
-            background-color: #fff;
-            width: 45px;
-            height: inherit;
-            cursor: pointer;
-    
-            &:hover {
-                color: #e2b96d;
-            }
+		#shuffle {
+			border: 1px solid #e2b96d;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			flex-grow: 0;
+			border-radius: 0px 5px 5px 0px;
+			color: #212530;
+			background-color: #fff;
+			width: 45px;
+			height: inherit;
+			cursor: pointer;
 
-            @media ${device.mobileL} {
-                width: fill-available;
-            }
-        }
-    }
+			&:hover {
+				color: #e2b96d;
+			}
+
+			@media ${device.mobileL} {
+				width: fill-available;
+			}
+		}
+	}
 `
 
 const LoadMoreButton = styled.div`
-    background-color: ${({theme}) => theme.palette.background};
-    border: 2px solid ${({theme}) => theme.palette.background};
-    color: #fff;
-    border-radius: ${({theme}) => theme.button.borderRadius};
-    font-weight: bold;
-    cursor: pointer;
-    padding: 15px;
-    width: fit-content;
-    text-transform: uppercase;
-    display: flex;
-    align-self: center;
+	background-color: ${({ theme }) => theme.palette.background};
+	border: 2px solid ${({ theme }) => theme.palette.background};
+	color: #fff;
+	border-radius: ${({ theme }) => theme.button.borderRadius};
+	font-weight: bold;
+	cursor: pointer;
+	padding: 15px;
+	width: fit-content;
+	text-transform: uppercase;
+	display: flex;
+	align-self: center;
 `
 
 export async function getStaticProps() {
+	const PAGE_BONUSES = [
+		'LeoVegas',
+		'StarCasinò',
+		'WinCasino',
+		'NetBet',
+		'King Casino',
+	]
 
-    const PAGE_BONUSES = ["LeoVegas", "StarCasinò", "WinCasino", "NetBet", "King Casino"]
+	const pageBonusesRemapping: any = {
+		LeoVegas:
+			'https://ads.leovegas.com/redirect.aspx?pid=3708703&bid=14965',
+		StarCasinò:
+			'http://record.affiliatelounge.com/_SEA3QA6bJTMP_fzV1idzxmNd7ZgqdRLk/135/',
+		WinCasino:
+			'https://vincipromo.it/wincasino/?mp=42794b32-7604-49d2-92d0-8adf67a6b173',
+		NetBet: 'https://banners.livepartners.com/view.php?z=151484',
+		'King Casino': 'http://cs.kingcasino.it/',
+	}
 
-    const pageBonusesRemapping: any = {
-        LeoVegas: "https://ads.leovegas.com/redirect.aspx?pid=3708703&bid=14965",
-        StarCasinò: "http://record.affiliatelounge.com/_SEA3QA6bJTMP_fzV1idzxmNd7ZgqdRLk/135/",
-        WinCasino: "https://vincipromo.it/wincasino/?mp=42794b32-7604-49d2-92d0-8adf67a6b173",
-        NetBet: "https://banners.livepartners.com/view.php?z=151484",
-        "King Casino": "http://cs.kingcasino.it/",
-    }
-
-    return {
-        props: {
-                slotsData: { 
-                newest: await getSlots({ limit: 6, start: 0, sort: 'created_at:desc' }),
-                popular: await getSlots({ limit: 6, start: 0, sort: 'rating:desc' })
-            },
-            giochiSlotsData: await await getSlots({limit: 36, start: getRandomInt(0, 500)}),
-            producersData: await getProducers({ start: 0, sort: 'name:asc' }),
-            freeBonusData: (await getBonuses({ names: PAGE_BONUSES, sort: 'rating:desc'})).map((b) => {
-                b.link = pageBonusesRemapping[b.name]
-                return b
-            }),
-            totalSlots: await getTotalSlots()
-        }
-    }
+	return {
+		props: {
+			slotsData: {
+				newest: await getSlots({
+					limit: 6,
+					start: 0,
+					sort: 'created_at:desc',
+				}),
+				popular: await getSlots({
+					limit: 6,
+					start: 0,
+					sort: 'rating:desc',
+				}),
+			},
+			giochiSlotsData: await await getSlots({
+				limit: 36,
+				start: getRandomInt(0, 500),
+			}),
+			producersData: await getProducers({ start: 0, sort: 'name:asc' }),
+			freeBonusData: (
+				await getBonuses({ names: PAGE_BONUSES, sort: 'rating:desc' })
+			).map(b => {
+				b.link = pageBonusesRemapping[b.name]
+				return b
+			}),
+			totalSlots: await getTotalSlots(),
+		},
+	}
 }
 
 export default GiochiPage
