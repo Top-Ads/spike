@@ -443,8 +443,6 @@ const CasinoInfo = styled.div`
 `
 
 export async function getStaticProps() {
-	const x = getTotalBonuses()
-
 	return {
 		props: {
 			slotsData: {
