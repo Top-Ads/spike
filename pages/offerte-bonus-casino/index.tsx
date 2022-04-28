@@ -29,11 +29,19 @@ const BonusCasinoPage: FunctionComponent<PageProps> = ({
 }) => {
 	const { t } = useTranslation()
 
-	const TOP_BONUSES = ['888 Casino', 'StarCasinò', 'LeoVegas', 'WinCasino']
+	const TOP_BONUSES = [
+		'StarCasinò',
+		'LeoVegas',
+		'PokerStars Casino',
+		'WinCasino',
+	]
+
+	console.log(pagesBonusesData)
 
 	const MAIN_BONUSES = [
 		'LeoVegas',
 		'StarCasinò',
+		'PokerStars Casino',
 		'WinCasino',
 		'NetBet',
 		'GoldBet',
@@ -44,17 +52,21 @@ const BonusCasinoPage: FunctionComponent<PageProps> = ({
 		'Gioco Digitale',
 	]
 
-	const topBonusesData = pagesBonusesData.filter(bonus => {
-		if (TOP_BONUSES.includes(bonus.name)) {
-			return bonus
-		}
-	})
+	// const topBonusesData = pagesBonusesData.filter(bonus => {
+	// 	if (TOP_BONUSES.includes(bonus.name)) {
+	// 		return bonus
+	// 	}
+	// })
 
-	const mainBonusesData = pagesBonusesData.filter(bonus => {
-		if (MAIN_BONUSES.includes(bonus.name)) {
-			return bonus
-		}
-	})
+	const topBonusesData = TOP_BONUSES.map(
+		b => pagesBonusesData.filter(bonus => bonus.name === b)[0]
+	)
+
+	const mainBonusesData = MAIN_BONUSES.map(
+		b => pagesBonusesData.filter(bonus => bonus.name === b)[0]
+	)
+
+	console.log(topBonusesData, mainBonusesData)
 
 	return (
 		<Layout title='Casino Squad | Offerte Attuali Bonus Casino e Promo Aggiornate Giornalmente'>
@@ -630,6 +642,7 @@ export async function getStaticProps() {
 		'StarCasinò',
 		'Starvegas',
 		'WinCasino',
+		'PokerStars Casino',
 		'NetBet',
 		'GoldBet',
 		'888 Casino',
@@ -662,6 +675,8 @@ export async function getStaticProps() {
 			'https://mediaserver.entainpartners.com/renderBanner.do?zoneId=2031706',
 		Snai: 'https://informatoriads.snai.it/redirect.aspx?pid=30830&bid=2194',
 		Unibet: 'https://b1.trickyrock.com/redirect.aspx?pid=74444446&bid=27508',
+		'PokerStars Casino':
+			'https://secure.starsaffiliateclub.com/C.ashx?btag=a_184856b_6258c_&affid=100976968&siteid=184856&adid=6258&c=',
 	}
 
 	return {
