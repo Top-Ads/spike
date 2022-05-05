@@ -34,7 +34,6 @@ import GridLayout from '../../../components/Commons/GridLayout'
 import Divider from '../../../components/Commons/Divider'
 import { styledTheme } from '../../../lib/theme'
 import { useTranslation } from 'react-i18next'
-import axios from 'axios'
 import AquaClient from '../../../lib/graphql/aquaClient'
 
 type PageProps = {
