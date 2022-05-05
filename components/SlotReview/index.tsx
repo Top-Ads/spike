@@ -97,7 +97,7 @@ const SlotReview: FunctionComponent<Props> = ({ data, article }) => {
 								{String(article['article'])}
 							</Markdown>
 						)}
-						<h2>Tips</h2> <Markdown>{String(data?.tips)}</Markdown>
+						{/* <h2>Tips</h2> <Markdown>{String(data?.tips)}</Markdown> */}
 					</div>
 
 					{/*  { data?.linkYoutube && 
