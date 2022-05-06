@@ -45,7 +45,6 @@ export default function App({ Component, pageProps }: IProps) {
 		<ContextProvider>
 			<ThemeProvider theme={styledTheme}>
 				<Head>
-					{/* <!-- Global site tag (gtag.js) - Google Analytics --> */}
 					<script
 						async
 						src='https://www.googletagmanager.com/gtag/js?id=G-5VB78R4HV0'
@@ -62,6 +61,17 @@ export default function App({ Component, pageProps }: IProps) {
                             function gtag(){dataLayer.push(arguments);}
                             gtag('js', new Date());
                             gtag('config', 'G-046QNHB3VY');
+                        `,
+						}}
+					/>
+
+					<script
+						dangerouslySetInnerHTML={{
+							__html: `
+                            window.dataLayer = window.dataLayer || [];
+                            function gtag(){dataLayer.push(arguments);}
+                            gtag('js', new Date());
+                            gtag('config', 'G-5VB78R4HV0');
                         `,
 						}}
 					/>
