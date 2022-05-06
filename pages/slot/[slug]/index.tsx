@@ -188,7 +188,14 @@ const SlotPage: FunctionComponent<PageProps> = ({ data, article }) => {
 	}, [likedSlot])
 
 	return (
-		<Layout title={`Slot Machine - ${data.name}`}>
+		<Layout
+			title={
+				article['seoTitle']
+					? article['seoTitle']
+					: `Slot Machine - ${data.name}`
+			}
+			description={article['seoDescription']}
+		>
 			<Fragment>
 				<Main>
 					<GameContainer>
@@ -473,8 +480,6 @@ const SlotPage: FunctionComponent<PageProps> = ({ data, article }) => {
 
 export async function getServerSideProps(context: NextPageContext) {
 	const slug = context.query.slug as string
-
-	console.log(slug)
 
 	const aquaClient = new AquaClient(
 		'https://wincasinoblogadmin.spikeapi.eu/graphql'

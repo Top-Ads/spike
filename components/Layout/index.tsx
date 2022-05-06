@@ -9,103 +9,116 @@ import Header from '../Commons/Header'
 import CustomBreadcrumbs from '../Commons/Breadcrumbs'
 
 type Props = {
-  children?: ReactNode
-  title?: string
+	children?: ReactNode
+	title?: string
+	description?: string
 }
 
-const Layout = ( {children, title}: Props) => { 
-  
-  return (
-    <Fragment>
-      <Head>
-        <title>{title}</title>
-        <meta charSet="utf-8" />
-        <meta name="viewport" content="initial-scale=1.0, width=device-width"/>
-        <link rel="manifest" href="/manifest.json"/>
-        <meta name="theme-color" content="#e2b96d"/>
-        <meta name="apple-mobile-web-app-status-bar-style" content="#e2b96d"></meta>
-      </Head>
-      
-      <header>
-        <BrowserView>
-          <Header isBrowserView={true}/>
-        </BrowserView>
+const Layout = ({ children, title, description }: Props) => {
+	return (
+		<Fragment>
+			<Head>
+				<title>{title}</title>
+				<meta charSet='utf-8' />
+				<meta
+					name='viewport'
+					content='initial-scale=1.0, width=device-width'
+				/>
+				<link rel='manifest' href='/manifest.json' />
+				<meta name='theme-color' content='#e2b96d' />
+				<meta
+					name='apple-mobile-web-app-status-bar-style'
+					content='#e2b96d'
+				></meta>
+				{description && (
+					<meta name='description' content={description} />
+				)}
+			</Head>
 
-        <MobileView>
-          <Header isBrowserView={false}/>
-        </MobileView>
-      </header>
-      
-      <MarginHeader/>
+			<header>
+				<BrowserView>
+					<Header isBrowserView={true} />
+				</BrowserView>
 
-      <Main>
-        <div className="layout-container breadcrumb-container"><CustomBreadcrumbs /></div>
+				<MobileView>
+					<Header isBrowserView={false} />
+				</MobileView>
+			</header>
 
-        {children}
-      </Main>
+			<MarginHeader />
 
-      <Footer/>
-      
-      <ScrollButton/>
+			<Main>
+				<div className='layout-container breadcrumb-container'>
+					<CustomBreadcrumbs />
+				</div>
 
-      <StickyBanner/>
+				{children}
+			</Main>
 
-    </Fragment>
-  )
+			<Footer />
+
+			<ScrollButton />
+
+			<StickyBanner />
+		</Fragment>
+	)
 }
 
 export default Layout
 
 const Main = styled.div`
+	.layout-container {
+		padding: 0px 10%;
 
-  .layout-container {
-    padding: 0px 10%;
+		@media ${device.tablet} {
+			padding: 5px 3% 0px;
+		}
 
-    @media ${device.tablet} {
-      padding: 5px 3% 0px;
-    }
+		@media ${device.mobileL} {
+			padding: 0px 3% 0px;
+		}
+	}
+	.breadcrumb-container {
+		background-image: linear-gradient(
+			180deg,
+			rgb(217 187 106 / 92%) 0%,
+			rgb(224 198 133) 95%
+		);
+	}
 
-    @media ${device.mobileL} {
-      padding: 0px 3% 0px;
-    }
-  }
-  .breadcrumb-container {
-    background-image: linear-gradient(180deg,rgb(217 187 106 / 92%) 0%, rgb(224 198 133) 95%);
-  } 
-
-  .topBonus {
-    background-image: ${({theme}) => theme.palette.backgroundImage};
-    color: #fff;
-  }
+	.topBonus {
+		background-image: ${({ theme }) => theme.palette.backgroundImage};
+		color: #fff;
+	}
 `
 
 const MarginHeader = styled.div`
-  display: none;
-  width: min-content;
-  
-  @media ${device.tablet} {
-    display: block;
-    height: 75px;
-  }
-  
-  @media ${device.mobileL} {
-    display: block;
-    height: 65px;
-  }
+	display: none;
+	width: min-content;
+
+	@media ${device.tablet} {
+		display: block;
+		height: 75px;
+	}
+
+	@media ${device.mobileL} {
+		display: block;
+		height: 65px;
+	}
 `
 
 const BrowserView = styled.div`
-  display: revert;
+	display: revert;
 
-  @media ${device.tablet} {
-    display: none;
-  } 
+	@media ${device.tablet} {
+		display: none;
+	}
 `
 
 const MobileView = styled.div`
-  display: none;
+	display: none;
 
-  @media ${device.tablet} {
-      display: revert;
-  } 
+	@media ${device.tablet} {
+		display: revert;
+	}
 `

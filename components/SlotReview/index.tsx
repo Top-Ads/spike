@@ -121,8 +121,6 @@ const SlotReview: FunctionComponent<Props> = ({ data, article }) => {
 }
 
 const ImageComponent: FunctionComponent = (props: any) => {
-	console.log(props)
-
 	return (
 		<img
 			style={{ maxWidth: '600px', margin: 'auto', objectFit: 'cover' }}
