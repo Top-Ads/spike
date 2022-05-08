@@ -190,11 +190,15 @@ const SlotPage: FunctionComponent<PageProps> = ({ data, article }) => {
 	return (
 		<Layout
 			title={
-				article['seoTitle']
+				article && article['seoTitle']
 					? article['seoTitle']
 					: `Slot Machine - ${data.name}`
 			}
-			description={article['seoDescription']}
+			description={
+				article && article['seoDescription']
+					? article['seoDescription']
+					: ''
+			}
 		>
 			<Fragment>
 				<Main>
