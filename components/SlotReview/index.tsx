@@ -74,7 +74,7 @@ const SlotReview: FunctionComponent<Props> = ({ data, article }) => {
 
 							<Divider width={'99%'} />
 							<div className='row'>
-								<div className='label'>Typo</div>
+								<div className='label'>Tipo</div>
 								<span>{data.type}</span>
 							</div>
 						</Info>
