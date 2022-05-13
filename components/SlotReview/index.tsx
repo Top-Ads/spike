@@ -195,6 +195,10 @@ const Article = styled.article`
 		padding: 0px 2px;
 		width: fill-available;
 	}
+
+	a {
+		color: blue;
+	}
 `
 
 export default SlotReview
