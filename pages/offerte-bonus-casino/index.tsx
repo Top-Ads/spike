@@ -676,7 +676,7 @@ export async function getStaticProps() {
 		Snai: 'https://informatoriads.snai.it/redirect.aspx?pid=30830&bid=2194',
 		Unibet: 'https://b1.trickyrock.com/redirect.aspx?pid=74444446&bid=27508',
 		'PokerStars Casino':
-			'https://secure.starsaffiliateclub.com/C.ashx?btag=a_184856b_6258c_&affid=100976968&siteid=184856&adid=6258&c=',
+			'https://secure.starsaffiliateclub.com/C.ashx?btag=a_184856b_6906c_&affid=100976968&siteid=184856&adid=6906&c=',
 	}
 
 	return {

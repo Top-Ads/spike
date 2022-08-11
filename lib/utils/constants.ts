@@ -71,5 +71,5 @@ export const pageBonusesRemapping: any = {
 	'Gioco Digitale':
 		'https://mediaserver.entainpartners.com/renderBanner.do?zoneId=2031706',
 	'PokerStars Casino':
-		'https://secure.starsaffiliateclub.com/C.ashx?btag=a_184856b_6258c_&affid=100976968&siteid=184856&adid=6258&c=',
+		'https://secure.starsaffiliateclub.com/C.ashx?btag=a_184856b_6906c_&affid=100976968&siteid=184856&adid=6906&c=',
 }
