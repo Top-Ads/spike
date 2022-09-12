@@ -468,6 +468,7 @@ export async function getStaticProps() {
 			totalBonuses: await getTotalBonuses(),
 			totalProducers: await getTotalProducers(),
 		},
+		revalidate: 30,
 	}
 }
 
