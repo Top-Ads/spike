@@ -127,8 +127,8 @@ const ArticleContainer = styled.div`
 	}
 `
 
-const MarkdownStyleProvider = styled.div`
-	margin-top: 3rem;
+export const MarkdownStyleProvider = styled.div`
+	margin-top: 2rem;
 	line-height: 1.3rem;
 
 	h1,
@@ -156,7 +156,7 @@ const MarkdownStyleProvider = styled.div`
 
 	a {
 		font-weight: bold;
-		color: blue;
+		color: #4c8bf5;
 	}
 
 	strong {

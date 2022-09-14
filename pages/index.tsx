@@ -24,6 +24,8 @@ import { CDN } from '../public/environment'
 import CasinoCounter from '../components/CasinoCounter'
 import { getTotalSlots, getTotalBonuses, getTotalProducers } from '../lib/api'
 import { useTranslation } from 'react-i18next'
+import Markdown from 'markdown-to-jsx'
+import { MarkdownStyleProvider } from './blog/[firstLevel]/[secondLevel]/[slug]'
 
 type PageProps = {
 	slotsData: ThemeSlot
@@ -160,7 +162,20 @@ const IndexPage: FunctionComponent<PageProps> = props => {
 
 			<div className='layout-container'>
 				<Intro>
-					<p>
+					<MarkdownStyleProvider>
+						<Markdown>{`Siamo lieti di accoglierti su Casinò Squad, un sito dedicato al mondo del casinò dove potrai trovare opinioni e spiegazioni su una gamma di slot machine e giochi da casinò.<br>
+Potrai esplorare e scegliere la tua slot online preferita, ma anche avere aggiornamenti sulle leggi e norme del settore.<br>
+Non avrai bisogno di registrarti o di fare download.
+
+Puoi consultare Casinò Squad per familiarizzare con il mondo dell’intrattenimento del gioco digitale legale e responsabile.<br>
+Infatti, qui **troverai confronti approfonditi fra i diversi casinò online e le migliori piattaforme di scommesse**.<br>
+In più, se sei follower di Live Casinò e degli ormai diffusi Game Show, puoi anche consultare il nostro servizio esclusivo che consente, su Casino Squad, di avere la possibilità di ricevere informazioni in tempo reale sulle Statistiche Crazy Time Live, Monopoly Statistiche Live, ma anche delle LiveStats di Dream Catcher.
+
+Inoltre, potrai fare valutazioni ed essere sempre aggiornato sui migliori bonus disponibili.<br>
+È anche possibile valutare alcune offerte di Benvenuto sulle slot online che trovi sul sito.<br>
+Se stai cercando informazioni su quale sia il sito più conveniente per giocare alle slot digitali, ti invitiamo a consultare la tabella seguente.`}</Markdown>
+					</MarkdownStyleProvider>
+					{/* <p>
 						Siamo lieti di accoglierti su Casinò Squad, un sito
 						dedicato al mondo del casinò dove potrai trovare
 						consigli e dritte su un’ampia gamma di slot machine e
@@ -199,7 +214,7 @@ const IndexPage: FunctionComponent<PageProps> = props => {
 						Se stai cercando informazioni su quale sia il sito più
 						conveniente per giocare alle slot digitali, ti invitiamo
 						a consultare la tabella seguente.
-					</p>
+					</p> */}
 				</Intro>
 
 				<GridContainer id='grid-slots'>
