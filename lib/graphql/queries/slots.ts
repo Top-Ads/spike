@@ -74,11 +74,14 @@ const SLOTS = `
   ${BonusProps}, ${SlotProps}
 `
 
-export const getSlots = async (params: Object, query: string = SLOTS): Promise<Slot[]> => {  
-  const request = await aquaClient.query({ 
-    query,
-    variables: params
-  })
+export const getSlots = async (
+	params: Object,
+	query: string = SLOTS
+): Promise<Slot[]> => {
+	const request = await aquaClient.query({
+		query,
+		variables: params,
+	})
 
-  return request.data.data.slots as Slot[]
+	return request.data.data.slots as Slot[]
 }

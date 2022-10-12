@@ -44,12 +44,12 @@ const IndexPage: FunctionComponent<PageProps> = props => {
 
 	console.log(pageBonusesData)
 
-	const TOP_BONUSES = ['StarCasinò', 'LeoVegas', 'PokerStars Casino']
+	const TOP_BONUSES = ['StarCasinò', 'LeoVegas', 'BetRoom']
 
 	const MAIN_BONUSES = [
 		'LeoVegas',
 		'StarCasinò',
-		'PokerStars Casino',
+		'BetRoom',
 		'WinCasino',
 		'NetBet',
 		'GoldBet',

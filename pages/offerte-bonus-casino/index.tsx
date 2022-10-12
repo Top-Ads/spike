@@ -29,19 +29,14 @@ const BonusCasinoPage: FunctionComponent<PageProps> = ({
 }) => {
 	const { t } = useTranslation()
 
-	const TOP_BONUSES = [
-		'StarCasinò',
-		'LeoVegas',
-		'PokerStars Casino',
-		'WinCasino',
-	]
+	const TOP_BONUSES = ['StarCasinò', 'LeoVegas', 'BetRoom', 'WinCasino']
 
 	console.log(pagesBonusesData)
 
 	const MAIN_BONUSES = [
 		'LeoVegas',
 		'StarCasinò',
-		'PokerStars Casino',
+		'BetRoom',
 		'WinCasino',
 		'NetBet',
 		'GoldBet',
@@ -642,7 +637,7 @@ export async function getStaticProps() {
 		'StarCasinò',
 		'Starvegas',
 		'WinCasino',
-		'PokerStars Casino',
+		'BetRoom',
 		'NetBet',
 		'GoldBet',
 		'888 Casino',
@@ -661,6 +656,8 @@ export async function getStaticProps() {
 			'http://record.affiliatelounge.com/_SEA3QA6bJTMP_fzV1idzxmNd7ZgqdRLk/135/',
 		Starvegas:
 			'https://www.starvegas.it/gmg/refer/61782b177358340001a18ac7',
+		BetRoom:
+			'https://www.promovt.info/betroomcasino/?page=user&p=registration&mp=b76750fa-ea90-424c-85d2-00e33416391e',
 		WinCasino:
 			'https://www.vincipromo.it/wincasino/?mp=7f1d8788-3f9e-4111-b205-e49d29661715',
 		NetBet: 'https://banners.livepartners.com/view.php?z=151484',

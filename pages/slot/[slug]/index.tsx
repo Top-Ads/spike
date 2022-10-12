@@ -131,7 +131,8 @@ const SlotPage: FunctionComponent<PageProps> = ({ data, article }) => {
 		setMainBonus((await getBonuses({ id: id }))[0])
 
 	useEffect(() => {
-		getMainBonus(data.mainBonus.id)
+		// se id è pokerstars sostituisci con BetRoom
+		getMainBonus(data.mainBonus.id == '261' ? '298' : data.mainBonus.id)
 
 		const currentItem: string | null = localStorage.getItem(
 			Category.FAVORITES

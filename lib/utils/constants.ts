@@ -43,7 +43,7 @@ export const PAGE_BONUSES = [
 	'LeoVegas',
 	'StarCasinò',
 	'Starvegas',
-	'PokerStars Casino',
+	'BetRoom',
 	'WinCasino',
 	'NetBet',
 	'GoldBet',
@@ -58,6 +58,8 @@ export const pageBonusesRemapping: any = {
 	LeoVegas: 'https://ads.leovegas.com/redirect.aspx?pid=3708703&bid=14965',
 	StarCasinò:
 		'http://record.affiliatelounge.com/_SEA3QA6bJTMP_fzV1idzxmNd7ZgqdRLk/135/',
+	BetRoom:
+		'https://www.promovt.info/betroomcasino/?page=user&p=registration&mp=b76750fa-ea90-424c-85d2-00e33416391e',
 	Starvegas: 'https://www.starvegas.it/gmg/refer/61782b177358340001a18ac7',
 	WinCasino:
 		'https://vincipromo.it/wincasino/?mp=42794b32-7604-49d2-92d0-8adf67a6b173',
