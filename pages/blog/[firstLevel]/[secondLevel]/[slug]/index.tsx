@@ -219,42 +219,51 @@ export const getStaticPaths = async () => {
 	)
 
 	return {
-		paths: paths,
+		paths: [],
 		fallback: true,
 	}
 }
 
 export const getStaticProps = async (ctx: GetStaticPropsContext) => {
-	const { firstLevel, secondLevel, slug } = ctx.params as any
+	try {
+		const { firstLevel, secondLevel, slug } = ctx.params as any
 
-	const aquaClient = new AquaClient(BLOG_API)
+		const aquaClient = new AquaClient(BLOG_API)
 
-	const navbarData = await aquaClient.query({
-		query: NAVBAR_QUERY,
-		variables: {},
-	})
+		const navbarData = await aquaClient.query({
+			query: NAVBAR_QUERY,
+			variables: {},
+		})
 
-	const lastFive = await aquaClient.query({
-		query: LAST_FIVE_QUERY,
-		variables: {},
-	})
+		const lastFive = await aquaClient.query({
+			query: LAST_FIVE_QUERY,
+			variables: {},
+		})
 
-	const article = await aquaClient.query({
-		query: ARTICLE_QUERY,
-		variables: {
-			mainArgumentSlug: firstLevel,
-			secondaryArgumentSlug: secondLevel,
-			articleSlug: slug,
-		},
-	})
+		const article = await aquaClient.query({
+			query: ARTICLE_QUERY,
+			variables: {
+				mainArgumentSlug: firstLevel,
+				secondaryArgumentSlug: secondLevel,
+				articleSlug: slug,
+			},
+		})
 
-	return {
-		props: {
-			article: article.data.data.casinoSquadBlogArticles[0],
-			navbarData: navbarData.data.data.navbar,
-			lastFive: lastFive.data.data.casinoSquadBlogArticles,
-		},
-		revalidate: 60,
+		return {
+			props: {
+				article: article.data.data.casinoSquadBlogArticles[0],
+				navbarData: navbarData.data.data.navbar,
+				lastFive: lastFive.data.data.casinoSquadBlogArticles,
+			},
+			revalidate: 60,
+		}
+	} catch (error) {
+		return {
+			redirect: {
+				destination: '/404',
+				permanent: false,
+			},
+		}
 	}
 }
 
