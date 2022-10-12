@@ -22,6 +22,8 @@ import { format } from 'date-fns'
 import italianLocale from 'date-fns/locale/it'
 import Head from 'next/head'
 import { useTranslation } from 'react-i18next'
+import { MarkdownStyleProvider } from '../../blog/[firstLevel]/[secondLevel]/[slug]'
+import Markdown from 'markdown-to-jsx'
 
 type PageProps = {
 	statsData: Stat[]
@@ -104,30 +106,18 @@ const CrazyTimePage: FunctionComponent<PageProps> = ({
 
 			<div className='layout-container'>
 				<Header className='intro-header'>
-					<h2>
-						{t(
-							'Statistiche Crazy Time Live: Tutte le Estrazioni in Tempo Reale'
-						)}
-					</h2>
-
 					<Intro>
-						<p>
-							{t(
-								'Benvenuto sulla pagina dedicata alle Statistiche Live di Crazy Time. Qui puoi seguire in tempo reale le statistiche della ruota Crazy Time. Esamina le statistiche live per selezionare i numeri vincenti e scoprire Bonus incredibili.'
-							)}
+						<div className='wrapper'>
+							<MarkdownStyleProvider>
+								<Markdown>{`# Statistiche Crazy Time Live: Tutte le Estrazioni in Tempo Reale
 
-							<br />
-							<br />
+Benvenuto sulla pagina dedicata alle Statistiche Live di Crazy Time. Qui puoi seguire in tempo reale le statistiche della ruota Crazy Time.<br>Esamina le statistiche live per selezionare i numeri vincenti e scoprire i round Bonus che sono accaduti.
 
-							{t(
-								`Hai a disposizione i dati sulle estrazioni in diretta dalla ruota Crazy 
-                                Time. In questa sezione puoi confrontare le probabilità teoriche 
-                                rispetto ai numeri usciti realmente a questi Game Show.
-                                Inoltre, hai a disposizione i dati sui numeri ritardatari, in modo da 
-                                elaborare la tua strategia di gioco, oltre a informazioni che raccontano
-                                la storia di questo gioco digitale.`
-							)}
-						</p>
+**Hai a disposizione i dati sulle estrazioni in diretta dalla ruota Crazy Time**. In questa sezione puoi confrontare le probabilità teoriche rispetto ai numeri usciti realmente a questi Game Show.<br>Inoltre, hai a disposizione i dati sui numeri ritardatari, in modo da pensare a una strategia di gioco, oltre a informazioni che raccontano la storia di questo gioco digitale.<br>
+**Gioca responsabilmente**. **Il gioco è vietato ai minori di 18 anni**.
+						`}</Markdown>
+							</MarkdownStyleProvider>
+						</div>
 
 						<Thumbnail>
 							<LazyLoad height={548}>
@@ -232,7 +222,29 @@ const CrazyTimePage: FunctionComponent<PageProps> = ({
 				</Main>
 
 				<Footer>
-					<section>
+					<MarkdownStyleProvider>
+						<Markdown>{`## Consulta i numeri ritardatari della ruota Crazy Time
+
+Fra i Live Casinò Game Show, la ruota Crazy Time è uno dei più popolari. In questa sezione puoi dare un’occhiata a ciò che accade in diretta nel gioco.<br>In più, è possibile anche visionare il numero di volte in cui si è verificata l’estrazione, in considerazione dell’intervallo di tempo della previsione.<br><br>
+
+
+## Questi dati sono utili?
+
+Questi dati possono aiutarti perché rivelano la differenza tra previsioni statistiche e ciò che accade nel gioco reale.<br>
+Devi sapere che i produttori dichiarano il valore medio delle probabilità di uscita, tuttavia, nelle estrazioni reali, si contemplano scostamenti che possono variare dai valori attesi.
+
+**Le possibilità teoriche comunque non cambiano e non ci sono correlazioni tra uno spin e l’altro**. Come abbiamo spesso detto, devi considerare che “la probabilità non ha memoria”.<br>Ciò significa che un giro della ruota è indipendente dall’altro.<br><br>
+
+
+## Crazy Time: intrattenimento consapevole
+
+Qualsiasi utente di Casinò Squad può sfruttare questo servizio  totalmente gratis. La ricerca attraverso questa sezione è abbastanza semplice e comoda.<br>Avendo la possibilità di valutare in tempo reale le probabilità, puoi personalizzare la tua strategia di gioco in base al Budget a disposizione.
+
+Dobbiamo sottolineare che, sul lungo periodo, ogni tipo di giocata porta alla perdita del credito, se si considera l’**RTP pari a 96,08%**. Per tutte le informazioni dettagliate e per scoprire tutte le caratteristiche della Crazy Time, consulta la guida al Live Game Show Crazy Time.
+
+Ricorda di giocare con coscienza e responsabilità, nella consapevolezza che il gioco da casinò può causare dipendenza patologica.`}</Markdown>
+					</MarkdownStyleProvider>
+					{/* <section>
 						<h3>
 							{t(
 								'Consulta i numeri ritardatari della ruota Crazy Time'
@@ -291,7 +303,7 @@ const CrazyTimePage: FunctionComponent<PageProps> = ({
 								)}
 							</p>
 						</div>
-					</section>
+					</section> */}
 				</Footer>
 			</div>
 		</Layout>
@@ -320,7 +332,7 @@ const Intro = styled.div`
 	margin-bottom: 15px;
 	flex-wrap: wrap;
 
-	p {
+	.wrapper {
 		width: 50%;
 		@media ${device.mobileL} {
 			width: 100%;

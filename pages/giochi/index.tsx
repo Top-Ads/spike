@@ -29,6 +29,8 @@ import italianLocale from 'date-fns/locale/it'
 import { getTotalSlots } from '../../lib/api'
 import Head from 'next/head'
 import { getRandomInt } from '../../lib/utils/getRandomInt'
+import { MarkdownStyleProvider } from '../blog/[firstLevel]/[secondLevel]/[slug]'
+import Markdown from 'markdown-to-jsx'
 
 type PageProps = {
 	giochiSlotsData: Slot[]
@@ -179,7 +181,7 @@ const GiochiPage: FunctionComponent<PageProps> = props => {
 					</h2>
 
 					<span>
-						Pubblicato: 31 lug 2021 • Ultimo aggiornamento
+						Pubblicato: 14 set 2022 • Ultimo aggiornamento
 						<span style={{ textTransform: 'capitalize' }}>
 							{' '}
 							{format(new Date(Date.now()), 'dd MMM yyyy', {
@@ -187,8 +189,15 @@ const GiochiPage: FunctionComponent<PageProps> = props => {
 							}).toString()}{' '}
 						</span>
 					</span>
+					<MarkdownStyleProvider>
+						<Markdown>
+							{`Prima di tutto, benvenuto. Potresti volere informazioni sulle slot machine gratis online.<br>
+Abbiamo creato recensioni per i giochi di slot all’interno della nostra collezione di titoli disponibile.<br>
+Puoi sfogliare la nostra selezione delle migliori slot machines, sceglierne una e intrattenerti. Senza download o registrazione.`}
+						</Markdown>
+					</MarkdownStyleProvider>
 
-					<p>
+					{/* <p>
 						Prima di tutto, benvenuto! Sappiamo che ti piace giocare
 						alle slot machine gratis online: è per quello che sei
 						qui! La buona notizia e che anche noi piacciono molto le
@@ -196,7 +205,7 @@ const GiochiPage: FunctionComponent<PageProps> = props => {
 						disponibile. Sfoglia la nostra selezione delle migliori
 						slot machines, scegli una che ti piace e divertiti.
 						Senza download o registrazione.
-					</p>
+					</p> */}
 				</Intro>
 
 				<Thumbnail>
