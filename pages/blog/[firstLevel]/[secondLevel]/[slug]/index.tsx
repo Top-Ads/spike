@@ -258,6 +258,7 @@ export const getStaticProps = async (ctx: GetStaticPropsContext) => {
 			revalidate: 60,
 		}
 	} catch (error) {
+		console.log(error)
 		return {
 			redirect: {
 				destination: '/404',

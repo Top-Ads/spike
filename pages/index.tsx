@@ -53,6 +53,7 @@ const IndexPage: FunctionComponent<PageProps> = props => {
 		'StarCasinò',
 		'BetRoom',
 		'WinCasino',
+		'PokerStars Casino',
 		'NetBet',
 		'GoldBet',
 		'888 Casino',
@@ -169,7 +170,7 @@ Non avrai bisogno di registrarti o di fare download.
 
 Puoi consultare Casinò Squad per familiarizzare con il mondo dell’intrattenimento del gioco digitale legale e responsabile.<br>
 Infatti, qui **troverai confronti approfonditi fra i diversi casinò online e le migliori piattaforme di scommesse**.<br>
-In più, se sei follower di Live Casinò e degli ormai diffusi Game Show, puoi anche consultare il nostro servizio esclusivo che consente, su Casino Squad, di avere la possibilità di ricevere informazioni in tempo reale sulle Statistiche Crazy Time Live, Monopoly Statistiche Live, ma anche delle LiveStats di Dream Catcher.
+In più, se sei follower di Live Casinò e degli ormai diffusi Game Show, puoi anche consultare il nostro servizio esclusivo che consente, su Casino Squad, di avere la possibilità di ricevere informazioni in tempo reale nelle [crazy time stats](/live-stats/crazy-time), Monopoly Statistiche Live, ma anche delle LiveStats di Dream Catcher.
 
 Inoltre, potrai fare valutazioni ed essere sempre aggiornato sui migliori bonus disponibili.<br>
 È anche possibile valutare alcune offerte di Benvenuto sulle slot online che trovi sul sito.<br>

@@ -40,6 +40,7 @@ const BonusCasinoPage: FunctionComponent<PageProps> = ({
 		'StarCasinò',
 		'BetRoom',
 		'WinCasino',
+		'PokerStars Casino',
 		'NetBet',
 		'GoldBet',
 		'888 Casino',
@@ -211,9 +212,7 @@ In linea generale, però, i Bonus dei casinò online ti permettono di giocare co
 						/>
 					</div>
 				</GridContainer>
-				<h2>
-					<strong>{t('FAQ - Domande Frequenti')}</strong>
-				</h2>
+
 				<MarkdownStyleProvider>
 					<Markdown>
 						{`## Come funzionano i Bonus di Benvenuto?
@@ -296,7 +295,10 @@ Le scommesse sportive possono essere abbastanza ricercate, ed è per questo che 
 La sessione di gioco alle migliori slot machine online è assicurata su tutte le piattaforme di casinò digitali, che mettono a disposizione dei giocatori la versione Demo per provare tutti i giochi disponibili all’interno del sito, in modo tale da permettere agli utenti di capirne bene il meccanismo.<br>Inoltre, è sempre possibile fare pratica con migliori slot online gratis sul sito di Casinò Squad, così da migliorare ulteriormente l’esperienza.<br><br>
 
 
-## L’importanza del gioco consapevole`}
+## L’importanza del gioco consapevole
+È importante ricordare sempre di giocare in maniera responsabile, consapevole e moderata, in quanto bisogna sempre capire quando è il momento di fermarsi.<br>Giocare online è un piacevole passatempo e divertimento, ma deve rimanere tale.<br>
+Non bisogna rincorrere le perdite, e lasciare che il gioco da casino diventi una dipendenza da cui è molto difficile uscire. Gioca responsabilmente.
+`}
 					</Markdown>
 				</MarkdownStyleProvider>
 
@@ -565,6 +567,9 @@ La sessione di gioco alle migliori slot machine online è assicurata su tutte le
 			</GridContainer>
 
 			<Main className='layout-container'>
+				<h2>
+					<strong>{t('FAQ - Domande Frequenti')}</strong>
+				</h2>
 				<MarkdownStyleProvider>
 					<Markdown>
 						{`## Cosa si intende per Bonus di Benvenuto Senza Deposito?
@@ -780,6 +785,7 @@ export async function getStaticProps() {
 		'StarCasinò',
 		'Starvegas',
 		'WinCasino',
+		'PokerStars Casino',
 		'BetRoom',
 		'NetBet',
 		'GoldBet',
@@ -816,7 +822,7 @@ export async function getStaticProps() {
 		Snai: 'https://informatoriads.snai.it/redirect.aspx?pid=30830&bid=2194',
 		Unibet: 'https://b1.trickyrock.com/redirect.aspx?pid=74444446&bid=27508',
 		'PokerStars Casino':
-			'https://secure.starsaffiliateclub.com/C.ashx?btag=a_184856b_6906c_&affid=100976968&siteid=184856&adid=6906&c=',
+			'https://secure.starsaffiliateclub.com/C.ashx?btag=a_186177b_6907c_&affid=100976968&siteid=186177&adid=6907&c=',
 	}
 
 	return {

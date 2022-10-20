@@ -45,6 +45,7 @@ export const PAGE_BONUSES = [
 	'Starvegas',
 	'BetRoom',
 	'WinCasino',
+	'PokerStars Casino',
 	'NetBet',
 	'GoldBet',
 	'888 Casino',
@@ -73,5 +74,5 @@ export const pageBonusesRemapping: any = {
 	'Gioco Digitale':
 		'https://mediaserver.entainpartners.com/renderBanner.do?zoneId=2031706',
 	'PokerStars Casino':
-		'https://secure.starsaffiliateclub.com/C.ashx?btag=a_184856b_6906c_&affid=100976968&siteid=184856&adid=6906&c=',
+		'https://secure.starsaffiliateclub.com/C.ashx?btag=a_186177b_6907c_&affid=100976968&siteid=186177&adid=6907&c=',
 }
