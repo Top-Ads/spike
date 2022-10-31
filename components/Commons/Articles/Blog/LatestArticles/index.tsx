@@ -6,135 +6,149 @@ import { Article } from '../../../../../lib/schemas'
 import { buildLink } from '../../../../../lib/utils/buildLink'
 import format from 'date-fns/format'
 import { device } from '../../../../../lib/utils/device'
-import italianLocale  from 'date-fns/locale/it'
+import italianLocale from 'date-fns/locale/it'
 import { useTranslation } from 'react-i18next'
 
 export const LatestArticles: FunctionComponent<{ last: Article[] }> = ({
-    last,
+	last,
 }) => {
+	const { t } = useTranslation()
 
-    const { t } = useTranslation()
+	const LastPostsMapping: FunctionComponent = () => {
+		return (
+			<div>
+				{last &&
+					last.map((article, i) => (
+						<Link
+							href={buildLink(article)}
+							key={`${i}-latest-article`}
+						>
+							<div
+								className='card-container'
+								key={`div-${i}-latest-article`}
+							>
+								<div className='image'>
+									<Image
+										layout='fixed'
+										width={50}
+										height={50}
+										src={`https://wincasinoblogassets.b-cdn.net${article.image.url}`}
+										alt={article.image.alternativeText}
+									/>
+								</div>
 
-    const LastPostsMapping: FunctionComponent = () => {
+								<div className='card-info-container'>
+									<p className='title'>{article.title}</p>
+									<div className='published_at'>
+										{t('Pubblicato il')}
+										<span
+											style={{
+												textTransform: 'capitalize',
+												marginLeft: '5px',
+											}}
+										>
+											{article.published_at &&
+												format(
+													new Date(
+														article.published_at
+													),
+													'dd MMM yyyy',
+													{ locale: italianLocale }
+												).toString()}
+										</span>
+									</div>
+								</div>
+							</div>
+						</Link>
+					))}
+			</div>
+		)
+	}
 
-        return (
-            <div>
-                {last.map((article, i) => (
-                    <Link href={buildLink(article)} key={`${i}-latest-article`}>
-                        <div
-                            className='card-container'
-                            key={`div-${i}-latest-article`}
-                        >
-                            <div className='image'>
-                                <Image
-                                    layout='fixed'
-                                    width={50}
-                                    height={50}
-                                    src={`https://wincasinoblogassets.b-cdn.net${article.image.url}`}
-                                    alt={article.image.alternativeText}
-                                />
-                            </div>
-
-                            <div className='card-info-container'>
-                                <p className='title'>{article.title}</p>
-                                <div className='published_at'>
-                                    {t("Pubblicato il")}
-                                        <span style={{textTransform: 'capitalize', marginLeft: '5px'}}>
-                                            { article.published_at && format(new Date(article.published_at), 'dd MMM yyyy', { locale: italianLocale }).toString()} 
-                                        </span>
-                                </div>
-                            </div>
-                        </div>
-                    </Link>
-                ))}
-            </div>
-        )
-    }
-
-    return (
-        <LatestArticleContainer>
-            <h3>{t("Ultimi Articoli")}</h3>
-            <LastPostsMapping />
-        </LatestArticleContainer>
-    )
+	return (
+		<LatestArticleContainer>
+			<h3>{t('Ultimi Articoli')}</h3>
+			<LastPostsMapping />
+		</LatestArticleContainer>
+	)
 }
 
 export const LatestArticleContainer = styled.div`
-    margin-top: 2rem;
-    background: ${({ theme }) => theme.palette.background};
-    padding: 0 0.7rem;
-    border-radius: 6px;
-    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-    width: 100%;
+	margin-top: 2rem;
+	background: ${({ theme }) => theme.palette.background};
+	padding: 0 0.7rem;
+	border-radius: 6px;
+	box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+	width: 100%;
 
-    @media ${device.mobileL} {
-            width: 100%;
-    }
-        
-    h3 {
-        font-weight: 700;
-        font-size: 1.5rem;
-        color: white;
-        margin: 10px 0;
-    }
+	@media ${device.mobileL} {
+		width: 100%;
+	}
 
-    .card-container {
-        cursor: pointer;
-        display: flex;
-        background: white;
-        margin-bottom: 0.4rem;
-        padding: 0.4rem 0.4rem 0rem 0.4rem;
-        border-radius: 6px;
-        align-items: flex-start;
-        position: relative;
-        padding-bottom: 10px;
+	h3 {
+		font-weight: 700;
+		font-size: 1.5rem;
+		color: white;
+		margin: 10px 0;
+	}
 
-        &:hover {
-            background-color: rgba(255, 255, 255, 0.9);
-        }
+	.card-container {
+		cursor: pointer;
+		display: flex;
+		background: white;
+		margin-bottom: 0.4rem;
+		padding: 0.4rem 0.4rem 0rem 0.4rem;
+		border-radius: 6px;
+		align-items: flex-start;
+		position: relative;
+		padding-bottom: 10px;
 
-        p {
-            color: grey;
-            font-size: 14px;
-            line-height: initial;
-        }
+		&:hover {
+			background-color: rgba(255, 255, 255, 0.9);
+		}
 
-        .title {
-            color: black;
-        }
+		p {
+			color: grey;
+			font-size: 14px;
+			line-height: initial;
+		}
 
-        .image {
-            margin-right: 1rem;
+		.title {
+			color: black;
+		}
 
-            img {
-                object-fit: cover;
-                border-radius: 50%;
-            }
-        }
+		.image {
+			margin-right: 1rem;
 
-        .card-info-container {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
+			img {
+				object-fit: cover;
+				border-radius: 50%;
+			}
+		}
 
-            div {
-                font-size: 0.85rem;
-                margin: 0;
-                
-                @media ${device.mobileL} {
-                    font-size: 0.95em;
-                }
+		.card-info-container {
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
 
-                &.published_at {
-                    font-size: 0.7rem;
-                    color: ${({ theme }) => theme.palette.background};
-                   
-                    display: flex;
-                    position: absolute;
-                    bottom: 2px;
-                    right: 5px;
-                }
-            }
-        }
-    }
+			div {
+				font-size: 0.85rem;
+				margin: 0;
+
+				@media ${device.mobileL} {
+					font-size: 0.95em;
+				}
+
+				&.published_at {
+					font-size: 0.7rem;
+					color: ${({ theme }) => theme.palette.background};
+
+					display: flex;
+					position: absolute;
+					bottom: 2px;
+					right: 5px;
+				}
+			}
+		}
+	}
 `

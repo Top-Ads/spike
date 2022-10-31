@@ -112,6 +112,25 @@ type Props = {
 	setOpen: Function
 }
 
+const TO_EXCLUDE = [
+	'20Bet',
+	'22Bet',
+	'7BitCasino',
+	'Buran Casino',
+	'Cadoola',
+	'Casinia',
+	'Casino Empire',
+	'Casino Intense',
+	'Casinomia',
+	'Cobra Casino',
+	'Malina',
+	'PlayAmo',
+	'Rabona',
+	'SlotsPalace',
+	'Wazamba',
+	'WildTornado',
+]
+
 const SearchDialog: FunctionComponent<Props> = ({ open, setOpen }) => {
 	const [searchResult, setSearchResult] = useState<any>([])
 	const [algoliaSpikeIndex, setAlgoliaSpikeIndex] = useState<
@@ -140,7 +159,10 @@ const SearchDialog: FunctionComponent<Props> = ({ open, setOpen }) => {
 					filters: `country: it`,
 				})
 				.then(resp => {
-					return resp.hits
+					console.log(resp.hits)
+					return resp.hits.filter(
+						it => !TO_EXCLUDE.includes((it as any).name)
+					)
 				})
 
 			// const blogData = await algoliaBlogIndex!
