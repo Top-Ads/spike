@@ -10,7 +10,7 @@ import { SideBanners } from '../../../../../components/Commons/SideBanners'
 import Layout from '../../../../../components/Layout'
 import AquaClient from '../../../../../lib/graphql/aquaClient'
 import { Article, NavbarData } from '../../../../../lib/schemas'
-import { GetStaticPropsContext } from 'next'
+import { GetServerSidePropsContext, GetStaticPropsContext } from 'next'
 import { BLOG_API } from '../../../../../public/environment'
 import { styledTheme } from '../../../../../lib/theme'
 import { device } from '../../../../../lib/utils/device'
@@ -186,45 +186,7 @@ export const MarkdownStyleProvider = styled.div`
 	}
 `
 
-export const getStaticPaths = async () => {
-	const aquaClient = new AquaClient(BLOG_API)
-
-	const articlesQuery = /* GraphQL */ `
-		query {
-			casinoSquadBlogArticles {
-				slug
-				main_argument {
-					slug
-				}
-				secondaryArgument {
-					slug
-				}
-			}
-		}
-	`
-
-	const articlesRequest = await aquaClient.query({
-		query: articlesQuery,
-		variables: {},
-	})
-
-	const paths = articlesRequest.data.data.casinoSquadBlogArticles.map(
-		(article: Article) => ({
-			params: {
-				firstLevel: article.main_argument.slug,
-				secondLevel: article.secondaryArgument.slug,
-				slug: article.slug,
-			},
-		})
-	)
-
-	return {
-		paths: paths,
-		fallback: true,
-	}
-}
-
-export const getStaticProps = async (ctx: GetStaticPropsContext) => {
+export const getServerSideProps = async (ctx: GetServerSidePropsContext) => {
 	const { firstLevel, secondLevel, slug } = ctx.params as any
 
 	const aquaClient = new AquaClient(BLOG_API)
@@ -254,7 +216,6 @@ export const getStaticProps = async (ctx: GetStaticPropsContext) => {
 			navbarData: navbarData.data.data.navbar,
 			lastFive: lastFive.data.data.casinoSquadBlogArticles,
 		},
-		revalidate: 60,
 	}
 }
 
