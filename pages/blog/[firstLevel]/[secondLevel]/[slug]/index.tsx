@@ -10,7 +10,7 @@ import { SideBanners } from '../../../../../components/Commons/SideBanners'
 import Layout from '../../../../../components/Layout'
 import AquaClient from '../../../../../lib/graphql/aquaClient'
 import { Article, NavbarData } from '../../../../../lib/schemas'
-import { GetStaticPropsContext } from 'next'
+import { GetServerSidePropsContext, GetStaticPropsContext } from 'next'
 import { BLOG_API } from '../../../../../public/environment'
 import { styledTheme } from '../../../../../lib/theme'
 import { device } from '../../../../../lib/utils/device'
@@ -191,85 +191,36 @@ export const MarkdownStyleProvider = styled.div`
 	}
 `
 
-export const getStaticPaths = async () => {
+export const getServerSideProps = async (ctx: GetServerSidePropsContext) => {
+	const { firstLevel, secondLevel, slug } = ctx.params as any
+
 	const aquaClient = new AquaClient(BLOG_API)
 
-	const articlesQuery = /* GraphQL */ `
-		query {
-			casinoSquadBlogArticles {
-				slug
-				main_argument {
-					slug
-				}
-				secondaryArgument {
-					slug
-				}
-			}
-		}
-	`
-
-	const articlesRequest = await aquaClient.query({
-		query: articlesQuery,
+	const navbarData = await aquaClient.query({
+		query: NAVBAR_QUERY,
 		variables: {},
 	})
 
-	const paths = articlesRequest.data.data.casinoSquadBlogArticles.map(
-		(article: Article) => ({
-			params: {
-				firstLevel: article.main_argument.slug,
-				secondLevel: article.secondaryArgument.slug,
-				slug: article.slug,
-			},
-		})
-	)
+	const lastFive = await aquaClient.query({
+		query: LAST_FIVE_QUERY,
+		variables: {},
+	})
+
+	const article = await aquaClient.query({
+		query: ARTICLE_QUERY,
+		variables: {
+			mainArgumentSlug: firstLevel,
+			secondaryArgumentSlug: secondLevel,
+			articleSlug: slug,
+		},
+	})
 
 	return {
-		paths: [],
-		fallback: true,
-	}
-}
-
-export const getStaticProps = async (ctx: GetStaticPropsContext) => {
-	try {
-		const { firstLevel, secondLevel, slug } = ctx.params as any
-
-		const aquaClient = new AquaClient(BLOG_API)
-
-		const navbarData = await aquaClient.query({
-			query: NAVBAR_QUERY,
-			variables: {},
-		})
-
-		const lastFive = await aquaClient.query({
-			query: LAST_FIVE_QUERY,
-			variables: {},
-		})
-
-		const article = await aquaClient.query({
-			query: ARTICLE_QUERY,
-			variables: {
-				mainArgumentSlug: firstLevel,
-				secondaryArgumentSlug: secondLevel,
-				articleSlug: slug,
-			},
-		})
-
-		return {
-			props: {
-				article: article.data.data.casinoSquadBlogArticles[0],
-				navbarData: navbarData.data.data.navbar,
-				lastFive: lastFive.data.data.casinoSquadBlogArticles,
-			},
-			revalidate: 60,
-		}
-	} catch (error) {
-		console.log(error)
-		return {
-			redirect: {
-				destination: '/404',
-				permanent: false,
-			},
-		}
+		props: {
+			article: article.data.data.casinoSquadBlogArticles[0],
+			navbarData: navbarData.data.data.navbar,
+			lastFive: lastFive.data.data.casinoSquadBlogArticles,
+		},
 	}
 }
 
