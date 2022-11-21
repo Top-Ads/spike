@@ -15,6 +15,7 @@ import { BLOG_API } from '../../../../../public/environment'
 import { styledTheme } from '../../../../../lib/theme'
 import { device } from '../../../../../lib/utils/device'
 import AuthorCard from '../../../../../components/Cards/AuthorCard'
+import Head from 'next/head'
 
 // @ts-ignore
 // const ReactMarkdown = dynamic(() => import('react-markdown'))
@@ -51,6 +52,10 @@ const index: FunctionComponent<Iindex> = ({ article, lastFive }) => {
 
 	return (
 		<Layout>
+			<Head>
+				<title>{article.title} | Casino Squad</title>
+				<meta name='description' content={article.description} />
+			</Head>
 			<HomeContentContainer className='layout-container'>
 				<div className='main-column'>
 					<ArticleContainer>
