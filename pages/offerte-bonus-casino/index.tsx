@@ -399,7 +399,7 @@ export async function getStaticProps() {
 
 	const pageBonusesRemapping: any = {
 		LeoVegas:
-			'https://ads.leovegas.com/redirect.aspx?pid=3708703&bid=14965',
+			'https://ntrfr.leovegas.com/redirect.aspx?pid=3708703&lpid=1757&bid=19140',
 		StarCasinò:
 			'http://record.affiliatelounge.com/_SEA3QA6bJTMP_fzV1idzxmNd7ZgqdRLk/135/',
 		Starvegas:
