@@ -415,7 +415,7 @@ export async function getStaticProps() {
 		'King Casino': 'https://spikeslot.kingcasino.it',
 		Eurobet:
 			'https://record.betpartners.it/_E_C7XwxgprAZV93hC2dJ_GNd7ZgqdRLk/113/',
-		Betway: 'https://betway.it/bwp/welcome-5gratis/it-it/?s=bw210475&a=AFF3009702735911860&utm_source=210475&utm_medium=Affiliate&utm_campaign=AFF3009702735911860',
+		Betway: 'https://partners.betway.it/bwp/casino/?s=bpi29951&a=bpiadid167219',
 		'Gioco Digitale':
 			'https://mediaserver.entainpartners.com/renderBanner.do?zoneId=2031706',
 		Snai: 'https://informatoriads.snai.it/redirect.aspx?pid=30830&bid=2194',
