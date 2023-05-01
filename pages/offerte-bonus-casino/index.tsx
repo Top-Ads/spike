@@ -31,7 +31,12 @@ const BonusCasinoPage: FunctionComponent<PageProps> = ({
 }) => {
   const { t } = useTranslation();
 
-  const TOP_BONUSES = ["StarCasinò", "LeoVegas", "888 Casino", "BetRoom"];
+  const TOP_BONUSES = [
+    "StarCasinò",
+    "LeoVegas",
+    "888 Casino",
+    "PokerStars Casino",
+  ];
 
   console.log(pagesBonusesData);
 
