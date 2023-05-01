@@ -1,90 +1,85 @@
-import Head from 'next/head'
-import React, { Fragment, FunctionComponent } from 'react'
-import Image from 'next/image'
-import styled from 'styled-components'
-import Layout from '../../components/Layout'
-import { getBonuses } from '../../lib/graphql/queries/bonuses'
-import { getSlots } from '../../lib/graphql/queries/slots'
-import { Slot, Bonus } from '../../lib/schemas'
-import BonusCard from '../../components/Cards/BonusCard'
-import GridLayout from '../../components/Commons/GridLayout'
-import { GridType } from '../../lib/utils/constants'
-import { device } from '../../lib/utils/device'
-import BonusTable from '../../components/Commons/Tables/BonusTable'
-import SlotCard from '../../components/Cards/SlotCard'
-import { format } from 'date-fns'
-import italianLocale from 'date-fns/locale/it'
-import LazyLoad from 'react-lazyload'
-import { CDN } from '../../public/environment'
-import { useTranslation } from 'react-i18next'
-import { MarkdownStyleProvider } from '../blog/[firstLevel]/[secondLevel]/[slug]'
-import Markdown from 'markdown-to-jsx'
+import Head from "next/head";
+import React, { Fragment, FunctionComponent } from "react";
+import Image from "next/image";
+import styled from "styled-components";
+import Layout from "../../components/Layout";
+import { getBonuses } from "../../lib/graphql/queries/bonuses";
+import { getSlots } from "../../lib/graphql/queries/slots";
+import { Slot, Bonus } from "../../lib/schemas";
+import BonusCard from "../../components/Cards/BonusCard";
+import GridLayout from "../../components/Commons/GridLayout";
+import { GridType } from "../../lib/utils/constants";
+import { device } from "../../lib/utils/device";
+import BonusTable from "../../components/Commons/Tables/BonusTable";
+import SlotCard from "../../components/Cards/SlotCard";
+import { format } from "date-fns";
+import italianLocale from "date-fns/locale/it";
+import LazyLoad from "react-lazyload";
+import { CDN } from "../../public/environment";
+import { useTranslation } from "react-i18next";
+import { MarkdownStyleProvider } from "../blog/[firstLevel]/[secondLevel]/[slug]";
+import Markdown from "markdown-to-jsx";
 
 type PageProps = {
-	topSlotsData: Slot[]
-	pagesBonusesData: Bonus[]
-}
+  topSlotsData: Slot[];
+  pagesBonusesData: Bonus[];
+};
 
 const BonusCasinoPage: FunctionComponent<PageProps> = ({
-	topSlotsData,
-	pagesBonusesData,
+  topSlotsData,
+  pagesBonusesData,
 }) => {
-	const { t } = useTranslation()
+  const { t } = useTranslation();
 
-	const TOP_BONUSES = [
-		'StarCasinò',
-		'LeoVegas',
-		'PokerStars Casino',
-		'BetRoom',
-	]
+  const TOP_BONUSES = ["StarCasinò", "LeoVegas", "888 Casino", "BetRoom"];
 
-	console.log(pagesBonusesData)
+  console.log(pagesBonusesData);
 
-	const MAIN_BONUSES = [
-		'LeoVegas',
-		'StarCasinò',
-		'PokerStars Casino',
-		'BetRoom',
-		'WinCasino',
-		'NetBet',
-		'GoldBet',
-		'888 Casino',
-		'King Casino',
-		'Eurobet',
-		'Betway',
-		'Gioco Digitale',
-	]
+  const MAIN_BONUSES = [
+    "LeoVegas",
+    "StarCasinò",
+    "888 Casino",
+    "PokerStars Casino",
+    "BetRoom",
+    "WinCasino",
+    "NetBet",
+    "GoldBet",
+    "King Casino",
+    "Eurobet",
+    "Betway",
+    "Gioco Digitale",
+  ];
 
-	// const topBonusesData = pagesBonusesData.filter(bonus => {
-	// 	if (TOP_BONUSES.includes(bonus.name)) {
-	// 		return bonus
-	// 	}
-	// })
+  // const topBonusesData = pagesBonusesData.filter(bonus => {
+  // 	if (TOP_BONUSES.includes(bonus.name)) {
+  // 		return bonus
+  // 	}
+  // })
 
-	const topBonusesData = TOP_BONUSES.map(
-		b => pagesBonusesData.filter(bonus => bonus.name === b)[0]
-	)
+  const topBonusesData = TOP_BONUSES.map(
+    (b) => pagesBonusesData.filter((bonus) => bonus.name === b)[0]
+  );
 
-	const mainBonusesData = MAIN_BONUSES.map(
-		b => pagesBonusesData.filter(bonus => bonus.name === b)[0]
-	)
+  const mainBonusesData = MAIN_BONUSES.map(
+    (b) => pagesBonusesData.filter((bonus) => bonus.name === b)[0]
+  );
 
-	console.log(topBonusesData, mainBonusesData)
+  console.log(topBonusesData, mainBonusesData);
 
-	return (
-		<Layout title='Casino Squad | Offerte Attuali Bonus Casino e Promo Aggiornate Giornalmente'>
-			<Head>
-				<meta
-					property='og:description'
-					content='Confronta le offerte selezionate tra I migliori bonus casino esistenti e le ultime promo proposte in tempo reale'
-					key='description'
-				/>
-			</Head>
+  return (
+    <Layout title="Casino Squad | Offerte Attuali Bonus Casino e Promo Aggiornate Giornalmente">
+      <Head>
+        <meta
+          property="og:description"
+          content="Confronta le offerte selezionate tra I migliori bonus casino esistenti e le ultime promo proposte in tempo reale"
+          key="description"
+        />
+      </Head>
 
-			<Main className='layout-container'>
-				<MarkdownStyleProvider>
-					<Markdown>
-						{`# Lista Italiana dei Migliori Casino con Bonus Senza Deposito  
+      <Main className="layout-container">
+        <MarkdownStyleProvider>
+          <Markdown>
+            {`# Lista Italiana dei Migliori Casino con Bonus Senza Deposito  
 
 A partire dal 2019, la competizione tra le diverse piattaforme di casinò digitali è aumentata in maniera esponenziale, portando all’introduzione di una serie di offerte di benvenuto, volte a rendere l’esperienza di gioco responsabile e intrattenitiva.<br><br>
 
@@ -102,56 +97,56 @@ Tutti **i casinò che consideriamo dispongono della licenza italiana ADM** neces
 
 Come sarà possibile notare nella lista sotto elencata, i Bonus di Benvenuto possono variare a seconda del sito considerato e, generalmente, offrono: giri gratis su alcune slot online già prestabilite o un importo che può essere differente tra il Bonus Senza Deposito e il Bonus Con Deposito.<br>
 In linea generale, però, i Bonus dei casinò online ti permettono di giocare con soldi veri a tutte le migliori slot machine online, conferendoti un importo maggiore rispetto a quello depositato in precedenza per usufruire dell’offerta.`}
-					</Markdown>
-				</MarkdownStyleProvider>
-			</Main>
+          </Markdown>
+        </MarkdownStyleProvider>
+      </Main>
 
-			<div className='layout-container topBonus'>
-				<GridContainer id='grid-topBonus'>
-					<GridLayout
-						gridType={GridType.TOPBONUS}
-						content={topBonusesData.map(bonus => (
-							<BonusCard key={bonus.id} data={bonus} />
-						))}
-						label='Migliori Casino Italiani per servizi offerti'
-						AlignItem={'center'}
-						xs={12}
-						sm={4}
-						md={3}
-						showBoxShadow
-						bgColor='#fff'
-						spacing={2}
-					/>
-				</GridContainer>
-			</div>
+      <div className="layout-container topBonus">
+        <GridContainer id="grid-topBonus">
+          <GridLayout
+            gridType={GridType.TOPBONUS}
+            content={topBonusesData.map((bonus) => (
+              <BonusCard key={bonus.id} data={bonus} />
+            ))}
+            label="Migliori Casino Italiani per servizi offerti"
+            AlignItem={"center"}
+            xs={12}
+            sm={4}
+            md={3}
+            showBoxShadow
+            bgColor="#fff"
+            spacing={2}
+          />
+        </GridContainer>
+      </div>
 
-			<Main className='layout-container'>
-				<GridContainer id='grid-bonuses'>
-					<div className='bonus-table'>
-						<BonusTable data={mainBonusesData} />
-					</div>
+      <Main className="layout-container">
+        <GridContainer id="grid-bonuses">
+          <div className="bonus-table">
+            <BonusTable data={mainBonusesData} />
+          </div>
 
-					<div className='bonus-cards'>
-						<GridLayout
-							gridType={GridType.BONUS}
-							content={mainBonusesData.map(bonus => (
-								<BonusCard key={bonus.id} data={bonus} />
-							))}
-							AlignItem={'center'}
-							xs={12}
-							sm={12}
-							md={12}
-							showIndex
-							showBoxShadow
-							bgColor='#fff'
-							spacing={2}
-						/>
-					</div>
-				</GridContainer>
+          <div className="bonus-cards">
+            <GridLayout
+              gridType={GridType.BONUS}
+              content={mainBonusesData.map((bonus) => (
+                <BonusCard key={bonus.id} data={bonus} />
+              ))}
+              AlignItem={"center"}
+              xs={12}
+              sm={12}
+              md={12}
+              showIndex
+              showBoxShadow
+              bgColor="#fff"
+              spacing={2}
+            />
+          </div>
+        </GridContainer>
 
-				<MarkdownStyleProvider>
-					<Markdown>
-						{`## Come funzionano i Bonus di Benvenuto?
+        <MarkdownStyleProvider>
+          <Markdown>
+            {`## Come funzionano i Bonus di Benvenuto?
 
 I Bonus di Benvenuto rappresentano un servizio di marketing perché gli operatori vorrebbero che i giocatori si iscrivano sulla loro piattaforma di casinò online.<br>
 I Bonus Senza Deposito Immediato sono rivolti ai nuovi iscritti di un casino digitale, e possono essere utilizzati per provare le migliori slot online in maniera totalmente gratuita, valutando successivamente se si ha un reale interesse nel giocare utilizzando soldi reali.
@@ -236,34 +231,34 @@ La sessione di gioco alle migliori slot machine online è assicurata su tutte le
 È importante ricordare sempre di giocare in maniera responsabile, consapevole e moderata, in quanto bisogna sempre capire quando è il momento di fermarsi.<br>Giocare online è un piacevole passatempo e divertimento, ma deve rimanere tale.<br>
 Non bisogna rincorrere le perdite, e lasciare che il gioco da casino diventi una dipendenza da cui è molto difficile uscire. Gioca responsabilmente.
 `}
-					</Markdown>
-				</MarkdownStyleProvider>
-			</Main>
+          </Markdown>
+        </MarkdownStyleProvider>
+      </Main>
 
-			<GridContainer id='grid-topSlot'>
-				<div className='layout-container'>
-					<GridLayout
-						gridType={GridType.SLOTS}
-						content={topSlotsData.map((slot: Slot) => (
-							<Fragment>
-								<SlotCard key={slot.name} data={slot} />
-							</Fragment>
-						))}
-						width={'100%'}
-						xs={12}
-						sm={4}
-						md={2}
-					/>
-				</div>
-			</GridContainer>
+      <GridContainer id="grid-topSlot">
+        <div className="layout-container">
+          <GridLayout
+            gridType={GridType.SLOTS}
+            content={topSlotsData.map((slot: Slot) => (
+              <Fragment>
+                <SlotCard key={slot.name} data={slot} />
+              </Fragment>
+            ))}
+            width={"100%"}
+            xs={12}
+            sm={4}
+            md={2}
+          />
+        </div>
+      </GridContainer>
 
-			<Main className='layout-container'>
-				<h2>
-					<strong>{t('FAQ - Domande Frequenti')}</strong>
-				</h2>
-				<MarkdownStyleProvider>
-					<Markdown>
-						{`## Cosa si intende per Bonus di Benvenuto Senza Deposito?
+      <Main className="layout-container">
+        <h2>
+          <strong>{t("FAQ - Domande Frequenti")}</strong>
+        </h2>
+        <MarkdownStyleProvider>
+          <Markdown>
+            {`## Cosa si intende per Bonus di Benvenuto Senza Deposito?
 
 Questa offerta è riservata ai nuovi iscritti di un **casino online**, e può variare in base alla piattaforma considerata.<br>Generalmente consiste in **Giri Gratuiti** o in un importo di soldi. Per usufruire di tale **Bonus** non vi è la necessità di effettuare un deposito.
 
@@ -307,138 +302,136 @@ In aggiunta, termini e condizioni riguardano anche le modalità dei singoli Bonu
 
 Per quanto riguarda il Bonus Con Deposito, inoltre, termini e condizioni spiegano anche quali sono le modalità di pagamento accettate per depositare sul portale di gioco.<br>
 Infatti, portafogli elettronici come Skrill e Neteller possono essere talvolta esclusi dalle opzioni di pagamento utilizzabili per accedere al Bonus di Benvenuto, e per questo è ancora una volta fondamentale leggere tutte queste informazioni prima di aderire all’offerta.`}
-					</Markdown>
-				</MarkdownStyleProvider>
-			</Main>
-		</Layout>
-	)
-}
+          </Markdown>
+        </MarkdownStyleProvider>
+      </Main>
+    </Layout>
+  );
+};
 
 const Main = styled.div`
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 
-	li {
-		margin-bottom: 15px;
-		width: 80%;
-	}
-`
+  li {
+    margin-bottom: 15px;
+    width: 80%;
+  }
+`;
 
 const Thumbnail = styled.div`
-	width: 100%;
-`
+  width: 100%;
+`;
 const GridContainer = styled.div`
-	display: flex;
-	margin: 10px 0px;
-	color: ${({ theme }) => theme.palette.background};
+  display: flex;
+  margin: 10px 0px;
+  color: ${({ theme }) => theme.palette.background};
 
-	&#grid-topSlot {
-		color: #fff;
-		background-color: ${({ theme }) => theme.palette.background};
-	}
+  &#grid-topSlot {
+    color: #fff;
+    background-color: ${({ theme }) => theme.palette.background};
+  }
 
-	&#grid-topSlot {
-		padding: 10px 0px;
+  &#grid-topSlot {
+    padding: 10px 0px;
 
-		@media ${device.tablet} {
-			width: 100%;
-			overflow-x: scroll;
-		}
-	}
+    @media ${device.tablet} {
+      width: 100%;
+      overflow-x: scroll;
+    }
+  }
 
-	&#grid-bonuses {
-		flex-direction: column;
+  &#grid-bonuses {
+    flex-direction: column;
 
-		p {
-			text-align: center;
-		}
-	}
+    p {
+      text-align: center;
+    }
+  }
 
-	.bonus-cards {
-		display: none;
-	}
-	.bonus-table {
-		display: contents;
-	}
+  .bonus-cards {
+    display: none;
+  }
+  .bonus-table {
+    display: contents;
+  }
 
-	@media ${device.mobileL} {
-		.bonus-cards {
-			display: contents;
-		}
-		.bonus-table {
-			display: none;
-		}
-	}
+  @media ${device.mobileL} {
+    .bonus-cards {
+      display: contents;
+    }
+    .bonus-table {
+      display: none;
+    }
+  }
 
-	@media ${device.tablet} {
-		&#grid-slots {
-			flex-direction: column;
-		}
-	}
-`
+  @media ${device.tablet} {
+    &#grid-slots {
+      flex-direction: column;
+    }
+  }
+`;
 
 export async function getStaticProps() {
-	const PAGE_BONUSES = [
-		'LeoVegas',
-		'StarCasinò',
-		'Starvegas',
-		'WinCasino',
-		'PokerStars Casino',
-		'BetRoom',
-		'NetBet',
-		'GoldBet',
-		'888 Casino',
-		'King Casino',
-		'Eurobet',
-		'Betway',
-		'Gioco Digitale',
-		'Snai',
-		'Unibet',
-	]
+  const PAGE_BONUSES = [
+    "LeoVegas",
+    "StarCasinò",
+    "Starvegas",
+    "WinCasino",
+    "PokerStars Casino",
+    "BetRoom",
+    "NetBet",
+    "GoldBet",
+    "888 Casino",
+    "King Casino",
+    "Eurobet",
+    "Betway",
+    "Gioco Digitale",
+    "Snai",
+    "Unibet",
+  ];
 
-	const pageBonusesRemapping: any = {
-		LeoVegas:
-			'https://ntrfr.leovegas.com/redirect.aspx?pid=3708703&lpid=1757&bid=19140',
-		StarCasinò:
-			'http://record.affiliatelounge.com/_SEA3QA6bJTMP_fzV1idzxmNd7ZgqdRLk/135/',
-		Starvegas:
-			'https://www.starvegas.it/gmg/refer/61782b177358340001a18ac7',
-		BetRoom:
-			'https://www.promovt.info/betroomcasino/?page=user&p=registration&mp=b76750fa-ea90-424c-85d2-00e33416391e',
-		WinCasino:
-			'https://www.vincipromo.it/wincasino/?mp=7f1d8788-3f9e-4111-b205-e49d29661715',
-		NetBet: 'https://banners.livepartners.com/view.php?z=151484',
-		GoldBet:
-			'https://media.goldbetpartners.it/redirect.aspx?pid=5116&bid=1495',
-		'888 Casino': 'https://ic.aff-handler.com/c/43431?sr=1864253',
-		'King Casino': 'https://spikeslot.kingcasino.it',
-		Eurobet:
-			'https://record.betpartners.it/_E_C7XwxgprAZV93hC2dJ_GNd7ZgqdRLk/113/',
-		Betway: 'https://partners.betway.it/bwp/casino/?s=bpi29951&a=bpiadid167219',
-		'Gioco Digitale':
-			'https://mediaserver.entainpartners.com/renderBanner.do?zoneId=2031706',
-		Snai: 'https://informatoriads.snai.it/redirect.aspx?pid=30830&bid=2194',
-		Unibet: 'https://b1.trickyrock.com/redirect.aspx?pid=74444446&bid=27508',
-		'PokerStars Casino':
-			'https://secure.starsaffiliateclub.com/C.ashx?btag=a_186177b_6907c_&affid=100976968&siteid=186177&adid=6907&c=',
-	}
+  const pageBonusesRemapping: any = {
+    LeoVegas:
+      "https://ntrfr.leovegas.com/redirect.aspx?pid=3708703&lpid=1757&bid=19140",
+    StarCasinò:
+      "http://record.affiliatelounge.com/_SEA3QA6bJTMP_fzV1idzxmNd7ZgqdRLk/135/",
+    Starvegas: "https://www.starvegas.it/gmg/refer/61782b177358340001a18ac7",
+    BetRoom:
+      "https://www.promovt.info/betroomcasino/?page=user&p=registration&mp=b76750fa-ea90-424c-85d2-00e33416391e",
+    WinCasino:
+      "https://www.vincipromo.it/wincasino/?mp=7f1d8788-3f9e-4111-b205-e49d29661715",
+    NetBet: "https://banners.livepartners.com/view.php?z=151484",
+    GoldBet: "https://media.goldbetpartners.it/redirect.aspx?pid=5116&bid=1495",
+    "888 Casino": "https://ic.aff-handler.com/c/43431?sr=1864253",
+    "King Casino": "https://spikeslot.kingcasino.it",
+    Eurobet:
+      "https://record.betpartners.it/_E_C7XwxgprAZV93hC2dJ_GNd7ZgqdRLk/113/",
+    Betway: "https://partners.betway.it/bwp/casino/?s=bpi29951&a=bpiadid167219",
+    "Gioco Digitale":
+      "https://mediaserver.entainpartners.com/renderBanner.do?zoneId=2031706",
+    Snai: "https://informatoriads.snai.it/redirect.aspx?pid=30830&bid=2194",
+    Unibet: "https://b1.trickyrock.com/redirect.aspx?pid=74444446&bid=27508",
+    "PokerStars Casino":
+      "https://secure.starsaffiliateclub.com/C.ashx?btag=a_186177b_6907c_&affid=100976968&siteid=186177&adid=6907&c=",
+  };
 
-	return {
-		props: {
-			topSlotsData: await getSlots({
-				limit: 18,
-				start: 0,
-				sort: 'updated_at:desc',
-			}),
-			pagesBonusesData: (
-				await getBonuses({ names: PAGE_BONUSES, sort: 'rating:desc' })
-			).map(b => {
-				b.link = pageBonusesRemapping[b.name]
-				return b
-			}),
-		},
-	}
+  return {
+    props: {
+      topSlotsData: await getSlots({
+        limit: 18,
+        start: 0,
+        sort: "updated_at:desc",
+      }),
+      pagesBonusesData: (
+        await getBonuses({ names: PAGE_BONUSES, sort: "rating:desc" })
+      ).map((b) => {
+        b.link = pageBonusesRemapping[b.name];
+        return b;
+      }),
+    },
+  };
 }
 
-export default BonusCasinoPage
+export default BonusCasinoPage;
