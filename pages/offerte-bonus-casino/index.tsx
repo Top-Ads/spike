@@ -5,7 +5,7 @@ import styled from "styled-components";
 import Layout from "../../components/Layout";
 import { getBonuses } from "../../lib/graphql/queries/bonuses";
 import { getSlots } from "../../lib/graphql/queries/slots";
-import { Slot, Bonus } from "../../lib/schemas";
+import { Bonus, Slot } from "../../lib/schemas";
 import BonusCard from "../../components/Cards/BonusCard";
 import GridLayout from "../../components/Commons/GridLayout";
 import { GridType } from "../../lib/utils/constants";
@@ -34,8 +34,8 @@ const BonusCasinoPage: FunctionComponent<PageProps> = ({
   const TOP_BONUSES = [
     "StarCasinò",
     "LeoVegas",
-    "888 Casino",
     "PokerStars Casino",
+    "888 Casino",
   ];
 
   console.log(pagesBonusesData);
@@ -43,8 +43,8 @@ const BonusCasinoPage: FunctionComponent<PageProps> = ({
   const MAIN_BONUSES = [
     "LeoVegas",
     "StarCasinò",
-    "888 Casino",
     "PokerStars Casino",
+    "888 Casino",
     "BetRoom",
     "WinCasino",
     "NetBet",
