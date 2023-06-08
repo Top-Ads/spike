@@ -1,19 +1,19 @@
-import Markdown from 'markdown-to-jsx'
-import React, { FunctionComponent, Fragment } from 'react'
-import { useTranslation } from 'react-i18next'
-import styled from 'styled-components'
-import { device } from '../../../../lib/utils/device'
-import { MarkdownStyleProvider } from '../../../../pages/blog/[firstLevel]/[secondLevel]/[slug]'
+import Markdown from "markdown-to-jsx";
+import React, { Fragment, FunctionComponent } from "react";
+import { useTranslation } from "react-i18next";
+import styled from "styled-components";
+import { device } from "../../../../lib/utils/device";
+import { MarkdownStyleProvider } from "../../../../pages/blog/[firstLevel]/[secondLevel]/[slug]";
 
 const GiochiArticle: FunctionComponent = () => {
-	const { t } = useTranslation()
+  const { t } = useTranslation();
 
-	return (
-		<Fragment>
-			<Main>
-				<MarkdownStyleProvider>
-					<Markdown>
-						{`## Slot gratis senza bisogno di registrazione: i migliori giochi online senza scaricare app
+  return (
+    <Fragment>
+      <Main>
+        <MarkdownStyleProvider>
+          <Markdown>
+            {`## Slot gratis senza bisogno di registrazione: i migliori giochi online senza scaricare app
 
 Benvenuto nella pagina dedicata ai giochi online di slots machine gratis di Casinò Squad. Qui è possibile provare la versione gratis di tutte le slot online più popolari del momento.<br>Puoi intrattenerti responsabilmente con la nostra collezione delle migliori slot machines online legali senza dover usare soldi, registrarti o scaricare app sul tuo smartphone.<br>Le slot gratis che puoi giocare su Casinò Squad sono le stesse che troverai nei migliori casinò online.<br>Quali sono i migliori casinò? Sostanzialmente sono quelli che possiedono **regolare licenza AAMS/ADM**.
 
@@ -46,7 +46,7 @@ Se arrivi ad avere abbastanza dimestichezza con un certo gioco di slot online, p
 
 Su Casinò Squad potrai conoscere i migliori Bonus di Benvenuto offerti dai casinò più autorevoli, mettendo le informazioni a disposizione per i nuovi giocatori.
 
-Alcuni siti di gioco propongono Casinò Bonus Senza Deposito senza deposito immediato: questo significa che si può giocare senza prima dovere effettuare un versamento sul conto gioco. Spesso i crediti Casinò Bonus sono assegnati in particolare alle slot machine online senza deposito.<br>
+Alcuni siti di gioco propongono [Casinò Bonus Senza Deposito](https://casinosquad.it/offerte-bonus-casino) immediato: questo significa che si può giocare senza prima dovere effettuare un versamento sul conto gioco. Spesso i crediti Casinò Bonus sono assegnati in particolare alle slot machine online senza deposito.<br>
 Altri siti, invece, offrono Bonus Casinò ad ogni deposito, per cercare di fidelizzare i possibili clienti.<br><br>
 
 
@@ -89,7 +89,7 @@ Ne consegue che è importante giocare usando la testa e, soprattutto, chiedere a
 
 Anche sui casinò certificati, è fondamentale impostare i limiti di gioco in maniera responsabile, definire il bankroll e, soprattutto, mai giocare per recuperare soldi persi.<br>
 Alcune persone a rischio ludopatia non dovrebbero approcciarsi neanche alla versione demo gratis delle slot machine.<br>
-Questo perché se per alcuni giocatori provare una slot machine gratis modera la voglia di giocare alle slot con soldi veri; per altri, fa aumentare la voglia di scommettere denaro.
+Questo perché se per alcuni giocatori provare una [slot machine gratis](https://spikeslot.com/slots/it) modera la voglia di giocare alle slot con soldi veri; per altri, fa aumentare la voglia di scommettere denaro.
 
 Insomma, il mondo del casinò deve essere un intrattenimento consapevole ed è importante non farlo diventare un problema.<br><br>
 
@@ -131,9 +131,9 @@ I maggiori provider di gioco realizzano giochi con requisiti di conformità e ci
 
 Per giocare con soldi veri alle slot machine online, **bisognerebbe valutare solo i casinò certificati con regolare licenza ADM**.<br>
 Su Casino Squad puoi provare le migliori slot digitali e fare un confronto delle migliori offerte di benvenuto dei migliori casinò online italiani. Sono la nostra selezione, che soddisfa i requisiti di sicurezza e affidabilità.`}
-					</Markdown>
-				</MarkdownStyleProvider>
-				{/* <section>
+          </Markdown>
+        </MarkdownStyleProvider>
+        {/* <section>
 					<h3>
 						<strong>
 							{t(
@@ -488,30 +488,30 @@ Su Casino Squad puoi provare le migliori slot digitali e fare un confronto delle
 						</p>
 					</div>
 				</section> */}
-			</Main>
-		</Fragment>
-	)
-}
+      </Main>
+    </Fragment>
+  );
+};
 
 const Main = styled.div`
-	padding: 5px 10px;
+  padding: 5px 10px;
 
-	section {
-		margin: 30px 0px;
+  section {
+    margin: 30px 0px;
 
-		li {
-			margin-bottom: 25px;
-			width: 80%;
-		}
-	}
+    li {
+      margin-bottom: 25px;
+      width: 80%;
+    }
+  }
 
-	li {
-		text-align: left;
-	}
+  li {
+    text-align: left;
+  }
 
-	@media ${device.mobileL} {
-		padding: 5px;
-	}
-`
+  @media ${device.mobileL} {
+    padding: 5px;
+  }
+`;
 
-export default React.memo(GiochiArticle)
+export default React.memo(GiochiArticle);
