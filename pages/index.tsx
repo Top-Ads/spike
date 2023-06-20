@@ -1,171 +1,166 @@
-import React, { FunctionComponent } from 'react'
-import Head from 'next/head'
-import Image from 'next/image'
-import { useRouter } from 'next/router'
-import styled from 'styled-components'
-import { device } from '../lib/utils/device'
-import GridLayout from '../components/Commons/GridLayout'
-import Layout from '../components/Layout'
-import FreqentlyAsked from '../components/FrequentlyAsked'
-import SlotCard from '../components/Cards/SlotCard'
-import BonusCard from '../components/Cards/BonusCard'
-import BonusTable from '../components/Commons/Tables/BonusTable'
+import React, { FunctionComponent } from "react";
+import Head from "next/head";
+import Image from "next/image";
+import { useRouter } from "next/router";
+import styled from "styled-components";
+import { device } from "../lib/utils/device";
+import GridLayout from "../components/Commons/GridLayout";
+import Layout from "../components/Layout";
+import FreqentlyAsked from "../components/FrequentlyAsked";
+import SlotCard from "../components/Cards/SlotCard";
+import BonusCard from "../components/Cards/BonusCard";
+import BonusTable from "../components/Commons/Tables/BonusTable";
 import {
-	GridType,
-	pageBonusesRemapping,
-	PAGE_BONUSES,
-	SlotType,
-} from '../lib/utils/constants'
-import HomeArticle from '../components/Commons/Articles/Home'
-import { Bonus, ThemeSlot, Slot } from '../lib/schemas'
-import { getBonuses } from '../lib/graphql/queries/bonuses'
-import { getSlots } from '../lib/graphql/queries/slots'
-import { CDN } from '../public/environment'
-import CasinoCounter from '../components/CasinoCounter'
-import { getTotalSlots, getTotalBonuses, getTotalProducers } from '../lib/api'
-import { useTranslation } from 'react-i18next'
-import Markdown from 'markdown-to-jsx'
-import { MarkdownStyleProvider } from './blog/[firstLevel]/[secondLevel]/[slug]'
+  GridType,
+  PAGE_BONUSES,
+  pageBonusesRemapping,
+  SlotType,
+} from "../lib/utils/constants";
+import HomeArticle from "../components/Commons/Articles/Home";
+import { Bonus, Slot, ThemeSlot } from "../lib/schemas";
+import { getBonuses } from "../lib/graphql/queries/bonuses";
+import { getSlots } from "../lib/graphql/queries/slots";
+import { CDN } from "../public/environment";
+import CasinoCounter from "../components/CasinoCounter";
+import { getTotalBonuses, getTotalProducers, getTotalSlots } from "../lib/api";
+import { useTranslation } from "react-i18next";
+import Markdown from "markdown-to-jsx";
+import { MarkdownStyleProvider } from "./blog/[firstLevel]/[secondLevel]/[slug]";
 
 type PageProps = {
-	slotsData: ThemeSlot
-	pageBonusesData: Bonus[]
-	totalSlots: number
-	totalBonuses: number
-	totalProducers: number
-}
+  slotsData: ThemeSlot;
+  pageBonusesData: Bonus[];
+  totalSlots: number;
+  totalBonuses: number;
+  totalProducers: number;
+};
 
-const IndexPage: FunctionComponent<PageProps> = props => {
-	const {
-		slotsData,
-		pageBonusesData,
-		totalSlots,
-		totalBonuses,
-		totalProducers,
-	} = props
+const IndexPage: FunctionComponent<PageProps> = (props) => {
+  const {
+    slotsData,
+    pageBonusesData,
+    totalSlots,
+    totalBonuses,
+    totalProducers,
+  } = props;
 
-	console.log(pageBonusesData)
+  console.log(pageBonusesData);
 
-	const TOP_BONUSES = ['StarCasinò', 'LeoVegas', 'PokerStars Casino']
+  const TOP_BONUSES = ["888 Casino", "LeoVegas", "StarCasinò"];
 
-	const MAIN_BONUSES = [
-		'LeoVegas',
-		'StarCasinò',
-		'PokerStars Casino',
+  const MAIN_BONUSES = [
+    "888 Casino",
+    "LeoVegas",
+    "StarCasinò",
+    "PokerStars Casino",
 
-		'BetRoom',
-		'WinCasino',
-		'NetBet',
-		'GoldBet',
-		'888 Casino',
-		'King Casino',
-		'Eurobet',
-		'Betway',
-		'Gioco Digitale',
-	]
+    "BetRoom",
+    "WinCasino",
+    "NetBet",
+    "GoldBet",
+    "King Casino",
+    "Eurobet",
+    "Betway",
+    "Gioco Digitale",
+  ];
 
-	const FREE_BONUSES = [
-		'LeoVegas',
-		'StarCasinò',
-		'Starvegas',
-		'Betway',
-		'Gioco Digitale',
-	]
+  const FREE_BONUSES = [
+    "888 Casino",
+    "LeoVegas",
+    "StarCasinò",
+    "Starvegas",
+    "Betway",
+  ];
 
-	const topBonusesData = TOP_BONUSES.map(
-		b => pageBonusesData.filter(bonus => bonus.name === b)[0]
-	).filter(it => it !== undefined)
+  const topBonusesData = TOP_BONUSES.map(
+    (b) => pageBonusesData.filter((bonus) => bonus.name === b)[0]
+  ).filter((it) => it !== undefined);
 
-	const mainBonusesData = MAIN_BONUSES.map(
-		b => pageBonusesData.filter(bonus => bonus.name === b)[0]
-	).filter(it => it !== undefined)
+  const mainBonusesData = MAIN_BONUSES.map(
+    (b) => pageBonusesData.filter((bonus) => bonus.name === b)[0]
+  ).filter((it) => it !== undefined);
 
-	const freeBonusesData = pageBonusesData
-		.filter(bonus => {
-			if (FREE_BONUSES.includes(bonus.name)) {
-				return bonus
-			}
-		})
-		.filter(it => it !== undefined)
+  const freeBonusesData = pageBonusesData
+    .filter((bonus) => {
+      if (FREE_BONUSES.includes(bonus.name)) {
+        return bonus;
+      }
+    })
+    .filter((it) => it !== undefined);
 
-	console.log(topBonusesData, mainBonusesData)
+  console.log(topBonusesData, mainBonusesData);
 
-	const router = useRouter()
+  const router = useRouter();
 
-	const { newest, online } = slotsData
+  const { newest, online } = slotsData;
 
-	const { t } = useTranslation()
+  const { t } = useTranslation();
 
-	return (
-		<Layout title='Casino Squad | Gioca ora con le Slot Machine Online in Italiano'>
-			<Head>
-				<meta
-					property='og:description'
-					content='Gioca con tutte le slot machine piu’ popolari senza registarzione e senza deposito: video slot online,slot VTL, slot da bar con bonus senza deposito'
-					key='description'
-				/>
-			</Head>
+  return (
+    <Layout title="Casino Squad | Gioca ora con le Slot Machine Online in Italiano">
+      <Head>
+        <meta
+          property="og:description"
+          content="Gioca con tutte le slot machine piu’ popolari senza registarzione e senza deposito: video slot online,slot VTL, slot da bar con bonus senza deposito"
+          key="description"
+        />
+      </Head>
 
-			<HeaderContainer>
-				<div className='welcome'>
-					<h1>{t('Ti diamo il benvenuto su Casino Squad!')}</h1>
+      <HeaderContainer>
+        <div className="welcome">
+          <h1>{t("Ti diamo il benvenuto su Casino Squad!")}</h1>
 
-					<p>{t('Esplora il nostro sito per scoprire:')}</p>
-					<ul>
-						<li>
-							{t('Le migliori piattaforme di gioco online. ')}
-						</li>
-						<li>
-							{t(
-								'La possibilità di ricevere ogni offerta e i bonus esclusivi. '
-							)}
-						</li>
-						<li>
-							{t('Provare gratis ogni tipo di slot machine. ')}
-						</li>
-					</ul>
-					<br />
+          <p>{t("Esplora il nostro sito per scoprire:")}</p>
+          <ul>
+            <li>{t("Le migliori piattaforme di gioco online. ")}</li>
+            <li>
+              {t(
+                "La possibilità di ricevere ogni offerta e i bonus esclusivi. "
+              )}
+            </li>
+            <li>{t("Provare gratis ogni tipo di slot machine. ")}</li>
+          </ul>
+          <br />
 
-					<div className='header-buttons'>
-						<Button onClick={() => router.push('/giochi')}>
-							<span>{t('lista completa delle slot')}</span>
-						</Button>
+          <div className="header-buttons">
+            <Button onClick={() => router.push("/giochi")}>
+              <span>{t("lista completa delle slot")}</span>
+            </Button>
 
-						<Button
-							onClick={() => router.push('/offerte-bonus-casino')}
-						>
-							<span>{t('lista dei bonus')}</span>
-						</Button>
-					</div>
-				</div>
+            <Button onClick={() => router.push("/offerte-bonus-casino")}>
+              <span>{t("lista dei bonus")}</span>
+            </Button>
+          </div>
+        </div>
 
-				<CasinoInfo>
-					<div className='poster'>
-						<Image
-							alt='Slots - Bonuses - Casino'
-							src={`${CDN}/png/casino_poster.png`}
-							layout='responsive'
-							sizes={'30vw'}
-							priority={true}
-							width={1500}
-							height={780}
-						/>
-					</div>
+        <CasinoInfo>
+          <div className="poster">
+            <Image
+              alt="Slots - Bonuses - Casino"
+              src={`${CDN}/png/casino_poster.png`}
+              layout="responsive"
+              sizes={"30vw"}
+              priority={true}
+              width={1500}
+              height={780}
+            />
+          </div>
 
-					<div className={'casino-counter'}>
-						<CasinoCounter
-							totalSlots={totalSlots}
-							totalBonuses={totalBonuses}
-							totalProducers={totalProducers}
-						/>
-					</div>
-				</CasinoInfo>
-			</HeaderContainer>
+          <div className={"casino-counter"}>
+            <CasinoCounter
+              totalSlots={totalSlots}
+              totalBonuses={totalBonuses}
+              totalProducers={totalProducers}
+            />
+          </div>
+        </CasinoInfo>
+      </HeaderContainer>
 
-			<div className='layout-container'>
-				<Intro>
-					<MarkdownStyleProvider>
-						<Markdown>{`Siamo lieti di accoglierti su Casinò Squad, un sito dedicato al mondo del casinò dove potrai trovare opinioni e spiegazioni su una gamma di slot machine e giochi da casinò.<br>
+      <div className="layout-container">
+        <Intro>
+          <MarkdownStyleProvider>
+            <Markdown>
+              {`Siamo lieti di accoglierti su Casinò Squad, un sito dedicato al mondo del casinò dove potrai trovare opinioni e spiegazioni su una gamma di slot machine e giochi da casinò.<br>
 Potrai esplorare e scegliere la tua slot online preferita, ma anche avere aggiornamenti sulle leggi e norme del settore.<br>
 Non avrai bisogno di registrarti o di fare download.
 
@@ -175,9 +170,10 @@ In più, se sei follower di Live Casinò e degli ormai diffusi Game Show, puoi a
 
 Inoltre, potrai fare valutazioni ed essere sempre aggiornato sui migliori bonus disponibili.<br>
 È anche possibile valutare alcune offerte di Benvenuto sulle slot online che trovi sul sito.<br>
-Se stai cercando informazioni su quale sia il sito più conveniente per giocare alle slot digitali, ti invitiamo a consultare la tabella seguente.`}</Markdown>
-					</MarkdownStyleProvider>
-					{/* <p>
+Se stai cercando informazioni su quale sia il sito più conveniente per giocare alle slot digitali, ti invitiamo a consultare la tabella seguente.`}
+            </Markdown>
+          </MarkdownStyleProvider>
+          {/* <p>
 						Siamo lieti di accoglierti su Casinò Squad, un sito
 						dedicato al mondo del casinò dove potrai trovare
 						consigli e dritte su un’ampia gamma di slot machine e
@@ -217,276 +213,268 @@ Se stai cercando informazioni su quale sia il sito più conveniente per giocare 
 						conveniente per giocare alle slot digitali, ti invitiamo
 						a consultare la tabella seguente.
 					</p> */}
-				</Intro>
+        </Intro>
 
-				<GridContainer id='grid-slots'>
-					<GridLayout
-						gridType={GridType.SLOTS}
-						content={newest.map((slot: Slot) => (
-							<SlotCard
-								key={slot.name}
-								data={slot}
-								type={SlotType.NEW}
-							/>
-						))}
-						label={t('NUOVE SLOT')}
-						xs={12}
-						sm={4}
-						md={4}
-					/>
-					<GridLayout
-						gridType={GridType.SLOTS}
-						content={online.map((slot: Slot) => (
-							<SlotCard
-								key={slot.id}
-								data={slot}
-								type={SlotType.ONLINE}
-							/>
-						))}
-						label={t('LE SLOT ONLINE PIÙ POPOLARI')}
-						xs={12}
-						sm={4}
-						md={4}
-					/>
-				</GridContainer>
-			</div>
+        <GridContainer id="grid-slots">
+          <GridLayout
+            gridType={GridType.SLOTS}
+            content={newest.map((slot: Slot) => (
+              <SlotCard key={slot.name} data={slot} type={SlotType.NEW} />
+            ))}
+            label={t("NUOVE SLOT")}
+            xs={12}
+            sm={4}
+            md={4}
+          />
+          <GridLayout
+            gridType={GridType.SLOTS}
+            content={online.map((slot: Slot) => (
+              <SlotCard key={slot.id} data={slot} type={SlotType.ONLINE} />
+            ))}
+            label={t("LE SLOT ONLINE PIÙ POPOLARI")}
+            xs={12}
+            sm={4}
+            md={4}
+          />
+        </GridContainer>
+      </div>
 
-			<div className='layout-container topBonus'>
-				<GridContainer id='grid-topBonus'>
-					<GridLayout
-						gridType={GridType.TOPBONUS}
-						content={topBonusesData.map(bonus => (
-							<BonusCard key={bonus.id} data={bonus} />
-						))}
-						label={t('I top bonus dei casinò online in Italia')}
-						AlignItem={'center'}
-						xs={12}
-						sm={4}
-						md={4}
-						showIndex
-						showBoxShadow
-						bgColor='#fff'
-						spacing={4}
-					/>
-				</GridContainer>
-			</div>
+      <div className="layout-container topBonus">
+        <GridContainer id="grid-topBonus">
+          <GridLayout
+            gridType={GridType.TOPBONUS}
+            content={topBonusesData.map((bonus) => (
+              <BonusCard key={bonus.id} data={bonus} />
+            ))}
+            label={t("I top bonus dei casinò online in Italia")}
+            AlignItem={"center"}
+            xs={12}
+            sm={4}
+            md={4}
+            showIndex
+            showBoxShadow
+            bgColor="#fff"
+            spacing={4}
+          />
+        </GridContainer>
+      </div>
 
-			<div className='layout-container'>
-				<GridContainer id='grid-bonuses'>
-					<p>
-						{t(
-							'Se ti interessa sapere dove conviene maggiormente giocare alle slot machine online puoi dare '
-						)}
-						{t(
-							" un'occhiata a questa comparazione dei migliori Bonus disponibili al momento:"
-						)}
-					</p>
+      <div className="layout-container">
+        <GridContainer id="grid-bonuses">
+          <p>
+            {t(
+              "Se ti interessa sapere dove conviene maggiormente giocare alle slot machine online puoi dare "
+            )}
+            {t(
+              " un'occhiata a questa comparazione dei migliori Bonus disponibili al momento:"
+            )}
+          </p>
 
-					<div className='bonus-table'>
-						<BonusTable data={mainBonusesData} />
-					</div>
+          <div className="bonus-table">
+            <BonusTable data={mainBonusesData} />
+          </div>
 
-					<div className='bonus-cards'>
-						<GridLayout
-							gridType={GridType.BONUS}
-							content={mainBonusesData.map(bonus => (
-								<BonusCard key={bonus.id} data={bonus} />
-							))}
-							AlignItem={'center'}
-							xs={12}
-							sm={12}
-							md={12}
-							showIndex
-							showBoxShadow
-							bgColor='#fff'
-							spacing={2}
-						/>
-					</div>
-				</GridContainer>
-			</div>
+          <div className="bonus-cards">
+            <GridLayout
+              gridType={GridType.BONUS}
+              content={mainBonusesData.map((bonus) => (
+                <BonusCard key={bonus.id} data={bonus} />
+              ))}
+              AlignItem={"center"}
+              xs={12}
+              sm={12}
+              md={12}
+              showIndex
+              showBoxShadow
+              bgColor="#fff"
+              spacing={2}
+            />
+          </div>
+        </GridContainer>
+      </div>
 
-			<br />
+      <br />
 
-			<FreqentlyAsked />
+      <FreqentlyAsked />
 
-			<div className='layout-container'>
-				<Section>
-					<HomeArticle
-						mainBonuses={mainBonusesData.slice(0, 5)}
-						freeBonuses={freeBonusesData}
-					/>
-				</Section>
-			</div>
-		</Layout>
-	)
-}
+      <div className="layout-container">
+        <Section>
+          <HomeArticle
+            mainBonuses={mainBonusesData.slice(0, 5)}
+            freeBonuses={freeBonusesData}
+          />
+        </Section>
+      </div>
+    </Layout>
+  );
+};
 
 const Intro = styled.div`
-	display: flex;
-	flex-direction: row;
-	flex-wrap: wrap;
-	margin: 10px 0px;
-`
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  margin: 10px 0px;
+`;
 
 const HeaderContainer = styled.div`
-	display: flex;
-	flex-direction: row;
-	padding: 25px 10%;
-	background-image: linear-gradient(0deg, #e2b96d 0%, #e0c685 50%);
+  display: flex;
+  flex-direction: row;
+  padding: 25px 10%;
+  background-image: linear-gradient(0deg, #e2b96d 0%, #e0c685 50%);
 
-	.header-buttons {
-		display: flex;
-		justify-content: space-evenly;
-	}
+  .header-buttons {
+    display: flex;
+    justify-content: space-evenly;
+  }
 
-	h1 {
-		color: #fff;
-		margin-top: 0;
-	}
+  h1 {
+    color: #fff;
+    margin-top: 0;
+  }
 
-	ul,
-	p {
-		color: white;
-	}
+  ul,
+  p {
+    color: white;
+  }
 
-	li {
-		margin-bottom: 5px;
-	}
+  li {
+    margin-bottom: 5px;
+  }
 
-	@media ${device.mobileL} {
-		flex-direction: column;
-		align-items: center;
-		flex-grow: 1;
+  @media ${device.mobileL} {
+    flex-direction: column;
+    align-items: center;
+    flex-grow: 1;
 
-		h1 {
-			text-align: center;
-		}
-	}
-`
+    h1 {
+      text-align: center;
+    }
+  }
+`;
 
 const Button = styled.div`
-	background-color: #f2f2f2;
-	color: ${({ theme }) => theme.palette.background};
-	border-radius: ${({ theme }) => theme.button.borderRadius};
-	font-weight: bold;
-	cursor: pointer;
-	padding: 20px;
-	width: fit-content;
-	text-transform: uppercase;
+  background-color: #f2f2f2;
+  color: ${({ theme }) => theme.palette.background};
+  border-radius: ${({ theme }) => theme.button.borderRadius};
+  font-weight: bold;
+  cursor: pointer;
+  padding: 20px;
+  width: fit-content;
+  text-transform: uppercase;
 
-	@media ${device.mobileL} {
-		margin: auto;
-	}
-`
+  @media ${device.mobileL} {
+    margin: auto;
+  }
+`;
 
 const GridContainer = styled.div`
-	display: flex;
-	margin: 10px 0px;
-	color: ${({ theme }) => theme.palette.background};
+  display: flex;
+  margin: 10px 0px;
+  color: ${({ theme }) => theme.palette.background};
 
-	&#grid-topBonus {
-		color: #fff;
-	}
+  &#grid-topBonus {
+    color: #fff;
+  }
 
-	&#grid-bonuses {
-		flex-direction: column;
+  &#grid-bonuses {
+    flex-direction: column;
 
-		p {
-			text-align: center;
-		}
-	}
+    p {
+      text-align: center;
+    }
+  }
 
-	.bonus-cards {
-		display: none;
-	}
-	.bonus-table {
-		display: contents;
-	}
+  .bonus-cards {
+    display: none;
+  }
+  .bonus-table {
+    display: contents;
+  }
 
-	@media ${device.mobileL} {
-		.bonus-cards {
-			display: contents;
-		}
-		.bonus-table {
-			display: none;
-		}
-	}
+  @media ${device.mobileL} {
+    .bonus-cards {
+      display: contents;
+    }
+    .bonus-table {
+      display: none;
+    }
+  }
 
-	@media ${device.tablet} {
-		&#grid-slots {
-			flex-direction: column;
-		}
-	}
-`
+  @media ${device.tablet} {
+    &#grid-slots {
+      flex-direction: column;
+    }
+  }
+`;
 
 const Section = styled.section`
-	display: flex;
-	flex-direction: column;
-	flex-grow: 2;
-`
+  display: flex;
+  flex-direction: column;
+  flex-grow: 2;
+`;
 
 const CasinoInfo = styled.div`
-	width: 45%;
-	height: min-content;
-	margin: auto;
-	position: relative;
+  width: 45%;
+  height: min-content;
+  margin: auto;
+  position: relative;
 
-	@media ${device.mobileL} {
-		width: 80%;
-		margin-top: 30px;
-		overflow: hidden;
-	}
+  @media ${device.mobileL} {
+    width: 80%;
+    margin-top: 30px;
+    overflow: hidden;
+  }
 
-	.poster {
-		@media ${device.mobileL} {
-			width: 500px;
-		}
-	}
+  .poster {
+    @media ${device.mobileL} {
+      width: 500px;
+    }
+  }
 
-	.casino-counter {
-		position: absolute;
-		top: 0;
-		bottom: 0;
-		left: 0;
-		right: 0;
-		display: flex;
-		align-items: center;
-		justify-content: center;
+  .casino-counter {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
-		@media ${device.mobileL} {
-			height: 100%;
-		}
-	}
-`
+    @media ${device.mobileL} {
+      height: 100%;
+    }
+  }
+`;
 
 export async function getStaticProps() {
-	return {
-		props: {
-			slotsData: {
-				newest: await getSlots({
-					limit: 9,
-					start: 0,
-					sort: 'created_at:desc',
-				}),
-				online: await getSlots({
-					limit: 9,
-					start: 0,
-					type_contain: 'online',
-					sort: 'rating:desc',
-				}),
-			},
-			pageBonusesData: (
-				await getBonuses({ names: PAGE_BONUSES, sort: 'rating:desc' })
-			).map(b => {
-				b.link = pageBonusesRemapping[b.name]
-				return b
-			}),
-			totalSlots: await getTotalSlots(),
-			totalBonuses: await getTotalBonuses(),
-			totalProducers: await getTotalProducers(),
-		},
-		revalidate: 30,
-	}
+  return {
+    props: {
+      slotsData: {
+        newest: await getSlots({
+          limit: 9,
+          start: 0,
+          sort: "created_at:desc",
+        }),
+        online: await getSlots({
+          limit: 9,
+          start: 0,
+          type_contain: "online",
+          sort: "rating:desc",
+        }),
+      },
+      pageBonusesData: (
+        await getBonuses({ names: PAGE_BONUSES, sort: "rating:desc" })
+      ).map((b) => {
+        b.link = pageBonusesRemapping[b.name];
+        return b;
+      }),
+      totalSlots: await getTotalSlots(),
+      totalBonuses: await getTotalBonuses(),
+      totalProducers: await getTotalProducers(),
+    },
+    revalidate: 30,
+  };
 }
 
-export default IndexPage
+export default IndexPage;
