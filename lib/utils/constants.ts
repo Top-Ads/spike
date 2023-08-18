@@ -50,6 +50,7 @@ export const PAGE_BONUSES = [
   "GoldBet",
   "888 Casino",
   "King Casino",
+  "William Hill",
   "Eurobet",
   "Betway",
   "Gioco Digitale",
@@ -76,4 +77,6 @@ export const pageBonusesRemapping: any = {
     "https://mediaserver.entainpartners.com/renderBanner.do?zoneId=2031706",
   "PokerStars Casino":
     "https://secure.starsaffiliateclub.com/C.ashx?btag=a_186177b_6907c_&affid=100976968&siteid=186177&adid=6907&c=",
+  "William Hill":
+    "https://campaigns.williamhill.it/C.ashx?btag=a_201973b_834c_&affid=1742025&siteid=201973&adid=834&c=",
 };

@@ -56,6 +56,7 @@ const IndexPage: FunctionComponent<PageProps> = (props) => {
 
     "BetRoom",
     "WinCasino",
+    "William Hill",
     "NetBet",
     "GoldBet",
     "King Casino",
@@ -73,11 +74,11 @@ const IndexPage: FunctionComponent<PageProps> = (props) => {
   ];
 
   const topBonusesData = TOP_BONUSES.map(
-    (b) => pageBonusesData.filter((bonus) => bonus.name === b)[0]
+    (b) => pageBonusesData.filter((bonus) => bonus.name === b)[0],
   ).filter((it) => it !== undefined);
 
   const mainBonusesData = MAIN_BONUSES.map(
-    (b) => pageBonusesData.filter((bonus) => bonus.name === b)[0]
+    (b) => pageBonusesData.filter((bonus) => bonus.name === b)[0],
   ).filter((it) => it !== undefined);
 
   const freeBonusesData = pageBonusesData
@@ -115,7 +116,7 @@ const IndexPage: FunctionComponent<PageProps> = (props) => {
             <li>{t("Le migliori piattaforme di gioco online. ")}</li>
             <li>
               {t(
-                "La possibilità di ricevere ogni offerta e i bonus esclusivi. "
+                "La possibilità di ricevere ogni offerta e i bonus esclusivi. ",
               )}
             </li>
             <li>{t("Provare gratis ogni tipo di slot machine. ")}</li>
@@ -263,10 +264,10 @@ Se stai cercando informazioni su quale sia il sito più conveniente per giocare 
         <GridContainer id="grid-bonuses">
           <p>
             {t(
-              "Se ti interessa sapere dove conviene maggiormente giocare alle slot machine online puoi dare "
+              "Se ti interessa sapere dove conviene maggiormente giocare alle slot machine online puoi dare ",
             )}
             {t(
-              " un'occhiata a questa comparazione dei migliori Bonus disponibili al momento:"
+              " un'occhiata a questa comparazione dei migliori Bonus disponibili al momento:",
             )}
           </p>
 

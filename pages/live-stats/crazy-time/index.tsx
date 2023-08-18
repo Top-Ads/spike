@@ -46,7 +46,7 @@ const CrazyTimePage: FunctionComponent<PageProps> = ({
 
   const fetchStatsData = async (timeFrame: string) => {
     const dataStataResponse = await axios.get(
-      `${APISOCKET.CRAZYTIME}/api/data-for-the-last-hours/${timeFrame}`
+      `${APISOCKET.CRAZYTIME}/api/data-for-the-last-hours/${timeFrame}`,
     );
     setStats(dataStataResponse.data.stats.stats);
   };
@@ -57,7 +57,7 @@ const CrazyTimePage: FunctionComponent<PageProps> = ({
         secure: true,
         rejectUnauthorized: false,
         transports: ["websocket"],
-      })
+      }),
     );
 
     return () => {
@@ -77,8 +77,8 @@ const CrazyTimePage: FunctionComponent<PageProps> = ({
             data.spins.map((r: Spin) => {
               r.timeOfSpin = r.timeOfSpin - 1000 * 60 * 60 * 2;
               return r;
-            })
-          )
+            }),
+          ),
         );
 
         setLastUpdate(new Date(Date.now()));
@@ -389,7 +389,7 @@ const Thumbnail = styled.div`
 
 export async function getServerSideProps() {
   const dataResponse = await axios.get(
-    `${APISOCKET.CRAZYTIME}/api/data-for-the-last-hours/24h`
+    `${APISOCKET.CRAZYTIME}/api/data-for-the-last-hours/24h`,
   );
 
   const PAGE_BONUSES = [
@@ -397,6 +397,7 @@ export async function getServerSideProps() {
     "LeoVegas",
     "StarCasinò",
     "WinCasino",
+    "William Hill",
     "Unibet",
   ];
 
@@ -409,6 +410,8 @@ export async function getServerSideProps() {
     WinCasino:
       "https://vincipromo.it/wincasino/?mp=42794b32-7604-49d2-92d0-8adf67a6b173",
     Unibet: "https://b1.trickyrock.com/redirect.aspx?pid=74444446&bid=27508",
+    "William Hill":
+      "https://campaigns.williamhill.it/C.ashx?btag=a_201973b_834c_&affid=1742025&siteid=201973&adid=834&c=",
   };
 
   const data = await getBonuses({
@@ -422,7 +425,7 @@ export async function getServerSideProps() {
   });
 
   bonusesData = PAGE_BONUSES.map((name) =>
-    bonusesData.find((it) => it.name === name)
+    bonusesData.find((it) => it.name === name),
   );
   return {
     props: {

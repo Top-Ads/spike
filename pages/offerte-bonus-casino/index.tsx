@@ -47,6 +47,7 @@ const BonusCasinoPage: FunctionComponent<PageProps> = ({
     "PokerStars Casino",
     "BetRoom",
     "WinCasino",
+    "William Hill",
     "NetBet",
     "GoldBet",
     "King Casino",
@@ -62,11 +63,11 @@ const BonusCasinoPage: FunctionComponent<PageProps> = ({
   // })
 
   const topBonusesData = TOP_BONUSES.map(
-    (b) => pagesBonusesData.filter((bonus) => bonus.name === b)[0]
+    (b) => pagesBonusesData.filter((bonus) => bonus.name === b)[0],
   );
 
   const mainBonusesData = MAIN_BONUSES.map(
-    (b) => pagesBonusesData.filter((bonus) => bonus.name === b)[0]
+    (b) => pagesBonusesData.filter((bonus) => bonus.name === b)[0],
   );
 
   console.log(topBonusesData, mainBonusesData);
@@ -395,6 +396,7 @@ export async function getStaticProps() {
     "Gioco Digitale",
     "Snai",
     "Unibet",
+    "William Hill",
   ];
 
   const pageBonusesRemapping: any = {
@@ -420,6 +422,8 @@ export async function getStaticProps() {
     Unibet: "https://b1.trickyrock.com/redirect.aspx?pid=74444446&bid=27508",
     "PokerStars Casino":
       "https://secure.starsaffiliateclub.com/C.ashx?btag=a_186177b_6907c_&affid=100976968&siteid=186177&adid=6907&c=",
+    "William Hill":
+      "https://campaigns.williamhill.it/C.ashx?btag=a_201973b_834c_&affid=1742025&siteid=201973&adid=834&c=",
   };
 
   return {
