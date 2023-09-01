@@ -562,9 +562,9 @@ export async function getStaticProps() {
   const PAGE_BONUSES = [
     "888 Casino",
     "LeoVegas",
+    "Lottomatica",
     "StarCasinò",
     "WinCasino",
-    "NetBet",
   ];
 
   const pageBonusesRemapping: any = {
@@ -577,6 +577,7 @@ export async function getStaticProps() {
     NetBet: "https://banners.livepartners.com/view.php?z=151484",
     "King Casino": "http://cs.kingcasino.it/",
     "888 Casino": "https://ic.aff-handler.com/c/47917?sr=1864253",
+    Lottomatica : "https://media.lottomaticapartners.it/redirect.aspx?pid=11570&bid=1509"
   };
 
   const unorderedBonuses = (

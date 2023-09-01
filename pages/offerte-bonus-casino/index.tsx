@@ -34,16 +34,17 @@ const BonusCasinoPage: FunctionComponent<PageProps> = ({
   const TOP_BONUSES = [
     "888 Casino",
     "StarCasinò",
+    "Lottomatica",
     "LeoVegas",
-    "PokerStars Casino",
   ];
 
   console.log(pagesBonusesData);
 
   const MAIN_BONUSES = [
     "888 Casino",
-    "LeoVegas",
     "StarCasinò",
+    "Lottomatica",
+    "LeoVegas",
     "PokerStars Casino",
     "BetRoom",
     "WinCasino",
@@ -397,6 +398,7 @@ export async function getStaticProps() {
     "Snai",
     "Unibet",
     "William Hill",
+    "Lottomatica"
   ];
 
   const pageBonusesRemapping: any = {
@@ -424,6 +426,7 @@ export async function getStaticProps() {
       "https://secure.starsaffiliateclub.com/C.ashx?btag=a_186177b_6907c_&affid=100976968&siteid=186177&adid=6907&c=",
     "William Hill":
       "https://campaigns.williamhill.it/C.ashx?btag=a_201973b_834c_&affid=1742025&siteid=201973&adid=834&c=",
+    Lottomatica : "https://media.lottomaticapartners.it/redirect.aspx?pid=11570&bid=1509"
   };
 
   return {
