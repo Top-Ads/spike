@@ -31,23 +31,19 @@ const BonusCasinoPage: FunctionComponent<PageProps> = ({
 }) => {
   const { t } = useTranslation();
 
-  const TOP_BONUSES = [
-    "888 Casino",
-    "StarCasinò",
-    "Lottomatica",
-    "LeoVegas",
-  ];
+  const TOP_BONUSES = ["BETIC", "StarCasinò", "Lottomatica", "WinCasino"];
 
   console.log(pagesBonusesData);
 
   const MAIN_BONUSES = [
-    "888 Casino",
+    "BETIC",
     "StarCasinò",
     "Lottomatica",
+    "WinCasino",
     "LeoVegas",
+    "888 Casino",
     "PokerStars Casino",
     "BetRoom",
-    "WinCasino",
     "William Hill",
     "NetBet",
     "GoldBet",
@@ -398,7 +394,8 @@ export async function getStaticProps() {
     "Snai",
     "Unibet",
     "William Hill",
-    "Lottomatica"
+    "Lottomatica",
+    "BETIC",
   ];
 
   const pageBonusesRemapping: any = {
@@ -426,7 +423,9 @@ export async function getStaticProps() {
       "https://secure.starsaffiliateclub.com/C.ashx?btag=a_186177b_6907c_&affid=100976968&siteid=186177&adid=6907&c=",
     "William Hill":
       "https://campaigns.williamhill.it/C.ashx?btag=a_201973b_834c_&affid=1742025&siteid=201973&adid=834&c=",
-    Lottomatica : "https://media.lottomaticapartners.it/redirect.aspx?pid=11570&bid=1509"
+    Lottomatica:
+      "https://media.lottomaticapartners.it/redirect.aspx?pid=11570&bid=1509",
+    BETIC : "https://www.promovt.info/casino3/index.php?id=casino&main=betic&promo=betic&banner=beticWelcomeBonus3000&skin=welcomeBonus3000&mp=3236f5fb-6745-4e41-ae78-a26aeccea794"
   };
 
   return {
