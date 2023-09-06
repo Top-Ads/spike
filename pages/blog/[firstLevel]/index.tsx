@@ -65,11 +65,12 @@ const FirstLevel: FunctionComponent<Iindex> = ({
         return (
           <Head>
             <title>Guide Definitive sui Casino Online | CasinoSquad</title>
-            <desc>
-              Scopri le nostre guide dettagliate sui casino online. Da come
+            <meta
+              name="description"
+              content="Scopri le nostre guide dettagliate sui casino online. Da come
               iniziare a giocare a strategie avanzate, ti forniamo tutte le
-              informazioni che ti servono.
-            </desc>
+              informazioni che ti servono."
+            ></meta>
           </Head>
         );
 
@@ -77,10 +78,11 @@ const FirstLevel: FunctionComponent<Iindex> = ({
         return (
           <Head>
             <title>Ultime Notizie sui Casino Online | CasinoSquad</title>
-            <desc>
-              Rimani aggiornato con le ultime notizie nel mondo dei casino
-              online. Eventi, lanci di nuovi giochi e molto altro.
-            </desc>
+            <meta
+              name="description"
+              content="Rimani aggiornato con le ultime notizie nel mondo dei casino
+              online. Eventi, lanci di nuovi giochi e molto altro."
+            ></meta>
           </Head>
         );
       case "info-giochi":
@@ -89,10 +91,11 @@ const FirstLevel: FunctionComponent<Iindex> = ({
             <title>
               Informazioni sui Giochi di Casino Online | CasinoSquad
             </title>
-            <desc>
-              Vuoi saperne di più sui giochi di casino online? Leggi le nostre
-              guide, trucchi, e consigli per massimizzare le tue vincite.
-            </desc>
+            <meta
+              name="description"
+              content="Vuoi saperne di più sui giochi di casino online? Leggi le nostre
+              guide, trucchi, e consigli per massimizzare le tue vincite."
+            ></meta>
           </Head>
         );
       case "dicci-la-tua":
@@ -101,42 +104,46 @@ const FirstLevel: FunctionComponent<Iindex> = ({
             <title>
               Condividi la Tua Esperienza sui Casino Online | CasinoSquad
             </title>
-            <desc>
-              Hai un'opinione sui casino online? Dicci la tua! Unisciti alla
-              nostra comunità e condividi la tua esperienza.
-            </desc>
+            <meta
+              name="description"
+              content="Hai un'opinione sui casino online? Dicci la tua! Unisciti alla
+              nostra comunità e condividi la tua esperienza."
+            ></meta>
           </Head>
         );
       case "comparazione-casino":
         return (
           <Head>
             <title>Confronto tra i Migliori Casino Online | CasinoSquad</title>
-            <desc>
-              Non sai quale casino online scegliere? Confronta le
+            <meta
+              name="description"
+              content="Non sai quale casino online scegliere? Confronta le
               caratteristiche, i bonus e le offerte per trovare il migliore per
-              te.
-            </desc>
+              te."
+            ></meta>
           </Head>
         );
       case "strategie-di-gioco":
         return (
           <Head>
             <title>Strategie di Gioco per Casino Online | CasinoSquad</title>
-            <desc>
-              Esplora le migliori strategie di gioco per casino online e
+            <meta
+              name="description"
+              content="Esplora le migliori strategie di gioco per casino online e
               migliora le tue probabilità di vincita con i nostri consigli
-              esperti.
-            </desc>
+              esperti."
+            ></meta>
           </Head>
         );
       case "bonus":
         return (
           <Head>
             <title>Guida ai Bonus dei Casino Online | CasinoSquad</title>
-            <desc>
-              Tutto quello che devi sapere sui bonus dei casino online. Come
-              funzionano, come ritirarli e come sfruttarli al meglio.
-            </desc>
+            <meta
+              name="description"
+              content="Tutto quello che devi sapere sui bonus dei casino online. Come
+              funzionano, come ritirarli e come sfruttarli al meglio."
+            ></meta>
           </Head>
         );
     }
