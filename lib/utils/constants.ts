@@ -45,6 +45,7 @@ export const PAGE_BONUSES = [
   "Starvegas",
   "BetRoom",
   "WinCasino",
+  "BetFlag",
   "PokerStars Casino",
   "NetBet",
   "GoldBet",
@@ -85,4 +86,6 @@ export const pageBonusesRemapping: any = {
     "https://www.promovt.info/casino3/index.php?id=casino&main=betic&promo=betic&banner=beticWelcomeBonus3000&skin=welcomeBonus3000&mp=3236f5fb-6745-4e41-ae78-a26aeccea794",
   Lottomatica:
     "https://media.lottomaticapartners.it/redirect.aspx?pid=11624&bid=1509",
+  BetFlag:
+    "https://info.betflag.it/landing/affiliazioni/bonus-registrazione-slot/?btag=PV99_283455F9C2AE423D8A6D232C87DE09E9",
 };

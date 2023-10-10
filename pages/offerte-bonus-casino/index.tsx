@@ -41,6 +41,7 @@ const BonusCasinoPage: FunctionComponent<PageProps> = ({
     "Lottomatica",
     "WinCasino",
     "LeoVegas",
+    "BetFlag",
     "888 Casino",
     "PokerStars Casino",
     "BetRoom",
@@ -383,6 +384,7 @@ export async function getStaticProps() {
     "Starvegas",
     "WinCasino",
     "PokerStars Casino",
+    "BetFlag",
     "BetRoom",
     "NetBet",
     "GoldBet",
@@ -425,7 +427,10 @@ export async function getStaticProps() {
       "https://campaigns.williamhill.it/C.ashx?btag=a_201973b_834c_&affid=1742025&siteid=201973&adid=834&c=",
     Lottomatica:
       "https://media.lottomaticapartners.it/redirect.aspx?pid=11570&bid=1509",
-    BETIC : "https://www.promovt.info/casino3/index.php?id=casino&main=betic&promo=betic&banner=beticWelcomeBonus3000&skin=welcomeBonus3000&mp=3236f5fb-6745-4e41-ae78-a26aeccea794"
+    BETIC:
+      "https://www.promovt.info/casino3/index.php?id=casino&main=betic&promo=betic&banner=beticWelcomeBonus3000&skin=welcomeBonus3000&mp=3236f5fb-6745-4e41-ae78-a26aeccea794",
+    BetFlag:
+      "https://info.betflag.it/landing/affiliazioni/bonus-registrazione-slot/?btag=PV99_283455F9C2AE423D8A6D232C87DE09E9",
   };
 
   return {

@@ -55,6 +55,7 @@ const IndexPage: FunctionComponent<PageProps> = (props) => {
     "WinCasino",
 
     "LeoVegas",
+    "BetFlag",
     "BetRoom",
     "William Hill",
     "NetBet",
