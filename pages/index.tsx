@@ -59,7 +59,6 @@ const IndexPage: FunctionComponent<PageProps> = (props) => {
     "BetRoom",
     "William Hill",
     "NetBet",
-    "GoldBet",
     "King Casino",
     "Eurobet",
     "Betway",

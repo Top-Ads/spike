@@ -47,7 +47,6 @@ const BonusCasinoPage: FunctionComponent<PageProps> = ({
     "BetRoom",
     "William Hill",
     "NetBet",
-    "GoldBet",
     "King Casino",
     "Eurobet",
     "Betway",
