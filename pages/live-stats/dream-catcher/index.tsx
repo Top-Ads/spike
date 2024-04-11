@@ -1,124 +1,126 @@
-import React, { FunctionComponent, useEffect, useState } from 'react'
-import Image from 'next/image'
-import styled from 'styled-components'
-import StatsCard from '../../../components/Cards/StatsCard'
-import Divider from '../../../components/Commons/Divider'
-import GridLayout from '../../../components/Commons/GridLayout'
-import CustumSelect from '../../../components/Commons/Inputs/Select'
-import Layout from '../../../components/Layout'
-import { GridType, LiveStats } from '../../../lib/utils/constants'
-import axios from 'axios'
-import { APISOCKET } from '../../../public/environment'
-import { io, Socket } from 'socket.io-client'
-import { Bonus, MonopolyTables, Spin, Stat } from '../../../lib/schemas'
-import SpinsTable from '../../../components/Commons/Tables/SpinsTable'
-import BonusTable from '../../../components/Commons/Tables/BonusTable'
-import BonusCard from '../../../components/Cards/BonusCard'
-import { device } from '../../../lib/utils/device'
-import { mergeWithUpdate } from '../../../lib/utils/mergeWithUpdate'
-import LazyLoad from 'react-lazyload'
-import { getBonuses } from '../../../lib/graphql/queries/bonuses'
-import { format } from 'date-fns'
-import italianLocale from 'date-fns/locale/it'
-import Head from 'next/head'
-import { useTranslation } from 'react-i18next'
-import { MarkdownStyleProvider } from '../../blog/[firstLevel]/[secondLevel]/[slug]'
-import Markdown from 'markdown-to-jsx'
+import React, { FunctionComponent, useEffect, useState } from "react";
+import Image from "next/image";
+import styled from "styled-components";
+import StatsCard from "../../../components/Cards/StatsCard";
+import Divider from "../../../components/Commons/Divider";
+import GridLayout from "../../../components/Commons/GridLayout";
+import CustumSelect from "../../../components/Commons/Inputs/Select";
+import Layout from "../../../components/Layout";
+import { GridType, LiveStats } from "../../../lib/utils/constants";
+import axios from "axios";
+import { APISOCKET } from "../../../public/environment";
+import { io, Socket } from "socket.io-client";
+import { Bonus, MonopolyTables, Spin, Stat } from "../../../lib/schemas";
+import SpinsTable from "../../../components/Commons/Tables/SpinsTable";
+import BonusTable from "../../../components/Commons/Tables/BonusTable";
+import BonusCard from "../../../components/Cards/BonusCard";
+import { device } from "../../../lib/utils/device";
+import { mergeWithUpdate } from "../../../lib/utils/mergeWithUpdate";
+import LazyLoad from "react-lazyload";
+import { getBonuses } from "../../../lib/graphql/queries/bonuses";
+import { format } from "date-fns";
+import italianLocale from "date-fns/locale/it";
+import Head from "next/head";
+import { useTranslation } from "react-i18next";
+import { MarkdownStyleProvider } from "../../blog/[firstLevel]/[secondLevel]/[slug]";
+import Markdown from "markdown-to-jsx";
 
 type PageProps = {
-	statsData: Stat[]
-	spinsData: Spin[]
-	bonusesData: Bonus[]
-	tablesData: MonopolyTables
-}
+  statsData: Stat[];
+  spinsData: Spin[];
+  bonusesData: Bonus[];
+  tablesData: MonopolyTables;
+};
 
 const DreamCatcherPage: FunctionComponent<PageProps> = ({
-	statsData,
-	spinsData,
-	bonusesData,
+  statsData,
+  spinsData,
+  bonusesData,
 }) => {
-	const { t } = useTranslation()
+  const { t } = useTranslation();
 
-	const [stats, setStats] = useState<Stat[]>(statsData)
-	const [spins, setSpins] = useState<Spin[]>(spinsData)
-	const [socket, setSocket] = useState<Socket | undefined>()
-	const [selected, setSelected] = useState<string>('24h')
-	const [lastUpdate, setLastUpdate] = useState<Date>(new Date(Date.now()))
+  const [stats, setStats] = useState<Stat[]>(statsData);
+  const [spins, setSpins] = useState<Spin[]>(spinsData);
+  const [socket, setSocket] = useState<Socket | undefined>();
+  const [selected, setSelected] = useState<string>("24h");
+  const [lastUpdate, setLastUpdate] = useState<Date>(new Date(Date.now()));
 
-	const fetchStatsData = async (timeFrame: string) => {
-		const dataStataResponse = await axios.get(
-			`${APISOCKET.DREAMCATCHER}/api/data-for-the-last-hours/${timeFrame}`
-		)
+  const fetchStatsData = async (timeFrame: string) => {
+    const dataStataResponse = await axios.get(
+      `${APISOCKET.DREAMCATCHER}/api/data-for-the-last-hours/${timeFrame}`,
+    );
 
-		setStats(dataStataResponse.data.stats.stats)
-	}
+    setStats(dataStataResponse.data.stats.stats);
+  };
 
-	useEffect(() => {
-		setSocket(
-			io(APISOCKET.DREAMCATCHER, {
-				secure: true,
-				rejectUnauthorized: false,
-				transports: ['websocket'],
-			})
-		)
+  useEffect(() => {
+    setSocket(
+      io(APISOCKET.DREAMCATCHER, {
+        secure: true,
+        rejectUnauthorized: false,
+        transports: ["websocket"],
+      }),
+    );
 
-		return () => {
-			socket && socket.disconnect()
-		}
-	}, [])
+    return () => {
+      socket && socket.disconnect();
+    };
+  }, []);
 
-	useEffect(() => {
-		if (socket) {
-			socket.emit(selected)
-			socket.on(selected, data => {
-				setStats(data.stats.stats)
+  useEffect(() => {
+    if (socket) {
+      socket.emit(selected);
+      socket.on(selected, (data) => {
+        setStats(data.stats.stats);
 
-				setSpins(
-					mergeWithUpdate(
-						spins,
-						data.spins.map((r: Spin) => {
-							r.timeOfSpin = r.timeOfSpin - 1000 * 60 * 60 * 2
-							return r
-						})
-					)
-				)
+        setSpins(
+          mergeWithUpdate(
+            spins,
+            data.spins.map((r: Spin) => {
+              r.timeOfSpin = r.timeOfSpin - 1000 * 60 * 60 * 2;
+              return r;
+            }),
+          ),
+        );
 
-				setLastUpdate(new Date(Date.now()))
-			})
-		}
+        setLastUpdate(new Date(Date.now()));
+      });
+    }
 
-		return () => {
-			socket && socket.disconnect()
-		}
-	}, [socket])
+    return () => {
+      socket && socket.disconnect();
+    };
+  }, [socket]);
 
-	useEffect(() => {
-		if (selected) fetchStatsData(selected)
-	}, [selected])
+  useEffect(() => {
+    if (selected) fetchStatsData(selected);
+  }, [selected]);
 
-	return (
-		<Layout title='Casino Squad | LiveStats Dream Catcher: Tutte le Estrazioni in Tempo Reale'>
-			<Head>
-				<meta
-					property='og:description'
-					content='Gioca ora alla Dream Catcher, statistiche, classifiche ed estrazione dal vivo '
-					key='description'
-				/>
-			</Head>
+  return (
+    <Layout title="Casino Squad | LiveStats Dream Catcher: Tutte le Estrazioni in Tempo Reale">
+      <Head>
+        <meta
+          property="og:description"
+          content="Gioca ora alla Dream Catcher, statistiche, classifiche ed estrazione dal vivo "
+          key="description"
+        />
+      </Head>
 
-			<div className='layout-container'>
-				<Header className='intro-header'>
-					<Intro>
-						<div className='wrapper'>
-							<MarkdownStyleProvider>
-								<Markdown>{`# Live Stats Dream Catcher: Tutte le Estrazioni in Tempo Reale  
+      <div className="layout-container">
+        <Header className="intro-header">
+          <Intro>
+            <div className="wrapper">
+              <MarkdownStyleProvider>
+                <Markdown>
+                  {`# Live Stats Dream Catcher: Tutte le Estrazioni in Tempo Reale  
 
 Dream Catcher significa “acchiappasogni” e ricorda il famoso amuleto dei nativi americani.<br>
 Si tratta di una ruota della fortuna di Evolution Gaming, gioco digitale uscito nel 2017.<br>
-**Gioca responsabilmente**. **Il gioco è vietato ai minori di 18 anni**.`}</Markdown>
-							</MarkdownStyleProvider>
-						</div>
-						{/* <p>
+**Gioca responsabilmente**. **Il gioco è vietato ai minori di 18 anni**.`}
+                </Markdown>
+              </MarkdownStyleProvider>
+            </div>
+            {/* <p>
 							{t(
 								'Dream Catcher significa “acchiappasogni” e ricorda il famoso amuleto dei nativi americani.'
 							)}{' '}
@@ -127,113 +129,107 @@ Si tratta di una ruota della fortuna di Evolution Gaming, gioco digitale uscito 
 								'Si tratta di una ruota della fortuna di Evolution Gaming, gioco digitale uscito nel 2017.'
 							)}
 						</p> */}
-						<Thumbnail>
-							<LazyLoad height={548}>
-								<Image
-									alt={'LiveStats Dream Catcher'}
-									src={`https://images.spikeslot.com/statistiche-live-dream-catcher_f2cbe49cd8.jpeg`}
-									layout='responsive'
-									priority={true}
-									sizes={'30vw'}
-									quality={70}
-									width={1186}
-									height={667}
-								/>
-							</LazyLoad>
-						</Thumbnail>
-					</Intro>
+            <Thumbnail>
+              <LazyLoad height={548}>
+                <Image
+                  alt={"LiveStats Dream Catcher"}
+                  src={`https://images.spikeslot.com/statistiche-live-dream-catcher_f2cbe49cd8.jpeg`}
+                  layout="responsive"
+                  priority={true}
+                  sizes={"30vw"}
+                  quality={70}
+                  width={1186}
+                  height={667}
+                />
+              </LazyLoad>
+            </Thumbnail>
+          </Intro>
 
-					<Divider />
-				</Header>
+          <Divider />
+        </Header>
 
-				<Main>
-					<StatsContainer>
-						<Header className='stats-card-header'>
-							<div>
-								<h3>{t('Statistiche Dream Catcher')}</h3>
-								<span
-									style={{ textTransform: 'capitalize' }}
-									suppressHydrationWarning
-								>
-									{t('Ultimo Aggiornamento:')}{' '}
-									{format(
-										new Date(lastUpdate),
-										'dd MMM yyyy • HH:mm',
-										{ locale: italianLocale }
-									).toString()}
-								</span>
-							</div>
+        <Main>
+          <StatsContainer>
+            <Header className="stats-card-header">
+              <div>
+                <h3>{t("Statistiche Dream Catcher")}</h3>
+                <span
+                  style={{ textTransform: "capitalize" }}
+                  suppressHydrationWarning
+                >
+                  {t("Ultimo Aggiornamento:")}{" "}
+                  {format(new Date(lastUpdate), "dd MMM yyyy • HH:mm", {
+                    locale: italianLocale,
+                  }).toString()}
+                </span>
+              </div>
 
-							<CustumSelect setSelected={setSelected} />
-						</Header>
-						<Divider />
+              <CustumSelect setSelected={setSelected} />
+            </Header>
+            <Divider />
 
-						<GridContainer className={'stats-cards'}>
-							<GridLayout
-								gridType={GridType.STATS}
-								content={stats.map(
-									(stats: Stat, index: number) => (
-										<StatsCard
-											key={index}
-											data={stats}
-											timeFrame={selected}
-											type={LiveStats.DREAMCATCHER}
-										/>
-									)
-								)}
-								AlignItem={'center'}
-								xs={12}
-								sm={3}
-								md={3}
-								showBoxShadow
-								bgColor='#fff'
-								spacing={3}
-							/>
-						</GridContainer>
-					</StatsContainer>
+            <GridContainer className={"stats-cards"}>
+              <GridLayout
+                gridType={GridType.STATS}
+                content={stats.map((stats: Stat, index: number) => (
+                  <StatsCard
+                    key={index}
+                    data={stats}
+                    timeFrame={selected}
+                    type={LiveStats.DREAMCATCHER}
+                  />
+                ))}
+                AlignItem={"center"}
+                xs={12}
+                sm={3}
+                md={3}
+                showBoxShadow
+                bgColor="#fff"
+                spacing={3}
+              />
+            </GridContainer>
+          </StatsContainer>
 
-					<br />
+          <br />
 
-					<BonusContainer>
-						<h3>{t('Puoi giocare alla DREAM CATCHER qui:')}</h3>
-						<div className='bonus-table'>
-							<BonusTable data={bonusesData} />
-						</div>
+          <BonusContainer>
+            <h3>{t("Puoi giocare alla DREAM CATCHER qui:")}</h3>
+            <div className="bonus-table">
+              <BonusTable data={bonusesData} />
+            </div>
 
-						<GridContainer className={'bonus-cards'}>
-							<GridLayout
-								gridType={GridType.BONUS}
-								content={bonusesData.map(bonus => (
-									<BonusCard key={bonus.id} data={bonus} />
-								))}
-								AlignItem={'center'}
-								xs={12}
-								sm={12}
-								md={12}
-								showIndex
-								showBoxShadow
-								bgColor='#fff'
-								spacing={2}
-							/>
-						</GridContainer>
-					</BonusContainer>
+            <GridContainer className={"bonus-cards"}>
+              <GridLayout
+                gridType={GridType.BONUS}
+                content={bonusesData.map((bonus) => (
+                  <BonusCard key={bonus.id} data={bonus} />
+                ))}
+                AlignItem={"center"}
+                xs={12}
+                sm={12}
+                md={12}
+                showIndex
+                showBoxShadow
+                bgColor="#fff"
+                spacing={2}
+              />
+            </GridContainer>
+          </BonusContainer>
 
-					<br />
+          <br />
 
-					<SpinsContainer>
-						<h3>{t('Storico degli Spin')}</h3>
-						<SpinsTable
-							data={spins}
-							gameType={LiveStats.DREAMCATCHER}
-						/>
-					</SpinsContainer>
+          <SpinsContainer>
+            <h3>{t("Storico degli Spin")}</h3>
+            <SpinsTable data={spins} gameType={LiveStats.DREAMCATCHER} />
+          </SpinsContainer>
 
-					<br />
-				</Main>
+          <br />
+        </Main>
 
-				<Footer>
-					<MarkdownStyleProvider>
-						<Markdown>{`## Cosa è Dream Catcher?
+        <Footer>
+          <MarkdownStyleProvider>
+            <Markdown>
+              {`## Cosa è Dream Catcher?
 
 Dream Catcher è una Money Wheel, un game show che si avvale della presenza di un croupier dal vivo.<br>È caratterizzato da una regia da studio multi-camera, con effetti luminosi e sonori a sottolineare l'azione di gioco. L’esperienza di gioco virtuale è definita tramite le riprese da diverse angolazioni in movimento della telecamera e dei primi piani.<br>
 Il marchio Evolution Gaming è garanzia di qualità, se consideri giochi Live Game Show come Monopoly Live e Crazy Time.
@@ -291,9 +287,10 @@ Questi casinò online si differenziano perché propongono l’opportunità di gi
 Quindi, si tratta di Bonus che annoverano la possibilità di giocare più a lungo a Dream Catcher. I migliori casinò digitali offrono software affidabili e sicuri.
 
 Ricorda che il gioco da casinò è riservato ad un pubblico maggiorenne e sono predisposti limiti di gioco, sugli importi che puoi gestire.<br>
-Inoltre, ogni tipo di gioco da casinò può causare dipendenza patologica e per questo ti consigliamo di giocare in modo consapevole e responsabile.`}</Markdown>
-					</MarkdownStyleProvider>
-					{/* <section>
+Inoltre, ogni tipo di gioco da casinò può causare dipendenza patologica e per questo ti consigliamo di giocare in modo consapevole e responsabile.`}
+            </Markdown>
+          </MarkdownStyleProvider>
+          {/* <section>
 						<h3>{t('Cosa è Dream Catcher?')}</h3>
 						<p>
 							{t(
@@ -436,129 +433,134 @@ Inoltre, ogni tipo di gioco da casinò può causare dipendenza patologica e per 
 							)}
 						</p>
 					</section> */}
-				</Footer>
-			</div>
-		</Layout>
-	)
-}
+        </Footer>
+      </div>
+    </Layout>
+  );
+};
 
 const Header = styled.div`
-	&.stats-card-header {
-		display: flex;
-		flex-direction: row;
-		justify-content: space-between;
+  &.stats-card-header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
 
-		h3 {
-			display: flex;
-			align-items: center;
-		}
+    h3 {
+      display: flex;
+      align-items: center;
+    }
 
-		span {
-			font-size: 13px;
-		}
-	}
-`
+    span {
+      font-size: 13px;
+    }
+  }
+`;
 const Intro = styled.div`
-	display: flex;
-	margin-bottom: 15px;
-	flex-wrap: wrap;
+  display: flex;
+  margin-bottom: 15px;
+  flex-wrap: wrap;
 
-	.wrapper {
-		width: 50%;
-		@media ${device.mobileL} {
-			width: 100%;
-		}
-	}
-`
+  .wrapper {
+    width: 50%;
+    @media ${device.mobileL} {
+      width: 100%;
+    }
+  }
+`;
 
-const Main = styled.div``
+const Main = styled.div``;
 
 const Footer = styled.div`
-	section {
-		margin: 40px 0px;
-	}
-	h3 {
-		color: ${({ theme }) => theme.palette.background};
-	}
-`
+  section {
+    margin: 40px 0px;
+  }
+  h3 {
+    color: ${({ theme }) => theme.palette.background};
+  }
+`;
 
 const StatsContainer = styled.div`
-	display: flex;
-	flex-direction: column;
-`
+  display: flex;
+  flex-direction: column;
+`;
 
 const BonusContainer = styled.div`
-	.bonus-table {
-		display: revert;
-		@media ${device.mobileL} {
-			display: none;
-		}
-	}
+  .bonus-table {
+    display: revert;
+    @media ${device.mobileL} {
+      display: none;
+    }
+  }
 
-	.bonus-cards {
-		display: none;
-		@media ${device.mobileL} {
-			display: revert;
-		}
-	}
-`
+  .bonus-cards {
+    display: none;
+    @media ${device.mobileL} {
+      display: revert;
+    }
+  }
+`;
 
-const SpinsContainer = styled.div``
+const SpinsContainer = styled.div``;
 
 const GridContainer = styled.div`
-	display: flex;
-	flex-direction: row;
-	flex-wrap: wrap;
-`
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+`;
 
 const Thumbnail = styled.div`
-	width: 450px;
-	margin: auto;
+  width: 450px;
+  margin: auto;
 
-	@media ${device.mobileL} {
-		width: 100%;
-	}
-`
+  @media ${device.mobileL} {
+    width: 100%;
+  }
+`;
 
 export async function getServerSideProps() {
-	const dataResponse = await axios.get(
-		`${APISOCKET.DREAMCATCHER}/api/data-for-the-last-hours/24h`
-	)
+  const dataResponse = await axios.get(
+    `${APISOCKET.DREAMCATCHER}/api/data-for-the-last-hours/24h`,
+  );
 
-	const PAGE_BONUSES = [
-		'LeoVegas',
-		'888 Casino',
-		'StarCasinò',
-		'WinCasino',
-		'Unibet',
-	]
+  const PAGE_BONUSES = [
+    "888 Casino",
+    "BETIC",
+    "StarCasinò",
+    "NetBet",
+    "LeoVegas",
+    "QuiGioco",
+  ];
 
-	const pageBonusesRemapping: any = {
-		LeoVegas:
-			'https://ntrfr.leovegas.com/redirect.aspx?pid=3708703&lpid=1757&bid=19140',
-		'888 Casino': 'https://ic.aff-handler.com/c/43431?sr=1864253',
-		StarCasinò:
-			'http://record.affiliatelounge.com/_SEA3QA6bJTMP_fzV1idzxmNd7ZgqdRLk/135/',
-		WinCasino:
-			'https://vincipromo.it/wincasino/?mp=42794b32-7604-49d2-92d0-8adf67a6b173',
-		Unibet: 'https://b1.trickyrock.com/redirect.aspx?pid=74444446&bid=27508',
-	}
+  const pageBonusesRemapping: any = {
+    "888 Casino": "https://ic.aff-handler.com/c/43431?sr=1864253",
+    LeoVegas:
+      "https://ntrfr.leovegas.com/redirect.aspx?pid=3708703&lpid=1757&bid=19140",
+    StarCasinò:
+      "http://record.affiliatelounge.com/_SEA3QA6bJTMP_fzV1idzxmNd7ZgqdRLk/135/",
+    NetBet: " https://netbetit.livepartners.com/view.php?z=163305",
+    "William Hill":
+      "https://campaigns.williamhill.it/C.ashx?btag=a_201973b_834c_&affid=1742025&siteid=201973&adid=834&c=",
+    QuiGioco:
+      "https://www.quigioco.it/signup?codAffiliato=R2026&label=squad-sito",
+  };
 
-	return {
-		props: {
-			statsData: dataResponse.data.stats.stats,
-			spinsData: dataResponse.data.spinsInTimeFrame.map((r: Spin) => {
-				r.timeOfSpin = r.timeOfSpin - 1000 * 60 * 60 * 2
-				return r
-			}),
-			bonusesData: (
-				await getBonuses({ names: PAGE_BONUSES, sort: 'rating:desc' })
-			).map(b => {
-				b.link = pageBonusesRemapping[b.name]
-				return b
-			}),
-		},
-	}
+  return {
+    props: {
+      statsData: dataResponse.data.stats.stats,
+      spinsData: dataResponse.data.spinsInTimeFrame.map((r: Spin) => {
+        r.timeOfSpin = r.timeOfSpin - 1000 * 60 * 60 * 2;
+        return r;
+      }),
+      bonusesData: (
+        await getBonuses({ names: PAGE_BONUSES, sort: "rating:desc" })
+      ).map((b) => {
+        if (pageBonusesRemapping[b.name]) {
+          b.link = pageBonusesRemapping[b.name];
+        }
+        return b;
+      }),
+    },
+  };
 }
 
-export default DreamCatcherPage
+export default DreamCatcherPage;

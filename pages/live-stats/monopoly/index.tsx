@@ -460,28 +460,27 @@ export async function getServerSideProps() {
   const dataSpinsResponse = await axios.get(
     `${APISOCKET.MONOPOLY}/api/get-latest/15`,
   );
-
   const PAGE_BONUSES = [
-    "LeoVegas",
     "888 Casino",
-    "Lottomatica",
+    "BETIC",
     "StarCasinò",
-    "WinCasino",
+    "NetBet",
+    "LeoVegas",
+    "QuiGioco",
   ];
 
   const pageBonusesRemapping: any = {
+    "888 Casino": "https://ic.aff-handler.com/c/43431?sr=1864253",
     LeoVegas:
       "https://ntrfr.leovegas.com/redirect.aspx?pid=3708703&lpid=1757&bid=19140",
-    "888 Casino": "https://ic.aff-handler.com/c/43431?sr=1864253",
     StarCasinò:
       "http://record.affiliatelounge.com/_SEA3QA6bJTMP_fzV1idzxmNd7ZgqdRLk/135/",
-    WinCasino:
-      "https://vincipromo.it/wincasino/?mp=42794b32-7604-49d2-92d0-8adf67a6b173",
-    Unibet: "https://b1.trickyrock.com/redirect.aspx?pid=74444446&bid=27508",
-    Lottomatica:
-      "https://media.lottomaticapartners.it/redirect.aspx?pid=11570&bid=1509",
+    NetBet: " https://netbetit.livepartners.com/view.php?z=163305",
+    "William Hill":
+      "https://campaigns.williamhill.it/C.ashx?btag=a_201973b_834c_&affid=1742025&siteid=201973&adid=834&c=",
+    QuiGioco:
+      "https://www.quigioco.it/signup?codAffiliato=R2026&label=squad-sito",
   };
-
   return {
     props: {
       statsData: dataStatsResponse.data.stats.stats,
@@ -489,7 +488,9 @@ export async function getServerSideProps() {
       bonusesData: (
         await getBonuses({ names: PAGE_BONUSES, sort: "rating:desc" })
       ).map((b) => {
-        b.link = pageBonusesRemapping[b.name];
+        if (pageBonusesRemapping[b.name]) {
+          b.link = pageBonusesRemapping[b.name];
+        }
         return b;
       }),
       tablesData: dataStatsResponse.data.tables[0],

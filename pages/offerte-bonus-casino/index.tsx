@@ -31,23 +31,20 @@ const BonusCasinoPage: FunctionComponent<PageProps> = ({
 }) => {
   const { t } = useTranslation();
 
-  const TOP_BONUSES = ["BETIC", "StarCasinò", "Lottomatica", "WinCasino"];
+  const TOP_BONUSES = ["888 Casino", "BETIC", "StarCasinò", "NetBet"];
 
   console.log(pagesBonusesData);
 
   const MAIN_BONUSES = [
+    "888 Casino",
     "BETIC",
     "StarCasinò",
-    "Lottomatica",
-    "WinCasino",
+    "NetBet",
     "LeoVegas",
     "BetFlag",
     "888 Casino",
     "PokerStars Casino",
-    "BetRoom",
     "William Hill",
-    "NetBet",
-    "King Casino",
     "Eurobet",
     "Betway",
     "Gioco Digitale",
@@ -381,21 +378,17 @@ export async function getStaticProps() {
     "LeoVegas",
     "StarCasinò",
     "Starvegas",
-    "WinCasino",
     "PokerStars Casino",
     "BetFlag",
-    "BetRoom",
     "NetBet",
     "GoldBet",
     "888 Casino",
-    "King Casino",
     "Eurobet",
     "Betway",
     "Gioco Digitale",
     "Snai",
     "Unibet",
     "William Hill",
-    "Lottomatica",
     "BETIC",
   ];
 
@@ -409,7 +402,7 @@ export async function getStaticProps() {
       "https://www.promovt.info/betroomcasino/?page=user&p=registration&mp=b76750fa-ea90-424c-85d2-00e33416391e",
     WinCasino:
       "https://www.vincipromo.it/wincasino/?mp=7f1d8788-3f9e-4111-b205-e49d29661715",
-    NetBet: "https://banners.livepartners.com/view.php?z=151484",
+    NetBet: "https://netbetit.livepartners.com/view.php?z=163305",
     GoldBet: "https://media.goldbetpartners.it/redirect.aspx?pid=5116&bid=1495",
     "888 Casino": "https://ic.aff-handler.com/c/43431?sr=1864253",
     "King Casino": "https://spikeslot.kingcasino.it",

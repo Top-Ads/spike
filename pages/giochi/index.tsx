@@ -561,28 +561,25 @@ const LoadMoreButton = styled.div`
 export async function getStaticProps() {
   const PAGE_BONUSES = [
     "888 Casino",
-    "LeoVegas",
-    "Lottomatica",
+    "BETIC",
     "StarCasinò",
+    "NetBet",
     "WinCasino",
   ];
 
   const pageBonusesRemapping: any = {
-    LeoVegas:
-      "https://ntrfr.leovegas.com/redirect.aspx?pid=3708703&lpid=1757&bid=19140",
     StarCasinò:
       "http://record.affiliatelounge.com/_SEA3QA6bJTMP_fzV1idzxmNd7ZgqdRLk/135/",
     WinCasino:
       "https://vincipromo.it/wincasino/?mp=42794b32-7604-49d2-92d0-8adf67a6b173",
     NetBet: "https://banners.livepartners.com/view.php?z=151484",
-    "King Casino": "http://cs.kingcasino.it/",
     "888 Casino": "https://ic.aff-handler.com/c/47917?sr=1864253",
-    Lottomatica : "https://media.lottomaticapartners.it/redirect.aspx?pid=11570&bid=1509"
   };
 
   const unorderedBonuses = (
     await getBonuses({ names: PAGE_BONUSES, sort: "rating:desc" })
   ).map((b) => {
+    if (b.name === "BETIC") return b;
     b.link = pageBonusesRemapping[b.name];
     return b;
   });
