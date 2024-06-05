@@ -31,22 +31,24 @@ const BonusCasinoPage: FunctionComponent<PageProps> = ({
 }) => {
   const { t } = useTranslation();
 
-  const TOP_BONUSES = ["888 Casino", "BETIC", "StarCasinò", "NetBet"];
+  const TOP_BONUSES = ["888 Casino", "StarCasinò", "NetBet", "LeoVegas"];
 
   console.log(pagesBonusesData);
 
   const MAIN_BONUSES = [
     "888 Casino",
-    "BETIC",
     "StarCasinò",
     "NetBet",
     "LeoVegas",
+    "William Hill",
+    "Betway",
+    "AdmiralBet",
+    "Starvegas",
+    "BETIC",
     "BetFlag",
     "888 Casino",
     "PokerStars Casino",
-    "William Hill",
     "Eurobet",
-    "Betway",
     "Gioco Digitale",
   ];
 
@@ -80,23 +82,16 @@ const BonusCasinoPage: FunctionComponent<PageProps> = ({
         <MarkdownStyleProvider>
           <Markdown>
             {`# Lista Italiana dei Migliori Casino con Bonus Senza Deposito  
-
 A partire dal 2019, la competizione tra le diverse piattaforme di casinò digitali è aumentata in maniera esponenziale, portando all’introduzione di una serie di offerte di benvenuto, volte a rendere l’esperienza di gioco responsabile e intrattenitiva.<br><br>
-
-
 ## I migliori siti di Casinò Digitali italiani secondo Casinò Squad
-
 Tutti **i casinò che consideriamo dispongono della licenza italiana ADM** necessaria per operare in questo settore, sono quindi validi e sicuri.<br>Inoltre, nella scelta del portale di gioco bisogna sempre tenere conto di alcuni fattori tra cui:
-
-- Le tempistiche relative a depositi e prelievi, insieme ai metodi di pagamento offerti.
-- L’offerta di giochi e giochi Live.
-- Le promozioni periodiche rivolte agli utenti della piattaforma e ai nuovi arrivati.
-- L’efficienza dell’assistenza e la presenza di una sezione FAQ all’interno del sito web.
-
-**L’elenco che segue racchiude tutte le migliori piattaforme di casinò digitali che possono adattarsi alle tue preferenze** e che hanno i migliori Bonus <a href='https://casinosquad.it/offerte-bonus-casino'>Benvenuto Senza Deposito</a>.<br>Tra queste sono incluse anche le industrie di casinò online utilizzate da Casinò Squad durante le live, impiegando l’utilizzo di soldi veri.
-
-Come sarà possibile notare nella lista sotto elencata, i Bonus di Benvenuto possono variare a seconda del sito considerato e, generalmente, offrono: giri gratis su alcune slot online già prestabilite o un importo che può essere differente tra il Bonus Senza Deposito e il Bonus Con Deposito.<br>
-In linea generale, però, i Bonus dei casinò online ti permettono di giocare con soldi veri a tutte le migliori slot machine online, conferendoti un importo maggiore rispetto a quello depositato in precedenza per usufruire dell’offerta.`}
+- Le tempistiche a depositi e prelievi, insieme ai metodi di pagamento offerti. -
+L’offerta di giochi e giochi Live. -
+Le promozioni periodiche rivolte agli utenti della piattaforma e ai nuovi arrivati. -
+L’efficienza dell’assistenza e la presenza di una sezione FAQ all’interno del sito web. **L’elenco
+che segue racchiude tutte le migliori piattaforme di casinò digitali che possono adattarsi alle tue preferenze** e che hanno i migliori Bonus <a href='https://casinosquad.it/offerte-bonus-casino'>Benvenuto Senza Deposito</a>.<br>Tra queste sono incluse anche le industrie di casinò online utilizzate da Casinò Squad durante le live, impiegando l’utilizzo di soldi veri. Come
+sarà possibile notare nella lista sotto elencata, i Bonus di Benvenuto possono variare a seconda del sito considerato e, generalmente, offrono: giri gratis su alcune slot online già prestabilite o un importo che può essere differente tra il Bonus Senza Deposito e il Bonus Con Deposito.<br> In
+linea generale, però, i Bonus dei casinò online ti permettono di giocare con soldi veri a tutte le migliori slot machine online, conferendoti un importo maggiore rispetto a quello depositato in precedenza per usufruire dell’offerta. relative`}
           </Markdown>
         </MarkdownStyleProvider>
       </Main>
@@ -390,9 +385,12 @@ export async function getStaticProps() {
     "Unibet",
     "William Hill",
     "BETIC",
+    "AdmiralBet",
   ];
 
   const pageBonusesRemapping: any = {
+    AdmiralBet:
+      "https://wladmiralinteractive.adsrv.eacdn.com/C.ashx?btag=a_3946b_444c_&affid=827&siteid=3946&adid=444&c=",
     LeoVegas:
       "https://ntrfr.leovegas.com/redirect.aspx?pid=3708703&lpid=1757&bid=19140",
     StarCasinò:

@@ -40,6 +40,7 @@ export enum SymbolLayout {
 }
 
 export const PAGE_BONUSES = [
+  "AdmiralBet",
   "LeoVegas",
   "StarCasinò",
   "Starvegas",
@@ -58,6 +59,7 @@ export const PAGE_BONUSES = [
   "BETIC",
   "Lottomatica",
   "QuiGioco",
+  "StarVegas",
 ];
 
 export const pageBonusesRemapping: any = {
@@ -91,4 +93,7 @@ export const pageBonusesRemapping: any = {
     "https://info.betflag.it/landing/affiliazioni/bonus-registrazione-slot/?btag=PV99_283455F9C2AE423D8A6D232C87DE09E9",
   QuiGioco:
     "https://www.quigioco.it/signup?codAffiliato=R2026&label=squad-sito",
+  AdmiralBet:
+    "https://wladmiralinteractive.adsrv.eacdn.com/C.ashx?btag=a_3946b_444c_&affid=827&siteid=3946&adid=444&c=",
+  StarVegas: "https://www.starvegas.it/gmg/refer/61782b177358340001a18ac7",
 };
