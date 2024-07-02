@@ -524,11 +524,14 @@ export async function getServerSideProps() {
 
   const PAGE_BONUSES = [
     "888 Casino",
-    "BETIC",
     "StarCasinò",
+    "Snai",
     "NetBet",
+    "BETIC",
     "LeoVegas",
     "QuiGioco",
+    "AdmiralBet",
+    "Starvegas",
   ];
 
   const pageBonusesRemapping: any = {
@@ -544,6 +547,22 @@ export async function getServerSideProps() {
       "https://www.quigioco.it/signup?codAffiliato=R2026&label=squad-sito",
   };
 
+  const data = await getBonuses({
+    names: PAGE_BONUSES,
+    sort: "rating:desc",
+  });
+
+  let bonusesData = data.map((b: any) => {
+    if (pageBonusesRemapping[b.name]) {
+      b.link = pageBonusesRemapping[b.name];
+    }
+    return b;
+  });
+
+  bonusesData = PAGE_BONUSES.map((name) =>
+    bonusesData.find((it) => it.name === name),
+  );
+
   return {
     props: {
       statsData: dataResponse.data.stats.stats,
@@ -551,14 +570,7 @@ export async function getServerSideProps() {
         r.timeOfSpin = r.timeOfSpin - 1000 * 60 * 60 * 2;
         return r;
       }),
-      bonusesData: (
-        await getBonuses({ names: PAGE_BONUSES, sort: "rating:desc" })
-      ).map((b) => {
-        if (pageBonusesRemapping[b.name]) {
-          b.link = pageBonusesRemapping[b.name];
-        }
-        return b;
-      }),
+      bonusesData,
     },
   };
 }

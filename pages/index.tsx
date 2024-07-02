@@ -46,21 +46,21 @@ const IndexPage: FunctionComponent<PageProps> = (props) => {
 
   console.log(pageBonusesData);
 
-  const TOP_BONUSES = ["888 Casino", "StarCasinò", "NetBet"];
+  const TOP_BONUSES = ["888 Casino", "StarCasinò", "Snai"];
 
   const MAIN_BONUSES = [
     "888 Casino",
     "StarCasinò",
-    "NetBet",
+    "Snai",
 
+    "NetBet",
     "LeoVegas",
+    "BETIC",
+    "Starvegas",
+    "AdmiralBet",
     "William Hill",
     "Betway",
-    "AdmiralBet",
-    "Starvegas",
-    "BETIC",
     "BetFlag",
-    "PokerStars",
     "Eurobet",
     "Gioco Digitale",
   ];
@@ -68,9 +68,9 @@ const IndexPage: FunctionComponent<PageProps> = (props) => {
   const FREE_BONUSES = [
     "888 Casino",
     "StarCasinò",
+    "Snai",
     "NetBet",
     "LeoVegas",
-    "William Hill",
   ];
 
   const topBonusesData = TOP_BONUSES.map(

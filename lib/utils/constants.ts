@@ -60,6 +60,7 @@ export const PAGE_BONUSES = [
   "Lottomatica",
   "QuiGioco",
   "StarVegas",
+  "Snai",
 ];
 
 export const pageBonusesRemapping: any = {
@@ -96,4 +97,5 @@ export const pageBonusesRemapping: any = {
   AdmiralBet:
     "https://wladmiralinteractive.adsrv.eacdn.com/C.ashx?btag=a_3946b_444c_&affid=827&siteid=3946&adid=444&c=",
   StarVegas: "https://www.starvegas.it/gmg/refer/61782b177358340001a18ac7",
+  Snai: "https://informatoriads.snai.it/redirect.aspx?pid=30828&bid=2748",
 };

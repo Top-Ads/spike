@@ -460,15 +460,18 @@ export async function getServerSideProps() {
   const dataSpinsResponse = await axios.get(
     `${APISOCKET.MONOPOLY}/api/get-latest/15`,
   );
+
   const PAGE_BONUSES = [
     "888 Casino",
-    "BETIC",
     "StarCasinò",
+    "Snai",
     "NetBet",
+    "BETIC",
     "LeoVegas",
     "QuiGioco",
+    "AdmiralBet",
+    "Starvegas",
   ];
-
   const pageBonusesRemapping: any = {
     "888 Casino": "https://ic.aff-handler.com/c/43431?sr=1864253",
     LeoVegas:
@@ -481,19 +484,28 @@ export async function getServerSideProps() {
     QuiGioco:
       "https://www.quigioco.it/signup?codAffiliato=R2026&label=squad-sito",
   };
+
+  const data = await getBonuses({
+    names: PAGE_BONUSES,
+    sort: "rating:desc",
+  });
+
+  let bonusesData = data.map((b: any) => {
+    if (pageBonusesRemapping[b.name]) {
+      b.link = pageBonusesRemapping[b.name];
+    }
+    return b;
+  });
+
+  bonusesData = PAGE_BONUSES.map((name) =>
+    bonusesData.find((it) => it.name === name),
+  );
+
   return {
     props: {
       statsData: dataStatsResponse.data.stats.stats,
       spinsData: dataSpinsResponse.data.latestSpins,
-      bonusesData: (
-        await getBonuses({ names: PAGE_BONUSES, sort: "rating:desc" })
-      ).map((b) => {
-        if (pageBonusesRemapping[b.name]) {
-          b.link = pageBonusesRemapping[b.name];
-        }
-        return b;
-      }),
-      tablesData: dataStatsResponse.data.tables[0],
+      bonusesData: bonusesData,
     },
   };
 }

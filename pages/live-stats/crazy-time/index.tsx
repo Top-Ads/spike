@@ -402,11 +402,14 @@ export async function getServerSideProps() {
 
   const PAGE_BONUSES = [
     "888 Casino",
-    "BETIC",
     "StarCasinò",
+    "Snai",
     "NetBet",
+    "BETIC",
     "LeoVegas",
     "QuiGioco",
+    "AdmiralBet",
+    "Starvegas",
   ];
 
   const pageBonusesRemapping: any = {

@@ -31,25 +31,25 @@ const BonusCasinoPage: FunctionComponent<PageProps> = ({
 }) => {
   const { t } = useTranslation();
 
-  const TOP_BONUSES = ["888 Casino", "StarCasinò", "NetBet", "LeoVegas"];
+  const TOP_BONUSES = ["888 Casino", "StarCasinò", "Snai", "NetBet"];
 
   console.log(pagesBonusesData);
 
   const MAIN_BONUSES = [
     "888 Casino",
     "StarCasinò",
+    "Snai",
     "NetBet",
     "LeoVegas",
+    "BETIC",
+    "Starvegas",
+    "AdmiralBet",
     "William Hill",
     "Betway",
-    "AdmiralBet",
-    "Starvegas",
-    "BETIC",
     "BetFlag",
-    "888 Casino",
-    "PokerStars Casino",
     "Eurobet",
     "Gioco Digitale",
+    "PokerStars Casino",
   ];
 
   // const topBonusesData = pagesBonusesData.filter(bonus => {
