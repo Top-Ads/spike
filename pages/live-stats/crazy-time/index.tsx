@@ -6,7 +6,7 @@ import Divider from "../../../components/Commons/Divider";
 import GridLayout from "../../../components/Commons/GridLayout";
 import CustumSelect from "../../../components/Commons/Inputs/Select";
 import Layout from "../../../components/Layout";
-import { GridType, LiveStats } from "../../../lib/utils/constants";
+import { GridType, LiveStats, pageBonusesRemapping } from "../../../lib/utils/constants";
 import axios from "axios";
 import { APISOCKET } from "../../../public/environment";
 import { io, Socket } from "socket.io-client";
@@ -401,29 +401,17 @@ export async function getServerSideProps() {
   );
 
   const PAGE_BONUSES = [
-    "888 Casino",
-    "StarCasinò",
-    "Snai",
-    "NetBet",
+    "GekoBet",
     "BETIC",
-    "LeoVegas",
-    "QuiGioco",
+    "StarCasinò",
     "AdmiralBet",
     "Starvegas",
+    "QuiGioco",
+    "NetBet",
+    "LeoVegas",
+    "Snai",
   ];
 
-  const pageBonusesRemapping: any = {
-    "888 Casino": "https://ic.aff-handler.com/c/43431?sr=1864253",
-    LeoVegas:
-      "https://ntrfr.leovegas.com/redirect.aspx?pid=3708703&lpid=1757&bid=19140",
-    StarCasinò:
-      "http://record.affiliatelounge.com/_SEA3QA6bJTMP_fzV1idzxmNd7ZgqdRLk/135/",
-    NetBet: " https://netbetit.livepartners.com/view.php?z=163305",
-    "William Hill":
-      "https://campaigns.williamhill.it/C.ashx?btag=a_201973b_834c_&affid=1742025&siteid=201973&adid=834&c=",
-    QuiGioco:
-      "https://www.quigioco.it/signup?codAffiliato=R2026&label=squad-sito",
-  };
 
   const data = await getBonuses({
     names: PAGE_BONUSES,

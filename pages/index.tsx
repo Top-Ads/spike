@@ -44,34 +44,38 @@ const IndexPage: FunctionComponent<PageProps> = (props) => {
     totalProducers,
   } = props;
 
-  console.log(pageBonusesData);
 
-  const TOP_BONUSES = ["888 Casino", "StarCasinò", "Snai"];
+  const TOP_BONUSES = ["GekoBet", "BETIC", "StarCasinò"];
 
   const MAIN_BONUSES = [
-    "888 Casino",
+    "GekoBet",
+    "BETIC",
     "StarCasinò",
-    "Snai",
-
+    "AdmiralBet",
+    "Starvegas",
+    "QuiGioco",
     "NetBet",
     "LeoVegas",
-    "BETIC",
-    "Starvegas",
-    "AdmiralBet",
+    "Snai",
+    "888 Casino",
     "William Hill",
-    "Betway",
+    "Netwin",
     "BetFlag",
     "Eurobet",
     "Gioco Digitale",
+    "Bwin",
+    "Betway",
   ];
 
   const FREE_BONUSES = [
-    "888 Casino",
+    "GekoBet",
+    "BETIC",
     "StarCasinò",
-    "Snai",
-    "NetBet",
-    "LeoVegas",
+    "AdmiralBet",
+    "Starvegas",
   ];
+
+  console.log(pageBonusesData.map(b => b.name))
 
   const topBonusesData = TOP_BONUSES.map(
     (b) => pageBonusesData.filter((bonus) => bonus.name === b)[0],
@@ -89,7 +93,6 @@ const IndexPage: FunctionComponent<PageProps> = (props) => {
     })
     .filter((it) => it !== undefined);
 
-  console.log(topBonusesData, mainBonusesData);
 
   const router = useRouter();
 
@@ -465,8 +468,9 @@ export async function getStaticProps() {
         }),
       },
       pageBonusesData: (
-        await getBonuses({ names: PAGE_BONUSES, sort: "rating:desc" })
+        await getBonuses({ names: PAGE_BONUSES, sort: "rating:desc", limit: 30 })
       ).map((b) => {
+        console.log(`remapping ${b.name}`)
         b.link = pageBonusesRemapping[b.name];
         return b;
       }),

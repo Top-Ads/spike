@@ -8,14 +8,10 @@ import { getSlots } from "../../lib/graphql/queries/slots";
 import { Bonus, Slot } from "../../lib/schemas";
 import BonusCard from "../../components/Cards/BonusCard";
 import GridLayout from "../../components/Commons/GridLayout";
-import { GridType } from "../../lib/utils/constants";
+import { GridType, PAGE_BONUSES, pageBonusesRemapping } from "../../lib/utils/constants";
 import { device } from "../../lib/utils/device";
 import BonusTable from "../../components/Commons/Tables/BonusTable";
 import SlotCard from "../../components/Cards/SlotCard";
-import { format } from "date-fns";
-import italianLocale from "date-fns/locale/it";
-import LazyLoad from "react-lazyload";
-import { CDN } from "../../public/environment";
 import { useTranslation } from "react-i18next";
 import { MarkdownStyleProvider } from "../blog/[firstLevel]/[secondLevel]/[slug]";
 import Markdown from "markdown-to-jsx";
@@ -31,42 +27,40 @@ const BonusCasinoPage: FunctionComponent<PageProps> = ({
 }) => {
   const { t } = useTranslation();
 
-  const TOP_BONUSES = ["888 Casino", "StarCasinò", "Snai", "NetBet"];
+  const TOP_BONUSES = ["GekoBet", "BETIC", "StarCasinò", "AdmiralBet"];
 
-  console.log(pagesBonusesData);
 
   const MAIN_BONUSES = [
-    "888 Casino",
+    "GekoBet",
+    "BETIC",
     "StarCasinò",
-    "Snai",
+    "AdmiralBet",
+    "Starvegas",
+    "QuiGioco",
     "NetBet",
     "LeoVegas",
-    "BETIC",
-    "Starvegas",
-    "AdmiralBet",
+    "Snai",
+    "888 Casino",
     "William Hill",
-    "Betway",
+    "Netwin",
     "BetFlag",
     "Eurobet",
     "Gioco Digitale",
-    "PokerStars Casino",
+    "Bwin",
+    "Betway",
   ];
-
-  // const topBonusesData = pagesBonusesData.filter(bonus => {
-  // 	if (TOP_BONUSES.includes(bonus.name)) {
-  // 		return bonus
-  // 	}
-  // })
 
   const topBonusesData = TOP_BONUSES.map(
     (b) => pagesBonusesData.filter((bonus) => bonus.name === b)[0],
   );
 
+
+
   const mainBonusesData = MAIN_BONUSES.map(
     (b) => pagesBonusesData.filter((bonus) => bonus.name === b)[0],
   );
 
-  console.log(topBonusesData, mainBonusesData);
+
 
   return (
     <Layout title="Casino Squad | Offerte Attuali Bonus Casino e Promo Aggiornate Giornalmente">
@@ -100,9 +94,9 @@ linea generale, però, i Bonus dei casinò online ti permettono di giocare con s
         <GridContainer id="grid-topBonus">
           <GridLayout
             gridType={GridType.TOPBONUS}
-            content={topBonusesData.map((bonus) => (
-              <BonusCard key={bonus.id} data={bonus} />
-            ))}
+            content={topBonusesData.map((bonus) => {
+              return <BonusCard key={bonus.id} data={bonus} />
+            })}
             label="Migliori Casino Italiani per servizi offerti"
             AlignItem={"center"}
             xs={12}
@@ -124,9 +118,9 @@ linea generale, però, i Bonus dei casinò online ti permettono di giocare con s
           <div className="bonus-cards">
             <GridLayout
               gridType={GridType.BONUS}
-              content={mainBonusesData.map((bonus) => (
-                <BonusCard key={bonus.id} data={bonus} />
-              ))}
+              content={mainBonusesData.map((bonus) => {
+                return <BonusCard key={bonus.id} data={bonus} />
+              })}
               AlignItem={"center"}
               xs={12}
               sm={12}
@@ -369,60 +363,6 @@ const GridContainer = styled.div`
 `;
 
 export async function getStaticProps() {
-  const PAGE_BONUSES = [
-    "LeoVegas",
-    "StarCasinò",
-    "Starvegas",
-    "PokerStars Casino",
-    "BetFlag",
-    "NetBet",
-    "GoldBet",
-    "888 Casino",
-    "Eurobet",
-    "Betway",
-    "Gioco Digitale",
-    "Snai",
-    "Unibet",
-    "William Hill",
-    "BETIC",
-    "AdmiralBet",
-  ];
-
-  const pageBonusesRemapping: any = {
-    AdmiralBet:
-      "https://wladmiralinteractive.adsrv.eacdn.com/C.ashx?btag=a_3946b_444c_&affid=827&siteid=3946&adid=444&c=",
-    LeoVegas:
-      "https://ntrfr.leovegas.com/redirect.aspx?pid=3708703&lpid=1757&bid=19140",
-    StarCasinò:
-      "http://record.affiliatelounge.com/_SEA3QA6bJTMP_fzV1idzxmNd7ZgqdRLk/135/",
-    Starvegas: "https://www.starvegas.it/gmg/refer/61782b177358340001a18ac7",
-    BetRoom:
-      "https://www.promovt.info/betroomcasino/?page=user&p=registration&mp=b76750fa-ea90-424c-85d2-00e33416391e",
-    WinCasino:
-      "https://www.vincipromo.it/wincasino/?mp=7f1d8788-3f9e-4111-b205-e49d29661715",
-    NetBet: "https://netbetit.livepartners.com/view.php?z=163305",
-    GoldBet: "https://media.goldbetpartners.it/redirect.aspx?pid=5116&bid=1495",
-    "888 Casino": "https://ic.aff-handler.com/c/43431?sr=1864253",
-    "King Casino": "https://spikeslot.kingcasino.it",
-    Eurobet:
-      "https://record.betpartners.it/_E_C7XwxgprAZV93hC2dJ_GNd7ZgqdRLk/113/",
-    Betway: "https://partners.betway.it/bwp/casino/?s=bpi29951&a=bpiadid167219",
-    "Gioco Digitale":
-      "https://mediaserver.entainpartners.com/renderBanner.do?zoneId=2031706",
-    Snai: "https://informatoriads.snai.it/redirect.aspx?pid=30830&bid=2194",
-    Unibet: "https://b1.trickyrock.com/redirect.aspx?pid=74444446&bid=27508",
-    "PokerStars Casino":
-      "https://secure.starsaffiliateclub.com/C.ashx?btag=a_186177b_6907c_&affid=100976968&siteid=186177&adid=6907&c=",
-    "William Hill":
-      "https://campaigns.williamhill.it/C.ashx?btag=a_201973b_834c_&affid=1742025&siteid=201973&adid=834&c=",
-    Lottomatica:
-      "https://media.lottomaticapartners.it/redirect.aspx?pid=11570&bid=1509",
-    BETIC:
-      "https://www.promovt.info/casino3/index.php?id=casino&main=betic&promo=betic&banner=beticWelcomeBonus3000&skin=welcomeBonus3000&mp=3236f5fb-6745-4e41-ae78-a26aeccea794",
-    BetFlag:
-      "https://info.betflag.it/landing/affiliazioni/bonus-registrazione-slot/?btag=PV99_283455F9C2AE423D8A6D232C87DE09E9",
-  };
-
   return {
     props: {
       topSlotsData: await getSlots({
@@ -431,9 +371,12 @@ export async function getStaticProps() {
         sort: "updated_at:desc",
       }),
       pagesBonusesData: (
-        await getBonuses({ names: PAGE_BONUSES, sort: "rating:desc" })
+        await getBonuses({ names: PAGE_BONUSES, limit: 30 })
       ).map((b) => {
-        b.link = pageBonusesRemapping[b.name];
+        console.log(`remapping ${b.name}`)
+        if (pageBonusesRemapping[b.name]) {
+          b.link = pageBonusesRemapping[b.name];
+        }
         return b;
       }),
     },

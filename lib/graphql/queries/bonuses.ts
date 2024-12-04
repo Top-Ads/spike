@@ -54,15 +54,15 @@ const BONUSES = `
 `
 
 export const getBonuses = async (
-	params: Object,
-	query: string = BONUSES
+  params: Object,
+  query: string = BONUSES
 ): Promise<Bonus[]> => {
-	console.log(params, 'GET BONUSES')
+  console.log(params, 'GET BONUSES')
 
-	const request = await aquaClient.query({
-		query,
-		variables: params,
-	})
+  const request = await aquaClient.query({
+    query,
+    variables: params,
+  })
 
-	return request.data.data.bonuses as Bonus[]
+  return request.data.data.bonuses as Bonus[]
 }

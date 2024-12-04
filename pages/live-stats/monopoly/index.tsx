@@ -6,7 +6,7 @@ import Divider from "../../../components/Commons/Divider";
 import GridLayout from "../../../components/Commons/GridLayout";
 import CustumSelect from "../../../components/Commons/Inputs/Select";
 import Layout from "../../../components/Layout";
-import { GridType, LiveStats } from "../../../lib/utils/constants";
+import { GridType, LiveStats, pageBonusesRemapping } from "../../../lib/utils/constants";
 import axios from "axios";
 import { APISOCKET } from "../../../public/environment";
 import { io, Socket } from "socket.io-client";
@@ -233,11 +233,11 @@ Trova informazione per giocare online ed a esplorare uno dei giochi digitali dif
 
           <br />
 
-          <DiceRollContainer>
+          {tables && <DiceRollContainer>
             <DiceRollTable type="low" data={tables.lowTierTable.rows} />
             <DiceRollTable type="mid" data={tables.midTierTable.rows} />
             <DiceRollTable type="high" data={tables.highTierTable.rows} />
-          </DiceRollContainer>
+          </DiceRollContainer>}
         </Main>
 
         <Footer>
@@ -268,100 +268,6 @@ Per tutte le informazioni puoi dare un’occhiata alla nostra Guida di Monopoly 
 Divertiti con il meglio dei Game Show e ricorda che il gioco è vietato ai minori di 18 anni e può creare dipendenza patologica.`}
             </Markdown>
           </MarkdownStyleProvider>
-          {/* <section>
-						<h3>
-							{t(
-								'Controlla gli ultimi numeri usciti al Monopoly Live'
-							)}
-						</h3>
-						<p>
-							{t(
-								'Monopoly Live è uno dei giochi live più amati dal pubblico perché rappresenta la versione digitale del classico gioco da tavolo. '
-							)}
-							{t(
-								'Le informazioni sugli ultimi numeri usciti, aiuta il giocatore ad essere sempre aggiornato in tempo reale!'
-							)}{' '}
-							<br />
-							{t(
-								"In ogni casella puoi visionare la probabilità di uscita, sempre aggiornata in diretta, nonché il numero di giri che passa dall'ultima estrazione di ogni numero,"
-							)}
-							{t('oppure 2 rolls, 4 rolls e chance. ')}
-							{t(
-								'Questo strumento – il live tracker Monopoly Live – consente di visionare il numero di volte in cui ciascun numero o roll è stato estratto,'
-							)}
-							{t(
-								'assieme al valore correlato dato dalle previsioni teoriche. '
-							)}
-						</p>
-					</section>
-
-					<section>
-						<h3>
-							{t(
-								'Quali vantaggi consentono ai giocatori i dati mostrati nella sezione Monopoly Statistiche Live?'
-							)}
-						</h3>
-						<p>
-							{t(
-								'Questi dati sono vantaggiosi per il giocatore:'
-							)}
-							{t(
-								'offrono la possibilità di osservare la differenza tra previsioni teoriche e andamento effettivo della ruota Monopoly Live. '
-							)}
-							{t(
-								'In effetti, ciascun produttore esprime il valore medio delle probabilità di uscita di ciascun settore della ruota. '
-							)}{' '}
-							<br />
-							{t(
-								'Tuttavia, se uno o più valori sono lontani dal valore medio, probabilmente assisteremo ad estrazioni in grado di ristabilire le probabilità teoriche. '
-							)}{' '}
-							<br />
-							{t(
-								"Ricordiamo sempre, che non esiste correlazione matematica tra uno spin e l'altro. "
-							)}
-							{t(
-								'Nondimeno, le statistiche possono essere utilizzate per definire la propria personale strategia con la fiducia che possa funzionare,'
-							)}
-							{t('almeno sul breve periodo. ')} <br />
-							{t(
-								'Facciamo un esempio: se stiamo puntando sul 2 rolls, ma questo è uscito alla giusta frequenza, mentre il 4 rolls non esce da diversi spin,'
-							)}
-							{t('conviene considerare di puntare il 4 rolls. ')}{' '}
-							<br />
-							{t(
-								'Infatti, i numeri che non escono da vari spin, oppure i rolls potrebbero consentire al giocatore di recuperare il Budget. '
-							)}
-							{t(
-								'Ma ricorda che il successo delle scommesse non è mai certo. '
-							)}
-						</p>
-					</section>
-
-					<section>
-						<h3>{t('Divertiti con il meglio del Live Casinò')}</h3>
-						<p>
-							{t(
-								'Tutti gli utenti del sito Casino Squad possono sfruttare gratis questo servizio, consultando la sezione dedicata in modo semplice e veloce. '
-							)}{' '}
-							<br />
-							{t(
-								"Con la possibilità di seguire in tempo reale il gioco, potrai sempre modificare la strategia ed – eventualmente - ottimizzare l'uso del Budget a disposizione. "
-							)}
-							<br />
-							{t(
-								"Ricordiamo inoltre che – sul lungo termine - qualsiasi tipo di giocata porta a perdere il credito, considerando l'RTP di 96.23%. "
-							)}{' '}
-							<br />
-							{t(
-								'Per tutte le informazioni puoi dare un’occhiata alla nostra Guida di Monopoly Live. '
-							)}
-							<br />
-							<br />
-							{t(
-								'Divertiti con il meglio dei Game Show e ricorda che il gioco è vietato ai minori di 18 anni e può creare dipendenza patologica. '
-							)}
-						</p>
-					</section> */}
         </Footer>
       </div>
     </Layout>
@@ -462,28 +368,17 @@ export async function getServerSideProps() {
   );
 
   const PAGE_BONUSES = [
-    "888 Casino",
-    "StarCasinò",
-    "Snai",
-    "NetBet",
+    "GekoBet",
     "BETIC",
-    "LeoVegas",
-    "QuiGioco",
+    "StarCasinò",
     "AdmiralBet",
     "Starvegas",
+    "QuiGioco",
+    "NetBet",
+    "LeoVegas",
+    "Snai",
   ];
-  const pageBonusesRemapping: any = {
-    "888 Casino": "https://ic.aff-handler.com/c/43431?sr=1864253",
-    LeoVegas:
-      "https://ntrfr.leovegas.com/redirect.aspx?pid=3708703&lpid=1757&bid=19140",
-    StarCasinò:
-      "http://record.affiliatelounge.com/_SEA3QA6bJTMP_fzV1idzxmNd7ZgqdRLk/135/",
-    NetBet: " https://netbetit.livepartners.com/view.php?z=163305",
-    "William Hill":
-      "https://campaigns.williamhill.it/C.ashx?btag=a_201973b_834c_&affid=1742025&siteid=201973&adid=834&c=",
-    QuiGioco:
-      "https://www.quigioco.it/signup?codAffiliato=R2026&label=squad-sito",
-  };
+
 
   const data = await getBonuses({
     names: PAGE_BONUSES,

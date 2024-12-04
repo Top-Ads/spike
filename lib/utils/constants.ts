@@ -40,37 +40,33 @@ export enum SymbolLayout {
 }
 
 export const PAGE_BONUSES = [
-  "AdmiralBet",
-  "LeoVegas",
-  "StarCasinò",
-  "Starvegas",
-  "BetRoom",
-  "WinCasino",
-  "BetFlag",
-  "PokerStars Casino",
-  "NetBet",
-  "GoldBet",
-  "888 Casino",
-  "King Casino",
-  "William Hill",
-  "Eurobet",
-  "Betway",
-  "Gioco Digitale",
+  "GekoBet",
   "BETIC",
-  "Lottomatica",
+  "StarCasinò",
+  "AdmiralBet",
+  "Starvegas",
   "QuiGioco",
-  "StarVegas",
+  "NetBet",
+  "LeoVegas",
   "Snai",
+  "888 Casino",
+  "William Hill",
+  "Netwin",
+  "BetFlag",
+  "Eurobet",
+  "Gioco Digitale",
+  "Bwin",
+  "Betway",
 ];
 
 export const pageBonusesRemapping: any = {
+  GekoBet: "https://gekobet.it/fwlink/account-registration?father=GKCSSI",
   LeoVegas:
     "https://ntrfr.leovegas.com/redirect.aspx?pid=3708703&lpid=1757&bid=19140",
   StarCasinò:
     "http://record.affiliatelounge.com/_SEA3QA6bJTMP_fzV1idzxmNd7ZgqdRLk/135/",
   BetRoom:
     "https://www.promovt.info/betroomcasino/?page=user&p=registration&mp=b76750fa-ea90-424c-85d2-00e33416391e",
-  Starvegas: "https://www.starvegas.it/gmg/refer/61782b177358340001a18ac7",
   WinCasino:
     "https://vincipromo.it/wincasino/?mp=42794b32-7604-49d2-92d0-8adf67a6b173",
   GoldBet: "https://media.goldbetpartners.it/redirect.aspx?pid=5116&bid=1495",
@@ -93,9 +89,11 @@ export const pageBonusesRemapping: any = {
   BetFlag:
     "https://info.betflag.it/landing/affiliazioni/bonus-registrazione-slot/?btag=PV99_283455F9C2AE423D8A6D232C87DE09E9",
   QuiGioco:
-    "https://www.quigioco.it/signup?codAffiliato=R2026&label=squad-sito",
+    "https://tracking.quigiocopartners.it/C.ashx?btag=a_264b_20c_&affid=38&siteid=264&adid=20&c=",
   AdmiralBet:
     "https://wladmiralinteractive.adsrv.eacdn.com/C.ashx?btag=a_3946b_444c_&affid=827&siteid=3946&adid=444&c=",
-  StarVegas: "https://www.starvegas.it/gmg/refer/61782b177358340001a18ac7",
+  Starvegas: "https://www.starvegas.it/gmg/refer/61782b177358340001a18ac7",
   Snai: "https://informatoriads.snai.it/redirect.aspx?pid=30828&bid=2748",
+  Netwin: "https://m.netwin.it/Redirect.aspx?mid=21&sid=5444&cid=&pid=&affid=3138",
+  Bwin: "https://mediaserver.entainpartners.com/renderBanner.do?zoneId=2031707"
 };
