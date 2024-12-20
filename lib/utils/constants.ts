@@ -91,7 +91,7 @@ export const pageBonusesRemapping: any = {
   QuiGioco:
     "https://tracking.quigiocopartners.it/C.ashx?btag=a_264b_20c_&affid=38&siteid=264&adid=20&c=",
   AdmiralBet:
-    "https://wladmiralinteractive.adsrv.eacdn.com/C.ashx?btag=a_3946b_444c_&affid=827&siteid=3946&adid=444&c=",
+    "https://www.admiralbet.it/gmg/refer/67484085cf050135d4a0481a",
   Starvegas: "https://www.starvegas.it/gmg/refer/61782b177358340001a18ac7",
   Snai: "https://informatoriads.snai.it/redirect.aspx?pid=30828&bid=2748",
   Netwin: "https://m.netwin.it/Redirect.aspx?mid=21&sid=5444&cid=&pid=&affid=3138",
