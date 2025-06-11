@@ -44,7 +44,6 @@ const IndexPage: FunctionComponent<PageProps> = (props) => {
     totalProducers,
   } = props;
 
-
   const TOP_BONUSES = ["GekoBet", "BETIC", "StarCasinò"];
 
   const MAIN_BONUSES = [
@@ -52,10 +51,10 @@ const IndexPage: FunctionComponent<PageProps> = (props) => {
     "BETIC",
     "StarCasinò",
     "AdmiralBet",
+    "LeoVegas",
     "Starvegas",
     "QuiGioco",
     "NetBet",
-    "LeoVegas",
     "Snai",
     "888 Casino",
     "William Hill",
@@ -75,7 +74,7 @@ const IndexPage: FunctionComponent<PageProps> = (props) => {
     "Starvegas",
   ];
 
-  console.log(pageBonusesData.map(b => b.name))
+  console.log(pageBonusesData.map((b) => b.name));
 
   const topBonusesData = TOP_BONUSES.map(
     (b) => pageBonusesData.filter((bonus) => bonus.name === b)[0],
@@ -92,7 +91,6 @@ const IndexPage: FunctionComponent<PageProps> = (props) => {
       }
     })
     .filter((it) => it !== undefined);
-
 
   const router = useRouter();
 
@@ -468,9 +466,13 @@ export async function getStaticProps() {
         }),
       },
       pageBonusesData: (
-        await getBonuses({ names: PAGE_BONUSES, sort: "rating:desc", limit: 30 })
+        await getBonuses({
+          names: PAGE_BONUSES,
+          sort: "rating:desc",
+          limit: 30,
+        })
       ).map((b) => {
-        console.log(`remapping ${b.name}`)
+        console.log(`remapping ${b.name}`);
         b.link = pageBonusesRemapping[b.name];
         return b;
       }),

@@ -6,7 +6,12 @@ import Divider from "../../components/Commons/Divider";
 import GridLayout from "../../components/Commons/GridLayout";
 import Layout from "../../components/Layout";
 import SlotsCounter from "../../components/SlotsCounter";
-import { GridType, pageBonusesRemapping, SlotFilterList, SlotType } from "../../lib/utils/constants";
+import {
+  GridType,
+  pageBonusesRemapping,
+  SlotFilterList,
+  SlotType,
+} from "../../lib/utils/constants";
 import { device } from "../../lib/utils/device";
 import CustomTextField from "../../components/Commons/Inputs/Textfield";
 import SlotsFilter from "../../components/SlotsFilter";
@@ -115,7 +120,7 @@ const GiochiPage: FunctionComponent<PageProps> = (props) => {
 
     const keyFilter =
       Object.keys(SlotFilterList)[
-      Object.values(SlotFilterList).indexOf(itemSelected)
+        Object.values(SlotFilterList).indexOf(itemSelected)
       ];
 
     const sortItem =
@@ -313,17 +318,17 @@ Puoi sfogliare la nostra selezione delle migliori slot machines, sceglierne una 
                         {itemSelected === SlotFilterList.CREATED_AT
                           ? slot.created_at
                             ? `${format(
-                              new Date(slot.created_at),
-                              "dd MMM yyyy",
-                            ).toString()}`
+                                new Date(slot.created_at),
+                                "dd MMM yyyy",
+                              ).toString()}`
                             : "NA"
                           : ""}
                         {itemSelected === SlotFilterList.UPDATED_AT
                           ? slot.created_at
                             ? `${format(
-                              new Date(slot.updated_at),
-                              "dd MMM yyyy",
-                            ).toString()}`
+                                new Date(slot.updated_at),
+                                "dd MMM yyyy",
+                              ).toString()}`
                             : "NA"
                           : ""}
                       </SlotInfo>
@@ -564,8 +569,8 @@ export async function getStaticProps() {
     "BETIC",
     "StarCasinò",
     "AdmiralBet",
-    "Starvegas",
-  ]
+    "LeoVegas",
+  ];
 
   const unorderedBonuses = (
     await getBonuses({ names: PAGE_BONUSES, sort: "rating:desc" })
