@@ -31,36 +31,36 @@ const LiveStats: FunctionComponent<Props> = () => {
             <Header className="intro-header">
               <h2>
                 {t(
-                  "Statistiche Crazy Time Live: Tutte le Estrazioni in Tempo Reale"
+                  "Statistiche Crazy Time Live: Tutte le Estrazioni in Tempo Reale",
                 )}
               </h2>
 
               <Intro>
                 <p>
                   {t(
-                    "Benvenuto sulla pagina dedicata alle Statistiche Live di Crazy Time. "
+                    "Benvenuto sulla pagina dedicata alle Statistiche Live di Crazy Time. ",
                   )}
                   {t(
-                    "Qui puoi seguire in tempo reale le statistiche della ruota di Crazy Time. "
+                    "Qui puoi seguire in tempo reale le statistiche della ruota di Crazy Time. ",
                   )}
                   {t(
-                    "Esamina le statistiche live per selezionare i numeri vincenti e scoprire Bonus incredibili”"
+                    "Esamina le statistiche live per selezionare i numeri vincenti e scoprire Bonus incredibili”",
                   )}
                   <br />
                   <br />
 
                   {t(
-                    "Hai a disposizione i dati sulle estrazioni in diretta alla ruota della Crazy Time. "
+                    "Hai a disposizione i dati sulle estrazioni in diretta alla ruota della Crazy Time. ",
                   )}
                   {t(
-                    "In questa sezione puoi confrontare le probabilità teoriche rispetto ai numeri usciti realmente a questi Game Show. "
+                    "In questa sezione puoi confrontare le probabilità teoriche rispetto ai numeri usciti realmente a questi Game Show. ",
                   )}
                   <br />
                   {t(
-                    "Inoltre, hai a disposizione i dati sui numeri ritardatari – la migliore occasione per elaborare la tua strategia di gioco,"
+                    "Inoltre, hai a disposizione i dati sui numeri ritardatari – la migliore occasione per elaborare la tua strategia di gioco,",
                   )}
                   {t(
-                    "oltre a informazioni che raccontano la storia di questo gioco digitale. "
+                    "oltre a informazioni che raccontano la storia di questo gioco digitale. ",
                   )}
                 </p>
 
@@ -86,31 +86,31 @@ const LiveStats: FunctionComponent<Props> = () => {
             <Header className="intro-header">
               <h2>
                 {t(
-                  "Monopoly Statistiche Live: Tutte le Estrazioni in Tempo Reale"
+                  "Monopoly Statistiche Live: Tutte le Estrazioni in Tempo Reale",
                 )}
               </h2>
 
               <Intro>
                 <p>
                   {t(
-                    "In questa sezione hai a tua disposizione tutte le informazioni e i dati relativi alle"
+                    "In questa sezione hai a tua disposizione tutte le informazioni e i dati relativi alle",
                   )}
                   {t(
-                    "estrazioni in tempo reale della ruota di Monopoly Live di Evolution Gaming. "
-                  )}
-                  <br />
-                  {t(
-                    "Così, hai la possibilità di confrontare le probabilità teoriche con i valori estratti"
-                  )}
-                  {t(
-                    "effettivamente nel gioco e predisporre positivamente la tua strategia di gioco. "
+                    "estrazioni in tempo reale della ruota di Monopoly Live di Evolution Gaming. ",
                   )}
                   <br />
                   {t(
-                    "Impara a giocare online ed a esplorare uno dei giochi digitali più popolari del momento. "
+                    "Così, hai la possibilità di confrontare le probabilità teoriche con i valori estratti",
                   )}
                   {t(
-                    "E scopri le Statistiche di Monopoly Live in tempo reale. "
+                    "effettivamente nel gioco e predisporre positivamente la tua strategia di gioco. ",
+                  )}
+                  <br />
+                  {t(
+                    "Impara a giocare online ed a esplorare uno dei giochi digitali più popolari del momento. ",
+                  )}
+                  {t(
+                    "E scopri le Statistiche di Monopoly Live in tempo reale. ",
                   )}
                 </p>
 
@@ -136,18 +136,18 @@ const LiveStats: FunctionComponent<Props> = () => {
             <Header className="intro-header">
               <h2>
                 {t(
-                  "LiveStats Dream Catcher: Tutte le Estrazioni in Tempo Reale. "
+                  "LiveStats Dream Catcher: Tutte le Estrazioni in Tempo Reale. ",
                 )}
               </h2>
 
               <Intro>
                 <p>
                   {t(
-                    "Dream Catcher significa “acchiappasogni” e ricorda il famoso amuleto dei nativi americani"
+                    "Dream Catcher significa “acchiappasogni” e ricorda il famoso amuleto dei nativi americani",
                   )}{" "}
                   <br />
                   {t(
-                    "Si tratta di una ruota della fortuna di Evolution Gaming, gioco digitale uscito nel 2017. "
+                    "Si tratta di una ruota della fortuna di Evolution Gaming, gioco digitale uscito nel 2017. ",
                   )}
                 </p>
                 <Thumbnail>

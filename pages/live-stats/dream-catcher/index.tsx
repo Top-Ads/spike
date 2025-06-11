@@ -6,7 +6,11 @@ import Divider from "../../../components/Commons/Divider";
 import GridLayout from "../../../components/Commons/GridLayout";
 import CustumSelect from "../../../components/Commons/Inputs/Select";
 import Layout from "../../../components/Layout";
-import { GridType, LiveStats, pageBonusesRemapping } from "../../../lib/utils/constants";
+import {
+  GridType,
+  LiveStats,
+  pageBonusesRemapping,
+} from "../../../lib/utils/constants";
 import axios from "axios";
 import { APISOCKET } from "../../../public/environment";
 import { io, Socket } from "socket.io-client";
@@ -522,21 +526,17 @@ export async function getServerSideProps() {
     `${APISOCKET.DREAMCATCHER}/api/data-for-the-last-hours/24h`,
   );
 
-
-
   const PAGE_BONUSES = [
     "GekoBet",
     "BETIC",
     "StarCasinò",
     "AdmiralBet",
+    "LeoVegas",
     "Starvegas",
     "QuiGioco",
     "NetBet",
-    "LeoVegas",
     "Snai",
-
   ];
-
 
   const data = await getBonuses({
     names: PAGE_BONUSES,

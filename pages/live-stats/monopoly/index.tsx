@@ -6,7 +6,11 @@ import Divider from "../../../components/Commons/Divider";
 import GridLayout from "../../../components/Commons/GridLayout";
 import CustumSelect from "../../../components/Commons/Inputs/Select";
 import Layout from "../../../components/Layout";
-import { GridType, LiveStats, pageBonusesRemapping } from "../../../lib/utils/constants";
+import {
+  GridType,
+  LiveStats,
+  pageBonusesRemapping,
+} from "../../../lib/utils/constants";
 import axios from "axios";
 import { APISOCKET } from "../../../public/environment";
 import { io, Socket } from "socket.io-client";
@@ -233,11 +237,13 @@ Trova informazione per giocare online ed a esplorare uno dei giochi digitali dif
 
           <br />
 
-          {tables && <DiceRollContainer>
-            <DiceRollTable type="low" data={tables.lowTierTable.rows} />
-            <DiceRollTable type="mid" data={tables.midTierTable.rows} />
-            <DiceRollTable type="high" data={tables.highTierTable.rows} />
-          </DiceRollContainer>}
+          {tables && (
+            <DiceRollContainer>
+              <DiceRollTable type="low" data={tables.lowTierTable.rows} />
+              <DiceRollTable type="mid" data={tables.midTierTable.rows} />
+              <DiceRollTable type="high" data={tables.highTierTable.rows} />
+            </DiceRollContainer>
+          )}
         </Main>
 
         <Footer>
@@ -372,13 +378,12 @@ export async function getServerSideProps() {
     "BETIC",
     "StarCasinò",
     "AdmiralBet",
+    "LeoVegas",
     "Starvegas",
     "QuiGioco",
     "NetBet",
-    "LeoVegas",
     "Snai",
   ];
-
 
   const data = await getBonuses({
     names: PAGE_BONUSES,
