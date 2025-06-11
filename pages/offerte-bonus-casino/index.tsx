@@ -8,7 +8,11 @@ import { getSlots } from "../../lib/graphql/queries/slots";
 import { Bonus, Slot } from "../../lib/schemas";
 import BonusCard from "../../components/Cards/BonusCard";
 import GridLayout from "../../components/Commons/GridLayout";
-import { GridType, PAGE_BONUSES, pageBonusesRemapping } from "../../lib/utils/constants";
+import {
+  GridType,
+  PAGE_BONUSES,
+  pageBonusesRemapping,
+} from "../../lib/utils/constants";
 import { device } from "../../lib/utils/device";
 import BonusTable from "../../components/Commons/Tables/BonusTable";
 import SlotCard from "../../components/Cards/SlotCard";
@@ -29,16 +33,15 @@ const BonusCasinoPage: FunctionComponent<PageProps> = ({
 
   const TOP_BONUSES = ["GekoBet", "BETIC", "StarCasinò", "AdmiralBet"];
 
-
   const MAIN_BONUSES = [
     "GekoBet",
     "BETIC",
     "StarCasinò",
     "AdmiralBet",
+    "LeoVegas",
     "Starvegas",
     "QuiGioco",
     "NetBet",
-    "LeoVegas",
     "Snai",
     "888 Casino",
     "William Hill",
@@ -54,13 +57,9 @@ const BonusCasinoPage: FunctionComponent<PageProps> = ({
     (b) => pagesBonusesData.filter((bonus) => bonus.name === b)[0],
   );
 
-
-
   const mainBonusesData = MAIN_BONUSES.map(
     (b) => pagesBonusesData.filter((bonus) => bonus.name === b)[0],
   );
-
-
 
   return (
     <Layout title="Casino Squad | Offerte Attuali Bonus Casino e Promo Aggiornate Giornalmente">
@@ -95,7 +94,7 @@ linea generale, però, i Bonus dei casinò online ti permettono di giocare con s
           <GridLayout
             gridType={GridType.TOPBONUS}
             content={topBonusesData.map((bonus) => {
-              return <BonusCard key={bonus.id} data={bonus} />
+              return <BonusCard key={bonus.id} data={bonus} />;
             })}
             label="Migliori Casino Italiani per servizi offerti"
             AlignItem={"center"}
@@ -119,7 +118,7 @@ linea generale, però, i Bonus dei casinò online ti permettono di giocare con s
             <GridLayout
               gridType={GridType.BONUS}
               content={mainBonusesData.map((bonus) => {
-                return <BonusCard key={bonus.id} data={bonus} />
+                return <BonusCard key={bonus.id} data={bonus} />;
               })}
               AlignItem={"center"}
               xs={12}
@@ -373,7 +372,7 @@ export async function getStaticProps() {
       pagesBonusesData: (
         await getBonuses({ names: PAGE_BONUSES, limit: 30 })
       ).map((b) => {
-        console.log(`remapping ${b.name}`)
+        console.log(`remapping ${b.name}`);
         if (pageBonusesRemapping[b.name]) {
           b.link = pageBonusesRemapping[b.name];
         }
